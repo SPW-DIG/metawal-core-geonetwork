@@ -1,4 +1,8 @@
 {
+
+    "n": "Métadonnée",
+    "y": "Modèle",
+    "s": "Directory entry",
     "latestNews": "Dernières infos",
     "quicklinks": "Liens rapides",
     "Administrator": "Administrateur",
@@ -6,6 +10,7 @@
     "statisticsAndStatus": "Statistiques et status",
     "io": "Importer/Exporter",
     "harvesters": "Moissonnage",
+    "harvesterError": "Erreur lors du moissonnage",
     "settings": "Paramètres",
     "settingsUpdated": "Configuration sauvegardée.",
     "usersAndGroups": "Utilisateurs et groupes",
@@ -239,6 +244,8 @@
     "system/oai/cachesize-help": "Le nobmre de résultats OAI qui peut etre stocké dans le cache.",
     "system/oai/mdmode": "Datesearch",
     "system/oai/mdmode-help": "Influences the behaviour of OAI when parameters from or until are supplied. If set to temporal extent, the temporal extent of the date described by the metadata is searched. If set to modification date, the date at which the metadata was last modified is searched. Please note: restart the catalog to make this change active.",
+    "system/oai/mdmode-valueTemporaExtent": "Temporal extent",
+    "system/oai/mdmode-valueModificationDate": "Modification date",
     "system/oai/tokentimeout": "ResumptionToken Timeout",
     "system/oai/tokentimeout-help": "The number of seconds a OAI resultset stays in the cache and can be scrolled using the OAI resumptionToken Please note: restart GeoNetwork to make this change active.",
     "system/platform": "Catalogue",
@@ -257,6 +264,11 @@
     "system/removedMetadata/dir-help": "Répertoire où stocker les fiches supprimées (au format MEF).",
     "system/requestedLanguage": "Recherche & langue",
     "system/requestedLanguage/only": "Rechercher uniquement dans la langue de la requête",
+    "system/requestedLanguage/only-value1": "All documents in all languages (No preferences)",
+    "system/requestedLanguage/only-value2": "Prefer documents with translations requested language",
+    "system/requestedLanguage/only-value3": "Prefer documents whose language is the requested language",
+    "system/requestedLanguage/only-value4": "Translations in requested language",
+    "system/requestedLanguage/only-value5": "Document language is the requested language",
     "system/requestedLanguage/sorted": "Résultats de la recherche dans la langue demandée triés sur le dessus",
     "system/requestedLanguage/ignored": "Ignore la langue demandée pour les résultats de la recherche",
     "system/searchStats": "Statistiques sur les recherches",
@@ -625,11 +637,12 @@
     "emailToSearch": "Email à rechercher",
     "contactAsXML": "Fragment de XML à insérer pour les contacts correspondant",
     "contactAsXML-help": "<h5>Exemple:</h5><code class='gn-code'>&lt;gmd:CI_ResponsibleParty xmlns:gco=\"http://www.isotc211.org/2005/gco\" xmlns:gmd=\"http://www.isotc211.org/2005/gmd\"&gt;&lt;gmd:individualName&gt;&lt;gco:CharacterString&gt;A new user&lt;/gco:CharacterString&gt;&lt;/gmd:individualName&gt;&lt;gmd:organisationName&gt;&lt;gco:CharacterString&gt;Organisation&lt;/gco:CharacterString&gt;&lt;/gmd:organisationName&gt;&lt;gmd:contactInfo&gt;&lt;gmd:CI_Contact&gt;&lt;gmd:address&gt;&lt;gmd:CI_Address&gt;&lt;gmd:electronicMailAddress&gt;&lt;gco:CharacterString&gt;newemail@organisation.org&lt;/gco:CharacterString&gt;&lt;/gmd:electronicMailAddress&gt;&lt;/gmd:CI_Address&gt;&lt;/gmd:address&gt;&lt;/gmd:CI_Contact&gt;&lt;/gmd:contactInfo&gt;&lt;gmd:role&gt;&lt;gmd:CI_RoleCode codeListValue=\"pointOfContact\" codeList=\"http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode\"/&gt;&lt;/gmd:role&gt;&lt;/gmd:CI_ResponsibleParty&gt;</code>",
-    "emptyCatalogShouldBeFilled": "Le catalogue est vide, vous devriez probablement importer des nouvelles fiches ou moissonner un catalogue distant. Vous pouvez également insérer <a href='#/metadata/metadata-and-template/load-templates/all'>les modèles</a>, <a href='#/metadata/metadata-and-template/load-samples/all'>les exemples</a> ou <a href='#/metadata/metadata-and-template/load-samples-and-templates/all'>les deux</a>."
+    "emptyCatalogShouldBeFilled": "Le catalogue est vide, vous devriez probablement importer des nouvelles fiches ou moissonner un catalogue distant. Vous pouvez également insérer <a href='#/metadata/metadata-and-template/load-templates/all'>les modèles</a>, <a href='#/metadata/metadata-and-template/load-samples/all'>les exemples</a> ou <a href='#/metadata/metadata-and-template/load-samples-and-templates/all'>les deux</a>.",
     "transfertPrivs":"Transfert de privilèges",
-    "sourceeditor":"Editeur source",
+    "chooseSourceEditor":"Sélectionner l'éditeur dont les fiches seront transférées",
     "sourceGroup":"Groupe source",
     "targetGroup":"Groupe cible",
     "targetEditor":"Editeur cible",
     "transfertPriv":"Transférer",
+    "transfertPrivilegesFinished": "{{metadata}} fiche(s) transférées."
 }

@@ -1510,6 +1510,7 @@
   
   <include>config/config-service-admin-schema.xml</include>
   <include>config/config-service-admin-category.xml</include>
+  <include>config/config-service-admin-transfert-privileges.xml</include>
   
   <include>config/config-service-admin-batchprocess.xml</include>
   

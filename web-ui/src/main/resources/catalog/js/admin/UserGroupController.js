@@ -26,12 +26,12 @@
             [{
               type: 'groups',
               label: 'manageGroups',
-              icon: 'icon-group',
+              icon: 'fa-group',
               href: '#/organization/groups'
             },{
               type: 'users',
               label: 'manageUsers',
-              icon: 'icon-user',
+              icon: 'fa-user',
               href: '#/organization/users'
             }]
       };
@@ -206,6 +206,32 @@
         $scope.userUpdated = false;
       };
 
+
+      $scope.resetPassword1 = null;
+      $scope.resetPassword2 = null;
+      $scope.resetPassword = function() {
+        $scope.resetPassword1 = null;
+        $scope.resetPassword2 = null;
+        $('#passwordResetModal').modal();
+      };
+
+      $scope.saveNewPassword = function() {
+        var params = {operation: 'resetpw',
+          id: $scope.userSelected.id,
+          password: $scope.resetPassword1,
+          password2: $scope.resetPassword2
+        };
+
+        $http.post('user.update@json', null, {params: params})
+              .success(function(data) {
+              $scope.resetPassword1 = null;
+              $scope.resetPassword2 = null;
+              $('#passwordResetModal').modal('hide');
+            }).error(function(data) {
+              // TODO
+            });
+
+      };
 
       /**
        * Check if the groupId is in the user groups

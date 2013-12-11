@@ -60,11 +60,11 @@ public class Update extends NotInReadOnlyModeService {
 	{
 		String operation = Util.getParam(params, Params.OPERATION);
 		String id       = params.getChildText(Params.ID);
-		String username = Util.getParam(params, Params.USERNAME);
-		String password = Util.getParam(params, Params.PASSWORD);
+		String username = Util.getParam(params, Params.USERNAME, "");
+		String password = Util.getParam(params, Params.PASSWORD, "");
 		String surname  = Util.getParam(params, Params.SURNAME, "");
 		String name     = Util.getParam(params, Params.NAME,    "");
-		String profile  = Util.getParam(params, Params.PROFILE);
+		String profile  = Util.getParam(params, Params.PROFILE, "");
 		String address  = Util.getParam(params, Params.ADDRESS, "");
 		String city     = Util.getParam(params, Params.CITY,    "");
 		String state    = Util.getParam(params, Params.STATE,   "");

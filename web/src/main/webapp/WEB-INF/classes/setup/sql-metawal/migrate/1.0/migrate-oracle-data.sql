@@ -196,7 +196,7 @@ INSERT INTO Settings VALUES (955,952,'ignored','true');
 UPDATE metadata SET data = replace(data, 
 'http://157.164.189.177/geonetwork/xml/schemas/iso19139.rw',
 'http://metawal.wallonie.be/schemas/3.0'
-) WHERE data LIKE '%http://157.164.189.177/geonetwork/xml/schemas/iso19139.rw%'
+) WHERE data LIKE '%http://157.164.189.177/geonetwork/xml/schemas/iso19139.rw%';
 
 
 -- Version update
