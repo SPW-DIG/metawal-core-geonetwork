@@ -303,7 +303,8 @@ public class SettingManager {
             }
             try {
                 if (setting.getDatatype() == DATATYPE_BOOLEAN) {
-                    dbms.execute("UPDATE Settings SET value=? WHERE name=?", Boolean.parseBoolean(value), key);
+                	value = (value.equals("on") || value.equals("true")) ? "true" : "false";
+                    dbms.execute("UPDATE Settings SET value=? WHERE name=?", value, key);
                 } else if (setting.getDatatype() == DATATYPE_INT && !"".equals(value)) {
                     dbms.execute("UPDATE Settings SET value=? WHERE name=?", Integer.parseInt(value), key);
                 } else {
