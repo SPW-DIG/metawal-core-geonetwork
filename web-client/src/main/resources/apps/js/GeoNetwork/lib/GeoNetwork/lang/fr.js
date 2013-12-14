@@ -261,7 +261,7 @@ GeoNetwork.Lang.fr = {
     'privilegesTT': 'Gérer les privilèges pour l\'accès public et les divers groupes du catalogue.',
     'categories': 'Catégories',
     'otherActions': 'Autres actions',
-    'permalinkInfo': 'Collez le lien suivant dans un e-mail<br/> ou dans un message instantané',
+    'permalinkInfo': 'Partager les résultats de cette recherche',
     'view': 'Consulter',
     'zoomTo': 'Zoomer vers',
     'saveXml': 'Export (XML)',
