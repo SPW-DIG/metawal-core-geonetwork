@@ -11,13 +11,12 @@ Stylesheet used to remove a reference to a online resource.
 	
 	<!-- Do a copy of every nodes and attributes -->
 	<xsl:template match="@*|node()">
-		<xsl:message>### <xsl:value-of select="$url"/></xsl:message>
 		<xsl:copy>
 			<xsl:apply-templates select="@*|node()"/>
 		</xsl:copy>
 	</xsl:template>
 
 	<!-- Remove geonet:* elements. -->
-	<xsl:template match="geonet:*|gmd:onLine[normalize-space(gmd:CI_OnlineResource/gmd:linkage/gmd:URL) = $url and normalize-space(gmd:CI_OnlineResource/gmd:name/gco:CharacterString) = $name]" priority="2"/>
+	<xsl:template match="geonet:*|gmd:onLine[normalize-space(gmd:CI_OnlineResource/gmd:linkage/gmd:URL) = $url and starts-with($name, normalize-space(gmd:CI_OnlineResource/gmd:name/gco:CharacterString))]" priority="2"/>
 	
 </xsl:stylesheet>
