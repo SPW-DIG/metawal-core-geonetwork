@@ -65,7 +65,8 @@
 			                <input type="password" id="password" value="" />
 			            </div>
 			            <input type="button" class="btn" value="{/root/gui/strings/metawalLoginConnection}" onclick="catalogue.login(document.getElementById('login').value,document.getElementById('password').value);location.href='#close';"/>
-			            <input type="button" class="btn" value="{/root/gui/strings/metawalLoginCancel}" onclick="location.href='#close';"/>
+			        	&#160;
+			        	<input type="button" class="btn" value="{/root/gui/strings/metawalLoginCancel}" onclick="location.href='#close';"/>
 			        </div>
 			        <div class="clear"></div>
             		<div class="noprint">
