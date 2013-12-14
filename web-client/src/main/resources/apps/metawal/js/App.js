@@ -889,7 +889,7 @@ GeoNetwork.app = function () {
                     }
                 }
             }
-            var title = (catalogue.metadataStore.totalLength || 0) + OpenLayers.i18n('recordsFound')
+            var title = (catalogue.metadataStore.length || 0) + OpenLayers.i18n('recordsFound')
                            + (criteria !== '' ? ' | ' + criteria : '');
             
             GeoNetwork.Util.updateHeadInfo({
