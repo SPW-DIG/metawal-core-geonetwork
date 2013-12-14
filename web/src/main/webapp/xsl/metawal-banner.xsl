@@ -51,8 +51,9 @@
 					</div>
 					<div class="clear"></div>
 					<div class="grid_login">
-						<input type="button" id="login_popup" class="btn" value="{/root/gui/strings/metawalBannerLogin}"/>
-						<span id="userinfo"></span>
+						<p id="userinfo"></p>
+						<input type="button" id="login_popup" class="btn" 
+							value="{/root/gui/strings/metawalBannerLogin}"/>
 	        		</div>
 	        		<a href="#x" class="overlay" id="login_form"></a>
 			        <div class="popup">
