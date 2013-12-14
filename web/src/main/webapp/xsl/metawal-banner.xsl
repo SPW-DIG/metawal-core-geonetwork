@@ -13,7 +13,7 @@
                 <div class="top-spw-global">
                     <!--start grid_16-->
                     <div class="grid_16">
-                        <a class="portail-walloniebe" target="_blank" href="http://www.wallonie.be">Portail WALLONIE.BE</a>
+                        <a class="portail-walloniebe" href="http://www.wallonie.be">Portail WALLONIE.BE</a>
                         <a class="federation-wallonie-bruxelles" target="_blank" href="http://www.federation-wallonie-bruxelles.be/">Fédération Wallonie-Bruxelles</a>
                         <a class="geoportail-de-la-wallonie" target="_blank" href="http://geoportail.wallonie.be/cms/fr/sites/geoportail/home.html">Géoportail de la Wallonie</a>
                         <div class="clear"></div>
@@ -32,13 +32,10 @@
                     <div class="grid_10">
                         <!--<div id="header_spw-col1" class="header_spw-col1noprint" style="padding-top:0px">-->
                         <div id="header_spw-col1" class="header_spw-col1noprint">
-                            <p>
-                                <a title="Portail de la Wallonie" target="_blank" href="http://www.wallonie.be">
-                                    <span><xsl:text disable-output-escaping="yes">&amp;nbsp;</xsl:text></span>
-                                </a>
-                                <a class="geoLink"  href="/cms/home.html"><xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim1" /></a>
-                                <a class="geoLink2"  href="/cms/home.html"><xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim2" /></a>
-                            </p>
+                            
+                                <a class="geoLink"  href="#"><xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim1" />
+                                	&#160;<xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim2" /></a>
+                            
                             <div class="clear"></div>
                           </div>
 						<div class="clear"></div>

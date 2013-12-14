@@ -105,16 +105,11 @@ height: 107px;
     font-size: 25px;
     font-weight: bold;
     padding-bottom: 0;
-    padding-left: 0;
+    padding-left: 80px;
     padding-right: 0;
     padding-top: 22px;
 }
 #header_spw #header_spw-col1 .geoLink {
-    margin-left: 14px;
-    text-decoration: none;
-    font-size: 25px;
-}
-#header_spw #header_spw-col1 .geoLink2 {
     text-decoration: none;
     font-size: 20px;
 }
