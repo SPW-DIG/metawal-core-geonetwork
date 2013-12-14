@@ -3473,14 +3473,14 @@
                 onchange="Ext.getDom('_{gco:CharacterString/geonet:element/@ref}').value = this.options[this.selectedIndex].value;"
                 size="1">
                 <option name="" />
-                <xsl:for-each select="/root/gui/regions/record">
-                  <xsl:sort select="label/child::*[name() = $lang]" order="ascending"/>
+                <xsl:for-each select="/root/gui/countries/country">
+                  <xsl:sort select="." order="ascending"/>
                   
-                  <option value="{label/child::*[name() = $lang]}">
-                    <xsl:if test="$value = label/child::*[name() = $lang]">
+                  <option value="{.}">
+                    <xsl:if test="$value = .">
                       <xsl:attribute name="selected"/>
                     </xsl:if>
-                    <xsl:value-of select="label/child::*[name() = $lang]"/>
+                    <xsl:value-of select="."/>
                   </option>
                 </xsl:for-each>
               </select>
