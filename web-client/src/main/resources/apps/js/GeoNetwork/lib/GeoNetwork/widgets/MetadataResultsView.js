@@ -630,9 +630,13 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                                     displayLink = allowDynamic;
                                 }
                                 if (displayLink) {
+                                    var handler = function () {
+                                        window.open(record.get('href'), '_blank');
+                                    };
                                     linkButton.push({
                                         text: (record.get('title') || record.get('name')),
-                                        href: record.get('href')
+//                                        href: record.get('href')
+                                        handler: handler
                                     });
                                 }
                             }
@@ -667,7 +671,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
     addLinkMenu: function (linkButton, label, currentType, el) {
         if (linkButton.length === 1) {
             var handler = linkButton[0].handler || function () {
-                window.open(linkButton[0].href);
+                window.open(linkButton[0].href, '_blank');
             };
             bt = new Ext.Button({
                 text: label,
