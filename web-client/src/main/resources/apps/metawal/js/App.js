@@ -145,7 +145,14 @@ GeoNetwork.app = function () {
                 document.getElementById("grid_menu").style.display="";
             } else {
                 document.getElementById("login_popup").value = OpenLayers.i18n("login");
-                document.getElementById("login_popup").onclick = function(){window.location.href='#login_form';document.getElementById("login").focus();};
+                document.getElementById("login_popup").onclick = function(){
+                    window.location.href='#login_form';
+                    document.getElementById("login").focus();
+                    if (Ext.isIE8) {
+                        document.getElementById('login_form_div').style.visibility = 'visible';
+                        document.getElementById('login_form_div').style.opacity = 1;
+                    }
+                };
                 document.getElementById("grid_menu").style.display = "none";
                 document.getElementById('userinfo').innerHTML = "";
              }

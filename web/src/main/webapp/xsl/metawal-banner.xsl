@@ -53,7 +53,7 @@
 							value="{/root/gui/strings/metawalBannerLogin}"/>
 	        		</div>
 	        		<a href="#x" class="overlay" id="login_form"></a>
-			        <div class="popup">
+			        <div class="popup" id="login_form_div">
 			            <h2><xsl:value-of select="/root/gui/strings/metawalLoginTitle" /></h2>
 			            <p><xsl:value-of select="/root/gui/strings/metawalLoginIntro" /></p>
 			            <div>
