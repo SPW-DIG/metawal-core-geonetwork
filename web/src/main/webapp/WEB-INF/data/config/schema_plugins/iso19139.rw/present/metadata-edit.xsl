@@ -86,6 +86,15 @@
       <xsl:when test="count($profileElements/*)>0">
         <xsl:copy-of select="$profileElements"/>
       </xsl:when>
+      <!-- If in view mode and at the root of the document,
+        we try to match to a tab based on
+       a missing element, then the profileElements is empty (in
+       edit mode, it does not happen because usually it provides
+       the option to add the missing element)
+       and the iso19139 mode is applied to the root. Avoid this. -->
+      <xsl:when test="$edit = false() 
+        and name() = 'rw:MD_Metadata'
+        and count($profileElements/*) = 0"></xsl:when>
       <!-- otherwise process in base iso19139 mode -->
       <xsl:otherwise> 
         <xsl:apply-templates mode="iso19139" select="." >
