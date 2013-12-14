@@ -4,6 +4,27 @@ var catalogue;
 var app;
 var cookie;
 
+
+/**
+ * Get lang from hl parameter of from URL 
+ */
+var getUILang = function () {
+    var parameterLang = "fre";
+    var lang = /hl=([a-z]{3})/.exec(location.href);
+    // Get lang from URL parameter
+    if (lang && lang[1]) {
+        parameterLang = lang[1];
+    } else {
+        // Get lang from URL pattern (ie. Jeeves context language)
+        lang = /.*\/srv\/([a-z]{3})\/.*/.exec(location.href);
+        if (lang && lang[1]) {
+          parameterLang = lang[1];
+        }
+    }
+    return parameterLang;
+}
+
+
 GeoNetwork.app = function () {
     // private vars:
     var geonetworkUrl;
@@ -687,7 +708,7 @@ GeoNetwork.app = function () {
             geonetworkUrl = GeoNetwork.URL || window.location.href.match(/(http.*\/.*)\/srv\/.*\/search.*/, '')[1];
 
             urlParameters = GeoNetwork.Util.getParameters(location.href);
-            var lang = urlParameters.hl || GeoNetwork.Util.defaultLocale;
+            var lang = getUILang() || GeoNetwork.Util.defaultLocale;
             if (urlParameters.extent) {
                 urlParameters.bounds = new OpenLayers.Bounds(urlParameters.extent[0], urlParameters.extent[1], urlParameters.extent[2], urlParameters.extent[3]);
             }
@@ -900,8 +921,7 @@ GeoNetwork.app = function () {
 };
 
 Ext.onReady(function () {
-    var lang = /hl=([a-z]{3})/.exec(location.href);
-    GeoNetwork.Util.setLang(lang && lang[1], '../../apps/');
+    GeoNetwork.Util.setLang(getUILang(), '../../apps/');
 
     Ext.QuickTips.init();
     setTimeout(function () {
