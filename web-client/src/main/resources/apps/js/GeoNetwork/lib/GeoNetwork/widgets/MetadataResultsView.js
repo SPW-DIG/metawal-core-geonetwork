@@ -526,12 +526,16 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
      *  After a search, initialize data view.
      */
     resultsLoaded: function(view, records, options){
+        this.records = records;
         this.drawMetadataBbox(view, records, options);
         this.contextMenu = undefined;
         this.initRatingWidget();
         this.dislayLinks(records);
         this.dislayRelations(records);
         //this.initMenu();
+    },
+    refreshLinks: function () {
+        this.dislayLinks(this.records);
     },
     /** private: method[dislayLinks]
      *  Create link menu in the div for each records
