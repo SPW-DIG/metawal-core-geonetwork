@@ -1175,7 +1175,29 @@ GeoNetwork.Catalogue = Ext.extend(Ext.util.Observable, {
             return false;
         }
     },
-    
+    postToUrl: function (path, params, method) {
+        method = method || "post"; // Set method to post by default if not specified.
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+             }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    },
     /**	api: method[login]
      *	:param username: ``String`` The user name
      *	:param password: ``String`` The password for the user
@@ -1206,21 +1228,25 @@ GeoNetwork.Catalogue = Ext.extend(Ext.util.Observable, {
         		}
         	}, 500);
         } else {
-			OpenLayers.Request.POST({
-			    url: this.services.login,
-			    data: OpenLayers.Util.getParameterString({username: username,password: password}),
-			    headers: {
-			        "Content-Type": "application/x-www-form-urlencoded"
-			    },
-	            success: function(response){
-	            	app.isLoggedIn();  // will get the user information and trigger after login event
-	            },
-	            failure: function(response){
-	                app.identifiedUser = undefined;
-	                app.onAfterBadLogin();
-	                // TODO : Get Exception from GeoNetwork
-	            }
-	        });
+            var params = {username: username, password: password};
+            params.redirectUrl = '/..' + location.pathname;
+            this.postToUrl(this.services.login, params, 'POST');
+            
+//			OpenLayers.Request.POST({
+//			    url: this.services.login,
+//			    data: OpenLayers.Util.getParameterString({username: username,password: password}),
+//			    headers: {
+//			        "Content-Type": "application/x-www-form-urlencoded"
+//			    },
+//	            success: function(response){
+//	            	app.isLoggedIn();  // will get the user information and trigger after login event
+//	            },
+//	            failure: function(response){
+//	                app.identifiedUser = undefined;
+//	                app.onAfterBadLogin();
+//	                // TODO : Get Exception from GeoNetwork
+//	            }
+//	        });
         }
     },
     /**	api: method[logout]
