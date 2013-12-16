@@ -17,7 +17,7 @@
     -->
     
     <!-- JS Client configuration -->
-    <widget.url>../../apps/metawal/</widget.url>
+    <widget.url>../fre/search</widget.url>
     <widget.parameters>hl=fre</widget.parameters>
   </properties>
 </overrides>
