@@ -175,9 +175,11 @@ GeoNetwork.util.SearchFormTools = {
         
         
         var mapLayers = [], i;
-        for (i = 0; i < layers.length; i++) {
-            //mapLayers.push(new OpenLayers.Layer.WMS(layers[i][0], layers[i][1], layers[i][2], layers[i][3]));
-            mapLayers.push(layers[i].clone());
+        if (layers !== undefined) {
+            for (i = 0; i < layers.length; i++) {
+                //mapLayers.push(new OpenLayers.Layer.WMS(layers[i][0], layers[i][1], layers[i][2], layers[i][3]));
+                mapLayers.push(layers[i].clone());
+            }
         }
         var geomWithMapField = {
             xtype: 'gn_geometrymapfield',
@@ -248,8 +250,10 @@ GeoNetwork.util.SearchFormTools = {
     getSimpleMap: function(layers, mapOptions, activeMapControlExtent, panelConfig, withRelation){
         var fields = [], mapLayers = [], i;
         
-        for (i = 0; i < layers.length; i++) {
-            mapLayers.push(layers[i].clone());
+        if (layers !== undefined) {
+            for (i = 0; i < layers.length; i++) {
+                mapLayers.push(layers[i].clone());
+            }
         }
         var geomWithMapField = {
             xtype: 'gn_geometrymapfield',
