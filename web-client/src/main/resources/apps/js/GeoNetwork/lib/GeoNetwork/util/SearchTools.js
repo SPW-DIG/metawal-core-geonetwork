@@ -91,6 +91,8 @@ GeoNetwork.util.SearchTools = {
 
                     if (values && values.length > 0) {
                         metadataStore.loadData(currentRecords);
+                    } else {
+                        metadataStore.totalLength = 0;
                     }
                     
                     if (isCatalogueSStore) {
