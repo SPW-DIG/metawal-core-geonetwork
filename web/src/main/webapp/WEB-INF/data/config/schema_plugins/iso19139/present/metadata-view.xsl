@@ -311,7 +311,7 @@
       </xsl:with-param>
       <xsl:with-param name="content">
         <xsl:apply-templates mode="iso19139-simple"
-          select="gmd:LI_Lineage/gmd:statement"/>
+          select="gmd:LI_Lineage/gmd:statement|*[@gco:isoType='gmd:LI_Lineage']/gmd:statement"/>
         
         <xsl:if test=".//gmd:source[@uuidref]">
           
