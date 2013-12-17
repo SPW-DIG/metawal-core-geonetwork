@@ -1411,11 +1411,32 @@
 	<concealed>Concealed</concealed>
 	<serviceNotAllowed>You do not have the correct permissions to access the following service {1}</serviceNotAllowed>
 	
-	<metawalHome>Huis</metawalHome>
+	<metawalHome>Home</metawalHome>
 	<metawalContact>Contact</metawalContact>
 	<metawalInformation>Informatie</metawalInformation>
-	<metawalGeoportalTitle>Geoportail de Wallonie (neerlandais)</metawalGeoportalTitle>
-	<metawalMetawalTitle>Metawal - (neerlandais)</metawalMetawalTitle>
+	<metawalGeoportalTitle>Geoportaal van Wallonië</metawalGeoportalTitle>
+	
+	<metawalBannerTitlePartim1>Metawal - </metawalBannerTitlePartim1>
+	<metawalBannerTitlePartim2>Catalogus voor Geografische Informatie van Wallonië</metawalBannerTitlePartim2>
+	<metawalBannerLogin>Inloggen</metawalBannerLogin>
+	<metawalBannerLogout>Uitloggen</metawalBannerLogout>
+	
+	<metawalLoginTitle>Welkom</metawalLoginTitle>
+	<metawalLoginIntro>Gelieve uw gebruikersnaam  en wachtwoord in te geven</metawalLoginIntro>
+	<metawalLoginLogin>Gebruikersnaam</metawalLoginLogin>
+	<metawalLoginPwd>Wachtwoord</metawalLoginPwd>
+	<metawalLoginConnection>Aanmelden</metawalLoginConnection>
+	<metawalLoginCancel>Annuleren</metawalLoginCancel>
+	
+	<metawalMenuSearch>Zoeken</metawalMenuSearch>
+	<metawalMenuMyMetadata>Mijn metadata</metawalMenuMyMetadata>
+	<metawalMenuEncoding>Codering</metawalMenuEncoding>
+	<metawalMenuNewMetadata>Nieuwe metadata</metawalMenuNewMetadata>
+	<metawalMenuImportMetadata>Invoer van metadata</metawalMenuImportMetadata>
+	<metawalMenuHarvesting>Oogst</metawalMenuHarvesting>
+	<metawalMenuAdmin>Administratie</metawalMenuAdmin>
+	<metawalMenuCSW>CSW Service</metawalMenuCSW>
+	
 	<advancedOptions.show>show advanced options</advancedOptions.show>
 	<advancedOptions.hide>hide advanced options</advancedOptions.hide>
 	<latestDatasets>Latest</latestDatasets>
