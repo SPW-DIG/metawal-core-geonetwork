@@ -33,7 +33,7 @@
                         <!--<div id="header_spw-col1" class="header_spw-col1noprint" style="padding-top:0px">-->
                         <div id="header_spw-col1" class="header_spw-col1noprint">
                             
-                                <a class="geoLink"  href="#"><xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim1" />
+                                <a class="geoLink"  href="../../"><xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim1" />
                                 	&#160;<xsl:value-of select="/root/gui/strings/metawalBannerTitlePartim2" /></a>
                             
                             <div class="clear"></div>
