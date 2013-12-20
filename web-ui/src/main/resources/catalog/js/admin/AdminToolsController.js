@@ -5,7 +5,6 @@
   var module = angular.module('gn_admintools_controller',
       []);
 
-
   /**
    * GnAdminToolsController provides administration tools
    */
