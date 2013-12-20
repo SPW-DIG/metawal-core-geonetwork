@@ -788,3 +788,7 @@ Correction (search/admin)
 body {
 	font-family: "Helvetica Neue", sans-serif; !important
 }
+
+#x-menu-el-addLayerAction {
+    display: none;
+}

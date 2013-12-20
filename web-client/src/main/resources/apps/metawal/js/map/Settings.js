@@ -134,3 +134,96 @@ GeoNetwork.Templates.THUMBNAIL = new Ext.XTemplate(
             '</tpl>',
         '</ul>'
     );
+
+
+GeoNetwork.Templates.FULL = new Ext.XTemplate(
+        '<ul>',
+          '<tpl for=".">',
+            '<li class="md md-full" style="{featurecolorCSS}">',
+                '<table><tr>',
+                '<td class="left">',
+                    GeoNetwork.Templates.LOGO,
+                '</td>',
+                '<td id="{uuid}">',
+                    GeoNetwork.Templates.TITLE,
+                    '<p class="abstract">{[Ext.util.Format.ellipsis(Ext.util.Format.stripTags(values.abstract), 350, true)]}</p>',    // FIXME : 250 as parameters
+                    '<tpl if="subject">',
+                        '<p class="subject"><tpl for="subject">',
+                            '{value}{[xindex==xcount?"":", "]}',
+                        '</tpl></p>',
+                    '</tpl>',
+                    // Custom links
+                    '<tpl for="links">',
+                      '<tpl if="values.href.indexOf(\'' + Metawal.config.walOnMap.check + '\') == 0">',
+                        '<div style="float:left;line-height: 22px;"><a href="#" class="md-mn addLayer" title="{title}" alt="{title}" onclick="window.open(\'' + Metawal.config.walOnMap.url + 'agsDynUrls={href}&metadataUrl=' + location.origin + location.pathname + '?uuid={parent.uuid}\', \'walOnMap\');">&nbsp;</a></div>',
+                      '</tpl>',
+                    '</tpl>',
+                    
+                    '<div class="md-links" id="md-links-{id}">',
+                    '</div>',
+                '</td><td class="thumb">',
+                        GeoNetwork.Templates.RATING_TPL,
+                        '<div class="thumbnail">',
+                            '<tpl if="thumbnail">',
+                                '<a rel="lightbox" href="{overview}"><img src="{thumbnail}" alt="Thumbnail"/></a>', 
+                            '</tpl>',
+                            '<tpl if="thumbnail==\'\'"></tpl>',
+                        '</div>',
+//                '</td>',
+//                // Validity and category information
+//                '<tpl if="catalogue.isIdentified()">',
+//                  '<td>',
+//                    '<tpl if="catalogue.isIdentified() && valid != \'-1\'">',
+//                        '<span class="badge badge-',
+//                            '<tpl if="valid == \'1\'">success</tpl>',
+//                            '<tpl if="valid == \'0\'">error</tpl>',
+//                            '" title="' + OpenLayers.i18n('validityInfo'),
+//                            '<tpl for="valid_details">',
+//                              '{values.type}: ',
+//                                '<tpl if="values.valid == \'1\'">' + OpenLayers.i18n('valid')  + '</tpl>',
+//                                '<tpl if="values.valid == \'0\'">' + OpenLayers.i18n('notValid')  + '</tpl>',
+//                                '<tpl if="values.valid == \'-1\'">' + OpenLayers.i18n('notDetermined')  + '</tpl>',
+//                                '<tpl if="values.ratio != \'\'"> ({values.ratio}) </tpl> - ',
+//                            '</tpl>',
+//                        '">&nbsp;</span>',
+//                    '</tpl>',
+//                  '</td>',
+//                '</tpl>',
+//                '</td><td class="icon" title="' + OpenLayers.i18n('metadataCategories') + '">',
+//                '<tpl for="category">',
+//                  '<div class="md-mn cat-{value}" title="{value}">&nbsp;</div>',
+//                '</tpl>',
+                '</td></tr></table>',
+                '<div class="relation" title="' + OpenLayers.i18n('relateddatasets') + '"><span></span><ul id="md-relation-{id}"></ul></div>',
+                '<div class="md-contact">',
+                  '<tpl for="contact">',
+                      // metadata contact are not displayed.
+                      '<tpl if="applies==\'resource\'">',
+                          '<span title="{role} - {applies}"><tpl if="values.logo !== undefined && values.logo !== \'\'">',
+                              '<img src="{logo}" class="orgLogo"/>',
+                          '</tpl>',
+                          '{name}&nbsp;&nbsp;</span>',
+                      '</tpl>',
+                  '</tpl>',
+                  '<tpl if="edit==\'true\' && isharvested!=\'y\'">',
+                      '<br/><span class="md-mn md-mn-user" title="' + OpenLayers.i18n('ownerName') + '">{ownername} - ' + OpenLayers.i18n('lastUpdate') + '{[values.changedate.split(\'T\')[0]]}</span>',
+                  '</tpl>',
+                '</div>',
+//                '<tpl if="edit==\'true\' && idxMsg">',
+//                    '<div class="label label-warning">{idxMsg}</div>',
+//                '</tpl>',
+            '</li>',
+        '</tpl>',
+    '</ul>',
+    {
+        hasDownloadLinks: function(values) {
+            var i;
+            for (i = 0; i < values.length; i ++) {
+                if (values[i].type === 'application/x-compressed') {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+);
