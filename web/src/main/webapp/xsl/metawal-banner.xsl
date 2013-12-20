@@ -83,7 +83,7 @@
                         		<a href="#"><xsl:value-of select="/root/gui/strings/metawalMenuSearch"/></a>
 	                        	<ul>
 	                        		<li><a href="search"><xsl:value-of select="/root/gui/strings/metawalMenuSearch"/></a></li>
-	                        		<li><a href="search?s_E_owner={/root/gui/session/userId}&amp;s_search"><xsl:value-of select="/root/gui/strings/metawalMenuMyMetadata"/></a></li>
+	                        		<li><a href="search?s_E__owner={/root/gui/session/userId}&amp;s_search"><xsl:value-of select="/root/gui/strings/metawalMenuMyMetadata"/></a></li>
 	                        	</ul>
                         	</li>
                         	<li id="gn-menu-encoding">
