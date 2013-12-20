@@ -20,7 +20,7 @@ Ext.namespace('GeoNetwork', 'GeoNetwork.Lang');
 
 GeoNetwork.Lang.fr = {
     'extentDescs': 'Zone géographique',
-    'metawalThemes': 'Thèmes du géoportail wallon',
+    'metawalThemes': 'Thèmes du Géoportail de la Wallonie',
     'inspireThemes': 'Thèmes INSPIRE',
     'metadata-not-found': 'La métadonnée avec l\'identifiant ${uuid} n\'a pas été trouvée ou n\'est pas partagée avec vous.',
     'Administrator': 'Administrateur',
