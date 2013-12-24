@@ -107,5 +107,15 @@
     "msgNoUserInfo": "Could not retrieve user details.",
     
     "passwordUpdateError": "Error when updating password",
-    "BadParameterEx": "Wrong parameter"
+    "BadParameterEx": "Wrong parameter",
+    
+    "metawalTitle":"Metawal - All Wallonia in metadata",
+    "metawalMenuSearch":"Search",
+    "metawalMenuMyMetadata":"My metadata",
+    "metawalMenuNewMetadata":"New metadata",
+    "metawalMenuImportMetadata":"Import metadata",
+    "metawalMenuHarvesting":"Harvesting",
+    "metawalMenuEncoding":"Encoding",
+    "metawalMenuAdmin":"Administration",
+    "metawalMenuCSW":"CSW service"
 }

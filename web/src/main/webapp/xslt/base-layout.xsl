@@ -43,7 +43,9 @@ from XSLT.
           </xsl:when>
           <xsl:otherwise>
             <div data-ng-cloak="" class="ng-cloak">
-              <div class="navbar navbar-default" data-ng-include="'{$uiResourcesPath}templates/top-toolbar.html'">
+              <div data-ng-include="'{$uiResourcesPath}templates/top-toolbar.html'">
+              </div>
+              <div data-ng-include="'{$uiResourcesPath}templates/footer.html'">
               </div>
               
               <xsl:apply-templates mode="content" select="."/>
