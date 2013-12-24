@@ -97,5 +97,15 @@
     "msgNoUserInfo": "Ne peut retrouver les informations utilisateurs",
     
     "passwordUpdateError": "Erreur lors de la mise à jour du mot de passe",
-    "BadParameterEx": "Paramètre incorrect"
+    "BadParameterEx": "Paramètre incorrect",
+    
+    "metawalTitle":"Metawal - Catalogue pour l'information géographique de Wallonie",
+    "metawalMenuSearch":"Recherche",
+    "metawalMenuMyMetadata":"Mes métadonnées",
+    "metawalMenuNewMetadata":"Nouvelle métadonnées",
+    "metawalMenuImportMetadata":"Import de métadonnées",
+    "metawalMenuHarvesting":"Moissonner",
+    "metawalMenuEncoding":"Encodage",
+    "metawalMenuAdmin":"Administration",
+    "metawalMenuCSW":"Service CSW"
 }
