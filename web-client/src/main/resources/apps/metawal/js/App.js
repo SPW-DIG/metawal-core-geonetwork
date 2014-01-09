@@ -138,12 +138,16 @@ GeoNetwork.app = function () {
 
         function onAfterLogin() {
             if(catalogue.identifiedUser){
-                document.getElementById("login_popup").value = OpenLayers.i18n("logout");
-                document.getElementById("login_popup").onclick = function(){catalogue.logout()};
+                //document.getElementById("login_popup").value = OpenLayers.i18n("logout");
+            	document.getElementById("login_popup").style.display = "none";
+            	document.getElementById("logout_popup").onclick = function(){catalogue.logout()};
+            	
+                //document.getElementById("login_popup").onclick = function(){catalogue.logout()};
                 document.getElementById('userinfo').innerHTML = 
                     catalogue.identifiedUser.name + " " + catalogue.identifiedUser.surname;
                 document.getElementById("grid_menu").style.display="";
             } else {
+            	document.getElementById("login_popup").style.display = "block";
                 document.getElementById("login_popup").value = OpenLayers.i18n("login");
                 document.getElementById("login_popup").onclick = function(){
                     window.location.href='#login_form';

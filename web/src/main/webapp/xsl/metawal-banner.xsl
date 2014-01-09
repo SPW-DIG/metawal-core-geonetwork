@@ -48,7 +48,15 @@
 					</div>
 					<div class="clear"></div>
 					<div class="grid_login">
-						<p id="userinfo"></p>
+						<ul id="menulogin">
+                        	<li>
+                        		<a href="#"><p id="userinfo"></p></a>
+	                        	<ul class="sub-menu">
+	                        		<li><input type="button" id="logout_popup" class="btnlogout" value="{/root/gui/strings/metawalBannerLogout}"/></li>
+	                        	</ul>
+                        	</li>
+                        </ul>
+						<!--<p id="userinfo"></p>-->
 						<input type="button" id="login_popup" class="btn" 
 							value="{/root/gui/strings/metawalBannerLogin}"/>
 	        		</div>
