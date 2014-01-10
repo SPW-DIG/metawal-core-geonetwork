@@ -583,6 +583,16 @@ ul#menulogin li:hover ul.sub-menu {
   text-decoration: none;
 }
 
+/*title search Panel */
+.searchFormTitle {
+padding-top: 20px;
+padding-right: 10px;
+padding-left: 10px;
+}
+.searchFormTitle h3 {
+border-bottom: 2px solid #003366;
+}
+
 .overlay {
     background-color: rgba(0, 0, 0, 0.6);
     bottom: 0;

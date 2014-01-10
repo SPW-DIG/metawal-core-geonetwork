@@ -699,7 +699,7 @@
 	<onlink>Liens</onlink>
 	<opensearch>Service de recherche OpenSearch de GeoNetwork permettant la recherche de métadonnées dans le catalogue.</opensearch>
 	<operation>Opération</operation>
-	<options>Options</options>
+	<options>Trier les résultats</options>
 	<organisation>Organisation / Service</organisation>
 	<output>Type de présentation</output>
 	<outputType id="full">Complet</outputType>

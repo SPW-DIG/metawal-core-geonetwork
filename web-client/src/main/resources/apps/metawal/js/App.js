@@ -53,7 +53,7 @@ GeoNetwork.app = function () {
      * An interactive map panel for data visualization
      */
     var iMap, searchForm, facetsPanel, resultsPanel, metadataResultsView, tBar, bBar,
-        mainTagCloudViewPanel, infoPanel,
+        mainTagCloudViewPanel, infoPanel,searchTitle,
         visualizationModeInitialized = false;
     
     // private function:
@@ -355,15 +355,16 @@ GeoNetwork.app = function () {
         var formItems = [];
         formItems.push(
                new GeoNetwork.form.OpenSearchSuggestionTextField({
-                    hideLabel: true,
+                    hideLabel: false,
                     minChars: 2,
                     loadingText: '...',
                     hideTrigger: true,
+                    fieldLabel: OpenLayers.i18n('search'),
                     url: catalogue.services.opensearchSuggest
                 }),
                 GeoNetwork.util.SearchFormTools.getTypesFieldWithAutocompletion(catalogue.services),
-                GeoNetwork.util.SearchFormTools.getSimpleMap(GeoNetwork.map.BACKGROUND_LAYERS, mapOptions, 
-                GeoNetwork.searchDefault.activeMapControlExtent, {width: 290}),
+                //GeoNetwork.util.SearchFormTools.getSimpleMap(GeoNetwork.map.BACKGROUND_LAYERS, mapOptions, 
+                //GeoNetwork.searchDefault.activeMapControlExtent, {width: 290}),
                 adv, 
                 GeoNetwork.util.SearchFormTools.getOptions(catalogue.services, undefined));
         // Add advanced mode criteria to simple form - end
@@ -427,6 +428,7 @@ GeoNetwork.app = function () {
     }
     
     function initPanels() {
+    	//var searchTitle = Ext.getCmp('searchTitle'), 
         var infoPanel = Ext.getCmp('infoPanel'), 
         resultsPanel = Ext.getCmp('resultsPanel');
         if (infoPanel.isVisible()) {
@@ -578,6 +580,27 @@ GeoNetwork.app = function () {
             }
         });
     }
+    
+    
+    
+    function searchTitle() {
+        return new Ext.Panel({
+            border: false,
+            frame: false,
+            baseCls: 'none',
+            id: 'searchTitle',
+            autoWidth: true,
+            renderTo: 'shortcut',
+            autoLoad: {
+                url: '../../apps/metawal/title_' + catalogue.LANG + '.html',
+                callback: initShortcut,
+                scope: this,
+                loadScripts: false
+            }
+        });
+    }
+    
+    
     /**
      * Create latest metadata panel.
      */
@@ -769,6 +792,9 @@ GeoNetwork.app = function () {
             
             createHeader();
             
+            searchTitle=searchTitle();
+            
+            
             // Search form
             searchForm = createSearchForm();
             
@@ -801,7 +827,6 @@ GeoNetwork.app = function () {
                 maxDisplayedItems: GeoNetwork.Settings.facetMaxItems || 7,
                 facetListConfig: GeoNetwork.Settings.facetListConfig || []
             });
-            
             var viewport = new Ext.Viewport({
                 layout: 'border',
                 id: 'vp',
@@ -822,7 +847,7 @@ GeoNetwork.app = function () {
                     layoutConfig: {
                         animate: true
                     },
-                    items: [searchForm, breadcrumb, facetsPanel]
+                    items: [searchTitle,searchForm, breadcrumb, facetsPanel]
                 }, {
                     region: 'center',
                     id: 'center',
