@@ -490,7 +490,7 @@ top:119px;
 	padding-bottom: 5px;
 }
 /*btn:login - start*/
-.btn {
+/*.btn {
   display: inline-block;
   zoom: 1;
   margin-bottom: 0;
@@ -516,11 +516,82 @@ top:119px;
 .btn[disabled] {
   color: #2D5E6F;
   background-color: #e6e6e6;
-}
+}*/
 /*btn:login - stopt*/
 
+.btn {
+	border: 0;
+	background: url("../images/bouton_login.gif") no-repeat top right;
+	height: 26px!important;
+	width: 119px;
+	color: #FFF;
+	font-size: 12px!important;
+	font-weight: bold;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+   text-decoration: underline;
+}
+/*Menu login*/
+ul#menulogin li, ul#menu ul.sub-menu li {
+    list-style-type: none;
+    display: inline-block;
+}
+/*Link Appearance*/
+ul#menulogin li a, ul#menu li ul.sub-menu li a {
+    text-decoration: none;
+    color: #fff;
+    display:inline-block;
+}
+/*Make the parent of sub-menu relative*/
+ul#menulogin li {
+    position: relative;
+}
+/*sub menu*/
+ul#menulogin li ul.sub-menu {
+    display:none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100px;
+    background-color: #f8f8f8;
+	border: #2c5e6f solid 1px;
+	text-align: left;
+	min-width: 150px;
+}
+ul#menulogin li ul.sub-menu li{
+	padding-left: 8px;
+	max-width: 150px;
+}
+ul#menulogin li ul.sub-menu li a{
+	color: #2c5e6f!important;
+}
+ul#menulogin li:hover ul.sub-menu {
+    display:block;
+}
+.btnlogout {
+  background: #f5f8fa;
+  text-decoration: none;
+  border: 1px solid #FFF;
+}
 
+.btnlogout:hover {
+  text-decoration: none;
+}
 
+/*title search Panel */
+.searchFormTitle {
+padding-top: 20px;
+padding-right: 10px;
+padding-left: 10px;
+}
+.searchFormTitle h3 {
+border-bottom: 2px solid #003366;
+}
 
 .overlay {
     background-color: rgba(0, 0, 0, 0.6);

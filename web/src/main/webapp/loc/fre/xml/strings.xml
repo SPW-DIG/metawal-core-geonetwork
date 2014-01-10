@@ -699,7 +699,7 @@
 	<onlink>Liens</onlink>
 	<opensearch>Service de recherche OpenSearch de GeoNetwork permettant la recherche de métadonnées dans le catalogue.</opensearch>
 	<operation>Opération</operation>
-	<options>Options</options>
+	<options>Trier les résultats</options>
 	<organisation>Organisation / Service</organisation>
 	<output>Type de présentation</output>
 	<outputType id="full">Complet</outputType>
@@ -1426,8 +1426,8 @@
 	
 	<metawalBannerTitlePartim1>Metawal - </metawalBannerTitlePartim1>
 	<metawalBannerTitlePartim2>Catalogue pour l'information géographique de Wallonie</metawalBannerTitlePartim2>
-	<metawalBannerLogin>Connexion</metawalBannerLogin>
-	<metawalBannerLogout>Déconnexion</metawalBannerLogout>
+	<metawalBannerLogin>Se connecter</metawalBannerLogin>
+	<metawalBannerLogout>Se déconnecter</metawalBannerLogout>
 	
 	<metawalLoginTitle>Bienvenue</metawalLoginTitle>
 	<metawalLoginIntro>Veuillez fournir votre nom d'utilisateur et votre mot de passe ci-dessous</metawalLoginIntro>
