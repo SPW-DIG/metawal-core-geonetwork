@@ -158,7 +158,8 @@ GeoNetwork.app = function () {
                     }
                 };
                 document.getElementById("grid_menu").style.display = "none";
-                document.getElementById('userinfo').innerHTML = "";
+                //document.getElementById('userinfo').innerHTML = "";
+                document.getElementById('menulogin').innerHTML = "";
              }
         };
 
