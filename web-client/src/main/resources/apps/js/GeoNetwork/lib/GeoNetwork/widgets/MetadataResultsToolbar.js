@@ -227,6 +227,7 @@ GeoNetwork.MetadataResultsToolbar = Ext.extend(Ext.Toolbar, {
             handler: function(){
                 this.catalogue.massiveOp('Delete', function() {
                     this.catalogue.metadataSelectNone();
+                    Ext.getCmp('searchForm').fireEvent('search');
                 });
             },
             scope: this,
