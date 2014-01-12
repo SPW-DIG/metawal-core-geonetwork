@@ -82,18 +82,18 @@ USA.
 	<!-- TEST 21 FXCHECK -->
 	<sch:pattern>
 		<sch:title>$loc/strings/M8</sch:title>
-		<sch:rule context="//*[gmd:CI_ResponsibleParty]">
-			<sch:let name="count" value="(count(gmd:CI_ResponsibleParty/gmd:individualName[@gco:nilReason!='missing' or not(@gco:nilReason)]) 
-				+ count(gmd:CI_ResponsibleParty/gmd:organisationName[@gco:nilReason!='missing' or not(@gco:nilReason)])
-				+ count(gmd:CI_ResponsibleParty/gmd:positionName[@gco:nilReason!='missing' or not(@gco:nilReason)]))"/>
+		<sch:rule context="//*[gmd:CI_ResponsibleParty or *[@gco:isoType = 'gmd:CI_ResponsibleParty']]">
+			<sch:let name="count" value="(count(*/gmd:individualName[@gco:nilReason!='missing' or not(@gco:nilReason)]) 
+				+ count(*/gmd:organisationName[@gco:nilReason!='missing' or not(@gco:nilReason)])
+				+ count(*/gmd:positionName[@gco:nilReason!='missing' or not(@gco:nilReason)]))"/>
 			<sch:assert
 				test="$count > 0"
 				>$loc/strings/alert.M8</sch:assert>
 			<sch:report
 				test="$count > 0"
 				><sch:value-of select="$loc/strings/report.M8"/> 
-				<sch:value-of select="gmd:CI_ResponsibleParty/gmd:organisationName"/>-
-				<sch:value-of select="gmd:CI_ResponsibleParty/gmd:individualName"/>
+				<sch:value-of select="*/gmd:organisationName"/>-
+				<sch:value-of select="*/gmd:individualName"/>
 			</sch:report>
 		</sch:rule>
 	</sch:pattern>
@@ -172,8 +172,8 @@ USA.
 		<sch:rule context="//gmd:DQ_DataQuality[gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue='dataset' 
 			or gmd:scope/gmd:DQ_Scope/gmd:level/gmd:MD_ScopeCode/@codeListValue='series']">
 			<sch:let name="emptyStatement" value="
-				count(*/gmd:LI_Lineage/gmd:source) + count(*/gmd:LI_Lineage/gmd:processStep) = 0 
-				and not(gmd:lineage/gmd:LI_Lineage/gmd:statement[@gco:nilReason!='missing' or not(@gco:nilReason)]) 
+				count(gmd:lineage/*/gmd:source) + count(gmd:lineage/*/gmd:processStep) = 0 
+				and not(gmd:lineage/*/gmd:statement[@gco:nilReason!='missing' or not(@gco:nilReason)]) 
 				"/>
 			<sch:assert
 				test="$emptyStatement = false()"
@@ -186,7 +186,7 @@ USA.
 	<!-- TEST  8 FXCHECK -->
 	<sch:pattern>
 		<sch:title>$loc/strings/M14</sch:title>
-		<sch:rule context="//gmd:LI_Lineage">
+		<sch:rule context="//gmd:LI_Lineage|//*[@gco:isoType = 'gmd:LI_Lineage']">
 			<sch:let name="emptySource" value="not(gmd:source) 
 				and not(gmd:statement[@gco:nilReason!='missing' or not(@gco:nilReason)]) 
 				and not(gmd:processStep)"/>

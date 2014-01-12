@@ -442,7 +442,7 @@ USA.
 		<sch:title>$loc/strings/quality</sch:title>
 		<sch:rule context="//gmd:DQ_DataQuality[../../gmd:identificationInfo/gmd:MD_DataIdentification
 			or ../../gmd:identificationInfo/*/@gco:isoType = 'gmd:MD_DataIdentification']">
-			<sch:let name="lineage" value="not(gmd:lineage/gmd:LI_Lineage/gmd:statement) or (gmd:lineage//gmd:statement/@gco:nilReason)"/>
+			<sch:let name="lineage" value="not(gmd:lineage/*/gmd:statement) or (gmd:lineage/*/gmd:statement/@gco:nilReason)"/>
 			<sch:assert test="not($lineage)"
 				>$loc/strings/alert.M43/div</sch:assert>
 			<sch:report test="not($lineage)"
@@ -671,11 +671,11 @@ USA.
 		</sch:rule>
 		
 		<sch:rule context="//gmd:MD_Metadata/gmd:contact">
-			<sch:let name="missing" value="not(gmd:CI_ResponsibleParty/gmd:organisationName) 
-				or (gmd:CI_ResponsibleParty/gmd:organisationName/@gco:nilReason) 
-				or not(gmd:CI_ResponsibleParty/gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress) 
-				or (gmd:CI_ResponsibleParty/gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/@gco:nilReason)"/>
-			<sch:let name="organisationName" value="gmd:CI_ResponsibleParty/gmd:organisationName/*/text()"/>
+			<sch:let name="missing" value="not(*/gmd:organisationName) 
+				or (*/gmd:organisationName/@gco:nilReason) 
+				or not(*/gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress) 
+				or (*/gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/@gco:nilReason)"/>
+			<sch:let name="organisationName" value="*/gmd:organisationName/*/text()"/>
 			<!-- 
 				2.11.1 "The role of the responsible party serving as a metadata
 				point of contact is out of scope of the INSPIRE
@@ -683,9 +683,9 @@ USA.
 				19115. The default value is pointOfContact."
 				JRC schematron 1.0 validate only if role=pointOfContact
 			-->
-		    <sch:let name="role" value="normalize-space(gmd:CI_ResponsibleParty/gmd:role/*/@codeListValue)"/>
+		    <sch:let name="role" value="normalize-space(*/gmd:role/*/@codeListValue)"/>
 		    <sch:let name="emptyRole" value="$role=''"/>
-		    <sch:let name="emailAddress" value="gmd:CI_ResponsibleParty/gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/*/text()"/>			
+		    <sch:let name="emailAddress" value="*/gmd:contactInfo/*/gmd:address/*/gmd:electronicMailAddress/*/text()"/>			
 			
 		    <sch:assert
 		        test="not($emptyRole)"
