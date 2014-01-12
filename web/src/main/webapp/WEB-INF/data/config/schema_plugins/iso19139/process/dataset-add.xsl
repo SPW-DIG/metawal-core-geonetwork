@@ -22,7 +22,6 @@ attached it to the metadata for data.
 	<!-- ============================================================================= -->
 
 	<xsl:template match="/gmd:MD_Metadata|*[@gco:isoType='gmd:MD_Metadata']">
-	<xsl:message>JE PASSEE</xsl:message>
 	
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
