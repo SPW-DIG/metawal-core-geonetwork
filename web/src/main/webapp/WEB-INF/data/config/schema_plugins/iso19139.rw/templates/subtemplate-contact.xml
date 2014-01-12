@@ -1,0 +1,25 @@
+<rw:CI_ResponsibleParty xmlns:rw="http://metawal.wallonie.be/schemas/3.0"
+    xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gts="http://www.isotc211.org/2005/gts"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gml="http://www.opengis.net/gml"
+    xmlns:geonet="http://www.fao.org/geonetwork">
+    <gmd:organisationName>
+        <gco:CharacterString>Direction des Ressources Forestières
+            (SPW-DGO3-DNF)</gco:CharacterString>
+    </gmd:organisationName>
+    <gmd:contactInfo>
+        <gmd:CI_Contact>
+            <gmd:address>
+                <gmd:CI_Address>
+                    <gmd:electronicMailAddress>
+                        <gco:CharacterString>drf.dnf.dgarne@spw.wallonie.be</gco:CharacterString>
+                    </gmd:electronicMailAddress>
+                </gmd:CI_Address>
+            </gmd:address>
+        </gmd:CI_Contact>
+    </gmd:contactInfo>
+    <gmd:role>
+        <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_RoleCode"
+            codeListValue="pointOfContact"/>
+    </gmd:role>
+</rw:CI_ResponsibleParty>
