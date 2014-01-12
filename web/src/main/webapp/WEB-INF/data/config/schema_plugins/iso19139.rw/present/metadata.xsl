@@ -8,12 +8,13 @@
 	exclude-result-prefixes="#all">
 	
 	<xsl:import href="../../iso19139/present/metadata-iso19139-fop.xsl"/>
+	<xsl:include href="metadata-subtemplates.xsl"/>
 	
 	<xsl:template name="iso19139.rwBrief">
 		<metadata>
 			<xsl:choose>
 				<xsl:when test="geonet:info/isTemplate='s'">
-					<xsl:call-template name="iso19139-subtemplate"/>
+					<xsl:call-template name="iso19139.rw-subtemplate"/>
 					<xsl:copy-of select="geonet:info" copy-namespaces="no"/>
 				</xsl:when>
 				<xsl:otherwise>

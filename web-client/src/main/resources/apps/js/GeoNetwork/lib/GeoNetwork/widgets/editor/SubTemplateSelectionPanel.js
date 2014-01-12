@@ -109,6 +109,12 @@ GeoNetwork.editor.SubTemplateSelectionPanel = Ext.extend(Ext.FormPanel, {
             url: '',
             label: OpenLayers.i18n('contactRole'),
             code: 'gmd:CI_RoleCode'
+        },
+        'rw:CI_ResponsibleParty': {
+            xpath: 'gmd:role/gmd:CI_RoleCode/@codeListValue',
+            url: '',
+            label: OpenLayers.i18n('contactRole'),
+            code: 'gmd:CI_RoleCode'
         }
     },
     codeListCombo: null,

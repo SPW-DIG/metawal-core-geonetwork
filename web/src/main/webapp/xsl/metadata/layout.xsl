@@ -720,8 +720,8 @@
     <xsl:variable name="elementName"
       select="if (name(.)='geonet:child') then concat(./@prefix,':',./@name) else $name"/>
     <xsl:variable name="subTemplateName"
-      select="/root/gui/config/editor-subtemplate/mapping/subtemplate[parent/@id=$elementName]/@type"/>
-
+      select="/root/gui/config/editor-subtemplate/mapping/subtemplate[
+      (not(@schema) or @schema = $schema) and parent/@id=$elementName]/@type"/>
     <xsl:variable name="function">
       <xsl:choose>
         <xsl:when test="$subtemplate">

@@ -16,6 +16,7 @@
 		xmlns:rw="http://metawal.wallonie.be/schemas/3.0">
 		<elements type="root">
 			<rw:MD_Metadata/>
+			<rw:CI_ResponsibleParty/>
 		</elements>
 	</autodetect>
 </schema>

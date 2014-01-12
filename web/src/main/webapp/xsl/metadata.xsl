@@ -618,7 +618,6 @@
 		<xsl:param name="id"/>
 		
 		<xsl:variable name="name" select="name(.)"/>
-		
 		<xsl:variable name="function">
 			<xsl:apply-templates mode="addXMLFragment" select="."/>
 		</xsl:variable>
