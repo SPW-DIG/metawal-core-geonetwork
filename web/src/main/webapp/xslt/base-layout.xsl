@@ -24,7 +24,6 @@ from XSLT.
         <meta name="keywords" content="" />
         
         
-        <link rel="icon" type="image/gif" href="../../images/logos/favicon.gif" />
         <link href="rss.latest?georss=gml" rel="alternate" type="application/rss+xml" 
           title="{{concat($env/system/site/name, ' - ', $env/system/site/organization)}}"/>
         <link href="portal.opensearch" rel="search" type="application/opensearchdescription+xml" 
