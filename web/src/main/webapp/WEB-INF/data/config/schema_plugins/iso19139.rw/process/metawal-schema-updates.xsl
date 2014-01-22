@@ -5,9 +5,9 @@
     * process=metawal-schema-updates
     
     Calling the process using:
-    http://localhost:8080/geonetwork/srv/fr/xml.search
-    http://localhost:8080/geonetwork/srv/fr/metadata.select?id=0&selected=add-all
-    http://localhost:8080/geonetwork/srv/en/metadata.batch.processing?process=metawal-schema-updates
+    http://localhost:8080/geonetwork/srv/fre/q?_isTemplate=y or n
+    http://localhost:8080/geonetwork/srv/fre/metadata.select?id=0&selected=add-all
+    http://localhost:8080/geonetwork/srv/fre/metadata.batch.processing?process=metawal-schema-updates
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:geonet="http://www.fao.org/geonetwork" xmlns:xlink="http://www.w3.org/1999/xlink"
