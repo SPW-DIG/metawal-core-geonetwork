@@ -17,7 +17,8 @@
     <link href="{$uiResourcesPath}style/metawal/metawal.css" rel="stylesheet"/>
     <link href="{$uiResourcesPath}lib/jquery.ext/jquery.fileupload-ui.css" rel="stylesheet"/>
     
-    <link rel="shortcut icon" type="image/x-icon" href="../../images/logos/favicon.ico" />
+    <!--<link rel="shortcut icon" type="image/x-icon" href="../../images/logos/favicon.ico" />-->
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
     
     <xsl:choose>
       <xsl:when test="$isDebugMode">
