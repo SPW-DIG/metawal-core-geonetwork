@@ -14,10 +14,10 @@
 									<div class="in">
 										<div class="panel-pane pane-block pane-menu-menu-footer-menu">
 											<ul class="menu">
-												<li class="first leaf menu-1150 mentions_legales"><a href="http://geoportail.wallonie.be/mentions-legales.html">Mentions légales</a></li>
-												<li class="leaf menu-544 vie_privee"><a href="http://geoportail.wallonie.be/vie-privee.html">Vie privée</a></li>
-												<li class="leaf menu-1152 mediateur"><a href="http://geoportail.wallonie.be/mediateur.html">Médiateur</a></li>
-												<li class="last leaf menu-1153 accessibilite"><a href="http://geoportail.wallonie.be/accessibilite.html">Accessibilité</a></li>
+												<li class="first leaf menu-1150 mentions_legales"><a href="http://www.wallonie.be/fr/mentions-legales">Mentions légales</a></li>
+												<li class="leaf menu-544 vie_privee"><a href="http://www.wallonie.be/fr/vie-privee">Vie privée</a></li>
+												<li class="leaf menu-1152 mediateur"><a href="http://www.wallonie.be/fr/mediateur">Médiateur</a></li>
+												<li class="last leaf menu-1153 accessibilite"><a href="http://www.wallonie.be/fr/accessibilite">Accessibilité</a></li>
 											</ul>
 										</div>
 									</div>
