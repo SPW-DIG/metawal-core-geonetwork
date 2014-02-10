@@ -510,7 +510,7 @@ GeoNetwork.Lang.fr = {
     'mapNearYou': 'Centrer la carte sur votre position',
     'create': 'Créer',
     'errorChangeProtocol': 'Impossible de changer le protocol lorsqu\'un fichier est attaché. Supprimer le fichier.',
-    'resultBy': ' résultat(s) / ',
+    'resultBy': ' resultat(s) / ',
     'subTemplateImport': 'Importer un élément dans un annuaire',
     'xmlData': 'XML',
     'minorEdit': 'Modif. mineure',
