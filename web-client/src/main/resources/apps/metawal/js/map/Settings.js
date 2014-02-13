@@ -61,7 +61,7 @@ GeoNetwork.map.MAXEXTENT = new OpenLayers.Bounds(42000, 20000, 296000, 168000);
 //    //new OpenLayers.Layer.Google("Google Streets");
 //];
 
-GeoNetwork.map.BACKGROUND_LAYERS = [
+GeoNetwork.map.BACKGROUND_LAYERS = //[
 //    new OpenLayers.Layer.WMS("Background layer", "/geoserver/wms", {layers: 'gn:world,gn:ne_50m_boundary_da,gn:ne_50m_boundary_lines_land,gn:ne_50m_coastline', format: 'image/jpeg'}, {isBaseLayer: true})
 new OpenLayers.Layer.ArcGIS93Rest(
 		"Fond de plan",
@@ -70,7 +70,8 @@ new OpenLayers.Layer.ArcGIS93Rest(
 		{'attribution': 'SPW'}
     )
 //    	new OpenLayers.Layer.WMS("Background layer", "http://www2.demis.nl/mapserver/wms.asp?", {layers: 'Countries', format: 'image/jpeg'}, {isBaseLayer: true})
-];
+//]
+;
 //GeoNetwork.map.RESOLUTIONS = [];
 
 // Define background map layer from an OGC Context. 
