@@ -729,9 +729,6 @@ color: #B3B3B3;
 text-decoration: none;
 font-size: 100%;
 }
-.panel {
-overflow: hidden;
-}
 .panel-rw.two-cols-75-25 .region-b {
 display: inline;
 float: left;
