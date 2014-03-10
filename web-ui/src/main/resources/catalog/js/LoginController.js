@@ -9,8 +9,12 @@
    *    Take care of login action, reset and update password.
    */
   module.controller('GnLoginController',
-      ['$scope', '$http', '$rootScope', '$translate', '$location', '$window',
-       function($scope, $http, $rootScope, $translate, $location, $window) {
+      ['$scope', '$http', '$rootScope', '$translate',
+       '$location', '$window', '$timeout',
+       'gnUtilityService', 'gnConfig',
+       function($scope, $http, $rootScope, $translate, 
+           $location, $window, $timeout,
+               gnUtilityService, gnConfig) {
           $scope.registrationStatus = null;
           $scope.passwordReminderStatus = null;
           $scope.sendPassword = false;
@@ -20,21 +24,25 @@
           $scope.changeKey = null;
           $scope.passwordUpdated = false;
 
+          $scope.redirectUrl = gnUtilityService.getUrlParameter('redirect');
+          $scope.gnConfig = gnConfig;
+
           function initForm() {
            if ($window.location.pathname.indexOf('new.password') !== -1) {
              // Retrieve username from URL parameter
-             // Could probably be more elegant.
-             angular.forEach($window.location
-                     .search.replace('?', '').split('&'),
-                 function(value) {
-                   if (value.indexOf('username') === 0) {
-                 $scope.userToRemind = value.split('=')[1];
-                   } else if (value.indexOf('changeKey') === 0) {
-                 $scope.changeKey = value.split('=')[1];
-                   }
-             });
+             $scope.userToRemind = gnUtilityService.getUrlParameter('username');
+             $scope.changeKey = gnUtilityService.getUrlParameter('changeKey');
            }
           }
+
+          // TODO: https://github.com/angular/angular.js/issues/1460
+          // Browser autofill does not work properly
+          $timeout(function() {
+            $('input[data-ng-model], select[data-ng-model]').each(function() {
+              angular.element(this).controller('ngModel')
+                .$setViewValue($(this).val());
+            });
+          }, 300);
 
           $scope.setSendPassword = function(value) {
            $scope.sendPassword = value;
@@ -93,6 +101,13 @@
                error: data,
                timeout: 0,
                type: 'danger'});
+           });
+         };
+
+         $scope.nodeChangeRedirect = function(redirectTo) {
+           $http.get('../../j_spring_security_logout')
+              .success(function(data) {
+                  window.location.href = redirectTo;
            });
          };
 

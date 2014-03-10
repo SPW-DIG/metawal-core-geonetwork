@@ -25,16 +25,20 @@
 		    
 		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext/resources/css/ext-all.css"/>
 		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext/resources/css/xtheme-gray.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext-ux/Rating/rating.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext-ux/SuperBoxSelect/superboxselect.css" />
-		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext-ux/LightBox/lightbox.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext-ux/FileUploadField/file-upload.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/js/ext-ux/MultiselectItemSelector-3.0/Multiselect.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/js/OpenLayers/theme/default/style.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/css/gndefault.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/css/gnmapdefault.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/css/gnmetadatadefault.css"/>
-		    <link rel="stylesheet" type="text/css" href="../../apps/css/metadata-view.css"/>
+
+        <link rel="stylesheet" type="text/css"
+              href="../../apps/js/OpenLayers/theme/default/style.css"/>
+        <xsl:choose>
+          <xsl:when test="/root/request/debug">
+            <link rel="stylesheet" type="text/css" href="../../static/geonetwork-client-ext-ux_css.css?minimize=false"/>
+            <link rel="stylesheet" type="text/css" href="../../static/geonetwork-client_css.css?minimize=false"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <link rel="stylesheet" type="text/css" href="../../static/geonetwork-client-ext-ux_css.css"/>
+            <link rel="stylesheet" type="text/css" href="../../static/geonetwork-client_css.css"/>
+          </xsl:otherwise>
+        </xsl:choose>
+
 		    <link rel="stylesheet" type="text/css" href="../../apps/metawal/css/metawal.css"/>
 		  </head>
 		  <body>
@@ -96,8 +100,10 @@
 		        	
 				    <script type="text/javascript" src="../../apps/js/ext/adapter/ext/ext-base.js"></script>
 				    <script type="text/javascript" src="../../apps/js/ext/ext-all.js"></script>
-				    <script type="text/javascript" src="../../apps/metawal/js/App-mini.js"></script>				   
-		       	</xsl:otherwise>
+            <script type="text/javascript" src="../../static/geonetwork-client-mini-nomap.js"></script>
+            <script type="text/javascript" src="../../static/geonetwork-client-mini.js"></script>
+            <script type="text/javascript" src="../../static/geonetwork-client-metawal-app.js"></script>
+            </xsl:otherwise>
 		    </xsl:choose>
 		  </body>
 		</html>

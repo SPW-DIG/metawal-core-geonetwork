@@ -224,7 +224,7 @@ GeoNetwork.map.ExtentMap = function(){
      * mainProj: indicates if coordinate are read from the display coordinate field or from the hidden fields.
      */
     function updateBbox(map, targetBbox, eltRef, mainProj){
-        var vectorLayer = map.getLayersByName("VectorLayer")[0]; // That supposed that only one vector layer is on the map
+    	var vectorLayer = map.getLayersByName("VectorLayer")[0]; // That supposed that only one vector layer is on the map
         var bounds, values, boundsForMap;
         var wsen = targetBbox.split(',');
         values = [];
@@ -246,11 +246,11 @@ GeoNetwork.map.ExtentMap = function(){
                 var p = new OpenLayers.Projection(mainProjCode);
                 if (p.projCode == "EPSG:900913") p.proj = null;
 
-                boundsForMap.transform(new OpenLayers.Projection(wgsProjCode), p);
+            	boundsForMap.transform(new OpenLayers.Projection(wgsProjCode), p);
             }
         } else {
-            // Update bounding box from input fields which
-            // may be in different projection.
+        	// Update bounding box from input fields which
+        	// may be in different projection.
             values[0] = Ext.get(wsen[0]).getValue();
             values[1] = Ext.get(wsen[1]).getValue();
             values[2] = Ext.get(wsen[2]).getValue();
@@ -277,7 +277,7 @@ GeoNetwork.map.ExtentMap = function(){
                 var pDest = new OpenLayers.Projection(mainProjCode);
                 if (pDest.projCode == "EPSG:900913") pDest.proj = null;
 
-                boundsForMap.transform(pOrig, pDest);
+            	boundsForMap.transform(pOrig, pDest);
             }
             
             // Reproject coordinates to WGS84 to set lat long in coordinates hidden inputs

@@ -6,11 +6,13 @@
   goog.require('gn_dashboard_content_stat_controller');
   goog.require('gn_dashboard_search_stat_controller');
   goog.require('gn_dashboard_status_controller');
+  goog.require('gn_vcs_controller');
 
   var module = angular.module('gn_dashboard_controller',
       ['gn_dashboard_status_controller',
        'gn_dashboard_search_stat_controller',
-       'gn_dashboard_content_stat_controller']);
+       'gn_dashboard_content_stat_controller',
+       'gn_vcs_controller']);
 
 
   /**
@@ -27,23 +29,28 @@
             [{
               type: 'status',
               label: 'status',
-              icon: 'icon-dashboard',
+              icon: 'fa-dashboard',
               href: '#/dashboard/status'
             },{
               type: 'statistics-search',
               label: 'searchStatistics',
-              icon: 'icon-search',
+              icon: 'fa-search',
               href: '#/dashboard/statistics-search'
             },{
               type: 'statistics-content',
               label: 'contentStatistics',
-              icon: 'icon-bar-chart',
+              icon: 'fa-bar-chart',
               href: '#/dashboard/statistics-content'
             },{
               type: 'information',
               label: 'information',
-              icon: 'icon-list-ul',
+              icon: 'fa-list-ul',
               href: '#/dashboard/information'
+            },{
+              type: 'versioning',
+              label: 'versioning',
+              icon: 'fa-rss',
+              href: '#/dashboard/versioning'
             }]
       };
 

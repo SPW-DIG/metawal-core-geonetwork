@@ -18,15 +18,14 @@
 
     <xsl:include href="../../common/profiles-loader.xsl"/>
 
-    <xsl:include href="../../layout-core.xsl"/>
+    <xsl:include href="../form-builder.xsl"/>
 
 
     <xsl:template match="/">
         <xsl:for-each
             select="/root/*[name(.)!='gui' and name(.)!='request']//*[@gn:addedObj = 'true']">
             <!-- Dispatch to profile mode -->
-            <xsl:message>##<xsl:copy-of select="."/></xsl:message>
-            <xsl:variable name="profileTemplate" select="concat('render-',$schema)"/>
+            <xsl:variable name="profileTemplate" select="concat('dispatch-',$schema)"/>
             <saxon:call-template name="{$profileTemplate}">
                 <xsl:with-param name="base" select="."/>
             </saxon:call-template>

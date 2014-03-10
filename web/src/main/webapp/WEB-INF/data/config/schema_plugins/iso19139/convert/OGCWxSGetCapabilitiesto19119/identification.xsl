@@ -243,6 +243,17 @@
 					</xsl:choose>
 				</MD_LegalConstraints>
 			</resourceConstraints>
+			
+			<xsl:if test="lower-case(.) = 'none'">
+				<resourceConstraints>
+					<MD_Constraints>
+						<useLimitation>
+							<gco:CharacterString>no conditions apply</gco:CharacterString>
+						</useLimitation>
+					</MD_Constraints>
+				</resourceConstraints>
+			</xsl:if>
+			
 		</xsl:for-each>
 		
 		<srv:serviceType>
@@ -335,7 +346,7 @@
 									</xsl:variable>
 											
 									<westBoundLongitude>
-										<gco:Decimal><xsl:copy-of select="math:min(exslt:node-set($boxes)/*[name(.)='xmin'])"/></gco:Decimal>
+										<gco:Decimal><xsl:value-of select="math:min(exslt:node-set($boxes)/*[name(.)='xmin'])"/></gco:Decimal>
 									</westBoundLongitude>
 									<eastBoundLongitude>
 										<gco:Decimal><xsl:value-of select="math:max(exslt:node-set($boxes)/*[name(.)='xmax'])"/></gco:Decimal>
@@ -745,7 +756,7 @@
 									</xsl:variable>
 											
 									<westBoundLongitude>
-										<gco:Decimal><xsl:copy-of select="exslt:node-set($boxes)/*[name(.)='xmin']"/></gco:Decimal>
+										<gco:Decimal><xsl:value-of select="exslt:node-set($boxes)/*[name(.)='xmin']"/></gco:Decimal>
 									</westBoundLongitude>
 									<eastBoundLongitude>
 										<gco:Decimal><xsl:value-of select="exslt:node-set($boxes)/*[name(.)='xmax']"/></gco:Decimal>

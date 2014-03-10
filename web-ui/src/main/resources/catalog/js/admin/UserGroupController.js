@@ -185,6 +185,7 @@
        * metadata records.
        */
       $scope.selectUser = function(u) {
+        $scope.userOperation = 'editinfo';
         // Load user group and then select user
         $http.get('admin.usergroups.list@json?id=' + u.id)
                 .success(function(data) {
@@ -271,8 +272,7 @@
               $('#groups_' + $scope.profiles[i])[0].selectedIndex = -1;
             }
           }
-          $scope.userSelected.profile =
-              $scope.userIsAdmin ? 'Administrator' : $scope.profiles[0];
+          $scope.userSelected.profile = 'Administrator';
         } else {
           // Define the highest profile for user
           var newprofile = 'RegisteredUser';

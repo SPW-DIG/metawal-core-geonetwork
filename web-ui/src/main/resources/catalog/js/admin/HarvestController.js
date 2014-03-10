@@ -74,7 +74,7 @@
         $scope.harvesterHistory = undefined;
         $http.get('admin.harvester.history@json?uuid=' +
                 $scope.harvesterSelected.site.uuid).success(function(data) {
-          $scope.harvesterHistory = data.response;
+          $scope.harvesterHistory = data.harvesthistory;
         }).error(function(data) {
           // TODO
         });
@@ -176,7 +176,11 @@
             timeout: 2,
             type: 'success'});
         }).error(function(data) {
-          console.log(data);
+          $rootScope.$broadcast('StatusUpdated', {
+            msg: $translate('harvesterUpdated'),
+            error: data,
+            timeout: 2,
+            type: 'danger'});
         });
       };
       $scope.selectHarvester = function(h) {
@@ -292,7 +296,7 @@
       // TODO
       $scope.geonetworkGetSources = function(url) {
         $http.get($scope.proxyUrl +
-            encodeURIComponent(url + '/srv/eng/xml.info?type=sources'))
+            encodeURIComponent(url + '/srv/eng/info?type=sources'))
          .success(function(data) {
               $scope.geonetworkSources = [];
               var i = 0;
@@ -463,6 +467,23 @@
           loadHarvesterTemplates();
         }
       });
+
+
+      // Z3950 GetFeature harvester
+      $scope.harvesterZ3950repositories = null;
+      var loadHarvesterZ3950Repositories = function() {
+        $http.get('info@json?type=z3950repositories', {cache: true})
+          .success(function(data) {
+              $scope.harvesterZ3950repositories = data.z3950repositories;
+            });
+      };
+      $scope.$watch('harvesterSelected.site.repositories',
+          function() {
+            if ($scope.harvesterSelected &&
+                $scope.harvesterSelected['@type'] === 'z3950') {
+              loadHarvesterZ3950Repositories();
+            }
+          });
 
 
 

@@ -5,6 +5,11 @@ var app;
 var cookie;
 
 
+var nodeInfo = /([a-zA-Z0-9_\-]+)\/([a-z]{3})\/search/
+  .exec(window.location.href);
+var catalogueLang = nodeInfo[2] || GeoNetwork.Util.defaultLocale;
+var catalogueNode = nodeInfo[1] || 'srv';
+
 /**
  * Get lang from hl parameter of from URL 
  */
@@ -769,9 +774,10 @@ GeoNetwork.app = function () {
             catalogue = new GeoNetwork.Catalogue({
                 statusBarId: 'info',
                 lang: lang,
+                node: catalogueNode,
                 hostUrl: geonetworkUrl,
                 mdOverlayedCmpId: 'resultsPanel',
-                adminAppUrl: geonetworkUrl + '/srv/' + lang + '/admin.console',
+                adminAppUrl: geonetworkUrl + '/' + catalogueNode + '/' + lang + '/admin.console',
                 // Declare default store to be used for records and summary
                 metadataStore: GeoNetwork.Settings.mdStore ? GeoNetwork.Settings.mdStore() : GeoNetwork.data.MetadataResultsStore(),
                 metadataCSWStore : GeoNetwork.data.MetadataCSWResultsStore(),

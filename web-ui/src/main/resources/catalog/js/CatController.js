@@ -6,7 +6,9 @@
   var module = angular.module('gn_cat_controller', ['gn_search_manager']);
 
   /**
-   * The catalogue controller.
+   * The catalogue controller takes care of
+   * loading site information, check user login state
+   * and a facet search to get main site information.
    *
    * A body-level scope makes sense for example:
    *
@@ -14,9 +16,10 @@
    */
   module.controller('GnCatController', [
     '$scope', '$http', '$q', '$rootScope', '$translate',
-    'gnSearchManagerService',
+    'gnSearchManagerService', 'gnConfigService',
+    'gnMap',
     function($scope, $http, $q, $rootScope, $translate,
-            gnSearchManagerService) {
+            gnSearchManagerService, gnConfigService, gnMap) {
       $scope.version = '0.0.1';
       // TODO : add language
       $scope.lang = location.href.split('/')[5];
@@ -49,6 +52,11 @@
       $scope.authenticated = false;
       $scope.initialized = false;
 
+      gnConfigService.load().then(function(c) {
+        // Config loaded
+        gnMap.importProj4js();
+      });
+
       /**
        * Catalog facet summary providing
        * a global overview of the catalog content.
@@ -71,7 +79,7 @@
         // Retrieve site information
         // TODO: Add INSPIRE, harvester, ... information
         var catInfo = promiseStart.then(function(value) {
-          url = $scope.url + 'xml.info@json?type=site&type=auth';
+          url = $scope.url + 'info@json?type=site&type=auth';
           return $http.get(url).
               success(function(data, status) {
                 $scope.info = data;
@@ -95,7 +103,7 @@
 
         // Retrieve user information if catalog is online
         var userLogin = catInfo.then(function(value) {
-          url = $scope.url + 'xml.info@json?type=me';
+          url = $scope.url + 'info@json?type=me';
           return $http.get(url).
               success(function(data, status) {
                 $scope.user = data.me;
@@ -147,18 +155,6 @@
         }
       });
 
-
-
-
-
-
-
-      $scope.selectMetadata = function(uuid) {
-        console.log('select ' + uuid);
-      };
-      $scope.selectAllMetadata = function() {
-        console.log('select all ');
-      };
 
 
       $scope.loadCatalogInfo();

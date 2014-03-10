@@ -16,7 +16,8 @@
     function($scope, $http, $rootScope, $translate, gnUtilityService) {
       var cswSettings = ['system/csw/contactId'];
       var cswBooleanSettings = ['system/csw/enable',
-        'system/csw/metadataPublic'];
+        'system/csw/metadataPublic',
+        'system/csw/transactionUpdateCreateXPath'];
 
       /**
        * CSW properties
@@ -52,20 +53,21 @@
          * Load catalog settings and extract CSW settings
          */
       function loadSettings() {
-        $http.get('xml.config.get@json?asTree=false').success(function(data) {
-          for (var i = 0; i < data.length; i++) {
-            var setting = data[i];
-            if (cswBooleanSettings.indexOf(setting['@name']) !== -1) {
-              var value = setting['#text'].toLowerCase();
-              $scope.cswSettings[setting['@name']] =
-                  (value == 'true' || value == 'on');
-            } else if (cswSettings.indexOf(setting['@name']) !== -1) {
-              $scope.cswSettings[setting['@name']] = setting['#text'];
-            }
-          }
-        }).error(function(data) {
-          // TODO
-        });
+        $http.get('admin.config.list@json?asTree=false')
+          .success(function(data) {
+              for (var i = 0; i < data.length; i++) {
+                var setting = data[i];
+                if (cswBooleanSettings.indexOf(setting['@name']) !== -1) {
+                  var value = setting['#text'].toLowerCase();
+                  $scope.cswSettings[setting['@name']] =
+                      (value == 'true' || value == 'on');
+                } else if (cswSettings.indexOf(setting['@name']) !== -1) {
+                  $scope.cswSettings[setting['@name']] = setting['#text'];
+                }
+              }
+            }).error(function(data) {
+              // TODO
+            });
       }
 
       function loadUsers() {
@@ -83,7 +85,7 @@
           $scope.cswConfig = data.record;
           angular.forEach($scope.cswConfig, function(value, key) {
             $scope.cswLanguages[$scope.cswConfig[key].langid] = true;
-            $scope.cswFields[$scope.cswConfig[key].field] = true;
+            $scope.cswFields[$scope.cswConfig[key].fieldname] = true;
           });
           loadSettings();
         }).error(function(data) {
@@ -94,7 +96,12 @@
       function loadCSWElementSetName() {
         $http.get('admin.config.csw.customelementset@json')
         .success(function(data) {
-              $scope.cswElementSetName = data.xpath;
+              if (data) {
+                $scope.cswElementSetName =
+                    $.isArray(data.xpath) ? data.xpath : [data.xpath];
+              } else {
+                $scope.cswElementSetName = [];
+              }
             });
       }
       $scope.addCSWElementSetName = function() {
@@ -165,14 +172,14 @@
             //Filter only by field
             if (field !== '' &&
                 lang === '' &&
-                items[key].field === field) {
+                items[key].fieldname === field) {
               selected = true;
             }
             // Filter by both
             if (field !== '' &&
                 lang !== '' &&
                 items[key].langid === lang &&
-                items[key].field === field) {
+                items[key].fieldname === field) {
               selected = true;
             }
             // All

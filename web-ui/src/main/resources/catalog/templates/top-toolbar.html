@@ -1,74 +1,56 @@
-<div id="top-spw-global">
-	<div class="container_16">
-		<div class="top-spw-global">
-			<!--start grid_16-->
-			<div class="grid_16">
-				<a class="portail-walloniebe" href="http://www.wallonie.be">Portail WALLONIE.BE</a>
-				<a class="federation-wallonie-bruxelles" target="_blank" href="http://www.federation-wallonie-bruxelles.be/">Fédération Wallonie-Bruxelles</a>
-				<a class="geoportail-de-la-wallonie" target="_blank" href="http://geoportail.wallonie.be/cms/fr/sites/geoportail/home.html">Géoportail de la Wallonie</a>
-				<div class="clear"></div>
-				<div class="clear"></div>
-				<div class="clear"></div>
-			</div>
-			<!--stop grid_16-->
-			<div class="clear"></div>
-		</div>
-	</div>
-</div>
 <div id="header_spw">
-            <div class="container_16">
-                <div class="header_spw">
-                    <!--start grid_10-->
-                    <div class="grid_10">
-                        <!--<div id="header_spw-col1" class="header_spw-col1noprint" style="padding-top:0px">-->
-                        <div id="header_spw-col1" class="header_spw-col1noprint">
-                                <a class="geoLink"  href="../../" data-translate="">metawalTitle</a>
-                            <div class="clear"></div>
-                          </div>
-						<div class="clear"></div>
-				</div>
-				
-				<!-- -->
-				<div class="grid_6">
-					<div class="row">&#160;</div>
-					<div class="form-group pull-right" data-gn-language-switcher="lang" data-langs="langs"/>
-					<div data-ng-show="authenticated">
-						<p class="navbar-text">
-							<a href="admin.console#/organization/users/{{user.username}}"  
-			                    title="{{'userDetails' | translate}}" class="navbar-link">
-			                    {{user.name}} {{user.surname}} ({{user.profile | translate}})</a>&#160;
-			            	<a href="../../j_spring_security_logout" title="{{'signout' | translate}}"><i class="icon-signout"></i></a>
-			            </p>
-		            </div>
-                    </div>
-                    <div class="grid_menu" id="grid_menu" data-ng-show="authenticated">
-                        <ul id="menu">
-                        	<li id="gn-menu-search">
-                        		<a href="#" data-translate="">metawalMenuSearch</a>
-	                        	<ul>
-	                        		<li><a href="search" data-translate="">metawalMenuSearch</a></li>
-	                        		<li><a href="search?s_E__owner={{user.id}}&amp;s_search" data-translate="">metawalMenuMyMetadata</a></li>
-	                        	</ul>
-                        	</li>
-                        	<li id="gn-menu-encoding">
-                        		<a href="#" data-translate="">metawalMenuEncoding</a>  
-	                        	<ul>
-	                        		<li><a href="search#create" data-translate="">metawalMenuNewMetadata</a></li>
-	                        		<li><a href="search#insert" data-translate="">metawalMenuImportMetadata</a></li>
-	                        		<li><a href="admin.console#/harvest" data-translate="">metawalMenuHarvesting</a></li>
-	                        	</ul>
-                        	</li>
-                        	<li id="gn-menu-administration">
-                        		<li><a href="admin.console" data-translate="">metawalMenuAdmin</a></li>
-                        	</li>
-                        	<li id="gn-menu-csw">
-                        		<a href="admin.console#/settings/csw-test"data-translate="">metawalMenuCSW</a>
-                        	</li>
-                        </ul>
-					</div>
-                </div>
-            </div>
+  <div class="container_16">
+    <div class="header_spw">
+      <!--start grid_10-->
+      <div class="grid_10">
+        <!--<div id="header_spw-col1" class="header_spw-col1noprint" style="padding-top:0px">-->
+        <div id="header_spw-col1" class="header_spw-col1noprint">
+          <a class="geoLink"  href="../../" data-translate="">metawalTitle</a>
+          <div class="clear"></div>
         </div>
-<div class="row">&#160;</div>
+        <div class="clear"></div>
+      </div>
 
+      <!-- -->
+      <div class="grid_6">
+        <div class="row">&#160;</div>
+        <div class="form-group pull-right" data-gn-language-switcher="lang" data-langs="langs"/>
+        <div data-ng-show="authenticated">
+          <p class="navbar-text">
+            <a href="admin.console#/organization/users/{{user.username}}"
+               title="{{'userDetails' | translate}}" class="navbar-link">
+              {{user.name}} {{user.surname}} ({{user.profile | translate}})</a>&#160;
+            <a href="../../j_spring_security_logout" title="{{'signout' | translate}}"><i class="icon-signout"></i></a>
+          </p>
+        </div>
+      </div>
+      <div class="grid_menu" id="grid_menu" data-ng-show="authenticated">
+        <ul id="menu">
+          <li id="gn-menu-search">
+            <a href="#" data-translate="">metawalMenuSearch</a>
+            <ul>
+              <li><a href="search" data-translate="">metawalMenuSearch</a></li>
+              <li><a href="search?s_E__owner={{user.id}}&amp;s_search" data-translate="">metawalMenuMyMetadata</a></li>
+            </ul>
+          </li>
+          <li id="gn-menu-encoding">
+            <a href="#" data-translate="">metawalMenuEncoding</a>
+            <ul>
+              <li><a href="search#create" data-translate="">metawalMenuNewMetadata</a></li>
+              <li><a href="search#insert" data-translate="">metawalMenuImportMetadata</a></li>
+              <li><a href="admin.console#/harvest" data-translate="">metawalMenuHarvesting</a></li>
+            </ul>
+          </li>
+          <li id="gn-menu-administration">
+          <li><a href="admin.console" data-translate="">metawalMenuAdmin</a></li>
+          </li>
+          <li id="gn-menu-csw">
+            <a href="admin.console#/settings/csw-test"data-translate="">metawalMenuCSW</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">&#160;</div>
 

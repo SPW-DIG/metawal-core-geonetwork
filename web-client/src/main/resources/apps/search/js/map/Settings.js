@@ -42,13 +42,13 @@ GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-180, -90, 180, 90);
 //];
 
 //// Config for OSM based maps
-//GeoNetwork.map.PROJECTION = "EPSG:900913";
-////GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-550000, 5000000, 1200000, 7000000);
-//GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
-//GeoNetwork.map.BACKGROUND_LAYERS = [
-//    new OpenLayers.Layer.OSM()
-//    //new OpenLayers.Layer.Google("Google Streets");
-//];
+GeoNetwork.map.PROJECTION = "EPSG:900913";
+//GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-550000, 5000000, 1200000, 7000000);
+GeoNetwork.map.EXTENT = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
+GeoNetwork.map.BACKGROUND_LAYERS = [
+    new OpenLayers.Layer.OSM()
+    //new OpenLayers.Layer.Google("Google Streets");
+];
 
 //GeoNetwork.map.RESOLUTIONS = [];
 

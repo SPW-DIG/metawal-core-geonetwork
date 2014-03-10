@@ -5,18 +5,17 @@
   var module = angular.module('gn_admintools_controller',
       []);
 
+
   /**
    * GnAdminToolsController provides administration tools
    */
   module.controller('GnAdminToolsController', [
     '$scope', '$http', '$rootScope', '$translate', '$compile',
-    '$q', '$timeout',
-    'gnMetadataManagerService',
+    '$q', '$timeout', '$routeParams', '$location',
     'gnSearchManagerService',
     'gnUtilityService',
     function($scope, $http, $rootScope, $translate, $compile, 
-        $q, $timeout,
-            gnMetadataManagerService, 
+        $q, $timeout, $routeParams, $location,
             gnSearchManagerService, 
             gnUtilityService) {
 
@@ -28,12 +27,12 @@
             [{
               type: 'index',
               label: 'indexAdmin',
-              icon: 'icon-search',
+              icon: 'fa-search',
               href: '#/tools/index'
             },{
               type: 'batch',
               label: 'batchProcess',
-              icon: 'icon-medkit',
+              icon: 'fa-medkit',
               href: '#/tools/batch'
             },{
               type: 'transferownership',
@@ -72,14 +71,6 @@
       $scope.recordsToProcess = null;
       $scope.numberOfRecordsProcessed = null;
 
-      /**
-       * The pagination config
-       */
-      $scope.recordsToProcessPagination = {
-        pages: -1,
-        currentPage: 0,
-        hitsPerPage: 10
-      };
       /**
        * The selected process
        */
@@ -181,6 +172,8 @@
         $http.get($scope.base + 'config/batch-process-cfg.json')
         .success(function(data) {
               $scope.batchProcesses = data.config;
+
+              $timeout(initProcessByRoute);
             });
       }
 
@@ -201,7 +194,7 @@
 
       function loadCategories() {
         $http.get('info@json?type=categories').success(function(data) {
-          $scope.batchSearchCategories = data.categories;
+          $scope.batchSearchCategories = data.metadatacategory;
         }).error(function(data) {
           // TODO
         });
@@ -259,100 +252,48 @@
         $timeout(checkLastBatchProcessReport, processCheckInterval);
       };
 
-      // TODO: Should only do that if batch process is the current page
-      loadProcessConfig();
-      checkLastBatchProcessReport();
       loadGroups();
       loadUsers();
       loadCategories();
       loadEditors();
 
-      $scope.recordsToProcessSearchFor = function(e) {
-        $scope.recordsToProcessFilter = (e ? e.target.value : '');
-        $scope.recordsToProcessPagination.currentPage = 0;
-        $scope.recordsToProcessSearch();
+      // TODO: Should only do that if batch process is the current page
+      loadProcessConfig();
+      checkLastBatchProcessReport();
+
+      $scope.setTemplate = function(params) {
+        var values = [];
+        if ($('#batchSearchTemplateY')[0].checked) values.push('y');
+        if ($('#batchSearchTemplateN')[0].checked) values.push('n');
+        if ($('#batchSearchTemplateS')[0].checked) values.push('s');
+        params._isTemplate = values.join(' or ');
       };
 
-      // Run a search according to paging option
-      // TODO Search criteria logic should probably move
-      // to some kind of SearchManager module
-      // FIXME : can't watch the recordsToProcessFilter changes ?
-      $scope.recordsToProcessSearch = function() {
-        var pageOptions = $scope.recordsToProcessPagination,
-            criteria = [
-                        {fast: 'index'},
-                        {from:
-                    (pageOptions.currentPage * pageOptions.hitsPerPage + 1)},
-                        {to:
-                    (pageOptions.currentPage + 1) * pageOptions.hitsPerPage},
-                        {any: $scope.recordsToProcessFilter}],
-            fields = {'#gn-batchSearchTemplateY': 'y',
-                      '#gn-batchSearchTemplateN': 'n',
-                      '#gn-batchSearchTemplateS': 's'};
-        templateValues = [];
-
-        angular.forEach(fields, function(value, key) {
-          $(key)[0] && $(key)[0].checked && templateValues.push(value);
-        });
-        criteria.push({template: templateValues.join(' or ')});
-
-        if ($('#gn-batchSearchGroupOwner')[0]) {
-          var g = $('#gn-batchSearchGroupOwner')[0]
-                        .options[$('#gn-batchSearchGroupOwner')[0]
-                            .selectedIndex]
-                        .value;
-          g !== '' && criteria.push({group: g});
-        }
-
-        if ($('#gn-batchSearchOwner')[0]) {
-          var g = $('#gn-batchSearchOwner')[0]
-                        .options[$('#gn-batchSearchOwner')[0].selectedIndex]
-                        .value;
-          g !== '' && criteria.push({_owner: g});
-        }
-        if ($('#gn-batchSearchCategory')[0]) {
-          var g = $('#gn-batchSearchCategory')[0]
-                        .options[$('#gn-batchSearchCategory')[0].selectedIndex]
-                        .value;
-          g !== '' && criteria.push({category: g});
-        }
-        var params = '';
-        angular.forEach(criteria, function(value) {
-          angular.forEach(value, function(val, key) {
-            params += key + '=' + val + '&';
-          });
-        });
-        gnSearchManagerService.search('q@json?' + params)
-          .then(function(data) {
-              $scope.recordsToProcess = data;
-              $scope.recordsToProcessPagination.pages = Math.round(
-                  data.count /
-                  $scope.recordsToProcessPagination.hitsPerPage, 0);
-            }, function(data) {
-              // TODO
+      var initProcessByRoute = function() {
+        if ($routeParams.tab === 'batch') {
+          // Check if we should select all record
+          if ($routeParams.selectAll) {
+            // Check if we should select all record
+            $scope.$broadcast('resetSearch');
+          }
+          if ($routeParams.processId) {
+            // Select a process defined in the route
+            angular.forEach($scope.batchProcesses, function(p) {
+              if (p.key === $routeParams.processId) {
+                // For each process parameter check if param
+                // defined in the location search section
+                angular.forEach(p.params, function(param) {
+                  var urlParam = $location.search()[param.name];
+                  if (urlParam) {
+                    param.value = urlParam;
+                  }
+                });
+                $scope.selectedProcess = p;
+              }
             });
+          }
+        }
       };
-
-      // When the current page or search criteria change trigger the search
-      angular.forEach(['recordsToProcessPagination.currentPage'],
-          function(value) {
-            $scope.$watch(value, function() {
-              $scope.recordsToProcessSearch();
-            });
-          });
-
-      // Search when typing a new filter FIXME ?
-      //      $scope.$watch('recordsToProcessFilter', function() {
-      //          console.log('changed' + $scope.recordsToProcessFilter);
-      //          $scope.recordsToProcessSearch();
-      //        });
-
-      // Clear current selection and then search for all by default
-      gnMetadataManagerService.selectNone().then(function() {
-        $scope.recordsToProcessSearch();
-      });
-
-
 
 
       // Indexing management
