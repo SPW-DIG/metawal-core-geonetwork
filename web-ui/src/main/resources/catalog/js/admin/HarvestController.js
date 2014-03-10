@@ -10,7 +10,7 @@
   goog.require('gn_importxsl');
 
   var module = angular.module('gn_harvest_controller',
-      ['gn_harvester', 'gn_category']);
+    ['gn_harvester', 'gn_category', 'gn_importxsl']);
 
 
   /**
@@ -36,27 +36,7 @@
 
 
       var unbindStatusListener = null;
-      $scope.harvesterRecordsPagination = {
-        pages: -1,
-        currentPage: 0,
-        hitsPerPage: 10
-      };
-      // List of metadata records attached to the selected user
-      $scope.harvesterRecords = null;
-      $scope.harvesterRecordsFilter = null;
 
-      // Register the search results, filter and pager
-      // and get the search function back
-      $scope.harvesterRecordsSearch = gnSearchManagerService.register({
-        records: 'harvesterRecords',
-        filter: 'harvesterRecordsFilter',
-        pager: 'harvesterRecordsPagination'
-      }, $scope);
-
-      // When the current page change trigger the search
-      $scope.$watch('harvesterRecordsPagination.currentPage', function() {
-        $scope.harvesterRecordsSearch();
-      });
 
       function loadHarvesters() {
         return $http.get('admin.harvester.list@json').success(function(data) {
@@ -81,7 +61,8 @@
       }
 
       function loadHarvesterTypes() {
-        $http.get('admin.harvester.info@json?type=harvesterTypes')
+        $http.get('admin.harvester.info@json?type=harvesterTypes',
+            {cache: true})
         .success(function(data) {
               angular.forEach(data[0], function(value) {
                 $scope.harvesterTypes[value] = {
@@ -199,7 +180,7 @@
         $scope.harvesterUpdated = false;
         $scope.harvesterNew = false;
         $scope.harvesterHistory = {};
-        $scope.harvesterRecords = null;
+        $scope.searchResults = null;
 
         loadHistory();
 
@@ -209,7 +190,7 @@
           siteId: $scope.harvesterSelected.site.uuid,
           sortBy: 'title'
         };
-        $scope.harvesterRecordsSearch();
+        $scope.$broadcast('resetSearch', $scope.harvesterRecordsFilter);
       };
 
       $scope.refreshHarvester = function() {
