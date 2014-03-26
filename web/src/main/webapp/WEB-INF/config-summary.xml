@@ -10,6 +10,13 @@
 	* (optional) sortBy: the ordering for the facet. Defaults is by count.
 	* (optional) sortOrder: asc or desc. Defaults is descendant.
 	* (optional) max: the number of values to be returned for the facet. Defaults is 10.
+  * (optional) translator: Define a DB translator to retrieve label from description
+  tables (eg. categoriesdes) or codelist translator to retrieve label from schema
+  codelists files.
+
+  eg. for category
+  <item name="category" plural="categories" indexKey="_cat" max="45"
+            translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/>
 
 	When an item is modified or added, the index MUST be rebuild.
 -->
