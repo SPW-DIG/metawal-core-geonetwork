@@ -19,19 +19,20 @@
             link: function(scope) {
               scope.showErrorsOnly = true;
               scope.gnCurrentEdit = gnCurrentEdit;
+              scope.loading = false;
+              scope.ruleTypes = [];
 
-
-              var init = function() {
+              scope.load = function() {
                 scope.numberOfRules = 0;
-                scope.ruleTypes = {};
+                scope.ruleTypes = [];
                 scope.hasErrors = false;
+                scope.loading = true;
 
                 gnValidation.get().then(function(ruleTypes) {
-                  scope.ruleTypes = [];
                   var optional = [];
                   angular.forEach(ruleTypes, function(ruleType) {
                     if (ruleType.requirement !== 'REQUIRED') {
-                      optional.push (ruleType);
+                      optional.push(ruleType);
                     } else {
                       scope.ruleTypes.push(ruleType);
                     }
@@ -46,10 +47,11 @@
                   });
 
                   scope.ruleTypes = scope.ruleTypes.concat(optional);
+                  scope.loading = false;
                 });
               };
 
-              scope.labelImportanceClass = function (type){
+              scope.labelImportanceClass = function(type) {
                 if (type.error === 0) {
                   return 'label-success';
                 } else if (type.requirement === 'REQUIRED') {
@@ -75,8 +77,8 @@
 
               // When saving is done, refresh validation report
               scope.$watch('gnCurrentEdit.saving', function(newValue) {
-                if (newValue === false) {
-                  init();
+                if (newValue === false && gnCurrentEdit.showValidationErrors) {
+                  scope.load();
                 }
               });
             }

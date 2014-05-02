@@ -39,8 +39,6 @@ import com.google.common.collect.Lists;
 import jeeves.TransactionAspect;
 import jeeves.TransactionTask;
 import org.eclipse.jetty.util.ConcurrentHashSet;
-import jeeves.TransactionAspect;
-import jeeves.TransactionTask;
 import org.fao.geonet.exceptions.JeevesException;
 import org.fao.geonet.exceptions.ServiceNotAllowedEx;
 import org.fao.geonet.exceptions.XSDValidationErrorEx;
@@ -48,6 +46,8 @@ import org.fao.geonet.exceptions.XSDValidationErrorEx;
 import jeeves.server.UserSession;
 import jeeves.server.context.ServiceContext;
 
+import org.fao.geonet.repository.specification.*;
+import org.fao.geonet.repository.statistic.PathSpec;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.fao.geonet.utils.Xml.ErrorHandler;
@@ -71,10 +71,6 @@ import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.lib.Lib;
 import org.fao.geonet.notifier.MetadataNotifierManager;
 import org.fao.geonet.repository.*;
-import org.fao.geonet.repository.specification.MetadataSpecs;
-import org.fao.geonet.repository.specification.MetadataStatusSpecs;
-import org.fao.geonet.repository.specification.UserGroupSpecs;
-import org.fao.geonet.repository.specification.UserSpecs;
 import org.fao.geonet.util.ThreadUtils;
 import org.jdom.Attribute;
 import org.jdom.Document;
@@ -98,6 +94,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -111,7 +109,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.Vector;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
@@ -278,7 +275,9 @@ public class DataManager {
     }
 
     /**
-     * TODO javadoc.
+     * Search for all records having XLinks (ie. indexed with
+     * _hasxlinks flag), clear the cache and reindex all
+     * records found.
      *
      * @param context
      * @throws Exception
@@ -300,6 +299,49 @@ public class DataManager {
             }
             // execute indexing operation
             batchIndexInThreadPool(context, stringIds);
+        }
+    }
+
+    /**
+     * Reindex all records in current selection.
+     *
+     * @param context
+     * @param clearXlink
+     * @throws Exception
+     */
+    public synchronized void rebuildIndexForSelection(final ServiceContext context,
+                                                      boolean clearXlink)
+            throws Exception {
+
+        // get all metadata ids from selection
+        ArrayList<String> listOfIdsToIndex = new ArrayList<String>();
+        UserSession session = context.getUserSession();
+        SelectionManager sm = SelectionManager.getManager(session);
+
+        synchronized (sm.getSelection("metadata")) {
+            for (Iterator<String> iter = sm.getSelection("metadata").iterator();
+                 iter.hasNext(); ) {
+                String uuid = (String) iter.next();
+                String id = getMetadataId(uuid);
+                if (id != null) {
+                    listOfIdsToIndex.add(id);
+                }
+            }
+        }
+
+        if (Log.isDebugEnabled(Geonet.DATA_MANAGER)) {
+            Log.debug(Geonet.DATA_MANAGER, "Will index " +
+                    listOfIdsToIndex.size() + " records from selection.");
+        }
+
+        if (listOfIdsToIndex.size() > 0) {
+            // clean XLink Cache so that cache and index remain in sync
+            if (clearXlink) {
+                Processor.clearCache();
+            }
+
+            // execute indexing operation
+            batchIndexInThreadPool(context, listOfIdsToIndex);
         }
     }
 
@@ -326,13 +368,28 @@ public class DataManager {
         if (metadataIds.size() < threadCount) perThread = metadataIds.size();
         else perThread = metadataIds.size() / threadCount;
         int index = 0;
-
+        if (Log.isDebugEnabled(Geonet.INDEX_ENGINE)) {
+            Log.debug(Geonet.INDEX_ENGINE, "Indexing " + metadataIds.size() + " records.");
+            Log.debug(Geonet.INDEX_ENGINE, metadataIds.toString());
+        }
         while(index < metadataIds.size()) {
             int start = index;
-            int count = Math.min(perThread,metadataIds.size()-start);
+            int count = Math.min(perThread, metadataIds.size() - start);
+            int nbRecords = start + count;
+
+            if (Log.isDebugEnabled(Geonet.INDEX_ENGINE)) {
+                Log.debug(Geonet.INDEX_ENGINE, "Indexing records from " + start + " to " + nbRecords);
+            }
+
+            List<String> subList = metadataIds.subList(start, nbRecords);
+
+            if (Log.isDebugEnabled(Geonet.INDEX_ENGINE)) {
+                Log.debug(Geonet.INDEX_ENGINE, subList.toString());
+            }
+
             // create threads to process this chunk of ids
             Runnable worker = new IndexMetadataTask(context,
-                    metadataIds.subList(start, start + count - 1),
+                    subList,
                     batchIndex, transactionStatus);
             executor.execute(worker);
             index += count;
@@ -458,6 +515,7 @@ public class DataManager {
 
             // get privileges
             OperationAllowedRepository operationAllowedRepository = _applicationContext.getBean(OperationAllowedRepository.class);
+            GroupRepository groupRepository = _applicationContext.getBean(GroupRepository.class);
             List<OperationAllowed> operationsAllowed = operationAllowedRepository.findAllById_MetadataId(id$);
 
             for (OperationAllowed operationAllowed : operationsAllowed) {
@@ -467,8 +525,10 @@ public class DataManager {
 
                 moreFields.add(SearchManager.makeField("_op" + operationId, String.valueOf(groupId), true, true));
                 if(operationId == ReservedOperation.view.getId()) {
-                    String name = ReservedOperation.view.name();
-                    moreFields.add(SearchManager.makeField("_groupPublished", name, true, true));
+                    Group g = groupRepository.findOne(groupId);
+                    if (g != null) {
+                        moreFields.add(SearchManager.makeField("_groupPublished", g.getName(), true, true));
+                    }
                 }
             }
 
@@ -2106,6 +2166,18 @@ public class DataManager {
         _applicationContext.getBean(MetadataValidationRepository.class).deleteAllById_MetadataId(intId);
         _applicationContext.getBean(MetadataStatusRepository.class).deleteAllById_MetadataId(intId);
 
+        // Logical delete for metadata file uploads
+        PathSpec<MetadataFileUpload, String> deletedDatePathSpec = new PathSpec<MetadataFileUpload, String>() {
+            @Override
+            public Path<String> getPath(Root<MetadataFileUpload> root) {
+                return root.get(MetadataFileUpload_.deletedDate);
+            }
+        };
+
+        _applicationContext.getBean(MetadataFileUploadRepository.class).createBatchUpdateQuery(deletedDatePathSpec,
+                new ISODate().toString(),
+                MetadataFileUploadSpecs.isNotDeletedForMetadata(intId));
+
         //--- remove metadata
         xmlSerializer.delete(id, context);
     }
@@ -2216,6 +2288,10 @@ public class DataManager {
         env.addContent(new Element("host").setText(host));
         env.addContent(new Element("port").setText(port));
         env.addContent(new Element("baseUrl").setText(baseUrl));
+        // TODO: Remove host, port, baseUrl and simplify the
+        // URL created in the XSLT. Keeping it for the time
+        // as many profiles depend on it.
+        env.addContent(new Element("url").setText(settingMan.getSiteURL(context)));
 
         manageThumbnail(context, id, small, env, Geonet.File.SET_THUMBNAIL, indexAfterChange);
     }
@@ -2810,10 +2886,12 @@ public class DataManager {
             }
 
             String currentUuid = metadata != null ? metadata.getUuid() : null;
+            String id = metadata != null ? metadata.getId() + "" : null;
             uuid = uuid == null ? currentUuid : uuid;
 
             //--- setup environment
             Element env = new Element("env");
+            env.addContent(new Element("id").setText(id));
             env.addContent(new Element("uuid").setText(uuid));
             Element schemaLoc = new Element("schemaLocation");
             schemaLoc.setAttribute(schemaMan.getSchemaLocation(schema,context));
@@ -3208,8 +3286,10 @@ public class DataManager {
 
         final Metadata metadata = _metadataRepository.findOne(metadataId);
         if (metadata != null && metadata.getDataInfo().getType() == MetadataType.METADATA) {
+            MetadataSchema mds = servContext.getBean(DataManager.class).getSchema(metadata.getDataInfo().getSchemaId());
+            Pair<String, Element> editXpathFilter = mds.getOperationFilter(ReservedOperation.editing);
+            XmlSerializer.removeFilteredElement(md, editXpathFilter, mds.getNamespaces());
 
-            XmlSerializer.removeWithheldElements(md, servContext.getBean(SettingManager.class));
             String uuid = getMetadataUuid( metadataId);
             servContext.getBean(MetadataNotifierManager.class).updateMetadata(md, metadataId, uuid, servContext);
         }

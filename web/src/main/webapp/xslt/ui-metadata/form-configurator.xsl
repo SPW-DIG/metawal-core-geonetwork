@@ -75,11 +75,17 @@
     <xsl:param name="base" as="node()"/>
 
     <xsl:if test="@xpath">
-      <!-- Match any nodes in the metadata with the XPath -->
-      <!--<xsl:variable name="nodes" select="saxon:evaluate(concat('$p1/..', @xpath), $base)"/>
-      does not work here because namespace of the context (ie. this XSL) are used
-      to resolve the xpath. It needs to be in a profile specific XSL which declare profile
-      namespaces that's why each schema should define its evaluate-<schemaid> template. -->
+      <!-- Seach any nodes in the metadata matching the XPath.
+
+      We could have called saxon-evaluate from here like:
+      <xsl:variable name="nodes"
+        select="saxon:evaluate(concat('$p1/..', @xpath), $base)"/>
+      but this does not work here because namespace of the context
+      (ie. this XSLT) are used to resolve the xpath.
+      It needs to be in a profile specific XSL which declare all
+      profile's namespaces used in XPath expression.
+
+      That's why each schema should define its evaluate-<schemaid> template. -->
       <xsl:variable name="nodes">
         <saxon:call-template name="{concat('evaluate-', $schema)}">
           <xsl:with-param name="base" select="$base"/>
@@ -101,9 +107,9 @@
 
 
 
-      <!-- Check if this field is controlled by a condition (eg. display that field for 
-                service metadata record only).
-                If @if expression return false, the field is not displayed. -->
+      <!-- Check if this field is controlled by a condition
+          (eg. display that field for service metadata record only).
+          If @if expression return false, the field is not displayed. -->
       <xsl:variable name="isDisplayed">
         <xsl:choose>
           <xsl:when test="@if">
@@ -195,7 +201,6 @@
           <xsl:variable name="name" select="@name"/>
           <xsl:variable name="del" select="@del"/>
           <xsl:variable name="template" select="template"/>
-          
           <xsl:for-each select="$nodes/*">
             <!-- Retrieve matching key values 
               Only text values are supported. Separator is #.
@@ -222,7 +227,20 @@
                 
               -->
             <xsl:variable name="currentNode" select="."/>
-            
+
+            <!-- Check if template field values should be in
+            readonly mode in the editor.-->
+            <xsl:variable name="readonly">
+              <xsl:choose>
+                <xsl:when test="$template/values/@readonlyIf">
+                  <saxon:call-template name="{concat('evaluate-', $schema, '-boolean')}">
+                    <xsl:with-param name="base" select="$currentNode"/>
+                    <xsl:with-param name="in" select="concat('/', $template/values/@readonlyIf)"/>
+                  </saxon:call-template>
+                </xsl:when>
+              </xsl:choose>
+            </xsl:variable>
+
             <xsl:variable name="templateCombinedWithNode" as="node()">
               <template>
                 <xsl:copy-of select="$template/values"/>
@@ -237,6 +255,10 @@
             <xsl:variable name="keyValues">
               <xsl:for-each select="$template/values/key">
                 <field name="{@label}">
+                  <xsl:if test="$readonly = 'true'">
+                    <readonly>true</readonly>
+                  </xsl:if>
+
                   <xsl:variable name="matchingNodeValue">
                     <saxon:call-template name="{concat('evaluate-', $schema)}">
                       <xsl:with-param name="base" select="$currentNode"/>
@@ -244,8 +266,30 @@
                     </saxon:call-template>
                   </xsl:variable>
                   <value><xsl:value-of select="normalize-space($matchingNodeValue)"/></value>
-                  
-                  
+
+                  <!--
+                  Directive attribute are usually string but could be an XPath
+                  to evaluate. In that case, the attribute starts with eval#.
+
+                  This could be useful when a directive takes care of setting
+                  more than one value for an element. Eg. a date and an attribute
+                  like indeterminate position.
+
+                  <directiveAttributes
+                      data-tag-name="gml:endPosition"
+                      data-indeterminate-position="eval#gmd:EX_TemporalExtent/gmd:extent/gml:TimePeriod/*/gml:endPosition/@indeterminatePosition"/>
+                  -->
+                  <xsl:for-each select="directiveAttributes/attribute::*">
+                    <xsl:if test="starts-with(., 'eval#')">
+                      <directiveAttributes name="{name()}">
+                        <saxon:call-template name="{concat('evaluate-', $schema)}">
+                          <xsl:with-param name="base" select="$currentNode"/>
+                          <xsl:with-param name="in" select="concat('/', substring-after(., 'eval#'))"/>
+                        </saxon:call-template>
+                      </directiveAttributes>
+                    </xsl:if>
+                  </xsl:for-each>
+
                   <!-- If an helper element defined the path to an helper list to 
                   get from the loc files -->
                   <xsl:if test="helper">
@@ -314,6 +358,7 @@
               <xsl:with-param name="template" select="$templateCombinedWithNode"/>
               <xsl:with-param name="keyValues" select="$keyValues"/>
               <xsl:with-param name="refToDelete" select="if ($refToDelete) then $refToDelete/gn:element else ''"/>
+              <xsl:with-param name="isFirst" select="position() = 1"/>
             </xsl:call-template>
           </xsl:for-each>
           
@@ -329,12 +374,23 @@
             <xsl:variable name="id" select="concat($xpathFieldId, '_xml')"/>
             <xsl:variable name="isMissingLabel" select="@isMissingLabel"/>
 
+            <!-- Node does not exist, stripped gn:copy element from template. -->
+            <xsl:variable name="templateWithoutGnCopyElement" as="node()">
+              <template>
+                <xsl:copy-of select="$template/values"/>
+                <snippet>
+                  <xsl:apply-templates mode="gn-element-cleaner"
+                                       select="$template/snippet/*"/>
+                </snippet>
+              </template>
+            </xsl:variable>
+
             <xsl:call-template name="render-element-template-field">
               <xsl:with-param name="name" select="$strings/*[name() = $name]"/>
               <xsl:with-param name="id" select="$id"/>
               <xsl:with-param name="xpathFieldId" select="$xpathFieldId"/>
               <xsl:with-param name="isExisting" select="false()"/>
-              <xsl:with-param name="template" select="$template"/>
+              <xsl:with-param name="template" select="$templateWithoutGnCopyElement"/>
               <xsl:with-param name="isMissingLabel" select="$strings/*[name() = $isMissingLabel]"/>
             </xsl:call-template>
           </xsl:if>
@@ -357,6 +413,16 @@
       </xsl:if>
     </xsl:variable>
 
+    <xsl:variable name="elementOfSameKind">
+      <xsl:if test="@or and @in">
+        <saxon:call-template name="{concat('evaluate-', $schema)}">
+          <xsl:with-param name="base" select="$base"/>
+          <xsl:with-param name="in"
+                          select="concat('/../', @in,
+                            '/*[local-name() = ''', @or, ''']')"/>
+        </saxon:call-template>
+      </xsl:if>
+    </xsl:variable>
 
     <!-- Check if this field is controlled by a condition (eg. display that field for
               service metadata record only).
@@ -392,6 +458,8 @@
         <xsl:with-param name="addDirective" select="@addDirective"/>
         <xsl:with-param name="parentRef" select="$nonExistingChildParent/*[position() = last()]/gn:element/@ref"/>
         <xsl:with-param name="qname" select="concat($nonExistingChildParent/*[position() = last()]/gn:child[@name = $childName]/@prefix, ':', @or)"/>
+        <xsl:with-param name="isFirst" select="@forceLabel or count($elementOfSameKind/*) = 0"/>
+        <xsl:with-param name="isAddAction" select="true()"/>
       </xsl:call-template>
     </xsl:if>
     

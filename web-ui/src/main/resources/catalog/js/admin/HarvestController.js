@@ -67,12 +67,14 @@
               angular.forEach(data[0], function(value) {
                 $scope.harvesterTypes[value] = {
                   label: value,
-                  text: $translate(value)
+                  text: $translate('harvester-' + value)
                 };
                 $.getScript('../../catalog/templates/admin/harvest/type/' +
                     value + '.js')
                 .done(function(script, textStatus) {
-                      $scope.harvesterTypes[value].loaded = true;
+                      $scope.$apply(function() {
+                        $scope.harvesterTypes[value].loaded = true;
+                      });
                       // FIXME: could we make those harvester specific
                       // function a controller
                     })
@@ -511,6 +513,13 @@
               loadHarvesterTemplates();
             }
           });
+      $scope.getHarvesterTypes = function() {
+        var array = [];
+        angular.forEach($scope.harvesterTypes, function(h) {
+          array.push(h);
+        });
+        return array;
+      };
     }]);
 
 })();

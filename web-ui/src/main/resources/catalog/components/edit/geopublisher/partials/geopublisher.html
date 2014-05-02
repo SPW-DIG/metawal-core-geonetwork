@@ -8,15 +8,18 @@
     <ul class="dropdown-menu" role="menu">
       <li data-ng-repeat="r in resources">
         <a href="" data-ng-click="showPanel(r)">
-          {{r.fileName}}
+          {{r.name}}
         </a>
       </li>
     </ul>
   </div>
+  <div data-gn-need-help="editor_geopublisher"
+       data-icon-only="true"
+       class="pull-right"></div>
 
   <div class="panel panel-default" data-ng-hide="hidden">
     <div class="panel-heading">
-      <span data-translate="" data-translate-values="{layer: '{{fileName}}'}">publishIn</span>
+      <span data-translate="" data-translate-values="{layer: '{{name}}'}">publishIn</span>
 
       <select data-ng-model="nodeId"
               data-ng-change="selectNode(nodeId)">
@@ -70,7 +73,7 @@
                     <a data-ng-click="setCheckBox('wcs', $event)" href=""> 
                       <i class="fa fa-check-square-o" data-ng-show="protocols.wcs.checked"></i>
                       <i class="fa fa-square-o" data-ng-hide="protocols.wcs.checked"></i>
-                      {{protocols.wms.label}}
+                      {{protocols.wcs.label}}
                     </a>
                   </li>
                   <li data-role="presentation" class="divider"></li>
@@ -83,6 +86,10 @@
                 </ul>
               </div>
           </div>
+          <button class="btn btn-link btn-xs" data-ng-click="openStyler(nodeId)"
+                  data-ng-class="hasStyler ? '' : 'hidden'">
+            <i class="fa fa-pencil"></i>&nbsp;<span data-translate="">style</span>
+          </button>
         </div>
       </form>
 
