@@ -123,7 +123,9 @@ GeoNetwork.MetadataResultsToolbar = Ext.extend(Ext.Toolbar, {
     adminAction: undefined,
     
     addLayerAction: undefined,
-    
+
+    massiveReplaceAction: undefined,
+
     permalinkProvider: undefined,
     
     actionMenu: undefined,
@@ -284,9 +286,20 @@ GeoNetwork.MetadataResultsToolbar = Ext.extend(Ext.Toolbar, {
             scope: this,
             hidden: hide
         });
-        
-        this.selectionActions.push(this.deleteAction, this.ownerAction, this.updateCategoriesAction, 
-                this.updatePrivilegesAction, this.updateStatusAction, this.updateVersionAction);
+
+        this.massiveReplaceAction = new Ext.menu.Item({
+          text: 'Massive Replacements', //OpenLayers.i18n('massiveReplace'),
+          id: 'massiveReplaceAction',
+          iconCls : '',
+          handler: function(){
+            this.catalogue.massiveOp('Replace');
+          },
+          scope: this,
+          hidden: hide
+        });
+
+      this.selectionActions.push(this.deleteAction, this.ownerAction, this.updateCategoriesAction,
+                this.updatePrivilegesAction, this.updateStatusAction, this.updateVersionAction, this.massiveReplaceAction);
 
         if(!this.catalogue.isReadOnly()) {
             this.actionMenu.addItem(this.ownerAction);
@@ -295,6 +308,7 @@ GeoNetwork.MetadataResultsToolbar = Ext.extend(Ext.Toolbar, {
             this.actionMenu.addItem(this.updateStatusAction);
             this.actionMenu.addItem(this.updateVersionAction);
             this.actionMenu.addItem(this.deleteAction);
+            this.actionMenu.addItem(this.massiveReplaceAction);
         }
 
     },
@@ -652,7 +666,7 @@ GeoNetwork.MetadataResultsToolbar = Ext.extend(Ext.Toolbar, {
         var editingActions = [this.deleteAction, this.updateCategoriesAction, 
                         this.updatePrivilegesAction, this.createMetadataAction,
                         this.mdImportAction],
-            adminActions = [this.ownerAction],
+            adminActions = [this.ownerAction, this.massiveReplaceAction],
             actions = [this.adminAction, this.otherItem];
         
         Ext.each(actions, function(){
