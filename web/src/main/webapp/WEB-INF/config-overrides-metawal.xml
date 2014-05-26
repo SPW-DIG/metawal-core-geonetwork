@@ -39,23 +39,6 @@
     <replaceAtt xpath="appHandler/param[@name = 'useSubversion']" attName="value" value="false"/>
     
     <replaceAtt xpath="//service[@name = 'main.search.suggest']/class/param[@name='threshold']" attName="value" value="1"/>
-    
-    <replaceXML xpath="resources">
-      <resource enabled="true">
-        <name>main-db</name>
-        <provider>jeeves.resources.dbms.ApacheDBCPool</provider>
-        <config>
-          <user>${db.user}</user>
-          <password>${db.pass}</password>
-          <driver>${db.driver}</driver>
-          <url>${db.url}</url>
-          <poolSize>20</poolSize>
-          <minIdle>0</minIdle>
-          <maxIdle>10</maxIdle>
-          <validationQuery>${db.validation.query}</validationQuery>
-        </config>
-      </resource>
-    </replaceXML>
   </file>
 
   
