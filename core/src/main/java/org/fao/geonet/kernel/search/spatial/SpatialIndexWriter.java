@@ -216,7 +216,8 @@ public class SpatialIndexWriter implements FeatureListener
             FilterFactory2 factory = CommonFactoryFinder
                     .getFilterFactory2(GeoTools.getDefaultHints());
             Filter filter = factory.equals(
-                    factory.property(_idColumn), factory.literal(id));
+                    factory.property(_idColumn == null ? _IDS_ATTRIBUTE_NAME : _idColumn.toString()),
+                    factory.literal(id));
 
             _index = null;
 
@@ -244,7 +245,8 @@ public class SpatialIndexWriter implements FeatureListener
             
             for(String id : ids) {
                 filters.add(factory.equals(
-                    factory.property(_idColumn), factory.literal(id)));
+                    factory.property(_idColumn == null ? _IDS_ATTRIBUTE_NAME : _idColumn.toString()),
+                    factory.literal(id)));
             }
             
             _index = null;
@@ -424,7 +426,9 @@ public class SpatialIndexWriter implements FeatureListener
             features = _featureStore.getFeatures().features();
             while (features.hasNext()) {
                 SimpleFeature feature = features.next();
-                Pair<FeatureId, Object> data = Pair.read(feature.getIdentifier(), feature.getAttribute(_idColumn));
+                Pair<FeatureId, Object> data = Pair.read(
+                        feature.getIdentifier(),
+                        feature.getAttribute(_idColumn == null ? _IDS_ATTRIBUTE_NAME : _idColumn.toString()));
                 Geometry defaultGeometry = (Geometry) feature.getDefaultGeometry();
                 if(defaultGeometry != null) {
                     _index.insert(defaultGeometry.getEnvelopeInternal(), data);
