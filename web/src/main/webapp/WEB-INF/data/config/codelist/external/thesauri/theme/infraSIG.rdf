@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dcterms="http://purl.org/dc/terms/">
+	<skos:ConceptScheme rdf:about="http://metawal.wallonie.be/thesaurus/infrasig">
+		<dc:title>Mots-clés InfraSIG</dc:title>
+		<dc:description>Mots-clés InfraSIG pour Metawal - GeoNetwork</dc:description>
+		<dc:creator>
+			<foaf:Organization>
+				<foaf:name>SPW - DIG</foaf:name>
+			</foaf:Organization>
+		</dc:creator>
+		<dcterms:issued>2014-06-26</dcterms:issued>
+		<dcterms:modified>2014-06-26</dcterms:modified>
+	</skos:ConceptScheme>
+	<rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/infrasig#Opendata">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">Open data</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Open data</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRE">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">Reporting INSPIRE</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Reporting INSPIRE</skos:scopeNote>
+	</rdf:Description>
+</rdf:RDF>
