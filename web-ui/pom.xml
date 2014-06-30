@@ -211,6 +211,6 @@ python $CLOSURE_LIB/closure/bin/build/closurebuilder.py \
     <geonetwork.build.dir>${project.build.directory}/${project.build.finalName}</geonetwork.build.dir>
     <closure.compile.level/>
     <!-- Path to closure library -->
-    <closure.path>/path/to/closure-library</closure.path>
+    <closure.path>C:/Users/agf/Documents/GitHub/closure-library</closure.path>
   </properties>
 </project>
