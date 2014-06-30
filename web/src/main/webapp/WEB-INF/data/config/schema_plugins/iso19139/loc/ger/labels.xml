@@ -2577,6 +2577,14 @@
     <label>Zeitknoten (time node)</label>
     <description/>
   </element>
+  <element name="gml:TimePeriodTypeCHOICE_ELEMENT2">
+    <label>Startdatum</label>
+    <description></description>
+  </element>
+  <element name="gml:TimePeriodTypeCHOICE_ELEMENT3">
+    <label>Enddatumte</label>
+    <description></description>
+  </element>
   <element name="gml:TimeEdge">
     <label>Zeitrand (time edge)</label>
     <description/>
