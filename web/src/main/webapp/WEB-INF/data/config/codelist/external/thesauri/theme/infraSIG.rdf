@@ -9,16 +9,12 @@
 			</foaf:Organization>
 		</dc:creator>
 		<dcterms:issued>2014-06-26</dcterms:issued>
-		<dcterms:modified>2014-06-26</dcterms:modified>
+		<dcterms:modified>2014-06-30</dcterms:modified>
 	</skos:ConceptScheme>
-	<rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/infrasig#Opendata">
-		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	<skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/infrasig/Opendata">
 		<skos:prefLabel xml:lang="fr">Open data</skos:prefLabel>
-		<skos:scopeNote xml:lang="fr">Open data</skos:scopeNote>
-	</rdf:Description>
-	<rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRE">
-		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+	</skos:Concept>
+	<skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/infrasig/ReportingINSPIRE">
 		<skos:prefLabel xml:lang="fr">Reporting INSPIRE</skos:prefLabel>
-		<skos:scopeNote xml:lang="fr">Reporting INSPIRE</skos:scopeNote>
-	</rdf:Description>
+	</skos:Concept>	
 </rdf:RDF>
