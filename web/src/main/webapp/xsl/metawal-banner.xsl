@@ -70,9 +70,9 @@
 		            	</div>
 			        	<div>
 			                <label for="password"><xsl:value-of select="/root/gui/strings/metawalLoginPwd" /></label>
-			                <input type="password" id="password" name="password" value="" onkeypress="enterFunction()"/>
+			                <input type="password" id="password" value="" />
 			            </div>
-			            <input type="submit" id="submitbutton" name="submitbutton" class="btn" value="{/root/gui/strings/metawalLoginConnection}"  onclick="catalogue.login(document.getElementById('login').value,document.getElementById('password').value);location.href='#close';"/>
+			            <input type="button" class="btn" value="{/root/gui/strings/metawalLoginConnection}" onclick="catalogue.login(document.getElementById('login').value,document.getElementById('password').value);location.href='#close';"/>
 			        	&#160;
 			        	<input type="button" class="btn" value="{/root/gui/strings/metawalLoginCancel}" onclick="location.href='#close';"/>
 			        </div>

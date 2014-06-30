@@ -2496,14 +2496,6 @@
 		<label>Time period</label>
 		<description />
 	</element>
-	<element name="gml:TimePeriodTypeCHOICE_ELEMENT2">
-    <label>Begin</label>
-    <description></description>
-  </element>
-  <element name="gml:TimePeriodTypeCHOICE_ELEMENT3">
-    <label>End</label>
-    <description></description>
-  </element>
 	<element name="gml:TimeNode">
 		<label>Time node</label>
 		<description />
