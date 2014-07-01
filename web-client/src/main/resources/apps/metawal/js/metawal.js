@@ -1,4 +1,5 @@
-function enterFunction(){
+function enterFunction(event){
+    var Key = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
 	if(event.keyCode == 13){
 		catalogue.login(document.getElementById('login').value,document.getElementById('password').value);
 		location.href='#close';
