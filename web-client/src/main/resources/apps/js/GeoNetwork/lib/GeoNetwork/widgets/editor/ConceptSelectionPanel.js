@@ -80,7 +80,7 @@ GeoNetwork.editor.ConceptSelectionPanel = Ext.extend(Ext.Panel, {
          *  ``Integer`` The maximum number of item to load if widget mode is combo or list.
          *  In default mode, the maximum number of results could be changed using the input field.
          */
-        maxKeywords: 100,
+        maxKeywords: 600,
         /** api: config[border] 
          *  ``boolean`` false by default.
          */

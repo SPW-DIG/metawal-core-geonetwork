@@ -2500,6 +2500,14 @@
 		<label>Time node</label>
 		<description />
 	</element>
+	<element name="gml:TimePeriodTypeCHOICE_ELEMENT2">
+	    <label>Start date</label>
+	    <description></description>
+	</element>
+	<element name="gml:TimePeriodTypeCHOICE_ELEMENT3">
+	    <label>End date</label>
+	    <description></description>
+	</element>
 	<element name="gml:TimeEdge">
 		<label>Time edge</label>
 		<description />
