@@ -12,7 +12,7 @@
         'gnCurrentEdit',
         '$timeout',
         '$translate',
-        function(gnMap, gnOnlinesrc, 
+        function(gnMap, gnOnlinesrc,
             gnGeoPublisher, gnEditor, gnCurrentEdit,
             $timeout, $translate) {
           return {
@@ -22,7 +22,6 @@
                 'partials/geopublisher.html',
             scope: {
               config: '@'
-              // TODO: Add initial bbox
             },
             link: function(scope, element, attrs) {
               scope.resources = angular.fromJson(scope.config);
@@ -55,6 +54,14 @@
                   // we need to wait the scope.hidden binding is done
                   // before rendering the map.
                   map.setTarget(scope.mapId);
+
+                  // TODO : Zoom to all extent if more than one defined
+                  if (angular.isArray(gnCurrentEdit.extent)) {
+                    map.getView().fitExtent(
+                        gnMap.reprojExtent(gnCurrentEdit.extent[0],
+                        'EPSG:4326', gnMap.getMapConfig().projection),
+                        map.getSize());
+                  }
                 });
 
                 /**
@@ -124,7 +131,8 @@
                * @return {boolean}
                */
               var isMRA = function(gsNode) {
-                return gsNode.adminUrl.indexOf('/mra') !== -1;
+                return gsNode.adminUrl &&
+                    gsNode.adminUrl.indexOf('/mra') !== -1;
               };
 
               /**
@@ -132,11 +140,11 @@
                *
                * @param {Object} gsNode
                */
-              var buildLayerName = function (gsNode) {
+              var buildLayerName = function(gsNode) {
                 // Append prefix for GeoServer.
                 if (gsNode && !isMRA(gsNode)) {
                   scope.wmsLayerName = gsNode.namespacePrefix +
-                    ':' + scope.wmsLayerName;
+                      ':' + scope.wmsLayerName;
                 }
               };
 
@@ -276,14 +284,14 @@
 
                 // Build layer name based on file name
                 scope.layerName = r.name
-                  .replace(/.zip$|.tif$|.tiff$/, '');
+                  .replace(/.zip$|.tif$|.tiff$|.ecw$/, '');
                 scope.wmsLayerName = scope.layerName;
                 if (scope.layerName.match('^jdbc')) {
                   scope.wmsLayerName = scope.layerName.split('#')[1];
                 } else if (scope.layerName.match('^file')) {
                   scope.wmsLayerName = scope.layerName
                     .replace(/.*\//, '')
-                    .replace(/.zip$|.tif$|.tiff$/, '');
+                    .replace(/.zip$|.tif$|.tiff$|.ecw$/, '');
                 }
                 buildLayerName(gsNode);
               };
