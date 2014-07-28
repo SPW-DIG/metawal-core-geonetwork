@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:fra="http://www.cnig.gouv.fr/2005/fra"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:geonet="http://www.fao.org/geonetwork"
 	xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gfc="http://www.isotc211.org/2005/gfc"
 	xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml"
 	xmlns:gmi="http://www.isotc211.org/2005/gmi" xmlns:gmx="http://www.isotc211.org/2005/gmx"
