@@ -56,9 +56,7 @@ GeoNetwork.data.RegionStore = function(url){
     }
     Ext.apply(Ext.data.SortTypes, {
     asNatural: function (value) {
-        console.log(value);
         value = value['fre'];
-        console.log(value);
         return value;
         }
     });
