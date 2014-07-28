@@ -4581,7 +4581,7 @@ http://www.sandre.eaufrance.fr/?urn=urn:sandre:ensembledonnees:BDCarthage:FXX:::
   </element>
   
   <element name="gco:Record">
-    <label/>
+    <label>Valeur de la mesure</label>
     <description/>
     <help/>
     <condition/>
@@ -4777,7 +4777,14 @@ http://www.sandre.eaufrance.fr/?urn=urn:sandre:ensembledonnees:BDCarthage:FXX:::
     <label>URL</label>
     <description>URL du document.</description>
   </element>
-  
+  <element name="gml:TimePeriodTypeCHOICE_ELEMENT2">
+    <label>Date de début</label>
+    <description></description>
+  </element>
+  <element name="gml:TimePeriodTypeCHOICE_ELEMENT3">
+    <label>Date de fin</label>
+    <description></description>
+  </element>
   <element name="gml:TimePeriodTypeGROUP_ELEMENT0">
     <label>Information sur la période</label>
     <description></description>

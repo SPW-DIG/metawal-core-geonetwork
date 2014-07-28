@@ -54,6 +54,12 @@ GeoNetwork.data.RegionStore = function(url){
         }
         return labels;
     }
+    Ext.apply(Ext.data.SortTypes, {
+    asNatural: function (value) {
+        value = value['fre'];
+        return value;
+        }
+    });
     
     return new Ext.data.XmlStore({
         autoDestroy: true,
@@ -64,6 +70,10 @@ GeoNetwork.data.RegionStore = function(url){
         }),
         record: 'region',
         idPath: '@id',
+        sortInfo: {
+            field: 'label',
+            direction: 'ASC' // or 'DESC' (case sensitive fort local sorting)
+        },
         fields: [{
             name: 'id',
             mapping: '@id'
@@ -77,7 +87,9 @@ GeoNetwork.data.RegionStore = function(url){
             name: 'west'
         }, {
             name: 'label',
-            convert: getLabel
+            mapping: 'label',
+            convert: getLabel,
+            sortType: 'asNatural',
         }]
     });
 };
