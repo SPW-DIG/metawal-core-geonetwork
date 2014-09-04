@@ -41,6 +41,7 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.Text;
+import org.jdom.filter.ElementFilter;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.SAXOutputter;
@@ -75,10 +76,7 @@ import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import javax.xml.XMLConstants;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -390,19 +388,19 @@ public final class Xml
     /**
      * Transforms an xml tree into another using a stylesheet on disk and pass parameters.
      *
+     *
      * @param xml
      * @param styleSheetPath
      * @param params
      * @return
      * @throws Exception
      */
-	public static Element transform(Element xml, String styleSheetPath, Map<String,String> params) throws Exception
+	public static Element transform(Element xml, String styleSheetPath, Map<String, Object> params) throws Exception
 	{
 		JDOMResult resXml = new JDOMResult();
 		transform(xml, styleSheetPath, resXml, params);
 		return (Element)resXml.getDocument().getRootElement().detach();
 	}
-
 	//--------------------------------------------------------------------------
 
     /**
@@ -549,13 +547,14 @@ public final class Xml
     /**
      * Transforms an xml tree putting the result to a stream with optional parameters.
      *
+     *
      * @param xml
      * @param styleSheetPath
      * @param result
      * @param params
      * @throws Exception
      */
-	public static void transform(Element xml, String styleSheetPath, Result result, Map<String,String> params) throws Exception
+	public static void transform(Element xml, String styleSheetPath, Result result, Map<String, Object> params) throws Exception
 	{
 		File styleSheet = new File(styleSheetPath);
 		Source srcXml   = new JDOMSource(new Document((Element)xml.detach()));
@@ -579,14 +578,13 @@ public final class Xml
 		} finally {
 			Transformer t = transFact.newTransformer(srcSheet);
 			if (params != null) {
-				for (Map.Entry<String,String> param : params.entrySet()) {
+				for (Map.Entry<String,Object> param : params.entrySet()) {
 					t.setParameter(param.getKey(),param.getValue());
 				}
 			}
 			t.transform(srcXml, result);
 		}
 	}
-
 	//--------------------------------------------------------------------------
 
     /**
@@ -976,6 +974,42 @@ public final class Xml
 		return xp.numberValueOf(xml);
 	}
 
+    /**
+     * Search in metadata all matching element for the filter
+     * and return a list of uuid separated by or to be used in a
+     * search on uuid. Extract uuid from matched element if
+     * elementName is null or from the elementName child.
+     *
+     * @param element
+     * @param elementFilter Filter to get element descendants
+     * @param elementName   Child element to get value from. If null, filtered element value is returned
+     * @param elementNamespace
+     * @param attributeName Attribute name to get value from. If null, TODO: improve
+     * @return
+     */
+    public static Set<String> filterElementValues(Element element,
+                                                     ElementFilter elementFilter,
+                                                     String elementName,
+                                                     Namespace elementNamespace,
+                                                     String attributeName) {
+        @SuppressWarnings("unchecked")
+        Iterator<Element> i = element.getDescendants(elementFilter);
+        Set<String> values = new HashSet<String>();
+        boolean first = true;
+        while (i.hasNext()) {
+            Element e = i.next();
+            String uuid = elementName == null && attributeName == null?
+                    e.getText() :
+                    (attributeName == null ?
+                            e.getChildText(elementName, elementNamespace) :
+                            e.getAttributeValue(attributeName)
+                    );
+            if (!"".equals(uuid)) {
+                values.add(uuid);
+            }
+        }
+        return values;
+    }
 	//---------------------------------------------------------------------------
 
     /**

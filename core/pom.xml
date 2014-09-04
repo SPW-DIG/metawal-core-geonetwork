@@ -13,11 +13,6 @@
     <name>GeoNetwork core</name>
 
     <dependencies>
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-        </dependency>
-
         <!-- rewrite url servletfilter -->
         <dependency>
             <groupId>org.tuckey</groupId>
@@ -32,14 +27,6 @@
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>saxon-dom</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jfree</groupId>
-            <artifactId>jfreechart</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>jfree</groupId>
-            <artifactId>jcommon</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openrdf</groupId>
@@ -210,6 +197,10 @@
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
         </dependency>
@@ -228,7 +219,7 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
+            <artifactId>mockito-all</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -282,6 +273,11 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>cachingxslt</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>schema-iso19139</artifactId>
+          <version>${project.version}</version>
         </dependency>
         <dependency> <!-- dummy API for ARC SDE stuff -->
             <groupId>${project.groupId}</groupId>
@@ -375,6 +371,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>2.5</version>
                 <executions>
                     <execution>
                         <id>test-jar</id>

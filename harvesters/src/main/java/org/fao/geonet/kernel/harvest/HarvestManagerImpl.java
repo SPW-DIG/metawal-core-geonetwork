@@ -23,13 +23,7 @@
 
 package org.fao.geonet.kernel.harvest;
 
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 import jeeves.server.context.ServiceContext;
-
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.constants.Edit;
 import org.fao.geonet.constants.Geonet;
@@ -55,6 +49,11 @@ import org.jdom.Element;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * TODO Javadoc.
@@ -129,7 +128,7 @@ public class HarvestManagerImpl implements HarvestInfoProvider, HarvestManager {
      * @throws Exception hmm
      */
 	private Element transformSort(Element nodes, String sortField) throws Exception {
-		Map<String,String> params = new HashMap<String,String>();
+		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("sortField", sortField);
 
 		return Xml.transform(nodes, xslPath + Geonet.File.SORT_HARVESTERS, params);

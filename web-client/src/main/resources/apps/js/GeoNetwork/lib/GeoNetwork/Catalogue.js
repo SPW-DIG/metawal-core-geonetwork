@@ -295,7 +295,7 @@ GeoNetwork.Catalogue = Ext.extend(Ext.util.Observable, {
             mdProcessing: serviceUrl + 'metadata.processing.new',
             mdMassiveChildrenForm: serviceUrl + 'metadata.batch.children.form',
             mdAdmin: serviceUrl + 'metadata.admin.form',
-            mdAdminSave: serviceUrl + 'metadata.admin',
+            mdAdminSave: serviceUrl + 'md.privileges.update',
             mdAdminXml: serviceUrl + 'xml.metadata.admin.form',
             mdBatchAdminXml: serviceUrl + 'xml.metadata.batch.admin.form',
             mdBatchSaveXml: serviceUrl + 'xml.metadata.batch.update.privileges',
@@ -341,7 +341,7 @@ GeoNetwork.Catalogue = Ext.extend(Ext.util.Observable, {
             thesaurusConceptUpdate: serviceUrl + 'thesaurus.updateelement',
             thesaurusConceptDelete: serviceUrl + 'thesaurus.deleteelement',
             getIcons: serviceUrl + 'xml.harvesting.info?type=icons',
-            opensearchSuggest: serviceUrl + 'main.search.suggest',
+            opensearchSuggest: serviceUrl + 'suggest',
             massiveOp: {
                 NewOwner: serviceUrl + 'metadata.batch.newowner.form',
                 Categories: serviceUrl + 'metadata.batch.category.form',
@@ -434,21 +434,34 @@ GeoNetwork.Catalogue = Ext.extend(Ext.util.Observable, {
     },
     /** api: method[isReadOnly]
      *  Return true if GN is is read-only mode
+     *
+     *  Only refresh status every 10 sec to not
+     *  call too many times the server status info service.
      */
+    isReadOnlyCheckInterval: 10000,
+    isReadOnlyStatus: false,
+    isReadOnlyLastCheck: null,
     isReadOnly: function(){
+      var start = new Date().getTime();
+      var interval = start - this.isReadOnlyLastCheck;
+      if (this.isReadOnlyLastCheck == null ||
+        interval > this.isReadOnlyCheckInterval) {
+        this.isReadOnlyStatus = false;
         var request = OpenLayers.Request.GET({
             url: this.services.readOnly,
             async: false
-        }), ro, result = false;
+        }), ro;
 
         if (request.responseXML) {
             var xml = request.responseXML.documentElement;
             ro = xml.getElementsByTagName('readonly')[0];
             if(ro) {
-                result = ro.childNodes[0].nodeValue === "true";
+                this.isReadOnlyStatus = ro.childNodes[0].nodeValue === "true";
+                this.isReadOnlyLastCheck = new Date().getTime();
             }
         }
-        return result;
+      }
+      return this.isReadOnlyStatus;
     },
     /** api: method[onAfterLogin]
      *  :param e: ``Object``

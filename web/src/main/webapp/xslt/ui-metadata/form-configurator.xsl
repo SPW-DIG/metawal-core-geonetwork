@@ -42,6 +42,17 @@
     </xsl:choose>
   </xsl:template>
 
+
+  <!-- Insert a HTML fragment in the editor from the
+  localization files. -->
+  <xsl:template mode="form-builder" match="text">
+    <xsl:variable name="id" select="@ref"/>
+    <xsl:variable name="text" select="$strings/*[name() = $id]"/>
+    <xsl:if test="$text">
+      <xsl:copy-of select="$text/*" copy-namespaces="no"/>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template mode="form-builder" match="action">
     <xsl:variable name="match">
       <xsl:choose>
@@ -398,8 +409,11 @@
       </xsl:choose>
     </xsl:if>
   </xsl:template>
-  
-  
+
+  <xsl:template mode="form-builder" match="section[@template]">
+    <saxon:call-template name="{@template}"/>
+  </xsl:template>
+
   <xsl:template mode="form-builder" match="action[@type='add']">
     <xsl:param name="base" as="node()"/>
     <!-- Match any gn:child nodes from the metadocument which
