@@ -18,6 +18,7 @@
     <module>fgdc-std</module>
     <module>iso19110</module>
     <module>iso19115</module>
+    <module>iso19115-3</module>
     <module>iso19139</module>
     <module>iso19139.rw</module>
   </modules>

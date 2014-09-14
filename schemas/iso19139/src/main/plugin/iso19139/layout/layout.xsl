@@ -34,7 +34,6 @@
       (not($isFlatMode) or $flatModeException)">
       
       <xsl:variable name="directive" select="gn-fn-metadata:getFieldAddDirective($editorConfig, $name)"/>
-
       <xsl:call-template name="render-element-to-add">
         <!-- TODO: add xpath and isoType to get label ? -->
         <xsl:with-param name="label"
