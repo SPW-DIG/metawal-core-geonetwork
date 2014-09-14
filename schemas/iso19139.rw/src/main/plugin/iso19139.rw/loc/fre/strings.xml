@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+  <advanced>Complète</advanced>
+  <default>Simple</default>
+  <simple>Simple</simple>
+  <xml>XML</xml>
+  <metadata>Métadonnées</metadata>
+  <identificationInfo>Identification</identificationInfo>
+  <distributionInfo>Distribution</distributionInfo>
+  <dataQualityInfo>Qualité</dataQualityInfo>
+  <spatialRepresentationInfo>Information spatiale</spatialRepresentationInfo>
+  <referenceSystemInfo>Système de réf.</referenceSystemInfo>
+  <contentInfo>Contenu</contentInfo>
+  <portrayalCatalogueInfo>Représentation</portrayalCatalogueInfo>
+  <metadataConstraints>Md. contraintes</metadataConstraints>
+  <metadataMaintenance>Md. maintenance</metadataMaintenance>
+  <applicationSchemaInfo>Extension</applicationSchemaInfo>
+</strings>
