@@ -1,135 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <codelists xmlns:gmd="http://www.isotc211.org/2005/gmd">
-    <codelist name="rw:AD_AttributeCode_CodeList">
-        <entry>
-            <code>qualitative</code>
-            <label>qualitatif</label>
-            <description>qualitatif</description>
-        </entry>
-        <entry>
-            <code>quantitative</code>
-            <label>quantitatif</label>
-            <description>quantitatif</description>
-        </entry>
-        <entry>
-            <code>binary</code>
-            <label>binaire</label>
-            <description>binaire</description>
-        </entry>
-    </codelist>
-    
-    <codelist name="gmd:MD_ScopeCode">
-        <!-- Metawal new codelist value (also available in comming ISO19139 version -->
-        <entry>
-            <code>application</code>
-            <label>Application</label>
-            <description>Composant informatique possédant une interface grâce à laquelle un utilisateur peut exécuter certaines opérations
-                sur les données géographiques ou sur les métadonnées qui s'y rattachent (visualisation, interrogation, opération
-                d'analyse spatiale)
-            </description>
-        </entry>
-        
-        <entry hideInEditMode="true">
-            <code>attribute</code>
-            <label>Attribut</label>
-            <description>Informations appliquées aux caractéristiques de l’attribut</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>attributeType</code>
-            <label>Type d'attribut</label>
-            <description>Informations appliquées aux caractéristiques de l’entité</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>collectionHardware</code>
-            <label>Collection matérielle</label>
-            <description>Informations appliquées aux caractéristiques d’une collection matérielle</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>collectionSession</code>
-            <label>Collection de session</label>
-            <description>Informations appliquées aux caractéristiques d’une collection de session</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry>
-            <code>dataset</code>
-            <label>Jeu de données ou géodonnées</label>
-            <description>Ensemble de géodonnées concernant une thématique particulière qui ont été produites ou collectées dans un but
-                spécifique par un seul producteur en suivant les mêmes spécifications.
-            </description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry>
-            <code>series</code>
-            <label>Série de jeux de données</label>
-            <description>Ensemble de jeux de données qui partagent des caractéristiques, des objectifs ou des spécifications similaires. La
-                série fait référence à une notion de répétition dans l'espace ou dans le temps de jeux de données de même nature.
-                Images aériennes d'une même ligne de vol
-            </description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry>
-            <code>nonGeographicDataset</code>
-            <label>Jeux de données non géographiques</label>
-            <description>Informations appliquées aux caractéristiques de jeux de données non géographiques</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>dimensionGroup</code>
-            <label>Dimension d'un groupe</label>
-            <description>Informations appliquées à un groupe</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>feature</code>
-            <label>Entité</label>
-            <description>Informations appliquées à une entité</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>featureType</code>
-            <label>Type d’entité</label>
-            <description>Informations appliquées à un type d’entité</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>propertyType</code>
-            <label>Type de propriété</label>
-            <description>Informations appliquées à un type de propriété</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>fieldSession</code>
-            <label>Champ de session</label>
-            <description>Informations appliquées aux caractéristiques d’un champ de session</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>software</code>
-            <label>Logiciel</label>
-            <description>Informations appliquées à programme ou à une routine</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry>
-            <code>service</code>
-            <label>Service géographique ou géoservice</label>
-            <description>Composant informatique autonome sans interface utilisateur capable d'interagir avec d'autres services et d’exécuter
+	<codelist name="rw:AD_AttributeCode_CodeList">
+		<entry>
+			<code>qualitative</code>
+			<label>qualitatif</label>
+			<description>qualitatif</description>
+		</entry>
+		<entry>
+			<code>quantitative</code>
+			<label>quantitatif</label>
+			<description>quantitatif</description>
+		</entry>
+		<entry>
+			<code>binary</code>
+			<label>binaire</label>
+			<description>binaire</description>
+		</entry>
+	</codelist>
+	<codelist name="gmd:MD_ScopeCode">
+		<!-- Metawal new codelist value (also available in coming ISO19139 version -->
+		<entry>
+			<code>dataset</code>
+			<label>Jeu de données géographiques ou jeu de géodonnées</label>
+			<description>Ensemble de géodonnées concernant une thématique particulière qui ont été produites ou collectées dans un but spécifique par un seul producteur en suivant les mêmes spécifications. Une géodonnée ou donnée géographique est une donnée avec une composante géographique. La composante géographique peut être explicite, par exemple sous la forme d’une partie graphique reprenant les coordonnées géographiques de la localisation d’un objet, ou implicite, par liaison à un lieu exprimé sous forme d’une adresse, d’un code de commune, etc.</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>series</code>
+			<label>Série de jeux de données géographiques</label>
+			<description>Ensemble de jeux de données géographiques qui partagent des caractéristiques, des objectifs ou des spécifications similaires. La série fait référence à une notion de répétition dans l'espace ou dans le temps de jeux de données de même nature. Ex: Images aériennes d'une même ligne de vol, ensemble de cartes topographiques couvrant un territoire.</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>application</code>
+			<label>Application</label>
+			<description>Composant informatique possédant une interface grâce à laquelle un utilisateur peut exécuter certaines opérations sur les données géographiques ou sur les métadonnées qui s'y rattachent (visualisation, interrogation, opération d'analyse spatiale)</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>service</code>
+			<label>Service géographique ou géoservice</label>
+			<description>Composant informatique autonome sans interface utilisateur capable d'interagir avec d'autres services et d’exécuter
                 des opérations sur des données géographiques ou sur les métadonnées qui s'y rattachent.
             </description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>model</code>
-            <label>Modèle</label>
-            <description>Informations appliquées à modèle décrivant les objets ou un ensemble d'objets</description>
-        </entry>
-        <!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
-        <entry hideInEditMode="true">
-            <code>tile</code>
-            <label>Tuile</label>
-            <description>Tuile</description>
-        </entry>
-    </codelist>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>attribute</code>
+			<label>Attribut</label>
+			<description>Informations appliquées aux caractéristiques de l’attribut</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>attributeType</code>
+			<label>Type d'attribut</label>
+			<description>Informations appliquées aux caractéristiques de l’entité</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>collectionHardware</code>
+			<label>Collection matérielle</label>
+			<description>Informations appliquées aux caractéristiques d’une collection matérielle</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>collectionSession</code>
+			<label>Collection de session</label>
+			<description>Informations appliquées aux caractéristiques d’une collection de session</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>nonGeographicDataset</code>
+			<label>Jeux de données non géographiques</label>
+			<description>Informations appliquées aux caractéristiques de jeux de données non géographiques</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>dimensionGroup</code>
+			<label>Dimension d'un groupe</label>
+			<description>Informations appliquées à un groupe</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>feature</code>
+			<label>Entité</label>
+			<description>Informations appliquées à une entité</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>featureType</code>
+			<label>Type d’entité</label>
+			<description>Informations appliquées à un type d’entité</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>propertyType</code>
+			<label>Type de propriété</label>
+			<description>Informations appliquées à un type de propriété</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>fieldSession</code>
+			<label>Champ de session</label>
+			<description>Informations appliquées aux caractéristiques d’un champ de session</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>software</code>
+			<label>Logiciel</label>
+			<description>Informations appliquées à programme ou à une routine</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>model</code>
+			<label>Modèle</label>
+			<description>Informations appliquées à modèle décrivant les objets ou un ensemble d'objets</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry hideInEditMode="true">
+			<code>tile</code>
+			<label>Tuile</label>
+			<description>Tuile</description>
+		</entry>
+	</codelist>
 </codelists>
