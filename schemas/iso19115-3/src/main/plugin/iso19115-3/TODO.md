@@ -2,32 +2,33 @@
 
 ## Translations
 
-* Translate codelists at least in French and English
-* Translate labels at least in French and English
-* See https://github.com/geonetwork/schema-plugins/tree/master/iso19115-3/loc
+* Some elements are missing, use the editor to identify missing one (eg. mri:MD_AssociatedResource, mri:className). Cf tous les messages dans les logs:
+```
+gn-fn-metadata:getLabel | missing translation in schema iso19115-3 for mri:MD_AssociatedResource.
+gn-fn-metadata:getLabel | missing translation in schema iso19115-3 for mri:name.
+```
+
+## Schematron
+
+* Collect schema/**/*.sch for ISO validation level
+* Add French translation to it (using sch:diagnostic ?)
+* Convert iso19139 INSPIRE schematron to iso19115-3
 
 ## Associated resources
 
-* Rework GetRelation to be more schema agnostic. See https://github.com/geonetwork/core-geonetwork/blob/develop/services/src/main/java/org/fao/geonet/guiservices/metadata/GetRelated.java#L208
- * eg. parent are not extracted properly for the time being.
 * Rework set/Unset thumbnail to work only on URL or filename and not on type. This will allow to have more than 2 thumbnails.
 
 ## Editor
 
-* Configure multilingual element exlcusion list https://github.com/geonetwork/schema-plugins/blob/master/iso19115-3/layout/config-editor.xml#L121
-* Check element type for form field https://github.com/geonetwork/schema-plugins/blob/master/iso19115-3/layout/config-editor.xml#L22
+* Configure multilingual element exclusion list https://github.com/geonetwork/schema-plugins/blob/master/iso19115-3/layout/config-editor.xml#L121
 
-## Templates
-
-* Template general en vector, raster, map
-* See https://github.com/geonetwork/schema-plugins/tree/master/iso19115-3/templates
+## Subtemplates
 
 ## Conversions
 
 * ISO19139 to ISO19115-3
  * metadataStandard force to ISO19115-3 ?
  * codeList anyUriRef ?
-
 * ISO19115-3 to ISO19139
 
 

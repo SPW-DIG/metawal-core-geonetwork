@@ -63,22 +63,53 @@
     <for name="mdb:referenceSystemInfo" addDirective="data-gn-crs-selector"/>
 
     <for name="mdb:contact" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-tag-name="cit:CI_Responsibility" data-param-name="cit:role/cit:CI_RoleCode/@codeListValue"/>
+      <directiveAttributes
+              data-template-add-action="true"
+              data-template-type="contact"
+              data-filter='{"_root": "cit:CI_Responsibility"}'
+              data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
     <for name="mri:pointOfContact" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-tag-name="cit:CI_Responsibility" data-param-name="cit:role/cit:CI_RoleCode/@codeListValue"/>
+      <directiveAttributes
+              data-template-add-action="true"
+              data-template-type="contact"
+              data-filter='{"_root": "cit:CI_Responsibility"}'
+              data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
     <for name="mrd:distributor" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-tag-name="cit:CI_Responsibility" data-param-name="cit:role/cit:CI_RoleCode/@codeListValue"/>
+      <directiveAttributes
+              data-template-add-action="true"
+              data-template-type="contact"
+              data-filter='{"_root": "cit:CI_Responsibility"}'
+              data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
     <for name="gmd:processor" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-tag-name="cit:CI_Responsibility" data-param-name="cit:role/cit:CI_RoleCode/@codeListValue"/>
+      <directiveAttributes
+              data-template-add-action="true"
+              data-template-type="contact"
+              data-filter='{"_root": "cit:CI_Responsibility"}'
+              data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
     <for name="cit:citedResponsibleParty" addDirective="data-gn-directory-entry-selector">
-      <directiveAttributes data-tag-name="cit:CI_Responsibility" data-param-name="cit:role/cit:CI_RoleCode/@codeListValue"/>
+      <directiveAttributes
+              data-template-add-action="true"
+              data-template-type="contact"
+              data-filter='{"_root": "cit:CI_Responsibility"}'
+              data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
     </for>
-    
-    <for name="gmd:descriptiveKeywords" addDirective="data-gn-thesaurus-selector"/>
+
+
+    <for name="cit:logo" addDirective="data-gn-directory-entry-selector">
+      <directiveAttributes
+              data-template-add-action="true"
+              data-template-type="logo"
+              data-filter='{"_root": "mcc:MD_BrowseGraphic"}'/>
+    </for>
+
+    <for name="mri:descriptiveKeywords" addDirective="data-gn-thesaurus-selector">
+      <directiveAttributes
+              data-transformation="to-iso19115-3-keyword"/>
+    </for>
   </fields>
 
 
@@ -130,7 +161,7 @@
     to restrict the list.
     -->
     <exclude>
-      <!-- TODO: Update list -->
+      <!-- TODO: Update namespace prefix -->
       <name>gmd:identifier</name>
       <name>gmd:metadataStandardName</name>
       <name>gmd:metadataStandardVersion</name>
@@ -212,6 +243,16 @@
           <field xpath="/mdb:MD_Metadata/mdb:metadataProfile"/>
         </section>
       </tab>
+
+      <!-- Elements that should not use the "flat" mode -->
+      <flatModeExceptions>
+        <for name="mri:descriptiveKeywords" />
+        <for name="mri:pointOfContact"/>
+        <for name="mrd:distributor"/>
+        <for name="mdb:contact"/>
+        <for name="mcc:processor"/>
+        <for name="cit:citedResponsibleParty"/>
+      </flatModeExceptions>
     </view>
     <view name="advanced">
       <tab id="identificationInfo" default="true">
@@ -244,8 +285,8 @@
       <tab id="contentInfo" toggle="true">
         <section xpath="/mdb:MD_Metadata/mdb:contentInfo" or="contentInfo" in="/mdb:MD_Metadata"/>
       </tab>
-      <tab id="portrayalCatalogueInfo" toggle="true">
-        <section xpath="/mdb:MD_Metadata/mdb:portrayalCatalogueInfo" or="portrayalCatalogueInfo"
+      <tab id="acquisitionInformation" toggle="true">
+        <section xpath="/mdb:MD_Metadata/mdb:acquisitionInformation" or="acquisitionInformation"
                  in="/mdb:MD_Metadata"/>
       </tab>
       <tab id="metadata">
