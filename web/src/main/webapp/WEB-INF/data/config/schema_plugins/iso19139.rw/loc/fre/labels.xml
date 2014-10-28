@@ -9,7 +9,7 @@
 		<help><![CDATA[<b>Exemple de référence de la fiche de métadonnées originale : </b>&#10;http://metawal.wallonie.be/geonetwork/srv/fre/search?uuid=3d1d685c-0f89-443f-af41-331ce63f0943]]></help>
 		<condition>Obligatoire</condition>
 	</element>
-	<element name="gmd:accessConstraints" id="70.0">
+	<element name="gmd:accessConstraints" id="70.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints">
 		<label>Régime d'accès à la ressource</label>
 		<description>Régime d'accès à la ressource spécifié par le propriétaire ou le gestionnaire de la ressource.</description>
 		<help><![CDATA[Choisir une des valeurs proposées et utiliser ensuite l'élement "Conditions détaillées" pour spécifier le régime d'accès.<ul><li><b><i>Restreint</i></b> : A utiliser lorsque l'accès est restreint aux seuls membres d'une organisation ou d'un groupe spécifique.</li><li><b><i>Autres restrictions</i></b> : A utiliser dans les autres cas.</li></ul>]]>Le cas échéant  spécifier en plus l'assise légale grâce à un autre élement "Conditions détaillées".Enfin, si les données sont accessible à travers un service ou une application de consultation, en spécifier également le régime d'accès.</help>
@@ -56,7 +56,8 @@
 		<help>Code alphanumérique de l'identifiant. Ces informations sont du type PT_FreeText et sont gérées dans la classe du même nom.</help>
 		<condition>Obligatoire</condition>
 		<helper editorMode="radio">
-			<option value="31370">Lambert Belge (EPSG:31370)</option>
+			<option value="31370">Lambert Belge 72 (EPSG:31370)</option>
+			<option value="3812">Lambert Belge 2008 (EPSG:3812)</option>
 			<option value="4326">WGS 84 (EPSG:4326)</option>
 		</helper>
 	</element>
@@ -146,6 +147,43 @@
 		<help><![CDATA[Ils peuvent être libres ou provenir d'un vocabulaire contrôlé par une autorité (thésaurus, ou dictionnaire). Pour ajouter un mot-clé provenant d'un thésaurus, <i>cliquer sur les jumelles</i>.]]></help>
 		<help><![CDATA[<b>Il est obligatoire de renseigner :</b><li>pour toutes les ressources : au moins un mot-clé provenant du thésaurus "Thèmes du géoportail wallon"</li><li>pour les jeux de données et séries concernées par INSPIRE et pour les services fortement couplés à une donnée INSPIRE : au moins un mot-clé provenant du thésaurus "Thèmes INSPIRE" <b>ET</b> le mot-clé "Reporting INSPIRE" du thésaurus "InfraSIG"</li><li>pour tous les services INSPIRE : un mot-clé provenant du thésaurus "Taxonomie des services INSPIRE" <b>ET</b> le mot-clé "Reporting INSPIRE" du thésaurus "InfraSIG"</li>]]></help>
 		<help><![CDATA[<b>Recommandations :</b><li>Mettez-vous à la place de l'utilisateur qui cherche une ressource. Encodez des mots-clés relatifs à la nature et au contenu attributaire de la ressource, élargissez au domaine et aux usages potentiels de la ressource. Sortez du jargon métier et explorez le champ sémantique de la ressource grâce au dictionnaires de synonymes, aux ontologies et au thésaurus.</li><li>Sélectionnez des mots-clés provenant de thésauri internationaux, comme le GEMET, pour donner une visibilité multilingue à votre ressource.</li><li>Les données disponibles en open data peuvent être signalées par le mot-clé "Open data" du thésaurus "InfraSIG"</li><li>Il est autorisé d'utiliser les mots-clés du thésaurus "Thèmes INSPIRE" pour des ressources qui ne sont pas concernées par INSPIRE.</li>]]></help>
+	</element>
+	<element name="gmd:distributionFormat" id="271.0">
+		<label>Format de distribution</label>
+		<description>Description du format de distribution</description>
+		<condition/>
+	</element>
+	<element name="gmd:distributionOrderProcess" id="281.0">
+		<label>Processus de distribution et de commande</label>
+		<description>Informations sur les processus de commande de la donnée, sur les coûts et les formalités de commande.</description>
+		<help>Décrire de façon complète comment on peut obtenir la donnée par d'autres moyens que les canaux en lignes par lesquels elle est distribuée automatiquement.</help>
+		<condition/>
+	</element>
+	<element name="gmd:distributorContact" id="280.0">
+		<label>Informations de contact</label>
+		<description>Informations de contact du distributeur</description>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:distributorFormat" id="282.0">
+		<label>Format spécifique au distributeur</label>
+		<description>Informations sur le format spécifique offert par le distributeur</description>
+		<help>Indiquer les formats qui sont disponibles moyennant une interaction avec le distributeur identifié.</help>
+		<condition>Condition</condition>
+	</element>
+	<element name="gmd:distributorTransferOptions" id="283.0">
+		<label>Options de transfert du distributeur</label>
+		<description>Informations sur la façon d'accéder aux ressources spécifiquement distribuées par le distributeur identifié.</description>
+		<condition/>
+	</element>
+	<element name="gmd:DQ_DataQuality" id="78.0">
+		<label>Qualité des données</label>
+		<description>Information sur la qualité des données</description>
+		<help/>
+	</element>
+	<element name="gmd:DQ_Scope" id="138.0">
+		<label>Domaine d'appliquabilité</label>
+		<description>La portion spécifique des données à laquelle s'appliquent les informations de qualité</description>
+		<help>Par exemple : tout le jeu de données, certains attributs...</help>
 	</element>
 	<element name="gmd:electronicMailAddress" id="386.0">
 		<label>Adresse e-mail</label>
@@ -281,19 +319,47 @@
 		<help>Si la fiche est multinlingue, indiquer la lanque initiale de la fiche, à partir de laquelle les traductions sont effectuées.</help>
 		<condition>Obligatoire</condition>
 	</element>
-	<element name="gmd:MD_Constraints" id="67.0">
+	<element name="gmd:level" id="139.0">
+		<label>Niveau du domaine d'appliquabilité</label>
+		<description>Domaine auquel s'appliquent les informations de qualité. La catégorie à laquelle se rapporte cette information peut être indiquée grâce à la liste de codes prédéfinis (exemple : attributs, objets géométriques, jeu de données, etc.).</description>
+		<help>Pour INSPIRE, le domaine auquel s'appliquent les informations de qualité doit être le niveau le plus élevé (jeu de données, service, ..). La liste de choix est retreinte à ces valeurs.</help>
+	</element>
+	<element name="gmd:LI_Lineage" id="82.0">
+		<label>Gén�alogie, provenance</label>
+		<description>Explication générale sur les opérations ayant mené au jeu de données tel qu'il est proposé</description>
+		<help/>
+	</element>
+	<element name="gmd:lineage" id="81.0">
+		<label>Généalogie des données</label>
+		<description>Explication générale sur les opérations ayant mené au jeu de données tel qu'il est proposé</description>
+		<help/>
+	</element>
+	<element name="gmd:MD_Constraints" id="67.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints">
 		<label>Autres conditions</label>
 		<description>Description des conditions à respecter pour faire un bon usage de la ressource.</description>
 		<help/>
 		<condition/>
 	</element>
-	<element name="gmd:MD_LegalConstraints" id="69.0">
+	<element name="gmd:MD_Distribution" id="270.0">
+		<label>Distribution</label>
+		<description>Information sur le distributeur de la ressource, sur les moyens d'accéder à la ressource et sur la documentation complémentaire sur la ressource.</description>
+		<help>Les modes de distribution qui nécessitent une interaction avec un distributeur (remplir une licence, apporter un disque dur...) doivent être placées sous l'élément "Distributeur".</help>
+		<help>Les modes de distribution qui ne font pas intervenir de distributeur (service, application...) et la documentation complémentaire sur la ressource doivent être placées sous l'élément "Options de transfert et documentation". Les formats de données accessibles sans interaction avec un distributeur doivent être placées sous l'élément "Format de distribution".</help>
+		<condition/>
+	</element>
+	<element name="gmd:MD_Format" id="284.0">
+		<label>Format</label>
+		<description>Formats dans lesquels la donnée peut être fournie.</description>
+		<help>Indiquer les formats qui sont disponibles en ligne directement, sans interaction avec un distributeur. Les formats spécifiques disponibles uniquement moyennant une interaction avec un distributeur doivent être indiqués sous le distributeur qui les fournit.</help>
+		<condition/>
+	</element>
+	<element name="gmd:MD_LegalConstraints" id="69.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
 		<label>Conditions légales et contractuelles</label>
 		<description>Description des conditions d'accès et d'utilisation de la ressource définies par la loi ou à travers un contrat.</description>
 		<help/>
 		<condition/>
 	</element>
-	<element name="gmd:MD_SecurityConstraints" id="73.0">
+	<element name="gmd:MD_SecurityConstraints" id="73.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints">
 		<label>Conditions liées à la sécurité</label>
 		<description>Description des conditions d'accès et d'utilisation de la ressource liées à la sécurité nationale.</description>
 		<help/>
@@ -319,10 +385,18 @@
 	</element>
 	<element name="gmd:name" id="285.0" context="gmd:MD_Format">
 		<label>Nom du format</label>
-		<description>Nom des formats de transfert des données</description>
-		<help>Nom du format de transfert de données, par exemple TIFF, ZIP, etc.</help>
+		<description>Nom des formats de données accessibles à la distribution.</description>
+		<help>Indiquer le nom complet du format suivi  de son extension entre parenthèses.</help>
+		<help>Lorsque plusieurs formats sont disponibles, les indiquer chacun dans un élément "Format de distribution". Utiliser le + pour faire apparaître de nouveaux éléments.</help>
 		<condition>Obligatoire</condition>
 		<helper rel="gmd:version">
+			<option value="ESRI Shapefile (.shp)">ESRI Shapefile (.shp)</option>
+			<option value="ESRI File Geodatabase (.fgdb)">ESRI File Geodatabase (.fgdb)</option>
+			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
+			<option value="KML (.kml ou .kmz)">KML (.kml ou .kmz)</option>
+			<option value="TIFF (.tif ou .tiff)">TIFF (.tif ou .tiff)</option>
+			<option value="GeoTIFF (.tif)">GeoTIFF (.tif)</option>
+			<option value="">-------------------------------------</option>
 			<option value="Adobe PDF (.pdf)">Adobe PDF (.pdf)</option>
 			<option value="Adobe 3D PDF (.pdf)">Adobe 3D PDF (.pdf)</option>
 			<option value="Adobe Geospatial PDF (.pdf)">Adobe Geospatial PDF (.pdf)</option>
@@ -332,18 +406,13 @@
 			<option value="Comma Separated Value (.csv)">Comma Separated Value (.csv)</option>
 			<option value="EGeoSciML (.gsml)">GeoSciML (.gsml)</option>
 			<option value="ESRI ArcGIS Map Document (.mxd)">ESRI ArcGIS Map Document (.mxd)</option>
-			<option value="ESRI File Geodatabase (.fgdb)">ESRI File Geodatabase (.fgdb)</option>
-			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
-			<option value="ESRI Shapefile (.shp)">ESRI Shapefile (.shp)</option>
-			<option value="GeoTIFF (.tif)">GeoTIFF (.tif)</option>
 			<option value="GIF (.gif)">GIF (.gif)</option>
 			<option value="GML (.gml)">GML (.gml)</option>
-			<option value="GML-SF">GML-SF</option>
 			<option value="GML INSPIRE (.gml)">GML INSPIRE (.gml)</option>
+			<option value="GML-SF">GML-SF</option>
 			<option value="GPX (.gpx)">GPX (.gpx)</option>
 			<option value="JPEG (.jpg ou .jpeg)">JPEG (.jpg ou .jpeg)</option>
 			<option value="JPEG2000 (.jp2 ou .j2k)">JPEG2000 (.jp2 ou .j2k)</option>
-			<option value="KML (.kml ou .kmz)">KML (.kml ou .kmz)</option>
 			<option value="MapInfo MIF/MID (.mif)">MapInfo MIF/MID (.mif)</option>
 			<option value="Microsoft Access (.mdb ou .accdb)">Microsoft Access (.mdb ou .accdb)</option>
 			<option value="Microsoft Excel (.xls ou .xlsx)">Microsoft Excel (.xls ou .xlsx)</option>
@@ -352,9 +421,104 @@
 			<option value="STAR GIS">STAR GIS</option>
 			<option value="SVG (.svg)">SVG (.svg)</option>
 			<option value="TXT (.txt)">TXT (.txt)</option>
-			<option value="TIFF (.tif ou .tiff)">TIFF (.tif ou .tiff)</option>
 			<option value="ZIP (.zip)">ZIP (.zip)</option>
 		</helper>
+	</element>
+	<element name="gmd:nameOfMeasure" id="100.0">
+		<label>Nom du test</label>
+		<description>Nom du test qui a été appliqué aux données</description>
+		<help>Choisir l'élément de qualité évalué dans la liste.</help>
+		<help> Pour INSPIRE, choisir l'élément Cohérence du domaine de valeurs.</help>
+		<!-- TODO : translate -->
+		<!-- ISO19138 Data quality basic measures Annex C - under revision ISO 19157 http://www.iso.org/iso/fr/catalogue_detail.htm?csnumber=32575 -->
+		<helper rel="gmd:measureDescription">
+			<option value="">-- Exhaustivité --</option>
+			<option value="Excess item" title="Indication that an item is incorrectly present in the data" id="ISO19138:2006:measure:1">Elément en excédent</option>
+			<option value="Number of excess items" title="Number of items within the dataset, that should not have been in the dataset" id="ISO19138:2006:measure:2">Nombre d'éléments en excédent</option>
+			<option value="Rate of excess items" title="Number of excess items in the dataset in relation to the number of items that should have been present" id="ISO19138:2006:measure:3">Pourcentage d'éléments en excédent</option>
+			<option value="Number of duplicate feature instances" title="Total number of exact duplications of feature instances within the data. Count of all items in the data that are incorrectly extracted with duplicate geometrie" id="ISO19138:2006:measure:4">Nombre de doublons</option>
+			<option value="Missing item" title="Indicator that shows that a specific item is missing in the data" id="ISO19138:2006:measure:5">Elément manquant</option>
+			<option value="Number of missing items" title="Count of all items that should have been in the dataset and are missing" id="ISO19138:2006:measure:6">Nombre d'éléments manquants</option>
+			<option value="Rate of missing items" title="Number of missing items in the dataset in relation to the number of items that should have been present" id="ISO19138:2006:measure:7">Pourcentage d'éléments manquants</option>
+			<option value="">-- Cohérence conceptuelle / logique --</option>
+			<option value="Conceptual schema noncompliance" title="Indication that an item is not compliant to the rules of the relevant conceptual schema" id="ISO19138:2006:measure:8">Elément non conforme au schéma conceptuel</option>
+			<option value="Conceptual schema compliance" title="Indication that an item complies with the rules of the relevant conceptual schema" id="ISO19138:2006:measure:9">Conformité au schéma conceptuel</option>
+			<option value="Number of items noncompliant to the rules of the conceptual schema" title="Count of all items in the dataset that are noncompliant to the rules of the conceptual schema. If the conceptual schema explicitly or implicitly describes rules, these rules have to be followed. Violations against such rules can e.g. be invalid placement of features within a defined tolerance, duplication of features and invalid overlap of features." id="ISO19138:2006:measure:10">Nombre d'éléments non conformes aux règles du schéma conceptuel</option>
+			<option value="Number of invalid overlaps of surfaces" title="Total number of erroneous overlaps within the data Which surfaces may overlap and which must not is application dependent. Not all overlapping surfaces are necessarily erroneous. When reporting this data quality measure the types of feature classes corresponding to the illegal overlapping surfaces have to be reported as well." id="ISO19138:2006:measure:11">Nombre de chevauchements invalides de surface</option>
+			<option value="Non-compliance rate with respect to the rules of the conceptual schema" title="Number of items in the dataset that are noncompliant to the rules of the conceptual schema in relation to the total number of these items supposed to be in the dataset" id="ISO19138:2006:measure:12">Taux de non-conformité au regard des règles du schéma conceptuel</option>
+			<option value=" Compliance rate with the rules of the conceptual schema" title="number of items in the dataset in compliance with the rules of the conceptual schema in relation to the total number of items" id="ISO19138:2006:measure:13">Pourcentage de conformité avec les règles du schéma conceptuel</option>
+			<option value="">-- Cohérence logique / de domaine de valeur --</option>
+			<option value="Value domain non-conformance" title="Indication of if an item is not in conformance with its value domain" id="ISO19138:2006:measure:14">Non conformité au domaine de valeur</option>
+			<option value="Value domain conformance" title="Indication of if an item is conforming to its value domain" id="ISO19138:2006:measure:15">Conformité au domaine de valeur</option>
+			<option value="Number of items not in conformance with their value domain" title="Count of all items in the dataset that are not in conformance with their value domain." id="ISO19138:2006:measure:16">Nombre d'éléments non conformes avec leur domaine de valeurs</option>
+			<option value="Value domain conformance rate" title="Number of items in the dataset that are in conformance with their value domain in relation to the total number of items in the dataset" id="ISO19138:2006:measure:17">Taux de conformité au domaine de valeur</option>
+			<option value="Value domain non-conformance rate" title="the number of items in the dataset that are not in conformance with their value domain in relation to the total number of items" id="ISO19138:2006:measure:18">Taux de non-conformité au domaine de valeur</option>
+			<option value="Physical structure conflicts" title="Count of all items in the dataset that are stored in conflict with the physical structure of the dataset" id="ISO19138:2006:measure:19">Conflits de structure physique</option>
+			<option value="Physical structure conflict rate" title="Number of items in the dataset that are stored in conflict with the physical structure of the dataset divided by the total number of items" id="ISO19138:2006:measure:20">Taux de conflit de structure physique</option>
+			<option value="">-- Cohérence logique / topologique --</option>
+			<option value="Number of faulty point-curve connections" title="Number of faulty point-curve connections in the dataset. A point-curve connection exists where different curves touch. These curves have an intrinsic topological relationship that has to reflect the true constellation. If the point-curve connection contradicts the universe of discourse, the point-curve connection is faulty with respect to this data quality measure. The data quality measure counts the number of errors of this kind." id="ISO19138:2006:measure:21">Number of faulty point-curve connections</option>
+			<option value="Rate of faulty point-curve connections" title="Number of faulty link node connections in relation to the number of supposed link node connections" id="ISO19138:2006:measure:22">Rate of faulty point-curve connections</option>
+			<option value="Number of missing connection due to undershoots" title="Count of items in the dataset, within the parameter tolerance, that are mismatched due to undershoots" id="ISO19138:2006:measure:23">Number of missing connection due to undershoots</option>
+			<option value="Number of missing connections due to overshoots" title="Count of items in the dataset, within the parameter tolerance, that are mismatched due to overshoots" id="ISO19138:2006:measure:24">Number of missing connections due to overshoots</option>
+			<option value="Number of invalid slivers" title="Count of all items in the dataset that are invalid sliver surfaces. A sliver is an unintended area that occurs when adjacent surfaces are not digitized properly. The borders of the adjacent surfaces may unintentionally gap or overlap by small amounts to cause a topological error." id="ISO19138:2006:measure:25">Number of invalid slivers</option>
+			<option value="Number of invalid self intersect errors" title="Count of all items in the data that illegally intersect with themselves" id="ISO19138:2006:measure:26">Number of invalid self intersect errors</option>
+			<option value="Number of invalid self overlap errors" title="Count of all items in the data that illegally self overlap" id="ISO19138:2006:measure:27">Number of invalid self overlap errors</option>
+			<option value="">-- Positional accuracy / Absolute or external accuracy / General measures --</option>
+			<option value="Mean value of positional uncertainties" title="Mean value of the positional uncertainties for a set of positions where the positional uncertainties are defined as the distance between a measured position and what is considered as the corresponding true position" id="ISO19138:2006:measure:28">Mean value of positional uncertainties</option>
+			<option value="Mean value of positional uncertainties excluding outliers" title="For a set of points where the distance does not exceed a defined threshold the arithmetical average of distances between their measured positions and what is considered as the corresponding true positions" id="ISO19138:2006:measure:29">Mean value of positional uncertainties excluding outliers</option>
+			<option value="Number of positional uncertainties above a given threshold" title="Number of positional uncertainties above a given threshold for a set of positions. The errors are defined as the distance between a measured position and what is considered as the corresponding true position" id="ISO19138:2006:measure:30">Number of positional uncertainties above a given threshold</option>
+			<option value="Rate of positional errors above a given threshold" title="Number of positional uncertainties above a given threshold for a set of positions in relation to the total number of measured positions. The errors are defined as the distance between a measured position and what is considered as the corresponding true position." id="ISO19138:2006:measure:31">Rate of positional errors above a given threshold</option>
+			<option value="Covariance matrix" title="A symmetrical square matrix with variances of point coordinates on the main diagonal and covariances between these coordinates as off-diagonal elements." id="ISO19138:2006:measure:32">Covariance matrix</option>
+			<option value="">-- Positional accuracy / Absolute or external accuracy / Vertical --</option>
+			<option value="Linear error probable" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 50%." id="ISO19138:2006:measure:33">Linear error probable</option>
+			<option value="Standard linear error" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 68.3%." id="ISO19138:2006:measure:34">Standard linear error</option>
+			<option value="Linear map accuracy at 90% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 90%." id="ISO19138:2006:measure:35">Linear map accuracy at 90% significance level</option>
+			<option value="Linear map accuracy at 95% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 95%." id="ISO19138:2006:measure:36">Linear map accuracy at 95% significance level</option>
+			<option value="Linear map accuracy at 99% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 99%." id="ISO19138:2006:measure:37">Linear map accuracy at 99% significance level</option>
+			<option value="Near certainty linear error" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 99.8%." id="ISO19138:2006:measure:38">Near certainty linear error</option>
+			<option value="Root mean square error" title="Standard deviation, where the true value is not estimated from the observations but known a priori." id="ISO19138:2006:measure:39">Root mean square error</option>
+			<option value="Absolute linear error at 90% significance level of biased vertical data (Alternative 1)" title="The absolute vertical accuracy of the data�s coordinates, expressed in terms of linear error at 90% probability given that a bias is present." id="ISO19138:2006:measure:40">Absolute linear error at 90% significance level of biased vertical data (Alternative 1)</option>
+			<option value="Absolute linear error at 90% significance level of biased vertical data" title="The absolute vertical accuracy of the data�s coordinates, expressed in terms of linear error at 90% probability given that a bias is present." id="ISO19138:2006:measure:41">Absolute linear error at 90% significance level of biased vertical data</option>
+			<option value="">-- Positional accuracy / Absolute or external accuracy / Horizontal --</option>
+			<option value="Circular standard deviation" title="Radius describing a circle, in which the true point location lies with the probability of 39.4%." id="ISO19138:2006:measure:42">Circular standard deviation</option>
+			<option value="Circular error probable" title="Radius describing a circle, in which the true point location lies with the probability of 50%." id="ISO19138:2006:measure:43">Circular error probable</option>
+			<option value="Circular map accuracy standard" title="Radius describing a circle, in which the true point location lies with the probability of 90%." id="ISO19138:2006:measure:44"> Circular map accuracy standard</option>
+			<option value="Circular error at 95% significance level" title="Radius describing a circle, in which the true point location lies with the probability of 95%." id="ISO19138:2006:measure:45">Circular error at 95% significance level</option>
+			<option value="Circular near certainty error" title="Radius describing a circle, in which the true point location lies with the probability of 99.8%." id="ISO19138:2006:measure:46">Circular near certainty error</option>
+			<option value="Root mean square error of planimetry" title="Radius of a circle around the given point, in which the true value lies with probability P." id="ISO19138:2006:measure:47">Root mean square error of planimetry</option>
+			<option value="Absolute circular error at 90% significance level of biased data (Alternative 2)" title="The absolute horizontal accuracy of the data�s coordinates, expressed in terms of circular error at 90% probability given that a bias is present." id="ISO19138:2006:measure:48">Absolute circular error at 90% significance level of biased data (Alternative 2)</option>
+			<option value="Absolute circular error at 90% significance level of biased data" title="The absolute horizontal accuracy of the data�s coordinates, expressed in terms of circular error at 90% probability given that a bias is present." id="ISO19138:2006:measure:49">Absolute circular error at 90% significance level of biased data</option>
+			<option value="Uncertainty ellipse" title="2D ellipse with the two main axes indicating the direction and magnitude of the highest and the lowest uncertainty of a 2D point" id="ISO19138:2006:measure:50">Uncertainty ellipse</option>
+			<option value="Confidence ellipse" title="2D ellipse with the two main axes indicating the direction and magnitude of the highest and the lowest uncertainty of a 2D point" id="ISO19138:2006:measure:51">Confidence ellipse</option>
+			<option value="">-- Positional accuracy / Relative or internal accuracy --</option>
+			<option value="Relative vertical error" title="Evaluation of the random errors of one relief feature to another in the same dataset or on the same map/chart. It is a function of the random errors in the two elevations with respect to a common vertical datum." id="ISO19138:2006:measure:52">Relative vertical error</option>
+			<option value="Relative horizontal error" title="Evaluation of the random errors in the horizontal position of one feature to another in the same dataset or on the same map/chart." id="ISO19138:2006:measure:53">Relative horizontal error</option>
+			<option value="">-- Temporal accuracy / Accuracy of a time measurement --</option>
+			<option value="Time accuracy at 68.3% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 68.3%." id="ISO19138:2006:measure:54">Time accuracy at 68.3% significance level</option>
+			<option value="Time accuracy at 50% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 50%." id="ISO19138:2006:measure:55">Time accuracy at 50% significance level</option>
+			<option value="Time accuracy at 90% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 90%." id="ISO19138:2006:measure:56">Time accuracy at 90% significance level</option>
+			<option value="Time accuracy at 95% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 95%." id="ISO19138:2006:measure:57">Time accuracy at 95% significance level</option>
+			<option value="Time accuracy at 99% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 99%." id="ISO19138:2006:measure:58">Time accuracy at 99% significance level</option>
+			<option value="Time accuracy at 99.8% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 99.8%." id="ISO19138:2006:measure:59">Time accuracy at 99.8% significance level</option>
+			<option value="">-- Thematic accuracy / Classification correctness --</option>
+			<option value="Number of incorrectly classified features" title="Number of incorrectly classified features" id="ISO19138:2006:measure:60">Number of incorrectly classified features</option>
+			<option value="Misclassification rate" title="number of incorrectly classified features in relation to the number of features that are supposed to be there" id="ISO19138:2006:measure:61">Misclassification rate</option>
+			<option value="Misclassification matrix" title="matrix that indicates the number of items of class (i) classified as class (j)." id="ISO19138:2006:measure:62">Misclassification matrix</option>
+			<option value="Relative misclassification matrix" title="matrix that indicates the number of items of class (i) classified as class (i) divided by the number of items of class (i)" id="ISO19138:2006:measure:63">Relative misclassification matrix</option>
+			<option value="Kappa coefficient" title="Coefficient to quantify the proportion of agreement of assignments to classes by removing misclassifications" id="ISO19138:2006:measure:64">Kappa coefficient</option>
+			<option value="">-- Thematic accuracy / Non-quantitative attribute correctness --</option>
+			<option value="Number of incorrect attribute values" title="Total number of erroneous attribute values within the relevant part of the dataset" id="ISO19138:2006:measure:65">Number of incorrect attribute values</option>
+			<option value="Rate of correct attribute values" title="Number of correct attribute values in relation to the total number of attribute values" id="ISO19138:2006:measure:66">Rate of correct attribute values</option>
+			<option value="Rate of incorrect attribute values" title="Number of attribute values where incorrect values are assigned in relation to the total number of attribute values" id="ISO19138:2006:measure:67">Rate of incorrect attribute values</option>
+			<option value="">-- Thematic accuracy / Quantitative attribute accuracy --</option>
+			<option value="Attribute value uncertainty at 68.3% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 68.3%." id="ISO19138:2006:measure:68">Attribute value uncertainty at 68.3% significance level</option>
+			<option value="Attribute value uncertainty at 50% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 50%." id="ISO19138:2006:measure:69">Attribute value uncertainty at 50% significance level</option>
+			<option value="Attribute value uncertainty at 90% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 90%." id="ISO19138:2006:measure:70">Attribute value uncertainty at 90% significance level</option>
+			<option value="Attribute value uncertainty at 95% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 95%." id="ISO19138:2006:measure:71">Attribute value uncertainty at 95% significance level</option>
+			<option value="Attribute value uncertainty at 99% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 99%." id="ISO19138:2006:measure:72">Attribute value uncertainty at 99% significance level</option>
+			<option value="Attribute value uncertainty at 99.8% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 99.8%." id="ISO19138:2006:measure:73">Attribute value uncertainty at 99.8% significance level</option>
+		</helper>
+		<condition/>
 	</element>
 	<element name="gmd:orderingInstructions" id="301.0">
 		<label>Instructions de commande</label>
@@ -374,7 +538,7 @@
 		<help><![CDATA[<b>Exemple : </b>&#10;Direction de l'Intégration des géodonnées (SPW - SG - DGM - DIG)]]></help>
 		<condition>Obligatoire</condition>
 	</element>
-	<element name="gmd:otherConstraints" id="72.0">
+	<element name="gmd:otherConstraints" id="72.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
 		<label>Conditions détaillées</label>
 		<description>Description libre des conditions d'accès et d'utilisation de la ressource.</description>
 		<help>Ce champ doit être complété dès que la valeur  "Autres conditions" a été sélectionnée pour décrire le régime d'accès ou la source des conditions d'utilisation de la ressource.</help>
@@ -399,6 +563,11 @@
 			<option value="Aucune condition d'utilisation de la donnée n'est définie">Conditions d'utilisation - Aucune</option>
 		</helper>
 	</element>
+	<element name="gmd:pass" id="132.0">
+		<label>Degré de conformité</label>
+		<description>Résultat de conformité : 0 = non conforme et 1= conforme</description>
+		<help/>
+	</element>
 	<element name="gmd:pointOfContact" id="29.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact">
 		<label>Personnes liées à la ressource</label>
 		<description>Organisation ou personne liée à la ressource (partie prenante)</description>
@@ -412,7 +581,31 @@
 		<help>Exemple : Directeur</help>
 		<condition>Condition</condition>
 	</element>
-	<element name="gmd:protocol" id="398.0" context="/rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:protocol">
+	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Protocole internet</label>
+		<description>Protocole de connexion à l'adresse internet</description>
+		<help/>
+		<condition/>
+		<helper>
+			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
+			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
+			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
+			<option value="UKST">Unknown Service Type</option>
+		</helper>
+	</element>
+	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Protocole internet</label>
+		<description>Protocole de connexion à l'adresse internet</description>
+		<help/>
+		<condition/>
+		<helper>
+			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
+			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
+			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
+			<option value="UKST">Unknown Service Type</option>
+		</helper>
+	</element>
+	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
 		<label>Protocole internet</label>
 		<description>Protocole de connexion à l'adresse internet</description>
 		<help/>
@@ -426,10 +619,23 @@
 	</element>
 	<element name="gmd:protocol" id="398.0">
 		<label>Protocole</label>
-		<description>Protocole de la connexion � utiliser</description>
-		<help>Protocole de connexion utilis�, par exemple FTP.</help>
-		<condition/>
+		<description>Protocole de connexion ou de transfert</description>
+		<help>Choisir une entrée parmi les suggestions. Si le protocole n'est pas parmi les suggestions, ajouter le protocole grâce à du texte libre.</help>
 		<helper>
+			<option value="OGC:WMS">OGC-WMS Web Map Service</option>
+			<option value="OGC:WFS">OGC-WFS Web Feature Service</option>
+			<option value="OGC:WCS">OGC-WCS Web Coverage Service</option>
+			<option value="ESRI:REST">ESRI-REST GeoService</option>
+			<option value="WWW:LINK-1.0-http--link">Adresse Internet (URL)</option>
+			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
+			<option value="WWW:DOWNLOAD-1.0-ftp--download">Fichier à télécharger (FTP)</option>
+			<option value="FILE:GEO">Ficher vecteur</option>
+			<option value="FILE:RASTER">Fichier raster</option>
+			<option value="FILE:TAB">Fichier tabulaire</option>
+			<option value="DB:ORACLE">Base de données ORACLE</option>
+			<option value="DB:POSTGIS">Base de données PostGIS</option>
+			<option value="UKST">Unknown Service Type</option>
+			<option value="">****************************************</option>
 			<option value="OGC:CSW">OGC-CSW Catalogue Service for the Web</option>
 			<option value="OGC:KML">OGC-KML Keyhole Markup Language</option>
 			<option value="OGC:GML">OGC-GML Geography Markup Language</option>
@@ -441,37 +647,34 @@
 			<option value="OGC:SOS">OGC-SOS Sensor Observation Service</option>
 			<option value="OGC:SPS">OGC-SPS Sensor Planning Service</option>
 			<option value="OGC:SAS">OGC-SAS Sensor Alert Service</option>
-			<option value="OGC:WCS">OGC-WCS Web Coverage Service</option>
 			<option value="OGC:WCTS">OGC-WCTS Web Coordinate Transformation Service</option>
-			<option value="OGC:WFS">OGC-WFS Web Feature Service</option>
 			<option value="OGC:WFS-G">OGC-WFS-G Gazzetteer Service</option>
 			<option value="OGC:WMC">OGC-WMC Web Map Context</option>
-			<option value="OGC:WMS">OGC-WMS Web Map Service</option>
 			<option value="OGC:WNS">OGC-WNS Web Notification Service</option>
 			<option value="OGC:WPS">OGC-WPS Web Processing Service</option>
-			<option value="WWW:DOWNLOAD-1.0-ftp--download">Fichier � t�l�charger (FTP)</option>
-			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier � t�l�charger</option>
-			<option value="FILE:GEO">Fichier SIG</option>
-			<option value="FILE:RASTER">Fichier SIG RASTER</option>
 			<option value="WWW:LINK-1.0-http--ical">iCalendar (URL)</option>
-			<option value="WWW:LINK-1.0-http--link">Adresse Internet (URL)</option>
 			<option value="WWW:LINK-1.0-http--rss">Fil RSS (URL)</option>
-			<option value="DB:POSTGIS">Base de donn�es / Table PostGIS</option>
-			<option value="DB:ORACLE">Base de donn�es / ORACLE</option>
 			<option value="WWW:LINK-1.0-http--opendap">OPeNDAP URL</option>
 			<option value="RBNB:DATATURBINE">Data Turbine</option>
-			<option value="UKST">Unknown Service Type</option>
 		</helper>
+	</element>
+	<element name="gmd:report" id="80.0">
+		<label>Rapport sur la qualité</label>
+		<description>Information de qualité sous forme d'évaluation formelle d'un critère de qualité spécifique (précision planimétrique, conformité conceptuelle, etc)</description>
+		<help>Choisir l'élément de qualité évalué dans la liste, puis cliquer sur le +.</help>
+		<help> Pour INSPIRE, choisir l'élément Cohérence conceptuelle.</help>
+		<condition>Condition</condition>
 	</element>
 	<element name="gmd:resourceConstraints" id="35.0">
 		<label>Conditions d'accès et d'utilisation de la ressource</label>
 		<description>Description des conditions imposées à l’utilisateur pour accéder à la ressource et l'utiliser.</description>
 		<help><![CDATA[Sélectionner la valeur qui convient parmi les propositions et cliquer sur le + :<ul><li><b><i>Conditions légales et contractuelles</i></b> : A utiliser pour décrire des conditions définies par un texte ayant valeur légale, comme une loi ou un contrat de licence.</li><li><b><i>Conditions liées à la sécurité</i></b> : A utiliser exclusivement pour décrire des restrictions d'accès liées à la sécurité nationale.</li><li><b><i>Autres conditions</i></b> : A utiliser dans les cas où l'élément qui spécifie les conditions d'accès et d'utilisation n'a pas d'origine légale ou sécuritaire.</li><li><b><i>Conditions légales et contractuelles (avec attributs RW)</i></b> : Ne pas utiliser.</li></ul>]]></help>
 	</element>
-	<element name="gmd:role" id="379.0">
-		<label>Rôle</label>
-		<description>Rôle endossé par la personne ou l'organisation mentionnée vis-à-vis de la ressource.</description>
-		<help><![CDATA[Les rôles les plus fréquents sont :<ul><li><b><i>Point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li><b><i>Propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li><b><i>Gestionnaire</i></b> : l'organisme ou la personne qui endosse la responsabilité de la ressource.</li></ul>]]></help>
+	<element name="gmd:result" id="107.0">
+		<label>Résultat du test</label>
+		<description>Résultat du test de qualité</description>
+		<help>Choisir un Résultat de conformité si le test est un test de conformité. Dans ce cas le résultat du test est indiqué sous forme booléenne (conforme vs non-conforme). C'est la valeur à choisir pour INSPIRE.</help>
+		<help>Choisir un Résultat quantitatif si le résultat du test peut être indiquée sous forme quantitative, comme par exemple une valeur de précision planimétrique.</help>
 		<condition>Obligatoire</condition>
 	</element>
 	<element name="gmd:role" id="379.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:role">
@@ -479,6 +682,29 @@
 		<description>Rôle endossé par la personne ou l'organisation mentionnée.</description>
 		<help>La valeur "point de contact" ne doit pas être modifiée.</help>
 		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:role" id="379.0">
+		<label>Rôle</label>
+		<description>Rôle endossé par la personne ou l'organisation mentionnée vis-à-vis de la ressource.</description>
+		<help><![CDATA[Les rôles les plus fréquents sont :<ul><li><b><i>Point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li><b><i>Propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li><b><i>Gestionnaire</i></b> : l'organisme ou la personne qui endosse la responsabilité de la ressource.</li></ul>]]></help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:role" id="379.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:role">
+		<label>Rôle</label>
+		<description>Rôle endossé par la personne ou l'organisation mentionnée.</description>
+		<help>La valeur "Distributeur" doit être utilisée.</help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:scope" id="79.0">
+		<label>Domaine concernant la qualité</label>
+		<description>La portion spécifique des données à laquelle s'appliquent les informations de qualité</description>
+		<help>Par exemple : tout le jeu de données, certains attributs...</help>
+	</element>
+	<element name="gmd:statement" id="83.0">
+		<label>Généalogie des données</label>
+		<description>Explication générale sur les opérations ayant mené au jeu de données tel qu'il est proposé</description>
+		<help>Expliquer dans le détail les données sources, le type d'acquisition, les opérations menées sur les données et les raisons de celles-ci, les intervenants, etc.</help>
+		<condition>Condition</condition>
 	</element>
 	<element name="gmd:status" id="28.0">
 		<label>Etat d'avancement</label>
@@ -492,13 +718,6 @@
 		<help>Cette période peut être exprimée par une date ("Instant") ou un intervalle de dates ("Période") qui complète la description libre de l'étendue spatiale. Les informations doivent être cohérentes entre elles. Par exemple, si la description libre est "Acquisition des photos aériennes entre le 12 et le 15 mai 2013", la période doit avoir comme date de début 2013-05-12 et comme date de fin 2013-05-15.</help>
 		<help>Pour décrire une étendue temporelle comprenant des dates ou des périodes disjointes, utiliser plusieurs éléments.</help>
 	</element>
-	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
-		<label>Nom de la donnée</label>
-		<description>Nom caractéristique par lequel la donnée ou la série de données est connue</description>
-		<help>Il permet d'identifier facilement la ressource. Il est court (+/- 60 caractères) et permet de réduire le risque de confusion avec une autre ressource.</help>
-		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer une indication de la zone géographique couverte si le même type de donnée est proposé sur plusieurs territoires.</li><li>Indiquer un numéro de version ou une date de version si plusieurs versions de la même donnée existent.</li><li>Indiquer l'acronyme de la donnée entre parenthèses s'il est fort usité.</li></ul><b>Exemples :</b><ul><li>Carte d'occupation du sol de Wallonie (COSW) - v.1_05</li><li>Orthophotos 2009-2010</li></ul>]]></help>
-		<condition>Obligatoire</condition>
-	</element>
 	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
 		<label>Nom de la ressource</label>
 		<description>Nom par lequel le service ou l'application est connue</description>
@@ -506,12 +725,91 @@
 		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer la mention "service" ou "application" dans le nom.</li><li>Indiquer la finalité du service ou de l'application (ex : visualisation, découverte, téléchargement, consultation...).</li><li>Indiquer le nom du service ou de l'application ou les données sur lequel il/elle opère.</li><li>Indiquer l'acronyme du type de service entre parenthèses.</li></ul><b>Exemple :</b><ul><li>Service de visualisation SEVESO (WMS)</li><li>Application de consultation de l'Atlas de l'agriculture et de la ruralité</li></ul>]]></help>
 		<condition>Obligatoire</condition>
 	</element>
+	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title">
+		<label>Nom de la spécification</label>
+		<description>Nom de la spécification de produit ou des exigences de l'utilisateur avec lesquelles les données ont été comparées.</description>
+		<help>Indiquer le nom de la spécification. Pour INSPIRE choisir parmi celles suggérées en fonction du thème de la donnée.</help>
+		<helper>
+			<option value="">-- Conformité générale (obligatoire) --</option>
+			<option value="COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services">COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</option>
+			<option value="">-- Annexe I --</option>
+			<option value="INSPIRE Data Specification on Addresses – Technical Guidelines 3.1">INSPIRE Data Specification on Addresses – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1">INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Cadastral Parcels– Technical Guidelines 3.1">INSPIRE Data Specification on Cadastral Parcels– Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Coordinate Reference Systems– Technical Guidelines 3.1">INSPIRE Data Specification on Coordinate Reference Systems– Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Transport Networks – Technical Guidelines 3.1">INSPIRE Data Specification on Transport Networks – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1">INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Geographical Grid Systems – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Grid Systems – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Administrative Units – Technical Guidelines 3.1">INSPIRE Data Specification on Administrative Units – Technical Guidelines 3.1</option>
+			<option value="">-- Annexe II --</option>
+			<option value="INSPIRE Data Specification on Elevation – Technical Guidelines">INSPIRE Data Specification on Elevation – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Geology – Technical Guidelines">INSPIRE Data Specification on Geology – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Land Use – Technical Guidelines">INSPIRE Data Specification on Land Use – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Orthoimagery – Technical Guidelines">INSPIRE Data Specification on Orthoimagery – Technical Guidelines</option>
+			<option value="">-- Annexe III --</option>
+			<option value="INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines">INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines">INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Oceanographic Geographical Features – Technical Guidelines">INSPIRE Data Specification on Oceanographic Geographical Features – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines">INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines">INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines">INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Buildings – Technical Guidelines">INSPIRE Data Specification on Buildings – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines">INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines">INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Sea Regions – Technical Guidelines">INSPIRE Data Specification on Sea Regions – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Population distribution - demography – Technical Guidelines">INSPIRE Data Specification on Population distribution - demography – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Species Distribution – Technical Guidelines">INSPIRE Data Specification on Species Distribution – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Mineral Resources – Technical Guidelines">INSPIRE Data Specification on Mineral Resources – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Human Health and Safety – Technical Guidelines">INSPIRE Data Specification on Human Health and Safety – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Utility and governmental services– Technical Guidelines">INSPIRE Data Specification on Utility and governmental services– Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Soil – Technical Guidelines">INSPIRE Data Specification on Soil – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Energy Resources – Technical Guidelines">INSPIRE Data Specification on Energy Resources – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Statistical Units – Technical Guidelines">INSPIRE Data Specification on Statistical Units – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Land Use – Technical Guidelines">INSPIRE Data Specification on Land Use – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines">INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines">INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines</option>
+		</helper>
+	</element>
+	<element name="gmd:title" id="360.0">
+		<label>Nom</label>
+		<description>Nom de la ressource, du document, du thésaurus, de la spécification, etc.</description>
+		<help/>
+	</element>
+	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
+		<label>Nom de la donnée</label>
+		<description>Nom caractéristique par lequel la donnée ou la série de données est connue</description>
+		<help>Il permet d'identifier facilement la ressource. Il est court (+/- 60 caractères) et permet de réduire le risque de confusion avec une autre ressource.</help>
+		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer une indication de la zone géographique couverte si le même type de donnée est proposé sur plusieurs territoires.</li><li>Indiquer un numéro de version ou une date de version si plusieurs versions de la même donnée existent.</li><li>Indiquer l'acronyme de la donnée entre parenthèses s'il est fort usité.</li></ul><b>Exemples :</b><ul><li>Carte d'occupation du sol de Wallonie (COSW) - v.1_05</li><li>Orthophotos 2009-2010</li></ul>]]></help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:transferOptions" id="273.0">
+		<label>Options de transfert et documentation</label>
+		<description>Informations sur la façon d'accéder directement à la ressource et sa documentation.</description>
+		<help/>
+		<condition/>
+	</element>
+	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Site internet</label>
+		<description>Site internet de l'organisation</description>
+		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
+	</element>
 	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
 		<label>Site internet</label>
 		<description>Site internet de l'organisation</description>
 		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
 	</element>
-	<element name="gmd:useConstraints" id="71.0">
+	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Site internet</label>
+		<description>Site internet de l'organisation</description>
+		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
+	</element>
+	<element name="gmd:URL" id="608.0">
+		<label>Adresse internet</label>
+		<description>Adresse URL à laquelle se trouve la ressource ou la documentation</description>
+		<help><![CDATA[<ul><li>Pour les applications cartographiques, indiquer l'adresse de connexionà l'application.</li><li>Pour les services indiquer l'adresse du descripteur de service (GetCapabilities, WSDL...)</li><li>Pour des données en téléchargement direct, indiquer l'adresse du point de téléchargement.</li><li>Pour les connexions directes, indiquer l'adresse de la base de données.</li><li>Pour les sites internet, indiquer l'adresse de connexion à la page du site la plus pertinente.</li><li>Pour les documents en ligne, indiquer l'adresse du document en ligne</li></ul>]]></help>
+	</element>
+	<element name="gmd:useConstraints" id="71.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useConstraints">
 		<label>Définition des conditions d'utilisation</label>
 		<description>Document qui définit les conditions d'utilisation.</description>
 		<help><![CDATA[Choisir une des valeurs proposées et utiliser ensuite l'élement "Conditions détaillées" pour référencer les conditions d'utilisation.<ul><li><b><i>Licence</i></b> : A utiliser lorsque les conditions d'accès sont définies au travers d'une licence.</li><li><b><i>Autres restrictions</i></b> : A utiliser dans les autres cas.</li></ul>]]>Le cas échéant spécifier en plus l'assise légale grâce à un autre élement "Conditions détaillées" si cela n'a pas encore été fait en détaillant le régime d'accès.</help>
@@ -576,6 +874,12 @@
 		<description>Explications des restrictions d'accès et d'usage s'appliquant à la ressource</description>
 		<help>Les conditions d'accès et d'utilisation peuvent être référencées si elles sont disponibles publiquement.</help>
 		<condition/>
+	</element>
+	<element name="gmd:version" id="286.0">
+		<label>Version du format</label>
+		<description>Chaîne de caractère identifiant la version du format (ex: 10.3 ; 2012 ; 11g)</description>
+		<help>S'il n'existe pas de version du format, indiquer, indiquer "-". Si la version est inconnue, indiquer "inconnue"</help>
+		<condition>Obligatoire</condition>
 	</element>
 	<element name="gmd:verticalElement" id="338.0">
 		<label>Description formelle de l'étendue verticale</label>
