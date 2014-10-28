@@ -902,34 +902,17 @@ Résumé de la ressource référencée, et non du service : ne pas répéter le 
 de métadonnées de données « BD Carthage métropole »
     ]]></help>
     <condition>Obligatoire</condition>
-    
-  </element>
-  
-  <element name="gmd:abstract" id="25.0">
-    <label>Résumé</label>
-    <description>Court résumé explicatif du contenu des ressources</description>
-    <help>Court résumé descriptif du contenu du jeu de données. Cet attribut est du type PT_FreeText et est géré dans la classe du même nom.</help>
-    <help for="inspire"><![CDATA[<b>Exigence INSPIRE :</b>
-    <ul>
-      <li>Cet élément doit fournir un bref résumé narratif du contenu de la ressource.</li>
-      <li>Cet élément est une chaîne de caractères obligatoire (texte libre) et ne doit pas être répété.</li>
-    </ul>
-    ]]></help>
-    <help for="france"><![CDATA[<b>Recommandations :</b>
-    <ul>
-      <li>Il est attendu un texte significatif décrivant la ressource. Tout texte vide (ensemble de caractères d’espacement) ou de type « Non renseigné », … ne permet pas de satisfaire l’obligation INSPIRE.</li>
-      <li>Le résumé devrait contenir une définition officielle quant quand elle existe, ou une définition commune, afin de rendre le contenu de la ressource compréhensible par l’utilisateur. La référence d’un texte législatif ou réglementaire n’est pas suffisante.  Pour un producteur, il s’agit en particulier de définir au mieux l’information ou le phénomène représenté dans la donnée. On va donc y trouver des éléments de définition de la ressource, mais aussi éventuellement une indication sommaire de la zone couverte ou le cas échéant, des informations sur les particularités de la version de la ressource.</li>
-    </ul>
-    ]]></help>
-    <help for="inspire"><![CDATA[<b>Exemple :</b>
-      PPRI78_Mauldre_Alea est la représentation numérique des aléas hydrauliques du plan de prévention des risques d’inondation (PPRI) concernant 12 communes de la vallée de la Mauldre dans le département des Yvelines (arrêté préfectoral n°B06-0050 du 18 septembre 2006). Cette cartographie numérique n'a pas de caractère réglementaire.</help>
-    ]]></help>
-    <help for="inspire"><![CDATA[<b>Contre-exemple :</b>
-      PPRI de Paris_ PPRi détaillé_ 1:5000
-    ]]></help>
-    <condition>Obligatoire</condition>
-    
-  </element>
+   </element>
+  	<element name="gmd:abstract" id="25.0">
+		<label>Descriptif</label>
+		<description>Descriptif expliquant la ressource de façon claire et complète.</description>
+		<help><![CDATA[Le descriptif doit se structurer en trois parties, séparées par un retour à la ligne :<ul><li><i><b>une accroche</b></i> (+/- 150 caractères) : Résumé de la ressource incitant l'utilisateur à une éventuelle découverte plus approfondie de la ressource (teaser). L'accroche est la partie du résumé qui sera visible sur une page montrant le résultat d'une recherche.</li><li><i><b>un corps de texte</b></i> (+/- 1750 caractères) : Texte qui met la ressource en évidence et fait ressortir sa valeur spécifique, son intérêt. Il doit être compréhensible pour des non-initiés. Il est recommandé de vérifier s'il permet de répondre aux questions quoi ? qui ? quand ? où ? combien ? pourquoi ? comment ?</li><li><i><b>la référence de la fiche de métadonnées originale</b></i> : Adresse internet de la fiche de métadonnées originale, qui permet de la retrouver en cas de re-publication de la fiche sur un site autre que Metawal. Elle est accessible à travers l'icône en forme de lien en haut à droite de la fiche lorsqu'elle n'est pas en édition et concatène la requête &quot;http://metawal.wallonie.be/geonetwork/srv/fre/search?uuid=&quot; avec le code de l'identifiant de la fiche de métadonnées.</li></ul>]]></help>
+		<help><![CDATA[<b>Recommandations :</b><ul><li>Placer des éléments de définition, une indication de zone géographique, desinformations de version, une référence à un texte législatif, etc si ces informations permettent une meilleure compréhension de la ressource.</li><li>Pour donner de la visibilité à la ressource, utiliser des mots qu'un utilisateur est susceptible d'employer dans un moteur de recherche.</li><li>Le descriptif documente la ressource, pas le projet.</li><li>Dans le cas d'un service, décrire ses fonctions, son intérêt, les données qu'il présente et les éventuelles restrictions de résolution spatiale.</li></ul>]]></help>
+		<help><![CDATA[<b>Exemple d'accroche :</b>&#10;Localisation et informations descriptives sur les accidents de circulation sur voiries communales moyennées sur les années 2008 à 2012.]]></help>
+		<help><![CDATA[<b>Exemple de référence de la fiche de métadonnées originale : </b>&#10;http://metawal.wallonie.be/geonetwork/srv/fre/search?uuid=3d1d685c-0f89-443f-af41-331ce63f0943]]></help>
+		<condition>Obligatoire</condition>
+ </element>
+
   <element name="gmd:accessConstraints" id="70.0">
     <label>Contraintes d'accès</label>
     <description>Contraintes d'accès appliquées pour assurer la protection de la propriété privée et intellectuelle, et autres restrictions spéciales ou limitations pour obtenir la ressource où de métadonnées</description>
