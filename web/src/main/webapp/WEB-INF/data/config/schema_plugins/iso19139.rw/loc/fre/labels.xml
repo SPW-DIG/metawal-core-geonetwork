@@ -1,892 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <labels xsi:noNamespaceSchemaLocation="../../../labels.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:rw="http://metawal.wallonie.be/schemas/3.0">
-	<element name="gmd:accessConstraints" id="70.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints">
-		<label>Régime d'accès à la ressource</label>
-		<description>Régime d'accès à la ressource spécifié par le propriétaire ou le gestionnaire de la ressource.</description>
-		<help><![CDATA[Choisir une des valeurs proposées et utiliser ensuite l'élement "Conditions détaillées" pour spécifier le régime d'accès.<ul><li><b><i>Restreint</i></b> : A utiliser lorsque l'accès est restreint aux seuls membres d'une organisation ou d'un groupe spécifique.</li><li><b><i>Autres restrictions</i></b> : A utiliser dans les autres cas.</li></ul>]]>Le cas échéant  spécifier en plus l'assise légale grâce à un autre élement "Conditions détaillées".Enfin, si les données sont accessible à travers un service ou une application de consultation, en spécifier également le régime d'accès.</help>
-		<help for="inspire"><![CDATA[Pour les données dans le scope d'INSPIRE, les valeurs à spécifier sont <ul><li><b><i>Régime d'accès à la ressource</i></b> : Autres restricions.</li><li><b><i>Conditions détaillées</i></b> : Accès réservé aux autorités publiques (INSPIRE).</li><li><b><i>Conditions détaillées </i></b> : Référénce légale - INSPIRE.</li><li><b><i>Conditions détaillées</i></b> : Accès au service - Accès libre pour tout public au service de visualisation (INSPIRE).</li></ul>]]></help>
-		<condition/>
-	</element>
-	<element name="gmd:alternateTitle" id="361.0">
-		<label>Autre appellation pour la ressource</label>
-		<description>Autre nom ou acronyme pour la ressource.</description>
-		<help>Indiquer les appellations alternatives sous lesquelles la ressource est connue, comme par exemple un acronyme, un nom abrégé, etc...</help>
-		<help>Indiquer une appellation alternative par élément. Cliquer sur le "+" pour ajouter des éléments.</help>
-		<help>S'il n'existe aucune appellation alternative, cliquer sur le "-" pour supprimer l'élément.</help>
-		<help><![CDATA[<b>Exemples :</b><ul><li>COSW</li><li>COSW_V1_05</li><li>Carte des sols</li><li>Orthos 09-10</li></ul>]]></help>
-		<condition/>
-	</element>
-	<element name="gmd:characterSet" id="4.0" context="rw:MD_Metadata">
-		<label>Jeu de caractères de la fiche de métadonnées</label>
-		<description>Nom du standard de code de caractères de la fiche de métadonnées</description>
-		<help>Utf8 est le standard utilisé par Metawal dans les fiches de métadonnées.</help>
-		<help>Cette information ne doit pas être modifiée.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:CI_Date" id="393.0" context="rw:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date">
-		<label>Date de référence</label>
-		<description>Date de référence pour un évènement du cycle de vie du service ou l'application (création, publication, dernière mise à jour).</description>
-		<help><![CDATA[<b>Pour les services et les applications :</b><ul><li>Il est obligatoire d'indiquer la date de la (dernière) mise à jour publiée.</li><li>La date de première publication peut être mentionnée si elle est différente de la date de (dernière) mise à jour.</li></ul><b>Encoder plusieurs dates</b>Lors de la mise à jour de la fiche de métadonnées, il est autorisé de conserver les dates déjà encodées et d'ajouter une nouvelle date de référence. Il est demandé de placer les éléments dans l'ordre antichronologique (le plus récent en premier). L'ordre des éléments peut être modifié grâce aux petits triangles gris "Monter" et "Descendre" situées juste à droite du nom de l'élément.]]></help>
-		<condition/>
-	</element>
-	<element name="gmd:CI_Date" id="393.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date">
-		<label>Date de référence</label>
-		<description>Date de référence pour un évènement du cycle de vie de la donnée (création, publication, mise à jour).</description>
-		<help><![CDATA[<b>Pour les jeux de données et les séries :</b><ul><li>Il est obligatoire d'indiquer la date de (dernière) mise à jour. Elle est celle qui correspond au cycle de publication et non au cycle de production.</li><li>La date de création peut être mentionnée si elle est différente de la date de (dernière) mise à jour.</li></ul><b>Pour les cartes statiques :</b><ul><li>Il est obligatoire d'indiquer la date de (dernière) publication.</li><li>La date de création peut être mentionnée si elle est différente de la date de (dernière) publication.</li></ul><b>Encoder plusieurs dates</b>Lors de la mise à jour de la fiche de métadonnées, il est autorisé de conserver les dates déjà encodées et d'ajouter une nouvelle date de référence. Il est demandé de placer les éléments dans l'ordre antichronologique (le plus récent en premier). L'ordre des éléments peut être modifié grâce aux petits triangles gris "Monter" et "Descendre" situées juste à droite du nom de l'élément.]]></help>
-		<condition/>
-	</element>
-	<element name="gmd:classification" id="74.0">
-		<label>Classification</label>
-		<description>Niveau de classification de la ressource</description>
-		<help/>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:code" id="207.0" context="rw:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code">
-		<label>Identificateur du système de référence spatial</label>
-		<description>Valeur alphanumérique pour l'identification d'une occurrence dans le domaine de valeurs</description>
-		<help>Code alphanumérique de l'identifiant. Ces informations sont du type PT_FreeText et sont gérées dans la classe du même nom.</help>
-		<condition>Obligatoire</condition>
-		<helper editorMode="radio">
-			<option value="31370">Lambert Belge 72 (EPSG:31370)</option>
-			<option value="3812">Lambert Belge 2008 (EPSG:3812)</option>
-			<option value="4326">WGS 84 (EPSG:4326)</option>
-		</helper>
-	</element>
-	<element name="gmd:code" id="207.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code">
-		<label>Identifiant local de la ressource</label>
-		<description>Code de l'identifiant local de la ressource</description>
-		<help>Un identifiant local est généralement attribué par le producteur ou le gestionnaire de la ressource, par exemple sous la forme d'un nom unique dans une base de données. Cet élément peut être répété si plusieurs éléments existent.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:code" id="207.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:RS_Identifier/gmd:code">
-		<label>Identifiant global de la ressource - code</label>
-		<description>Code de l'identifiant unique de la ressource</description>
-		<help>Si un identifiant global sous forme d'URI existe pour la ressource, indiquer le code alphanumérique de l'identifiant.</help>
-		<help>Pour générer un identifiant global, ouvrir le panneau "Suggestions", cliquer sur "Cette fiche ne contient pas d'identifiant pour la ressource. Calculer l'identifiant à partir de l'identifiant de la fiche", puis cliquer sur "Appliquer le traitement sélectionné".</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:codeSpace" id="208.1" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:RS_Identifier/gmd:codeSpace">
-		<label>Identifiant global de la ressource - nom de domaine</label>
-		<description>Nom de domaine de l'identifiant unique de la ressource</description>
-		<help>Si un identifiant global sous forme d'URI existe pour la ressource, indiquer le nom de domaine de l'identifiant (préfixe).</help>
-		<help>Si un identifiant global a été calculé, choisir la valeur "http://geoportail.wallonie.be/ressources/id/" pour le domaine de l'identifiant.</help>
-		<condition>Obligatoire</condition>
-		<helper>
-			<option value="http://geoportail.wallonie.be/ressources/id/">http://geoportail.wallonie.be/ressources/id/</option>
-		</helper>
-	</element>
-	<element name="gmd:contact" id="8.0" context="rw:MD_Metadata/gmd:contact">
-		<label>Editeur de la fiche de métadonnées</label>
-		<description>Identification de l'organisation ou de la personne responsable de l'édition de la fiche de métadonnées</description>
-		<help>Fournir obligatoirement le nom de l'organisation et un email de contact. Le rôle doit être "Point de contact".</help>
-		<help><![CDATA[Il faut renseigner obligatoirement  :<ul><li>le nom de l'organisation</li><li>un email de contact</li><li>le rôle, pour lequel la valeur est "Point de contact"</li></ul>]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:contactInfo" id="378.0">
-		<label>Informations de contact</label>
-		<description>Coordonnées de la personne ou de l'organisation.</description>
-		<help/>
-		<condition/>
-	</element>
-	<element name="gmd:date" id="362.0" context="rw:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date">
-		<label>Date de référence</label>
-		<description>Date de référence pour un évènement du cycle de vie du service ou l'application (création, publication, dernière mise à jour).</description>
-		<help><![CDATA[<b>Pour les services et les applications :</b><ul><li>Il est obligatoire d'indiquer la date de la (dernière) mise à jour publiée.</li><li>La date de première publication peut être mentionnée si elle est différente de la date de (dernière) mise à jour.</li></ul><b>Encoder plusieurs dates</b>Lors de la mise à jour de la fiche de métadonnées, il est autorisé de conserver les dates déjà encodées et d'ajouter une nouvelle date de référence. Il est demandé de placer les éléments dans l'ordre antichronologique (le plus récent en premier). L'ordre des éléments peut être modifié grâce aux petits triangles gris "Monter" et "Descendre" situées juste à droite du nom de l'élément.]]></help>
-		<condition/>
-	</element>
-	<element name="gmd:date" id="362.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date">
-		<label>Date de référence</label>
-		<description>Date de référence pour un évènement du cycle de vie de la donnée (création, publication, mise à jour).</description>
-		<help><![CDATA[<b>Pour les jeux de données et les séries :</b><ul><li>Il est obligatoire d'indiquer la date de (dernière) mise à jour. Elle est celle qui correspond au cycle de publication et non au cycle de production.</li><li>La date de création peut être mentionnée si elle est différente de la date de (dernière) mise à jour.</li></ul><b>Pour les cartes statiques :</b><ul><li>Il est obligatoire d'indiquer la date de (dernière) publication.</li><li>La date de création peut être mentionnée si elle est différente de la date de (dernière) publication.</li></ul><b>Encoder plusieurs dates</b>Lors de la mise à jour de la fiche de métadonnées, il est autorisé de conserver les dates déjà encodées et d'ajouter une nouvelle date de référence. Il est demandé de placer les éléments dans l'ordre antichronologique (le plus récent en premier). L'ordre des éléments peut être modifié grâce aux petits triangles gris "Monter" et "Descendre" situées juste à droite du nom de l'élément.]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:dateType" id="395.0">
-		<label>Evènement</label>
-		<description>Evènement du cycle de vie de la ressource auquel se rapporte la date (création, publication, mise à jour)</description>
-		<help/>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:description" id="335.0" context="gmd:EX_Extent">
-		<label>Description libre de l'étendue</label>
-		<description>Description libre de l'étendue spatiale, verticale ou temporelle du jeu de données</description>
-		<help>Ex. pour une étendue spatiale : Région wallonne ; Commune de Profondeville</help>
-		<help>Ex. pour une étendu temporelle : Données collectées entre le 25 mars 2012 et le 17 septembre 2013</help>
-		<help>Dans le cas d'une étendue spatiale, cette valeur est modifiée automatiquement quand on choisit une valeur de la liste de choix des entités administratives de l'élément rectangle englobant.</help>
-		<condition/>
-	</element>
-	<element name="gmd:description" id="401.0" context="gmd:CI_OnlineResource">
-		<label>Description</label>
-		<description>Texte descriptif détaillé sur ce que la ressource en ligne est/fait</description>
-		<help>Description détaillée de ce que propose la source en ligne.</help>
-		<condition/>
-		<helper>
-			<option value="Application">Application</option>
-			<option value="Application intranet">Application intranet</option>
-			<option value="Application sécurisée">Application sécurisée</option>r<option value="Service">Service</option>
-			<option value="Service intranet">Service intranet</option>
-			<option value="Service sécurisé">Service securisé</option>
-			<option value="Site">Site</option>
-			<option value="Site intranet">Site intranet</option>
-			<option value="Site sécurisé">Site securisé</option>
-			<option value="Site ftp">Site ftp</option>
-			<option value="Document">Document</option>
-		</helper>
-	</element>
-	<element name="gmd:descriptiveKeywords" id="33.0">
-		<label>Mots-clés descriptifs</label>
-		<description>Les mots-clés sont des mots qui ont une haute probabilité d'être utilisés par une personne cherchant la ressource. Ils servent aussi à catégoriser la ressource, en fonction d'un thème, d'une discipline, d'une localisation...</description>
-		<help><![CDATA[Ils peuvent être libres ou provenir d'un vocabulaire contrôlé par une autorité (thésaurus, ou dictionnaire). Pour ajouter un mot-clé provenant d'un thésaurus, <i>cliquer sur les jumelles</i>.]]></help>
-		<help><![CDATA[<b>Il est obligatoire de renseigner :</b><li>pour toutes les ressources : au moins un mot-clé provenant du thésaurus "Thèmes du géoportail wallon"</li><li>pour les jeux de données et séries concernées par INSPIRE et pour les services fortement couplés à une donnée INSPIRE : au moins un mot-clé provenant du thésaurus "Thèmes INSPIRE" <b>ET</b> le mot-clé "Reporting INSPIRE" du thésaurus "InfraSIG"</li><li>pour tous les services INSPIRE : un mot-clé provenant du thésaurus "Taxonomie des services INSPIRE" <b>ET</b> le mot-clé "Reporting INSPIRE" du thésaurus "InfraSIG"</li>]]></help>
-		<help><![CDATA[<b>Recommandations :</b><li>Mettez-vous à la place de l'utilisateur qui cherche une ressource. Encodez des mots-clés relatifs à la nature et au contenu attributaire de la ressource, élargissez au domaine et aux usages potentiels de la ressource. Sortez du jargon métier et explorez le champ sémantique de la ressource grâce au dictionnaires de synonymes, aux ontologies et au thésaurus.</li><li>Sélectionnez des mots-clés provenant de thésauri internationaux, comme le GEMET, pour donner une visibilité multilingue à votre ressource.</li><li>Les données disponibles en open data peuvent être signalées par le mot-clé "Open data" du thésaurus "InfraSIG"</li><li>Il est autorisé d'utiliser les mots-clés du thésaurus "Thèmes INSPIRE" pour des ressources qui ne sont pas concernées par INSPIRE.</li>]]></help>
-	</element>
-	<element name="gmd:distributionFormat" id="271.0">
-		<label>Format de distribution</label>
-		<description>Description du format de distribution</description>
-		<condition/>
-	</element>
-	<element name="gmd:distributionOrderProcess" id="281.0">
-		<label>Processus de distribution et de commande</label>
-		<description>Informations sur les processus de commande de la donnée, sur les coûts et les formalités de commande.</description>
-		<help>Décrire de façon complète comment on peut obtenir la donnée par d'autres moyens que les canaux en lignes par lesquels elle est distribuée automatiquement.</help>
-		<condition/>
-	</element>
-	<element name="gmd:distributorContact" id="280.0">
-		<label>Informations de contact</label>
-		<description>Informations de contact du distributeur</description>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:distributorFormat" id="282.0">
-		<label>Format spécifique au distributeur</label>
-		<description>Informations sur le format spécifique offert par le distributeur</description>
-		<help>Indiquer les formats qui sont disponibles moyennant une interaction avec le distributeur identifié.</help>
-		<condition>Condition</condition>
-	</element>
-	<element name="gmd:distributorTransferOptions" id="283.0">
-		<label>Options de transfert du distributeur</label>
-		<description>Informations sur la façon d'accéder aux ressources spécifiquement distribuées par le distributeur identifié.</description>
-		<condition/>
-	</element>
-	<element name="gmd:DQ_DataQuality" id="78.0">
-		<label>Qualité des données</label>
-		<description>Information sur la qualité des données</description>
-		<help/>
-	</element>
-	<element name="gmd:DQ_Scope" id="138.0">
-		<label>Domaine d'appliquabilité</label>
-		<description>La portion spécifique des données à laquelle s'appliquent les informations de qualité</description>
-		<help>Par exemple : tout le jeu de données, certains attributs...</help>
-	</element>
-	<element name="gmd:electronicMailAddress" id="386.0">
-		<label>Adresse e-mail</label>
-		<description>Adresse e-mail de l'organisation ou de la personne responsable</description>
-	</element>
-	<element name="gmd:EX_BoundingPolygon" id="341.0">
-		<label>Polygone</label>
-		<description>Description de l'étendue spatiale par un polygone englobant le territoire sur lequel s'étend le jeu de données.</description>
-		<help/>
-		<condition/>
-	</element>
-	<element name="gmd:EX_Extent" id="334.0">
-		<label>Etendue du jeu de donnée</label>
-		<description>Information sur l'étendue spatiale, temporelle ou verticale du jeu de données.</description>
-		<help>Il est demandé d'utiliser à la fois la description libre et un élément de description formelle pour décrire une étendue.</help>
-		<condition/>
-	</element>
-	<element name="gmd:EX_GeographicBoundingBox" id="343.0">
-		<label>Rectangle englobant</label>
-		<description>Limites du rectangle englobant. Cet élément est obligatoire.</description>
-		<help>Exprimer les coordonnées en WGS 84 avec une précision de 2 décimales.</help>
-		<help><![CDATA[Les coordonnées à indiquer pour la Région wallonne sont :<ul><li>Nord : 50,85</li><li>Est : 6,50</li><li>Sud : 49,45</li><li>Ouest : 2,75</li></ul>]]></help>
-		<help>Pour décrire une étendue comprenant des territoires disjoints, utiliser plusieurs rectangles englobants.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:EX_GeographicDescription" id="348.0">
-		<label>Identifiant de territoire</label>
-		<description>Identification du territoire en utilisant des identifiants reconnus.</description>
-		<help>Les identifiants reconnus sont par exemple le nom des entités administratives, une codification statistiques, etc.</help>
-		<condition/>
-	</element>
-	<element name="gmd:EX_TemporalExtent" id="350.0">
-		<label>Etendue temporelle</label>
-		<description>Période de temps couverte par le contenu du jeu de donnée</description>
-		<help>Il s'agit de la période à laquelle les données ont été acquises sur le terrain.</help>
-		<condition/>
-	</element>
-	<element name="gmd:extent" id="45.0" context="gmd:MD_DataIdentification">
-		<label>Etendue spatiale, verticale ou temporelle</label>
-		<description>Elément permettant de décrire une étendue spatiale, verticale ou temporelle pour un jeu de données</description>
-		<help/>
-	</element>
-	<element name="gmd:extent" id="351.0" context="gmd:EX_TemporalExtent">
-		<label>Elément d'étendue temporelle</label>
-		<description>Elément permettant d'exprimer une étendue temporelle sous forme de date (Instant) ou d'intervalle de dates (Période)</description>
-	</element>
-	<element name="gmd:fileDescription" id="50.0">
-		<label>Description de l'illustration</label>
-		<description>Légende courte de l'illustration</description>
-		<help>Si l'aperçu a été chargé automatiquement par Metawal, cet élément prend la valeur "large_thumbnail". Il est nécessaire de la modifier.</help>
-		<condition/>
-	</element>
-	<element name="gmd:fileIdentifier" id="2.0">
-		<label>Identifiant de la fiche de métadonnées</label>
-		<description>Identifiant unique pour la fiche de métadonnées.</description>
-		<help>Il est généré automatiquement par l'application Metawal.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:fileName" id="49.0">
-		<label>URL de l'illustration</label>
-		<description>Adresse internet de l'illustration</description>
-		<help>Indiquer l'adresse internet complète de l'illustration.</help>
-		<help>Une fonctionnalité de Metawal est prévue pour faciliter le chargement d'un aperçu : ouvrir le panneau "Ressources associées", cliquer sur le bouton vert et choisir "Associer un aperçu" et charger une image de 600 x 600 pixels. Il n'est pas nécessaire de créer un petit aperçu.</help>
-		<condition/>
-	</element>
-	<element name="gmd:fileType" id="51.0">
-		<label>Format de l'illustration</label>
-		<description>Format dans lequel l'illustration est enregistrée.</description>
-		<help>Exemple : png, gif, jpg, tif</help>
-		<helper>
-			<option value="gif">gif</option>
-			<option value="jpg">jpg</option>
-			<option value="png">png</option>
-			<option value="tif">tif</option>
-		</helper>
-		<condition/>
-	</element>
-	<element name="gmd:geographicElement" id="336.0">
-		<label>Description formelle de l'étendue spatiale</label>
-		<description>Informations sur l'etendue spatiale de la donnée sous forme d'un rectangle englobant, d'un identifiant d'unité territoriale ou d'un polygone.</description>
-		<help>L'étendue spatiale peut être exprimée formellement à travers plusieurs éléments (rectangle englobant, identifiant de territoire ou étendue du polygone). Il est demandé d'utiliser au minimum le rectangle englobant.Si plusieurs éléments sont utilisés pour décrire une étendue spatiale, ils doivent être cohérents entre eux. Par exemple, si la description libre est "Commune de Profondeville", le rectangle englobant doit couvrir la commune de Profondeville.</help>
-		<help>Pour décrire une étendue spatiale comprenant des territoires disjoints, utiliser plusieurs rectangles englobants.</help>
-	</element>
-	<element name="gmd:geographicIdentifier" id="349.0">
-		<label>Identification du territoire</label>
-		<description>Identification textuelle du territoire en utilisant des identifiants reconnus ou une description textuelle.</description>
-		<help>Les identifiants reconnus sont par exemple le nom des entités administratives, une codification statistiques, etc.</help>
-		<help>L'étendue spatiale peut être exprimée à travers plusieurs types de sous-éléments, mais ces différentes expressions doivent décrire un même territoire au sein du même élément .</help>
-		<help>Pour décrire une étendue comprenant des territoires disjoints, utiliser plusieurs étendues spatiales.</help>
-	</element>
-	<element name="gmd:graphicOverview" id="31.0">
-		<label>Aperçu</label>
-		<description>Imagette illustrant la ressource</description>
-		<help>Imagette qui donne un aperçu du contenu des données ou de l'interface de l'application. Elle doit avoir unee taille de 600 x 600 pixels</help>
-		<help>Plusieurs imagettes peuvent être chargées : une vue d'ensemble, une vue détail, une vue montrant des spécificités de la ressource, etc.</help>
-		<help>Une fonctionnalité de Metawal est prévue pour faciliter le chargement d'un aperçu : ouvrir le panneau "Ressources associées", cliquer sur le bouton vert et choisir "Associer un aperçu". Si cette fonctionnalité est utilisée, l'élément Aperçu vide peut être supprimé en cliquant sur le -</help>
-		<condition/>
-	</element>
-	<element name="gmd:hierarchyLevel" id="6.0">
-		<label>Type de ressource décrite</label>
-		<description>Code du type de ressource décrite par la métadonnée.</description>
-		<help>Cet élément se base sur une codification imposée par l'ISO.</help>
-		<help>Cette information ne doit pas être modifiée.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:hierarchyLevelName" id="7.0">
-		<label>Nom du type de ressource décrite</label>
-		<description>Nom du type de ressource que la fiche de métadonnées décrit.</description>
-		<help>Cette information ne doit pas être modifiée.</help>
-		<condition>Condition</condition>
-	</element>
-	<element name="gmd:identificationInfo" id="15.0">
-		<label>Identification de la ressource</label>
-		<description>Informations descriptives de base sur la ressource.</description>
-		<help>Informations permettant d'identifier la ressource et d'en donner une description basique.</help>
-		<condition/>
-	</element>
-	<element name="gmd:individualName" id="375.0">
-		<label>Nom de la personne responsable</label>
-		<description>Prénom et Nom de famille de la personne responsable.</description>
-		<help>Veillez à respecter le format imposé.</help>
-		<help>Exemple : Arthur Legiel</help>
-		<condition/>
-	</element>
-	<element name="gmd:keyword" id="53.0">
-		<label>Mot-clé</label>
-		<description>Indiquer dans ce champ le mot-clé descriptif.</description>
-		<help><![CDATA[<b>Recommandations de format :</b><li>Les mots-clés doivent être fournis dans la langue de la fiche de métadonnées, en minuscules accentuées (première lettre en majuscule).</li><li>Il n'est autorisé qu'un seul mot-clé par champ "Mot-clé". Pour ajouter des champs, cliquer sur le <b>+</b>. Alternativement, séparer les mots-clés par des virgules, sauver la fiche, puis dans le volet suggestions cliquer sur "Un mot clé contient le caractère ",". Exécuter cette action pour le corriger." et "Appliquer le traitement sélectionné". Les mots-clés sont automatiquement séparés.</li>]]></help>
-	</element>
-	<element name="gmd:language" id="3.0" context="rw:MD_Metadata">
-		<label>Langue de la fiche de métadonnées</label>
-		<description>Langue dans laquelle est rédigée la fiche de métadonnées.</description>
-		<help>Si la fiche est multinlingue, indiquer la lanque initiale de la fiche, à partir de laquelle les traductions sont effectuées.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:level" id="139.0">
-		<label>Niveau du domaine d'appliquabilité</label>
-		<description>Domaine auquel s'appliquent les informations de qualité. La catégorie à laquelle se rapporte cette information peut être indiquée grâce à la liste de codes prédéfinis (exemple : attributs, objets géométriques, jeu de données, etc.).</description>
-		<help>Pour INSPIRE, le domaine auquel s'appliquent les informations de qualité doit être le niveau le plus élevé (jeu de données, service, ..). La liste de choix est retreinte à ces valeurs.</help>
-	</element>
-	<element name="gmd:LI_Lineage" id="82.0">
-		<label>Gén�alogie, provenance</label>
-		<description>Explication générale sur les opérations ayant mené au jeu de données tel qu'il est proposé</description>
-		<help/>
-	</element>
-	<element name="gmd:lineage" id="81.0">
-		<label>Généalogie des données</label>
-		<description>Explication générale sur les opérations ayant mené au jeu de données tel qu'il est proposé</description>
-		<help/>
-	</element>
-	<element name="gmd:MD_Constraints" id="67.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints">
-		<label>Autres conditions</label>
-		<description>Description des conditions à respecter pour faire un bon usage de la ressource.</description>
-		<help/>
-		<condition/>
-	</element>
-	<element name="gmd:MD_Distribution" id="270.0">
-		<label>Distribution</label>
-		<description>Information sur le distributeur de la ressource, sur les moyens d'accéder à la ressource et sur la documentation complémentaire sur la ressource.</description>
-		<help>Les modes de distribution qui nécessitent une interaction avec un distributeur (remplir une licence, apporter un disque dur...) doivent être placées sous l'élément "Distributeur".</help>
-		<help>Les modes de distribution qui ne font pas intervenir de distributeur (service, application...) et la documentation complémentaire sur la ressource doivent être placées sous l'élément "Options de transfert et documentation". Les formats de données accessibles sans interaction avec un distributeur doivent être placées sous l'élément "Format de distribution".</help>
-		<condition/>
-	</element>
-	<element name="gmd:MD_Format" id="284.0">
-		<label>Format</label>
-		<description>Formats dans lesquels la donnée peut être fournie.</description>
-		<help>Indiquer les formats qui sont disponibles en ligne directement, sans interaction avec un distributeur. Les formats spécifiques disponibles uniquement moyennant une interaction avec un distributeur doivent être indiqués sous le distributeur qui les fournit.</help>
-		<condition/>
-	</element>
-	<element name="gmd:MD_LegalConstraints" id="69.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints">
-		<label>Conditions légales et contractuelles</label>
-		<description>Description des conditions d'accès et d'utilisation de la ressource définies par la loi ou à travers un contrat.</description>
-		<help/>
-		<condition/>
-	</element>
-	<element name="gmd:MD_SecurityConstraints" id="73.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints">
-		<label>Conditions liées à la sécurité</label>
-		<description>Description des conditions d'accès et d'utilisation de la ressource liées à la sécurité nationale.</description>
-		<help/>
-		<condition/>
-	</element>
-	<element name="gmd:MD_TopicCategoryCode">
-		<label>Thématique ISO</label>
-		<description>Classification de la données selon une catégorie ISO</description>
-		<help>Plusieurs catégories peuvent être sélectionnées</help>
-		<condition/>
-	</element>
-	<element name="gmd:metadataStandardName" id="10.0">
-		<label>Nom du standard de métadonnées</label>
-		<description>Nom du standard utilisé pour documenter la ressource</description>
-		<help>Cette information ne doit pas être modifiée.</help>
-		<condition/>
-	</element>
-	<element name="gmd:metadataStandardVersion" id="11.0">
-		<label>Version du standard de métadonnées</label>
-		<description>Version du standard utilisé pour documenter la ressource</description>
-		<help>Cette information ne doit pas être modifiée.</help>
-		<condition/>
-	</element>
-	<element name="gmd:name" id="285.0" context="gmd:MD_Format">
-		<label>Nom du format</label>
-		<description>Nom des formats de données accessibles à la distribution.</description>
-		<help>Indiquer le nom complet du format suivi  de son extension entre parenthèses.</help>
-		<help>Lorsque plusieurs formats sont disponibles, les indiquer chacun dans un élément "Format de distribution". Utiliser le + pour faire apparaître de nouveaux éléments.</help>
-		<condition>Obligatoire</condition>
-		<helper rel="gmd:version">
-			<option value="ESRI Shapefile (.shp)">ESRI Shapefile (.shp)</option>
-			<option value="ESRI File Geodatabase (.fgdb)">ESRI File Geodatabase (.fgdb)</option>
-			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
-			<option value="KML (.kml ou .kmz)">KML (.kml ou .kmz)</option>
-			<option value="TIFF (.tif ou .tiff)">TIFF (.tif ou .tiff)</option>
-			<option value="GeoTIFF (.tif)">GeoTIFF (.tif)</option>
-			<option value="">-------------------------------------</option>
-			<option value="Adobe PDF (.pdf)">Adobe PDF (.pdf)</option>
-			<option value="Adobe 3D PDF (.pdf)">Adobe 3D PDF (.pdf)</option>
-			<option value="Adobe Geospatial PDF (.pdf)">Adobe Geospatial PDF (.pdf)</option>
-			<option value="Autodesk AutoCAD DXF (.dxf)">Autodesk AutoCAD DXF (.dxf)</option>
-			<option value="Autodesk AutoCAD DWG (.dwg)">Autodesk AutoCAD DWG (.dwg)</option>
-			<option value="CityGML">CityGML</option>
-			<option value="Comma Separated Value (.csv)">Comma Separated Value (.csv)</option>
-			<option value="EGeoSciML (.gsml)">GeoSciML (.gsml)</option>
-			<option value="ESRI ArcGIS Map Document (.mxd)">ESRI ArcGIS Map Document (.mxd)</option>
-			<option value="GIF (.gif)">GIF (.gif)</option>
-			<option value="GML (.gml)">GML (.gml)</option>
-			<option value="GML INSPIRE (.gml)">GML INSPIRE (.gml)</option>
-			<option value="GML-SF">GML-SF</option>
-			<option value="GPX (.gpx)">GPX (.gpx)</option>
-			<option value="JPEG (.jpg ou .jpeg)">JPEG (.jpg ou .jpeg)</option>
-			<option value="JPEG2000 (.jp2 ou .j2k)">JPEG2000 (.jp2 ou .j2k)</option>
-			<option value="MapInfo MIF/MID (.mif)">MapInfo MIF/MID (.mif)</option>
-			<option value="Microsoft Access (.mdb ou .accdb)">Microsoft Access (.mdb ou .accdb)</option>
-			<option value="Microsoft Excel (.xls ou .xlsx)">Microsoft Excel (.xls ou .xlsx)</option>
-			<option value="STAR-APIC (.asc)">STAR-APIC (.asc)</option>
-			<option value="STAR CARTO (.std)">STAR CARTO (.std)</option>
-			<option value="STAR GIS">STAR GIS</option>
-			<option value="SVG (.svg)">SVG (.svg)</option>
-			<option value="TXT (.txt)">TXT (.txt)</option>
-			<option value="ZIP (.zip)">ZIP (.zip)</option>
-		</helper>
-	</element>
-	<element name="gmd:nameOfMeasure" id="100.0">
-		<label>Nom du test</label>
-		<description>Nom du test qui a été appliqué aux données</description>
-		<help>Choisir l'élément de qualité évalué dans la liste.</help>
-		<help> Pour INSPIRE, choisir l'élément Cohérence du domaine de valeurs.</help>
-		<!-- TODO : translate -->
-		<!-- ISO19138 Data quality basic measures Annex C - under revision ISO 19157 http://www.iso.org/iso/fr/catalogue_detail.htm?csnumber=32575 -->
-		<helper rel="gmd:measureDescription">
-			<option value="">-- Exhaustivité --</option>
-			<option value="Excess item" title="Indication that an item is incorrectly present in the data" id="ISO19138:2006:measure:1">Elément en excédent</option>
-			<option value="Number of excess items" title="Number of items within the dataset, that should not have been in the dataset" id="ISO19138:2006:measure:2">Nombre d'éléments en excédent</option>
-			<option value="Rate of excess items" title="Number of excess items in the dataset in relation to the number of items that should have been present" id="ISO19138:2006:measure:3">Pourcentage d'éléments en excédent</option>
-			<option value="Number of duplicate feature instances" title="Total number of exact duplications of feature instances within the data. Count of all items in the data that are incorrectly extracted with duplicate geometrie" id="ISO19138:2006:measure:4">Nombre de doublons</option>
-			<option value="Missing item" title="Indicator that shows that a specific item is missing in the data" id="ISO19138:2006:measure:5">Elément manquant</option>
-			<option value="Number of missing items" title="Count of all items that should have been in the dataset and are missing" id="ISO19138:2006:measure:6">Nombre d'éléments manquants</option>
-			<option value="Rate of missing items" title="Number of missing items in the dataset in relation to the number of items that should have been present" id="ISO19138:2006:measure:7">Pourcentage d'éléments manquants</option>
-			<option value="">-- Cohérence conceptuelle / logique --</option>
-			<option value="Conceptual schema noncompliance" title="Indication that an item is not compliant to the rules of the relevant conceptual schema" id="ISO19138:2006:measure:8">Elément non conforme au schéma conceptuel</option>
-			<option value="Conceptual schema compliance" title="Indication that an item complies with the rules of the relevant conceptual schema" id="ISO19138:2006:measure:9">Conformité au schéma conceptuel</option>
-			<option value="Number of items noncompliant to the rules of the conceptual schema" title="Count of all items in the dataset that are noncompliant to the rules of the conceptual schema. If the conceptual schema explicitly or implicitly describes rules, these rules have to be followed. Violations against such rules can e.g. be invalid placement of features within a defined tolerance, duplication of features and invalid overlap of features." id="ISO19138:2006:measure:10">Nombre d'éléments non conformes aux règles du schéma conceptuel</option>
-			<option value="Number of invalid overlaps of surfaces" title="Total number of erroneous overlaps within the data Which surfaces may overlap and which must not is application dependent. Not all overlapping surfaces are necessarily erroneous. When reporting this data quality measure the types of feature classes corresponding to the illegal overlapping surfaces have to be reported as well." id="ISO19138:2006:measure:11">Nombre de chevauchements invalides de surface</option>
-			<option value="Non-compliance rate with respect to the rules of the conceptual schema" title="Number of items in the dataset that are noncompliant to the rules of the conceptual schema in relation to the total number of these items supposed to be in the dataset" id="ISO19138:2006:measure:12">Taux de non-conformité au regard des règles du schéma conceptuel</option>
-			<option value=" Compliance rate with the rules of the conceptual schema" title="number of items in the dataset in compliance with the rules of the conceptual schema in relation to the total number of items" id="ISO19138:2006:measure:13">Pourcentage de conformité avec les règles du schéma conceptuel</option>
-			<option value="">-- Cohérence logique / de domaine de valeur --</option>
-			<option value="Value domain non-conformance" title="Indication of if an item is not in conformance with its value domain" id="ISO19138:2006:measure:14">Non conformité au domaine de valeur</option>
-			<option value="Value domain conformance" title="Indication of if an item is conforming to its value domain" id="ISO19138:2006:measure:15">Conformité au domaine de valeur</option>
-			<option value="Number of items not in conformance with their value domain" title="Count of all items in the dataset that are not in conformance with their value domain." id="ISO19138:2006:measure:16">Nombre d'éléments non conformes avec leur domaine de valeurs</option>
-			<option value="Value domain conformance rate" title="Number of items in the dataset that are in conformance with their value domain in relation to the total number of items in the dataset" id="ISO19138:2006:measure:17">Taux de conformité au domaine de valeur</option>
-			<option value="Value domain non-conformance rate" title="the number of items in the dataset that are not in conformance with their value domain in relation to the total number of items" id="ISO19138:2006:measure:18">Taux de non-conformité au domaine de valeur</option>
-			<option value="Physical structure conflicts" title="Count of all items in the dataset that are stored in conflict with the physical structure of the dataset" id="ISO19138:2006:measure:19">Conflits de structure physique</option>
-			<option value="Physical structure conflict rate" title="Number of items in the dataset that are stored in conflict with the physical structure of the dataset divided by the total number of items" id="ISO19138:2006:measure:20">Taux de conflit de structure physique</option>
-			<option value="">-- Cohérence logique / topologique --</option>
-			<option value="Number of faulty point-curve connections" title="Number of faulty point-curve connections in the dataset. A point-curve connection exists where different curves touch. These curves have an intrinsic topological relationship that has to reflect the true constellation. If the point-curve connection contradicts the universe of discourse, the point-curve connection is faulty with respect to this data quality measure. The data quality measure counts the number of errors of this kind." id="ISO19138:2006:measure:21">Number of faulty point-curve connections</option>
-			<option value="Rate of faulty point-curve connections" title="Number of faulty link node connections in relation to the number of supposed link node connections" id="ISO19138:2006:measure:22">Rate of faulty point-curve connections</option>
-			<option value="Number of missing connection due to undershoots" title="Count of items in the dataset, within the parameter tolerance, that are mismatched due to undershoots" id="ISO19138:2006:measure:23">Number of missing connection due to undershoots</option>
-			<option value="Number of missing connections due to overshoots" title="Count of items in the dataset, within the parameter tolerance, that are mismatched due to overshoots" id="ISO19138:2006:measure:24">Number of missing connections due to overshoots</option>
-			<option value="Number of invalid slivers" title="Count of all items in the dataset that are invalid sliver surfaces. A sliver is an unintended area that occurs when adjacent surfaces are not digitized properly. The borders of the adjacent surfaces may unintentionally gap or overlap by small amounts to cause a topological error." id="ISO19138:2006:measure:25">Number of invalid slivers</option>
-			<option value="Number of invalid self intersect errors" title="Count of all items in the data that illegally intersect with themselves" id="ISO19138:2006:measure:26">Number of invalid self intersect errors</option>
-			<option value="Number of invalid self overlap errors" title="Count of all items in the data that illegally self overlap" id="ISO19138:2006:measure:27">Number of invalid self overlap errors</option>
-			<option value="">-- Positional accuracy / Absolute or external accuracy / General measures --</option>
-			<option value="Mean value of positional uncertainties" title="Mean value of the positional uncertainties for a set of positions where the positional uncertainties are defined as the distance between a measured position and what is considered as the corresponding true position" id="ISO19138:2006:measure:28">Mean value of positional uncertainties</option>
-			<option value="Mean value of positional uncertainties excluding outliers" title="For a set of points where the distance does not exceed a defined threshold the arithmetical average of distances between their measured positions and what is considered as the corresponding true positions" id="ISO19138:2006:measure:29">Mean value of positional uncertainties excluding outliers</option>
-			<option value="Number of positional uncertainties above a given threshold" title="Number of positional uncertainties above a given threshold for a set of positions. The errors are defined as the distance between a measured position and what is considered as the corresponding true position" id="ISO19138:2006:measure:30">Number of positional uncertainties above a given threshold</option>
-			<option value="Rate of positional errors above a given threshold" title="Number of positional uncertainties above a given threshold for a set of positions in relation to the total number of measured positions. The errors are defined as the distance between a measured position and what is considered as the corresponding true position." id="ISO19138:2006:measure:31">Rate of positional errors above a given threshold</option>
-			<option value="Covariance matrix" title="A symmetrical square matrix with variances of point coordinates on the main diagonal and covariances between these coordinates as off-diagonal elements." id="ISO19138:2006:measure:32">Covariance matrix</option>
-			<option value="">-- Positional accuracy / Absolute or external accuracy / Vertical --</option>
-			<option value="Linear error probable" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 50%." id="ISO19138:2006:measure:33">Linear error probable</option>
-			<option value="Standard linear error" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 68.3%." id="ISO19138:2006:measure:34">Standard linear error</option>
-			<option value="Linear map accuracy at 90% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 90%." id="ISO19138:2006:measure:35">Linear map accuracy at 90% significance level</option>
-			<option value="Linear map accuracy at 95% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 95%." id="ISO19138:2006:measure:36">Linear map accuracy at 95% significance level</option>
-			<option value="Linear map accuracy at 99% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 99%." id="ISO19138:2006:measure:37">Linear map accuracy at 99% significance level</option>
-			<option value="Near certainty linear error" title="Half length of the interval defined by an upper and a lower limit, in which the true value lies with probability 99.8%." id="ISO19138:2006:measure:38">Near certainty linear error</option>
-			<option value="Root mean square error" title="Standard deviation, where the true value is not estimated from the observations but known a priori." id="ISO19138:2006:measure:39">Root mean square error</option>
-			<option value="Absolute linear error at 90% significance level of biased vertical data (Alternative 1)" title="The absolute vertical accuracy of the data�s coordinates, expressed in terms of linear error at 90% probability given that a bias is present." id="ISO19138:2006:measure:40">Absolute linear error at 90% significance level of biased vertical data (Alternative 1)</option>
-			<option value="Absolute linear error at 90% significance level of biased vertical data" title="The absolute vertical accuracy of the data�s coordinates, expressed in terms of linear error at 90% probability given that a bias is present." id="ISO19138:2006:measure:41">Absolute linear error at 90% significance level of biased vertical data</option>
-			<option value="">-- Positional accuracy / Absolute or external accuracy / Horizontal --</option>
-			<option value="Circular standard deviation" title="Radius describing a circle, in which the true point location lies with the probability of 39.4%." id="ISO19138:2006:measure:42">Circular standard deviation</option>
-			<option value="Circular error probable" title="Radius describing a circle, in which the true point location lies with the probability of 50%." id="ISO19138:2006:measure:43">Circular error probable</option>
-			<option value="Circular map accuracy standard" title="Radius describing a circle, in which the true point location lies with the probability of 90%." id="ISO19138:2006:measure:44"> Circular map accuracy standard</option>
-			<option value="Circular error at 95% significance level" title="Radius describing a circle, in which the true point location lies with the probability of 95%." id="ISO19138:2006:measure:45">Circular error at 95% significance level</option>
-			<option value="Circular near certainty error" title="Radius describing a circle, in which the true point location lies with the probability of 99.8%." id="ISO19138:2006:measure:46">Circular near certainty error</option>
-			<option value="Root mean square error of planimetry" title="Radius of a circle around the given point, in which the true value lies with probability P." id="ISO19138:2006:measure:47">Root mean square error of planimetry</option>
-			<option value="Absolute circular error at 90% significance level of biased data (Alternative 2)" title="The absolute horizontal accuracy of the data�s coordinates, expressed in terms of circular error at 90% probability given that a bias is present." id="ISO19138:2006:measure:48">Absolute circular error at 90% significance level of biased data (Alternative 2)</option>
-			<option value="Absolute circular error at 90% significance level of biased data" title="The absolute horizontal accuracy of the data�s coordinates, expressed in terms of circular error at 90% probability given that a bias is present." id="ISO19138:2006:measure:49">Absolute circular error at 90% significance level of biased data</option>
-			<option value="Uncertainty ellipse" title="2D ellipse with the two main axes indicating the direction and magnitude of the highest and the lowest uncertainty of a 2D point" id="ISO19138:2006:measure:50">Uncertainty ellipse</option>
-			<option value="Confidence ellipse" title="2D ellipse with the two main axes indicating the direction and magnitude of the highest and the lowest uncertainty of a 2D point" id="ISO19138:2006:measure:51">Confidence ellipse</option>
-			<option value="">-- Positional accuracy / Relative or internal accuracy --</option>
-			<option value="Relative vertical error" title="Evaluation of the random errors of one relief feature to another in the same dataset or on the same map/chart. It is a function of the random errors in the two elevations with respect to a common vertical datum." id="ISO19138:2006:measure:52">Relative vertical error</option>
-			<option value="Relative horizontal error" title="Evaluation of the random errors in the horizontal position of one feature to another in the same dataset or on the same map/chart." id="ISO19138:2006:measure:53">Relative horizontal error</option>
-			<option value="">-- Temporal accuracy / Accuracy of a time measurement --</option>
-			<option value="Time accuracy at 68.3% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 68.3%." id="ISO19138:2006:measure:54">Time accuracy at 68.3% significance level</option>
-			<option value="Time accuracy at 50% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 50%." id="ISO19138:2006:measure:55">Time accuracy at 50% significance level</option>
-			<option value="Time accuracy at 90% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 90%." id="ISO19138:2006:measure:56">Time accuracy at 90% significance level</option>
-			<option value="Time accuracy at 95% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 95%." id="ISO19138:2006:measure:57">Time accuracy at 95% significance level</option>
-			<option value="Time accuracy at 99% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 99%." id="ISO19138:2006:measure:58">Time accuracy at 99% significance level</option>
-			<option value="Time accuracy at 99.8% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 99.8%." id="ISO19138:2006:measure:59">Time accuracy at 99.8% significance level</option>
-			<option value="">-- Thematic accuracy / Classification correctness --</option>
-			<option value="Number of incorrectly classified features" title="Number of incorrectly classified features" id="ISO19138:2006:measure:60">Number of incorrectly classified features</option>
-			<option value="Misclassification rate" title="number of incorrectly classified features in relation to the number of features that are supposed to be there" id="ISO19138:2006:measure:61">Misclassification rate</option>
-			<option value="Misclassification matrix" title="matrix that indicates the number of items of class (i) classified as class (j)." id="ISO19138:2006:measure:62">Misclassification matrix</option>
-			<option value="Relative misclassification matrix" title="matrix that indicates the number of items of class (i) classified as class (i) divided by the number of items of class (i)" id="ISO19138:2006:measure:63">Relative misclassification matrix</option>
-			<option value="Kappa coefficient" title="Coefficient to quantify the proportion of agreement of assignments to classes by removing misclassifications" id="ISO19138:2006:measure:64">Kappa coefficient</option>
-			<option value="">-- Thematic accuracy / Non-quantitative attribute correctness --</option>
-			<option value="Number of incorrect attribute values" title="Total number of erroneous attribute values within the relevant part of the dataset" id="ISO19138:2006:measure:65">Number of incorrect attribute values</option>
-			<option value="Rate of correct attribute values" title="Number of correct attribute values in relation to the total number of attribute values" id="ISO19138:2006:measure:66">Rate of correct attribute values</option>
-			<option value="Rate of incorrect attribute values" title="Number of attribute values where incorrect values are assigned in relation to the total number of attribute values" id="ISO19138:2006:measure:67">Rate of incorrect attribute values</option>
-			<option value="">-- Thematic accuracy / Quantitative attribute accuracy --</option>
-			<option value="Attribute value uncertainty at 68.3% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 68.3%." id="ISO19138:2006:measure:68">Attribute value uncertainty at 68.3% significance level</option>
-			<option value="Attribute value uncertainty at 50% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 50%." id="ISO19138:2006:measure:69">Attribute value uncertainty at 50% significance level</option>
-			<option value="Attribute value uncertainty at 90% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 90%." id="ISO19138:2006:measure:70">Attribute value uncertainty at 90% significance level</option>
-			<option value="Attribute value uncertainty at 95% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 95%." id="ISO19138:2006:measure:71">Attribute value uncertainty at 95% significance level</option>
-			<option value="Attribute value uncertainty at 99% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 99%." id="ISO19138:2006:measure:72">Attribute value uncertainty at 99% significance level</option>
-			<option value="Attribute value uncertainty at 99.8% significance level" title="Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 99.8%." id="ISO19138:2006:measure:73">Attribute value uncertainty at 99.8% significance level</option>
-		</helper>
-		<condition/>
-	</element>
-	<element name="gmd:orderingInstructions" id="301.0">
-		<label>Instructions de commande</label>
-		<description>Instructions générales, conditions et services offerts par le distributeur</description>
-		<help>Instructions générales, délais et services offerts par le distributeur</help>
-		<condition/>
-		<helper editorMode="radio_linebreak">
-			<option value="Données accessibles gratuitement à des fins de recherche sous condition d'acceptation d'une licence. Les instructions relatives à la licence se trouvent à l'adresse http://geoportail.wallonie.be/licenceunique">Données accessibles gratuitement à des fins de recherche sousconditiond'acceptation d'une licence. Les instructionsrelatives à la licence se trouvent à l'adresse http://geoportail.wallonie.be/licenceunique</option>
-			<option value="Application réservée aux agents autorisés. Un login est nécessaire pour accéder à l'application.Contacter le gestionnaire de l'application à l'adresse gestionnaire@application.wallonie.be pour obtenir un login.">Application réservée aux agents autorisés.Un login est nécessaire pour accéder àl'application.Contacter le gestionnaire del'application à l'adresse gestionnaire@application.wallonie.be pour obtenir un login.</option>
-		</helper>
-	</element>
-	<element name="gmd:organisationName" id="376.0">
-		<label>Nom de l'organisation</label>
-		<description>Nom complet de l'organisation, avec entre parenthèse l'acronyme ou d'autres indications permettant de situer l'organisme au sein d'une structure plus grande.</description>
-		<help>Cet élément est obligatoire.</help>
-		<help>Être assez spécifique pour que l'utilisateur puisse identifier correctement l'organisation réellement en charge de la ressource, mais assez générique pour que l'information soit stable dans le temps.</help>
-		<help><![CDATA[<b>Exemple : </b>&#10;Direction de l'Intégration des géodonnées (SPW - SG - DGM - DIG)]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:otherConstraints" id="72.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
-		<label>Conditions détaillées</label>
-		<description>Description libre des conditions d'accès et d'utilisation de la ressource.</description>
-		<help>Ce champ doit être complété dès que la valeur  "Autres conditions" a été sélectionnée pour décrire le régime d'accès ou la source des conditions d'utilisation de la ressource.</help>
-		<help>Une liste indicative est proposée pour aider à formuler le contenu de ce champ.</help>
-		<condition/>
-		<helper>
-			<option value="Accès libre pour tout public - Open data">Accès - Accès libre pour tout public (Open data)</option>
-			<option value="Accès libre pour tout public - Utilisation commerciale interdite">Accès - Accès libre pour tout public sauf utilisation commerciale</option>
-			<option value="Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement">Accès - Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement (ex : licence SPW)</option>
-			<option value="Accès réservé aux autorités publiques">Accès - Accès réservé aux autorités publiques (INSPIRE)</option>
-			<option value="Accès restreint aux membres de ...">Accès - Accès restreint au personnel/aux membres d'une organisation (préciser)</option>
-			<option value="Accès restreint à ... ">Accès - Accès restreint aux membres d'un groupe spécifique (préciser)</option>
-			<option value="Accès : (décrivez le régime d'accès ici...) ">Accès - Autre régime d'accès (préciser)</option>
-			<option value="Référence légale : Chapitres VI et VII du décret du 22 décembre 2010 relatif à l'infrastructure d'information géographique wallonne, consultable à l'adresse http://www.ejustice.just.fgov.be//mopdf/2011/02/03_1.pdf#Page41">Référence légale - INSPIRE</option>
-			<option value="Référence légale : &lt;nom complet du texte légal&gt; consultable à l'adresse &lt;URL du texte légal&gt;">Référence légale - autre</option>
-			<option value="Aucune restriction d'accès public au service de visualisation">Accès au service - Accès libre pour tout public au service de visualisation (INSPIRE)</option>
-			<option value="Aucune restriction d'accès public à l'application de visualisation">Accès à l'application - Accès libre pour tout public à l'application de visualisation</option>
-			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la licence de mise à disposition de données géographiques et biologiques numériques par le SPW consultable à l'adresse http://geoportail.wallonie.be/files/LicData.pdf">Conditions d'utilisation - Licence unique SPW</option>
-			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la licence ... &lt;nom et version&gt; consultable à l'adresse &lt;URL de la licence&gt; ">Conditions d'utilisation - Autre licence publiée (préciser)</option>
-			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont consultables à l'adresse  ... &lt;URL du site où sont décrites les conditions&gt; ">Conditions d'utilisation - Publiées sur un site internet (préciser)</option>
-			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la fiche de métadonnées ... &lt;URL de la fiche&gt; + décrire les conditions dans un ou des éléments &quot;Limite d'utilisation&quot; ">Conditions d'utilisation - Décrites dans la fiche de métadonnées (préciser)</option>
-			<option value="Aucune condition d'utilisation de la donnée n'est définie">Conditions d'utilisation - Aucune</option>
-		</helper>
-	</element>
-	<element name="gmd:pass" id="132.0">
-		<label>Degré de conformité</label>
-		<description>Résultat de conformité : 0 = non conforme et 1= conforme</description>
-		<help/>
-	</element>
-	<element name="gmd:pointOfContact" id="29.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact">
-		<label>Personnes liées à la ressource</label>
-		<description>Organisation ou personne liée à la ressource (partie prenante)</description>
-		<help>Indiquer les organisations ou personnes liées à la ressource. ll est obligatoire de compléter le nom de l'organisation, un email de contact et le rôle de la partie prenante. Les autres informations sont facultatives.</help>
-		<help><![CDATA[Trois parties prenantes doivent obligatoirement être renseignées :<ul><li>le <b><i>point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li>le <b><i>propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li>le <b><i>gestionnaire</i></b> : l'organisme ou la personne qui endosse la responsabilité de la ressource.</li></ul>]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:positionName" id="377.0">
-		<label>Fonction</label>
-		<description>Fonction de la personne responsable</description>
-		<help>Exemple : Directeur</help>
-		<condition>Condition</condition>
-	</element>
-	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
-		<label>Protocole internet</label>
-		<description>Protocole de connexion à l'adresse internet</description>
-		<help/>
-		<condition/>
-		<helper>
-			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
-			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
-			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
-			<option value="UKST">Unknown Service Type</option>
-		</helper>
-	</element>
-	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
-		<label>Protocole internet</label>
-		<description>Protocole de connexion à l'adresse internet</description>
-		<help/>
-		<condition/>
-		<helper>
-			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
-			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
-			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
-			<option value="UKST">Unknown Service Type</option>
-		</helper>
-	</element>
-	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
-		<label>Protocole internet</label>
-		<description>Protocole de connexion à l'adresse internet</description>
-		<help/>
-		<condition/>
-		<helper>
-			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
-			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
-			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
-			<option value="UKST">Unknown Service Type</option>
-		</helper>
-	</element>
-	<element name="gmd:protocol" id="398.0">
-		<label>Protocole</label>
-		<description>Protocole de connexion ou de transfert</description>
-		<help>Choisir une entrée parmi les suggestions. Si le protocole n'est pas parmi les suggestions, ajouter le protocole grâce à du texte libre.</help>
-		<helper>
-			<option value="OGC:WMS">OGC-WMS Web Map Service</option>
-			<option value="OGC:WFS">OGC-WFS Web Feature Service</option>
-			<option value="OGC:WCS">OGC-WCS Web Coverage Service</option>
-			<option value="ESRI:REST">ESRI-REST GeoService</option>
-			<option value="WWW:LINK-1.0-http--link">Adresse Internet (URL)</option>
-			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
-			<option value="WWW:DOWNLOAD-1.0-ftp--download">Fichier à télécharger (FTP)</option>
-			<option value="FILE:GEO">Ficher vecteur</option>
-			<option value="FILE:RASTER">Fichier raster</option>
-			<option value="FILE:TAB">Fichier tabulaire</option>
-			<option value="DB:ORACLE">Base de données ORACLE</option>
-			<option value="DB:POSTGIS">Base de données PostGIS</option>
-			<option value="UKST">Unknown Service Type</option>
-			<option value="">****************************************</option>
-			<option value="OGC:CSW">OGC-CSW Catalogue Service for the Web</option>
-			<option value="OGC:KML">OGC-KML Keyhole Markup Language</option>
-			<option value="OGC:GML">OGC-GML Geography Markup Language</option>
-			<option value="OGC:ODS">OGC-ODS OpenLS Directory Service</option>
-			<option value="OGC:OGS">OGC-ODS OpenLS Gateway Service</option>
-			<option value="OGC:OUS">OGC-ODS OpenLS Utility Service</option>
-			<option value="OGC:OPS">OGC-ODS OpenLS Presentation Service</option>
-			<option value="OGC:ORS">OGC-ODS OpenLS Route Service</option>
-			<option value="OGC:SOS">OGC-SOS Sensor Observation Service</option>
-			<option value="OGC:SPS">OGC-SPS Sensor Planning Service</option>
-			<option value="OGC:SAS">OGC-SAS Sensor Alert Service</option>
-			<option value="OGC:WCTS">OGC-WCTS Web Coordinate Transformation Service</option>
-			<option value="OGC:WFS-G">OGC-WFS-G Gazzetteer Service</option>
-			<option value="OGC:WMC">OGC-WMC Web Map Context</option>
-			<option value="OGC:WNS">OGC-WNS Web Notification Service</option>
-			<option value="OGC:WPS">OGC-WPS Web Processing Service</option>
-			<option value="WWW:LINK-1.0-http--ical">iCalendar (URL)</option>
-			<option value="WWW:LINK-1.0-http--rss">Fil RSS (URL)</option>
-			<option value="WWW:LINK-1.0-http--opendap">OPeNDAP URL</option>
-			<option value="RBNB:DATATURBINE">Data Turbine</option>
-		</helper>
-	</element>
-	<element name="gmd:report" id="80.0">
-		<label>Rapport sur la qualité</label>
-		<description>Information de qualité sous forme d'évaluation formelle d'un critère de qualité spécifique (précision planimétrique, conformité conceptuelle, etc)</description>
-		<help>Choisir l'élément de qualité évalué dans la liste, puis cliquer sur le +.</help>
-		<help> Pour INSPIRE, choisir l'élément Cohérence conceptuelle.</help>
-		<condition>Condition</condition>
-	</element>
-	<element name="gmd:resourceConstraints" id="35.0">
-		<label>Conditions d'accès et d'utilisation de la ressource</label>
-		<description>Description des conditions imposées à l’utilisateur pour accéder à la ressource et l'utiliser.</description>
-		<help><![CDATA[Sélectionner la valeur qui convient parmi les propositions et cliquer sur le + :<ul><li><b><i>Conditions légales et contractuelles</i></b> : A utiliser pour décrire des conditions définies par un texte ayant valeur légale, comme une loi ou un contrat de licence.</li><li><b><i>Conditions liées à la sécurité</i></b> : A utiliser exclusivement pour décrire des restrictions d'accès liées à la sécurité nationale.</li><li><b><i>Autres conditions</i></b> : A utiliser dans les cas où l'élément qui spécifie les conditions d'accès et d'utilisation n'a pas d'origine légale ou sécuritaire.</li><li><b><i>Conditions légales et contractuelles (avec attributs RW)</i></b> : Ne pas utiliser.</li></ul>]]></help>
-	</element>
-	<element name="gmd:result" id="107.0">
-		<label>Résultat du test</label>
-		<description>Résultat du test de qualité</description>
-		<help>Choisir un Résultat de conformité si le test est un test de conformité. Dans ce cas le résultat du test est indiqué sous forme booléenne (conforme vs non-conforme). C'est la valeur à choisir pour INSPIRE.</help>
-		<help>Choisir un Résultat quantitatif si le résultat du test peut être indiquée sous forme quantitative, comme par exemple une valeur de précision planimétrique.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:role" id="379.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:role">
-		<label>Rôle</label>
-		<description>Rôle endossé par la personne ou l'organisation mentionnée.</description>
-		<help>La valeur "point de contact" ne doit pas être modifiée.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:role" id="379.0">
-		<label>Rôle</label>
-		<description>Rôle endossé par la personne ou l'organisation mentionnée vis-à-vis de la ressource.</description>
-		<help><![CDATA[Les rôles les plus fréquents sont :<ul><li><b><i>Point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li><b><i>Propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li><b><i>Gestionnaire</i></b> : l'organisme ou la personne qui endosse la responsabilité de la ressource.</li></ul>]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:role" id="379.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:role">
-		<label>Rôle</label>
-		<description>Rôle endossé par la personne ou l'organisation mentionnée.</description>
-		<help>La valeur "Distributeur" doit être utilisée.</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:scope" id="79.0">
-		<label>Domaine concernant la qualité</label>
-		<description>La portion spécifique des données à laquelle s'appliquent les informations de qualité</description>
-		<help>Par exemple : tout le jeu de données, certains attributs...</help>
-	</element>
-	<element name="gmd:statement" id="83.0">
-		<label>Généalogie des données</label>
-		<description>Explication générale sur les opérations ayant mené au jeu de données tel qu'il est proposé</description>
-		<help>Expliquer dans le détail les données sources, le type d'acquisition, les opérations menées sur les données et les raisons de celles-ci, les intervenants, etc.</help>
-		<condition>Condition</condition>
-	</element>
-	<element name="gmd:status" id="28.0">
-		<label>Etat d'avancement</label>
-		<description>Etat d'avancement des ressources</description>
-		<help>Choisir une des options proposées.</help>
-		<condition/>
-	</element>
-	<element name="gmd:temporalElement" id="337.0">
-		<label>Description formelle de l'étendue temporelle</label>
-		<description>Informations sur la période de temps couverte par le contenu de la ressource.</description>
-		<help>Cette période peut être exprimée par une date ("Instant") ou un intervalle de dates ("Période") qui complète la description libre de l'étendue spatiale. Les informations doivent être cohérentes entre elles. Par exemple, si la description libre est "Acquisition des photos aériennes entre le 12 et le 15 mai 2013", la période doit avoir comme date de début 2013-05-12 et comme date de fin 2013-05-15.</help>
-		<help>Pour décrire une étendue temporelle comprenant des dates ou des périodes disjointes, utiliser plusieurs éléments.</help>
-	</element>
-	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
-		<label>Nom de la ressource</label>
-		<description>Nom par lequel le service ou l'application est connue</description>
-		<help>Le titre est le nom caractéristique et si possible unique avec lequel la ressource est connue. Il permet d'identifier facilement la ressource. Il est court (+/- 60 caractères) et éduit le risque de confusion avec une autre ressource.</help>
-		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer la mention "service" ou "application" dans le nom.</li><li>Indiquer la finalité du service ou de l'application (ex : visualisation, découverte, téléchargement, consultation...).</li><li>Indiquer le nom du service ou de l'application ou les données sur lequel il/elle opère.</li><li>Indiquer l'acronyme du type de service entre parenthèses.</li></ul><b>Exemple :</b><ul><li>Service de visualisation SEVESO (WMS)</li><li>Application de consultation de l'Atlas de l'agriculture et de la ruralité</li></ul>]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title">
-		<label>Nom de la spécification</label>
-		<description>Nom de la spécification de produit ou des exigences de l'utilisateur avec lesquelles les données ont été comparées.</description>
-		<help>Indiquer le nom de la spécification. Pour INSPIRE choisir parmi celles suggérées en fonction du thème de la donnée.</help>
-		<helper>
-			<option value="">-- Conformité générale (obligatoire) --</option>
-			<option value="COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services">COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</option>
-			<option value="">-- Annexe I --</option>
-			<option value="INSPIRE Data Specification on Addresses – Technical Guidelines 3.1">INSPIRE Data Specification on Addresses – Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1">INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Cadastral Parcels– Technical Guidelines 3.1">INSPIRE Data Specification on Cadastral Parcels– Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Coordinate Reference Systems– Technical Guidelines 3.1">INSPIRE Data Specification on Coordinate Reference Systems– Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Transport Networks – Technical Guidelines 3.1">INSPIRE Data Specification on Transport Networks – Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1">INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Geographical Grid Systems – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Grid Systems – Technical Guidelines 3.1</option>
-			<option value="INSPIRE Data Specification on Administrative Units – Technical Guidelines 3.1">INSPIRE Data Specification on Administrative Units – Technical Guidelines 3.1</option>
-			<option value="">-- Annexe II --</option>
-			<option value="INSPIRE Data Specification on Elevation – Technical Guidelines">INSPIRE Data Specification on Elevation – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Geology – Technical Guidelines">INSPIRE Data Specification on Geology – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Land Use – Technical Guidelines">INSPIRE Data Specification on Land Use – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Orthoimagery – Technical Guidelines">INSPIRE Data Specification on Orthoimagery – Technical Guidelines</option>
-			<option value="">-- Annexe III --</option>
-			<option value="INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines">INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines">INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Oceanographic Geographical Features – Technical Guidelines">INSPIRE Data Specification on Oceanographic Geographical Features – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines">INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines">INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines">INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Buildings – Technical Guidelines">INSPIRE Data Specification on Buildings – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines">INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines">INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Sea Regions – Technical Guidelines">INSPIRE Data Specification on Sea Regions – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Population distribution - demography – Technical Guidelines">INSPIRE Data Specification on Population distribution - demography – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Species Distribution – Technical Guidelines">INSPIRE Data Specification on Species Distribution – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Mineral Resources – Technical Guidelines">INSPIRE Data Specification on Mineral Resources – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Human Health and Safety – Technical Guidelines">INSPIRE Data Specification on Human Health and Safety – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Utility and governmental services– Technical Guidelines">INSPIRE Data Specification on Utility and governmental services– Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Soil – Technical Guidelines">INSPIRE Data Specification on Soil – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Energy Resources – Technical Guidelines">INSPIRE Data Specification on Energy Resources – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Statistical Units – Technical Guidelines">INSPIRE Data Specification on Statistical Units – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Land Use – Technical Guidelines">INSPIRE Data Specification on Land Use – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines">INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines</option>
-			<option value="INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines">INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines</option>
-		</helper>
-	</element>
-	<element name="gmd:title" id="360.0">
-		<label>Nom</label>
-		<description>Nom de la ressource, du document, du thésaurus, de la spécification, etc.</description>
-		<help/>
-	</element>
-	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
-		<label>Nom de la donnée</label>
-		<description>Nom caractéristique par lequel la donnée ou la série de données est connue</description>
-		<help>Il permet d'identifier facilement la ressource. Il est court (+/- 60 caractères) et permet de réduire le risque de confusion avec une autre ressource.</help>
-		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer une indication de la zone géographique couverte si le même type de donnée est proposé sur plusieurs territoires.</li><li>Indiquer un numéro de version ou une date de version si plusieurs versions de la même donnée existent.</li><li>Indiquer l'acronyme de la donnée entre parenthèses s'il est fort usité.</li></ul><b>Exemples :</b><ul><li>Carte d'occupation du sol de Wallonie (COSW) - v.1_05</li><li>Orthophotos 2009-2010</li></ul>]]></help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:transferOptions" id="273.0">
-		<label>Options de transfert et documentation</label>
-		<description>Informations sur la façon d'accéder directement à la ressource et sa documentation.</description>
-		<help/>
-		<condition/>
-	</element>
-	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
-		<label>Site internet</label>
-		<description>Site internet de l'organisation</description>
-		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
-	</element>
-	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
-		<label>Site internet</label>
-		<description>Site internet de l'organisation</description>
-		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
-	</element>
-	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
-		<label>Site internet</label>
-		<description>Site internet de l'organisation</description>
-		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
-	</element>
-	<element name="gmd:URL" id="608.0">
-		<label>Adresse internet</label>
-		<description>Adresse URL à laquelle se trouve la ressource ou la documentation</description>
-		<help><![CDATA[<ul><li>Pour les applications cartographiques, indiquer l'adresse de connexionà l'application.</li><li>Pour les services indiquer l'adresse du descripteur de service (GetCapabilities, WSDL...)</li><li>Pour des données en téléchargement direct, indiquer l'adresse du point de téléchargement.</li><li>Pour les connexions directes, indiquer l'adresse de la base de données.</li><li>Pour les sites internet, indiquer l'adresse de connexion à la page du site la plus pertinente.</li><li>Pour les documents en ligne, indiquer l'adresse du document en ligne</li></ul>]]></help>
-	</element>
-	<element name="gmd:useConstraints" id="71.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useConstraints">
-		<label>Définition des conditions d'utilisation</label>
-		<description>Document qui définit les conditions d'utilisation.</description>
-		<help><![CDATA[Choisir une des valeurs proposées et utiliser ensuite l'élement "Conditions détaillées" pour référencer les conditions d'utilisation.<ul><li><b><i>Licence</i></b> : A utiliser lorsque les conditions d'accès sont définies au travers d'une licence.</li><li><b><i>Autres restrictions</i></b> : A utiliser dans les autres cas.</li></ul>]]>Le cas échéant spécifier en plus l'assise légale grâce à un autre élement "Conditions détaillées" si cela n'a pas encore été fait en détaillant le régime d'accès.</help>
-		<help for="inspire"><![CDATA[Il n'existe pas de recommandation particulière pour les données dans le scope d'INSPIRE.</li></ul>]]></help>
-		<condition/>
-	</element>
-	<element name="gmd:useLimitation" id="68.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation">
-		<label>Limite d'utilisation</label>
-		<description>Régime d'accès et conditions d'utilisation de la ressource.</description>
-		<help>Cet élément permet au producteur de définir des conditions d'accès à la ressource dont la nature n'est ni légale ou contractuelle, ni sécuritaire. Il permet également de définir le cadre d'une utilisation adéquate de la ressource.</help>
-		<help>Les limites de nature légale, contractuelle ou sécuritaire doivent être décrites dans d'autres éléments.</help>
-		<helper>
-			<option value="Accès libre pour tout public - Open data">Accès - Accès libre pour tout public (Open data)</option>
-			<option value="Accès libre pour tout public - Utilisation commerciale interdite">Accès - Accès libre pour tout public sauf utilisation commerciale</option>
-			<option value="Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement">Accès - Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement</option>
-			<option value="Accès réservé aux autorités publiques">Accès - Accès réservé aux autorités publiques</option>
-			<option value="Accès restreint aux membres de ...">Accès - Accès restreint au personnel/aux membres d'une organisation (préciser)</option>
-			<option value="Accès restreint à ... ">Accès - Accès restreint aux membres d'un groupe spécifique (préciser)</option>
-			<option value="Accès : (décrivez le régime d'accès ici...) ">Accès - Autre régime d'accès (préciser)</option>
-			<option value="Aucune restriction d'accès public au service de visualisation">Accès au service - Accès libre pour tout public au service de visualisation</option>
-			<option value="Aucune restriction d'accès public à l'application de visualisation">Accès à l'application - Accès libre pour tout public à l'application de visualisation</option>
-			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont consultables à l'adresse  ... &lt;URL du site où sont décrites les conditions&gt; ">Conditions d'utilisation - Publiées sur un site internet (préciser)</option>
-			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la fiche de métadonnées ... &lt;URL de la fiche&gt; + décrire les conditions dans un ou des éléments &quot;Limite d'utilisation&quot; ">Conditions d'utilisation - Décrites dans la fiche de métadonnées (préciser)</option>
-			<option value="Aucune condition d'utilisation de la donnée n'est définie">Conditions d'utilisation - Aucune</option>
-			<option value="La ressource est fournie à titre indicatif et n'a pas de valeur juridique. Elle n'engage en rien la responsabilité du fournisseur.">Utilisation - La ressource est fournie à titre indicatif.</option>
-			<option value="L’absence de défaut ou d’irrégularité dans la ressource mise à disposition n’est pas garantie">Utilisation - L’absence de défaut ou d’irrégularité n’est pas garantie.</option>
-			<option value="Pour toute utilisation, une mention de la source est obligatoire">Utilisation - Il est obligatoire de mentionner la source</option>
-			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation - Utilisation commerciale interdite</option>
-			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
-		</helper>
-	</element>
-	<element name="gmd:useLimitation" id="68.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation">
-		<label>Limite d'utilisation</label>
-		<description>Cas pour lesquels l’utilisation de la ressource est inadéquat, voire interdit.</description>
-		<help>Cet élément complète la référence aux conditions d'utilisation en décrivant les conditions que le gestionnaire de la donnée souhaite particulièrement mettre en évidence pour définir le cadre d'une utilisation adéquate de la ressource. Cet élément est du texte libre. Les suggestions peuvent être modifiées.</help>
-		<help>Dans le cas où la donnée est disponible à travers des services ou des applications, il est recommandé de mentionner l'existence de conditions spécifiques pour l'utilisation de ces ressources.</help>
-		<help>Il est possible d'ajouter autant d'éléments "Limite d'utilisation" que souhaité.</help>
-		<helper>
-			<option value="La ressource est fournie à titre indicatif et n'a pas de valeur juridique. Elle n'engage en rien la responsabilité du fournisseur.">La ressource est fournie à titre indicatif.</option>
-			<option value="L’absence de défaut ou d’irrégularité dans la ressource mise à disposition n’est pas garantie">L’absence de défaut ou d’irrégularité n’est pas garantie.</option>
-			<option value="Pour toute utilisation, une mention de la source est obligatoire">Il est obligatoire de mentionner la source</option>
-			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation commerciale interdite</option>
-			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
-		</helper>
-	</element>
-	<element name="gmd:useLimitation" id="68.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:useLimitation">
-		<label>Limite d'utilisation</label>
-		<description>Cas pour lesquels l’utilisation de la ressource est inadéquat, voire interdit.</description>
-		<help>Cet élément complète la référence aux conditions d'utilisation en décrivant les conditions que le gestionnaire de la donnée souhaite particulièrement mettre en évidence pour définir le cadre d'une utilisation adéquate de la ressource. Cet élément est du texte libre. Les suggestions peuvent être modifiées.</help>
-		<help>Dans le cas où la donnée est disponible à travers des services ou des applications, il est recommandé de mentionner l'existence de conditions spécifiques pour l'utilisation de ces ressources.</help>
-		<help>Il est possible d'ajouter autant d'éléments "Limite d'utilisation" que souhaité.</help>
-		<helper>
-			<option value="La ressource est fournie à titre indicatif et n'a pas de valeur juridique. Elle n'engage en rien la responsabilité du fournisseur.">La ressource est fournie à titre indicatif.</option>
-			<option value="L’absence de défaut ou d’irrégularité dans la ressource mise à disposition n’est pas garantie">L’absence de défaut ou d’irrégularité n’est pas garantie.</option>
-			<option value="Pour toute utilisation, une mention de la source est obligatoire">Il est obligatoire de mentionner la source</option>
-			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation commerciale interdite</option>
-			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
-		</helper>
-	</element>
-	<element name="gmd:userNote" id="75.0">
-		<label>Explications sur les restrictions</label>
-		<description>Explications des restrictions d'accès et d'usage s'appliquant à la ressource</description>
-		<help>Les conditions d'accès et d'utilisation peuvent être référencées si elles sont disponibles publiquement.</help>
-		<condition/>
-	</element>
-	<element name="gmd:version" id="286.0">
-		<label>Version du format</label>
-		<description>Chaîne de caractère identifiant la version du format (ex: 10.3 ; 2012 ; 11g)</description>
-		<help>S'il n'existe pas de version du format, indiquer, indiquer "-". Si la version est inconnue, indiquer "inconnue"</help>
-		<condition>Obligatoire</condition>
-	</element>
-	<element name="gmd:verticalElement" id="338.0">
-		<label>Description formelle de l'étendue verticale</label>
-		<description>Informations sur l'étendue verticale du jeu de données en indiquant l'altitude minimale et l'altitude maximale du jeu de données.</description>
-		<help>Un système de référence peut être spécifié.</help>
-		<condition>Condition</condition>
-	</element>
-	<element name="gml:TimePeriod">
-		<label>Période</label>
-		<description>Période de temps exprimée par une date de début et une date de fin.</description>
-	</element>
-	<element name="gml:timePosition">
-		<label>Date et heure</label>
-		<description>Date et heure sous la forme AAAA-MM-JJ HH:mm:ss</description>
-		<help>L'heure est facultative.</help>
-	</element>
 	<element name="rw:AD_AttributeCode_CodeList">
 		<label>Type de l’attribut</label>
 		<description>Type de l’attribut</description>
@@ -986,5 +99,259 @@
 	<element name="rw:tableName">
 		<label>Nom</label>
 		<description>Nom de la table</description>
+	</element>
+	<element name="gmd:date" id="362.0" context="rw:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date">
+		<label>Date de référence</label>
+		<description>Date de référence pour un évènement du cycle de vie du service ou l'application (création, publication, dernière mise à jour).</description>
+		<help><![CDATA[<b>Pour les services et les applications :</b><ul><li>Il est obligatoire d'indiquer la date de la (dernière) mise à jour publiée.</li><li>La date de première publication peut être mentionnée si elle est différente de la date de (dernière) mise à jour.</li></ul><b>Encoder plusieurs dates</b>Lors de la mise à jour de la fiche de métadonnées, il est autorisé de conserver les dates déjà encodées et d'ajouter une nouvelle date de référence. Il est demandé de placer les éléments dans l'ordre antichronologique (le plus récent en premier). L'ordre des éléments peut être modifié grâce aux petits triangles gris "Monter" et "Descendre" situées juste à droite du nom de l'élément.]]></help>
+		<condition/>
+	</element>
+	<element name="gmd:date" id="362.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date">
+		<label>Date de référence</label>
+		<description>Date de référence pour un évènement du cycle de vie de la donnée (création, publication, mise à jour).</description>
+		<help><![CDATA[<b>Pour les jeux de données et les séries :</b><ul><li>Il est obligatoire d'indiquer la date de (dernière) mise à jour. Elle est celle qui correspond au cycle de publication et non au cycle de production.</li><li>La date de création peut être mentionnée si elle est différente de la date de (dernière) mise à jour.</li></ul><b>Pour les cartes statiques :</b><ul><li>Il est obligatoire d'indiquer la date de (dernière) publication.</li><li>La date de création peut être mentionnée si elle est différente de la date de (dernière) publication.</li></ul><b>Encoder plusieurs dates</b>Lors de la mise à jour de la fiche de métadonnées, il est autorisé de conserver les dates déjà encodées et d'ajouter une nouvelle date de référence. Il est demandé de placer les éléments dans l'ordre antichronologique (le plus récent en premier). L'ordre des éléments peut être modifié grâce aux petits triangles gris "Monter" et "Descendre" situées juste à droite du nom de l'élément.]]></help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:code" id="207.0" context="rw:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem/gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code">
+		<label>Identificateur du système de référence spatial</label>
+		<description>Valeur alphanumérique pour l'identification d'une occurrence dans le domaine de valeurs</description>
+		<help>Code alphanumérique de l'identifiant. Ces informations sont du type PT_FreeText et sont gérées dans la classe du même nom.</help>
+		<condition>Obligatoire</condition>
+		<helper editorMode="radio">
+			<option value="31370">Lambert Belge 72 (EPSG:31370)</option>
+			<option value="3812">Lambert Belge 2008 (EPSG:3812)</option>
+			<option value="4326">WGS 84 (EPSG:4326)</option>
+		</helper>
+	</element>
+	<element name="gmd:code" id="207.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:MD_Identifier/gmd:code">
+		<label>Identifiant local de la ressource</label>
+		<description>Code de l'identifiant local de la ressource</description>
+		<help>Un identifiant local est généralement attribué par le producteur ou le gestionnaire de la ressource, par exemple sous la forme d'un nom unique dans une base de données. Cet élément peut être répété si plusieurs éléments existent.</help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:code" id="207.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:RS_Identifier/gmd:code">
+		<label>Identifiant global de la ressource - code</label>
+		<description>Code de l'identifiant unique de la ressource</description>
+		<help>Si un identifiant global sous forme d'URI existe pour la ressource, indiquer le code alphanumérique de l'identifiant.</help>
+		<help>Pour générer un identifiant global, ouvrir le panneau "Suggestions", cliquer sur "Cette fiche ne contient pas d'identifiant pour la ressource. Calculer l'identifiant à partir de l'identifiant de la fiche", puis cliquer sur "Appliquer le traitement sélectionné".</help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:codeSpace" id="208.1" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:identifier/gmd:RS_Identifier/gmd:codeSpace">
+		<label>Identifiant global de la ressource - nom de domaine</label>
+		<description>Nom de domaine de l'identifiant unique de la ressource</description>
+		<help>Si un identifiant global sous forme d'URI existe pour la ressource, indiquer le nom de domaine de l'identifiant (préfixe).</help>
+		<help>Si un identifiant global a été calculé, choisir la valeur "http://geoportail.wallonie.be/ressources/id/" pour le domaine de l'identifiant.</help>
+		<condition>Obligatoire</condition>
+		<helper>
+			<option value="http://geoportail.wallonie.be/ressources/id/">http://geoportail.wallonie.be/ressources/id/</option>
+		</helper>
+	</element>
+	<element name="gmd:otherConstraints" id="72.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:otherConstraints">
+		<label>Conditions détaillées</label>
+		<description>Description libre des conditions d'accès et d'utilisation de la ressource.</description>
+		<help>Ce champ doit être complété dès que la valeur  "Autres conditions" a été sélectionnée pour décrire le régime d'accès ou la source des conditions d'utilisation de la ressource.</help>
+		<help>Une liste indicative est proposée pour aider à formuler le contenu de ce champ.</help>
+		<condition/>
+		<helper>
+			<option value="Accès libre pour tout public - Open data">Accès - Accès libre pour tout public (Open data)</option>
+			<option value="Accès libre pour tout public - Utilisation commerciale interdite">Accès - Accès libre pour tout public sauf utilisation commerciale</option>
+			<option value="Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement">Accès - Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement (ex : licence SPW)</option>
+			<option value="Accès réservé aux autorités publiques">Accès - Accès réservé aux autorités publiques (INSPIRE)</option>
+			<option value="Accès restreint aux membres de ...">Accès - Accès restreint au personnel/aux membres d'une organisation (préciser)</option>
+			<option value="Accès restreint à ... ">Accès - Accès restreint aux membres d'un groupe spécifique (préciser)</option>
+			<option value="Accès : (décrivez le régime d'accès ici...) ">Accès - Autre régime d'accès (préciser)</option>
+			<option value="Référence légale : Chapitres VI et VII du décret du 22 décembre 2010 relatif à l'infrastructure d'information géographique wallonne, consultable à l'adresse http://www.ejustice.just.fgov.be//mopdf/2011/02/03_1.pdf#Page41">Référence légale - INSPIRE</option>
+			<option value="Référence légale : &lt;nom complet du texte légal&gt; consultable à l'adresse &lt;URL du texte légal&gt;">Référence légale - autre</option>
+			<option value="Aucune restriction d'accès public au service de visualisation">Accès au service - Accès libre pour tout public au service de visualisation (INSPIRE)</option>
+			<option value="Aucune restriction d'accès public à l'application de visualisation">Accès à l'application - Accès libre pour tout public à l'application de visualisation</option>
+			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la licence de mise à disposition de données géographiques et biologiques numériques par le SPW consultable à l'adresse http://geoportail.wallonie.be/files/LicData.pdf">Conditions d'utilisation - Licence unique SPW</option>
+			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la licence ... &lt;nom et version&gt; consultable à l'adresse &lt;URL de la licence&gt; ">Conditions d'utilisation - Autre licence publiée (préciser)</option>
+			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont consultables à l'adresse  ... &lt;URL du site où sont décrites les conditions&gt; ">Conditions d'utilisation - Publiées sur un site internet (préciser)</option>
+			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la fiche de métadonnées ... &lt;URL de la fiche&gt; + décrire les conditions dans un ou des éléments &quot;Limite d'utilisation&quot; ">Conditions d'utilisation - Décrites dans la fiche de métadonnées (préciser)</option>
+			<option value="Aucune condition d'utilisation de la donnée n'est définie">Conditions d'utilisation - Aucune</option>
+		</helper>
+	</element>
+	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Protocole internet</label>
+		<description>Protocole de connexion à l'adresse internet</description>
+		<help/>
+		<condition/>
+		<helper>
+			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
+			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
+			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
+			<option value="UKST">Unknown Service Type</option>
+		</helper>
+	</element>
+	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Protocole internet</label>
+		<description>Protocole de connexion à l'adresse internet</description>
+		<help/>
+		<condition/>
+		<helper>
+			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
+			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
+			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
+			<option value="UKST">Unknown Service Type</option>
+		</helper>
+	</element>
+	<element name="gmd:protocol" id="398.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Protocole internet</label>
+		<description>Protocole de connexion à l'adresse internet</description>
+		<help/>
+		<condition/>
+		<helper>
+			<option value="WWW:LINK-1.0-http--link">Adresse Internet (http)</option>
+			<option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger (http)</option>
+			<option value="WWW:LINK-1.0-http--rss">Fil RSS (http)</option>
+			<option value="UKST">Unknown Service Type</option>
+		</helper>
+	</element>
+	<element name="gmd:role" id="379.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:role">
+		<label>Rôle</label>
+		<description>Rôle endossé par la personne ou l'organisation mentionnée.</description>
+		<help>La valeur "point de contact" ne doit pas être modifiée.</help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:role" id="379.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:role">
+		<label>Rôle</label>
+		<description>Rôle endossé par la personne ou l'organisation mentionnée.</description>
+		<help>La valeur "Distributeur" doit être utilisée.</help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
+		<label>Nom de la ressource</label>
+		<description>Nom par lequel le service ou l'application est connue</description>
+		<help>Le titre est le nom caractéristique et si possible unique avec lequel la ressource est connue. Il permet d'identifier facilement la ressource. Il est court (+/- 60 caractères) et éduit le risque de confusion avec une autre ressource.</help>
+		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer la mention "service" ou "application" dans le nom.</li><li>Indiquer la finalité du service ou de l'application (ex : visualisation, découverte, téléchargement, consultation...).</li><li>Indiquer le nom du service ou de l'application ou les données sur lequel il/elle opère.</li><li>Indiquer l'acronyme du type de service entre parenthèses.</li></ul><b>Exemple :</b><ul><li>Service de visualisation SEVESO (WMS)</li><li>Application de consultation de l'Atlas de l'agriculture et de la ruralité</li></ul>]]></help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title">
+		<label>Nom de la spécification</label>
+		<description>Nom de la spécification de produit ou des exigences de l'utilisateur avec lesquelles les données ont été comparées.</description>
+		<help>Indiquer le nom de la spécification. Pour INSPIRE choisir parmi celles suggérées en fonction du thème de la donnée.</help>
+		<helper>
+			<option value="">-- Conformité générale (obligatoire) --</option>
+			<option value="COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services">COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</option>
+			<option value="">-- Annexe I --</option>
+			<option value="INSPIRE Data Specification on Addresses – Technical Guidelines 3.1">INSPIRE Data Specification on Addresses – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1">INSPIRE Data Specification on Hydrography – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Cadastral Parcels– Technical Guidelines 3.1">INSPIRE Data Specification on Cadastral Parcels– Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Coordinate Reference Systems– Technical Guidelines 3.1">INSPIRE Data Specification on Coordinate Reference Systems– Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Transport Networks – Technical Guidelines 3.1">INSPIRE Data Specification on Transport Networks – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1">INSPIRE Data Specification on Protected Sites – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Geographical Grid Systems – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Grid Systems – Technical Guidelines 3.1</option>
+			<option value="INSPIRE Data Specification on Administrative Units – Technical Guidelines 3.1">INSPIRE Data Specification on Administrative Units – Technical Guidelines 3.1</option>
+			<option value="">-- Annexe II --</option>
+			<option value="INSPIRE Data Specification on Elevation – Technical Guidelines">INSPIRE Data Specification on Elevation – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Geology – Technical Guidelines">INSPIRE Data Specification on Geology – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Land Use – Technical Guidelines">INSPIRE Data Specification on Land Use – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Orthoimagery – Technical Guidelines">INSPIRE Data Specification on Orthoimagery – Technical Guidelines</option>
+			<option value="">-- Annexe III --</option>
+			<option value="INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines">INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines">INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Oceanographic Geographical Features – Technical Guidelines">INSPIRE Data Specification on Oceanographic Geographical Features – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines">INSPIRE Data Specification on  Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines">INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines">INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Buildings – Technical Guidelines">INSPIRE Data Specification on Buildings – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines">INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines">INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Sea Regions – Technical Guidelines">INSPIRE Data Specification on Sea Regions – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Population distribution - demography – Technical Guidelines">INSPIRE Data Specification on Population distribution - demography – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Species Distribution – Technical Guidelines">INSPIRE Data Specification on Species Distribution – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Mineral Resources – Technical Guidelines">INSPIRE Data Specification on Mineral Resources – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Human Health and Safety – Technical Guidelines">INSPIRE Data Specification on Human Health and Safety – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Utility and governmental services– Technical Guidelines">INSPIRE Data Specification on Utility and governmental services– Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Soil – Technical Guidelines">INSPIRE Data Specification on Soil – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Energy Resources – Technical Guidelines">INSPIRE Data Specification on Energy Resources – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Statistical Units – Technical Guidelines">INSPIRE Data Specification on Statistical Units – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Land Use – Technical Guidelines">INSPIRE Data Specification on Land Use – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines">INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines</option>
+			<option value="INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines">INSPIRE Data Specification on Area management/restriction/regulation zones and reporting units – Technical Guidelines</option>
+		</helper>
+	</element>
+	<element name="gmd:title" id="360.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:title">
+		<label>Nom de la donnée</label>
+		<description>Nom caractéristique par lequel la donnée ou la série de données est connue</description>
+		<help>Il permet d'identifier facilement la ressource. Il est court (+/- 60 caractères) et permet de réduire le risque de confusion avec une autre ressource.</help>
+		<help><![CDATA[<b>Recommandations :</b><ul><li>Faire figurer une indication de la zone géographique couverte si le même type de donnée est proposé sur plusieurs territoires.</li><li>Indiquer un numéro de version ou une date de version si plusieurs versions de la même donnée existent.</li><li>Indiquer l'acronyme de la donnée entre parenthèses s'il est fort usité.</li></ul><b>Exemples :</b><ul><li>Carte d'occupation du sol de Wallonie (COSW) - v.1_05</li><li>Orthophotos 2009-2010</li></ul>]]></help>
+		<condition>Obligatoire</condition>
+	</element>
+	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:contact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Site internet</label>
+		<description>Site internet de l'organisation</description>
+		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
+	</element>
+	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:pointOfContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Site internet</label>
+		<description>Site internet de l'organisation</description>
+		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
+	</element>
+	<element name="gmd:URL" id="608.0" context="rw:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/rw:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL">
+		<label>Site internet</label>
+		<description>Site internet de l'organisation</description>
+		<help>Lien vers le site internet de l'organisation où on peut en savoir plus sur ses missions</help>
+	</element>
+	<element name="gmd:useConstraints" id="71.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useConstraints">
+		<label>Définition des conditions d'utilisation</label>
+		<description>Document qui définit les conditions d'utilisation.</description>
+		<help><![CDATA[Choisir une des valeurs proposées et utiliser ensuite l'élement "Conditions détaillées" pour référencer les conditions d'utilisation.<ul><li><b><i>Licence</i></b> : A utiliser lorsque les conditions d'accès sont définies au travers d'une licence.</li><li><b><i>Autres restrictions</i></b> : A utiliser dans les autres cas.</li></ul>]]>Le cas échéant spécifier en plus l'assise légale grâce à un autre élement "Conditions détaillées" si cela n'a pas encore été fait en détaillant le régime d'accès.</help>
+		<help for="inspire"><![CDATA[Il n'existe pas de recommandation particulière pour les données dans le scope d'INSPIRE.</li></ul>]]></help>
+		<condition/>
+	</element>
+	<element name="gmd:useLimitation" id="68.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_Constraints/gmd:useLimitation">
+		<label>Limite d'utilisation</label>
+		<description>Régime d'accès et conditions d'utilisation de la ressource.</description>
+		<help>Cet élément permet au producteur de définir des conditions d'accès à la ressource dont la nature n'est ni légale ou contractuelle, ni sécuritaire. Il permet également de définir le cadre d'une utilisation adéquate de la ressource.</help>
+		<help>Les limites de nature légale, contractuelle ou sécuritaire doivent être décrites dans d'autres éléments.</help>
+		<helper>
+			<option value="Accès libre pour tout public - Open data">Accès - Accès libre pour tout public (Open data)</option>
+			<option value="Accès libre pour tout public - Utilisation commerciale interdite">Accès - Accès libre pour tout public sauf utilisation commerciale</option>
+			<option value="Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement">Accès - Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement</option>
+			<option value="Accès réservé aux autorités publiques">Accès - Accès réservé aux autorités publiques</option>
+			<option value="Accès restreint aux membres de ...">Accès - Accès restreint au personnel/aux membres d'une organisation (préciser)</option>
+			<option value="Accès restreint à ... ">Accès - Accès restreint aux membres d'un groupe spécifique (préciser)</option>
+			<option value="Accès : (décrivez le régime d'accès ici...) ">Accès - Autre régime d'accès (préciser)</option>
+			<option value="Aucune restriction d'accès public au service de visualisation">Accès au service - Accès libre pour tout public au service de visualisation</option>
+			<option value="Aucune restriction d'accès public à l'application de visualisation">Accès à l'application - Accès libre pour tout public à l'application de visualisation</option>
+			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont consultables à l'adresse  ... &lt;URL du site où sont décrites les conditions&gt; ">Conditions d'utilisation - Publiées sur un site internet (préciser)</option>
+			<option value="Des conditions d'utilisation de la donnée s'appliquent. Elles sont décrites dans la fiche de métadonnées ... &lt;URL de la fiche&gt; + décrire les conditions dans un ou des éléments &quot;Limite d'utilisation&quot; ">Conditions d'utilisation - Décrites dans la fiche de métadonnées (préciser)</option>
+			<option value="Aucune condition d'utilisation de la donnée n'est définie">Conditions d'utilisation - Aucune</option>
+			<option value="La ressource est fournie à titre indicatif et n'a pas de valeur juridique. Elle n'engage en rien la responsabilité du fournisseur.">Utilisation - La ressource est fournie à titre indicatif.</option>
+			<option value="L’absence de défaut ou d’irrégularité dans la ressource mise à disposition n’est pas garantie">Utilisation - L’absence de défaut ou d’irrégularité n’est pas garantie.</option>
+			<option value="Pour toute utilisation, une mention de la source est obligatoire">Utilisation - Il est obligatoire de mentionner la source</option>
+			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation - Utilisation commerciale interdite</option>
+			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
+		</helper>
+	</element>
+	<element name="gmd:useLimitation" id="68.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useLimitation">
+		<label>Limite d'utilisation</label>
+		<description>Cas pour lesquels l’utilisation de la ressource est inadéquat, voire interdit.</description>
+		<help>Cet élément complète la référence aux conditions d'utilisation en décrivant les conditions que le gestionnaire de la donnée souhaite particulièrement mettre en évidence pour définir le cadre d'une utilisation adéquate de la ressource. Cet élément est du texte libre. Les suggestions peuvent être modifiées.</help>
+		<help>Dans le cas où la donnée est disponible à travers des services ou des applications, il est recommandé de mentionner l'existence de conditions spécifiques pour l'utilisation de ces ressources.</help>
+		<help>Il est possible d'ajouter autant d'éléments "Limite d'utilisation" que souhaité.</help>
+		<helper>
+			<option value="La ressource est fournie à titre indicatif et n'a pas de valeur juridique. Elle n'engage en rien la responsabilité du fournisseur.">La ressource est fournie à titre indicatif.</option>
+			<option value="L’absence de défaut ou d’irrégularité dans la ressource mise à disposition n’est pas garantie">L’absence de défaut ou d’irrégularité n’est pas garantie.</option>
+			<option value="Pour toute utilisation, une mention de la source est obligatoire">Il est obligatoire de mentionner la source</option>
+			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation commerciale interdite</option>
+			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
+		</helper>
+	</element>
+	<element name="gmd:useLimitation" id="68.0" context="rw:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_SecurityConstraints/gmd:useLimitation">
+		<label>Limite d'utilisation</label>
+		<description>Cas pour lesquels l’utilisation de la ressource est inadéquat, voire interdit.</description>
+		<help>Cet élément complète la référence aux conditions d'utilisation en décrivant les conditions que le gestionnaire de la donnée souhaite particulièrement mettre en évidence pour définir le cadre d'une utilisation adéquate de la ressource. Cet élément est du texte libre. Les suggestions peuvent être modifiées.</help>
+		<help>Dans le cas où la donnée est disponible à travers des services ou des applications, il est recommandé de mentionner l'existence de conditions spécifiques pour l'utilisation de ces ressources.</help>
+		<help>Il est possible d'ajouter autant d'éléments "Limite d'utilisation" que souhaité.</help>
+		<helper>
+			<option value="La ressource est fournie à titre indicatif et n'a pas de valeur juridique. Elle n'engage en rien la responsabilité du fournisseur.">La ressource est fournie à titre indicatif.</option>
+			<option value="L’absence de défaut ou d’irrégularité dans la ressource mise à disposition n’est pas garantie">L’absence de défaut ou d’irrégularité n’est pas garantie.</option>
+			<option value="Pour toute utilisation, une mention de la source est obligatoire">Il est obligatoire de mentionner la source</option>
+			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation commerciale interdite</option>
+			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
+		</helper>
 	</element>
 </labels>
