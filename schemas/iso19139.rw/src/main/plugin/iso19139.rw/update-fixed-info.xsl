@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:mdb="http://www.isotc211.org/namespace/mdb/1.0/2014-07-11"
     xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd"
     xmlns:rw="http://metawal.wallonie.be/schemas/3.0" version="2.0">
     
     <xsl:import href="../iso19139/update-fixed-info.xsl"/>
     
     <xsl:template match="/root" priority="2">
-        <xsl:apply-templates select="rw:MD_Metadata"/>
+        <xsl:apply-templates select="rw:MD_Metadata|gmd:MD_Metadata|mdb:MD_Metadata"/>
     </xsl:template>
     
     <xsl:template match="rw:MD_Metadata">
