@@ -68,8 +68,6 @@ import javax.servlet.http.HttpSession;
 public class BatchXslProcessing { // extends NotInReadOnlyModeService {
 	@Autowired
 	private DataManager dataMan;
-	@Autowired
-	private SelectionManager selectionManager;
     @Autowired
     private XslProcessing xslProcessing;
     @Autowired
