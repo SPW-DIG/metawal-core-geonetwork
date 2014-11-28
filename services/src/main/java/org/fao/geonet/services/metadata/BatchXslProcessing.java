@@ -98,6 +98,9 @@ public class BatchXslProcessing { // extends NotInReadOnlyModeService {
 
 		final String siteURL = request.getRequestURL().toString() + "?" + request.getQueryString();
 		Log.info("org.fao.geonet.services.metadata", "Get selected metadata");
+        ServiceContext serviceContext = ServiceContext.get();
+        SelectionManager selectionManager =
+                SelectionManager.getManager(serviceContext.getUserSession());
 
         final HashSet<String> metadata;
         synchronized (selectionManager.getSelection("metadata")) {
