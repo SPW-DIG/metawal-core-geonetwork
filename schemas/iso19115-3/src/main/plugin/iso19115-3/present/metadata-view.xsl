@@ -132,9 +132,8 @@
           <xsl:value-of select="/root/gui/strings/changeDate"/>&#160;<xsl:value-of 
             select="if (contains($modifiedDate, 'T')) then substring-before($modifiedDate, 'T') else $modifiedDate"/> | 
           <xsl:value-of select="/root/gui/strings/uuid"/>&#160;
-          <xsl:value-of select="mdb:metadataIdentifier/
-                                  mcc:MD_Identifier[mcc:codeSpace/gco:CharacterString = 'urn:uuid']/
-                                  mcc:code"/>
+          <xsl:value-of select="mdb:metadataIdentifier[position() = 1]/
+                                  mcc:MD_Identifie/mcc:code"/>
         </span>
 
       </xsl:with-param>
