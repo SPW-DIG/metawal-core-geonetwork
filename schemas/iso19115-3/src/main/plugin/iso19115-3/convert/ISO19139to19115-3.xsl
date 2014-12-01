@@ -78,7 +78,7 @@
   <xsl:variable name="stylesheetVersion" select="'0.1'"/>
   <!-- Define if parent identifier should be defined using a uuidref 
     attribute or a CI_Citation with a title. -->
-  <xsl:param name="isParentIdentifierDefinedWithUUIDAttribute" select="false()" as="xs:boolean"/>
+  <xsl:param name="isParentIdentifierDefinedWithUUIDAttribute" select="true()" as="xs:boolean"/>
   <xsl:template match="/">
     <!-- 
     root element (MD_Metadata or MI_Metadata)
