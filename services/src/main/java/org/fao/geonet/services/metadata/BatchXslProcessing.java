@@ -52,7 +52,7 @@ import javax.servlet.http.HttpSession;
  * In each xml/schemas/schemaId directory, a process could be added in a
  * directory called process. Then the process could be called using the
  * following URL :
- * http://localhost:8080/geonetwork/srv/en/metadata.batch.processing
+ * http://localhost:8080/geonetwork/srv/eng/md.processing.batch
  * ?process=keywords-comma-exploder&url=http://xyz
  * 
  * In that example the process has to be named keywords-comma-exploder.xsl.
@@ -98,7 +98,7 @@ public class BatchXslProcessing { // extends NotInReadOnlyModeService {
 		Log.info("org.fao.geonet.services.metadata", "Get selected metadata");
         ServiceContext serviceContext = ServiceContext.get();
         SelectionManager selectionManager =
-                SelectionManager.getManager(serviceContext.getUserSession());
+                            SelectionManager.getManager(serviceContext.getUserSession());
 
         final HashSet<String> metadata;
         synchronized (selectionManager.getSelection("metadata")) {
