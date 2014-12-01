@@ -906,30 +906,25 @@
   <xsl:template match="gmd:CI_Citation/gmd:date">
     <cit:date>
       <xsl:copy-of select="@*"/>
-      <xsl:choose>
-        <xsl:when test="@gco:nilReason"/>
-        <xsl:otherwise>
-          <cit:CI_Date>
-            <cit:date>
-              <xsl:choose>
-                <xsl:when test="descendant::gmd:date/@gco:nilReason">
-                  <xsl:copy-of select="descendant::gmd:date/@gco:nilReason"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:call-template name="writeDateTime"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </cit:date>
-            <xsl:for-each select="descendant::gmd:dateType">
-              <xsl:call-template name="writeCodelistElement">
-                <xsl:with-param name="elementName" select="'cit:dateType'"/>
-                <xsl:with-param name="codeListName" select="'cit:CI_DateTypeCode'"/>
-                <xsl:with-param name="codeListValue" select="gmd:CI_DateTypeCode"/>
-              </xsl:call-template>
-            </xsl:for-each>
-          </cit:CI_Date>
-        </xsl:otherwise>
-      </xsl:choose>
+	  <cit:CI_Date>
+		<cit:date>
+		  <xsl:choose>
+			<xsl:when test="descendant::gmd:date/@gco:nilReason">
+			  <xsl:copy-of select="descendant::gmd:date/@gco:nilReason"/>
+			</xsl:when>
+			<xsl:otherwise>
+			  <xsl:call-template name="writeDateTime"/>
+			</xsl:otherwise>
+		  </xsl:choose>
+		</cit:date>
+		<xsl:for-each select="descendant::gmd:dateType">
+		  <xsl:call-template name="writeCodelistElement">
+			<xsl:with-param name="elementName" select="'cit:dateType'"/>
+			<xsl:with-param name="codeListName" select="'cit:CI_DateTypeCode'"/>
+			<xsl:with-param name="codeListValue" select="gmd:CI_DateTypeCode"/>
+		  </xsl:call-template>
+		</xsl:for-each>
+	  </cit:CI_Date>
     </cit:date>
   </xsl:template>
   <xsl:template match="gmd:CI_Citation/gmd:editionDate">
@@ -1174,7 +1169,6 @@
       have to account for gco:Date and gco:DateTime which are both valid descendants of gmd:date
      -->
     <gco:DateTime>
-      <xsl:copy-of select="@* | descendant::gmd:date/@*"/>
       <xsl:for-each select="descendant::gco:Date">
         <xsl:variable name="dateNodeString">
           <xsl:value-of select="xs:string(.)"/>
