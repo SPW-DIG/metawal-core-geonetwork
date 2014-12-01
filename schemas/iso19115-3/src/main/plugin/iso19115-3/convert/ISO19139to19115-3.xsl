@@ -40,7 +40,7 @@
   xmlns:mai="http://www.isotc211.org/namespace/mai/1.0/2014-07-11"
   xmlns:mdq="http://www.isotc211.org/namespace/mdq/1.0/2014-07-11"
   xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
-  exclude-result-prefixes="gmd gco gsr gss gts xs gmi gmx xsi srv1 mac mil">
+  exclude-result-prefixes="#all">
   
   <xsl:import href="../schema-utility.xsl"/>
   
