@@ -260,7 +260,7 @@
         </xsl:call-template>
       </xsl:with-param>
       <xsl:with-param name="content">
-        <xsl:for-each select="gmd:keyword">
+        <xsl:for-each select="mri:keyword">
           <xsl:if test="position() &gt; 1"><xsl:text>, </xsl:text></xsl:if>
           
           
@@ -284,7 +284,7 @@
         </xsl:for-each>
         
         
-        <xsl:variable name="type" select="gmd:type/mri:MD_KeywordTypeCode/@codeListValue"/>
+        <xsl:variable name="type" select="mri:type/mri:MD_KeywordTypeCode/@codeListValue"/>
         <xsl:if test="$type != ''">
           (<xsl:value-of
             select="/root/gui/schemas/*[name(.)='iso19115-3']/codelists/codelist[@name = 'mri:MD_KeywordTypeCode']/
