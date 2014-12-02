@@ -141,7 +141,7 @@
   <editor-validation-errors-only-on-load/>-->
  
   <!-- Display the geopublisher option for all updloaded files-->
- 	<editor-geopublisher/>
+ 	<!--editor-geopublisher/-->
  
  
  <!-- Display metadata tabs in edit and view mode. 
