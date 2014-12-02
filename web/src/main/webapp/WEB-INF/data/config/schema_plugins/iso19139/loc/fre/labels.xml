@@ -3593,12 +3593,6 @@ l’IGN (WPS)
     ]]></help>
 		<condition>Obligatoire si "jeu de données"</condition>
 	</element>
-	<element name="gmd:MD_TopicCategoryCode">
-		<label>Thématique</label>
-		<description>Code de la catégorie du sujet</description>
-		<help/>
-		<condition/>
-	</element>
 	<element name="gmd:topologyLevel" id="177.0">
 		<label>Niveau topologie</label>
 		<description>Code qui identifie le degré de complexité des relations spatiales</description>
