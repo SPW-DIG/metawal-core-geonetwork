@@ -89,7 +89,7 @@ GeoNetwork.data.RegionStore = function(url){
             name: 'label',
             mapping: 'label',
             convert: getLabel,
-            sortType: 'asNatural',
+            sortType: 'asNatural'
         }]
     });
 };
