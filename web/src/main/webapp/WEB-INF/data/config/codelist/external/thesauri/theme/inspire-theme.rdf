@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:exslt="http://exslt.org/common" xmlns:gemet="http://www.eionet.europa.eu/gemet/2004/06/gemet-schema.rdf#">
 <skos:ConceptScheme rdf:about="http://geonetwork-opensource.org/inspire-theme">
-<dc:title>INSPIRE themes</dc:title>
+  <dc:title>GEMET - INSPIRE themes, version 1.0</dc:title>
 <dc:description>INSPIRE themes thesaurus for GeoNetwork opensource.</dc:description>
 <dc:creator>
 <foaf:Organization>
@@ -10,8 +10,8 @@
 </dc:creator>
 <dc:uri>http://www.eionet.europa.eu/gemet/about?langcode=en</dc:uri>
 <dc:rights>http://www.eionet.europa.eu/gemet/about?langcode=en</dc:rights>
-<dcterms:issued>Fry Sep 22 07:57:15 CEST 2009</dcterms:issued>
-<dcterms:modified>2009-09-22 07:57:15</dcterms:modified>
+<dcterms:issued>2008-06-01</dcterms:issued>
+<dcterms:modified>2008-06-01</dcterms:modified>
 </skos:ConceptScheme>
 <skos:Concept rdf:about="http://rdfdata.eionet.europa.eu/inspirethemes/themes/1">
 <skos:prefLabel xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:ns4="http://rdfdata.eionet.europa.eu/inspirethemes/themes/" xml:lang="sv">Referenskoordinatsystem</skos:prefLabel>
