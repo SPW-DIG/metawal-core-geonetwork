@@ -271,7 +271,7 @@ GeoNetwork.Lang.nl = {
     'logout': "Uitloggen",
     'administration': "Beheer",
     'validationReport': "Validatierapport",
-    'status': "Status",
+    'status': "Metadata status",
     'updateStatus': 'Update status',
     'currentStatus': ' (current status is ${status})',
     'enableWorkflow': 'Enable worklow',

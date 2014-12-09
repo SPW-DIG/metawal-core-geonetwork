@@ -280,7 +280,7 @@ GeoNetwork.Lang.en = {
     'administration': 'Administration',
     'validationReport': 'Validation report',
     'setStatus': 'Metadata status',
-    'status': 'Change status',
+    'status': 'Metadata status',
     'updateStatus': 'Update status',
     'currentStatus': ' (current status is ${status})',
     'enableWorkflow': 'Enable worklow',

@@ -285,7 +285,7 @@ GeoNetwork.Lang.fr = {
     'administration': 'Administration',
     'validationReport': 'Rapport de validation',
     'setStatus': 'État de la métadonnée',
-    'status': 'Changer l\'état',
+    'status': 'Etat de la fiche',
     'updateStatus': 'Mettre à jour l\'état',
     'currentStatus': ' (état de la fiche : ${status})',
     'enableWorkflow': 'Activer la gestion de l\'état de la fiche',

@@ -268,7 +268,7 @@ GeoNetwork.Lang.de = {
 'logout': 'Abmelden',
 'administration':'Verwaltung',
 'validationReport':'Validation Report',
-'status':'Status',
+'status':'Metadata status',
 'updateStatus': 'Update status',
 'currentStatus': ' (current status is ${status})',
 'enableWorkflow': 'Enable worklow',
