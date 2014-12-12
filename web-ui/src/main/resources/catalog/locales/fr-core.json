@@ -28,13 +28,14 @@
     
     "adminConsole": "Console d'admin",
     "needAnAccount": "Besoin d'un compte?",
-    "needAnAccountInfo": "Enregistrez-vous, cela ne prend qu'une minute.",
+    "needAnAccountInfo": "Enregistrez-vous, cela ne prend qu'une minute (via le site du Géoportail).",
     "createAnAccount": "Créer un compte",
     "forgetDetails": "Vous avez oublié vos données?",
-    "forgetDetailsInfo": "Utiliser le service de récupration de mot de passe afin de le réinitialiser.",
+    "forgetDetailsInfo": "Utiliser le service de récupration de mot de passe afin de le réinitialiser (via le site du Géoportail).",
     "recoverPassword": "Vous avez oublié votre mot de passe",
     "userPreferences": "Préférences utilisateur",
     "userDetails": "Données utilisateur",
+    "recoveryPassword":"Récupération du mot de passe",
     "notifications": "Notifications",
     "signout": "Se déconnecter",
     

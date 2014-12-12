@@ -26,13 +26,14 @@
     
     "adminConsole": "Admin console",
     "needAnAccount": "Need an account ?",
-    "needAnAccountInfo": "Then sign right up, it only takes a minute.",
+    "needAnAccountInfo": "Then sign right up, it only takes a minute (via the Géoportail website).",
     "createAnAccount": "Create an account",
     "forgetDetails": "Forgotten your details?",
-    "forgetDetailsInfo": "Use password recovery to reset it.",
+    "forgetDetailsInfo": "Use password recovery to reset it (via the Géoportail website).",
     "recoverPassword": "Forgot your password",
     "userPreferences": "User preferences",
     "userDetails": "User details",
+    "recoveryPassword":"Password recovery",
     "notifications": "Notifications",
     "signout": "Sign out",
     
