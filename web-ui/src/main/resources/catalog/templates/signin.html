@@ -26,7 +26,7 @@
             <div class="panel-heading" data-translate="">needAnAccount</div>
             <p data-translate="">needAnAccountInfo</p>
             <p>
-                <a class="btn btn-default" href="http://geoportail.wallonie.be/en/home/contact.html?objet=metawal-role" data-translate="">createAnAccount</a>
+                <a class="btn btn-default" href="new.account" data-translate="">createAnAccount</a>
             </p>
         </div>
         <div class="panel">
@@ -34,8 +34,26 @@
             <div data-ng-show="sendPassword === false">
                 <p data-translate="">forgetDetailsInfo</p>
                 <p>
-                    <a class="btn btn-default" href="http://geoportail.wallonie.be/en/home/contact.html?objet=metawal-autres" data-translate="">recoveryPassword</a>
+                    <a type="submit" class="btn btn-default" data-ng-click="setSendPassword(true)"
+                        data-translate="">recoverPassword</a>
                 </p>
+            </div>
+            <div data-ng-show="sendPassword === true">
+                <div>
+                <form class="form-horizontal" id="userinfo">
+                    <div class="form-group">
+                        <label class="control-label col-lg-3" data-translate="">username</label>
+                        <div class="col-lg-6">
+                            <input type="text" name="username" id="username" class="form-control"/>
+                        </div>
+                        <div class="col-lg-2">
+                            <a type="submit" class="btn btn-default"
+                                data-ng-click="remindMyPassword('#userinfo')">
+                                <i class="icon-question-sign"></i><span data-translate="">submit</span></a>
+                        </div>
+                    </div>
+                </form>
+                </div>
             </div>
         </div>
     </div>
