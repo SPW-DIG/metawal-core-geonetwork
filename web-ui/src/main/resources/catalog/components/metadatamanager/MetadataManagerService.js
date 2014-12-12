@@ -36,8 +36,12 @@
       var view = function(md) {
           console.log('View:');
           console.log(md);
+          var url = location.href.split('/');
+          console.log('lang:');
+          console.log(url[5]);
+          //console.log(langs);
           // TODO: Open metadata view mode according to GUI
-          window.open('../../apps/search?uuid=' + md['geonet:info'].uuid, 'gn-view');
+          window.open('../../srv/'+url[5]+'/search?uuid=' + md['geonet:info'].uuid, 'gn-view');
       };
       var edit = function(md) {
         console.log('Edit:');
