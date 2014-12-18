@@ -122,29 +122,7 @@
 	<!-- === ====   rw:MD_LegalConstraint  ==== === -->
 
 	<!-- main element -->
-	<xs:element name="MD_LegalConstraints" type="rw:MD_LegalConstraints_Type"
-		substitutionGroup="gmd:MD_LegalConstraints"/>
 
-	<xs:complexType name="MD_LegalConstraints_Type">
-		<xs:complexContent>
-			<xs:extension base="gmd:MD_LegalConstraints_Type">
-				<xs:sequence>
-					<!-- JFM : next name is wrong : I see 'copyrightContact' in doc. AND OLD TYPE IS CRAZY !!  JFM -->
-					<!--<xs:element name="cpyContact" type="gco:CharacterString_PropertyType"
-						minOccurs="0"/> -->
-					<xs:element name="cpyContact" type="rw:CI_ResponsibleParty_Type" minOccurs="0"/>
-					<!--<xs:element name="privacyConstraints" type="gco:CharacterString_PropertyType" minOccurs="0"/>-->
-					<!-- Rem : name is right JFM -->
-					<xs:element name="legalValue" type="gco:CharacterString_PropertyType"
-						minOccurs="0"/>
-					<!-- Rem : name is right JFM -->
-					<xs:element name="legalReference" type="gco:CharacterString_PropertyType"
-						minOccurs="0"/>
-				</xs:sequence>
-				<xs:attribute ref="gco:isoType" use="required" fixed="gmd:MD_LegalConstraints"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 
 
 	<!-- === ====   rw:CI_ResponsibleParty ==== === -->
