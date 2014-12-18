@@ -329,7 +329,7 @@ GeoNetwork.app = function () {
         });
 
         advancedCriteria.push(themekeyField, orgNameField, categoryField, 
-                                when, spatialTypes, denominatorField, 
+                                when, spatialTypes, 
                                 groupField, 
                                 metadataTypeField, validField, statusField, ownerField, isHarvestedField, inspire);
         var adv = new Ext.form.FieldSet({
