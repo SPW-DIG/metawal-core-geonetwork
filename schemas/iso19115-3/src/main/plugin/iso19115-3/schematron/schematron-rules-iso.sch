@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
-	<sch:title xmlns="http://www.w3.org/2001/XMLSchema">Schematron validation for ISO19115-1:2014</sch:title>
-	<sch:ns prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  <sch:title xmlns="http://www.w3.org/2001/XMLSchema" xml:lang="en">Schematron validation for ISO 19115-1:2014 standard</sch:title>
+  <sch:title xmlns="http://www.w3.org/2001/XMLSchema" xml:lang="fr">Règles de validation pour le standard ISO 19115-1:2014</sch:title>
+  <sch:ns prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
   <sch:ns prefix="srv" uri="http://www.isotc211.org/namespace/srv/2.0/2014-07-11"/>
   <sch:ns prefix="mds" uri="http://www.isotc211.org/namespace/mds/1.0/2014-07-11"/>
   <sch:ns prefix="mdb" uri="http://www.isotc211.org/namespace/mdb/1.0/2014-07-11"/>
@@ -22,65 +21,79 @@
   <sch:ns prefix="dqm" uri="http://www.isotc211.org/namespace/dqm/1.0/2014-07-11"/>
   <sch:ns prefix="cit" uri="http://www.isotc211.org/namespace/cit/1.0/2014-07-11"/>
   <sch:ns prefix="mmi" uri="http://www.isotc211.org/namespace/mmi/1.0/2014-07-11"/>
-	<sch:ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance"/>
-	<sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
-	<sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
-
-
-
-  <sch:pattern id="conf.metadata-base-instance.root-element">
-    <sch:title>Metadata document root element</sch:title>
-    <sch:p>A metadata instance document conforming to this specification SHALL have a root MD_Metadata element defined in the http://www.isotc211.org/2005/mdb/1.0 namespace.</sch:p>
-    <sch:rule context="/">
-      <sch:assert test="(count(/mdb:MD_Metadata) = 1)"><div>The root element must be MD_Metadata</div></sch:assert>
-    </sch:rule>
-  </sch:pattern>
-
-  <sch:pattern id="conf.metadata-base-instance.scope-name">
-    <sch:title>Scope Name</sch:title>
-    <sch:p> If a MD_MetadataScope element is present, the name property MUST have a value if resourceScope is not equal to "dataset"</sch:p>
-    <sch:rule context="//mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[not(@codeListValue ='dataset')]">
-      <sch:assert test="(count(../../mdb:name)=1)">
-       <div> Specify a name for the metadata scope (required if the scope code is not 'dataset'.</div>
-      </sch:assert>
-    </sch:rule>
-  </sch:pattern>
-
-
-
+  <sch:ns prefix="gco" uri="http://www.isotc211.org/2005/gco"/>
+  <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
+  <sch:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
+  <sch:ns prefix="xsi" uri="http://www.w3.org/2001/XMLSchema"/>
   <sch:diagnostics>
-    <sch:diagnostic id="conf.metadata-base-instance.metadata-create-date-failure-en"
-                xml:lang="en">
-      Specify a creation date for the metadata record (MD_Metadata/dateInfo... with CI_DateTypeCode/@codeListValue='creation')
-    </sch:diagnostic>
-    <sch:diagnostic id="conf.metadata-base-instance.metadata-create-date-failure-fr"
-                xml:lang="fr">
-      La fiche ne contient pas de date de création. Vous devriez ;)
-    </sch:diagnostic>
+    <sch:diagnostic id="conf.metadata-base-instance.root-element-failure-en" xml:lang="en">The root element must be MD_Metadata.</sch:diagnostic>
+    <sch:diagnostic id="conf.metadata-base-instance.root-element-failure-fr" xml:lang="fr">Modifier l'élément racine du document pour que ce soit un élément MD_Metadata.</sch:diagnostic>
 
-    <sch:diagnostic id="conf.metadata-base-instance.metadata-create-date-report-en"
-                xml:lang="en">
-      Metadata creation date found. Good !
-    </sch:diagnostic>
-    <sch:diagnostic id="conf.metadata-base-instance.metadata-create-date-report-fr"
-                xml:lang="fr">
-      Date trouvée. C'est tout bon !
-    </sch:diagnostic>
+    <sch:diagnostic id="conf.metadata-base-instance.root-element-success-en" xml:lang="en">
+      <sch:value-of select="$numberOfMD_MetadataElement"/> root element MD_Metadata found.</sch:diagnostic>
+    <sch:diagnostic id="conf.metadata-base-instance.root-element-success-fr" xml:lang="fr">
+      <sch:value-of select="$numberOfMD_MetadataElement"/> élément(s) racine(s) MD_Metadata identifié(s).</sch:diagnostic>
   </sch:diagnostics>
+  <sch:pattern id="conf.metadata-base-instance.root-element">
+    <sch:title xml:lang="en">Metadata document root element</sch:title>
+    <sch:title xml:lang="fr">Élément racine du document</sch:title>
+    <sch:p xml:lang="en">A metadata instance document conforming to
+      this specification SHALL have a root MD_Metadata element
+      defined in the http://www.isotc211.org/2005/mdb/1.0 namespace.</sch:p>
+    <sch:p xml:lang="fr">Une fiche de métadonnées conforme au standard
+      ISO19115-1 DOIT avoir un élément racine MD_Metadata (défini dans l'espace
+      de nommage http://www.isotc211.org/2005/mdb/1.0).</sch:p>
+    <sch:rule context="/">
+      <sch:let name="numberOfMD_MetadataElement" value="count(/mdb:MD_Metadata)"/>
 
+      <sch:assert test="$numberOfMD_MetadataElement = 1"
+                  diagnostics="conf.metadata-base-instance.root-element-failure-en                     conf.metadata-base-instance.root-element-failure-fr"/>
 
-  <sch:pattern id="conf.metadata-base-instance.metadata-create-date">
-    <sch:title>Metadata create date</sch:title>
-    <sch:p>A dateInfo property value with data type = "creation" MUST be present in every MD_Metadata instance.</sch:p>
-    <sch:rule context="mdb:MD_Metadata">
-      <sch:assert test="count(./mdb:dateInfo/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode[@codeListValue='creation']) &gt; 0"
-                  diagnostics="conf.metadata-base-instance.metadata-create-date-failure-en conf.metadata-base-instance.metadata-create-date-failure-fr"/>
-      <sch:report test="count(./mdb:dateInfo/cit:CI_Date/cit:dateType/cit:CI_DateTypeCode[@codeListValue='creation']) &gt; 0"
-                  diagnostics="conf.metadata-base-instance.metadata-create-date-report-en conf.metadata-base-instance.metadata-create-date-report-fr"/>
+      <sch:report test="$numberOfMD_MetadataElement = 1"
+                  diagnostics="conf.metadata-base-instance.root-element-success-en                       conf.metadata-base-instance.root-element-success-fr"/>
     </sch:rule>
   </sch:pattern>
-
-
+  <sch:diagnostics>
+    <sch:diagnostic id="conf.metadata-base-instance.scope-name-failure-en" xml:lang="en">Specify a name for the metadata scope
+      (required if the scope code is not "dataset").</sch:diagnostic>
+    <sch:diagnostic id="conf.metadata-base-instance.scope-name-failure-fr" xml:lang="fr">Préciser la description du domaine d'application
+      (car le document décrit une ressource qui n'est pas un "jeu de données").</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern id="conf.metadata-base-instance.scope-name">
+    <sch:title xml:lang="en">Scope Name</sch:title>
+    <sch:title xml:lang="fr">Description du domaine d'application</sch:title>
+    <sch:p xml:lang="en">If a MD_MetadataScope element is present,
+      the name property MUST have a value if resourceScope is not equal to "dataset"</sch:p>
+    <sch:p xml:lang="fr">Si un élément domaine d'application (MD_MetadataScope)
+      est défini, sa description (name) DOIT avoir une valeur
+      si se domaine n'est pas "jeu de données" (ie. "dataset").</sch:p>
+    <sch:rule context="//mdb:MD_MetadataScope/mdb:resourceScope/                           mcc:MD_ScopeCode[not(@codeListValue ='dataset')]">
+      <sch:assert test="(count(../../mdb:name)=1)"
+                  diagnostics="conf.metadata-base-instance.scope-name-failure-en                      conf.metadata-base-instance.scope-name-failure-fr"/>
+    </sch:rule>
+  </sch:pattern>
+  <sch:diagnostics>
+    <sch:diagnostic id="conf.metadata-base-instance.create-date-failure-en" xml:lang="en">Specify a creation date for the metadata record
+      (MD_Metadata/dateInfo... with CI_DateTypeCode/@codeListValue='creation').</sch:diagnostic>
+    <sch:diagnostic id="conf.metadata-base-instance.create-date-failure-fr" xml:lang="fr">Specify a creation date for the metadata record
+      (MD_Metadata/dateInfo... with CI_DateTypeCode/@codeListValue='creation').</sch:diagnostic>
+  </sch:diagnostics>
+  <sch:pattern id="conf.metadata-base-instance.create-date">
+    <sch:title xml:lang="en">Metadata create date</sch:title>
+    <sch:title xml:lang="fr">Date de création du document</sch:title>
+    <sch:p xml:lang="en">A dateInfo property value with data type = "creation"
+      MUST be present in every MD_Metadata instance.</sch:p>
+    <sch:p xml:lang="fr">Tout document DOIT avoir une date de création
+      définie (en utilisant un élément dateInfo avec un type "creation").</sch:p>
+    <sch:rule context="mdb:MD_Metadata">
+      <sch:assert test="count(./mdb:dateInfo/cit:CI_Date/         cit:dateType/cit:CI_DateTypeCode[@codeListValue='creation']) &gt; 0"
+                  diagnostics="conf.metadata-base-instance.create-date-failure-en                      conf.metadata-base-instance.create-date-failure-fr"/>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>Spatial Respresentation Requirements</sch:title>
+    <sch:p>There are no specific schematron rules for the msr namespace, but the core.sch rules apply.</sch:p>
+  </sch:pattern>
   <sch:pattern id="conf.constraints-xml.schematron-rules">
     <sch:title>Constraint Requirements</sch:title>
     <sch:p>Constraints for elements in the mco namespace</sch:p>
@@ -94,7 +107,14 @@
       <sch:assert test="(count(./mco:addressee) +          count(./mco:statement/gco:CharacterString)) &gt; 0">Specify either mco:addressee or mco:statement for each mco:MD_MD_Releasability.</sch:assert>
     </sch:rule>
   </sch:pattern>
-
+  <sch:pattern>
+    <sch:title>Application Schema Requirements</sch:title>
+    <sch:p>There are no specific schematron rules for the mas namespace, but the core.sch rules apply.</sch:p>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>Geospatial Extension Requirements</sch:title>
+    <sch:p>There are no specific schematron rules for the gcx namespace, but the core.sch rules apply.</sch:p>
+  </sch:pattern>
   <sch:pattern id="conf.geospatial-extent-xml.schematron-rules">
     <sch:title>Extent Requirements</sch:title>
     <sch:p>Constraints for elements in the gex namespace</sch:p>
@@ -105,14 +125,12 @@
       <sch:assert test="(count(./gex:verticalCRS) +          count(./gex:verticalCRSId)) &gt; 0">Specify either gex:verticalCRS or gex:verticalCRSId for each gex:EX_Extent.</sch:assert>
     </sch:rule>
   </sch:pattern>
-
   <sch:pattern id="conf.constraints-xml.schematron-rules">
     <sch:title>Constraints Requirements</sch:title>
     <sch:p>Every MD_LegalConstraints must include accessConstraints, useConstraints, otherConstraint, useLimitation or releasability</sch:p>
     <sch:rule context="//mco:MD_LegalConstraints">
       <sch:assert test="(count(./mco:accessConstraints/mco:MD_RestrictionCode) +          count(./mco:useConstraints/mco:MD_RestrictionCode) +         count(./mco:otherConstraints/gco:CharacterString) +         count(./mco:useLimitation/gco:CharacterString) +          count(./mco:releasability/gco:CharacterString)) &gt; 0">Specify either mco:accessConstraints, mco:useConstraints, mco:otherConstraint, mco:useLimitation or mco:releasability for each mco:MD_LegalConstraints.</sch:assert>
     </sch:rule>
-
     <sch:rule context="//mco:otherConstraints/gco:CharacterString">
       <sch:assert test="(count(../../mco:accessConstraints[mco:MD_RestrictionCode='otherRestrictions']) +         count(../../mco:accessConstraints[mco:MD_RestrictionCode/@codeListValue='otherRestrictions']) +         count(../../mco:useConstraints[mco:MD_RestrictionCode='otherRestrictions']) +         count(../../mco:useConstraints[mco:MD_RestrictionCode/@codeListValue='otherRestrictions'])) &gt; 0">Specify mco:otherConstraints only if accessConstraints or useConstraints = 'otherRestrictions'.</sch:assert>
     </sch:rule>
@@ -120,8 +138,8 @@
       <sch:assert test="(count(./mco:addressee) +          count(./mco:statement/gco:CharacterString)) &gt; 0">Specify either mco:addressee or mco:statement for each mco:MD_MD_Releasability.</sch:assert>
     </sch:rule>
   </sch:pattern>
-
-  <sch:pattern id="conf.resource-content-xml.schematron-rules">
+  <sch:pattern xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               id="conf.resource-content-xml.schematron-rules">
     <sch:title>Content Requirements</sch:title>
     <sch:p>Constraints for elements in the mrc namespace. No check is doe to ensure that MD_Band/units is a unit of length.</sch:p>
     <sch:rule context="//mrc:MD_FeatureCatalogue">
@@ -134,7 +152,6 @@
       <sch:report test="(mrc:minValue | mrc:maxValue | mrc:meanValue) and not(mrc:units)">Specify mrc:units if mrc:minValue, mrc:maxValue or mrc:meanValue exists.</sch:report>
     </sch:rule>
   </sch:pattern>
-
   <sch:pattern id="conf.resource-identification-xml.schematron-rules">
     <sch:title>Resource Identification metadata Requirements</sch:title>
     <sch:p>If a MD_AssociatedResource element is instantiated, then a value for either the name or metadataReference property MUST be provided.</sch:p>
@@ -142,8 +159,8 @@
       <sch:assert test="(count(./mri:name)  + count(./mri:metadataReference)) &gt; 0">Specify either a name for the associated resource, or provide a metadataReference to a
         metadata record that describes the resource</sch:assert>
     </sch:rule>
-  </sch:pattern>
 
+  </sch:pattern>
   <sch:pattern id="conf.citation-xml.schematron-rules">
     <sch:title>Citation Requirements</sch:title>
     <sch:p>Every CI_Individual must include a cit:name or cit:positionName value and Every CI_Organization must include a cit:name or cit:positionName value</sch:p>
@@ -154,7 +171,6 @@
       <sch:assert test="(count(./cit:name/gco:CharacterString) + count(./cit:logo/mcc:MD_BrowseGraphic/mcc:fileName/gco:CharacterString)) &gt; 0">Specify either cit:name, cit:logo for each cit:CI_Organization.</sch:assert>
     </sch:rule>
   </sch:pattern>
-
   <sch:pattern id="conf.language.schematron-rules">
     <sch:title>Language Requirements</sch:title>
     <sch:p>There are no specific schematron rules for the lan namespace, but the core.sch rules apply.</sch:p>
@@ -235,5 +251,4 @@
       <sch:assert test="(count(./mmi:maintenanceAndUpdateFrequency) +          count(./mmi:userDefinedMaintenanceFrequency)) &gt; 0">Specify either mmi:MD_MaintenanceInformation or mmi:userDefinedMaintenanceFrequency for each mmi:MD_MaintenanceInformation.</sch:assert>
     </sch:rule>
   </sch:pattern>
-
 </sch:schema>
