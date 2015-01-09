@@ -160,18 +160,21 @@ public class GetRelated implements Service {
             }
 						Element response = new Element("response");
             if (md != null) {
-                List<?> sibs = Xml.selectNodes(md, "*//gmd:aggregationInfo/*[gmd:aggregateDataSetIdentifier/*/gmd:code and gmd:initiativeType/gmd:DS_InitiativeTypeCode/@codeListValue!='' and gmd:associationType/gmd:DS_AssociationTypeCode/@codeListValue!='']", nsList);
+                List<?> sibs = Xml.selectNodes(md, "*//gmd:aggregationInfo/*" +
+                        "[gmd:aggregateDataSetIdentifier/*/gmd:code and " +
+                        "gmd:associationType/gmd:DS_AssociationTypeCode/@codeListValue!='']", nsList);
 								for (Object o : sibs) {
 									if (o instanceof Element) {
 										Element sib = (Element)o;
 										Element agId = (Element)sib
 														.getChild("aggregateDataSetIdentifier", gmd)
 										        .getChildren().get(0);
-                  	String sibUuid = agId
+                                      	String sibUuid = agId
 														.getChild("code", gmd)
 														.getChildText("CharacterString", gco);
-										String initType = sib.getChild("initiativeType", gmd) 
-																 .getChild("DS_InitiativeTypeCode", gmd).getAttributeValue("codeListValue");
+										String initType = sib.getChild("associationType", gmd)
+                                                 .getChild("DS_AssociationTypeCode", gmd)
+                                                .getAttributeValue("codeListValue");
 
 										if(dbms == null) dbms = (Dbms) context.getResourceManager().open(Geonet.Res.MAIN_DB);
 										Element sibContent = getRecord(sibUuid, context, dbms, dm);
