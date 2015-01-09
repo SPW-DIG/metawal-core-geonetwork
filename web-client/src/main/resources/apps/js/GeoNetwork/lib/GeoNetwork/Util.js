@@ -272,6 +272,11 @@ GeoNetwork.Util = {
                 link = l.apply(scope);
             }
             var id = 'permalink-' + permalinkMenu.getId();
+            if (link.substring(0,1) == "?"){
+                var pathArray = window.location.href.split( '?' );
+                var firstLevelpath = pathArray[0];
+                link = firstLevelpath + link;
+            }
             permalinkMenu.update('<input id="' + id + '" value="' + link + '"/>'
                 + '</br>'
                 + '<a href="' + link + '">Link</a>', 
