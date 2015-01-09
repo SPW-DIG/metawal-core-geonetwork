@@ -220,7 +220,6 @@
 				<xsl:for-each select="gmd:keyword/gco:CharacterString|gmd:keyword/gmx:Anchor|gmd:keyword/gmd:PT_FreeText/gmd:textGroup/gmd:LocalisedCharacterString">
                     <xsl:variable name="keywordLower" select="lower-case(.)"/>
                     <Field name="keyword" string="{string(.)}" store="true" index="true"/>
-					
                     <xsl:if test="$inspire='true'">
                         <xsl:if test="string-length(.) &gt; 0">
                          
@@ -230,8 +229,8 @@
                               <xsl:with-param name="inspireThemes" select="$inspire-theme"/>
                             </xsl:call-template>
                           </xsl:variable>
-                          
-                          <!-- Add the inspire field if it's one of the 34 themes -->
+
+													<!-- Add the inspire field if it's one of the 34 themes -->
                           <xsl:if test="normalize-space($inspireannex)!=''">
                             <!-- Maybe we should add the english version to the index to not take the language into account 
                             or create one field in the metadata language and one in english ? -->
@@ -699,13 +698,11 @@
 	<xsl:template name="translateInspireThemeToEnglish">
 		<xsl:param name="keyword"/>
 		<xsl:param name="inspireThemes"/>
-		<xsl:for-each select="$inspireThemes/skos:prefLabel">
-			<!-- if this skos:Concept contains a kos:prefLabel with text value equal to keyword -->
-			<xsl:if test="text() = $keyword">
-				<xsl:value-of select="../skos:prefLabel[@xml:lang='en']/text()"/>
-			</xsl:if>
-		</xsl:for-each>
-	</xsl:template>	
+
+		<xsl:value-of select="$inspireThemes/skos:prefLabel[
+          @xml:lang='en' and
+          ../skos:prefLabel = $keyword]/text()"/>
+	</xsl:template>
 
 	<xsl:template name="determineInspireAnnex">
 		<xsl:param name="keyword"/>
@@ -716,7 +713,7 @@
 				<xsl:with-param name="inspireThemes" select="$inspireThemes"/>
 			</xsl:call-template>
 		</xsl:variable>
-	  <xsl:variable name="englishKeyword" select="lower-case($englishKeywordMixedCase)"/>			
+	  <xsl:variable name="englishKeyword" select="lower-case($englishKeywordMixedCase)"/>
 	  <!-- Another option could be to add the annex info in the SKOS thesaurus using something
 		like a related concept. -->
 		<xsl:choose>
