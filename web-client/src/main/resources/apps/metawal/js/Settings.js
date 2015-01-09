@@ -69,7 +69,7 @@ GeoNetwork.Settings.tagCloud = {
 
 // List of facet to display. If none, the server configuration is use.
 GeoNetwork.Settings.facetListConfig = [{name: 'metawalThemes'}, 
-                                       {name: 'inspireThemes'},
+                                       {name: 'inspirethemes'},
                                        {name: 'types'},  
                                        {name: 'serviceTypes'}, 
                                        {name: 'denominators'}, 

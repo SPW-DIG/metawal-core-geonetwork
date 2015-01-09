@@ -21,7 +21,8 @@ Ext.namespace('GeoNetwork', 'GeoNetwork.Lang');
 GeoNetwork.Lang.fr = {
     'extentDescs': 'Zone géographique',
     'metawalThemes': 'Thèmes du Géoportail de la Wallonie',
-    'inspireThemes': 'Thèmes INSPIRE',
+    'inspirethemes': 'Thèmes INSPIRE',
+    'inspiretheme': 'Thèmes INSPIRE',
     'metadata-not-found': 'La métadonnée avec l\'identifiant ${uuid} n\'a pas été trouvée ou n\'est pas partagée avec vous.',
     'Administrator': 'Administrateur',
     'filterGroup': 'Filtrer les groupes ...',
@@ -180,7 +181,6 @@ GeoNetwork.Lang.fr = {
     'inspireannex': 'Annexe',
     'inspirerelated': 'Ressources concernées par INSPIRE',
     'inspirerelatedtt': 'Données décrivant un rapport sur la conformité vis-à-vis des spécifications sur les données INSPIRE.',
-    'inspiretheme': 'Thème',
     'inspireClassificationDataServices': 'Classification des services',
     'serviceType': 'Type de service',
     'serviceType_discovery': 'Service de découverte (discovery)',

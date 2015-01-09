@@ -24,7 +24,7 @@
           $(':checkbox:not(:checked)', form).each(function(){
             uc.push(encodeURIComponent(this.name) + '=false');
           });
-          return form.serialize() + 
+          return form.serialize().replace(/=on/g, '=true') +
             (uc.length ? '&' + uc.join('&').replace(/%20/g, "+") : '');
       };
 
