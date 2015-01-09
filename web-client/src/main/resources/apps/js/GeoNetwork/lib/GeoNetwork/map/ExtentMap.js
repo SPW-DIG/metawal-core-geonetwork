@@ -517,7 +517,7 @@ GeoNetwork.map.ExtentMap = function(){
             triggerAction: 'all',
             emptyText: OpenLayers.i18n('selectRegion'),
             selectOnFocus: true,
-            width: 135,
+            width: 210,
             listeners: {
                 focus: {
                     fn: function(el){

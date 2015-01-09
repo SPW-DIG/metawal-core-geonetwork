@@ -1,0 +1,2420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:gml="http://www.opengis.net/gml#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives">
+    <dc:title xml:lang="fr">Entités administratives</dc:title>
+    <dcterms:issued>2013-07-15</dcterms:issued>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#1">
+    <skos:prefLabel xml:lang="fr">Wallonie</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>2.8421478373153737 49.49696890942657</gml:lowerCorner>
+        <gml:upperCorner>6.40793746477476 50.81230819033352</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#60000">
+    <skos:prefLabel xml:lang="fr">Province de Liège</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.979543313519856 50.12967448035982</gml:lowerCorner>
+        <gml:upperCorner>6.40793746477476 50.81230819033352</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#20002">
+    <skos:prefLabel xml:lang="fr">Province du Brabant wallon</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.091207317167083 50.52541567167313</gml:lowerCorner>
+        <gml:upperCorner>5.020453774948812 50.80734781349468</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#90000">
+    <skos:prefLabel xml:lang="fr">Province de Namur</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.285946281108894 49.78545387147602</gml:lowerCorner>
+        <gml:upperCorner>5.402591516065386 50.64832456729944</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#80000">
+    <skos:prefLabel xml:lang="fr">Province de Luxembourg</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.968455927247041 49.49696890942657</gml:lowerCorner>
+        <gml:upperCorner>6.034504072015309 50.43060205023917</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#50000">
+    <skos:prefLabel xml:lang="fr">Province de Hainaut</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>2.8421478373153737 49.94181082760989</gml:lowerCorner>
+        <gml:upperCorner>4.617196158268456 50.8107781444507</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63012">
+    <skos:prefLabel xml:lang="fr">Commune de Büllingen</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.215224271816909 50.30530641447784</gml:lowerCorner>
+        <gml:upperCorner>6.40793746477476 50.50146396138979</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51009">
+    <skos:prefLabel xml:lang="fr">Commune de Bernissart</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.615190235179627 50.44228733730942</gml:lowerCorner>
+        <gml:upperCorner>3.7538107617292367 50.514666565275206</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53053">
+    <skos:prefLabel xml:lang="fr">Commune de Mons</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.8545843509532727 50.3777506105598</gml:lowerCorner>
+        <gml:upperCorner>4.084919681011172 50.51379124881017</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92140">
+    <skos:prefLabel xml:lang="fr">Commune de Jemeppe-sur-Sambre</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.620779537497618 50.42088464905145</gml:lowerCorner>
+        <gml:upperCorner>4.732878313279864 50.51311793498588</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61039">
+    <skos:prefLabel xml:lang="fr">Commune de Marchin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.197285387937175 50.427172882665005</gml:lowerCorner>
+        <gml:upperCorner>5.284638650885639 50.50775670156661</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61081">
+    <skos:prefLabel xml:lang="fr">Commune de Tinlot</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.307991964839968 50.44673505049792</gml:lowerCorner>
+        <gml:upperCorner>5.4454810193753485 50.50632715574131</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63073">
+    <skos:prefLabel xml:lang="fr">Commune de Stavelot</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.850958376089101 50.33577845827368</gml:lowerCorner>
+        <gml:upperCorner>6.030579906754092 50.4962744683515</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52010">
+    <skos:prefLabel xml:lang="fr">Commune de Chapelle-lez-Herlaimont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.263326460922918 50.42438008637439</gml:lowerCorner>
+        <gml:upperCorner>4.327133561010713 50.50705991452145</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52011">
+    <skos:prefLabel xml:lang="fr">Commune de Charleroi</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.347774223544876 50.35289290664675</gml:lowerCorner>
+        <gml:upperCorner>4.50756597519352 50.4929620448801</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92137">
+    <skos:prefLabel xml:lang="fr">Commune de Sambreville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.572807009249878 50.40018444050757</gml:lowerCorner>
+        <gml:upperCorner>4.671184112614725 50.49262058918717</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61048">
+    <skos:prefLabel xml:lang="fr">Commune d'Ouffet</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.38374571651043 50.40761310662985</gml:lowerCorner>
+        <gml:upperCorner>5.5368032889462215 50.48278721763744</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92097">
+    <skos:prefLabel xml:lang="fr">Commune d'Ohey</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.076138285897171 50.39812328203836</gml:lowerCorner>
+        <gml:upperCorner>5.2371649534266975 50.47891516970377</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63075">
+    <skos:prefLabel xml:lang="fr">Commune de Stoumont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.670285700061684 50.35636776497578</gml:lowerCorner>
+        <gml:upperCorner>5.930997210949221 50.46448683737975</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56087">
+    <skos:prefLabel xml:lang="fr">Commune de Morlanwelz</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.197074485434156 50.42191054599522</gml:lowerCorner>
+        <gml:upperCorner>4.2828175208763986 50.47464083352545</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92045">
+    <skos:prefLabel xml:lang="fr">Commune de Floreffe</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.695184715189908 50.3929951803679</gml:lowerCorner>
+        <gml:upperCorner>4.829600690044693 50.47193888761886</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61024">
+    <skos:prefLabel xml:lang="fr">Commune d'Hamoir</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.505144327966173 50.40732724585694</gml:lowerCorner>
+        <gml:upperCorner>5.623228594139692 50.465016644804194</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61019">
+    <skos:prefLabel xml:lang="fr">Commune de Ferrières</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.5184589643867685 50.36539040359019</gml:lowerCorner>
+        <gml:upperCorner>5.709441789766669 50.46009899318464</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53039">
+    <skos:prefLabel xml:lang="fr">Commune d'Hensies</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.655358535478707 50.41205023016583</gml:lowerCorner>
+        <gml:upperCorner>3.7815960876316663 50.4639873821971</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61012">
+    <skos:prefLabel xml:lang="fr">Commune de Clavier</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.221257411019531 50.364941084301584</gml:lowerCorner>
+        <gml:upperCorner>5.428950209498037 50.46162984298302</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92054">
+    <skos:prefLabel xml:lang="fr">Commune de Gesves</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.959359629124605 50.37316496502948</gml:lowerCorner>
+        <gml:upperCorner>5.14535480507206 50.462447179416564</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53065">
+    <skos:prefLabel xml:lang="fr">Commune de Quaregnon</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.8285999076142487 50.411393125150134</gml:lowerCorner>
+        <gml:upperCorner>3.8851526688701874 50.45933549445879</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53014">
+    <skos:prefLabel xml:lang="fr">Commune de Boussu</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.7582155598228923 50.394950937143044</gml:lowerCorner>
+        <gml:upperCorner>3.8434406953980065 50.45233646589161</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52018">
+    <skos:prefLabel xml:lang="fr">Commune de Farciennes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.517100077928151 50.413690924413416</gml:lowerCorner>
+        <gml:upperCorner>4.579719431672831 50.45097580242151</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56011">
+    <skos:prefLabel xml:lang="fr">Commune de Binche</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.056202555278797 50.349311393609995</gml:lowerCorner>
+        <gml:upperCorner>4.25244565193182 50.44695589632955</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52012">
+    <skos:prefLabel xml:lang="fr">Commune de Châtelet</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.483674737151212 50.36810514456833</gml:lowerCorner>
+        <gml:upperCorner>4.562871401032899 50.44379809546835</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52074">
+    <skos:prefLabel xml:lang="fr">Commune d'Aiseau-Presles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.530311452358168 50.366669666245556</gml:lowerCorner>
+        <gml:upperCorner>4.617196158268456 50.43867788953806</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53082">
+    <skos:prefLabel xml:lang="fr">Commune de Colfontaine</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.814011976549678 50.37928237882006</gml:lowerCorner>
+        <gml:upperCorner>3.872357116930563 50.43497669663764</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83012">
+    <skos:prefLabel xml:lang="fr">Commune de Durbuy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.341592733413038 50.29903647080799</gml:lowerCorner>
+        <gml:upperCorner>5.637114849653285 50.43060205023917</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56085">
+    <skos:prefLabel xml:lang="fr">Commune d'Estinnes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.0272578072462375 50.32989455556852</gml:lowerCorner>
+        <gml:upperCorner>4.185591237837739 50.43053419746839</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92048">
+    <skos:prefLabel xml:lang="fr">Commune de Fosses-la-Ville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.584008585766775 50.35827522764554</gml:lowerCorner>
+        <gml:upperCorner>4.799204084917769 50.42818784994306</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56001">
+    <skos:prefLabel xml:lang="fr">Commune d'Anderlues</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.227883905287859 50.37976591016473</gml:lowerCorner>
+        <gml:upperCorner>4.293909740875153 50.42807273333497</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53028">
+    <skos:prefLabel xml:lang="fr">Commune de Frameries</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.8379486271086347 50.3422139968772</gml:lowerCorner>
+        <gml:upperCorner>3.9492851911982583 50.42429129507942</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53068">
+    <skos:prefLabel xml:lang="fr">Commune de Quiévrain</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.668646104782866 50.36999678369284</gml:lowerCorner>
+        <gml:upperCorner>3.743788403645574 50.42234669747189</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53020">
+    <skos:prefLabel xml:lang="fr">Commune de Dour</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.7250359915506803 50.35313969343948</gml:lowerCorner>
+        <gml:upperCorner>3.8524329418813887 50.42060805202746</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91064">
+    <skos:prefLabel xml:lang="fr">Commune d'Havelange</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.129788402502155 50.29408137566604</gml:lowerCorner>
+        <gml:upperCorner>5.363551320528209 50.417291014773944</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92006">
+    <skos:prefLabel xml:lang="fr">Commune d'Assesse</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.89565329166721 50.333048569608884</gml:lowerCorner>
+        <gml:upperCorner>5.10083896465372 50.41843987433431</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63001">
+    <skos:prefLabel xml:lang="fr">Commune d'Amel</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.069847570824166 50.28429681986131</gml:lowerCorner>
+        <gml:upperCorner>6.285914868355126 50.405014370151285</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92101">
+    <skos:prefLabel xml:lang="fr">Commune de Profondeville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.7410040707823216 50.342777535911964</gml:lowerCorner>
+        <gml:upperCorner>4.919132818589797 50.41088817407795</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53084">
+    <skos:prefLabel xml:lang="fr">Commune de Quévy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.8608244947764354 50.32700653707781</gml:lowerCorner>
+        <gml:upperCorner>4.055987499313776 50.40890082079146</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52048">
+    <skos:prefLabel xml:lang="fr">Commune de Montigny-le-Tilleul</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.3349310199636575 50.355008245244576</gml:lowerCorner>
+        <gml:upperCorner>4.417754723640376 50.40450225936469</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63086">
+    <skos:prefLabel xml:lang="fr">Commune de Trois-Ponts</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.76015928135835 50.31974581258954</gml:lowerCorner>
+        <gml:upperCorner>6.001992599475321 50.39119618534071</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91120">
+    <skos:prefLabel xml:lang="fr">Commune de Somme-Leuze</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.213967131698458 50.239324020375975</gml:lowerCorner>
+        <gml:upperCorner>5.402591516065386 50.38867009780122</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56044">
+    <skos:prefLabel xml:lang="fr">Commune de Lobbes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.183957823965615 50.318966731724075</gml:lowerCorner>
+        <gml:upperCorner>4.304149107340883 50.3888991427899</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53083">
+    <skos:prefLabel xml:lang="fr">Commune d'Honnelles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.65710358609475 50.30322869255788</gml:lowerCorner>
+        <gml:upperCorner>3.839501226263967 50.384409602240126</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91059">
+    <skos:prefLabel xml:lang="fr">Commune d'Hamois</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.024459715578448 50.290650439014534</gml:lowerCorner>
+        <gml:upperCorner>5.238451986478354 50.38361491684383</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92087">
+    <skos:prefLabel xml:lang="fr">Commune de Mettet</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.581970112076126 50.26133904015516</gml:lowerCorner>
+        <gml:upperCorner>4.767639855644047 50.3800099696871</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52025">
+    <skos:prefLabel xml:lang="fr">Commune de Gerpinnes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.457601067797106 50.31459948750132</gml:lowerCorner>
+        <gml:upperCorner>4.594437389216231 50.37923450489515</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83055">
+    <skos:prefLabel xml:lang="fr">Commune de Manhay</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.573889368896971 50.220167733448925</gml:lowerCorner>
+        <gml:upperCorner>5.748129429341891 50.372080695109815</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56078">
+    <skos:prefLabel xml:lang="fr">Commune de Thuin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.226657797452258 50.2670833006703</gml:lowerCorner>
+        <gml:upperCorner>4.395041611125716 50.37721454955621</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63045">
+    <skos:prefLabel xml:lang="fr">Commune de Lierneux</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.702930114332637 50.254358735930374</gml:lowerCorner>
+        <gml:upperCorner>5.881536576370901 50.364605025376385</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56049">
+    <skos:prefLabel xml:lang="fr">Commune de Merbes-le-Château</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.132601060699948 50.28101393335196</gml:lowerCorner>
+        <gml:upperCorner>4.267503370482165 50.36699732634173</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91141">
+    <skos:prefLabel xml:lang="fr">Commune d'Yvoir</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.853913513180061 50.28086159493621</gml:lowerCorner>
+        <gml:upperCorner>5.024697780709977 50.36417781611887</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63067">
+    <skos:prefLabel xml:lang="fr">Commune de Sankt Vith</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.978667566343113 50.23007362975007</gml:lowerCorner>
+        <gml:upperCorner>6.308709961310537 50.352824697917555</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91005">
+    <skos:prefLabel xml:lang="fr">Commune d'Anhée</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.726373878658408 50.280120344564615</gml:lowerCorner>
+        <gml:upperCorner>4.89683283932141 50.361683995829054</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56086">
+    <skos:prefLabel xml:lang="fr">Commune d'Ham-sur-Heure-Nalinnes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.346584512425849 50.28977488165703</gml:lowerCorner>
+        <gml:upperCorner>4.47672293603552 50.3619742517649</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82032">
+    <skos:prefLabel xml:lang="fr">Commune de Vielsalm</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.709763714864769 50.21891491186406</gml:lowerCorner>
+        <gml:upperCorner>6.01692138921652 50.348405511383326</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56022">
+    <skos:prefLabel xml:lang="fr">Commune d'Erquelinnes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.04275711809207 50.256349412904825</gml:lowerCorner>
+        <gml:upperCorner>4.220099120494183 50.349916787028</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83013">
+    <skos:prefLabel xml:lang="fr">Commune d'Erezée</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.440902604760298 50.24687048566171</gml:lowerCorner>
+        <gml:upperCorner>5.65545908086752 50.34222910390267</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91030">
+    <skos:prefLabel xml:lang="fr">Commune de Ciney</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.002596178760896 50.20853861144231</gml:lowerCorner>
+        <gml:upperCorner>5.261673416169981 50.340430201800764</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93088">
+    <skos:prefLabel xml:lang="fr">Commune de Walcourt</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.285946281108894 50.21596129897563</gml:lowerCorner>
+        <gml:upperCorner>4.545119505071783 50.32899599129312</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83028">
+    <skos:prefLabel xml:lang="fr">Commune d'Hotton</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.369586823948927 50.21635227108709</gml:lowerCorner>
+        <gml:upperCorner>5.503225104544483 50.318976932196264</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93022">
+    <skos:prefLabel xml:lang="fr">Commune de Florennes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.504639720747245 50.19754396357738</gml:lowerCorner>
+        <gml:upperCorner>4.788199136067109 50.32307303112417</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91103">
+    <skos:prefLabel xml:lang="fr">Commune d'Onhaye</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.736040579384206 50.21471855467323</gml:lowerCorner>
+        <gml:upperCorner>4.893687665271303 50.31110464838188</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91034">
+    <skos:prefLabel xml:lang="fr">Commune de Dinant</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.854281840478756 50.18020297322708</gml:lowerCorner>
+        <gml:upperCorner>5.048087652634855 50.304611556965874</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56005">
+    <skos:prefLabel xml:lang="fr">Commune de Beaumont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.1651412355004815 50.15875306488363</gml:lowerCorner>
+        <gml:upperCorner>4.345649455993059 50.29492998652683</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83034">
+    <skos:prefLabel xml:lang="fr">Commune de Marche-en-Famenne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.206474829893825 50.157340568166205</gml:lowerCorner>
+        <gml:upperCorner>5.473343749194057 50.27895719358436</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82037">
+    <skos:prefLabel xml:lang="fr">Commune de Gouvy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.788193057026964 50.110270952131344</gml:lowerCorner>
+        <gml:upperCorner>6.034504072015309 50.27043594948904</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63087">
+    <skos:prefLabel xml:lang="fr">Commune de Burg-Reuland</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.008654145209447 50.129674489347906</gml:lowerCorner>
+        <gml:upperCorner>6.192580857092071 50.264578701651565</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83044">
+    <skos:prefLabel xml:lang="fr">Commune de Rendeux</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.44196241893618 50.16366445354995</gml:lowerCorner>
+        <gml:upperCorner>5.612295092288456 50.26508196001901</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91072">
+    <skos:prefLabel xml:lang="fr">Commune d'Houyet</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.852435505700724 50.1321397353157</gml:lowerCorner>
+        <gml:upperCorner>5.119712780595904 50.25136235054559</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91142">
+    <skos:prefLabel xml:lang="fr">Commune d'Hastière</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.752522707002309 50.14855608158277</gml:lowerCorner>
+        <gml:upperCorner>4.900293687662224 50.24743671281416</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82014">
+    <skos:prefLabel xml:lang="fr">Commune d'Houffalize</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.6519153097857044 50.061633617216</gml:lowerCorner>
+        <gml:upperCorner>5.895462231251853 50.23612820571751</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56029">
+    <skos:prefLabel xml:lang="fr">Commune de Froidchapelle</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.2820507351763 50.08275958655643</gml:lowerCorner>
+        <gml:upperCorner>4.401637980255407 50.24339590063025</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91114">
+    <skos:prefLabel xml:lang="fr">Commune de Rochefort</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.055343629637528 50.09334680264607</gml:lowerCorner>
+        <gml:upperCorner>5.284224398312076 50.238145549160045</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93010">
+    <skos:prefLabel xml:lang="fr">Commune de Cerfontaine</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.361574197045971 50.121923965049696</gml:lowerCorner>
+        <gml:upperCorner>4.518578281407336 50.2407232971851</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83031">
+    <skos:prefLabel xml:lang="fr">Commune de La Roche-en-Ardenne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.459692014384003 50.089854913707796</gml:lowerCorner>
+        <gml:upperCorner>5.7444541714364314 50.23068817321164</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93056">
+    <skos:prefLabel xml:lang="fr">Commune de Philippeville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.4765384927971414 50.091103148433646</gml:lowerCorner>
+        <gml:upperCorner>4.729414019334751 50.23140209000675</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64021">
+    <skos:prefLabel xml:lang="fr">Commune de Crisnée</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.3629828858045165 50.68537115252969</gml:lowerCorner>
+        <gml:upperCorner>5.431686899994495 50.73538859110889</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51065">
+    <skos:prefLabel xml:lang="fr">Commune de Frasnes-lez-Anvaing</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.4874199093019826 50.625744453025376</gml:lowerCorner>
+        <gml:upperCorner>3.7314407702924326 50.73468383817528</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63061">
+    <skos:prefLabel xml:lang="fr">Commune de Raeren</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.040355343854874 50.60052649460507</gml:lowerCorner>
+        <gml:upperCorner>6.23545904547555 50.72397893289891</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25110">
+    <skos:prefLabel xml:lang="fr">Commune de Waterloo</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.35491864622866 50.67090125869434</gml:lowerCorner>
+        <gml:upperCorner>4.441242756957156 50.73585393209344</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64074">
+    <skos:prefLabel xml:lang="fr">Commune de Waremme</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.214018650915343 50.6554655214715</gml:lowerCorner>
+        <gml:upperCorner>5.313377521414454 50.7286109606298</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25105">
+    <skos:prefLabel xml:lang="fr">Commune de Tubize</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.130944914699188 50.652109301622154</gml:lowerCorner>
+        <gml:upperCorner>4.246665072531045 50.72910633983647</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62003">
+    <skos:prefLabel xml:lang="fr">Commune d'Ans</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.4607225485800805 50.649178576013085</gml:lowerCorner>
+        <gml:upperCorner>5.552435037445949 50.722829968041864</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57062">
+    <skos:prefLabel xml:lang="fr">Commune de Pecq</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.303020772551511 50.64748956670729</gml:lowerCorner>
+        <gml:upperCorner>3.399314918005082 50.72275059722389</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63003">
+    <skos:prefLabel xml:lang="fr">Commune d'Aubel</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.7974781796032 50.676334618753735</gml:lowerCorner>
+        <gml:upperCorner>5.922428851842634 50.717723676246656</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57027">
+    <skos:prefLabel xml:lang="fr">Commune d'Estaimpuis</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.2401085633746547 50.65277089726218</gml:lowerCorner>
+        <gml:upperCorner>3.3397049791538427 50.72230987811293</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64008">
+    <skos:prefLabel xml:lang="fr">Commune de Berloz</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.164851131017175 50.68366431459376</gml:lowerCorner>
+        <gml:upperCorner>5.235427811493777 50.72370941382027</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25119">
+    <skos:prefLabel xml:lang="fr">Commune de Lasne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.394805754451078 50.64390377343468</gml:lowerCorner>
+        <gml:upperCorner>4.526467964939681 50.724118089863005</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25018">
+    <skos:prefLabel xml:lang="fr">Commune de Chaumont-Gistoux</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.624772127609123 50.65222456256349</gml:lowerCorner>
+        <gml:upperCorner>4.76990384752367 50.72356351940294</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64034">
+    <skos:prefLabel xml:lang="fr">Commune d'Hannut</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.9871943944495065 50.59845112567852</gml:lowerCorner>
+        <gml:upperCorner>5.162425553422174 50.71618172610966</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25123">
+    <skos:prefLabel xml:lang="fr">Commune de Rebecq</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.091207317167083 50.62928644365372</gml:lowerCorner>
+        <gml:upperCorner>4.180989437327661 50.71691066675269</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63048">
+    <skos:prefLabel xml:lang="fr">Commune de Lontzen</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.954746127354567 50.64996723334774</gml:lowerCorner>
+        <gml:upperCorner>6.072868152593632 50.70341235112147</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62119">
+    <skos:prefLabel xml:lang="fr">Commune de Blégny</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.642971680759344 50.63780426871664</gml:lowerCorner>
+        <gml:upperCorner>5.775196787973547 50.707339286847294</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55010">
+    <skos:prefLabel xml:lang="fr">Commune d'Enghien</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.9612462847384307 50.630722652056505</gml:lowerCorner>
+        <gml:upperCorner>4.11351738092955 50.71358857757395</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63035">
+    <skos:prefLabel xml:lang="fr">Commune d'Herve</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.729984845481945 50.5948929841135</gml:lowerCorner>
+        <gml:upperCorner>5.860762504760472 50.70320505113717</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63084">
+    <skos:prefLabel xml:lang="fr">Commune de Welkenraedt</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.8844628888593835 50.62646398364196</gml:lowerCorner>
+        <gml:upperCorner>6.000198098915354 50.69951561297099</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62051">
+    <skos:prefLabel xml:lang="fr">Commune d'Herstal</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.555270227649704 50.654789183506324</gml:lowerCorner>
+        <gml:upperCorner>5.657937244749368 50.70255919484681</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63089">
+    <skos:prefLabel xml:lang="fr">Commune de Thimister-Clermont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.825056858501629 50.62667018347066</gml:lowerCorner>
+        <gml:upperCorner>5.91881076475315 50.69822099955394</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64063">
+    <skos:prefLabel xml:lang="fr">Commune de Remicourt</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.288285463345894 50.66557913462151</gml:lowerCorner>
+        <gml:upperCorner>5.39652911785259 50.703838618734615</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25122">
+    <skos:prefLabel xml:lang="fr">Commune de Ramillies</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.831194025185031 50.61518996474331</gml:lowerCorner>
+        <gml:upperCorner>4.9411492839700974 50.703881630067976</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64029">
+    <skos:prefLabel xml:lang="fr">Commune de Geer</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.139938073087074 50.643156733041245</gml:lowerCorner>
+        <gml:upperCorner>5.226826223479675 50.698377883955445</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25015">
+    <skos:prefLabel xml:lang="fr">Commune de Braine-le-Château</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.237591511027078 50.65882724989943</gml:lowerCorner>
+        <gml:upperCorner>4.333392522139878 50.70039733364136</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51004">
+    <skos:prefLabel xml:lang="fr">Commune d'Ath</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.6549495392812528 50.56240497365096</gml:lowerCorner>
+        <gml:upperCorner>3.9134204661524277 50.69742887635629</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64025">
+    <skos:prefLabel xml:lang="fr">Commune de Fexhe-le-Haut-Clocher</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.3483236278323565 50.639221360565045</gml:lowerCorner>
+        <gml:upperCorner>5.440492107423895 50.69218450760957</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25121">
+    <skos:prefLabel xml:lang="fr">Commune d'Ottignies-Louvain-la-Neuve</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.49198900089109 50.649132113940844</gml:lowerCorner>
+        <gml:upperCorner>4.6481627476453795 50.696460265379315</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55039">
+    <skos:prefLabel xml:lang="fr">Commune de Silly</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.8765323796604334 50.59014630596118</gml:lowerCorner>
+        <gml:upperCorner>4.066695097582171 50.69555476406935</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62063">
+    <skos:prefLabel xml:lang="fr">Commune de Liège</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.523165078026408 50.561076413663244</gml:lowerCorner>
+        <gml:upperCorner>5.675213918851201 50.688182879146645</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57081">
+    <skos:prefLabel xml:lang="fr">Commune de Tournai</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.2441109073208283 50.55231694900358</gml:lowerCorner>
+        <gml:upperCorner>3.576920764584416 50.68878889392994</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62108">
+    <skos:prefLabel xml:lang="fr">Commune de Visé</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.648033052963986 50.67137737207849</gml:lowerCorner>
+        <gml:upperCorner>5.724947434200298 50.81230819033352</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#54010">
+    <skos:prefLabel xml:lang="fr">Commune de Comines-Warneton</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>2.8421478373153737 50.69239532023589</gml:lowerCorner>
+        <gml:upperCorner>3.0297903863951454 50.8107781444507</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62011">
+    <skos:prefLabel xml:lang="fr">Commune de Bassenge</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.519321212750111 50.73069685737335</gml:lowerCorner>
+        <gml:upperCorner>5.687068096228166 50.807763675910785</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25005">
+    <skos:prefLabel xml:lang="fr">Commune de Beauvechain</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.697629319326196 50.739736640277854</gml:lowerCorner>
+        <gml:upperCorner>4.838484809765411 50.80734781349468</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25037">
+    <skos:prefLabel xml:lang="fr">Commune de Grez-Doiceau</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.620337848652374 50.70068360406539</gml:lowerCorner>
+        <gml:upperCorner>4.750272400754737 50.799427986068395</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51019">
+    <skos:prefLabel xml:lang="fr">Commune de Flobecq</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.685782005713765 50.7294278837372</gml:lowerCorner>
+        <gml:upperCorner>3.776885207778235 50.78186347704702</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51017">
+    <skos:prefLabel xml:lang="fr">Commune d'Ellezelles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.6376764768349843 50.683736717279295</gml:lowerCorner>
+        <gml:upperCorner>3.7667979204122197 50.7736383047978</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25048">
+    <skos:prefLabel xml:lang="fr">Commune de Jodoigne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.772958859404526 50.67766745233669</gml:lowerCorner>
+        <gml:upperCorner>4.948755073449978 50.77351910361226</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63088">
+    <skos:prefLabel xml:lang="fr">Commune de Plombières</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.88245809882511 50.67851652351443</gml:lowerCorner>
+        <gml:upperCorner>6.02106856433869 50.76242562828017</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#54007">
+    <skos:prefLabel xml:lang="fr">Commune de Mouscron</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.177103252093031 50.70994759668876</gml:lowerCorner>
+        <gml:upperCorner>3.3290425785306703 50.76591199403309</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25118">
+    <skos:prefLabel xml:lang="fr">Commune d'Hélécine</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.925500110329642 50.72372270434909</gml:lowerCorner>
+        <gml:upperCorner>5.020453774948812 50.769856440389034</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63040">
+    <skos:prefLabel xml:lang="fr">Commune de Kelmis</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.981792431696995 50.69150201141943</gml:lowerCorner>
+        <gml:upperCorner>6.062456527922596 50.75431886498071</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25112">
+    <skos:prefLabel xml:lang="fr">Commune de Wavre</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.529783645434862 50.682642459758036</gml:lowerCorner>
+        <gml:upperCorner>4.646757949065564 50.76378907449531</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62027">
+    <skos:prefLabel xml:lang="fr">Commune de Dalhem</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.701554501225523 50.68108172026504</gml:lowerCorner>
+        <gml:upperCorner>5.819055957848929 50.75542637737962</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57018">
+    <skos:prefLabel xml:lang="fr">Commune de Celles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.3657391379881623 50.65202565713213</gml:lowerCorner>
+        <gml:upperCorner>3.533191168735251 50.75875425326516</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62079">
+    <skos:prefLabel xml:lang="fr">Commune d'Oupeye</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.592715353203337 50.68145816371143</gml:lowerCorner>
+        <gml:upperCorner>5.6921431367084425 50.75307893836682</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25050">
+    <skos:prefLabel xml:lang="fr">Commune de La Hulpe</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.423857859020388 50.71562107263639</gml:lowerCorner>
+        <gml:upperCorner>4.512833045988655 50.75691610552351</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62060">
+    <skos:prefLabel xml:lang="fr">Commune de Juprelle</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.478308082309715 50.67864003774457</gml:lowerCorner>
+        <gml:upperCorner>5.599369354082462 50.74951291495818</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55023">
+    <skos:prefLabel xml:lang="fr">Commune de Lessines</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.744731117817196 50.66938406969492</gml:lowerCorner>
+        <gml:upperCorner>3.9136663433246692 50.7517053288266</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64047">
+    <skos:prefLabel xml:lang="fr">Commune de Lincent</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.992578158131249 50.69848135079258</gml:lowerCorner>
+        <gml:upperCorner>5.060797808195186 50.75097185622895</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64056">
+    <skos:prefLabel xml:lang="fr">Commune d'Oreye</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.303842432626962 50.698750450974245</gml:lowerCorner>
+        <gml:upperCorner>5.3941505129132095 50.747929345161296</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25043">
+    <skos:prefLabel xml:lang="fr">Commune d'Incourt</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.7314813236545215 50.65395000775997</gml:lowerCorner>
+        <gml:upperCorner>4.851763080433735 50.74957273096916</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25091">
+    <skos:prefLabel xml:lang="fr">Commune de Rixensart</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.477219019681446 50.69506229454614</gml:lowerCorner>
+        <gml:upperCorner>4.566896333156273 50.748793330107446</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62006">
+    <skos:prefLabel xml:lang="fr">Commune d'Awans</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.420658493133372 50.65855107113362</gml:lowerCorner>
+        <gml:upperCorner>5.491426809868176 50.73914044950672</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25120">
+    <skos:prefLabel xml:lang="fr">Commune d'Orp-Jauche</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.911210722560521 50.63952623020215</gml:lowerCorner>
+        <gml:upperCorner>5.0172617168321185 50.74197279069242</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63023">
+    <skos:prefLabel xml:lang="fr">Commune d'Eupen</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.000198098915354 50.548083126487</gml:lowerCorner>
+        <gml:upperCorner>6.269634502689477 50.672884965903</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64076">
+    <skos:prefLabel xml:lang="fr">Commune de Faimes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.192644318031361 50.615768842055054</gml:lowerCorner>
+        <gml:upperCorner>5.286410339122197 50.6780088216775</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25084">
+    <skos:prefLabel xml:lang="fr">Commune de Perwez</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.733463078104112 50.58859954058437</gml:lowerCorner>
+        <gml:upperCorner>4.851728318473019 50.679824543590456</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25044">
+    <skos:prefLabel xml:lang="fr">Commune d'Ittre</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.196930558905464 50.6133059726565</gml:lowerCorner>
+        <gml:upperCorner>4.324322573831595 50.67938018998159</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64023">
+    <skos:prefLabel xml:lang="fr">Commune de Donceel</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.281403331658342 50.625152157682614</gml:lowerCorner>
+        <gml:upperCorner>5.3764680365650745 50.67538461294387</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62099">
+    <skos:prefLabel xml:lang="fr">Commune de Soumagne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.68915809167572 50.59925421172157</gml:lowerCorner>
+        <gml:upperCorner>5.769089221675853 50.666533750336626</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55004">
+    <skos:prefLabel xml:lang="fr">Commune de Braine-le-Comte</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.026497576138316 50.564477257257494</gml:lowerCorner>
+        <gml:upperCorner>4.253735183434183 50.668851539360595</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62118">
+    <skos:prefLabel xml:lang="fr">Commune de Grâce-Hollogne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.349383783481828 50.61393424740287</gml:lowerCorner>
+        <gml:upperCorner>5.5127719393085695 50.66073468166134</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25124">
+    <skos:prefLabel xml:lang="fr">Commune de Walhain</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.627092655805139 50.59422008998236</gml:lowerCorner>
+        <gml:upperCorner>4.746457766721938 50.665011561763905</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63046">
+    <skos:prefLabel xml:lang="fr">Commune de Limbourg</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.898351079099462 50.5762737042692</gml:lowerCorner>
+        <gml:upperCorner>5.983293307109181 50.65318831970381</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25068">
+    <skos:prefLabel xml:lang="fr">Commune de Mont-Saint-Guibert</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.58892347991943 50.60685762587329</gml:lowerCorner>
+        <gml:upperCorner>4.6662750008381755 50.663113390207165</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63004">
+    <skos:prefLabel xml:lang="fr">Commune de Baelen</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.934028568486597 50.51953309060339</gml:lowerCorner>
+        <gml:upperCorner>6.139817804403645 50.64996723334774</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25031">
+    <skos:prefLabel xml:lang="fr">Commune de Genappe</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.375592728557234 50.55440312090968</gml:lowerCorner>
+        <gml:upperCorner>4.54176423688584 50.658666744070565</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25023">
+    <skos:prefLabel xml:lang="fr">Commune de Court-Saint-Etienne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.512202575230698 50.59587331874826</gml:lowerCorner>
+        <gml:upperCorner>4.6112202595944325 50.65815329189285</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62015">
+    <skos:prefLabel xml:lang="fr">Commune de Beyne-Heusay</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.635771745454814 50.61111820922995</gml:lowerCorner>
+        <gml:upperCorner>5.693608593154473 50.65086820928131</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62093">
+    <skos:prefLabel xml:lang="fr">Commune de Saint-Nicolas</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.5063216014986 50.61285594099904</gml:lowerCorner>
+        <gml:upperCorner>5.549214642314197 50.651370847017624</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62038">
+    <skos:prefLabel xml:lang="fr">Commune de Fléron</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.644223819696745 50.59000953517921</gml:lowerCorner>
+        <gml:upperCorner>5.716264229138525 50.64493207738415</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64015">
+    <skos:prefLabel xml:lang="fr">Commune de Braives</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.080583200908815 50.570926132954504</gml:lowerCorner>
+        <gml:upperCorner>5.209952409941076 50.64935656886515</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92035">
+    <skos:prefLabel xml:lang="fr">Commune d'Eghezée</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.786948761542268 50.52594130501382</gml:lowerCorner>
+        <gml:upperCorner>4.989900149878223 50.64832456729944</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64075">
+    <skos:prefLabel xml:lang="fr">Commune de Wasseiges</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.979543313519856 50.58801580952929</gml:lowerCorner>
+        <gml:upperCorner>5.061763997066369 50.6464514664577</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57094">
+    <skos:prefLabel xml:lang="fr">Commune de Leuze-en-Hainaut</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.548459660672064 50.54776325955232</gml:lowerCorner>
+        <gml:upperCorner>3.7137774939401322 50.645881953227104</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63020">
+    <skos:prefLabel xml:lang="fr">Commune de Dison</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.838231492222924 50.59668999581807</gml:lowerCorner>
+        <gml:upperCorner>5.914065379407661 50.63397262649305</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61063">
+    <skos:prefLabel xml:lang="fr">Commune de Verlaine</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.250641362702338 50.57402673851308</gml:lowerCorner>
+        <gml:upperCorner>5.349009877971957 50.637161642286685</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#64065">
+    <skos:prefLabel xml:lang="fr">Commune de Saint-Georges-sur-Meuse</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.326140622653286 50.56070947947285</gml:lowerCorner>
+        <gml:upperCorner>5.394420530011201 50.63343995007872</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63079">
+    <skos:prefLabel xml:lang="fr">Commune de Verviers</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.812859267102368 50.549230222855726</gml:lowerCorner>
+        <gml:upperCorner>5.925642049921362 50.62613012524746</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51012">
+    <skos:prefLabel xml:lang="fr">Commune de Brugelette</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.8189573981524263 50.56932014745576</gml:lowerCorner>
+        <gml:upperCorner>3.911827775830685 50.634298974971244</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25072">
+    <skos:prefLabel xml:lang="fr">Commune de Nivelles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.245557737942932 50.54328419029285</gml:lowerCorner>
+        <gml:upperCorner>4.406069747081294 50.635272686361404</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62120">
+    <skos:prefLabel xml:lang="fr">Commune de Flémalle</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.3804546107883295 50.557083786479794</gml:lowerCorner>
+        <gml:upperCorner>5.489135937478361 50.62939288319071</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55040">
+    <skos:prefLabel xml:lang="fr">Commune de Soignies</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.9521087934569303 50.50049438446568</gml:lowerCorner>
+        <gml:upperCorner>4.130617898690548 50.63365808093048</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62096">
+    <skos:prefLabel xml:lang="fr">Commune de Seraing</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.4698291563556225 50.54729034661264</gml:lowerCorner>
+        <gml:upperCorner>5.565923792380981 50.628260428449195</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61068">
+    <skos:prefLabel xml:lang="fr">Commune de Villers-le-Bouillet</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.1896727711374195 50.551243756395785</gml:lowerCorner>
+        <gml:upperCorner>5.297423556542311 50.62985601444081</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25117">
+    <skos:prefLabel xml:lang="fr">Commune de Chastre</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.573290988309569 50.56019037289346</gml:lowerCorner>
+        <gml:upperCorner>4.673442989550345 50.631269266510984</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62022">
+    <skos:prefLabel xml:lang="fr">Commune de Chaudfontaine</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.588892383876881 50.549591195964695</gml:lowerCorner>
+        <gml:upperCorner>5.680748024120686 50.614906252236885</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92138">
+    <skos:prefLabel xml:lang="fr">Commune de Fernelmont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.917070824259698 50.504820945208664</gml:lowerCorner>
+        <gml:upperCorner>5.054213180628141 50.61853151393428</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63057">
+    <skos:prefLabel xml:lang="fr">Commune d'Olne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.692949131630139 50.563621652045214</gml:lowerCorner>
+        <gml:upperCorner>5.771677157518769 50.61038769850075</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53046">
+    <skos:prefLabel xml:lang="fr">Commune de Lens</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.827020816217966 50.53860980297165</gml:lowerCorner>
+        <gml:upperCorner>3.979333393337922 50.617192435489414</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51014">
+    <skos:prefLabel xml:lang="fr">Commune de Chièvres</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.7139244018925086 50.52654720881813</gml:lowerCorner>
+        <gml:upperCorner>3.8375339393145027 50.61369373540543</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63058">
+    <skos:prefLabel xml:lang="fr">Commune de Pepinster</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.751452077687036 50.538932235500326</gml:lowerCorner>
+        <gml:upperCorner>5.85563641453925 50.60335532070944</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92142">
+    <skos:prefLabel xml:lang="fr">Commune de Gembloux</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.625239589342781 50.495790669778785</gml:lowerCorner>
+        <gml:upperCorner>4.807126723030159 50.61142308478138</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61010">
+    <skos:prefLabel xml:lang="fr">Commune de Burdinne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.0274770920115115 50.55537629144825</gml:lowerCorner>
+        <gml:upperCorner>5.1668751171624 50.608204831755664</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63038">
+    <skos:prefLabel xml:lang="fr">Commune de Jalhay</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.87801708050092 50.46654967746125</gml:lowerCorner>
+        <gml:upperCorner>6.07321845408875 50.593948554205745</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62122">
+    <skos:prefLabel xml:lang="fr">Commune de Trooz</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.6408534788698015 50.54683410017364</gml:lowerCorner>
+        <gml:upperCorner>5.7736636444438725 50.59534450319571</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25107">
+    <skos:prefLabel xml:lang="fr">Commune de Villers-la-Ville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.4537330248541664 50.52541567167313</gml:lowerCorner>
+        <gml:upperCorner>4.5909242162975135 50.60161445328094</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52063">
+    <skos:prefLabel xml:lang="fr">Commune de Seneffe</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.186337947167391 50.496343267410275</gml:lowerCorner>
+        <gml:upperCorner>4.3363252864396085 50.60161930001236</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61080">
+    <skos:prefLabel xml:lang="fr">Commune d'Engis</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.3334737434886375 50.53192117008782</gml:lowerCorner>
+        <gml:upperCorner>5.440216137612236 50.593076598415</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55050">
+    <skos:prefLabel xml:lang="fr">Commune d'Ecaussinnes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.123442546106954 50.52488599795506</gml:lowerCorner>
+        <gml:upperCorner>4.229607085854031 50.59679612029519</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61003">
+    <skos:prefLabel xml:lang="fr">Commune d'Amay</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.261932336219129 50.51657220485383</gml:lowerCorner>
+        <gml:upperCorner>5.350141799085592 50.59190588153012</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57003">
+    <skos:prefLabel xml:lang="fr">Commune d'Antoing</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.4078564531246274 50.52767412046975</gml:lowerCorner>
+        <gml:upperCorner>3.528557899897504 50.58755769838895</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62032">
+    <skos:prefLabel xml:lang="fr">Commune d'Esneux</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.497289824581889 50.50331579249411</gml:lowerCorner>
+        <gml:upperCorner>5.6168321412021465 50.58065204470484</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61072">
+    <skos:prefLabel xml:lang="fr">Commune de Wanze</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.132143757128245 50.50866045571001</gml:lowerCorner>
+        <gml:upperCorner>5.265735695415566 50.58254305183251</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63080">
+    <skos:prefLabel xml:lang="fr">Commune de Waimes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.062929917685888 50.37356369359478</gml:lowerCorner>
+        <gml:upperCorner>6.198141986029568 50.57050008658784</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#51008">
+    <skos:prefLabel xml:lang="fr">Commune de Beloeil</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.608732273301297 50.481202826308504</gml:lowerCorner>
+        <gml:upperCorner>3.760457628608816 50.58170730189664</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57064">
+    <skos:prefLabel xml:lang="fr">Commune de Péruwelz</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.4961242405890403 50.48673296579711</gml:lowerCorner>
+        <gml:upperCorner>3.629408160428189 50.58000202701536</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61028">
+    <skos:prefLabel xml:lang="fr">Commune d'Héron</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.034272349962464 50.50377120883951</gml:lowerCorner>
+        <gml:upperCorner>5.172404187532808 50.579253166153876</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56088">
+    <skos:prefLabel xml:lang="fr">Commune de Sivry-Rance</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.127294691356138 50.12027071380655</gml:lowerCorner>
+        <gml:upperCorner>4.304315525611777 50.215466222824666</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93018">
+    <skos:prefLabel xml:lang="fr">Commune de Doische</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.5823336948012905 50.09190582691795</gml:lowerCorner>
+        <gml:upperCorner>4.799521947086139 50.210028290976965</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83040">
+    <skos:prefLabel xml:lang="fr">Commune de Nassogne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.242631272094143 50.078547269548416</gml:lowerCorner>
+        <gml:upperCorner>5.46647947132815 50.19991770257874</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91013">
+    <skos:prefLabel xml:lang="fr">Commune de Beauraing</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.818905101415126 50.01806994866323</gml:lowerCorner>
+        <gml:upperCorner>5.0808405818704765 50.16531020342536</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#83049">
+    <skos:prefLabel xml:lang="fr">Commune de Tenneville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.390296348099259 50.04757944422795</gml:lowerCorner>
+        <gml:upperCorner>5.59719046000975 50.151522978653595</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93014">
+    <skos:prefLabel xml:lang="fr">Commune de Couvin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.385769012131606 49.937269117598596</gml:lowerCorner>
+        <gml:upperCorner>4.605149779178394 50.14004145587938</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56016">
+    <skos:prefLabel xml:lang="fr">Commune de Chimay</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.19676374780988 49.94181082760989</gml:lowerCorner>
+        <gml:upperCorner>4.4454887999454895 50.12902470453591</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82003">
+    <skos:prefLabel xml:lang="fr">Commune de Bastogne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.638207398142597 49.90895981589552</gml:lowerCorner>
+        <gml:upperCorner>5.869998943382185 50.117220175062094</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84075">
+    <skos:prefLabel xml:lang="fr">Commune de Wellin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.011295933271861 50.015942345439946</gml:lowerCorner>
+        <gml:upperCorner>5.178068621484406 50.12309947473531</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82005">
+    <skos:prefLabel xml:lang="fr">Commune de Bertogne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.538551812171313 50.00663281911523</gml:lowerCorner>
+        <gml:upperCorner>5.732649933243944 50.11653324343033</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#93090">
+    <skos:prefLabel xml:lang="fr">Commune de Viroinval</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.526533735428064 49.985417250564886</gml:lowerCorner>
+        <gml:upperCorner>4.721887337647035 50.11391581335775</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84068">
+    <skos:prefLabel xml:lang="fr">Commune de Tellin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.152426569929931 50.0260467129442</gml:lowerCorner>
+        <gml:upperCorner>5.316880487329514 50.110250057661844</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84059">
+    <skos:prefLabel xml:lang="fr">Commune de Saint-Hubert</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.2294211700042945 49.980189293303795</gml:lowerCorner>
+        <gml:upperCorner>5.460384393645738 50.09567885393446</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82038">
+    <skos:prefLabel xml:lang="fr">Commune de Sainte-Ode</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.414627543267952 49.95542218590093</gml:lowerCorner>
+        <gml:upperCorner>5.62960229646122 50.077824276712484</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#56051">
+    <skos:prefLabel xml:lang="fr">Commune de Momignies</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.135329333805998 49.954624702402555</gml:lowerCorner>
+        <gml:upperCorner>4.314565266364489 50.06262269540657</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91054">
+    <skos:prefLabel xml:lang="fr">Commune de Gedinne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.7901918581517196 49.916920941787374</gml:lowerCorner>
+        <gml:upperCorner>5.009600926056323 50.05151960611305</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84035">
+    <skos:prefLabel xml:lang="fr">Commune de Libin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.124030358506116 49.90779014291947</gml:lowerCorner>
+        <gml:upperCorner>5.33034224218163 50.04592348453779</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84016">
+    <skos:prefLabel xml:lang="fr">Commune de Daverdisse</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.972993192669022 49.96118828719602</gml:lowerCorner>
+        <gml:upperCorner>5.152108572054061 50.04526124345881</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84077">
+    <skos:prefLabel xml:lang="fr">Commune de Libramont-Chevigny</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.291737240835392 49.87504858235738</gml:lowerCorner>
+        <gml:upperCorner>5.553443349731248 50.025197324049756</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82036">
+    <skos:prefLabel xml:lang="fr">Commune de Vaux-sur-Sûre</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.496185801273504 49.86696945589178</gml:lowerCorner>
+        <gml:upperCorner>5.713608522445852 50.0118296761213</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91015">
+    <skos:prefLabel xml:lang="fr">Commune de Bièvre</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.930570518910011 49.842844077050955</gml:lowerCorner>
+        <gml:upperCorner>5.119608633047013 50.01613682567331</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84050">
+    <skos:prefLabel xml:lang="fr">Commune de Paliseul</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.04287236890931 49.82544224472203</gml:lowerCorner>
+        <gml:upperCorner>5.20153012614704 49.99318420165884</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#82009">
+    <skos:prefLabel xml:lang="fr">Commune de Fauvillers</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.6143354385326045 49.81956109292446</gml:lowerCorner>
+        <gml:upperCorner>5.784080174935976 49.94196781604261</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84009">
+    <skos:prefLabel xml:lang="fr">Commune de Bertrix</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.158109466175571 49.77143898818448</gml:lowerCorner>
+        <gml:upperCorner>5.367768567304472 49.93228890109081</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#91143">
+    <skos:prefLabel xml:lang="fr">Commune de Vresse-sur-Semois</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.8476198790110105 49.785453880466434</gml:lowerCorner>
+        <gml:upperCorner>4.990521637727183 49.930871295200255</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84043">
+    <skos:prefLabel xml:lang="fr">Commune de Neufchâteau</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.31492800406324 49.77891130246296</gml:lowerCorner>
+        <gml:upperCorner>5.52950511768431 49.903384352626446</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84033">
+    <skos:prefLabel xml:lang="fr">Commune de Léglise</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.411769165797204 49.734427406291424</gml:lowerCorner>
+        <gml:upperCorner>5.705354494555694 49.90070215784381</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84010">
+    <skos:prefLabel xml:lang="fr">Commune de Bouillon</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.968455927247041 49.709302752357964</gml:lowerCorner>
+        <gml:upperCorner>5.18995265063539 49.88368241027819</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#81013">
+    <skos:prefLabel xml:lang="fr">Commune de Martelange</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.684697810297574 49.772016447035504</gml:lowerCorner>
+        <gml:upperCorner>5.758550954553401 49.85776875730971</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#84029">
+    <skos:prefLabel xml:lang="fr">Commune d'Herbeumont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.215354173005772 49.7594645544776</gml:lowerCorner>
+        <gml:upperCorner>5.396632077558882 49.83149267891923</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#81003">
+    <skos:prefLabel xml:lang="fr">Commune d'Attert</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.676961196932739 49.69665105938331</gml:lowerCorner>
+        <gml:upperCorner>5.832638436762653 49.79666933607995</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85007">
+    <skos:prefLabel xml:lang="fr">Commune de Chiny</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.308983406147477 49.65233745755103</gml:lowerCorner>
+        <gml:upperCorner>5.48273192531787 49.79051161327816</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85046">
+    <skos:prefLabel xml:lang="fr">Commune d'Habay</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.500758790630986 49.687243908398415</gml:lowerCorner>
+        <gml:upperCorner>5.713177415381257 49.78390438534585</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85039">
+    <skos:prefLabel xml:lang="fr">Commune de Tintigny</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.416290499708612 49.61933779015595</gml:lowerCorner>
+        <gml:upperCorner>5.556630499887017 49.783122707297345</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85011">
+    <skos:prefLabel xml:lang="fr">Commune de Florenville</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.14710927066304 49.610728212846894</gml:lowerCorner>
+        <gml:upperCorner>5.424975482729516 49.781203298104195</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#81001">
+    <skos:prefLabel xml:lang="fr">Commune d'Arlon</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.678582809529703 49.62189529685337</gml:lowerCorner>
+        <gml:upperCorner>5.910688149203513 49.72717525570492</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85009">
+    <skos:prefLabel xml:lang="fr">Commune d'Etalle</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.527840018536633 49.62135856413663</gml:lowerCorner>
+        <gml:upperCorner>5.699730050444968 49.71152903693534</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#81015">
+    <skos:prefLabel xml:lang="fr">Commune de Messancy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.728836224365278 49.57189784716496</gml:lowerCorner>
+        <gml:upperCorner>5.88008592988242 49.660025038219196</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85034">
+    <skos:prefLabel xml:lang="fr">Commune de Saint-Léger</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.6158927737640045 49.58702538475015</gml:lowerCorner>
+        <gml:upperCorner>5.743007463954887 49.646236681661755</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85045">
+    <skos:prefLabel xml:lang="fr">Commune de Virton</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.500786828687423 49.505983839999615</gml:lowerCorner>
+        <gml:upperCorner>5.644133199581627 49.63953138535893</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85024">
+    <skos:prefLabel xml:lang="fr">Commune de Meix-devant-Virton</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.375909957147028 49.56373009876252</gml:lowerCorner>
+        <gml:upperCorner>5.533143821740306 49.63998748633762</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#81004">
+    <skos:prefLabel xml:lang="fr">Commune d'Aubange</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.703783867892038 49.53881467161693</gml:lowerCorner>
+        <gml:upperCorner>5.873344147896877 49.6117646494051</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85026">
+    <skos:prefLabel xml:lang="fr">Commune de Musson</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.61678775848163 49.53877181892006</gml:lowerCorner>
+        <gml:upperCorner>5.7344798958497405 49.60782833800066</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#85047">
+    <skos:prefLabel xml:lang="fr">Commune de Rouvroy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.4413599289243395 49.49696890942657</gml:lowerCorner>
+        <gml:upperCorner>5.5327194451124 49.57491489328335</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57095">
+    <skos:prefLabel xml:lang="fr">Commune de Mont-de-l'Enclus</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.4533755153679957 50.703597901480066</gml:lowerCorner>
+        <gml:upperCorner>3.5477063209819124 50.77127037626721</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#25014">
+    <skos:prefLabel xml:lang="fr">Commune de Braine-l'Alleud</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.300275095966311 50.62573407451093</gml:lowerCorner>
+        <gml:upperCorner>4.412110893494357 50.73425174133664</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52022">
+    <skos:prefLabel xml:lang="fr">Commune de Fontaine-l'Evêque</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.29004512483323 50.3663149796541</gml:lowerCorner>
+        <gml:upperCorner>4.356446209363644 50.447131368161976</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63076">
+    <skos:prefLabel xml:lang="fr">Commune de Theux</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.738769026311625 50.43367596264886</gml:lowerCorner>
+        <gml:upperCorner>5.921168072348311 50.56759344963773</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57072">
+    <skos:prefLabel xml:lang="fr">Commune de Rumes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.2779554936966306 50.51243552021149</gml:lowerCorner>
+        <gml:upperCorner>3.3644395344732185 50.572446852140374</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62121">
+    <skos:prefLabel xml:lang="fr">Commune de Neupré</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.422636794199171 50.52016403285544</gml:lowerCorner>
+        <gml:upperCorner>5.554685022839911 50.571799144815046</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92141">
+    <skos:prefLabel xml:lang="fr">Commune de La Bruyère</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.744550338732165 50.48708836673681</gml:lowerCorner>
+        <gml:upperCorner>4.898505120513057 50.57334732487751</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#57093">
+    <skos:prefLabel xml:lang="fr">Commune de Brunehaut</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.3212354914086477 50.49107454000191</gml:lowerCorner>
+        <gml:upperCorner>3.470924088220591 50.56743972610338</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92114">
+    <skos:prefLabel xml:lang="fr">Commune de Sombreffe</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.557228259112529 50.48400506557522</gml:lowerCorner>
+        <gml:upperCorner>4.645023177605246 50.5696849616115</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52075">
+    <skos:prefLabel xml:lang="fr">Commune de Les Bons Villers</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.372865814499375 50.475856959406336</gml:lowerCorner>
+        <gml:upperCorner>4.513062452986673 50.56469081219594</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62100">
+    <skos:prefLabel xml:lang="fr">Commune de Sprimont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.583320666279697 50.476506504880874</gml:lowerCorner>
+        <gml:upperCorner>5.763056229528841 50.55588672242885</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52055">
+    <skos:prefLabel xml:lang="fr">Commune de Pont-à-Celles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.307369213860147 50.467961648112556</gml:lowerCorner>
+        <gml:upperCorner>4.45605703437088 50.56292024467395</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53044">
+    <skos:prefLabel xml:lang="fr">Commune de Jurbise</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.79998627795101 50.48867312083523</gml:lowerCorner>
+        <gml:upperCorner>3.9965518492802685 50.555293647821145</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61043">
+    <skos:prefLabel xml:lang="fr">Commune de Nandrin</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.334742561084532 50.488799861961624</gml:lowerCorner>
+        <gml:upperCorner>5.4769321650361205 50.543916154356474</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55035">
+    <skos:prefLabel xml:lang="fr">Commune de Le Roeulx</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.039119792838778 50.46274830604565</gml:lowerCorner>
+        <gml:upperCorner>4.186362812862427 50.54687672794023</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#53070">
+    <skos:prefLabel xml:lang="fr">Commune de Saint-Ghislain</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>3.7364622010750175 50.43823394706834</gml:lowerCorner>
+        <gml:upperCorner>3.8795300917218145 50.541453642084136</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52021">
+    <skos:prefLabel xml:lang="fr">Commune de Fleurus</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.478337568366007 50.438093328746014</gml:lowerCorner>
+        <gml:upperCorner>4.600733300658186 50.54228429604219</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61031">
+    <skos:prefLabel xml:lang="fr">Commune d'Huy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.129244047645986 50.46762296375791</gml:lowerCorner>
+        <gml:upperCorner>5.316884654317763 50.53909545682155</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63013">
+    <skos:prefLabel xml:lang="fr">Commune de Bütgenbach</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>6.131155442685493 50.39408993561415</gml:lowerCorner>
+        <gml:upperCorner>6.302010161196609 50.52143128605519</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92003">
+    <skos:prefLabel xml:lang="fr">Commune d'Andenne</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.961866123421737 50.447255239759144</gml:lowerCorner>
+        <gml:upperCorner>5.163911008565181 50.531760948150044</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#92094">
+    <skos:prefLabel xml:lang="fr">Commune de Namur</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.7229749632153135 50.38736903353217</gml:lowerCorner>
+        <gml:upperCorner>4.98406255525572 50.53121523238491</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63049">
+    <skos:prefLabel xml:lang="fr">Commune de Malmedy</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.969654811223814 50.350269094913614</gml:lowerCorner>
+        <gml:upperCorner>6.113613168667746 50.51884178695789</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62009">
+    <skos:prefLabel xml:lang="fr">Commune d'Aywaille</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.6238435280911645 50.395492370203016</gml:lowerCorner>
+        <gml:upperCorner>5.793000803726733 50.52151268961846</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61041">
+    <skos:prefLabel xml:lang="fr">Commune de Modave</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.2354890530625 50.41750919005986</gml:lowerCorner>
+        <gml:upperCorner>5.354809117033199 50.52482180269111</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#61079">
+    <skos:prefLabel xml:lang="fr">Commune d'Anthisnes</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.437909993804922 50.45794137276719</gml:lowerCorner>
+        <gml:upperCorner>5.553787536157959 50.52298583544214</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#55022">
+    <skos:prefLabel xml:lang="fr">Commune de La Louvière</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.0700420937814785 50.43332064328657</gml:lowerCorner>
+        <gml:upperCorner>4.22986938620893 50.5251632483326</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52015">
+    <skos:prefLabel xml:lang="fr">Commune de Courcelles</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.286817164167495 50.42722052449913</gml:lowerCorner>
+        <gml:upperCorner>4.40504681493181 50.52393400846942</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#52043">
+    <skos:prefLabel xml:lang="fr">Commune de Manage</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>4.20399859240752 50.46493281293395</gml:lowerCorner>
+        <gml:upperCorner>4.281561169834909 50.52368935804219</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#63072">
+    <skos:prefLabel xml:lang="fr">Commune de Spa</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.81529174668751 50.43367596264886</gml:lowerCorner>
+        <gml:upperCorner>5.931718619275613 50.51195416326608</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitésadministratives#62026">
+    <skos:prefLabel xml:lang="fr">Commune de Comblain-au-Pont</skos:prefLabel>
+    <gml:BoundedBy>
+      <gml:Envelope gml:srsName="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326">
+        <gml:lowerCorner>5.535313116514252 50.4591750961959</gml:lowerCorner>
+        <gml:upperCorner>5.635804423455767 50.512102595222395</gml:upperCorner>
+      </gml:Envelope>
+    </gml:BoundedBy>
+  </skos:Concept>
+</rdf:RDF>

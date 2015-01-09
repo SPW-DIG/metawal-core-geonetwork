@@ -71,7 +71,7 @@ GeoNetwork.data.RegionStore = function(url){
         record: 'region',
         idPath: '@id',
         sortInfo: {
-            field: 'label',
+            field: 'id',
             direction: 'ASC' // or 'DESC' (case sensitive fort local sorting)
         },
         fields: [{

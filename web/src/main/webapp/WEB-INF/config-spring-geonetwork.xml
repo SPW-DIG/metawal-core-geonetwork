@@ -35,7 +35,7 @@
 	<bean id="RegionsDAO" class="org.fao.geonet.services.region.ThesaurusBasedRegionsDAO">
 		<constructor-arg ref="languages"></constructor-arg>
 		<property name="cacheAllRegionsInMemory" value="true"/>
-		<property name="thesaurusName" value="external.place.metawal-communes"/>
+		<property name="thesaurusName" value="external.place.metawal-entites_administratives"/>
 	</bean>
 	<!--bean id="MetadataRegionsDAO" class="org.fao.geonet.services.region.MetadataRegionDAO">
 		<property name="cacheAllRegionsInMemory" value="false"/>
