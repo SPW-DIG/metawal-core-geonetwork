@@ -311,22 +311,41 @@
        * Save a user.
        */
       $scope.saveUser = function(formId) {
-        $http.get('admin.user.update?' + $(formId).serialize())
-        .success(function(data) {
-              $scope.unselectUser();
-              loadUsers();
-              $rootScope.$broadcast('StatusUpdated', {
-                msg: $translate('userUpdated'),
-                timeout: 2,
-                type: 'success'});
-            })
-        .error(function(data) {
-              $rootScope.$broadcast('StatusUpdated', {
-                title: $translate('userUpdateError'),
-                error: data,
-                timeout: 0,
-                type: 'danger'});
-            });
+        if ($scope.user.profile === 'Administrator' || $scope.user.profile === "UserAdmin"){
+          $http.get('admin.user.update?' + $(formId).serialize())
+          .success(function(data) {
+                $scope.unselectUser();
+                loadUsers();
+                $rootScope.$broadcast('StatusUpdated', {
+                  msg: $translate('userUpdated'),
+                  timeout: 2,
+                  type: 'success'});
+              })
+          .error(function(data) {
+                $rootScope.$broadcast('StatusUpdated', {
+                  title: $translate('userUpdateError'),
+                  error: data,
+                  timeout: 0,
+                  type: 'danger'});
+              });
+        }else{
+          $http.get('user.infoupdate?' + $(formId).serialize())
+          .success(function(data) {
+                $scope.unselectUser();
+                loadUsers();
+                $rootScope.$broadcast('StatusUpdated', {
+                  msg: $translate('userUpdated'),
+                  timeout: 2,
+                  type: 'success'});
+              })
+          .error(function(data) {
+                $rootScope.$broadcast('StatusUpdated', {
+                  title: $translate('userUpdateError'),
+                  error: data,
+                  timeout: 0,
+                  type: 'danger'});
+              });
+        }
       };
 
       /**
@@ -443,6 +462,8 @@
       $scope.updatingGroup = function() {
         $scope.groupUpdated = true;
       };
+
+     
 
       loadGroups();
       loadUsers();

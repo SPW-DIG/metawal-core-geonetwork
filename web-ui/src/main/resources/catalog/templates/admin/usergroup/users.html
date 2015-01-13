@@ -1,5 +1,5 @@
 <div class="row" data-ng-controller="GnUserGroupController">
-  <div class="col-lg-4">
+  <div class="col-lg-4" data-ng-hide='!isUserAdmin()'>
     <div class="panel panel-default">
       <div class="panel-heading" data-translate="">users</div>
       <div class="panel-body">
@@ -124,12 +124,12 @@
               <input type="text" name="country" class="form-control"
                 data-ng-model="userSelected.country"/>
             </fieldset>
-            <fieldset>
+            <fieldset data-ng-disabled='!isUserAdmin()'>
               <legend data-translate="">defineUserGroupsPerProfile</legend>
               <input type="hidden" name="profile" data-ng-model="userSelected.profile"
                 value="{{userSelected.profile}}"/>
-              <label>
-                <input type="checkbox" data-ng-model="userIsAdmin"
+              <label data-ng-hide='!isUserAdmin()'>
+                <input  type="checkbox" data-ng-model="userIsAdmin"
                   data-ng-click="setUserProfile(true)"/>
                 <span data-translate="">isAdministrator</span>
               </label>
