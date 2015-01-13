@@ -65,7 +65,8 @@ GeoNetwork.map.BACKGROUND_LAYERS = [
 //    new OpenLayers.Layer.WMS("Background layer", "/geoserver/wms", {layers: 'gn:world,gn:ne_50m_boundary_da,gn:ne_50m_boundary_lines_land,gn:ne_50m_coastline', format: 'image/jpeg'}, {isBaseLayer: true})
 new OpenLayers.Layer.ArcGIS93Rest(
 		"Fond de plan",
-		"http://geoservices.valid.wallonie.be/arcgis/rest/services/DONNEES_BASE/FOND_PLAN_CARTE_2012_v1_RW/MapServer/export",
+		//"http://geoservices.valid.wallonie.be/arcgis/rest/services/DONNEES_BASE/FOND_PLAN_CARTE_2012_v1_RW/MapServer/export",
+    "http://geoservices.wallonie.be/arcgis/rest/services/DONNEES_BASE/FDP_LIGHT/MapServer/export",
 		{layers: '0'},
 		{'attribution': 'SPW'}
     )
