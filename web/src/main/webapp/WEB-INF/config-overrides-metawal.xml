@@ -4,7 +4,7 @@
   xsi:noNamespaceSchemaLocation="config-overrides.xsd">
   
   <!-- Define here the property file to be loaded -->
-  <import file="/WEB-INF/config-overrides-metawal-props-karukera.xml"/>
+  <import file="/WEB-INF/config-overrides-metawal-props-adg.xml"/>
   
   <properties>
     
@@ -89,9 +89,7 @@
       <inspire_common:Conformity>
         <inspire_common:Specification
           xsi:type="inspire_common:citationInspireInteroperabilityRegulation_eng">
-          <inspire_common:Title>COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010
-            implementing Directive 2007/2/EC of the European Parliament and of the Council as
-            regards interoperability of spatial data sets and services</inspire_common:Title>
+          <inspire_common:Title>COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</inspire_common:Title>
           <inspire_common:DateOfPublication>2010-12-08</inspire_common:DateOfPublication>
           <inspire_common:URI>OJ:L:2010:323:0011:0102:EN:PDF</inspire_common:URI>
           <inspire_common:ResourceLocator>
@@ -107,53 +105,102 @@
       </inspire_common:MetadataPointOfContact>
       <inspire_common:MetadataDate>2011-11-23</inspire_common:MetadataDate>
       <inspire_common:SpatialDataServiceType>discovery</inspire_common:SpatialDataServiceType>
-      <inspire_common:MandatoryKeyword xsi:type="inspire_common:classificationOfSpatialDataService">
+      <inspire_common:MandatoryKeyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:classificationOfSpatialDataService">
         <inspire_common:KeywordValue>humanCatalogueViewer</inspire_common:KeywordValue>
       </inspire_common:MandatoryKeyword>
-      <inspire_common:Keyword xsi:type="inspire_common:inspireTheme_eng">
+<inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
         <inspire_common:OriginatingControlledVocabulary>
           <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
           <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
         </inspire_common:OriginatingControlledVocabulary>
-        <inspire_common:KeywordValue>Area management/restriction/regulation zones and reporting
-          units</inspire_common:KeywordValue>
+
+        <inspire_common:KeywordValue>Administrative units</inspire_common:KeywordValue>
       </inspire_common:Keyword>
-      <inspire_common:Keyword xsi:type="inspire_common:inspireTheme_eng">
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
         <inspire_common:OriginatingControlledVocabulary>
           <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
           <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
         </inspire_common:OriginatingControlledVocabulary>
-        <inspire_common:KeywordValue>Oceanographic geographical
-          features</inspire_common:KeywordValue>
+        <inspire_common:KeywordValue>Area management/restriction/regulation zones and reporting units</inspire_common:KeywordValue>
+
       </inspire_common:Keyword>
-      <inspire_common:Keyword xsi:type="inspire_common:inspireTheme_eng">
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Atmospheric conditions</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
         <inspire_common:OriginatingControlledVocabulary>
           <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
           <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
         </inspire_common:OriginatingControlledVocabulary>
         <inspire_common:KeywordValue>Bio-geographical regions</inspire_common:KeywordValue>
       </inspire_common:Keyword>
-      <inspire_common:Keyword xsi:type="inspire_common:inspireTheme_eng">
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
         <inspire_common:OriginatingControlledVocabulary>
           <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
           <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
         </inspire_common:OriginatingControlledVocabulary>
         <inspire_common:KeywordValue>Elevation</inspire_common:KeywordValue>
       </inspire_common:Keyword>
-      <inspire_common:Keyword xsi:type="inspire_common:inspireTheme_eng">
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
         <inspire_common:OriginatingControlledVocabulary>
           <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
           <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
         </inspire_common:OriginatingControlledVocabulary>
-        <inspire_common:KeywordValue>Environmental monitoring
-          facilities</inspire_common:KeywordValue>
+        <inspire_common:KeywordValue>Energy resources</inspire_common:KeywordValue>
+
       </inspire_common:Keyword>
-      <inspire_common:Keyword xsi:type="inspire_common:inspireTheme_eng">
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Environmental monitoring facilities</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Geographical grid systems</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
         <inspire_common:OriginatingControlledVocabulary>
           <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
           <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
         </inspire_common:OriginatingControlledVocabulary>
         <inspire_common:KeywordValue>Habitats and biotopes</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Human health and safety</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Land cover</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Protected sites</inspire_common:KeywordValue>
+      </inspire_common:Keyword>
+      <inspire_common:Keyword xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0" xsi:type="inspire_common:inspireTheme_eng">
+        <inspire_common:OriginatingControlledVocabulary>
+          <inspire_common:Title>GEMET - INSPIRE themes</inspire_common:Title>
+          <inspire_common:DateOfPublication>2008-06-01</inspire_common:DateOfPublication>
+        </inspire_common:OriginatingControlledVocabulary>
+        <inspire_common:KeywordValue>Soil</inspire_common:KeywordValue>
       </inspire_common:Keyword>
       <inspire_common:SupportedLanguages>
         <!--
