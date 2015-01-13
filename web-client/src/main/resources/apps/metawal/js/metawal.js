@@ -18,3 +18,17 @@ function importmetadata() {
         actionCtn.mdImportAction.handler.apply(actionCtn);
     }
 }
+
+function displayLoginModalScreen(){
+    document.getElementById('transparentHider').style.display = 'block';
+    document.getElementById('login_form_div').style.visibility = 'visible';
+    document.getElementById('login_form_div').style.opacity = 1;
+    document.getElementById('login_form_div').style.top = 150;;
+    document.getElementById('login_form_div').style.left = '50%';
+    document.getElementById('login_form_div').style.display = 'block';
+}
+function hideLoginModalScreen(){
+    document.getElementById('transparentHider').style.display = 'none';
+    document.getElementById('login_form_div').style.visibility = 'hidden';
+    document.getElementById('login_form_div').style.opacity = 0;
+}

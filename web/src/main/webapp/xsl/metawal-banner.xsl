@@ -2,11 +2,12 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 exclude-result-prefixes="#all">
+    <xsl:output method="html" doctype-system="about:legacy-compat"/>
              
   <xsl:template name="metawal-banner">
   	
     <xsl:param name="withLogin" select="false()"/>
-          
+         
         <!--start SPW banner-->  
         <div id="top-spw-global">
             <div class="container_16">
@@ -50,17 +51,15 @@
 					<div class="grid_login">
 						<ul id="menulogin">
                         	<li>
-                        		<a href="#"><p id="userinfo"></p></a>
-	                        	<ul class="sub-menu">
-	                        		<li><input type="button" id="logout_popup" class="btnlogout" value="{/root/gui/strings/metawalBannerLogout}"/></li>
-	                        	</ul>
+                        		<p id="userinfo"></p>
+                        	</li>
+                        	<li>
+                        	<input type="button" id="logout_popup" class="btnlogout" onclick="catalogue.logout();"/>
                         	</li>
                         </ul>
 						<!--<p id="userinfo"></p>-->
-						<input type="button" id="login_popup" class="btn" 
-							value="{/root/gui/strings/metawalBannerLogin}"/>
-	        		</div>
-	        		<a href="#x" class="overlay" id="login_form"></a>
+						<input type="button" id="login_popup" class="btn" onclick="displayLoginModalScreen();" value="{/root/gui/strings/metawalBannerLogin}"/>
+		    		</div>				 
 			        <div class="popup" id="login_form_div">
 			            <h2><xsl:value-of select="/root/gui/strings/metawalLoginTitle" /></h2>
 			            <p><xsl:value-of select="/root/gui/strings/metawalLoginIntro" /></p>
@@ -74,7 +73,7 @@
 			            </div>
 			            <input type="submit" id="submitbutton" name="submitbutton" class="btn" value="{/root/gui/strings/metawalLoginConnection}"  onclick="catalogue.login(document.getElementById('login').value,document.getElementById('password').value);location.href='#close';"/>
 			        	&#160;
-			        	<input type="button" class="btn" value="{/root/gui/strings/metawalLoginCancel}" onclick="location.href='#close';"/>
+			        	<input type="button" class="btn" value="{/root/gui/strings/metawalLoginCancel}" onclick="location.href='#close';hideLoginModalScreen();"/>
 			        </div>
 			        <div class="clear"></div>
             		<div class="noprint">
@@ -139,7 +138,7 @@
                 </div>
             </div>
         </div>
-        
+        <div class="transparentHider" id="transparentHider" style="display:none;"></div>
 	<script type="text/javascript" src="../../apps/metawal/js/metawal.js"></script>
 		    
 		    
