@@ -6,7 +6,6 @@
 		omit-xml-declaration="yes" 
 		method="html" 
 		doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN"
-		doctype-system="http://www.w3.org/TR/html4/loose.dtd"
 		indent="yes"
 		encoding="UTF-8" />
 	
