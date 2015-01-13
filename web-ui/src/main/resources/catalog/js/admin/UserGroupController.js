@@ -312,7 +312,7 @@
        */
       $scope.saveUser = function(formId) {
         if ($scope.user.profile === 'Administrator' 
-              || $scope.user.profile === "UserAdmin"){
+        || $scope.user.profile === "UserAdmin"){
           $http.get('admin.user.update?' + $(formId).serialize())
           .success(function(data) {
                 $scope.unselectUser();
