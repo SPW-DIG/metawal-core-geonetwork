@@ -547,7 +547,13 @@
             <!-- Usually, protocole format is OGC:WMS-version-blahblah, remove ':' and get
             prefix of the protocol to set the CSS icon class-->
             <span class="{translate(substring-before(current-grouping-key(), '-'), ':', '')} icon">
-                <xsl:value-of select="/root/gui/schemas/iso19139/labels/element[@name = 'gmd:protocol']/helper/option[@value=normalize-space(current-grouping-key())]"/>
+              <xsl:variable name="protocolKey"
+                            select="if (normalize-space(current-grouping-key()) = '')
+                            then 'WWW:LINK-1.0-http--link'
+                            else normalize-space(current-grouping-key())"/>
+                <xsl:value-of select="/root/gui/schemas/iso19139/
+                  labels/element[@name = 'gmd:protocol' and not(@context)]/
+                  helper/option[@value=$protocolKey]"/>
             </span>
           </td>
           <td>
