@@ -160,7 +160,8 @@
         console.log('select all ');
       };
       $scope.isUserAdmin = function() {
-        if ($scope.user.profile === 'Administrator' || $scope.user.profile === "UserAdmin") {
+        if ($scope.user.profile === 'Administrator' || 
+        $scope.user.profile === "UserAdmin") {
               return active;
         }else{
           return false; 
