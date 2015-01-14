@@ -44,7 +44,6 @@ var gnHarvestercsw = {
     },
     buildResponseCSWSearch : function($scope) {
         var body = '';
-        console.log($scope.harvesterSelected.searches[0]);
         for(var tag in $scope.harvesterSelected.searches[0]) {
             if($scope.harvesterSelected.searches[0].hasOwnProperty(tag)) {
                 var value = $scope.harvesterSelected.searches[0][tag].value;

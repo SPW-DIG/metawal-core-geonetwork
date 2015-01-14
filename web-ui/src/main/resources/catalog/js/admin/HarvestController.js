@@ -401,7 +401,10 @@
                       // When harvester is saved only criteria with
                       // value will be saved.
                       $(this).find('Value').each(function() {
-                        var name = $(this).text();
+                        // If the queryable has a namespace,
+                        // replace the : with __
+                        // to make valid XML tag name
+                        var name = $(this).text().replace(':', '__');
                         $scope.cswCriteria.push(name);
                         if (!$scope.harvesterSelected.searches[0][name]) {
                           $scope.harvesterSelected.searches[0][name] =
