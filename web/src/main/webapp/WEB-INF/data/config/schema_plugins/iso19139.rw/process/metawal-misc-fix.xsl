@@ -86,24 +86,28 @@
                 priority="2">
     <xsl:copy>
       <gmd:MD_BrowseGraphic>
-        <xsl:variable name="fileName" select="gmd:MD_BrowseGraphic/gmd:fileName/gco:CharacterString"/>
+        <xsl:variable name="fileNameInRecord" select="gmd:MD_BrowseGraphic/gmd:fileName/gco:CharacterString"/>
+        <xsl:variable name="fileName">
+          <xsl:choose>
+            <xsl:when test="contains($fileNameInRecord, 'fname=')">
+              <!-- We have an URL -->
+              <xsl:value-of select="substring-after($fileNameInRecord, 'fname=')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$fileNameInRecord"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
         <xsl:variable name="fileType" select="gmd:MD_BrowseGraphic/gmd:fileType/gco:CharacterString"/>
-        <xsl:choose>
-          <xsl:when test="not(starts-with($fileName, 'http://'))">
-            <xsl:variable name="identifer" select="/gmd:MD_Metadata/gmd:fileIdentifier/gco:CharacterString"/>
+        <xsl:variable name="identifier" select="/*/gmd:fileIdentifier/gco:CharacterString"/>
 
-            <gmd:fileName>
-              <gco:CharacterString>
-                <xsl:value-of
-                        select="concat($prefix, '?uuid=',
-                              $identifer, '&amp;fname=', $fileName)"/>
-              </gco:CharacterString>
-            </gmd:fileName>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:copy-of select="gmd:MD_BrowseGraphic/gmd:fileName"/>
-          </xsl:otherwise>
-        </xsl:choose>
+        <gmd:fileName>
+          <gco:CharacterString>
+            <xsl:value-of
+                    select="concat($prefix, '?uuid=',
+                          $identifier, '&amp;fname=', normalize-space($fileName))"/>
+          </gco:CharacterString>
+        </gmd:fileName>
         <xsl:copy-of select="gmd:MD_BrowseGraphic/gmd:fileDescription"/>
         <xsl:copy-of select="gmd:MD_BrowseGraphic/gmd:fileType"/>
       </gmd:MD_BrowseGraphic>
