@@ -58,7 +58,7 @@
     <gmd:thesaurusName>
       <gmd:CI_Citation>
         <gmd:title>
-          <gco:CharacterString>Thèmes du géoportail wallon, Version 1</gco:CharacterString>
+          <gco:CharacterString>Thèmes du géoportail wallon, version 1.0</gco:CharacterString>
         </gmd:title>
         <gmd:date>
           <gmd:CI_Date>
