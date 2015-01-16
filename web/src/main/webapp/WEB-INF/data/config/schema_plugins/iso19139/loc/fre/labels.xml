@@ -422,6 +422,12 @@ responsable du service.</li>
 		<help>Classe destinée à la description d'un graphique contenant une représentation du jeu de données (une légende du graphique devrait être incluse). Il s'agit généralement d'un jeu de données d'exemple, valant pour des jeux de données de même nature (des cartes nationales par exemple).</help>
 		<condition/>
 	</element>
+	<element name="gmd:MD_Constraints" id="67.0">
+	    <label>Restrictions</label>
+	    <description>Classe pour les restrictions sur l'accès et l'utilisation d'une ressource ou de métadonnées</description>
+	    <help>Classe recelant des informations relatives aux restrictions d'accès et d'utilisation de la ressource ou du jeu de métadonnées. Le paquet contenant la description des restrictions d'accès et d'utilisation intègre la classe MD_Constraints avec un attribut fournissant une description générale des restrictions et les deux sous-classes MD_LegalConstraints (informations sur les restrictions d'accès et d'utilisation dues au respect de droits d'auteurs) et MD_SecurityConstraints (informations sur les restrictions liées à des questions de sécurité de portée nationale ou assimilée telles que la confidentialité ou le secret). La classification des restrictions et des niveaux de sécurité s'effectue via des listes de sélection (MD_RestrictionCode et MD_ClassificationCode).</help>
+	    <condition/>
+	</element>
 	<element name="gmd:MD_Constraints" id="67.0" context="gmd:resourceConstraints">
 		<label>Autres conditions</label>
 		<description>Description des conditions à respecter pour faire un bon usage de la ressource.</description>
@@ -531,6 +537,12 @@ responsable du service.</li>
 		<help>Classe réservée aux mots clés, à leurs types (c.-à-d. la catégorie dont ils sont issus), de même qu''à leur référence ou à leur provenance. Les mots clés sont utilisés comme arguments de recherche.</help>
 		<condition/>
 	</element>
+	<element name="gmd:MD_LegalConstraints" id="69.0">
+    	<label>Contraintes légales</label>
+    	<description>Classe pour les restrictions et conditions préalables légales pour accéder et utiliser les ressources où de métadonnées</description>
+    	<help>Classe contenant des informations relatives aux restrictions juridiques s'appliquant à la ressource, au jeu de métadonnées ou à leur utilisation. Cette classe est une représentation de la classe MD_Constraints. Cf. MD_Constraints pour de plus amples informations.</help>
+    	<condition/>
+  	</element>
 	<element name="gmd:MD_LegalConstraints" id="69.0" context="gmd:metadataConstraints">
 		<label>Conditions légales et contractuelles</label>
 		<description>Description des conditions d'accès et d'utilisation de la fiche de métadonnées, définies par la loi ou à travers un contrat.</description>
@@ -636,6 +648,12 @@ responsable du service.</li>
 		<help>Description du domaine auquel se rapporte une information. Ces indications sont utilisées pour les informations de qualité (DQ_Quality) et les informations de mise à jour (MD_Maintenance) lorsque les caractéristiques ne sont pas homogènes sur l'ensemble du jeu de données décrit. l'un au moins de ces attributs doit être saisi. Exemple de la MO, jeu de données décrit : "Lot". La couche des biens-fonds est mise à jour en permanence, la couche de la nomenclature n''est quant à elle actualisée qu''au besoin. Si la mise à jour de la couche des biens-fonds est décrite, l'option "Biens-fonds" est entrée pour les propriétés. Les informations de qualité sont gérées sur le même modèle. Vous trouverez d'autres informations sous MD_MaintenanceInformation et DQ_DataQuality.</help>
 		<condition>Il faut saisir un des attributs suivants: Attributs, Objets Géométriques, Occurences d'objets, Occurences d'attributs, Jeu de données, Autre.</condition>
 	</element>
+	<element name="gmd:MD_SecurityConstraints" id="73.0">
+	    <label>Contraintes de sécurité</label>
+	    <description>Classe avec les restrictions de manipulation imposées sur les ressources où de métadonnées pour la sécurité nationale ou des situations de sécurité similaires</description>
+	    <help>Classe contenant des informations relatives aux restrictions de sécurité liées à des questions de sécurité de portée nationale ou assimilée (exemple : secret, confidentialité, etc.). Cette classe est une représentation de la classe MD_Constraints. Cf. MD_Constraints pour d'autres informations.</help>
+	    <condition/>
+  	</element>
 	<element name="gmd:MD_SecurityConstraints" id="73.0" context="gmd:resourceConstraints">
 		<label>Conditions liées à la sécurité</label>
 		<description>Description des conditions d'accès et d'utilisation de la ressource liées à la sécurité nationale.</description>
@@ -1600,14 +1618,14 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
     </li>
     </ul>
     ]]></help>
-  </element>
+  </element>-->
   <element name="gmd:distributionInfo" id="17.0">
     <label>Informations sur la distribution</label>
     <description>Informations sur le distributeur et sur la façon d'acquérir les ressources</description>
     <help>Informations relatives au distributeur et au mode d'acquisition de la ou des ressources. Indications concernant le lieu et la forme d'obtention des données. Ces informations sont gérées dans la classe MD_Distribution.</help>
     <condition/>
     
-  </element>-->
+  </element>
 	<element name="gmd:distributionOrderProcess" id="281.0">
 		<label>Processus de distribution et de commande</label>
 		<description>Informations sur les processus de commande de la donnée, sur les coûts et les formalités de commande.</description>
@@ -3677,6 +3695,12 @@ l’IGN (WPS)
 		<help>Date et heure de la première utilisation ou de la période d'utilisation de la ressource et/ou de la série de ressources.</help>
 		<condition/>
 	</element>
+	<element name="gmd:useConstraints" id="71.0">
+	    <label>Contraintes d'utilisation</label>
+	    <description>Contraintes appliquées pour assurer la protection des sphères privées et intellectuelles, et autres restrictions spéciales ou limitations ou mises en garde pour utiliser les ressources où de métadonnées</description>
+	    <help>Restrictions d'utilisation à fondement juridique destinées à garantir la sphère privée, la propriété intellectuelle ou d'autres domaines similaires tels que les conditions d'octroi de licence. Elles peuvent être sélectionnées parmi les éléments suivants : droit d'auteur, brevet, brevet en voie de délivrance, marque, licence, propriété intellectuelle, diffusion limitée, autres restrictions.</help>
+	    <condition/>
+	  </element>
 	<element name="gmd:useConstraints" id="71.0" context="gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:useConstraints">
 		<label>Définition des conditions d'utilisation</label>
 		<description>Document qui définit les conditions d'utilisation.</description>
@@ -3736,7 +3760,8 @@ l’IGN (WPS)
 			<option value="Toute utilisation commerciale de la ressource est interdite.">Utilisation commerciale interdite</option>
 			<option value="Des conditions d'utilisation propres aux applications et services permettant de consulter la donnée peuvent exister. Veuillez en prendre connaissance avant de les utiliser.">Référence aux conditions d'utilisation des applications et services (si donnée distribuée par ces canaux)</option>
 		</helper>
-	</element><!--<element name="gmd:useLimitation" id="68.0">
+	</element>
+	<element name="gmd:useLimitation" id="68.0">
     <label>Limitation d'utilisation</label>
     <description>Limitation d'utilisation de la ressource où de métadonnées. Exemple: "ne pas utiliser pour la navigation"</description>
     <help>Restriction d'utilisation de la ressource ou des métadonnées. Exemple: "ne pas utiliser pour la navigation"</help>
@@ -3756,7 +3781,7 @@ l’IGN (WPS)
     </ul>
     ]]>
     </help>
-    <help for="france">
+    <!--<help for="france">
     <![CDATA[
     <b>Recommandations :</b>
     <ul>
@@ -3773,7 +3798,7 @@ l’IGN (WPS)
     <li>S’il s’agit d’une personne morale, la raison sociale du fournisseur ;</li>
     <li>L’adresse où il est établi, son adresse de courrier électronique, ainsi que des coordonnées téléphoniques permettant d’entrer effectivement en contact avec lui”.</li>
     <ul>
-    ]]></help>
+    ]]></help>-->
     <condition/>
     <helper>
       <option value="Aucune condition ne s’applique">Aucune condition ne s’applique</option>
@@ -3781,7 +3806,7 @@ l’IGN (WPS)
       <option value="Utilisation libre sous réserve de mentionner la source (a minima le nom du producteur) et la date de sa dernière mise à jour">Utilisation libre sous réserve de mentionner la source (a minima le nom du producteur) et la date de sa dernière mise à jour</option>
     </helper>
   </element>
-  <element name="gmd:userContactInfo" id="66.0">
+  <!--<element name="gmd:userContactInfo" id="66.0">
     <label>Contact concernant la ressource</label>
     <description>Identification des personnes et organisations, et des modes de communication avec celles-ci, utilisant les ressources</description>
     <help>Identification de la personne (ou des personnes) et de l'organisation (ou des organisations) utilisant la ou les ressources et mode de communication avec elle(s). Cette personne ou ce service endosse un rôle bien spécifique (propriétaire, prestataire, gestionnaire, etc.) pouvant être sélectionné dans la liste présentée. Ces informations sont du type CI_Citation et sont gérées dans la classe du même nom.</help>
