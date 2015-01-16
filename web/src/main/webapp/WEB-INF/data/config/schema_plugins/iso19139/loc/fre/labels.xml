@@ -2365,6 +2365,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="Comma Separated Value (.csv)">Comma Separated Value (.csv)</option>
 			<option value="EGeoSciML (.gsml)">GeoSciML (.gsml)</option>
 			<option value="ESRI ArcGIS Map Document (.mxd)">ESRI ArcGIS Map Document (.mxd)</option>
+			<option value="ESRI Grid">ESRI Grid</option>
 			<option value="GIF (.gif)">GIF (.gif)</option>
 			<option value="GML (.gml)">GML (.gml)</option>
 			<option value="GML INSPIRE (.gml)">GML INSPIRE (.gml)</option>
@@ -2617,7 +2618,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 		<help>Une liste indicative est proposée pour aider à formuler le contenu de ce champ.</help>
 		<condition/>
 		<helper>
-			<option value="Accès libre pour tout public - Open data">Accès - Accès libre pour tout public (Open data)</option>
+			<option value="Accès libre pour tout public">Accès - Accès libre pour tout public</option>
 			<option value="Accès libre pour tout public - Utilisation commerciale interdite">Accès - Accès libre pour tout public sauf utilisation commerciale</option>
 			<option value="Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement">Accès - Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement (ex : licence SPW)</option>
 			<option value="Accès réservé aux autorités publiques">Accès - Accès réservé aux autorités publiques (INSPIRE)</option>
@@ -3714,7 +3715,7 @@ l’IGN (WPS)
 		<help>Cet élément permet au producteur de définir des conditions d'accès à la ressource dont la nature n'est ni légale ou contractuelle, ni sécuritaire. Il permet également de définir le cadre d'une utilisation adéquate de la ressource.</help>
 		<help>Les limites de nature légale, contractuelle ou sécuritaire doivent être décrites dans d'autres éléments.</help>
 		<helper>
-			<option value="Accès libre pour tout public - Open data">Accès - Accès libre pour tout public (Open data)</option>
+			<option value="Accès libre pour tout public">Accès - Accès libre pour tout public</option>
 			<option value="Accès libre pour tout public - Utilisation commerciale interdite">Accès - Accès libre pour tout public sauf utilisation commerciale</option>
 			<option value="Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement">Accès - Accès pour les autorités publiques, pour des missions de service public ou pour la recherche et l'enseignement</option>
 			<option value="Accès réservé aux autorités publiques">Accès - Accès réservé aux autorités publiques</option>
