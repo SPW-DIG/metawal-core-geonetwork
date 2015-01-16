@@ -25,8 +25,7 @@
 
   <div class="col-lg-8" data-ng-hide="userSelected.id == null">
     <div class="panel panel-default">
-      <div class="panel-heading"
-        title="{{userHasRecords() ? ('cantDeleteUserHavingRecords' | translate) : ''}}">
+      <div class="panel-heading">
         <span data-ng-hide="userSelected.id == ''" data-translate="">updateUser</span>
         <span data-ng-hide="userSelected.id != ''" data-translate="">newUser</span>
         <strong>{{userSelected.name}} {{userSelected.surname}}</strong>
@@ -39,10 +38,12 @@
             data-ng-disabled="!gnUserEdit.$valid && !gnUserEdit.dirty"
             data-ng-click="saveUser('#gn-user-edit')" id="gn-btn-user-save" data-translate=""
             >saveUser</button>
-          <button type="button" class="btn btn-primary pull-right btn-danger fa fa-trash-o"
+          <div class='helper' title="{{userHasRecords() ? ('cantDeleteUserHavingRecords' | translate) : ''}}">
+            <button type="button" class="btn btn-primary pull-right btn-danger fa fa-trash-o"
             data-ng-disabled="userHasRecords()" data-ng-hide="userSelected.id == ''"
-            data-ng-click="deleteUser(userSelected.id)" id="gn-btn-user-delete" data-translate=""
+            data-ng-click="deleteUser(userSelected.id)" id="gn-btn-user-delete" style='pointer-events: auto' data-translate=""
             >deleteUser</button>
+          </div>
         </div>
       </div>
       <div class="panel-body">
