@@ -491,7 +491,7 @@ GeoNetwork.Lang.fr = {
     'layerTree': 'Gestion des couches',
     'mdResultsLayer': 'Résultats de la recherche',
     'printLayer': 'Page de l\'impression',
-    'relatedservices': 'Métadonnées des services associés',
+    'relatedservices': 'Métadonnées des services et applications associées',
     'relatedparent': 'Métadonnée parent',
     'relatedsibling': 'Ressources associées',
     'relateddatasets': 'Métadonnées associées',

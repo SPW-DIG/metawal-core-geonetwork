@@ -428,7 +428,7 @@ GeoNetwork.Lang.en = {
     'deleteRecordSuccess': 'Metadata deleted.', 
     'deleteRecordFailure': 'Error when deleting metadata record.',
     'advancedSearchOptions': 'Advanced Search Options',
-    'relatedservices': 'Metadata of related service',
+    'relatedservices': 'Metadata of related services and applications',
     'relatedchildren': 'Children',
     'relatedfcats': 'Related feature catalogue',
     'relatedhasfeaturecat': 'Datasets',
