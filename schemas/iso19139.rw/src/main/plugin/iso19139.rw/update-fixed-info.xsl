@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:mdb="http://www.isotc211.org/namespace/mdb/1.0/2014-07-11"
+                xmlns:mdb="http://standards.iso.org/19115/-3/mdb/1.0/2014-07-11"
     xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd"
     xmlns:rw="http://metawal.wallonie.be/schemas/3.0" version="2.0">
     
