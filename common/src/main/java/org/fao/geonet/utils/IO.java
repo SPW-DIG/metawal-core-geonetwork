@@ -24,12 +24,19 @@
 package org.fao.geonet.utils;
 
 import org.eclipse.core.runtime.Assert;
+import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.Logger;
+import org.fao.geonet.SystemInfo;
+import org.fao.geonet.utils.debug.DebuggingInputStream;
+import org.fao.geonet.utils.debug.DebuggingReader;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystemNotFoundException;
@@ -157,7 +164,7 @@ public final class IO {
             } else {
                 Files.walkFileTree(from, new CopyAcceptedFiles(from, actualTo, filter));
             }
-        } else {
+        } else if (Files.exists(from)) {
             if (filter == null || filter.accept(from)) {
                 final Path parent = actualTo.getParent();
                 if (parent != null && !Files.exists(parent)) {
@@ -180,11 +187,13 @@ public final class IO {
             actualTo = to;
         }
 
-        final Path parent = actualTo.getParent();
-        if (!Files.exists(parent)) {
-            Files.createDirectories(parent);
+        if (Files.exists(from)) {
+            final Path parent = actualTo.getParent();
+            if (!Files.exists(parent)) {
+                Files.createDirectories(parent);
+            }
+            Files.move(from, actualTo);
         }
-        Files.move(from, actualTo);
     }
     public static boolean isEmptyDir(Path dir) throws IOException {
         try (DirectoryStream<Path> children = Files.newDirectoryStream(dir)) {
@@ -194,23 +203,44 @@ public final class IO {
     }
 
     public static void deleteFileOrDirectory(Path path) throws IOException {
+        deleteFileOrDirectory(path, false);
+    }
+    public static void deleteFileOrDirectory(Path path, final boolean ignoreErrors) throws IOException {
         if (Files.isDirectory(path)) {
             Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                    Files.delete(file);
+                    try {
+                        Files.delete(file);
+                    } catch (final Throwable t) {
+                        if (!ignoreErrors) {
+                            throw t;
+                        }
+                    }
                     return FileVisitResult.CONTINUE;
                 }
 
                 @Override
                 public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-                    Files.delete(dir);
+                    try {
+                        Files.delete(dir);
+                    } catch (final Throwable t) {
+                        if (!ignoreErrors) {
+                            throw t;
+                        }
+                    }
                     return FileVisitResult.CONTINUE;
                 }
 
             });
         } else if (Files.isRegularFile(path)) {
-            Files.delete(path);
+            try {
+                Files.delete(path);
+            } catch (final Throwable t) {
+                if (!ignoreErrors) {
+                    throw t;
+                }
+            }
         }
     }
     public static void touch(Path file) throws IOException{
@@ -358,6 +388,22 @@ public final class IO {
             return new URL(null, uri.toString(), new FileSystemSpecificStreamHandler());
         }
         return null;
+    }
+
+    public static InputStream newInputStream(Path file) throws IOException {
+        if (ApplicationContextHolder.get() != null && ApplicationContextHolder.get().getBean(SystemInfo.class).isDevMode()) {
+            return new DebuggingInputStream(file.toString(), Files.newInputStream(file));
+        } else {
+            return Files.newInputStream(file);
+        }
+    }
+
+    public static BufferedReader newBufferedReader(Path path, Charset cs) throws IOException {
+        if (ApplicationContextHolder.get() != null && ApplicationContextHolder.get().getBean(SystemInfo.class).isDevMode()) {
+            return new DebuggingReader(path.toString(), Files.newBufferedReader(path, cs));
+        } else {
+            return Files.newBufferedReader(path, cs);
+        }
     }
 
     private static class CopyAllFiles extends SimpleFileVisitor<Path> {

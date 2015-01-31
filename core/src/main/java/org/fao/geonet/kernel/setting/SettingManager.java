@@ -22,6 +22,8 @@
 //==============================================================================
 
 package org.fao.geonet.kernel.setting;
+import org.fao.geonet.NodeInfo;
+import jeeves.server.sources.http.ServletPathFinder;
 
 import jeeves.server.context.ServiceContext;
 import org.fao.geonet.constants.Geonet;
@@ -42,8 +44,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import javax.annotation.Nonnull;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.ServletContext;
 
 /**
  * A convenience class for updating and accessing settings.  One of the primary needs of this
@@ -68,12 +72,29 @@ public class SettingManager {
     public static final String SYSTEM_AUTODETECT_ENABLE = "system/autodetect/enable";
     public static final String SYSTEM_XLINKRESOLVER_ENABLE = "system/xlinkResolver/enable";
 
+    public static final String SYSTEM_INSPIRE_ENABLE = "system/inspire/enable";
+    public static final String SYSTEM_INSPIRE_ATOM = "system/inspire/atom";
+    public static final String SYSTEM_INSPIRE_ATOM_SCHEDULE = "system/inspire/atomSchedule";
+    public static final java.lang.String SYSTEM_PREFER_GROUP_LOGO = "system/metadata/prefergrouplogo";
 
     @Autowired
     private SettingRepository _repo;
 
     @PersistenceContext
     private EntityManager _entityManager;
+    @Autowired
+    private LanguageRepository languageRepository;
+    @Autowired
+    private NodeInfo nodeInfo;
+    @Autowired
+    private ServletContext servletContext;
+
+    private ServletPathFinder pathFinder;
+
+    @PostConstruct
+    private void init() {
+        this.pathFinder = new ServletPathFinder(servletContext);
+    }
 
     /**
      * Get all settings as xml.
@@ -207,7 +228,11 @@ public class SettingManager {
      */
     public boolean getValueAsBool(String key, boolean defaultValue) {
         String value = getValue(key);
-        return (value != null) ? Boolean.parseBoolean(value) : defaultValue;
+        if (value != null) {
+            return "y".equalsIgnoreCase(value) || "yes".equalsIgnoreCase(value) || Boolean.parseBoolean(value);
+        } else {
+            return defaultValue;
+        }
     }
 
     /**
@@ -307,15 +332,24 @@ public class SettingManager {
      * @return
      */
     public @Nonnull String getSiteURL(@Nonnull ServiceContext context) {
-        String lang = context.getLanguage();
-        if(lang == null) {
-            lang = context.getBean(LanguageRepository.class).findOneByDefaultLanguage().getId();
+        return getSiteURL(context.getLanguage());
+    }
+    /**
+     * Return complete site URL including language
+     * eg. http://localhost:8080/geonetwork/srv/eng
+     *
+     * @return
+     */
+    public @Nonnull String getSiteURL(String language) {
+        if(language == null) {
+            language = languageRepository.findOneByDefaultLanguage().getId();
         }
-        String baseURL = context.getBaseUrl();
+
+        String baseURL = pathFinder.getBaseUrl();
         String protocol = getValue(Geonet.Settings.SERVER_PROTOCOL);
         String host    = getValue(Geonet.Settings.SERVER_HOST);
         String port    = getValue(Geonet.Settings.SERVER_PORT);
-        String locServ = baseURL +"/"+ context.getNodeId() +"/" + lang;
+        String locServ = baseURL +"/"+ this.nodeInfo.getId() +"/" + language + "/";
 
         return protocol + "://" + host + (port.equals("80") ? "" : ":" + port) + locServ;
     }

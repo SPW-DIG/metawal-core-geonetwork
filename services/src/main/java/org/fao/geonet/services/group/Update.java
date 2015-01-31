@@ -35,6 +35,7 @@ import org.fao.geonet.repository.LanguageRepository;
 import org.fao.geonet.repository.Updater;
 import org.fao.geonet.resources.Resources;
 import org.fao.geonet.services.NotInReadOnlyModeService;
+import org.fao.geonet.utils.IO;
 import org.jdom.Element;
 
 import java.io.IOException;
@@ -62,6 +63,7 @@ public class Update extends NotInReadOnlyModeService {
         final String id = params.getChildText(Params.ID);
         final String name = Util.getParam(params, Params.NAME);
         final String description = Util.getParam(params, Params.DESCRIPTION, "");
+        final boolean deleteLogo = Util.getParam(params, "deleteLogo", false);
         final String email = params.getChildText(Params.EMAIL);
         String website = params.getChildText("website");
         if (website != null && website.length() > 0 && !website.startsWith("http://")) {
@@ -102,8 +104,13 @@ public class Update extends NotInReadOnlyModeService {
                     entity.setEmail(email)
                             .setName(name)
                             .setDescription(description)
-                            .setLogo(logoUUID)
                             .setWebsite(finalWebsite);
+                    if (!deleteLogo && logoUUID != null) {
+                        entity.setLogo(logoUUID);
+                    }
+                    if (deleteLogo) {
+                        entity.setLogo(null);
+                    }
                 }
             });
 
@@ -122,7 +129,7 @@ public class Update extends NotInReadOnlyModeService {
             logoFile = stripPath(logoFile);
 
             Path input = context.getUploadDir().resolve(logoFile);
-            try (InputStream in = Files.newInputStream(input)) {
+            try (InputStream in = IO.newInputStream(input)) {
                 ImageIO.read(in); // check it parses
             }
             Path logoDir = Resources.locateLogosDir(context);

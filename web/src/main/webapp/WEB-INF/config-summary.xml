@@ -11,10 +11,10 @@
 <!-- 
     Configuration of the taxonomy index used for faceting and 
     formatting/building facet summaries
-
+	
     Each facet to be indexed is defined in the facets element. The facets element
     lists the facets to index and how they should be indexed using attributes on facet elements as follows:
-
+	
     * name: the name of the facet
     * indexKey: the name of the indexing field to be used for the facet
     * label: the label to use for the facet in returned summaries
@@ -33,36 +33,36 @@
 
     * facet: the name of a facet defined above
     * (optional) sortBy: the ordering for the facet. Defaults to by count.
-    * (optional) sortOrder: asc or desc. Defaults is descendant.
+	* (optional) sortOrder: asc or desc. Defaults is descendant.
     * (optional) max: the number of values to be returned for the facet. Defaults to 10.
     * (optional) depth: the depth to which hierarchical facets should be summarised. Defaults to 1.
     * (optional) format: the format to be used for generating facet summary elements. Defaults to 
         'FACET_NAME'. Can also be 'DIMENSION', which uses a top level
         dimension tag and category tags for sub-categories which is more suitable for hierarchical facets. 
-    * (optional) translator: Define a DB translator to retrieve label from description
-        tables (eg. categoriesdes) or codelist translator to retrieve label from schema
-        codelists files.
+  * (optional) translator: Define a DB translator to retrieve label from description
+  tables (eg. categoriesdes) or codelist translator to retrieve label from schema
+  codelists files.
 
-        eg. for category
+  eg. for category
 
             <item dimension="category" plural="categories" indexKey="_cat" max="45"
-                translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/>
+            translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/>
 
-        or for group
+  or for group
 
             <item dimension="groupOwner" plural="groupOwners" indexKey="_groupOwner"
-                max="99" sortBy="value" translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
+        max="99" sortBy="value" translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
 
 -->
     <facets>
-        <facet name="keyword" indexKey="keyword" label="keywords"/>
+        <facet name="keyword" indexKey="keyword" label="keywords" localized="true"/>
         <facet name="inspireTheme" indexKey="inspiretheme" label="inspireThemes"/>
         <facet name="metawalTheme" indexKey="metawalTheme" label="metawalThemes"/>
         <facet name="extentDesc" indexKey="extentDesc" label="extentDescs"/>
         <facet name="denominator" indexKey="denominator" label="denominators"/>
         <facet name="spatialRepresentationType" indexKey="spatialRepresentationType"
             label="spatialRepresentationTypes"/>
-        <facet name="orgName" indexKey="orgName" label="orgNames"/>
+        <facet name="orgName" indexKey="orgName" label="orgNames" localized="true"/>
         <facet name="metadataPOC" indexKey="metadataPOC" label="metadataPOCs"/>
         <facet name="serviceType" indexKey="serviceType" label="serviceTypes"/>
         <facet name="type" indexKey="type" label="types"/>

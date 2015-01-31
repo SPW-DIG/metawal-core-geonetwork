@@ -23,17 +23,15 @@
 
 package org.fao.geonet.kernel.search;
 
-import jeeves.server.context.ServiceContext;
 import jeeves.server.overrides.ConfigurationOverrides;
-
 import org.apache.lucene.facet.FacetsConfig;
 import org.apache.lucene.search.TopFieldCollector;
 import org.apache.lucene.util.NumericUtils;
 import org.apache.lucene.util.Version;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.kernel.GeonetworkDataDirectory;
-import org.fao.geonet.kernel.search.facet.Facets;
 import org.fao.geonet.kernel.search.facet.Dimension;
+import org.fao.geonet.kernel.search.facet.Facets;
 import org.fao.geonet.kernel.search.facet.SummaryTypes;
 import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
@@ -51,7 +49,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -206,7 +203,7 @@ public class LuceneConfig {
     }
 
 	private void load(ServletContext servletContext, String luceneConfigXmlFile) {
-		try (InputStream in = Files.newInputStream(this.configurationFile)) {
+		try (InputStream in = IO.newInputStream(this.configurationFile)) {
 			luceneConfig = Xml.loadStream(in);
 			if (servletContext != null) {
 				ConfigurationOverrides.DEFAULT.updateWithOverrides(luceneConfigXmlFile, servletContext,
@@ -524,6 +521,7 @@ public class LuceneConfig {
 						if (!Files.exists(f)) { // try relative to appPath
 							f = geonetworkDataDirectory.resolveWebResource(value);
 						}
+                        params[i] = f;
 					} else if ("double".equals(paramType) && value != null) {
 						params[i] = Double.parseDouble(value);
 					} else if ("int".equals(paramType) && value != null) {

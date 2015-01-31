@@ -26,12 +26,14 @@ import org.fao.geonet.repository.Updater;
 import org.fao.geonet.repository.specification.MetadataSpecs;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
+import org.jdom.Namespace;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import javax.annotation.Nonnull;
@@ -82,17 +84,16 @@ public class DataManagerIntegrationTest extends AbstractCoreIntegrationTest {
         String schema = _dataManager.autodetectSchema(sampleMetadataXml);
 
         final String mdId1 = _dataManager.insertMetadata(serviceContext, schema, new Element(sampleMetadataXml.getName(),
-                        sampleMetadataXml.getNamespace()), "uuid",
-                userSession.getUserIdAsInt(),
-                "" + ReservedGroup.all.getId(), "sourceid", "n", "doctype", null, new ISODate().getDateAndTime(), new ISODate().getDateAndTime(),
+                sampleMetadataXml.getNamespace()), "uuid",  userSession.getUserIdAsInt(), "" + ReservedGroup.all.getId(),
+                "sourceid", "n", "doctype", null, new ISODate().getDateAndTime(), new ISODate().getDateAndTime(),
                 false, false);
 
 
         Element info = new Element("info", Geonet.Namespaces.GEONET);
         Map<String, Element> map = Maps.newHashMap();
         map.put(mdId1, info);
-            info.removeContent();
-            _dataManager.buildPrivilegesMetadataInfo(serviceContext, map);
+        info.removeContent();
+        _dataManager.buildPrivilegesMetadataInfo(serviceContext, map);
         assertEqualsText("true", info, "edit");
         assertEqualsText("true", info, "owner");
         assertEqualsText("true", info, "isPublishedToAll");
@@ -241,6 +242,24 @@ public class DataManagerIntegrationTest extends AbstractCoreIntegrationTest {
         assertEquals(startMdCount, _metadataRepository.count());
 
         assertEquals(startIndexDocs, numDocs(searchManager, lang));
+    }
+
+    @Test
+    public void testUpdateFixedInfo() throws Exception {
+        ServiceContext context = createServiceContext();
+        loginAsAdmin(context);
+
+        String uuid = UUID.randomUUID().toString();
+        String parentUuid = UUID.randomUUID().toString();
+        Element md = Xml.loadFile(AbstractCoreIntegrationTest.class.getResource("kernel/multilingual-metadata.xml"));
+        final Element updateMd = _dataManager.updateFixedInfo("iso19139", Optional.<Integer>absent(), uuid, md, parentUuid,
+                UpdateDatestamp.YES, context);
+
+        final List<Namespace> namespaces = _dataManager.getSchema("iso19139").getNamespaces();
+        assertEquals(uuid, Xml.selectString(updateMd, "gmd:fileIdentifier/gco:CharacterString", namespaces));
+        assertEquals(parentUuid, Xml.selectString(updateMd, "gmd:parentIdentifier/gco:CharacterString", namespaces));
+        assertEquals(0, Xml.selectNodes(updateMd, "*//node()[string-length(@locale) > 3]").size());
+        assertEquals(0, Xml.selectNodes(updateMd, "*//gmd:PT_Locale[string-length(@id) > 2]").size());
     }
 
     private int numDocs(SearchManager searchManager, String lang) throws IOException, InterruptedException {

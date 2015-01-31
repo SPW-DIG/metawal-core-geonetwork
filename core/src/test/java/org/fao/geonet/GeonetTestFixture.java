@@ -1,8 +1,6 @@
 package org.fao.geonet;
 
 import com.google.common.collect.Lists;
-import com.google.common.jimfs.Configuration;
-import com.google.common.jimfs.Jimfs;
 import com.vividsolutions.jts.geom.MultiPolygon;
 
 import jeeves.server.ServiceConfig;
@@ -34,10 +32,8 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
-import java.nio.file.FileSystem;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -77,7 +73,9 @@ public class GeonetTestFixture {
 
     public void tearDown() throws IOException {
         IO.setFileSystemThreadLocal(null);
-        FILE_SYSTEM_POOL.release(currentFs);
+        if (currentFs != null) {
+            FILE_SYSTEM_POOL.release(currentFs);
+        }
     }
     public void setup(AbstractCoreIntegrationTest test) throws Exception {
         final Path webappDir = AbstractCoreIntegrationTest.getWebappDir(test.getClass());
@@ -90,16 +88,19 @@ public class GeonetTestFixture {
                     templateFs = FILE_SYSTEM_POOL.getTemplate();
 
                     Path templateDataDirectory = templateFs.dataDir;
-                    IO.copyDirectoryOrFile(webappDir.resolve("WEB-INF/data"), templateDataDirectory, true, new DirectoryStream.Filter<Path>() {
+                    IO.copyDirectoryOrFile(webappDir.resolve("WEB-INF/data"), templateDataDirectory, true, new DirectoryStream
+                            .Filter<Path>() {
                         @Override
                         public boolean accept(Path entry) throws IOException {
                             return !entry.toString().contains("schema_plugins") &&
                                    !entry.getFileName().toString().startsWith(".") &&
                                    !entry.getFileName().toString().endsWith(".iml") &&
                                    !entry.toString().contains("metadata_data") &&
+                                   !entry.toString().contains("removed") &&
                                    !entry.toString().contains("metadata_subversion") &&
                                    !entry.toString().contains("upload") &&
-                                   !entry.toString().contains("resources" + File.separator + "xml");
+                                   !entry.toString().contains("index") &&
+                                   !entry.toString().contains("resources");
                         }
                     });
                     Path schemaPluginsDir = templateDataDirectory.resolve("config/schema_plugins");
@@ -110,6 +111,7 @@ public class GeonetTestFixture {
                     final GeonetworkDataDirectory geonetworkDataDirectory = _applicationContext.getBean(GeonetworkDataDirectory.class);
                     final ServiceConfig serviceConfig = new ServiceConfig(Lists.<Element>newArrayList());
                     geonetworkDataDirectory.init("geonetwork", webappDir, templateDataDirectory, serviceConfig, null);
+                    test.addTestSpecificData(geonetworkDataDirectory);
 
                     templateSchemaManager = initSchemaManager(webappDir, geonetworkDataDirectory);
 
@@ -135,14 +137,16 @@ public class GeonetTestFixture {
 
         assertCorrectDataDir();
 
+        if (test.resetLuceneIndex()) {
         _directoryFactory.resetIndex();
+        }
 
         ServiceContext serviceContext = test.createServiceContext();
 
-        _applicationContext.getBean(ThesaurusManager.class).init(serviceContext, "WEB-INF/data/config/codelist");
         _applicationContext.getBean(LuceneConfig.class).configure("WEB-INF/config-lucene.xml");
         _applicationContext.getBean(SearchManager.class).initNonStaticData(false, false, "", 100);
         _applicationContext.getBean(DataManager.class).init(serviceContext, false);
+        _applicationContext.getBean(ThesaurusManager.class).init(true, serviceContext, "WEB-INF/data/config/codelist");
 
 
         addSourceUUID(dataDir);

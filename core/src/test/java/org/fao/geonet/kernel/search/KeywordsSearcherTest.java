@@ -15,7 +15,6 @@ import org.jdom.Element;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.net.URL;
 import java.nio.file.Files;
@@ -528,7 +527,7 @@ public class KeywordsSearcherTest extends AbstractThesaurusBasedTest {
         String keywordId = FOO_COM_NS+1;
 		Element params = new Element("params").
         		addContent(new Element("pNewSearch").setText("true")).
-        		addContent(new Element("pTypeSearch").setText("1")).
+        		addContent(new Element("pTypeSearch").setText("2")).
         		addContent(new Element("pThesauri").setText(thesaurusFoo.getKey())).
         		addContent(new Element("pMode").setText("searchBox")).
         		addContent(new Element("maxResults").setText("50")).

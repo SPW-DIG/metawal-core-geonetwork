@@ -7,7 +7,6 @@ import org.fao.geonet.kernel.schema.MultilingualSchemaPlugin;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
-import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.filter.ElementFilter;
 import org.jdom.xpath.XPath;
@@ -34,6 +33,10 @@ public class ISO19139SchemaPlugin
                 .build();
     }
 
+    public ISO19139SchemaPlugin() {
+        super(IDENTIFIER);
+    }
+
     /**
      * Return sibling relation defined in aggregationInfo.
      *
@@ -48,32 +51,43 @@ public class ISO19139SchemaPlugin
         Set<AssociatedResource> listOfResources = new HashSet<AssociatedResource>();
         List<?> sibs = null;
         try {
-            sibs = Xml
-                    .selectNodes(
+            sibs = Xml.selectNodes(
                             metadata,
                             XPATH_FOR_AGGRGATIONINFO,
                             allNamespaces.asList());
 
 
             for (Object o : sibs) {
-                if (o instanceof Element) {
-                    Element sib = (Element) o;
-                    Element agId = (Element) sib.getChild("aggregateDataSetIdentifier", ISO19139Namespaces.GMD)
-                            .getChildren().get(0);
-                    String sibUuid = agId.getChild("code", ISO19139Namespaces.GMD)
-                            .getChildText("CharacterString", ISO19139Namespaces.GCO);
-                    String initType = sib.getChild("initiativeType", ISO19139Namespaces.GMD)
-                            .getChild("DS_InitiativeTypeCode", ISO19139Namespaces.GMD)
-                            .getAttributeValue("codeListValue");
+                try {
+                    if (o instanceof Element) {
+                        Element sib = (Element) o;
+                        Element agId = (Element) sib.getChild("aggregateDataSetIdentifier", ISO19139Namespaces.GMD)
+                                .getChildren().get(0);
+                        String sibUuid = getChild(agId, "code", ISO19139Namespaces.GMD)
+                                .getChildText("CharacterString", ISO19139Namespaces.GCO);
+                        final Element associationTypeEl = getChild(sib, "associationType", ISO19139Namespaces.GMD);
+                        String associationType = getChild(associationTypeEl, "DS_AssociationTypeCode", ISO19139Namespaces.GMD)
+                                .getAttributeValue("codeListValue");
 
-                    AssociatedResource resource = new AssociatedResource(sibUuid, initType, "");
-                    listOfResources.add(resource);
+                        AssociatedResource resource = new AssociatedResource(sibUuid, "", associationType);
+                        listOfResources.add(resource);
+                    }
+                } catch (Exception e) {
+                    Log.error(Log.JEEVES, "Error getting resources UUIDs", e);
                 }
             }
-        } catch (JDOMException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            Log.error(Log.JEEVES, "Error getting resources UUIDs", e);
         }
         return listOfResources;
+    }
+
+    private Element getChild(Element el, String name, Namespace namespace) {
+        final Element child = el.getChild(name, namespace);
+        if (child == null) {
+            return new Element(name, namespace);
+        }
+        return child;
     }
 
     @Override
@@ -90,13 +104,9 @@ public class ISO19139SchemaPlugin
         return getAttributeUuidrefValues(metadata, "operatesOn", ISO19139Namespaces.SRV);
     }
 
-    ;
-
     public Set<String> getAssociatedFeatureCatalogueUUIDs(Element metadata) {
         return getAttributeUuidrefValues(metadata, "featureCatalogueCitation", ISO19139Namespaces.GMD);
     }
-
-    ;
 
     public Set<String> getAssociatedSourceUUIDs(Element metadata) {
         return getAttributeUuidrefValues(metadata, "source", ISO19139Namespaces.GMD);
@@ -168,5 +178,4 @@ public class ISO19139SchemaPlugin
         freeTextElement.addContent(textGroupElement);
     }
 
-    ;
 }

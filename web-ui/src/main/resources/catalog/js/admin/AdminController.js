@@ -134,12 +134,6 @@
           // TODO : create gn classes
           {name: 'metadatasAndTemplates', route: '#metadata',
             classes: 'btn-primary', icon: 'fa-archive'},
-          {name: 'io',
-            // Metadata import is made in the widget apps
-            url: '../../home?insert&hl=' + $scope.lang +
-                '&node=' + $scope.nodeId,
-            classes: 'btn-primary',
-            icon: 'fa-upload'},
           {name: 'harvesters', route: '#harvest', //url: 'harvesting',
             classes: 'btn-primary', icon: 'fa-cloud-download'},
           {name: 'statisticsAndStatus', route: '#dashboard',

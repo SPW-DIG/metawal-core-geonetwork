@@ -32,6 +32,9 @@ import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 import org.apache.xml.resolver.tools.CatalogResolver;
 import org.fao.geonet.exceptions.XSDValidationErrorEx;
+import org.fao.geonet.utils.nio.NioPathAwareEntityResolver;
+import org.fao.geonet.utils.nio.NioPathHolder;
+import org.fao.geonet.utils.nio.PathStreamSource;
 import org.jdom.Attribute;
 import org.jdom.Content;
 import org.jdom.DocType;
@@ -110,7 +113,7 @@ public final class Xml
 {
 
 	public static final Namespace xsiNS = Namespace.getNamespace("xsi", XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
-    static final NioPathAwareEntityResolver PATH_RESOLVER = new NioPathAwareEntityResolver();
+    public static final NioPathAwareEntityResolver PATH_RESOLVER = new NioPathAwareEntityResolver();
 
     //--------------------------------------------------------------------------
 
@@ -231,7 +234,7 @@ public final class Xml
 
                 // no charset detection and conversion allowed
             } else {
-                try (InputStream in = Files.newInputStream(file)) {
+                try (InputStream in = IO.newInputStream(file)) {
                     Document jdoc = builder.build(in);
                     return (Element) jdoc.getRootElement().detach();
                 }
@@ -259,7 +262,7 @@ public final class Xml
      */
 
 	public synchronized static byte[] convertFileToUTF8ByteArray(Path file) throws IOException {
-        try (DataInputStream inStream = new DataInputStream(Files.newInputStream(file))) {
+        try (DataInputStream inStream = new DataInputStream(IO.newInputStream(file))) {
             byte[] buf = new byte[(int) Files.size(file)];
             int nrRead = inStream.read(buf);
 
@@ -518,12 +521,7 @@ public final class Xml
                 }
 
                 Path f;
-                final String systemId = s.getSystemId().replaceAll("%5C", "/");
-                try {
-                    f = IO.toPath(new URI(systemId));
-                } catch (FileSystemNotFoundException e) {
-                    f = IO.toPath(systemId);
-                }
+                f = resolvePath(s);
                 if(Log.isDebugEnabled(Log.XML_RESOLVER))
                     Log.debug(Log.XML_RESOLVER, "Check on "+f+" exists returned: "+Files.exists(f));
                 // If the resolved resource does not exist, set it to blank file path to not trigger FileNotFound Exception
@@ -550,7 +548,18 @@ public final class Xml
          }
      }
 
-	//--------------------------------------------------------------------------
+    protected static Path resolvePath(Source s) throws URISyntaxException {
+        Path f;
+        final String systemId = s.getSystemId().replaceAll("%5C", "/");
+        try {
+            f = IO.toPath(new URI(systemId));
+        } catch (FileSystemNotFoundException e) {
+            f = IO.toPath(systemId);
+        }
+        return f;
+    }
+
+    //--------------------------------------------------------------------------
 
     /**
      * Transforms an xml tree putting the result to a stream with optional parameters.
@@ -567,7 +576,7 @@ public final class Xml
 	{
         NioPathHolder.setBase(styleSheetPath);
 		Source srcXml   = new JDOMSource(new Document((Element)xml.detach()));
-        try (InputStream in = Files.newInputStream(styleSheetPath)) {
+        try (InputStream in = IO.newInputStream(styleSheetPath)) {
             Source srcSheet = new StreamSource(in, styleSheetPath.toUri().toASCIIString());
 
             // Dear old saxon likes to yell loudly about each and every XSLT 1.0
@@ -586,8 +595,8 @@ public final class Xml
                 Log.warning(Log.ENGINE, "WARNING: transformerfactory doesnt like saxon attributes!");
                 //e.printStackTrace();
             } finally {
-                Transformer t = transFact.newTransformer(srcSheet);
                 transFact.setURIResolver(new JeevesURIResolver());
+                Transformer t = transFact.newTransformer(srcSheet);
                 if (params != null) {
                     for (Map.Entry<String, Object> param : params.entrySet()) {
                         t.setParameter(param.getKey(), param.getValue());
@@ -1268,7 +1277,9 @@ public final class Xml
      * @throws Exception
      */
 	private static void validateGuts(Path schemaPath, Element xml, ErrorHandler eh) throws Exception {
-		StreamSource schemaFile = new StreamSource(Files.newInputStream(schemaPath), schemaPath.toUri().toASCIIString());
+        PathStreamSource schemaFile = new PathStreamSource(schemaPath);
+        schemaFile.setSystemId(schemaPath.toUri().toASCIIString());
+
         final SchemaFactory factory = factory();
         NioPathHolder.setBase(schemaPath);
         Resolver resolver = ResolverWrapper.getInstance();

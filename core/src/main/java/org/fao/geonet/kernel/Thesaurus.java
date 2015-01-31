@@ -22,7 +22,6 @@
 
 package org.fao.geonet.kernel;
 
-import jeeves.server.context.ServiceContext;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.domain.ISODate;
 import org.fao.geonet.exceptions.TermNotFoundException;
@@ -232,11 +231,11 @@ public class Thesaurus {
 		this.repository = repository;
 		return this;
 	}
-	public synchronized Thesaurus initRepository() throws ConfigurationException {
+	public synchronized Thesaurus initRepository() throws ConfigurationException, IOException {
 	    RepositoryConfig repConfig = new RepositoryConfig(getKey());
 
         SailConfig syncSail = new SailConfig("org.openrdf.sesame.sailimpl.sync.SyncRdfSchemaRepository");
-        SailConfig memSail = new org.openrdf.sesame.sailimpl.memory.RdfSchemaRepositoryConfig(getFile().toUri().toString(),
+        SailConfig memSail = new org.openrdf.sesame.sailimpl.memory.RdfSchemaRepositoryConfig(getFile().toString(),
                 RDFFormat.RDFXML);
         repConfig.addSail(syncSail);
         repConfig.addSail(memSail);
@@ -852,7 +851,7 @@ public class Thesaurus {
         /**
          * Gets a keyword using its id
          * 
-         * @param subject the keyword to retrieve
+         * @param uri the keyword to retrieve
          * @return keyword 
          */
         public KeywordBean getKeyword(String uri, String... languages) {
@@ -883,7 +882,7 @@ public class Thesaurus {
         /**
          * Thesaurus has keyword
          * 
-         * @param subject the keyword to check
+         * @param uri the keyword to check
          * @return boolean
          */
         public boolean hasKeyword(String uri) {
@@ -899,7 +898,7 @@ public class Thesaurus {
         /**
          * Gets broader keywords
          * 
-         * @param the keyword whose broader terms should be retrieved
+         * @param uri the keyword whose broader terms should be retrieved
          * @return keywords
          */
 
@@ -910,7 +909,7 @@ public class Thesaurus {
         /**
          * Has broader keywords
          * 
-         * @param the keyword to check for broader terms
+         * @param uri the keyword to check for broader terms
          * @return keywords
          */
 
@@ -942,7 +941,6 @@ public class Thesaurus {
          * 
          * @param label the preferred label of the keyword
          * @param langCode the language of the label
-         * @param languages the languages to return
          * @return boolean 
          */
         public boolean hasKeywordWithLabel(String label, String langCode) {
@@ -1055,7 +1053,7 @@ public class Thesaurus {
             return this.defaultNamespace;
         }
 
-    public Map<String, String> getTitles(ServiceContext context) throws JDOMException, IOException {
+    public Map<String, String> getTitles(ApplicationContext context) throws JDOMException, IOException {
         return LangUtils.translate(context, getKey());
     }
 }

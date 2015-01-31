@@ -53,6 +53,7 @@ public class GeonetworkDataDirectory {
     private Path resourcesDir;
     private Path htmlCacheDir;
     private Path uploadDir;
+    private Path formatterDir;
     private String nodeId;
 
     @Autowired
@@ -215,7 +216,11 @@ public class GeonetworkDataDirectory {
                 useDefaultDataDir = true;
             }
 
-            if (!Files.isWritable(this.systemDataDir)) {
+            try {
+                final Path testFile = this.systemDataDir.resolve("testDD.txt");
+                IO.touch(testFile);
+                Files.delete(testFile);
+            } catch (IOException e) {
                 Log.warning(
                         Geonet.DATA_DIRECTORY,
                         "    - Data directory is not writable. Set read/write privileges to user starting the catalogue (ie. "
@@ -279,13 +284,12 @@ public class GeonetworkDataDirectory {
         uploadDir = setDir(jeevesServlet, webappName, handlerConfig,
                 ".upload" + KEY_SUFFIX, Geonet.Config.UPLOAD_DIR, "data", "upload"
         );
-        htmlCacheDir = IO.toPath(handlerConfig.getValue(Geonet.Config.RESOURCES_DIR), "htmlcache");
-        handlerConfig.setValue(Geonet.Config.HTMLCACHE_DIR, htmlCacheDir.toAbsolutePath().toString());
-        try {
-            Files.createDirectories(htmlCacheDir);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+		formatterDir = setDir(jeevesServlet, webappName, handlerConfig,
+                ".formatter" + KEY_SUFFIX, Geonet.Config.FORMATTER_PATH, "data", "formatter");
+
+        htmlCacheDir = setDir(jeevesServlet, webappName, handlerConfig,
+                ".htmlcache" + KEY_SUFFIX, Geonet.Config.HTMLCACHE_DIR, handlerConfig.getValue(Geonet.Config.RESOURCES_DIR), "htmlcache"
+        );
 
         handlerConfig.setValue(Geonet.Config.SYSTEM_DATA_DIR, this.systemDataDir.toString());
 
@@ -370,6 +374,10 @@ public class GeonetworkDataDirectory {
             }
         }
 
+        final Path locDir = webappDir.resolve("loc");
+        if (!Files.exists(locDir)) {
+            Files.createDirectories(locDir);
+        }
 	}
 
     private Path getDefaultDataDir(Path webappDir) {
@@ -581,6 +589,14 @@ public class GeonetworkDataDirectory {
 
     public String getNodeId() {
         return nodeId;
+    }
+
+    public Path getFormatterDir() {
+        return formatterDir;
+    }
+
+    public void setFormatterDir(Path formatterDir) {
+        this.formatterDir = formatterDir;
     }
 
     public Path resolveWebResource(String resourcePath) {

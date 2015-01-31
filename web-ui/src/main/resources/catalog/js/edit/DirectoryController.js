@@ -2,10 +2,10 @@
   goog.provide('gn_directory_controller');
 
   goog.require('gn_catalog_service');
-  goog.require('gn_facets_directive');
+  goog.require('gn_facets');
 
   var module = angular.module('gn_directory_controller',
-      ['gn_catalog_service', 'gn_facets_directive']);
+      ['gn_catalog_service', 'gn_facets']);
 
   /**
    * Controller to create new metadata record.
@@ -32,14 +32,14 @@
       $scope.activeType = null;
       $scope.activeEntry = null;
       $scope.ownerGroup = null;
-      $scope.subtemplateFilter = {
+      $scope.searchObj = {params: {
         _isTemplate: 's',
         any: '*',
         _root: '',
         sortBy: 'title',
         sortOrder: 'reverse',
         resultType: 'subtemplates'
-      };
+      }};
 
       $scope.paginationInfo = {
         pages: -1,
@@ -116,9 +116,9 @@
        */
       $scope.getEntries = function(type) {
         if (type) {
-          $scope.subtemplateFilter._root = type;
+          $scope.searchObj.params._root = type;
         }
-        $scope.$broadcast('resetSearch', $scope.subtemplateFilter);
+        $scope.$broadcast('resetSearch', $scope.searchObj.params);
         return false;
       };
 

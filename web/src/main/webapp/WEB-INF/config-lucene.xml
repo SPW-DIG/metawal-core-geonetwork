@@ -110,13 +110,23 @@
       <field name="_docLocale" tagName="docLocale"/>
       <field name="_locale" tagName="_locale"/>
       <field name="_defaultTitle" tagName="defaultTitle"/>
+      <field name="createDate" tagName="creationDate"/>
+      <field name="revisionDate" tagName="revisionDate"/>
+      <field name="publicationDate" tagName="publicationDate"/>
       <field name="abstract" tagName="abstract"/>
       <field name="keyword" tagName="keyword"/>
       <field name="parentUuid" tagName="parentId"/>
       <field name="type" tagName="type"/>
+      <field name="identifier" tagName="identifier"/>
       <field name="image" tagName="image"/>
       <field name="link" tagName="link"/>
+      <field name="format" tagName="format"/>
+      <field name="denominator" tagName="denominator"/>
+      <field name="crs" tagName="crs"/>
       <field name="credit" tagName="credit"/>
+      <field name="status" tagName="status"/>
+      <field name="updateFrequency" tagName="updateFrequency"/>
+      <field name="lineage" tagName="lineage"/>
       <field name="responsibleParty" tagName="responsibleParty"/>
       <field name="accessConstr" tagName="Constraints"/>
       <field name="otherConstr" tagName="Constraints"/>
@@ -126,11 +136,16 @@
       <field name="language" tagName="language"/>
       <field name="spatialRepresentationType" tagName="spatialRepresentationType"/>
       <field name="serviceType" tagName="serviceType"/>
+      <field name="tempExtentBegin" tagName="tempExtentBegin"/>
+      <field name="tempExtentEnd" tagName="tempExtentEnd"/>
       <field name="geoBox" tagName="geoBox"/>
+      <field name="geoDescCode" tagName="geoDescCode"/>
       <field name="_indexingError" tagName="idxError"/>
       <field name="_indexingErrorMsg" tagName="idxMsg"/>
       <field name="_op0" tagName="publishedForGroup"/>
       <field name="_groupOwner" tagName="groupOwner"/>
+      <field name="_logo" tagName="logo"/>
+      <field name="_groupWebsite" tagName="groupWebsite"/>
     </dumpFields>
   </search>
 

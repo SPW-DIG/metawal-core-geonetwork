@@ -59,5 +59,9 @@ e2e-tests/node
 e2e-tests/node_modules
 web-ui-docs/node
 web-ui-docs/node_modules
+out/
 web/src/main/webapp/WEB-INF/data/config/schema_plugins/schemaplugin-uri-catalog.xml
-
+web/geonetwork.trace.db.old
+target/
+web/src/main/webapp/WEB-INF/data/data/upload/
+transifex/transifex-format/

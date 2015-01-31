@@ -23,9 +23,10 @@
 
 package org.fao.geonet.kernel.thumbnail;
 
-import com.lowagie.text.DocumentException;
 import jeeves.server.context.ServiceContext;
+import org.dom4j.DocumentException;
 import org.fao.geonet.constants.Geonet;
+import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
 import org.mapfish.print.MapPrinter;
 import org.mapfish.print.output.OutputFormat;
@@ -103,7 +104,7 @@ public class ThumbnailMaker {
     }
 
     public Path generateThumbnail(String jsonConfig, Integer rotationAngle)
-            throws IOException, DocumentException {
+            throws IOException, DocumentException, com.itextpdf.text.DocumentException {
 
         PJsonObject specJson = MapPrinter.parseSpec(jsonConfig);
         if (Log.isDebugEnabled(LOGGER_NAME)) {
@@ -121,8 +122,6 @@ public class ThumbnailMaker {
                     out,
                     new HashMap<String, String>());
             outputFormat.print(params);
-        } catch (IOException e) {
-            throw e;
         } catch (InterruptedException e) {
             Log.error(Geonet.GEONETWORK, "Error creating a thumbnail", e);
         }
@@ -145,7 +144,7 @@ public class ThumbnailMaker {
     }
     public static BufferedImage readImage(Path fileLocation) throws IOException {
         BufferedImage img;
-        try (InputStream in = Files.newInputStream(fileLocation)) {
+        try (InputStream in = IO.newInputStream(fileLocation)) {
             img = ImageIO.read(in);
         }
         return img;
