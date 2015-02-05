@@ -476,6 +476,11 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>schema-iso19115-3</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>schema-dublin-core</artifactId>
       <version>${project.version}</version>
     </dependency>
