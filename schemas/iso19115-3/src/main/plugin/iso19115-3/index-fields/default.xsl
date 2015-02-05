@@ -20,9 +20,7 @@
 						xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
             xmlns:skos="http://www.w3.org/2004/02/skos/core#">
 
-  <!-- TODO: At some point this plugin should not rely on iso19139 -->
-	<xsl:include href="../../iso19139/convert/functions.xsl"/>
-	<xsl:include href="../convert/functions.xsl"/>
+  <xsl:include href="../convert/functions.xsl"/>
 	<xsl:include href="../../../xsl/utils-fn.xsl"/>
   <xsl:include href="index-subtemplate-fields.xsl"/>
 	

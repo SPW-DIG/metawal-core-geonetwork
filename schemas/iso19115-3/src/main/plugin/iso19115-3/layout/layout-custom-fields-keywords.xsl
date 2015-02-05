@@ -104,9 +104,10 @@
 
         <!-- Get current transformation mode based on XML fragement analysis -->
         <xsl:variable name="transformation"
-          select="if (count(mri:keyword/gmx:Anchor) > 0)
+          select="if (parent::node()/@xlink:href)
+          then 'to-iso19115-3-keyword-as-xlink'
+          else if (count(mri:keyword/gmx:Anchor) > 0)
           then 'to-iso19115-3-keyword-with-anchor'
-          else if (@xlink:href) then 'to-iso19115-3-keyword-as-xlink'
           else 'to-iso19115-3-keyword'"/>
 
         <xsl:variable name="parentName" select="name(..)"/>
@@ -136,7 +137,7 @@
           -->
         <div data-gn-keyword-selector="{$widgetMode}"
           data-metadata-id="{$metadataId}"
-          data-element-ref="{concat('_X', ../gn:element/@ref)}"
+          data-element-ref="{concat('_X', ../gn:element/@ref, '_replace')}"
           data-thesaurus-title="{$thesaurusTitle}"
           data-thesaurus-key="{$thesaurusKey}"
           data-keywords="{$keywords}" data-transformations="{$transformations}"

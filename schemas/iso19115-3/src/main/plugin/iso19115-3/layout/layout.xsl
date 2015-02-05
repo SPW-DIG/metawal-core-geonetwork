@@ -7,7 +7,7 @@
   xmlns:mrs="http://standards.iso.org/19115/-3/mrs/1.0/2014-12-25"
   xmlns:mrd="http://standards.iso.org/19115/-3/mrd/1.0/2014-12-25"
   xmlns:mco="http://standards.iso.org/19115/-3/mco/1.0/2014-12-25"
-  xmlns:mdq="http://standards.iso.org/19115/-3/mdq/1.0/2014-12-25"
+  xmlns:mdq="http://standards.iso.org/19157/-2/mdq/1.0/2014-12-25"
   xmlns:msr="http://standards.iso.org/19115/-3/msr/1.0/2014-12-25"
   xmlns:lan="http://standards.iso.org/19115/-3/lan/1.0/2014-12-25"
   xmlns:gcx="http://standards.iso.org/19115/-3/gcx/1.0/2014-12-25"
@@ -24,7 +24,7 @@
   xmlns:gn-fn-core="http://geonetwork-opensource.org/xsl/functions/core" 
   xmlns:gn-fn-metadata="http://geonetwork-opensource.org/xsl/functions/metadata"
   xmlns:gn-fn-iso19139="http://geonetwork-opensource.org/xsl/functions/profiles/iso19139"
-  xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="#all">
+  exclude-result-prefixes="#all">
 
   <xsl:include href="utility-tpl.xsl"/>
   <xsl:include href="layout-custom-fields.xsl"/>

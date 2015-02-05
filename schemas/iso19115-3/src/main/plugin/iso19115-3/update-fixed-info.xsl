@@ -14,9 +14,8 @@
   xmlns:gn="http://www.fao.org/geonetwork"
   exclude-result-prefixes="#all">
   
-  <xsl:import href="convert/schema-utility.xsl"/>
+  <xsl:import href="convert/create19115-3Namespaces.xsl"/>
   
-  <xsl:include href="../iso19139/convert/functions.xsl"/>
   <xsl:include href="convert/functions.xsl"/>
 
 
@@ -27,6 +26,7 @@
   <xsl:variable name="uuid" select="/root/env/uuid"/>
 
   <xsl:template match="/root">
+    <xsl:message>##UFO</xsl:message>
     <xsl:apply-templates select="mdb:MD_Metadata"/>
   </xsl:template>
   

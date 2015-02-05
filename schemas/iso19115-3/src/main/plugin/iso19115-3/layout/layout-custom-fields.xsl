@@ -154,4 +154,15 @@
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+
+  <xsl:template mode="mode-iso19115-3"
+          match="gml:Polygon"
+          priority="2000">
+    Here is a polygon
+    <textarea>
+      <xsl:copy-of select="."/>
+    </textarea>
+  </xsl:template>
+
+
 </xsl:stylesheet>

@@ -31,7 +31,6 @@
 	<!-- ========================================================================================= -->
 
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="no" />
-	<xsl:include href="../../iso19139/convert/functions.xsl"/>
 	<xsl:include href="../convert/functions.xsl"/>
 
 
