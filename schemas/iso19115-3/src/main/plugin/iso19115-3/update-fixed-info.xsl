@@ -103,8 +103,7 @@
       <xsl:apply-templates select="mdb:otherLocale"/>
       <xsl:apply-templates select="mdb:metadataLinkage"/>
 
-      <!-- TODO: URL should be /metadata/uuid -->
-      <xsl:variable name="pointOfTruthUrl" select="concat($url, 'catalog.search?uuid=', $uuid)"/>
+      <xsl:variable name="pointOfTruthUrl" select="concat($url, '/search?uuid=', $uuid)"/>
 
       <xsl:if test="$createMetadataLinkage and count(mdb:metadataLinkage/cit:CI_OnlineResource/cit:linkage/*[. = $pointOfTruthUrl]) = 0">
         <!-- TODO: This should only be updated for not harvested records ? -->
