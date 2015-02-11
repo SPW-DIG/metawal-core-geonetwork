@@ -513,9 +513,6 @@
 
 <xsl:template name="svrl-text">
 	<svrl:text>
-		<xsl:if test="./@xml:lang">
-			<xsl:copy-of select="./@xml:lang"/>
-		</xsl:if>
 		<xsl:choose>
 			<xsl:when test="starts-with(., '$loc')">
 				<xsl:element name="xsl:copy-of">
@@ -531,6 +528,7 @@
 
 <xsl:template name="process-pattern">
 	<xsl:param name="name"/>
+	<xsl:param name="titles"/>
 	<xsl:param name="id"/>
 	<xsl:param name="is-a"/>
 	
@@ -549,32 +547,28 @@
 				<xsl:value-of select=" $id " />
 			</axsl:attribute>
 		</xsl:if>
-		<xsl:for-each select="$name[not(@xml:lang)]">
-			<xsl:if test=" string(.)">
-				<axsl:attribute name="name">
-					<xsl:choose>
-						<xsl:when test="starts-with(., '$loc')">
-							<axsl:value-of>
-							<xsl:attribute name="select"><xsl:value-of select="."/></xsl:attribute>
-							</axsl:value-of>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="."/>
-						</xsl:otherwise>
-					</xsl:choose>
-				</axsl:attribute>
-			</xsl:if>
-		</xsl:for-each>
-
-		<!-- Create svrl:text with role title for each translated titles -->
-		<xsl:for-each select="$name[@xml:lang]">
-			<svrl:text role="title">
-				<xsl:copy-of select="./@xml:lang"/>
-				<xsl:value-of select="."/>
-			</svrl:text>
-		</xsl:for-each>
-
-
+    <xsl:for-each select="$titles">
+      <xsl:if test="@xml:lang">
+        <axsl:attribute name="name_{@xml:lang}">
+          <xsl:value-of select="."/>
+        </axsl:attribute>
+      </xsl:if>
+    </xsl:for-each>
+	  <xsl:if test=" string( $name )">
+  	  <axsl:attribute name="name">
+  	    <xsl:choose>
+  	      <xsl:when test="starts-with($name, '$loc')">
+  	        <axsl:value-of>
+  	        <xsl:attribute name="select"><xsl:value-of select="$name" /></xsl:attribute>
+  	        </axsl:value-of>
+  	      </xsl:when>
+  	      <xsl:otherwise>
+  	        <xsl:value-of select=" $name " />
+  	      </xsl:otherwise>
+  	    </xsl:choose>
+  	  </axsl:attribute>
+	  </xsl:if>
+	  
 		<xsl:call-template name='richParms'>
 			<xsl:with-param name="fpi" select="$fpi"/>
 			<xsl:with-param name="icon" select="$icon"/>

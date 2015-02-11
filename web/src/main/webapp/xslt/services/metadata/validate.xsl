@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                xmlns:geonet="http://www.fao.org/geonetwork"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns:sch="http://www.ascc.net/xml/schematron"
-                xmlns:gml="http://www.opengis.net/gml"
-                xmlns:gmd="http://www.isotc211.org/2005/gmd"
-                xmlns:srv="http://www.isotc211.org/2005/srv"
-                xmlns:gco="http://www.isotc211.org/2005/gco"
-                xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                xmlns:util="java:org.fao.geonet.util.XslUtil"
-                exclude-result-prefixes="#all">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:geonet="http://www.fao.org/geonetwork"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sch="http://www.ascc.net/xml/schematron" xmlns:gml="http://www.opengis.net/gml"
+    xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gco="http://www.isotc211.org/2005/gco"
+    xmlns:svrl="http://purl.oclc.org/dsdl/svrl" exclude-result-prefixes="geonet srv gco gmd xlink gml sch svrl">
 
     <xsl:include href="validate-fn.xsl" />
 
-    <xsl:variable name="metadataSchema"
-                  select="/root/response/schema"/>
-    <xsl:variable name="userLanguage"
-                  select="util:twoCharLangCode(/root/gui/language/text())"/>
+    <!-- Retrieve GUI language first 2 letters
+    for multilingual schematron using xml:lang attribute. -->
+    <xsl:variable name="language" select="substring(/root/gui/language, 1, 2)"/>
+    <xsl:variable name="metadataSchema" select="/root/response/schema"/>
 
     <xsl:template match="/">
         <rules>
@@ -119,8 +111,9 @@
             </displayPriority>
             <label>
                 <xsl:variable name="translatedTitle"
-                    select="/root/response/schematronTranslations/*[name() = $rulename]/strings/schematron.title" />
-                <xsl:variable name="defaultTitle" select="svrl:schematron-output/@title" />
+                              select="/root/response/schematronTranslations/*[name() = $rulename]/strings/schematron.title" />
+                <xsl:variable name="defaultTitle"
+                              select="svrl:schematron-output/@title" />
                 <xsl:choose>
                     <xsl:when test="$translatedTitle">
                         <xsl:value-of select="$translatedTitle" />
@@ -157,14 +150,22 @@
     <xsl:template name="pattern">
         <pattern>
             <title>
-                <xsl:variable name="titleInUserLanguage"
-                              select="normalize-space(svrl:text[@role = 'title' and @xml:lang = $userLanguage])"/>
-                <xsl:variable name="titleInEnglish"
-                              select="normalize-space(svrl:text[@role = 'title' and @xml:lang = 'en'])"/>
-                <xsl:value-of select="if ($titleInUserLanguage != '') then $titleInUserLanguage
-                              else if ($titleInEnglish != '') then $titleInEnglish
-                              else if (normalize-space(@name) != '') then normalize-space(@name)
-                              else '--'"/>
+                <xsl:variable name="attributeName"
+                              select="concat('name_', $language)"/>
+                <xsl:choose>
+                    <xsl:when test="attribute::*[name() = $attributeName] != ''">
+                      <xsl:value-of select="attribute::*[name() = $attributeName]"/>
+                    </xsl:when>
+                    <xsl:when test="attribute::*[name() = 'name_en'] != ''">
+                      <xsl:value-of select="attribute::*[name() = 'name_en']"/>
+                    </xsl:when>
+                    <xsl:when test="normalize-space(@name) != ''">
+                        <xsl:value-of select="@name" />
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>--</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
             </title>
             <rules>
                 <xsl:for-each select="svrl:fired-rule/*">
@@ -189,13 +190,17 @@
                 <xsl:value-of select="@location" />
             </details>
             <msg>
-                <xsl:variable name="descInUserLanguage"
-                              select="normalize-space(svrl:diagnostic-reference[@xml:lang = $userLanguage])"/>
-                <xsl:variable name="descInEnglish"
-                              select="normalize-space(svrl:diagnostic-reference[@xml:lang = 'en'])"/>
-                <xsl:value-of select="if ($descInUserLanguage != '') then $descInUserLanguage
-                              else if ($descInEnglish != '') then $descInEnglish
-                              else normalize-space(svrl:text)"/>
+              <xsl:choose>
+                <xsl:when test="svrl:diagnostic-reference[@xml:lang = $language]">
+                  <xsl:value-of select="svrl:diagnostic-reference[@xml:lang = $language]"/>
+                </xsl:when>
+                <xsl:when test="svrl:diagnostic-reference[@xml:lang = 'en']">
+                  <xsl:value-of select="svrl:diagnostic-reference[@xml:lang = 'en']"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="normalize-space(svrl:text)" />
+                </xsl:otherwise>
+              </xsl:choose>
             </msg>
         </rule>
     </xsl:template>
