@@ -195,5 +195,6 @@
     "_isHarvested": "Harvested",
     "isTemplatey": "Template",
     "isTemplates": "Directory",
-    "isTemplaten": "Record"
+    "isTemplaten": "Record",
+    "signinFailure": "Incorrect username or password."
 }
