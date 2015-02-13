@@ -9,6 +9,7 @@
 @import (less) "../lib/bootstrap.ext/datepicker/datepicker.css";
 @import (less) "../lib/style/datetimepicker.css";
 @import "gn_doc.less";
+@import "gn_icons.less";
 
 @fa-version: '4.1.0';
 @fa-font-path: '../catalog/lib/style/font-awesome/fonts';
@@ -237,7 +238,7 @@ min-height: 40px;
 }
 .gn-layers-grid-container {
 overflow:auto;
-height:200px;
+max-height:200px;
 font-size: small;
 }
 .gn-layers-grid-container tr {
@@ -443,4 +444,11 @@ legend[data-gn-slide-toggle] {
 }
 legend[data-gn-slide-toggle]:before {
   margin-top: 3px;
+}
+
+i.fa-times.delete {
+  vertical-align: top;
+}
+i.fa-times.delete:hover {
+    color:  #a94442;
 }
