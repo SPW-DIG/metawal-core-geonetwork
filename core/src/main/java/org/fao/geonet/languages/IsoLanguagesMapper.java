@@ -41,7 +41,7 @@ public class IsoLanguagesMapper {
     /*
      * Stores mapping of ISO 639-1 to ISO 639-2 for all languages defined in IsoLanguages table
      */
-    protected BiMap<String, String> _isoLanguagesMap639 =  HashBiMap.create();
+    protected static BiMap<String, String> _isoLanguagesMap639 =  HashBiMap.create();
 
     @Autowired
     private IsoLanguageRepository _langRepo;
@@ -96,7 +96,7 @@ public class IsoLanguagesMapper {
      * @param iso639_1
      * @return
      */
-    public String iso639_1_to_iso639_2(String iso639_1) {
+    public static String iso639_1_to_iso639_2(String iso639_1) {
         if(_isoLanguagesMap639.containsValue(iso639_1.toLowerCase())) {
             return iso639_1.toLowerCase();
         } else {
@@ -110,7 +110,7 @@ public class IsoLanguagesMapper {
      * @param iso639_2
      * @return
      */
-    public String iso639_2_to_iso639_1(String iso639_2) {
+    public static String iso639_2_to_iso639_1(String iso639_2) {
         if(_isoLanguagesMap639.containsKey(iso639_2.toLowerCase())) {
             return iso639_2.toLowerCase();
         } else {
@@ -125,7 +125,7 @@ public class IsoLanguagesMapper {
      * @param defaultLang
      * @return
      */
-    public String iso639_1_to_iso639_2(String iso639_1, String defaultLang) {
+    public static String iso639_1_to_iso639_2(String iso639_1, String defaultLang) {
         String result = iso639_1_to_iso639_2(iso639_1);
         if(result == null) {
             return defaultLang.toLowerCase();

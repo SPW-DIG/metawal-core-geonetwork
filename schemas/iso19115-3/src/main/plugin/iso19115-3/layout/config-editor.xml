@@ -74,7 +74,7 @@
 
     <for name="mdb:contact" addDirective="data-gn-directory-entry-selector">
       <directiveAttributes
-              data-template-add-action="false"
+              data-template-add-action="true"
               data-template-type="contact"
               data-filter='{"_root": "cit:CI_Responsibility"}'
               data-variables="cit:role/cit:CI_RoleCode/@codeListValue~{role}"/>
@@ -269,6 +269,9 @@
         <section xpath="/mdb:MD_Metadata/mdb:identificationInfo" or="identificationInfo"
                  in="/mdb:MD_Metadata"/>
       </tab>
+      <tab id="contentInfo">
+        <section xpath="/mdb:MD_Metadata/mdb:contentInfo" or="contentInfo" in="/mdb:MD_Metadata"/>
+      </tab>
       <tab id="distributionInfo">
         <section xpath="/mdb:MD_Metadata/mdb:distributionInfo" or="distributionInfo"
                  in="/mdb:MD_Metadata"/>
@@ -291,9 +294,6 @@
       <tab id="referenceSystemInfo">
         <section xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo"
                  in="/mdb:MD_Metadata"/>
-      </tab>
-      <tab id="contentInfo" toggle="true">
-        <section xpath="/mdb:MD_Metadata/mdb:contentInfo" or="contentInfo" in="/mdb:MD_Metadata"/>
       </tab>
       <tab id="acquisitionInformation" toggle="true">
         <section xpath="/mdb:MD_Metadata/mdb:acquisitionInformation" or="acquisitionInformation"
