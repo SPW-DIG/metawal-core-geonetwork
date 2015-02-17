@@ -482,6 +482,11 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>schema-iso19110</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>schema-iso19115-3</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -578,6 +583,7 @@
                   <directory>${project.basedir}/../schemas/csw-record/src/main/plugin</directory>
                   <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
                 </resource>
+<<<<<<< HEAD
                 <resource>
                   <directory>${project.basedir}/../schemas/iso19115/src/main/plugin</directory>
                   <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
@@ -590,6 +596,8 @@
                   <directory>${project.basedir}/../schemas/fgdc-std/src/main/plugin</directory>
                   <targetPath>${basedir}/src/main/webapp/WEB-INF/data/config/schema_plugins</targetPath>
                 </resource>
+=======
+>>>>>>> upstream/develop
               </resources>
             </configuration>
           </execution>
