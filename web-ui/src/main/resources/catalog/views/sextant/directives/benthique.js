@@ -1,26 +1,36 @@
 (function() {
-  goog.provide('sxt_layertree');
+  goog.provide('sxt_benthique');
 
-  var module = angular.module('sxt_layertree', []);
+  var module = angular.module('sxt_benthique', []);
 
-  module.directive('sxtLayertree', [
-    'gnLayerFilters',
-    '$filter',
-    function (gnLayerFilters, $filter) {
+
+  module.directive('sxtbPanel', [
+    '$http',
+    'gnUtilityService',
+    function ($http, gnUtilityService) {
       return {
         restrict: 'A',
         templateUrl: '../../catalog/views/sextant/directives/' +
-            'partials/layertree.html',
-        controller: [ '$scope', function($scope) {
-          this.setNCWMS = function(layer) {
-            $scope.active.layersTools = false;
-            $scope.active.NCWMS = layer;
-          };
-        }],
+            'partials/benthiquepanel.html',
+        scope: {
+          map: '=sxtbPanel'
+        },
         link: function(scope, element, attrs) {
 
-          scope.layers = scope.map.getLayers().getArray();
-          scope.layerFilterFn = gnLayerFilters.selected;
+          var url = '../../catalog/views/sextant/' +
+              'data/ATLASbenthos_ATL_SPECIES.csv';
+          $http.get(url).then(function(response){
+            var csv =  gnUtilityService.CSVToArray(response.data, ';');
+            if(angular.isArray(csv)) {
+              scope.speciesTree = {
+                nodes: []
+              };
+              csv.splice(0,1); // remove title line
+              angular.forEach(csv, function(species) {
+                createNode(scope.speciesTree, species, 0);
+              });
+            }
+          });
 
           var findChild = function(node, name) {
             var n;
@@ -33,9 +43,9 @@
               }
             }
           };
-          var createNode = function(layer, node, g, index) {
-            var group = g[index];
-            if (group) {
+          var createNode = function(node, species, index) {
+            var group = species[index];
+            if (group && index < 3) {
               var newNode = findChild(node, group);
               if (!newNode) {
                 newNode = {
@@ -44,37 +54,17 @@
                 if (!node.nodes) node.nodes = [];
                 node.nodes.push(newNode);
               }
-              createNode(layer, newNode, g, index + 1);
+              createNode(newNode, species, index + 1);
             } else {
               if (!node.nodes) node.nodes = [];
-              node.nodes.push(layer);
+              node.nodes.push(species);
             }
           };
-
-          // Build the layer manager tree depending on layer groups
-          scope.map.getLayers().on('change:length', function(e) {
-            scope.layerTree = {
-              nodes: []
-            };
-            var sep = '/';
-            var fLayers = $filter('filter')(scope.layers, scope.layerFilterFn);
-            for (var i = 0; i < fLayers.length; i++) {
-              var l = fLayers[i];
-              var groups = l.get('group');
-              if (!groups) {
-                scope.layerTree.nodes.push(l);
-              }
-              else {
-                var g = groups.split(sep);
-                createNode(l, scope.layerTree, g, 1);
-              }
-            }
-          });
         }
       };
     }]);
 
-  module.directive('sxtLayertreeCol', [
+  module.directive('sxtbSpiciesCol', [
     function() {
       return {
         restrict: 'E',
@@ -83,29 +73,28 @@
           collection: '=',
           map: '=map'
         },
-        template: "<ul class='sxt-layertree-node'><sxt-layertree-elt ng-repeat='member" +
-            " in collection' member='member' map='map'></sxt-layertree-elt></ul>"
+        template: "<ul class='sxt-layertree-node'><sxtb-spicies-elt ng-repeat='member" +
+            " in collection' member='member' map='map'></sxtb-spicies-elt></ul>"
       };
     }]);
 
-  module.directive('sxtLayertreeElt', [
+  module.directive('sxtbSpiciesElt', [
     '$compile', 'gnMap', 'gnMdView',
     function($compile, gnMap, gnMdView) {
       return {
         restrict: 'E',
         replace: true,
-        require: '^sxtLayertree',
         scope: {
           member: '=',
           map: '='
         },
         templateUrl: '../../catalog/views/sextant/directives/' +
-            'partials/layertreeitem.html',
+            'partials/speciestreeitem.html',
         link: function(scope, element, attrs, controller) {
           var el = element;
           if (angular.isArray(scope.member.nodes)) {
-            element.append("<sxt-layertree-col class='list-group' " +
-                "collection='member.nodes' map='map'></sxt-layertree-col>");
+            element.append("<sxtb-spicies-col class='list-group' " +
+                "collection='member.nodes' map='map'></sxtb-spicies-col>");
             $compile(element.contents())(scope);
           }
           scope.toggleNode = function(evt) {
@@ -120,8 +109,6 @@
           };
 
           scope.mapService = gnMap;
-
-          scope.setNCWMS = controller.setNCWMS;
 
           scope.showMetadata = function() {
             var md = scope.member.get('md');
