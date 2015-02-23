@@ -786,6 +786,20 @@
       </properties>
     </profile>
     <profile>
+      <id>mw-test</id>
+      <properties>
+        <db.type>oracle</db.type>
+        <data.dir>file:///metawal4</data.dir>
+      </properties>
+    </profile>
+    <profile>
+      <id>mw-fxp</id>
+      <properties>
+        <db.type>postgres</db.type>
+        <data.dir>WEB-INF/config-db</data.dir>
+      </properties>
+    </profile>
+    <profile>
       <id>env-inspire</id>
       <activation>
         <property>
