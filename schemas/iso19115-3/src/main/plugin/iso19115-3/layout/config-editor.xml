@@ -159,6 +159,7 @@
     <name>srv:containsOperations</name>
     <name>srv:SV_CoupledResource</name>
     <name>mdb:metadataConstraints</name>
+    <name>mdb:portrayalCatalogueInfo</name>
     <name>mri:associatedResource</name>
   </fieldsWithFieldset>
 
@@ -236,9 +237,10 @@
     <view name="default">
       <tab id="default" default="true" mode="flat">
         <section xpath="/mdb:MD_Metadata/mdb:identificationInfo"/>
+        <section xpath="/mdb:MD_Metadata/mdb:contentInfo"/>
         <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>
         <section xpath="/mdb:MD_Metadata/mdb:dataQualityInfo"/>
-        <section xpath="/mdb:MD_Metadata/mdb:contentInfo"/>
+        <section xpath="/mdb:MD_Metadata/mdb:portrayalCatalogueInfo"/>
         <section name="mdb:MD_Metadata">
           <field xpath="/mdb:MD_Metadata/mdb:metadataIdentifier"/>
           <field xpath="/mdb:MD_Metadata/mdb:defaultLocale" or="defaultLocale"
