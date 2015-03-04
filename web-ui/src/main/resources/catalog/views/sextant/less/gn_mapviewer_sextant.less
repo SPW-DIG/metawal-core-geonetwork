@@ -31,6 +31,15 @@
   .tools:first-of-type {
     top: @viewport-padding + .5em;
   }
+  .sx-toolbar.basket-tools {
+    width: 0;
+    right: 10em;
+    button {
+      width: auto;
+      min-width: 2.8em;
+      margin-left: 100%;
+    }
+  }
 
   .control-tools {
     top: 7em;
@@ -279,6 +288,12 @@
         margin-top: .7em;
       }
     }
+  }
+
+  .marker {
+    pointer-events: none;
+    font-size: 23px;
+    text-shadow: 0 0 1px #FFF;
   }
 
 }
