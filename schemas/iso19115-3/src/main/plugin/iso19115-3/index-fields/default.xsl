@@ -518,7 +518,7 @@
       <xsl:if test="count($attributes) > 0">
         <xsl:variable name="jsonAttributeTable">
           [<xsl:for-each select="$attributes">
-          {"name": "<xsl:value-of select="*/gfc:memberName/*/text()"/>",
+          {"name": "<xsl:value-of select="*/gfc:code/*/text()"/>",
           "definition": "<xsl:value-of select="*/gfc:definition/*/text()"/>",
           "type": "<xsl:value-of select="*/gfc:valueType/gco:TypeName/gco:aName/*/text()"/>"
           <xsl:if test="*/gfc:listedValue">
