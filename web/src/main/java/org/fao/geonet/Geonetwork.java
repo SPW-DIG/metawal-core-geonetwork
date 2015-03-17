@@ -67,9 +67,9 @@ import org.fao.geonet.repository.SettingRepository;
 import org.fao.geonet.resources.Resources;
 import org.fao.geonet.services.metadata.format.Format;
 import org.fao.geonet.services.metadata.format.FormatType;
+import org.fao.geonet.services.metadata.format.FormatterWidth;
 import org.fao.geonet.services.util.z3950.Repositories;
 import org.fao.geonet.services.util.z3950.Server;
-import org.fao.geonet.util.ThreadPool;
 import org.fao.geonet.util.ThreadUtils;
 import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
@@ -95,6 +95,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.web.context.request.ServletWebRequest;
 
 import java.io.File;
 import java.net.URI;
@@ -119,7 +120,6 @@ public class Geonetwork implements ApplicationHandler {
     private Path appPath;
     private SearchManager searchMan;
     private MetadataNotifierControl metadataNotifierControl;
-    private ThreadPool threadPool;
     private ConfigurableApplicationContext _applicationContext;
 
     //---------------------------------------------------------------------------
@@ -143,8 +143,9 @@ public class Geonetwork implements ApplicationHandler {
      */
     public Object start(Element config, ServiceContext context) throws Exception {
         context.setAsThreadLocal();
-        logger = context.getLogger();
         this._applicationContext = context.getApplicationContext();
+        ApplicationContextHolder.set(this._applicationContext);
+        logger = context.getLogger();
         ConfigurableListableBeanFactory beanFactory = context.getApplicationContext().getBeanFactory();
 
         ServletPathFinder finder = new ServletPathFinder(this._applicationContext.getBean(ServletContext.class));
@@ -190,13 +191,6 @@ public class Geonetwork implements ApplicationHandler {
         // force caches to be config'd so shutdown hook works correctly
         JeevesJCS.getInstance(Processor.XLINK_JCS);
         JeevesJCS.getInstance(XmlResolver.XMLRESOLVER_JCS);
-
-        //------------------------------------------------------------------------
-        //--- initialize thread pool
-
-        logger.info("  - Thread Pool...");
-
-        threadPool = new ThreadPool();
 
         //------------------------------------------------------------------------
         //--- initialize settings subsystem
@@ -365,7 +359,7 @@ public class Geonetwork implements ApplicationHandler {
         OaiPmhDispatcher oaipmhDis = new OaiPmhDispatcher(settingMan, schemaMan);
 
 
-        GeonetContext gnContext = new GeonetContext(_applicationContext, false, statusActionsClass, threadPool);
+        GeonetContext gnContext = new GeonetContext(_applicationContext, false, statusActionsClass);
 
         //------------------------------------------------------------------------
         //--- return application context
@@ -447,6 +441,8 @@ public class Geonetwork implements ApplicationHandler {
             @Override
             public void run() {
                 final ServletContext servletContext = context.getServlet().getServletContext();
+                context.setAsThreadLocal();
+                ApplicationContextHolder.set(_applicationContext);
                 GeonetWro4jFilter filter = (GeonetWro4jFilter) servletContext.getAttribute(GeonetWro4jFilter.GEONET_WRO4J_FILTER_KEY);
 
                 @SuppressWarnings("unchecked")
@@ -476,8 +472,8 @@ public class Geonetwork implements ApplicationHandler {
                         final MockHttpServletRequest servletRequest = new MockHttpServletRequest(servletContext);
                         final MockHttpServletResponse response = new MockHttpServletResponse();
                         try {
-                            formatService.exec("eng", FormatType.html.toString(), mdId.toString(), null, formatterName,
-                                    Boolean.TRUE.toString(), false, servletRequest, response);
+                            formatService.exec("eng", FormatType.html.toString(), mdId.toString(), formatterName,
+                                    Boolean.TRUE.toString(), false, FormatterWidth._100, new ServletWebRequest(servletRequest, response));
                         } catch (Throwable t) {
                             Log.info(Geonet.GEONETWORK, "Error while initializing the Formatter with id: " + formatterName, t);
                         }
@@ -586,10 +582,10 @@ public class Geonetwork implements ApplicationHandler {
     private void createSiteLogo(String nodeUuid, ServiceContext context, Path appPath) {
         try {
             Path logosDir = Resources.locateLogosDir(context);
-            Path logo =logosDir.resolve(nodeUuid + ".gif");
+            Path logo =logosDir.resolve(nodeUuid + ".png");
             if (!Files.exists(logo)) {
                 final ServletContext servletContext = context.getServlet().getServletContext();
-                byte[] logoData = Resources.loadImage(servletContext, appPath, "images/logos/dummy.gif", new byte[0]).one();
+                byte[] logoData = Resources.loadImage(servletContext, appPath, "images/logos/GN3.png", new byte[0]).one();
                 Files.write(logo, logoData);
             }
         } catch (Throwable e) {
@@ -646,10 +642,6 @@ public class Geonetwork implements ApplicationHandler {
             logger.error("  Message   : " + e.getMessage());
             logger.error("  Stack     : " + Util.getStackTrace(e));
         }
-
-
-        logger.info("  - ThreadPool ...");
-        threadPool.shutDown();
 
         logger.info("  - MetadataNotifier ...");
         try {

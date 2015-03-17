@@ -259,12 +259,12 @@
               cextent: options.extent
             });
 
-            if(options.metadata) {
+            if (options.metadata) {
               olLayer.set('metadataUrl', options.metadata);
               var params = gnUrlUtils.parseKeyValue(
                   options.metadata.split('?')[1]);
               var uuid = params.uuid || params.id;
-              if(uuid) {
+              if (uuid) {
                 olLayer.set('metadataUuid', uuid);
               }
             }
@@ -527,6 +527,32 @@
                 }
             }
             $log.warn('Unsupported layer type: ', type);
+          },
+
+          /**
+           * Check if the layer is in the map to avoid adding duplicated ones.
+           * @param {ol.Map} map
+           * @param {string} name
+           * @param {string} url
+           */
+          isLayerInMap: function(map, name, url) {
+            for(var i=0;i<map.getLayers().getLength();i++) {
+              var l = map.getLayers().item(i);
+              var source = l.getSource();
+              if(source instanceof ol.source.WMTS &&
+                  l.get('url') == url) {
+                if(l.get('name') == name) {
+                  return true;
+                }
+              }
+              else if(source instanceof ol.source.TileWMS) {
+                if(source.getParams().LAYERS == name &&
+                    l.get('url').split('?')[0] == url.split('?')[0]) {
+                  return true;
+                }
+              }
+            }
+            return false;
           }
         };
       }];
