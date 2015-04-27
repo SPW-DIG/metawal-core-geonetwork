@@ -116,7 +116,15 @@
         importFromDir: function(data) {
           return $http({
             url: 'md.import@json?' + data,
-            method: 'GET'
+            method: 'GET',
+            transformResponse: function(defaults) {
+              try {
+                return JSON.parse(defaults);
+              }
+              catch (e) {
+                return defaults;
+              }
+            }
           });
         },
 
@@ -134,7 +142,16 @@
         importFromXml: function(data) {
           return $http.post('md.insert?_content_type=json', data, {
             headers: {'Content-Type':
-                  'application/x-www-form-urlencoded'}
+                  'application/x-www-form-urlencoded'},
+            transformResponse: function(defaults) {
+              try {
+                return JSON.parse(defaults);
+              }
+              catch (e) {
+                return defaults;
+              }
+            }
+
           });
         },
 
@@ -279,7 +296,7 @@
     lang: 'lang@json',
     removeThumbnail: 'md.thumbnail.remove@json',
     removeOnlinesrc: 'resource.del.and.detach', // TODO: CHANGE
-    geoserverNodes: 'geoserver.publisher@json', // TODO: CHANGE
+    geoserverNodes: 'geoserver.publisher?_content_type=json&',
     suggest: 'suggest',
     facetConfig: 'search/facet/config'
   });
@@ -489,6 +506,7 @@
         'denominator', 'resolution', 'geoDesc', 'geoBox',
         'mdLanguage', 'datasetLang', 'type'];
       var record = this;
+      this.linksCache = [];
       $.each(listOfArrayFields, function(idx) {
         var field = listOfArrayFields[idx];
         if (angular.isDefined(record[field]) &&
@@ -505,7 +523,8 @@
         url: linkInfos[2],
         desc: linkInfos[1],
         protocol: linkInfos[3],
-        contentType: linkInfos[4]
+        contentType: linkInfos[4],
+        group: linkInfos[5] ? parseInt(linkInfos[5]) : undefined
       };
     }
     function parseLink(sLink) {
@@ -522,6 +541,12 @@
       isPublished: function() {
         return this['geonet:info'].isPublishedToAll === 'true';
       },
+      isOwned: function() {
+        return this['geonet:info'].owner === 'true';
+      },
+      getOwnerId: function() {
+        return this['geonet:info'].ownerId;
+      },
       publish: function() {
         this['geonet:info'].isPublishedToAll = this.isPublished() ?
             'false' : 'true';
@@ -531,22 +556,36 @@
       },
       getLinksByType: function() {
         var ret = [];
+
         var types = Array.prototype.splice.call(arguments, 0);
+        var groupId;
+
+        var key = types.join('|');
+        if (angular.isNumber(types[0])) {
+          groupId = types[0];
+          types.splice(0, 1);
+        }
+        if (this.linksCache[key]) {
+          return this.linksCache[key];
+        }
         angular.forEach(this.link, function(link) {
           var linkInfo = formatLink(link);
           types.forEach(function(type) {
             if (type.substr(0, 1) == '#') {
-              if (linkInfo.protocol == type.substr(1, type.length - 1)) {
+              if (linkInfo.protocol == type.substr(1, type.length - 1) &&
+                  (!groupId || groupId == linkInfo.group)) {
                 ret.push(linkInfo);
               }
             }
             else {
-              if (linkInfo.protocol.indexOf(type) >= 0) {
+              if (linkInfo.protocol.indexOf(type) >= 0 &&
+                  (!groupId || groupId == linkInfo.group)) {
                 ret.push(linkInfo);
               }
             }
           });
         });
+        this.linksCache[key] = ret;
         return ret;
       },
       getThumbnails: function() {

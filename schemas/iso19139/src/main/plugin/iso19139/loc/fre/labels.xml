@@ -794,7 +794,7 @@ responsable du service.</li>
     <help for="inspire"><![CDATA[<b>Exigence INSPIRE :</b>
     Cet élément de métadonnées fournit un lien vers la ressource décrite elle-même, et/ou vers des informations complémentaires la concernant.
     <ul>
-    <li>Le domaine de valeur de cet élément est une chaîne de caractères couramment exprimée sous forme d’un localisateur uniforme de la ressource (URL).</li>
+    <li>Le domaine de valeurs de cet élément est une chaîne de caractères couramment exprimée sous forme d’un localisateur uniforme de la ressource (URL).</li>
     <li>Cet élément répétable est obligatoire s’il existe une URL permettant d’obtenir davantage d’informations sur la ressource et/ou un accès à des services connexes.</li>
     </ul>
     ]]></help>
@@ -1278,7 +1278,7 @@ de métadonnées de données « BD Carthage métropole »
     <ul>
     <li>Ministère de l’Ecologie, du Développement et de lAménagement Durable, des Transports et du Logement  - Cartorisque - DPPR –SDPRM</li>
     <li>Email : editeur@prim.net</li>
-    <li>Rôle : point de contact</li>
+    <li>Fonction : point de contact</li>
     </ul>
     ]]></help>
     
@@ -4900,7 +4900,37 @@ http://www.sandre.eaufrance.fr/?urn=urn:sandre:ensembledonnees:BDCarthage:FXX:::
       <description/>
     </element>
     <element name="gmx:language">
-      <label>Langue des métadonnées</label>
-      <description></description>
+        <label>Langue des métadonnées</label>
+        <description></description>
+    </element>
+    <element name="gmd:MD_CharacterSetCode">
+        <label>Jeu de caractère </label>
+    </element>
+    <element name="gmd:MD_ProgressCode">
+        <label>État d'avancement</label>
+    </element>
+    <element name="gmd:MD_SpatialRepresentationTypeCode">
+        <label>Type de représentation spatiale</label>
+    </element>
+    <element name="gmd:MD_MaintenanceFrequencyCode">
+        <label>Fréquence de mise à jour</label>
+    </element>
+    <element name="gmd:MD_TopologyLevelCode">
+        <label>Topologie de Niveau</label>
+    </element>
+    <element name="gmd:MD_GeometricObjectTypeCode">
+        <label>Type d'objet géométrique</label>
+    </element>
+    <element name="gmd:MD_RestrictionCode" context="gmd:accessConstraints">
+        <label>Restriction d'accès</label>
+    </element>
+    <element name="gmd:MD_RestrictionCode" context="gmd:useConstraints">
+        <label>Restriction d'utilisation</label>
+    </element>
+    <element name="gmd:DS_AssociationTypeCode">
+        <label>Type d'Association</label>
+    </element>
+    <element name="gmd:DS_InitiativeTypeCode">
+        <label>Type d'Initiative</label>
     </element>
 </labels>

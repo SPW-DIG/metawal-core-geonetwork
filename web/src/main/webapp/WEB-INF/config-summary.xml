@@ -77,8 +77,8 @@
         <facet name="status" indexKey="_status" label="status"/>
         <facet name="standard" indexKey="_schema" label="standards"/>
         <facet name="subTemplateType" indexKey="_root" label="subTemplateTypes"/>
-        <facet name="groupOwner" indexKey="_groupOwner" label="groupOwners" localized="true"/>
-        <facet name="publishedForGroup" indexKey="_groupPublished" label="publishedForGroup" localized="true"/>
+        <facet name="groupOwner" indexKey="_groupOwner" label="groupOwners"/>
+        <facet name="publishedForGroup" indexKey="_groupPublished" label="publishedForGroup" />
     </facets>
 
     <summaryTypes>
@@ -104,6 +104,7 @@
                 translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
         </summaryType>
         <summaryType name="manager">
+          <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
           <item facet="category" max="99" sortBy="value"
                 translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/>
           <item facet="status" max="10" sortBy="value"

@@ -10,6 +10,7 @@
   goog.require('gn_legendpanel_directive');
   goog.require('sxt_directives');
   goog.require('sxt_panier_directive');
+  goog.require('sxt_interceptors');
 
   var module = angular.module('gn_search_sextant', [
     'gn_search',
@@ -19,7 +20,8 @@
     'gn_legendpanel_directive',
     'gn_thesaurus',
     'sxt_directives',
-    'sxt_panier_directive'
+    'sxt_panier_directive',
+    'sxt_interceptors'
   ]);
 
   module.value('sxtGlobals', {});
@@ -67,7 +69,17 @@
         $location.path('/panier');
       };
 
+      var unregisterMapsize = $scope.$on('locationBackToSearch', function() {
+        if (angular.isUndefined(searchMap.getSize()) ||
+            searchMap.getSize()[0] == 0 ||
+            searchMap.getSize()[1] == 0) {
+          $timeout(function() {searchMap.updateSize()}, 100);
+        }
+        unregisterMapsize();
+      });
+
       $scope.locService = gnSearchLocation;
+
 
       // Manage the collapsed search panel
       $scope.collapsed = localStorage.searchWidgetCollapsed ?
@@ -169,21 +181,6 @@
 
       ///////////////////////////////////////////////////////////////////
 
-      angular.extend($scope.searchObj, {
-        advancedMode: false,
-        viewerMap: viewerMap,
-        searchMap: searchMap,
-        panier: []
-      });
-    }]);
-
-  module.controller('gnsSextantSearch', [
-    '$scope',
-    'gnOwsCapabilities',
-    'gnMap',
-    'sxtGlobals',
-    function($scope, gnOwsCapabilities, gnMap, sxtGlobals) {
-
       $scope.resultviewFns = {
         addMdLayerToMap: function(link, md) {
 
@@ -202,23 +199,16 @@
               }
             }
           }
-          gnOwsCapabilities.getWMSCapabilities(link.url).then(function(capObj) {
 
-            if(gnMap.isLayerInMap($scope.searchObj.viewerMap,
-                link.name, link.url)) {
-              return;
-            }
+          gnMap.addWmsFromScratch($scope.searchObj.viewerMap,
+              link.url, link.name).then(function(layer) {
+                layer.set('group', group);
+                var downloads = md.getLinksByType(link.group,
+                    'WWW:DOWNLOAD-1.0-link--download', 'FILE', 'DB',
+                    'WFS', 'WCS', 'COPYFILE');
 
-            var layerInfo = gnOwsCapabilities.getLayerInfoFromCap(
-                link.name, capObj);
-            layerInfo.group = group;
-            var layer = gnMap.addWmsToMapFromCap($scope.searchObj.viewerMap,
-                layerInfo);
-            layer.set('md', md);
-
-          }, function(response) {
-            console.warn('Error loading: ' + link.url);
-          });
+                layer.set('downloads', downloads);
+              });
           $scope.mainTabs.map.titleInfo += 1;
 
         },
@@ -230,6 +220,22 @@
           $scope.mainTabs.panier.titleInfo += 1;
         }
       };
+
+      angular.extend($scope.searchObj, {
+        advancedMode: false,
+        viewerMap: viewerMap,
+        searchMap: searchMap,
+        panier: []
+      });
+    }]);
+
+  module.controller('gnsSextantSearch', [
+    '$scope',
+    'gnOwsCapabilities',
+    'gnMap',
+    'sxtGlobals',
+    function($scope, gnOwsCapabilities, gnMap, sxtGlobals) {
+
     }]);
 
   module.controller('gnsSextantSearchForm', [

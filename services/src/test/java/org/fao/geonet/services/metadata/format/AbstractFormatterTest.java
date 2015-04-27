@@ -114,7 +114,7 @@ public abstract class AbstractFormatterTest extends AbstractCoreIntegrationTest 
     protected Pair<FormatterImpl, FormatterParams> getFormatterFormatterParamsPair(MockHttpServletRequest request, String formatterId) throws Exception {
         final ServletWebRequest webRequest = new ServletWebRequest(request);
         Key key = new Key(id, getUILang(), getOutputType(), formatterId, false, FormatterWidth._100);
-        return this.formatService.loadMetadataAndCreateFormatterAndParams(key, webRequest);
+        return this.formatService.loadMetadataAndCreateFormatterAndParams(createServiceContext(), key, webRequest);
     }
 
     protected void measureFormatterPerformance(final MockHttpServletRequest request, final String formatterId) throws Exception {
@@ -155,7 +155,7 @@ public abstract class AbstractFormatterTest extends AbstractCoreIntegrationTest 
 
         final Pair<FormatterImpl, FormatterParams> formatterFormatterParamsPair = getFormatterFormatterParamsPair(request, formatterId);
         try {
-            EnvironmentProxy.setCurrentEnvironment(formatterFormatterParamsPair.two(), this.mapper);
+            EnvironmentProxy.setCurrentEnvironment(formatterFormatterParamsPair.two());
             TransformationContext context = new TransformationContext(null, null, new EnvironmentProxy());
             context.setThreadLocal();
             StringBuilder result = new StringBuilder();

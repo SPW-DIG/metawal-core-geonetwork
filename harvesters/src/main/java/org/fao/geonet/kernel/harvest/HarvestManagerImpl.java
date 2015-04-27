@@ -23,16 +23,7 @@
 
 package org.fao.geonet.kernel.harvest;
 
-import java.nio.file.Path;
-import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import jeeves.server.context.ServiceContext;
-
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.constants.Edit;
 import org.fao.geonet.constants.Geonet;
@@ -61,6 +52,14 @@ import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.nio.file.Path;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * TODO Javadoc.
  *
@@ -86,9 +85,9 @@ public class HarvestManagerImpl implements HarvestInfoProvider, HarvestManager {
     private final List<String> summaryHarvesterSettings =
             Arrays.asList("harvesting", "node", "site", "name", "uuid",
                     "url", "capabUrl", "baseUrl", "host", "useAccount",
-                    "ogctype", "options", "status", "info", "lastRun");
+                    "ogctype", "options", "status", "info", "lastRun",
+                    "ownerGroup");
     
-    private Element SettingsCache = null;
 
 	//---------------------------------------------------------------------------
 	//---              searchProfiles

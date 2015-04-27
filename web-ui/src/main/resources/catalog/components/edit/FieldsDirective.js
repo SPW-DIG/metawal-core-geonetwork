@@ -113,8 +113,7 @@
                          element.outerWidth()) * .95;
 
                      var closeBtn = '<button onclick="$(this).' +
-                     'closest(\'div.popover\').prev().' +
-                     'popover(\'hide\');" type="button" ' +
+                     'closest(\'div.popover\').remove();" type="button" ' +
                      'class="fa fa-times btn btn-link pull-right"></button>';
 
                      element.popover({
@@ -243,12 +242,12 @@
             // on touchscreen delete action will not be visible
 
             element.addClass('field-bg');
-            element.find('i.btn.fa-times.text-danger')
+            element.find('a').has('.fa-times.text-danger')
               .css('visibility', 'visible');
           });
           element.on('mouseout', function() {
             element.removeClass('field-bg');
-            element.find('i.btn.fa-times.text-danger')
+            element.find('a').has('.fa-times.text-danger')
               .css('visibility', 'hidden');
           });
         }
