@@ -398,7 +398,9 @@
                   //IE < 11 ==> Idx > 0
                   var sAgent = window.navigator.userAgent;
                   var Idx = sAgent.indexOf("MSIE");
-                  if((navigator.userAgent.indexOf("Firefox") != -1) || (Idx > 0) || (!!navigator.userAgent.match(/Trident\/7\./))) {
+                  if((navigator.userAgent.indexOf("Firefox") != -1) ||
+                    (Idx > 0) || 
+                    (!!navigator.userAgent.match(/Trident\/7\./))) {
                     $xml.find("ows\\:Constraint").each(function() {
                       if (matches.indexOf($(this).attr('name')) !== -1) {
                         // Add all queryables to the list of possible parameters
