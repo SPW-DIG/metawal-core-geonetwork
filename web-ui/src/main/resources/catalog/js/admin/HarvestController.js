@@ -392,27 +392,53 @@
                   var matches = ['SupportedISOQueryables',
                     'SupportedQueryables',
                     'AdditionalQueryables'];
-
-                  $xml.find('Constraint').each(function() {
-                    if (matches.indexOf($(this).attr('name')) !== -1) {
-
-                      // Add all queryables to the list of possible parameters
-                      // and to the current harvester if not exist.
-                      // When harvester is saved only criteria with
-                      // value will be saved.
-                      $(this).find('Value').each(function() {
-                        // If the queryable has a namespace,
-                        // replace the : with __
-                        // to make valid XML tag name
-                        var name = $(this).text().replace(':', '__');
-                        $scope.cswCriteria.push(name);
-                        if (!$scope.harvesterSelected.searches[0][name]) {
-                          $scope.harvesterSelected.searches[0][name] =
-                              {value: ''};
-                        }
-                      });
-                    }
-                  });
+                  
+                  //Detect IE version (version < 11)
+                  //IE > 11 ==> !!navigator.userAgent.match(/Trident\/7\./)
+                  //IE < 11 ==> Idx > 0
+                  var sAgent = window.navigator.userAgent;
+                  var Idx = sAgent.indexOf("MSIE");
+                  if((navigator.userAgent.indexOf("Firefox") != -1) || (Idx > 0) || (!!navigator.userAgent.match(/Trident\/7\./))) {
+                    $xml.find("ows\\:Constraint").each(function() {
+                      if (matches.indexOf($(this).attr('name')) !== -1) {
+                        // Add all queryables to the list of possible parameters
+                        // and to the current harvester if not exist.
+                        // When harvester is saved only criteria with
+                        // value will be saved.
+                        $(this).find("ows\\:Value").each(function() {
+                          // If the queryable has a namespace,
+                          // replace the : with __
+                          // to make valid XML tag name
+                          var name = $(this).text().replace(':', '__');
+                          $scope.cswCriteria.push(name);
+                          if (!$scope.harvesterSelected.searches[0][name]) {
+                            $scope.harvesterSelected.searches[0][name] =
+                                {value: ''};
+                          }
+                        });
+                      }
+                    });
+                  }else{
+                    $xml.find('Constraint').each(function() {
+                      if (matches.indexOf($(this).attr('name')) !== -1) {
+                        // Add all queryables to the list of possible parameters
+                        // and to the current harvester if not exist.
+                        // When harvester is saved only criteria with
+                        // value will be saved.
+                        $(this).find('Value').each(function() {
+                          // If the queryable has a namespace,
+                          // replace the : with __
+                          // to make valid XML tag name
+                          var name = $(this).text().replace(':', '__');
+                          $scope.cswCriteria.push(name);
+                          if (!$scope.harvesterSelected.searches[0][name]) {
+                            $scope.harvesterSelected.searches[0][name] =
+                                {value: ''};
+                          }
+                        });
+                      }
+                    });
+}
 
                   $scope.cswCriteria.sort();
 
