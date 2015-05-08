@@ -279,7 +279,7 @@
     "loadUserGroupsError": "Fout bij inladen gebruikersgroepen",
     "transferOwnershipError": "Fout bij overzetten metadata eigendom",
     "transferOwnershipSuccessMsg": "<h4>Metadata succesvol overgezet naar nieuwe Eigenaar.</h4><dl class=\"dl-horizontal\"><dt>Overgezet:</dt><dd>{{done}}</dd><dt>Niet in Eigendom:</dt><dd>{{notOwner}}</dd><dt>Niet gevonden:</dt><dd>{{notFound}}</dd></dl>",
-    "filterGroup": "Filter groups ..."
+    "filterGroup": "Filter groups ...",
     "welcomeMoreInfo":"Voor meer informatie over metadata ...",
     "metadataInfo":"Metadata informatie"
 }
