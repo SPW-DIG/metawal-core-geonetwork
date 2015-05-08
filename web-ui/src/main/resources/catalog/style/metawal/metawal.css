@@ -801,3 +801,12 @@ Correction (angular/ext-js)
 .panel-rw.two-cols-75-25 .region-b {
 	margin-left: 0px;
 }
+/*******************************************************************************
+header 
+*******************************************************************************/
+.navbar{
+    padding-left: 0px !important;
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    padding-right: 0px !important;
+}
