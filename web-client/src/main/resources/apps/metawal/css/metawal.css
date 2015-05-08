@@ -884,3 +884,12 @@ body {
 #x-menu-el-addLayerAction {
     display: none;
 }
+
+/*******************************************************************************
+Center image in a link (view thumbnails)
+*******************************************************************************/
+.thumbnail a {
+  display: table-cell;
+  height: 156px;
+  vertical-align: middle;
+}
