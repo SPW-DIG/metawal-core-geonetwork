@@ -281,6 +281,10 @@
   "transferOwnershipSuccessMsg": "<h4>Successfully transferred metadata to a new Owner.</h4><dl class=\"dl-horizontal\"><dt>Transferred:</dt><dd>{{done}}</dd><dt>Not Owned:</dt><dd>{{notOwner}}</dd><dt>Not found:</dt><dd>{{notFound}}</dd></dl>",
   "filterGroup": "Filter groups ...",
   "welcomeMoreInfo":"For more metadata information ...",
-  "metadataInfo":"Metadata information"
-
+  "metadataInfo":"Metadata information",
+  "wpsLoadingProcessDescription": "Loading process description ...",
+  "wpsDescribeProcessFailed": "DescribeProcess failed",
+  "wpsExecute": "Execute",
+  "wpsExecuteFailed": "Execute failed",
+  "wpsErrorCodeReturned": "The serveur returned status code"
 }
