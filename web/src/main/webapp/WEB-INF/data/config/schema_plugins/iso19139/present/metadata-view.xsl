@@ -566,7 +566,7 @@
                   </xsl:apply-templates>
                 </xsl:variable>
                 <li>
-                  <a href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}">
+                  <a target="_blank" href="{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}">
                     <xsl:choose>
                       <xsl:when test="contains(current-grouping-key(), 'OGC') or contains(current-grouping-key(), 'DOWNLOAD')">
                         <!-- Name contains layer, feature type, coverage ... -->
@@ -606,7 +606,7 @@
                   <!-- Display add to map action for WMS -->
                   <xsl:if test="contains(current-grouping-key(), 'WMS')">
                   &#160;
-                  <a href="#" class="md-mn addLayer"
+                  <a href="#" target="_blank" class="md-mn addLayer"
                     onclick="app.switchMode('1', true);app.getIMap().addWMSLayer([[
                               '{gmd:CI_OnlineResource/gmd:description/gco:CharacterString}', 
                               '{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}', 
