@@ -14,7 +14,7 @@
                 <div class="top-spw-global">
                     <!--start grid_16-->
                     <div class="grid_16">
-                        <a class="portail-walloniebe" href="http://www.wallonie.be">Portail WALLONIE.BE</a>
+                        <a class="portail-walloniebe" target="_blank" href="http://www.wallonie.be">Portail WALLONIE.BE</a>
                         <a class="federation-wallonie-bruxelles" target="_blank" href="http://www.federation-wallonie-bruxelles.be/">Fédération Wallonie-Bruxelles</a>
                         <a class="geoportail-de-la-wallonie" target="_blank" href="http://geoportail.wallonie.be/cms/fr/sites/geoportail/home.html">Géoportail de la Wallonie</a>
                         <div class="clear"></div>

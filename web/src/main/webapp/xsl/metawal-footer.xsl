@@ -14,11 +14,11 @@
 									<div class="in">
 										<div class="panel-pane pane-block pane-menu-menu-footer-menu">
 											<ul class="menu">
-												<li class="first leaf menu-1150 mentions_legales"><a href="http://geoportail.wallonie.be/mentions-legales.html">Mentions légales</a></li>
-												<li class="leaf menu-544 vie_privee"><a href="http://geoportail.wallonie.be/vie-privee.html">Vie privée</a></li>
-												<li class="leaf menu-1152 mediateur"><a href="http://geoportail.wallonie.be/mediateur.html">Médiateur</a></li>
-												<li class="leaf"><a href="http://geoportail.wallonie.be/home/infrasig/informations-sur-les-metadonnees.html">Aide Metawal</a></li>
-												<li class="last leaf menu-1153 accessibilite"><a href="http://geoportail.wallonie.be/accessibilite.html">Accessibilité</a></li>
+												<li class="first leaf menu-1150 mentions_legales"><a href="http://geoportail.wallonie.be/mentions-legales.html" target="_blank">Mentions légales</a></li>
+												<li class="leaf menu-544 vie_privee"><a href="http://geoportail.wallonie.be/vie-privee.html" target="_blank">Vie privée</a></li>
+												<li class="leaf menu-1152 mediateur"><a href="http://geoportail.wallonie.be/mediateur.html" target="_blank">Médiateur</a></li>
+												<li class="leaf"><a href="http://geoportail.wallonie.be/home/infrasig/informations-sur-les-metadonnees.html" target="_blank">Aide Metawal</a></li>
+												<li class="last leaf menu-1153 accessibilite"><a href="http://geoportail.wallonie.be/accessibilite.html" target="_blank">Accessibilité</a></li>
 											</ul>
 										</div>
 									</div>
