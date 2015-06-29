@@ -18,6 +18,7 @@
 												<li class="leaf menu-544 vie_privee"><a href="http://geoportail.wallonie.be/vie-privee.html" target="_blank">Vie privée</a></li>
 												<li class="leaf menu-1152 mediateur"><a href="http://geoportail.wallonie.be/mediateur.html" target="_blank">Médiateur</a></li>
 												<li class="leaf"><a href="http://geoportail.wallonie.be/home/infrasig/informations-sur-les-metadonnees.html" target="_blank">Aide Metawal</a></li>
+												<li class="leaf"><a href='https://github.com/SPW-DIG/metawal-core-geonetwork/milestones?direction=desc&amp;sort=due_date&amp;state=closed' target="_blank">Version</a></li>
 												<li class="last leaf menu-1153 accessibilite"><a href="http://geoportail.wallonie.be/accessibilite.html" target="_blank">Accessibilité</a></li>
 											</ul>
 										</div>
