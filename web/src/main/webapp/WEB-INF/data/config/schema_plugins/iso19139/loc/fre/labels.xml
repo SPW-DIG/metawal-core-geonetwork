@@ -2353,6 +2353,8 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="ESRI File Geodatabase (.fgdb)">ESRI File Geodatabase (.fgdb)</option>
 			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
 			<option value="KML (.kml ou .kmz)">KML (.kml ou .kmz)</option>
+			<option value="GeoJson" title="3.2.1">GeoJson</option>
+			<option value="Json" title="3.2.1">Json</option>
 			<option value="TIFF (.tif ou .tiff)">TIFF (.tif ou .tiff)</option>
 			<option value="GeoTIFF (.tif)">GeoTIFF (.tif)</option>
 			<option value="">-------------------------------------</option>
