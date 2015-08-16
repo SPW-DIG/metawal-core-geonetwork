@@ -115,9 +115,11 @@
     <name>gmd:portrayalCatalogueInfo</name>
     <name>gmd:portrayalCatalogueCitation</name>
     <name>gmd:thesaurusName</name>
+    <name>gmd:resourceConstraints</name>
     <name>gmd:spatialRepresentationInfo</name>
     <name>gmd:pointOfContact</name>
     <name>gmd:contact</name>
+    <name>gmd:graphicOverview</name>
     <name>gmd:citedResponsibleParty</name>
     <name>gmd:dataQualityInfo</name>
     <name>gmd:contentInfo</name>
@@ -144,6 +146,7 @@
     <name>gmd:verticalCRS</name>
     <name>gml:verticalCS</name>
     <name>gml:verticalDatum</name>
+    <name>gmd:identifier</name>
   </fieldsWithFieldset>
 
   <multilingualFields>
@@ -175,6 +178,7 @@
       <name>gmd:dataSetURI</name>
       <name>gmd:postalCode</name>
       <name>gmd:city</name>
+      <name>gmd:language</name>
       <name>gmd:administrativeArea</name>
       <name>gmd:voice</name>
       <name>gmd:facsimile</name>
@@ -226,8 +230,6 @@
 
   <!-- View configuration -->
   <views>
-    <!-- TODO: Add option to configure if view should be displayed or not 
-    based on xpath expression ? -->
     <!--Turn off INSPIRE view by default -->
     <view name="inspire" upAndDownControlHidden="true" disabled="true">
       <tab id="inspire" default="true" mode="flat">
@@ -251,7 +253,7 @@
               <snippet>
                 <gmd:hierarchyLevel>
                   <gmd:MD_ScopeCode
-                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
                       codeListValue="dataset"/>
                 </gmd:hierarchyLevel>
               </snippet>
@@ -605,160 +607,27 @@
 
 
           <section name="referenceDate">
-
-            <field name="creationDate" templateModeOnly="true"
-              xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/
-              gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'creation']"
-              if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0"
-              del=".">
+            <field xpath="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation/
+              gmd:date"/>
+            <action type="add" name="referenceDate" or="date"
+                    in="/gmd:MD_Metadata/gmd:identificationInfo/*/gmd:citation/gmd:CI_Citation">
               <template>
-                <values>
-                  <key label="date"
-                       xpath="gmd:CI_Date/gmd:date/*"
-                       use="gn-date-picker"
-                       tooltip="gmd:date||/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-                </values>
                 <snippet>
                   <gmd:date>
                     <gmd:CI_Date>
-                      <gmd:date>{{date}}</gmd:date>
+                      <gmd:date>
+                        <gco:Date></gco:Date>
+                      </gmd:date>
                       <gmd:dateType>
                         <gmd:CI_DateTypeCode
-                          codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
-                          codeListValue="creation"/>
+                                codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
+                                codeListValue="revision"/>
                       </gmd:dateType>
                     </gmd:CI_Date>
                   </gmd:date>
                 </snippet>
               </template>
-            </field>
-
-            <field name="creationDate" templateModeOnly="true"
-              xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/
-              gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'creation']"
-              if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) > 0">
-              <template>
-                <values>
-                  <key label="date"
-                       xpath="gmd:CI_Date/gmd:date/*"
-                       use="gn-date-picker"
-                       tooltip="gmd:date||/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-                </values>
-                <snippet>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>{{date}}</gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode
-                          codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
-                          codeListValue="creation"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                </snippet>
-              </template>
-            </field>
-
-            <field name="publicationDate" templateModeOnly="true"
-              xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/
-              gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'publication']"
-              if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
-              <template>
-                <values>
-                  <key label="date"
-                       xpath="gmd:CI_Date/gmd:date/*"
-                       use="gn-date-picker"
-                       tooltip="gmd:date||/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-                </values>
-                <snippet>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>{{date}}</gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode
-                          codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
-                          codeListValue="publication"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                </snippet>
-              </template>
-            </field>
-            <field name="publicationDate" templateModeOnly="true"
-              xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/
-              gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'publication']"
-              if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) > 0">
-              <template>
-                <values>
-                  <key label="date"
-                       xpath="gmd:CI_Date/gmd:date/*"
-                       use="gn-date-picker"
-                       tooltip="gmd:date||/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-                </values>
-                <snippet>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>{{date}}</gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode
-                          codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
-                          codeListValue="publication"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                </snippet>
-              </template>
-            </field>
-
-            <field name="revisionDate" templateModeOnly="true"
-              xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'revision']"
-              if="count(gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification) > 0">
-              <template>
-                <values>
-                  <key label="date"
-                       xpath="gmd:CI_Date/gmd:date/*"
-                       use="gn-date-picker"
-                       tooltip="gmd:date||/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-                </values>
-                <snippet>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>{{date}}</gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode
-                          codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
-                          codeListValue="revision"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                </snippet>
-              </template>
-            </field>
-            <field name="revisionDate" templateModeOnly="true"
-              xpath="/gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification/gmd:citation/gmd:CI_Citation/
-              gmd:date[gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue = 'revision']"
-              if="count(gmd:MD_Metadata/gmd:identificationInfo/srv:SV_ServiceIdentification) > 0">
-              <template>
-                <values>
-                  <key label="date"
-                       xpath="gmd:CI_Date/gmd:date/*"
-                       use="gn-date-picker"
-                       tooltip="gmd:date||/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date"/>
-                </values>
-                <snippet>
-                  <gmd:date>
-                    <gmd:CI_Date>
-                      <gmd:date>{{date}}</gmd:date>
-                      <gmd:dateType>
-                        <gmd:CI_DateTypeCode
-                          codeList="http://www.isotc211.org/2005/resources/codeList.xml#CI_DateTypeCode"
-                          codeListValue="revision"/>
-                      </gmd:dateType>
-                    </gmd:CI_Date>
-                  </gmd:date>
-                </snippet>
-              </template>
-            </field>
+            </action>
           </section>
 
 
@@ -954,7 +823,7 @@
                             </gmd:date>
                             <gmd:dateType>
                               <gmd:CI_DateTypeCode
-                                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                      codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
                                       codeListValue="publication"/>
                             </gmd:dateType>
                           </gmd:CI_Date>
@@ -1003,7 +872,7 @@
                                 </gmd:date>
                                 <gmd:dateType>
                                   <gmd:CI_DateTypeCode
-                                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
                                           codeListValue="publication"/>
                                 </gmd:dateType>
                               </gmd:CI_Date>
@@ -1087,7 +956,7 @@
                   <gmd:MD_LegalConstraints>
                     <gmd:accessConstraints>
                       <gmd:MD_RestrictionCode
-                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
                         codeListValue="otherRestrictions"/>
                     </gmd:accessConstraints>
                     <gmd:useConstraints/>
@@ -1115,7 +984,7 @@
                   <gmd:MD_LegalConstraints>
                     <gmd:accessConstraints>
                       <gmd:MD_RestrictionCode
-                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_RestrictionCode"
                         codeListValue="otherRestrictions"/>
                     </gmd:accessConstraints>
                     <gmd:useConstraints/>
@@ -1182,7 +1051,7 @@
                     </gmd:contactInfo>
                     <gmd:role>
                       <gmd:CI_RoleCode
-                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"
                         codeListValue="{{role}}"/>
                     </gmd:role>
                   </gmd:CI_ResponsibleParty>
@@ -1249,7 +1118,7 @@
                     </gmd:contactInfo>
                     <gmd:role>
                       <gmd:CI_RoleCode
-                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"
                         codeListValue="{{role}}"/>
                     </gmd:role>
                   </gmd:CI_ResponsibleParty>
@@ -1318,7 +1187,7 @@
                     </gmd:contactInfo>
                     <gmd:role>
                       <gmd:CI_RoleCode
-                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_RoleCode"
                         codeListValue="{{role}}"/>
                     </gmd:role>
                   </gmd:CI_ResponsibleParty>
@@ -1343,6 +1212,8 @@
     <view name="default">
       <tab id="default" default="true" mode="flat">
         <section xpath="/gmd:MD_Metadata/gmd:identificationInfo"/>
+        <section xpath="/gmd:MD_Metadata/gmd:referenceSystemInfo"/>
+        <section xpath="/gmd:MD_Metadata/gmd:spatialRepresentationInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:distributionInfo"/>
         <section xpath="/gmd:MD_Metadata/gmd:dataQualityInfo"/>
         <section name="gmd:MD_Metadata">
@@ -1372,11 +1243,14 @@
       <!-- Elements that should not use the "flat" mode --> 
       <flatModeExceptions>
         <for name="gmd:descriptiveKeywords" />
+        <for name="gmd:keyword"/>
+        <for name="gmd:spatialResolution"/>
         <for name="gmd:pointOfContact"/>
         <for name="gmd:distributor"/>
         <for name="gmd:contact"/>
         <for name="gmd:processor"/>
         <for name="gmd:citedResponsibleParty"/>
+        <for name="gmd:topicCategory"/>
       </flatModeExceptions>
 
       <!--

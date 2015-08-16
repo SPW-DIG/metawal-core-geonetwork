@@ -16,6 +16,7 @@
   }
   [ngeo-map] {
     width: 100%;
+    height: 89.9vh;
     &.gn-gfi-loading:hover {
       cursor: wait;
     }
@@ -110,6 +111,9 @@
         transition: opacity @transition-params;
       }
     }
+    .gn-layer-outofrange > label {
+      color: #999;
+    }
     .gn-searchlayer {
       label {
         font-size: 90%;
@@ -160,7 +164,7 @@
     }
     .btn-group {
       display: flex;
-      button {
+      .btn {
         flex: 1;
       }
     }
@@ -247,23 +251,6 @@
     }
     label {
       padding-top: .3em;
-    }
-  }
-
-  .panel-carousel-window {
-    overflow-x: hidden;
-  }
-  .panel-carousel-container {
-    width: 400%;
-    position: relative;
-    left: 0;
-    transition: left @transition-params;
-    display: flex;
-  }
-  .panel-carousel {
-    flex: 1;
-    .alert {
-      font-size: @font-size-small;
     }
   }
 
@@ -450,6 +437,24 @@
   [gn-localisation-input] {
     .dropdown-menu {
       padding-bottom: 0;
+    }
+  }
+  .gn-draw-styleform {
+    > div > input {
+      margin: 15px 0;
+      width: 80%;
+    }
+    label {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    form {
+      input[type='text'] {
+        width: 146px;
+      }
+      .form-group {
+        margin-bottom: 8px;
+      }
     }
   }
 }

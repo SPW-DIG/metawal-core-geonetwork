@@ -142,26 +142,36 @@
           getLayerExtentFromGetCap: function(map, getCapLayer) {
             var extent = null;
             var layer = getCapLayer;
-            var srsCode = map.getView().getProjection().getCode();
+            var proj = map.getView().getProjection();
 
             //var ext = layer.BoundingBox[0].extent;
             //var olExtent = [ext[1],ext[0],ext[3],ext[2]];
             // TODO fix using layer.BoundingBox[0].extent
             // when sextant fix his capabilities
             if (angular.isArray(layer.EX_GeographicBoundingBox)) {
-              extent = ol.proj.transformExtent(
-                  layer.EX_GeographicBoundingBox,
-                  'EPSG:4326',
-                  srsCode);
+              extent =
+                  ol.extent.containsExtent(
+                      proj.getWorldExtent(),
+                      layer.EX_GeographicBoundingBox) ?
+                      ol.proj.transformExtent(layer.EX_GeographicBoundingBox,
+                          'EPSG:4326', proj) :
+                      proj.getExtent();
+
             } else if (angular.isArray(layer.BoundingBox)) {
               for (var i = 0; i < layer.BoundingBox.length; i++) {
                 var bbox = layer.BoundingBox[i];
                 // Use the bbox with the code matching the map projection
                 // or the first one.
-                if (bbox.crs === srsCode || layer.BoundingBox.length === 1) {
-                  extent = ol.proj.transformExtent(bbox.extent,
-                      bbox.crs || 'EPSG:4326',
-                      srsCode);
+                if (bbox.crs === proj.getCode() ||
+                    layer.BoundingBox.length === 1) {
+
+                  extent =
+                      ol.extent.containsExtent(
+                          proj.getWorldExtent(),
+                          bbox.extent) ?
+                          ol.proj.transformExtent(bbox.extent,
+                      bbox.crs || 'EPSG:4326', proj) :
+                          proj.getExtent();
                   break;
                 }
               }
@@ -169,14 +179,99 @@
             return extent;
           },
 
-          getLayerInfoFromCap: function(name, capObj) {
+          getLayerInfoFromCap: function(name, capObj, uuid) {
+            var needles = [];
             var layers = capObj.layers || capObj.Layer;
-            for (var i = 0, len = layers.length;
-                 i < len; i++) {
-              if (name == layers[i].Name ||
-                  name == layers[i].Identifier) {
+
+            for (var i = 0, len = layers.length; i < len; i++) {
+              //check layername
+              if (name == layers[i].Name) {
+                layers[i].nameToUse = name;
                 return layers[i];
               }
+
+              //check dataset identifer match
+              if (uuid != null) {
+                if (angular.isArray(layers[i].Identifier)) {
+                  angular.forEach(layers[i].Identifier, function(id) {
+                    if (id == uuid) {
+                      needles.push(layers[i]);
+                    }
+                  });
+                }
+              }
+
+              //check uuid from metadata url
+              if (uuid != null) {
+                if (angular.isArray(layers[i].MetadataURL)) {
+                  angular.forEach(layers[i].MetadataURL, function(mdu) {
+                    if (mdu && mdu.OnlineResource &&
+                        mdu.OnlineResource.indexOf(uuid) > 0) {
+                      needles.push(layers[i]);
+                    }
+                  });
+                }
+              }
+            }
+
+            //FIXME: allow multiple, remove duplicates
+            if (needles.length > 0) {
+              return needles[0];
+            }
+            else {
+              return;
+            }
+          },
+
+
+          getLayerInfoFromWfsCap: function(name, capObj, uuid) {
+            var needles = [];
+            var layers = capObj.featureTypeList.featureType;
+
+            for (var i = 0, len = layers.length; i < len; i++) {
+              //check layername
+              if (name == layers[i].name.localPart ||
+                  name == layers[i].name.prefix + ':' +
+                  layers[i].name.localPart ||
+                  name == layers[i].Name) {
+                return layers[i];
+              }
+
+              //check title
+              if (name == layers[i].title || name == layers[i].Title) {
+                return layers[i];
+              }
+
+              //check dataset identifer match
+              if (uuid != null) {
+                if (angular.isArray(layers[i].Identifier)) {
+                  angular.forEach(layers[i].Identifier, function(id) {
+                    if (id == uuid) {
+                      needles.push(layers[i]);
+                    }
+                  });
+                }
+              }
+
+              //check uuid from metadata url
+              if (uuid != null) {
+                if (angular.isArray(layers[i].MetadataURL)) {
+                  angular.forEach(layers[i].MetadataURL, function(mdu) {
+                    if (mdu && mdu.OnlineResource &&
+                        mdu.OnlineResource.indexOf(uuid) > 0) {
+                      needles.push(layers[i]);
+                    }
+                  });
+                }
+              }
+            }
+
+            //FIXME: allow multiple, remove duplicates
+            if (needles.length > 0) {
+              return needles[0];
+            }
+            else {
+              return;
             }
           }
         };

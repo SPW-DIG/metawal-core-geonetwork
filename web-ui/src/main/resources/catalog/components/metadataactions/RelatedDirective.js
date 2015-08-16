@@ -16,8 +16,9 @@
           'gnRelated',
           [
         '$http',
+        'gnGlobalSettings',
         'gnRelatedResources',
-        function($http, gnRelatedResources) {
+        function($http, gnGlobalSettings, gnRelatedResources) {
           return {
             restrict: 'A',
             templateUrl: function(elem, attrs) {
@@ -25,15 +26,17 @@
                       '../../catalog/components/metadataactions/partials/related.html';
             },
             scope: {
-              uuid: '@gnRelated',
+              md: '=gnRelated',
               template: '@',
               types: '@',
               title: '@',
               list: '@'
             },
             link: function(scope, element, attrs, controller) {
-
               scope.updateRelations = function() {
+                if (scope.md) {
+                  scope.uuid = scope.md.getUuid();
+                }
                 scope.relations = [];
                 if (scope.uuid) {
                   $http.get(
@@ -42,12 +45,14 @@
                      scope.types : ''), {cache: true})
                             .success(function(data, status, headers, config) {
                        if (data && data != 'null' && data.relation) {
-                         if (!angular.isArray(data.relation))
+                         if (!angular.isArray(data.relation)) {
                            scope.relations = [
                              data.relation
                            ];
-                         for (var i = 0; i < data.relation.length; i++) {
-                           scope.relations.push(data.relation[i]);
+                         } else {
+                           for (var i = 0; i < data.relation.length; i++) {
+                             scope.relations.push(data.relation[i]);
+                           }
                          }
                        }
                      });
@@ -58,9 +63,19 @@
                 return link.title['#text'] || link.title;
               };
 
+              scope.hasAction = function(mainType) {
+                // Do not display add to map action when map
+                // viewer is disabled.
+                if (mainType === 'WMS' &&
+                   gnGlobalSettings.isMapViewerEnabled === false) {
+                  return false;
+                }
+                return angular.isFunction(
+                   gnRelatedResources.map[mainType].action);
+              };
               scope.config = gnRelatedResources;
 
-              scope.$watch('uuid', function() {
+              scope.$watchCollection('md', function() {
                 scope.updateRelations();
               });
 

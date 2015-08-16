@@ -81,7 +81,7 @@
 
 
           /** Facets configuration */
-          searchSettings.facetsSummaryType = 'hits';
+          searchSettings.facetsSummaryType = 'details';
 
           /*
              * Hits per page combo values configuration. The first one is the
@@ -136,9 +136,13 @@
           // to render other layout
 
           // TODO: formatter should be defined per schema
+          // schema: {
+          // iso19139: 'md.format.xml?xsl=full_view&&id='
+          // }
           searchSettings.formatter = {
             // defaultUrl: 'md.format.xml?xsl=full_view&id='
-            defaultUrl: 'md.format.xml?xsl=xsl-view&id=',
+            defaultUrl: 'md.format.xml?xsl=xsl-view&uuid=',
+            defaultPdfUrl: 'md.format.pdf?xsl=full_view&uuid=',
             list: [{
             //  label: 'inspire',
             //  url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
@@ -147,13 +151,13 @@
               url: 'md.format.xml?xsl=xsl-view&view=advanced&id='
             }, {
               label: 'full',
-              url: 'md.format.xml?xsl=full_view&id='
+              url: 'md.format.xml?xsl=full_view&uuid='
+              /*
+              // You can use a function to choose formatter
+              url : function(md) {
+                return 'md.format.xml?xsl=full_view&uuid=' + md.getUuid();
+              }*/
             }]
-            // TODO: maybe formatter config should depends
-            // on the metadata schema.
-            // schema: {
-            // iso19139: 'md.format.xml?xsl=full_view&&id='
-            // }
           };
 
           // Set the default template to use

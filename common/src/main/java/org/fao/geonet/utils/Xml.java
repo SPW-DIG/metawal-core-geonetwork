@@ -338,11 +338,18 @@ public final class Xml
 	public static Element loadString(String data, boolean validate)
 												throws IOException, JDOMException
 	{
-		//SAXBuilder builder = new SAXBuilder(validate);
-		SAXBuilder builder = getSAXBuilderWithPathXMLResolver(validate, null); // oasis catalogs are used
-		Document   jdoc    = builder.build(new StringReader(data));
+        try {
+            SAXBuilder builder = getSAXBuilderWithPathXMLResolver(validate, null); // oasis catalogs are used
+            Document jdoc = builder.build(new StringReader(data));
 
-		return (Element) jdoc.getRootElement().detach();
+            return (Element) jdoc.getRootElement().detach();
+        } catch (Exception e) {
+            Log.warning(Log.XML_RESOLVER,
+                    String.format("Error loading string %s as XML. Error is: %s",
+                            data, e.getMessage())
+            );
+            throw e;
+        }
 	}
 
 	//--------------------------------------------------------------------------
@@ -613,14 +620,10 @@ public final class Xml
      */
 	public static void clearTransformerFactoryStylesheetCache() {
 		TransformerFactory transFact = TransformerFactory.newInstance();
-		try {
-			Class<?> class1 = transFact.getClass();
-            Method cacheMethod = class1.getDeclaredMethod("clearCache");
-			cacheMethod.invoke(transFact, new Object[0]);
-		} catch (Exception e) {
-			Log.error(Log.ENGINE, "Failed to find/invoke clearCache method - continuing ("+e.getMessage()+")");
-		}
-
+        if(transFact instanceof CachedTransformer)
+        {
+            ((CachedTransformer)transFact).clearCache();
+        }
 	}
 
    // --------------------------------------------------------------------------

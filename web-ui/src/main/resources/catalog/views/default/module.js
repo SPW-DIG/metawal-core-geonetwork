@@ -70,14 +70,19 @@
       var viewerMap = gnSearchSettings.viewerMap;
       var searchMap = gnSearchSettings.searchMap;
 
+
+
       $scope.modelOptions = angular.copy(gnGlobalSettings.modelOptions);
       $scope.modelOptionsForm = angular.copy(gnGlobalSettings.modelOptions);
       $scope.gnWmsQueue = gnWmsQueue;
       $scope.$location = $location;
       $scope.activeTab = '/home';
       $scope.resultTemplate = gnSearchSettings.resultTemplate;
+      $scope.facetsSummaryType = gnSearchSettings.facetsSummaryType;
       $scope.location = gnSearchLocation;
-
+      $scope.toggleMap = function () {
+        $(searchMap.getTargetElement()).toggle();
+      };
       hotkeys.bindTo($scope)
         .add({
             combo: 'h',
@@ -161,6 +166,19 @@
           active: false
         }};
 
+      // Set the default browse mode for the home page
+      $scope.$watch('searchInfo', function () {
+        if (angular.isDefined($scope.searchInfo.facet)) {
+          if ($scope.searchInfo.facet['inspireThemes'].length > 0) {
+            $scope.browse = 'inspire';
+          } else if ($scope.searchInfo.facet['topicCats'].length > 0) {
+            $scope.browse = 'topics';
+          //} else if ($scope.searchInfo.facet['categories'].length > 0) {
+          //  $scope.browse = 'cat';
+          }
+        }
+      });
+
       $scope.resultviewFns = {
         addMdLayerToMap: function (link, md) {
 
@@ -192,7 +210,7 @@
             match(/^(\/[a-zA-Z0-9]*)($|\/.*)/)[1];
 
         if (gnSearchLocation.isSearch() && (!angular.isArray(
-            searchMap.getSize()) || searchMap.getSize().indexOf(0) >= 0)) {
+            searchMap.getSize()) || searchMap.getSize()[0] < 0)) {
           setTimeout(function() {
             searchMap.updateSize();
 
@@ -216,9 +234,19 @@
         from: 1,
         to: 30,
         viewerMap: viewerMap,
-        searchMap: searchMap
+        searchMap: searchMap,
+        mapfieldOption: {
+          relations: ['within']
+        },
+        defaultParams: {
+          'facet.q': '',
+          resultType: gnSearchSettings.facetsSummaryType || 'details'
+        },
+        params: {
+          'facet.q': '',
+          resultType: gnSearchSettings.facetsSummaryType || 'details'
+        }
       }, gnSearchSettings.sortbyDefault);
-
 
     }]);
 })();

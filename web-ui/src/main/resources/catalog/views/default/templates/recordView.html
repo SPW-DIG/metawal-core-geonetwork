@@ -31,7 +31,7 @@
 
 
     <div class="btn-group pull-right">
-      <button type="button" class="btn btn-link dropdown-toggle"
+      <button type="button" class="btn btn-default dropdown-toggle"
               data-toggle="dropdown"
               aria-expanded="false">
         <i class="fa fa-eye"></i>&nbsp;
@@ -80,10 +80,11 @@
         <h1>
           <i class="fa gn-icon-{{mdView.current.record.type[0]}}"/>
           {{mdView.current.record.title || mdView.current.record.defaultTitle}}
+
         </h1>
 
         <div class="pull-right">
-          <i class="fa fa-calendar"></i>
+          <i class="fa fa-calendar"></i>&nbsp;
           <span data-translate="">updatedOn</span>
           <span data-gn-humanize-time="{{mdView.current.record['geonet:info'].changeDate}}"
                 data-from-now=""></span>
@@ -92,12 +93,18 @@
 
         <div class="well" data-ng-bind-html="mdView.current.record.abstract | newlines"/>
 
-        <div data-gn-related="{{mdView.current.record['geonet:info'].uuid}}"
+        <!-- Display the first metadata status (apply to ISO19139 record) -->
+        <div data-ng-if="mdView.current.record.status_text.length > 0"
+             title="{{mdView.current.record.status_text[0]}}"
+             class="gn-status gn-status-mdview gn-status-{{mdView.current.record.status[0]}}">
+          {{mdView.current.record.status_text[0]}}</div>
+
+        <div data-gn-related="mdView.current.record"
              data-types="online"
              data-title="{{'downloadsAndResources' | translate}}">
         </div>
 
-        <div data-gn-related="{{mdView.current.record['geonet:info'].uuid}}"
+        <div data-gn-related="mdView.current.record"
              data-types="parent|children|service|dataset"
              data-title="{{'associatedResources' | translate}}">
         </div>
@@ -106,6 +113,18 @@
 
         <table class="table table-striped">
           <tbody>
+          <tr data-ng-if="mdView.current.record.inspirethemewithac.length > 0 ||
+                          mdView.current.record.inspirethemewithac.length > 0">
+              <th data-translate="">inspireThemes</th>
+              <td>
+                <div data-ng-repeat="cat in mdView.current.record.inspirethemewithac"
+                     class="iti-box full {{cat.split('|')[0]}} {{cat.split('|')[0]}}-{{langs[lang]}}"
+                     title="{{cat.split('|')[1]}}">
+                  <div class="icon"><span class="iti-{{cat.split('|')[0]}}"></span></div>
+                  <p class="label"></p>
+                </div>
+              </td>
+            </tr>
             <tr data-ng-if="mdView.current.record.category.length > 0 ||
                       mdView.current.record.topicCat.length > 0">
               <th data-translate="">listOfCategories</th>
@@ -145,6 +164,16 @@
                 </ul>
               </td>
             </tr>
+            <tr data-ng-if="mdView.current.record.identifier">
+              <th data-translate="">identifier</th>
+              <td>
+                <ul>
+                  <li data-ng-repeat="i in mdView.current.record.identifier">
+                    {{i}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
             <tr data-ng-if="mdView.current.record.classification_text">
               <th data-translate="">classification</th>
               <td>{{mdView.current.record.classification_text}}</td>
@@ -171,21 +200,53 @@
               </td>
             </tr>
 
-            <tr data-ng-if="mdView.current.record.contacts.resource">
-              <th data-translate="">contact</th>
+            <tr data-ng-if="mdView.current.record.getAllContacts().resource">
+              <th data-translate="">resourceContact</th>
               <td>
-                <blockquote>
-                  {{mdView.current.record.contacts.resource}}
-                </blockquote>
+                <div class="gn-contact"
+                     data-ng-repeat="c in mdView.current.record.getAllContacts().resource track by $index">
+                  <h3>
+                    <i class="fa fa-envelope"></i>
+                    {{c.role | translate}}
+                  </h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <address>
+                        <strong>
+                          {{c.org}}<br/>
+                        </strong>
+                        <div data-ng-if="c.email != ''">
+                          <a href="mailto:{{c.email}}">
+                            <span data-ng-hide="c.name">{{c.email}}</span>
+                            <span data-ng-show="c.name">{{c.name}}</span>
+                            <span data-ng-show="c.position">({{c.position}})</span>
+                          </a>
+                        </div>
+                        <div data-ng-if="c.email === ''">{{c.name}}
+                          <span data-ng-show="c.position">({{c.position}})</span>
+                        </div>
+                        <div data-ng-if="c.address != ''">{{c.address}}</div>
+                        <a href="tel:{{c.phone}}"
+                           data-ng-if="c.phone != ''">
+                          <span data-translate="">call</span> {{c.phone}}
+                        </a>
+                      </address>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>
             <tr data-ng-if="mdView.current.record.credit">
               <th data-translate="">credit</th>
               <td>{{mdView.current.record.credit}}</td>
             </tr>
-            <tr data-ng-if="mdView.current.record.status_text">
+            <tr data-ng-if="mdView.current.record.status_text.length > 0">
               <th data-translate="">resourceStatus</th>
-              <td>{{mdView.current.record.status_text}}</td>
+              <td>
+                <ul>
+                  <li data-ng-repeat="s in mdView.current.record.status_text">{{s}}</li>
+                </ul>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -207,7 +268,7 @@
               <th data-translate="">updateFrequency</th>
               <td>{{mdView.current.record.maintenanceAndUpdateFrequency_text}}</td>
             </tr>
-            <tr data-ng-if="mdView.current.record.spatialRepresentationType">
+            <tr data-ng-if="mdView.current.record.spatialRepresentationType_text">
               <th data-translate="">spatialRepresentationType</th>
               <td>{{mdView.current.record.spatialRepresentationType_text}}</td>
             </tr>
@@ -215,7 +276,8 @@
               <th data-translate="">scale</th>
               <td>
                 <ul>
-                  <li data-ng-repeat="d in mdView.current.record.denominator">1/{{d}}</li>
+                  <li data-ng-repeat="d in mdView.current.record.denominator"
+                      class="gn-scale">{{d}}</li>
                 </ul>
               </td>
             </tr>
@@ -229,7 +291,11 @@
             </tr>
             <tr data-ng-if="mdView.current.record.crs">
               <th data-translate="">crs</th>
-              <td>{{mdView.current.record.crs}}</td>
+              <td>
+                <ul>
+                  <li data-ng-repeat="r in mdView.current.record.crs">{{r}}</li>
+                </ul>
+              </td>
             </tr>
             <tr data-ng-if="mdView.current.record.format">
               <th data-translate="">format</th>
@@ -241,11 +307,20 @@
               <th data-translate="">lineage</th>
               <td>
                 <p data-ng-bind-html="mdView.current.record.lineage | newlines"/>
-
-
-                <div data-gn-related="{{mdView.current.record['geonet:info'].uuid}}"
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div data-gn-related="mdView.current.record"
                      data-types="source"
                      data-title="{{'sourceDatasets' | translate}}">
+                </div>
+
+
+                <div data-gn-related="mdView.current.record"
+                     data-types="hassource"
+                     data-title="{{'isSourceOfDatasets' | translate}}">
                 </div>
               </td>
             </tr>
@@ -253,11 +328,11 @@
         </table>
 
 
-        <div data-gn-related="{{mdView.current.record['geonet:info'].uuid}}"
-             data-types="fcat"
+        <div data-gn-related="mdView.current.record"
+             data-types="fcat|hasfeaturecat"
              data-title="{{'featureCatalog' | translate}}">
         </div>
-        <div data-gn-related="{{mdView.current.record['geonet:info'].uuid}}"
+        <div data-gn-related="mdView.current.record"
              data-types="siblings|associated|related"
              data-title="{{'siblings' | translate}}">
         </div>
@@ -275,9 +350,37 @@
           <tr>
             <th data-translate="">contact</th>
             <td>
-              <blockquote data-ng-if="mdView.current.record.getContacts().metadata">
-                {{mdView.current.record.getContacts().metadata}}
-              </blockquote>
+              <div class="gn-contact"
+                   data-ng-repeat="c in mdView.current.record.getAllContacts().metadata track by $index">
+                <h3>
+                  <i class="fa fa-envelope"></i>
+                  {{c.role | translate}}
+                </h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <address>
+                      <strong>
+                        {{c.org}}<br/>
+                      </strong>
+                      <div data-ng-if="c.email != ''">
+                        <a href="mailto:{{c.email}}">
+                          <span data-ng-hide="c.name">{{c.email}}</span>
+                          <span data-ng-show="c.name">{{c.name}}</span>
+                          <span data-ng-show="c.position">({{c.position}})</span>
+                        </a>
+                      </div>
+                      <div data-ng-if="c.email === ''">{{c.name}}
+                        <span data-ng-show="c.position">({{c.position}})</span>
+                      </div>
+                      <p data-ng-if="c.address != ''">{{c.address}}</p>
+                      <a href="tel:{{c.phone}}"
+                         data-ng-if="c.phone != ''">
+                        <span data-translate="">call</span> {{c.phone}}
+                      </a>
+                    </address>
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
           <tr>
@@ -299,12 +402,12 @@
       </div>
 
       <div class="col-md-4 gn-md-side">
-
         <section data-ng-if="mdView.current.record.overviews.length > 0">
           <h4>
             <i class="fa fa-fw fa-image"></i>
             <span data-translate="">overview</span>
           </h4>
+
           <p data-ng-repeat="img in mdView.current.record.overviews">
           <img data-gn-img-modal="md"
                class="gn-img-thumbnail img-thumbnail"
@@ -313,15 +416,6 @@
           </p>
         </section></br>
 
-        <section data-ng-if="mdView.current.record.contacts.resource">
-          <h4>
-            <i class="fa fa-fw fa-envelope"></i>
-            <span data-translate="">contact</span>
-          </h4>
-          <blockquote>
-            {{mdView.current.record.contacts.resource}}
-          </blockquote>
-        </section></br>
 
         <section data-ng-if="mdView.current.record.geoBox.length > 0">
           <h4>
@@ -336,8 +430,9 @@
           <!-- TODO: use map config -->
           <p data-ng-repeat="bbox in mdView.current.record.geoBox">
             <img class="gn-img-thumbnail img-thumbnail gn-img-extent"
-               data-ng-src="region.getmap.png?mapsrs=EPSG:3857&width=250&background=osm&geomsrs=EPSG:4326&geom={{mdView.current.record.getBoxAsPolygon($index)}}"/>
+                 data-ng-src="region.getmap.png?mapsrs=EPSG:3857&width=250&background=osm&geomsrs=EPSG:4326&geom={{mdView.current.record.getBoxAsPolygon($index)}}"/>
           </p>
+
         </section></br>
 
         <section data-ng-if="mdView.current.record.creationDate ||
@@ -351,32 +446,65 @@
           </h4>
 
           <p>
-            <dl data-ng-show="mdView.current.record.creationDate">
-                <dt data-translate>creationDate</dt>
-                <dd data-gn-humanize-time="{{mdView.current.record.creationDate}}"
-                    data-format="YYYY-MM-DD"/>
-            </dl>
-            <dl data-ng-show="mdView.current.record.publicationDate">
-              <dt data-translate>publicationDate</dt>
-              <dd data-gn-humanize-time="{{mdView.current.record.publicationDate}}"
-                  data-format="YYYY-MM-DD"/>
-            </dl>
-            <dl data-ng-show="mdView.current.record.revisionDate">
-              <dt data-translate>revisionDate</dt>
-              <dd data-gn-humanize-time="{{mdView.current.record.revisionDate}}"
-                  data-format="YYYY-MM-DD"/>
-            </dl>
-            <dl data-ng-show="mdView.current.record.tempExtentBegin ||
+          <dl data-ng-show="mdView.current.record.creationDate">
+            <dt data-translate>creationDate</dt>
+            <dd data-gn-humanize-time="{{mdView.current.record.creationDate}}"
+                data-format="YYYY-MM-DD"/>
+          </dl>
+          <dl data-ng-show="mdView.current.record.publicationDate">
+            <dt data-translate>publicationDate</dt>
+            <dd data-gn-humanize-time="{{mdView.current.record.publicationDate}}"
+                data-format="YYYY-MM-DD"/>
+          </dl>
+          <dl data-ng-show="mdView.current.record.revisionDate">
+            <dt data-translate>revisionDate</dt>
+            <dd data-gn-humanize-time="{{mdView.current.record.revisionDate}}"
+                data-format="YYYY-MM-DD"/>
+          </dl>
+          <dl data-ng-show="mdView.current.record.tempExtentBegin ||
                               mdView.current.record.tempExtentEnd">
-              <dt data-translate>tempExtentBegin</dt>
-              <dd>
-                <span data-gn-humanize-time="{{mdView.current.record.tempExtentBegin}}"/>
-                &nbsp;<i class="fa fa-forward"></i>&nbsp;
-                <span data-gn-humanize-time="{{mdView.current.record.tempExtentEnd}}"/>
-              </dd>
-            </dl>
+            <dt data-translate>tempExtentBegin</dt>
+            <dd>
+              <span data-gn-humanize-time="{{mdView.current.record.tempExtentBegin}}"/>
+              &nbsp;<i class="fa fa-forward"></i>&nbsp;
+              <span data-gn-humanize-time="{{mdView.current.record.tempExtentEnd}}"/>
+            </dd>
+          </dl>
           </p>
         </section></br>
+
+        <!--<section data-ng-repeat="c in mdView.current.record.getAllContacts().resource track by $index">
+          <h4>
+            <i class="fa fa-fw fa-envelope"></i>
+            <span>{{c.role | translate}}</span>
+          </h4>
+          <div class="gn-contact">
+            <div class="row">
+              <div class="col-md-6">
+                <address>
+                  <strong title="{{c.address}}">
+                    {{c.org}}<br/>
+                  </strong>
+                  <div data-ng-if="c.email != ''">
+                    <a href="mailto:{{c.email}}">
+                      <span data-ng-hide="c.name">{{c.email}}</span>
+                      <span data-ng-show="c.name">{{c.name}}</span>
+                      <span data-ng-show="c.position">({{c.position}})</span>
+                    </a>
+                  </div>
+                  <div data-ng-if="c.email === ''">{{c.name}}
+                    <span data-ng-show="c.position">({{c.position}})</span>
+                  </div>
+                  <a href="tel:{{c.phone}}"
+                     data-ng-if="c.phone != ''">
+                    <span data-translate="">call</span> {{c.phone}}
+                  </a>
+                </address>
+              </div>
+            </div>
+          </div>
+        </section></br>-->
+
 
         <section>
           <h4>

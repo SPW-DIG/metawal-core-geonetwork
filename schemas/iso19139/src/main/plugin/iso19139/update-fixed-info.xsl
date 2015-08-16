@@ -14,7 +14,7 @@
 	<!-- ================================================================= -->
 
 	<xsl:template match="/root">
-		<xsl:apply-templates select="gmd:MD_Metadata"/>
+		<xsl:apply-templates select="*:MD_Metadata"/>
 	</xsl:template>
 
 	<!-- ================================================================= -->
@@ -163,9 +163,9 @@
 			<xsl:apply-templates select="@*[name(.)!='codeList']"/>
 		</gmd:LanguageCode>
 	</xsl:template>
-	
-	
-	<xsl:template match="gmd:*[@codeListValue]">
+
+
+  <xsl:template match="gmd:*[@codeListValue]">
 		<xsl:copy>
 			<xsl:apply-templates select="@*"/>
 			<xsl:attribute name="codeList">
@@ -204,10 +204,10 @@
 				<gmd:URL>
 					<xsl:choose>
 						<xsl:when test="/root/env/system/downloadservice/simple='true'">
-							<xsl:value-of select="concat($serviceUrl,'resources.get?uuid=',/root/env/uuid,'&amp;fname=',$fname,'&amp;access=private')"/>
+							<xsl:value-of select="concat($serviceUrl,'resources.get?uuid=',/root/env/uuid,'&amp;fname=',$fname,'&amp;access=public')"/>
 						</xsl:when>
 						<xsl:when test="/root/env/system/downloadservice/withdisclaimer='true'">
-							<xsl:value-of select="concat($serviceUrl,'file.disclaimer?uuid=',/root/env/uuid,'&amp;fname=',$fname,'&amp;access=private')"/>
+							<xsl:value-of select="concat($serviceUrl,'file.disclaimer?uuid=',/root/env/uuid,'&amp;fname=',$fname,'&amp;access=public')"/>
 						</xsl:when>
 						<xsl:otherwise> <!-- /root/env/config/downloadservice/leave='true' -->
 							<xsl:value-of select="gmd:linkage/gmd:URL"/>

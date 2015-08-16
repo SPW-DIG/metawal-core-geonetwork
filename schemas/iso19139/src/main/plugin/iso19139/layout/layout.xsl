@@ -12,9 +12,17 @@
   <xsl:include href="utility-fn.xsl"/>
   <xsl:include href="utility-tpl.xsl"/>
   <xsl:include href="layout-custom-fields.xsl"/>
+  <xsl:include href="layout-custom-fields-date.xsl"/>
 
   <!-- Ignore all gn element -->
-  <xsl:template mode="mode-iso19139" match="gn:*|@gn:*|@*" priority="1000"/>
+  <xsl:template mode="mode-iso19139"
+                match="gn:*|@gn:*|@*"
+                priority="1000"/>
+
+  <!-- Ignore group element. -->
+  <xsl:template mode="mode-iso19139"
+                match="gml:*[starts-with(name(.), 'gml:TimePeriodTypeGROUP_ELEMENT')]"
+                priority="1000"/>
 
 
   <!-- Template to display non existing element ie. geonet:child element
@@ -279,10 +287,27 @@
       <xsl:with-param name="isFirst" select="count(preceding-sibling::*[name() = $elementName]) = 0"/>
     </xsl:call-template>
 
+  </xsl:template>
 
+  <!-- Display UUIDREF attribute with the parent element name
+   as read only. The associated resource panel is used to edit
+    those values. -->
+  <xsl:template mode="mode-iso19139" match="@uuidref" priority="2000">
+    <xsl:call-template name="render-element">
+      <xsl:with-param name="label" select="gn-fn-metadata:getLabel($schema, name(..), $labels)/label"/>
+      <xsl:with-param name="value" select="."/>
+      <xsl:with-param name="cls" select="local-name()"/>
+      <xsl:with-param name="xpath" select="gn-fn-metadata:getXPath(.)"/>
+      <xsl:with-param name="type" select="gn-fn-metadata:getFieldType($editorConfig, name(), '')"/>
+      <xsl:with-param name="name" select="''"/>
+      <xsl:with-param name="editInfo" select="*/gn:element"/>
+      <xsl:with-param name="parentEditInfo" select="gn:element"/>
+      <xsl:with-param name="isDisabled" select="true()"/>
+    </xsl:call-template>
   </xsl:template>
 
 
+<!--
   <xsl:template mode="mode-iso19139" priority="200"
     match="*[gco:Date|gco:DateTime]">
     <xsl:param name="schema" select="$schema" required="no"/>
@@ -310,9 +335,10 @@
       data-label="{$labelConfig/label}"
       data-element-name="{name(gco:Date|gco:DateTime)}"
       data-element-ref="{concat('_X', gn:element/@ref)}"
-      data-required="{$isRequired}">
+      data-required="{$isRequired}"
+      data-hide-time="{if ($viewConfig/@hideTimeInCalendar = 'true') then 'true' else 'false'}">
     </div>
-  </xsl:template>
+  </xsl:template>-->
 
 
   <!-- Match codelist values.

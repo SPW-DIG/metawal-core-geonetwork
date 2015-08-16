@@ -21,7 +21,7 @@
   /**
    * @ngdoc service
    * @kind function
-   * @name gn_share_service.service:gnShareService
+   * @name gn_share.service:gnShareService
    * @requires gnShareConstants
    * @requires $q
    * @requires $http
@@ -57,7 +57,7 @@
       return {
         /**
          * @ngdoc method
-         * @methodOf gn_share_service.service:gnShareService
+         * @methodOf gn_share.service:gnShareService
          * @name gnShareService#isAdminOrReviewer
          *
          * @description
@@ -77,7 +77,7 @@
 
         /**
          * @ngdoc method
-         * @methodOf gn_share_service.service:gnShareService
+         * @methodOf gn_share.service:gnShareService
          * @name gnShareService#loadPrivileges
          *
          * @description
@@ -167,7 +167,7 @@
 
         /**
          * @ngdoc method
-         * @methodOf gn_share_service.service:gnShareService
+         * @methodOf gn_share.service:gnShareService
          * @name gnShareService#savePrivileges
          *
          * @description
@@ -179,7 +179,7 @@
          *
          * @return {HttpPromise} Future object.
          */
-        savePrivileges: function(metadataId, groups) {
+        savePrivileges: function(metadataId, groups, user) {
           var defer = $q.defer();
           var params = {};
           var url;
@@ -192,11 +192,18 @@
             url = 'md.privileges.batch.update?_content_type=json';
           }
           angular.forEach(groups, function(g) {
-            angular.forEach(g.privileges, function(p, key) {
-              if (p.value === true) {
-                params['_' + g.id + '_' + key] = 'on';
-              }
-            });
+            var allowed = (
+                $.inArray(g.id, gnShareConstants.internalGroups) !== -1 &&
+                user.isReviewerOrMore()) ||
+                ($.inArray(g.id, gnShareConstants.internalGroups) === -1);
+
+            if (allowed) {
+              angular.forEach(g.privileges, function(p, key) {
+                if (p.value === true) {
+                  params['_' + g.id + '_' + key] = 'on';
+                }
+              });
+            }
           });
           //TODO: fix service that crash with _content_type parameter
           $http.get(url, {params: params})

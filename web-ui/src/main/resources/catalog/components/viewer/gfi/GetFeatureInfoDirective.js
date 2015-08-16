@@ -10,6 +10,16 @@
 
   module.value('gfiTemplateURL', gfiTemplateURL);
 
+  /**
+   * @ngdoc directive
+   * @name gn_viewer.directive:gnGfi
+   *
+   * @description
+   * This directive manage the getFeatureInfo process. If added in the
+   * map viewer template, the directive listen to mapclick and display the
+   * GFI results as an array in a popup.
+   * The template could be overriden using `gfiTemplateURL` constant.
+   */
   module.directive('gnGfi', ['$http', 'gfiTemplateURL',
     function($http, gfiTemplateURL) {
 
@@ -48,7 +58,8 @@
 
             for (var i = 0; i < map.getInteractions().getArray().length; i++) {
               var interaction = map.getInteractions().getArray()[i];
-              if (interaction instanceof ol.interaction.Draw &&
+              if ((interaction instanceof ol.interaction.Draw ||
+                  interaction instanceof ol.interaction.Select) &&
                   interaction.getActive()) {
                 return;
               }
@@ -81,7 +92,7 @@
                   ['longitude', 'latitude',
                     'time', 'value'].forEach(function(v) {
                     var node = doc.getElementsByTagName(v);
-                    if (node) {
+                    if (node && node.length > 0) {
                       props[v] = ol.xml.getAllTextContent(node[0], true);
                     }
                   });
@@ -123,7 +134,9 @@
           var exclude = ['FID', 'boundedBy', 'the_geom', 'thegeom'];
           Object.keys(properties).forEach(function(k) {
             if (exclude.indexOf(k) !== -1) return;
-            props[k] = properties[k].toString();
+            if (properties[k]) {
+              props[k] = properties[k].toString();
+            }
           });
           return props;
         };

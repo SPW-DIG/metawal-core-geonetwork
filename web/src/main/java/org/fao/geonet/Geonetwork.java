@@ -36,11 +36,7 @@ import jeeves.xlink.Processor;
 
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.domain.Metadata;
-import org.fao.geonet.domain.Pair;
-import org.fao.geonet.domain.Profile;
-import org.fao.geonet.domain.Setting;
-import org.fao.geonet.domain.User;
+import org.fao.geonet.domain.*;
 import org.fao.geonet.entitylistener.AbstractEntityListenerManager;
 import org.fao.geonet.exceptions.OperationAbortedEx;
 import org.fao.geonet.inspireatom.InspireAtomType;
@@ -67,6 +63,7 @@ import org.fao.geonet.lib.DbLib;
 import org.fao.geonet.notifier.MetadataNotifierControl;
 import org.fao.geonet.repository.MetadataRepository;
 import org.fao.geonet.repository.SettingRepository;
+import org.fao.geonet.repository.SourceRepository;
 import org.fao.geonet.resources.Resources;
 import org.fao.geonet.services.config.LogUtils;
 import org.fao.geonet.services.metadata.format.Format;
@@ -250,14 +247,8 @@ public class Geonetwork implements ApplicationHandler {
                     // to have access to the GN context in spring-managed objects
                     ContextContainer cc = (ContextContainer) appContext.getBean("ContextGateway");
                     cc.setSrvctx(context);
-
-                    if (!z3950Enable) {
-                        logger.info("     Server is Disabled.");
-                    } else {
-                        logger.info("     Server is Enabled.");
-
-                        Server.init(z3950port, appContext);
-                    }
+                    Server.init(z3950port, appContext);
+                    
                 } catch (Exception e) {
                     logger.error("     Repositories file init FAILED - Z3950 server disabled and Z3950 client services (remote search, " +
                                  "harvesting) may not work. Error is:" + e.getMessage());
@@ -391,6 +382,16 @@ public class Geonetwork implements ApplicationHandler {
 
         logger.info("Site ID is : " + settingMan.getSiteId());
 
+        // Add local site to the source table
+        SourceRepository sourceRepository = _applicationContext.getBean(SourceRepository.class);
+        if (sourceRepository.findOneByUuid(settingMan.getSiteId()) == null) {
+            final Source source = sourceRepository.save(
+                    new Source()
+                            .setLocal(true)
+                            .setName(settingMan.getSiteName())
+                            .setUuid(settingMan.getSiteId()));
+        }
+
         // Creates a default site logo, only if the logo image doesn't exists
         // This can happen if the application has been updated with a new version preserving the database and
         // images/logos folder is not copied from old application
@@ -488,7 +489,7 @@ public class Geonetwork implements ApplicationHandler {
                         final MockHttpServletRequest servletRequest = new MockHttpServletRequest(servletContext);
                         final MockHttpServletResponse response = new MockHttpServletResponse();
                         try {
-                            formatService.exec("eng", FormatType.html.toString(), mdId.toString(), formatterName,
+                            formatService.exec("eng", FormatType.html.toString(), mdId.toString(), null, formatterName,
                                     Boolean.TRUE.toString(), false, FormatterWidth._100, new ServletWebRequest(servletRequest, response));
                         } catch (Throwable t) {
                             Log.info(Geonet.GEONETWORK, "Error while initializing the Formatter with id: " + formatterName, t);

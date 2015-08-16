@@ -1,6 +1,5 @@
 package iso19139
 
-import org.fao.geonet.services.metadata.format.FormatType
 import org.fao.geonet.services.metadata.format.groovy.Environment
 import org.fao.geonet.services.metadata.format.groovy.MapConfig
 
@@ -103,17 +102,16 @@ public class Handlers {
         }
     }
     def isoBooleanEl = {isofunc.isoTextEl(it, parseBool(it.'*'.text()).toString())}
-    def dateEl = {isofunc.isoTextEl(it, it.text());}
+    def dateEl = {isofunc.isoTextEl(it, isofunc.dateText(it));}
     def extentTypeCodeEl = {
         isofunc.isoTextEl(it, parseBool(it.text()) ? 'include' : 'excluded')
     }
     def ciDateEl = {
-        if(!it.'gmd:date'.'gco:Date'.text().isEmpty()) {
+        if(matchers.isDateEl(it.'gmd:date')) {
             def dateType = f.codelistValueLabel(it.'gmd:dateType'.'gmd:CI_DateTypeCode')
-            commonHandlers.func.textEl(dateType, it.'gmd:date'.'gco:Date'.text());
+            commonHandlers.func.textEl(dateType, isofunc.dateText(it.'gmd:date'));
         }
     }
-
     def localeEls = { els ->
         def locales = []
         els.each {
@@ -293,7 +291,7 @@ public class Handlers {
             def img = graphic.'gmd:fileName'.text()
             String thumbnailUrl;
             if (img.startsWith("http://") || img.startsWith("https://")) {
-                thumbnailUrl = img;
+                thumbnailUrl = img.replace("&fname", "&amp;fname");
             } else if (!isSmallImage(img) || !hasLargeGraphic) {
                 thumbnailUrl = env.getLocalizedUrl() + "resources.get?fname=" + img + "&amp;access=public&amp;id=" + env.getMetadataId();
             }
@@ -345,10 +343,17 @@ public class Handlers {
 
         def half = (int) Math.round((groups.size()) / 2)
 
-        def output = '<div class="row">'
-        output += commonHandlers.func.textColEl(general.toString() + handlers.processElements(groups.take(half - 1)), 6)
-        output += commonHandlers.func.textColEl(handlers.processElements(groups.drop(half - 1)), 6)
-        output += '</div>'
+        def output = commonHandlers.func.isPDFOutput() ? '<table><tr>' : '<div class="row">'
+        if (commonHandlers.func.isPDFOutput()) {
+            output += '<td>' + general.toString() + handlers.processElements(groups.take(half - 1)) + '</td>'
+            output += '<td>' + handlers.processElements(groups.drop(half - 1)) + '</td>'
+        } else {
+            output = '<div class="row">'
+            output += commonHandlers.func.textColEl(general.toString() + handlers.processElements(groups.take(half - 1)), 6)
+            output += commonHandlers.func.textColEl(handlers.processElements(groups.drop(half - 1)), 6)
+        }
+
+        output += commonHandlers.func.isPDFOutput() ? '</tr></table>' : '</div>'
 
         return handlers.fileResult('html/2-level-entry.html', [label: f.nodeLabel(el), childData: output])
     }
@@ -372,11 +377,14 @@ public class Handlers {
             def mdId = env.getMetadataId();
             def xpath = f.getXPathFrom(el);
 
-
             if (xpath != null) {
                 def image = "<img src=\"region.getmap.png?mapsrs=$mapproj&amp;width=$width&amp;background=$background&amp;id=metadata:@id$mdId:@xpath$xpath\"\n" +
                         "         style=\"min-width:${width/4}px; min-height:${width/4}px;\" />"
-                handlers.fileResult('html/2-level-entry.html', [label: f.nodeLabel(el), childData: image])
+
+                def inclusion = el.'gmd:extentTypeCode'.text() == '0' ? 'exclusive' : 'inclusive';
+
+                def label = f.nodeLabel(el) + " (" + f.translate(inclusion) + ")"
+                handlers.fileResult('html/2-level-entry.html', [label: label, childData: image])
             }
         }
     }
@@ -385,9 +393,14 @@ public class Handlers {
         return { el ->
             if (el.parent().'gmd:EX_BoundingPolygon'.text().isEmpty() &&
                     el.parent().parent().'gmd:geographicElement'.'gmd:EX_BoundingPolygon'.text().isEmpty()) {
+
+                def inclusion = el.'gmd:extentTypeCode'.text() == '0' ? 'exclusive' : 'inclusive';
+
+                def label = f.nodeLabel(el) + " (" + f.translate(inclusion) + ")"
+
                 def replacements = bbox(thumbnail, el)
-                replacements['label'] = f.nodeLabel(el)
-                replacements['pdfOutput'] = env.formatType == FormatType.pdf
+                replacements['label'] = label
+                replacements['pdfOutput'] = commonHandlers.func.isPDFOutput()
 
                 handlers.fileResult("html/bbox.html", replacements)
             }

@@ -1,6 +1,8 @@
 package iso19139
 
-import com.google.common.xml.XmlEscapers
+import org.fao.geonet.domain.ISODate
+
+import java.text.SimpleDateFormat
 
 public class Functions {
     static final def CHAR_PATTERN = /\W/
@@ -8,7 +10,7 @@ public class Functions {
     def handlers;
     def f
     def env
-    def commonHandlers
+    common.Handlers commonHandlers
 
     def clean = { text ->
         if (text == null) {
@@ -34,20 +36,30 @@ public class Functions {
         if (!locStrings.isEmpty()) return locStrings[0].text()
         ""
     }
+
+    def dateText = { el ->
+
+        String date = el.'gco:Date'.text()
+        String dateTime = el.'gco:DateTime'.text()
+        if (!date.isEmpty()) {
+            return date;
+        } else if (!dateTime.isEmpty()){
+            ISODate isoDate = new ISODate(dateTime)
+            return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(isoDate.toDate())
+        }
+    }
     /**
      * A shortcut for: commonHandlers.func.textEl(node), text))
      * @return
      */
     def isoTextEl(node, text) {
-        return commonHandlers.func.textEl(f.nodeLabel(node), XmlEscapers.xmlContentEscaper().escape(text))
+        return commonHandlers.func.textEl(f.nodeLabel(node), text)
     }
     /**
      * A shortcut for: commonHandlers.func.textEl(node), text))
      * @return
      */
     def isoUrlEl(node, href, text) {
-        return commonHandlers.func.urlEl(f.nodeLabel(node),
-                XmlEscapers.xmlAttributeEscaper().escape(href),
-                XmlEscapers.xmlContentEscaper().escape(text))
+        return commonHandlers.func.urlEl(f.nodeLabel(node), href, text)
     }
 }

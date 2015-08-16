@@ -537,7 +537,7 @@ public class GeonetWroModelFactory implements WroModelFactory {
         Resource resource = new Resource();
         resource.setMinimize(dep.isMinimized);
         resource.setType(ResourceType.JS);
-        final Path path = IO.toPath(dep.path);
+        final Path path = IO.toPath(dep.path.replace("file:/D:","/D"));
         if (Files.exists(path)) {
             resource.setUri(path.toUri().toString());
         } else {
@@ -566,7 +566,11 @@ public class GeonetWroModelFactory implements WroModelFactory {
             } else {
                 dir = Paths.get(dep.path).getParent();
             }
-            String dirPath = dir.resolve("partials").toString().replace('\\', '/');
+            if(dir == null) {
+                throw new RuntimeException("Directory folder is missing!!");
+            }
+            Path resolve = dir.resolve("partials");
+            String dirPath = resolve.toString().replace('\\', '/');
             String prefix = TemplatesUriLocator.URI_PREFIX + dirPath;
             group.add(getTemplateResource(prefix));
         }

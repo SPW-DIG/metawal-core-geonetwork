@@ -2,15 +2,17 @@
   goog.provide('gn_cat_controller');
 
   goog.require('gn_search_manager');
+  goog.require('gn_session_service');
 
   var module = angular.module('gn_cat_controller',
-      ['gn_search_manager']);
+      ['gn_search_manager', 'gn_session_service']);
 
 
   module.constant('gnGlobalSettings', {
     proxyUrl: '../../proxy?url=',
     locale: {},
     isMapViewerEnabled: false,
+    is3DModeAllowed: false,
     modelOptions: {
       updateOn: 'default blur',
       debounce: {
@@ -32,13 +34,14 @@
   module.controller('GnCatController', [
     '$scope', '$http', '$q', '$rootScope', '$translate',
     'gnSearchManagerService', 'gnConfigService', 'gnConfig',
-    'gnGlobalSettings', '$location',
+    'gnGlobalSettings', '$location', 'gnUtilityService', 'gnSessionService',
     function($scope, $http, $q, $rootScope, $translate,
             gnSearchManagerService, gnConfigService, gnConfig,
-            gnGlobalSettings, $location) {
+            gnGlobalSettings, $location, gnUtilityService, gnSessionService) {
       $scope.version = '0.0.1';
       // TODO : add language
       var tokens = location.href.split('/');
+      $scope.service = tokens[6].split('?')[0];
       $scope.lang = tokens[5];
       $scope.nodeId = tokens[4];
       // TODO : get list from server side
@@ -57,7 +60,6 @@
       $scope.logoPath = '../../images/harvesting/';
       $scope.isMapViewerEnabled = gnGlobalSettings.isMapViewerEnabled;
       $scope.isDebug = window.location.search.indexOf('debug') !== -1;
-
 
       $scope.pages = {
         home: 'home',
@@ -119,7 +121,7 @@
         // Retrieve site information
         // TODO: Add INSPIRE, harvester, ... information
         var catInfo = promiseStart.then(function(value) {
-          url = $scope.url + 'info?_content_type=json&type=site&type=auth';
+          var url = $scope.url + 'info?_content_type=json&type=site&type=auth';
           return $http.get(url).
               success(function(data, status) {
                 $scope.info = data;
@@ -190,10 +192,10 @@
 
         // Retrieve user information if catalog is online
         var userLogin = catInfo.then(function(value) {
-          url = $scope.url + 'info?_content_type=json&type=me';
+          var url = $scope.url + 'info?_content_type=json&type=me';
           return $http.get(url).
               success(function(data, status) {
-                $scope.user = data.me;
+                angular.extend($scope.user, data.me);
                 angular.extend($scope.user, userFn);
 
                 $scope.authenticated = data.me['@authenticated'] !== 'false';
@@ -209,7 +211,7 @@
 
         // Retrieve main search information
         var searchInfo = userLogin.then(function(value) {
-          url = 'qi?_content_type=json&summaryOnly=true';
+          var url = 'qi?_content_type=json&summaryOnly=true';
           return gnSearchManagerService.search(url).
               then(function(data) {
                 $scope.searchInfo = data;
@@ -239,11 +241,10 @@
         }
       });
 
-
+      gnSessionService.scheduleCheck($scope.user);
+      $scope.session = gnSessionService.getSession();
 
       $scope.loadCatalogInfo();
-
-
     }]);
 
 })();
