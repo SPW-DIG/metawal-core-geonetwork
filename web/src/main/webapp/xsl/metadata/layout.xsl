@@ -804,9 +804,18 @@
           </xsl:when>
           <!-- place optional +/x for use when re-ordering etc -->
           <xsl:when test="geonet:element/@add='true' and name($nextBrother)=name(.)">
-            <xsl:value-of
+            <xsl:choose>
+              <xsl:when test="$elementName = 'gmd:descriptiveKeywords'">
+                 <xsl:value-of select="concat('javascript:', $function, '(',../geonet:element/@ref,',',$apos,$ elementName,$apos,', this);!OPTIONAL5555')"/>
+              </xsl:when>
+              <xsl:otherwise>
+                 <xsl:value-of select="concat('javascript:', $function, '(',../geonet:element/@ref,',',$apos,$nextBrother/@name,$apos,', this);!OPTIONAL66666')"/>
+              </xsl:otherwise>
+          </xsl:choose>
+
+            <!--xsl:value-of
               select="concat('javascript:', $function, '(',../geonet:element/@ref,',',$apos,$nextBrother/@name,$apos,', this);!OPTIONAL')"
-            />
+            /-->
           </xsl:when>
           <!-- place +/x because schema insists but no geonet:child nextBrother 
                this case occurs in the javascript handling of the +/+ -->
