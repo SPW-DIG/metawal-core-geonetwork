@@ -573,7 +573,7 @@
                         <xsl:choose>
                           <xsl:when test="normalize-space($desc)!=''">
                             <xsl:attribute name="title"><xsl:value-of select="$desc"/></xsl:attribute>
-                            <xsl:value-of select="$desc"/>
+                            <xsl:value-of select="gmd:CI_OnlineResource/gmd:name"/>
                             <xsl:if test="gmd:CI_OnlineResource/gmd:name/gmx:MimeFileType/@type">
                               (<xsl:value-of select="gmd:CI_OnlineResource/gmd:name/gmx:MimeFileType/@type"/>)
                             </xsl:if>
