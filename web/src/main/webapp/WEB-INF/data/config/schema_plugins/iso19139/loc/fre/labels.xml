@@ -2353,8 +2353,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="ESRI File Geodatabase (.fgdb)">ESRI File Geodatabase (.fgdb)</option>
 			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
 			<option value="KML (.kml ou .kmz)">KML (.kml ou .kmz)</option>
-			<option value="GeoJson" title="3.2.1">GeoJson</option>
-			<option value="Json" title="3.2.1">Json</option>
+			<option value="geojson (GeoJSON)" title="3.2.1">GeoJSON (.geojson)</option>
 			<option value="TIFF (.tif ou .tiff)">TIFF (.tif ou .tiff)</option>
 			<option value="GeoTIFF (.tif)">GeoTIFF (.tif)</option>
 			<option value="">-------------------------------------</option>
@@ -2372,6 +2371,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="GML (.gml)">GML (.gml)</option>
 			<option value="GML INSPIRE (.gml)">GML INSPIRE (.gml)</option>
 			<option value="GML-SF">GML-SF</option>
+			<option value="json (JavaScript Object Notation)" title="3.2.1">JavaScript Object Notation (.json)</option>
 			<option value="GPX (.gpx)">GPX (.gpx)</option>
 			<option value="JPEG (.jpg ou .jpeg)">JPEG (.jpg ou .jpeg)</option>
 			<option value="JPEG2000 (.jp2 ou .j2k)">JPEG2000 (.jp2 ou .j2k)</option>
