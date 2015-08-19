@@ -187,11 +187,11 @@ GeoNetwork.Templates.FULL = new Ext.XTemplate(
                         '</tpl></p>',
                     '</tpl>',
                     // Custom links
-                    '<tpl for="links">',
+                    /*'<tpl for="links">',
                       '<tpl if="values.href.indexOf(\'' + Metawal.config.walOnMap.check + '\') == 0">',
                         '<div style="float:left;line-height: 22px;"><a href="#" class="md-mn addLayer" title="{title}" alt="{title}" onclick="window.open(\'' + Metawal.config.walOnMap.url + 'agsDynUrls={href}&metadataUrl=' + location.origin + location.pathname + '?uuid={parent.uuid}\', \'walOnMap\');">&nbsp;</a></div>',
                       '</tpl>',
-                    '</tpl>',
+                    '</tpl>',*/
                     
                     '<div class="md-links" id="md-links-{id}">',
                     '</div>',
