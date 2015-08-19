@@ -833,6 +833,11 @@
               select="concat('javascript:', $function, '(', ../geonet:element/@ref, ', ', $apos, $elementName,  $apos, ',', $apos, $subTemplateName, $apos, ',', $apos, $namespaces, $apos, ');')"
             />
           </xsl:when>
+          <xsl:when test="$name='gmd:distributorContact'">
+            <xsl:value-of
+              select="concat('javascript:', $function, '(', ../geonet:element/@ref, ', ', $apos, $elementName,  $apos, ',', $apos, $subTemplateName, $apos, ',', $apos, $namespaces, $apos, ');')"
+            />
+          </xsl:when>
         </xsl:choose>
       </xsl:when>
     </xsl:choose>
