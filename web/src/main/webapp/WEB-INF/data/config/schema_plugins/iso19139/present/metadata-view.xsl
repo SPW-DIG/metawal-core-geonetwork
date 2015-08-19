@@ -609,11 +609,12 @@
                   <!-- Display add to map action for WMS -->
                   <xsl:if test="contains(current-grouping-key(), 'WMS')">
                   &#160;
-                  <a href="#" target="_blank" class="md-mn addLayer"
+                 <a href="http://geoservices.wallonie.be/geoviewer/#WMS={gmd:CI_OnlineResource/gmd:linkage/gmd:URL}|{gmd:CI_OnlineResource/gmd:description/gco:CharacterString}" target="_blank" class="md-mn addLayer">&#160;</a>
+                  <!--a href="#" target="_blank" class="md-mn addLayer"
                     onclick="app.switchMode('1', true);app.getIMap().addWMSLayer([[
                               '{gmd:CI_OnlineResource/gmd:description/gco:CharacterString}', 
                               '{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}', 
-                              '{gmd:CI_OnlineResource/gmd:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a>
+                              '{gmd:CI_OnlineResource/gmd:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a-->
                   </xsl:if>
                 </li>
               </xsl:for-each>
