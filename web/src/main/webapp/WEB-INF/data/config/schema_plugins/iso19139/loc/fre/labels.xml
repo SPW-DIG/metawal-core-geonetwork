@@ -2349,43 +2349,44 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 		<help>Lorsque plusieurs formats sont disponibles, les indiquer chacun dans un élément "Format de distribution". Utiliser le + pour faire apparaître de nouveaux éléments.</help>
 		<condition>Obligatoire</condition>
 		<helper rel="gmd:version">
-			<option value="ESRI Shapefile (.shp)">ESRI Shapefile (.shp)</option>
-			<option value="ESRI File Geodatabase (.fgdb)">ESRI File Geodatabase (.fgdb)</option>
-			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
-			<option value="KML (.kml ou .kmz)">KML (.kml ou .kmz)</option>
-			<option value="geojson (GeoJSON)" title="3.2.1">GeoJSON (.geojson)</option>
-			<option value="TIFF (.tif ou .tiff)">TIFF (.tif ou .tiff)</option>
-			<option value="GeoTIFF (.tif)">GeoTIFF (.tif)</option>
+			<option value="ESRI Shapefile (.shp)" title="-">ESRI Shapefile (.shp)</option>
+			<option value="ESRI File Geodatabase (.fgdb)" title="inconnue">ESRI File Geodatabase (.fgdb)</option>
+			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)" title="inconnue">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
+			<option value="KML (.kml ou .kmz)" title="inconnue">KML (.kml ou .kmz)</option>
+			<option value="geojson (GeoJSON)" title="inconnue">GeoJSON (.geojson)</option>
+			<option value="TIFF (.tif ou .tiff)"title="-">TIFF (.tif ou .tiff)</option>
+			<option value="GeoTIFF (.tif)" title="-">GeoTIFF (.tif)</option>
 			<option value="">-------------------------------------</option>
-			<option value="Adobe PDF (.pdf)">Adobe PDF (.pdf)</option>
-			<option value="Adobe 3D PDF (.pdf)">Adobe 3D PDF (.pdf)</option>
-			<option value="Adobe Geospatial PDF (.pdf)">Adobe Geospatial PDF (.pdf)</option>
-			<option value="Autodesk AutoCAD DXF (.dxf)">Autodesk AutoCAD DXF (.dxf)</option>
-			<option value="Autodesk AutoCAD DWG (.dwg)">Autodesk AutoCAD DWG (.dwg)</option>
-			<option value="CityGML">CityGML</option>
-			<option value="Comma Separated Value (.csv)">Comma Separated Value (.csv)</option>
-			<option value="EGeoSciML (.gsml)">GeoSciML (.gsml)</option>
-			<option value="ESRI ArcGIS Map Document (.mxd)">ESRI ArcGIS Map Document (.mxd)</option>
-			<option value="ESRI Grid">ESRI Grid</option>
-			<option value="GIF (.gif)">GIF (.gif)</option>
-			<option value="GML (.gml)">GML (.gml)</option>
-			<option value="GML INSPIRE (.gml)">GML INSPIRE (.gml)</option>
-			<option value="GML-SF">GML-SF</option>
-			<option value="json (JavaScript Object Notation)" title="3.2.1">JavaScript Object Notation (.json)</option>
-			<option value="GPX (.gpx)">GPX (.gpx)</option>
-			<option value="JPEG (.jpg ou .jpeg)">JPEG (.jpg ou .jpeg)</option>
-			<option value="JPEG2000 (.jp2 ou .j2k)">JPEG2000 (.jp2 ou .j2k)</option>
-			<option value="MapInfo MIF/MID (.mif)">MapInfo MIF/MID (.mif)</option>
-			<option value="Microsoft Access (.mdb ou .accdb)">Microsoft Access (.mdb ou .accdb)</option>
-			<option value="Microsoft Excel (.xls ou .xlsx)">Microsoft Excel (.xls ou .xlsx)</option>
-			<option value="STAR-APIC (.asc)">STAR-APIC (.asc)</option>
-			<option value="STAR CARTO (.std)">STAR CARTO (.std)</option>
+			<option value="Adobe PDF (.pdf)" title="inconnue">Adobe PDF (.pdf)</option>
+			<option value="Adobe 3D PDF (.pdf)" title="inconnue">Adobe 3D PDF (.pdf)</option>
+			<option value="Adobe Geospatial PDF (.pdf)" title="inconnue">Adobe Geospatial PDF (.pdf)</option>
+			<option value="Autodesk AutoCAD DXF (.dxf)" title="inconnue">Autodesk AutoCAD DXF (.dxf)</option>
+			<option value="Autodesk AutoCAD DWG (.dwg)" title="inconnue">Autodesk AutoCAD DWG (.dwg)</option>
+			<option value="CityGML (.gml)" title="inconnue">CityGML (.gml)</option>
+			<option value="Comma Separated Value (.csv)" title="-">Comma Separated Value (.csv)</option>
+			<option value="ESRI ArcGIS Map Document (.mxd)" title="inconnue">ESRI ArcGIS Map Document (.mxd)</option>
+			<option value="ESRI Grid" title="inconnue">ESRI Grid</option>
+			<option value="GeoSciML (.gsml)" title="inconnue">GeoSciML (.gsml)</option>
+			<option value="GIF (.gif)" title="-">GIF (.gif)</option>
+			<option value="GML (.gml)" title="inconnue">GML (.gml)</option>
+			<option value="GML INSPIRE (.gml)" title="3.2.1">GML INSPIRE (.gml)</option>
+			<option value="GML-SF (.gml)" title="inconnue">GML Simple Feature Profile (.gml)</option>
+			<option value="JSON" title="inconnue">JSON (.json)</option>
+			<option value="GPX (.gpx)" title="inconnue">GPX (.gpx)</option>
+			<option value="JPEG (.jpg ou .jpeg)" title="inconnue">JPEG (.jpg ou .jpeg)</option>
+			<option value="JPEG2000 (.jp2 ou .j2k)" title="inconnue">JPEG2000 (.jp2 ou .j2k)</option>
+			<option value="MapInfo MIF/MID (.mif)" title="inconnue">MapInfo MIF/MID (.mif)</option>
+			<option value="Microsoft Access (.mdb ou .accdb)" title="inconnue">Microsoft Access (.mdb ou .accdb)</option>
+			<option value="Microsoft Excel (.xls ou .xlsx)" title="inconnue">Microsoft Excel (.xls ou .xlsx)</option>
+			<option value="STAR-APIC (.asc)" title="inconnue">STAR-APIC (.asc)</option>
+			<option value="STAR CARTO (.std)" title="inconnue">STAR CARTO (.std)</option>
 			<option value="STAR GIS">STAR GIS</option>
-			<option value="SVG (.svg)">SVG (.svg)</option>
-			<option value="TXT (.txt)">TXT (.txt)</option>
-			<option value="ZIP (.zip)">ZIP (.zip)</option>
+			<option value="SVG (.svg)" title="inconnue">SVG (.svg)</option>
+			<option value="TXT (.txt)" title="-">TXT (.txt)</option>
+			<option value="ZIP (.zip)" title="inconnue">ZIP (.zip)</option>
 		</helper>
-	</element><!--<element name="gmd:name" id="285.0" context="gmd:MD_Format">
+	</element>
+<!--<element name="gmd:name" id="285.0" context="gmd:MD_Format">
     <label>Nom du format</label>
     <description>Nom des formats de transfert des données</description>
     <help>Nom du format de transfert de données, par exemple TIFF, ZIP, etc.</help>
