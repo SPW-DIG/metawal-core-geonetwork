@@ -616,6 +616,15 @@
                               '{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}', 
                               '{gmd:CI_OnlineResource/gmd:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a-->
                   </xsl:if>
+                  <xsl:if test="contains(current-grouping-key(), 'REST')">
+                  &#160;
+                 <a href="http://geoportail.wallonie.be/walonmap/?agsDynUrls={gmd:CI_OnlineResource/gmd:linkage/gmd:URL}" target="_blank" class="md-mn addLayer">&#160;</a>
+                  <!--a href="#" target="_blank" class="md-mn addLayer"
+                    onclick="app.switchMode('1', true);app.getIMap().addWMSLayer([[
+                              '{gmd:CI_OnlineResource/gmd:description/gco:CharacterString}', 
+                              '{gmd:CI_OnlineResource/gmd:linkage/gmd:URL}', 
+                              '{gmd:CI_OnlineResource/gmd:name/gco:CharacterString}', '{generate-id()}']]);">&#160;</a-->
+                  </xsl:if>
                 </li>
               </xsl:for-each>
             </ul>

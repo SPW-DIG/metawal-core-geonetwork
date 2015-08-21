@@ -154,6 +154,7 @@ GeoNetwork.Util = {
         'application/vnd.ogc.wms_xml': 'addLayerIcon',
         'application/vnd.ogc.wmc': 'addLayerIcon',
         'OGC:WMS': 'addLayer',
+        'ESRI:REST': 'addLayerIcon',
         'application/vnd.google-earth.kml+xml': 'md-mn-kml',
         'application/zip': 'md-mn-zip',
         'WWW:DOWNLOAD-1.0-http--download': 'md-mn-zip',

@@ -551,7 +551,16 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
             if (links.length > 0) {
                 var div = Ext.query('#md-links-' + id, view.el.dom.body),
                     el = Ext.get(div[0]);
-                
+
+                for (i = 0; i < links.length; i++) {
+                    if (links[i]['type']==="text/plain" || links[i]['type']==="application/msword" || links[i]['type']==="text/html" ){
+                       links[i]['buttontype'] = 'text/plain';
+                   } else{
+                        links[i]['buttontype'] = links[i]['type'];
+                   }
+                };
+
+                console.log(links);
                 // The template may not defined a md-links placeholder
                 if (el) {
                     var store = new Ext.data.ArrayStore({
@@ -562,11 +571,12 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                             {name: 'name', mapping: 'name'}, 
                             {name: 'protocol', mapping: 'protocol'}, 
                             {name: 'title', mapping: 'title'}, 
-                            {name: 'type', mapping: 'type'}
+                            {name: 'type', mapping: 'type'},
+                            {name: 'buttontype', mapping: 'buttontype'}
                         ],
                         data: links
                     });
-                    store.sort('type');
+                    store.sort('buttontype');
                     
                     
                     var linkButton = [], label = null, currentType = null, bt,
@@ -580,12 +590,12 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                             // Check that current record type is the same as the previous record
                             // In such case, add the previous button if exist
                             // or create a new button to be added later
-                            if (currentType === null || currentType !== record.get('type')) {
+                            if (currentType === null || currentType !== record.get('buttontype')) {
                                 if (linkButton.length !== 0) {
                                     view.addLinkMenu(linkButton, label, currentType, el);
                                 }
                                 linkButton = [];
-                                currentType = record.get('type');
+                                currentType = record.get('buttontype');
                                 var labelKey = 'linklabel-' + currentType;
                                 label = OpenLayers.i18n(labelKey);
                                 if (label === labelKey) { // Default label if not found in translation
