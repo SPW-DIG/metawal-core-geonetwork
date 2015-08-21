@@ -2353,7 +2353,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="ESRI File Geodatabase (.fgdb)" title="inconnue">ESRI File Geodatabase (.fgdb)</option>
 			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)" title="inconnue">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
 			<option value="KML (.kml ou .kmz)" title="inconnue">KML (.kml ou .kmz)</option>
-			<option value="geojson (GeoJSON)" title="inconnue">GeoJSON (.geojson)</option>
+			<option value="GeoJSON (.geojson)" title="inconnue">GeoJSON (.geojson)</option>
 			<option value="TIFF (.tif ou .tiff)" title="-">TIFF (.tif ou .tiff)</option>
 			<option value="GeoTIFF (.tif)" title="-">GeoTIFF (.tif)</option>
 			<option value="">-------------------------------------</option>
@@ -2371,7 +2371,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="GML (.gml)" title="inconnue">GML (.gml)</option>
 			<option value="GML INSPIRE (.gml)" title="3.2.1">GML INSPIRE (.gml)</option>
 			<option value="GML-SF (.gml)" title="inconnue">GML Simple Feature Profile (.gml)</option>
-			<option value="JSON" title="inconnue">JSON (.json)</option>
+			<option value="JSON (.json)" title="inconnue">JSON (.json)</option>
 			<option value="GPX (.gpx)" title="inconnue">GPX (.gpx)</option>
 			<option value="JPEG (.jpg ou .jpeg)" title="inconnue">JPEG (.jpg ou .jpeg)</option>
 			<option value="JPEG2000 (.jp2 ou .j2k)" title="inconnue">JPEG2000 (.jp2 ou .j2k)</option>
@@ -2380,7 +2380,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="Microsoft Excel (.xls ou .xlsx)" title="inconnue">Microsoft Excel (.xls ou .xlsx)</option>
 			<option value="STAR-APIC (.asc)" title="inconnue">STAR-APIC (.asc)</option>
 			<option value="STAR CARTO (.std)" title="inconnue">STAR CARTO (.std)</option>
-			<option value="STAR GIS">STAR GIS</option>
+			<option value="STAR GIS" title="inconnue">STAR GIS</option>
 			<option value="SVG (.svg)" title="inconnue">SVG (.svg)</option>
 			<option value="TXT (.txt)" title="-">TXT (.txt)</option>
 			<option value="ZIP (.zip)" title="inconnue">ZIP (.zip)</option>
