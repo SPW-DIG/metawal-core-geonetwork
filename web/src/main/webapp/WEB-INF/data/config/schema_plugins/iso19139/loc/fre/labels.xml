@@ -2354,7 +2354,7 @@ version en tant que mot-clé complémentaire(s). Le numéro de version doit comp
 			<option value="ESRI Personal Geodatabase (.mdb ou .accdb)" title="inconnue">ESRI Personal Geodatabase (.mdb ou .accdb)</option>
 			<option value="KML (.kml ou .kmz)" title="inconnue">KML (.kml ou .kmz)</option>
 			<option value="geojson (GeoJSON)" title="inconnue">GeoJSON (.geojson)</option>
-			<option value="TIFF (.tif ou .tiff)"title="-">TIFF (.tif ou .tiff)</option>
+			<option value="TIFF (.tif ou .tiff)" title="-">TIFF (.tif ou .tiff)</option>
 			<option value="GeoTIFF (.tif)" title="-">GeoTIFF (.tif)</option>
 			<option value="">-------------------------------------</option>
 			<option value="Adobe PDF (.pdf)" title="inconnue">Adobe PDF (.pdf)</option>
