@@ -66,6 +66,11 @@
 		</Document>
 	</xsl:template>
 	
+    <xsl:template mode="index" match="gmd:MD_Keywords[contains(gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString,'Thèmes du géoportail wallon')]" priority="10">
+        <xsl:for-each select="gmd:keyword"><!-- TODO deal with autre -->
+            <Field name="metawalTheme" string="{substring-after(gco:CharacterString, ') ')}" store="true" index="true" token="false" />
+        </xsl:for-each>
+    </xsl:template>
 	
 	<!-- Add index mode template in order to easily add new field in the index (eg. in profiles).
         
