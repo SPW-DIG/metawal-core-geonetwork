@@ -53,8 +53,13 @@
   </xsl:variable>
   
   <!-- TODO : retrieve local copy -->
-  <xsl:variable name="inspire-thesaurus"
+  <xsl:variable name="inspire-thesaurusaa"
     select="document(concat(system-property(concat(substring-after($baseUrl, '/'), '.codeList.dir')), '/external/thesauri/theme/inspire-theme.rdf'))"/>
+<!-- Error with windows (path)  
+<xsl:variable name="inspire-thesaurus"
+    select="document('https://raw.githubusercontent.com/SPW-DIG/metawal-core-geonetwork/metawal-develop/web/src/main/webapp/WEB-INF/data/config/codelist/external/thesauri/theme/inspire-theme.rdf')"/>
+-->
+
   <!--<xsl:variable name="inspire-thesaurus"
     select="document('http://geonetwork.svn.sourceforge.net/svnroot/geonetwork/utilities/gemet/thesauri/inspire-theme.rdf')"/>-->
   

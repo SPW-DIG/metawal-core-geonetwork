@@ -232,7 +232,7 @@
 		<help>Indiquer le nom de la spécification. Pour INSPIRE choisir parmi celles suggérées en fonction du thème de la donnée.</help>
 		<helper>
 			<option value="">-- Conformité générale (obligatoire) --</option>
-			<option value="COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services">COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</option>
+			<option value="RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques">RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</option>
 			<option value="">-- Annexe I --</option>
 			<option value="INSPIRE Data Specification on Addresses – Technical Guidelines 3.1">INSPIRE Data Specification on Addresses – Technical Guidelines 3.1</option>
 			<option value="INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1">INSPIRE Data Specification on Geographical Names – Technical Guidelines 3.1</option>
