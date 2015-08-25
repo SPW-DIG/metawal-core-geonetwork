@@ -309,20 +309,10 @@ GeoNetwork.editor.CRSSelectionPanel = Ext.extend(Ext.FormPanel, {
                                 "<gmd:code>" +
                                     // Add description in the code tag. This information will be index and 
                                     // more useful than only the code. This could be improved later on
-                                    "<gco:CharacterString>" +
-                                        record.data.description +
+                                    "<gco:CharacterString>http://www.opengis.net/def/crs/EPSG/0/" +
+                                        record.get('code') +
                                     "</gco:CharacterString>" +
                                 "</gmd:code>" +
-                                "<gmd:codeSpace>" +
-                                    "<gco:CharacterString>" +
-                                        record.data.codeSpace +
-                                    "</gco:CharacterString>" +
-                                "</gmd:codeSpace>" +
-                                "<gmd:version>" +
-                                    "<gco:CharacterString>" +
-                                        record.data.version +
-                                    "</gco:CharacterString>" +
-                                "</gmd:version>" +
                             "</gmd:RS_Identifier>" +
                         "</gmd:referenceSystemIdentifier>" +
                       "</gmd:MD_ReferenceSystem>" +
