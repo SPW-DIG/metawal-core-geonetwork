@@ -553,12 +553,33 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                     el = Ext.get(div[0]);
 
                 for (i = 0; i < links.length; i++) {
-                    if (links[i]['type']==="text/plain" || links[i]['type']==="application/msword" || links[i]['type']==="text/html" ){
-                       links[i]['buttontype'] = 'text/plain';
-                   } else{
-                        links[i]['buttontype'] = links[i]['type'];
+                    //console.log(links[i]['type']);  
+                   if (links[i]['type']==="ESRI:REST" && links[i]['href'].substring(0, 51) !=="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
+                         links[i]['buttontype'] = 'text/plain';
+                   } else if (links[i]['type']==="application/vnd.ogc.wms_xml" || links[i]['type']==="OGC:WMS" ){
+                     console.log('1');
+                        if (links[i].hasOwnProperty('buttontype')===false){
+                            var linkwms =[];
+                            linkwms['href'] = links[i]['href'];
+                            linkwms['name'] = links[i]['name'];
+                            linkwms['protocol'] = links[i]['protocol'];
+                            linkwms['title'] = links[i]['title'];
+                            linkwms['type'] = links[i]['type'];
+                            linkwms['buttontype'] = 'text/plain';
+                            links[i]['buttontype'] = 'application/vnd.ogc.wms_xml';
+                            links.push(linkwms);
+                        }else{}
+                   }
+
+                   else{
+                        if (links[i]['href'].substring(0, 51) ==="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
+                            links[i]['buttontype'] = 'ESRI:REST';
+                        } else {
+                            links[i]['buttontype'] = 'text/plain';
+                        }
                    }
                 };
+                
 
                 console.log(links);
                 // The template may not defined a md-links placeholder
@@ -679,6 +700,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
      *  and display a dropdown menu if not.
      */
     addLinkMenu: function (linkButton, label, currentType, el) {
+        console.log(linkButton);
         if (linkButton.length === 1) {
             var handler = linkButton[0].handler || function () {
                 window.open(linkButton[0].href, '_blank');
