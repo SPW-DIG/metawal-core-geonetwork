@@ -553,8 +553,14 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                     el = Ext.get(div[0]);
 
                 for (i = 0; i < links.length; i++) {
-                    //console.log(links[i]['type']);  
-                   if (links[i]['type']==="ESRI:REST" && links[i]['href'].substring(0, 51) !=="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
+                    console.log(links[i]['type']);
+                    if (links[i]['type']==="text/plain" || links[i]['type']==="application/msword" || links[i]['type']==="text/html" || links[i]['type']==="text/x-tex"){
+                        if (links[i]['href'].substring(0, 51) ==="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
+                            links[i]['buttontype'] = 'ESRI:REST';
+                        } else {
+                            links[i]['buttontype'] = 'text/plain';
+                        }
+                   } else if (links[i]['type']==="ESRI:REST" && links[i]['href'].substring(0, 51) !=="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
                          links[i]['buttontype'] = 'text/plain';
                    } else if (links[i]['type']==="application/vnd.ogc.wms_xml" || links[i]['type']==="OGC:WMS" ){
                      console.log('1');
@@ -570,13 +576,8 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                             links.push(linkwms);
                         }else{}
                    }
-
                    else{
-                        if (links[i]['href'].substring(0, 51) ==="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
-                            links[i]['buttontype'] = 'ESRI:REST';
-                        } else {
-                            links[i]['buttontype'] = 'text/plain';
-                        }
+                        links[i]['buttontype'] = links[i]['type'];
                    }
                 };
                 
