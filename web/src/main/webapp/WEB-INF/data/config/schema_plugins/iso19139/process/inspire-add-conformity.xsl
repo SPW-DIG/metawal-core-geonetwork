@@ -53,7 +53,7 @@
   </xsl:variable>
   
   <!-- TODO : retrieve local copy -->
-  <xsl:variable name="inspire-thesaurusaa"
+  <xsl:variable name="inspire-thesaurus"
     select="document(concat(system-property(concat(substring-after($baseUrl, '/'), '.codeList.dir')), '/external/thesauri/theme/inspire-theme.rdf'))"/>
 <!-- Error with windows (path)  
 <xsl:variable name="inspire-thesaurus"
