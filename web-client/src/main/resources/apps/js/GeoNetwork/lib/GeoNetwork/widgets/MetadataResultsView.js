@@ -635,6 +635,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                                 if (allowDynamic) {
                                     linkButton.push({
                                         text: record.get('title') || record.get('name'),
+                                        type:'OGC:WMS',
                                         handler: function (b, e) {
                                             // FIXME : ref to app
                                             app.switchMode('1', true);
@@ -665,11 +666,20 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                                     var handler = function () {
                                         window.open(record.get('href'), '_blank');
                                     };
-                                    linkButton.push({
+                                    if (record.get('buttontype')==='ESRI:REST'){
+                                        linkButton.push({
+                                            text: (record.get('title') || record.get('name')),
+                                            type:'ESRI:REST',
+    //                                      href: record.get('href')
+                                            handler: handler
+                                        });
+                                    }else{
+                                        linkButton.push({
                                         text: (record.get('title') || record.get('name')),
-//                                        href: record.get('href')
+//                                      href: record.get('href')
                                         handler: handler
-                                    });
+                                        });
+                                    }
                                 }
                             }
                             
@@ -703,6 +713,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
     addLinkMenu: function (linkButton, label, currentType, el) {
         console.log(linkButton);
         if (linkButton.length === 1) {
+            if (linkButton[0].hasOwnProperty('type')) {
             var handler = linkButton[0].handler || function () {
                 window.open(linkButton[0].href, '_blank');
             };
@@ -713,13 +724,14 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                 iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
                 renderTo: el
             });
-        } else {
-            bt = new Ext.Button({
-                text: label,
-                menu: new Ext.menu.Menu({cls: 'links-mn', items: linkButton}),
-                iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
-                renderTo: el
-            });
+            } else {
+                bt = new Ext.Button({
+                    text: label,
+                    menu: new Ext.menu.Menu({cls: 'links-mn', items: linkButton}),
+                    iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
+                    renderTo: el
+                });
+            }
         }
     },
     /** private: method[dislayRelations]
