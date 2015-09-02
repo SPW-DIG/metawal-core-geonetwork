@@ -31,7 +31,7 @@
         if (!gnSearchLocation.isMdView()) {
           gnMdViewObj.from = gnSearchLocation.path();
         }
-      }
+      };
       $rootScope.$on('$locationChangeStart', initFromConfig);
       initFromConfig();
 
@@ -40,6 +40,10 @@
         if (angular.isUndefined(md)) {
           md = gnMdViewObj.records[index];
         }
+
+        // Set the route
+        this.setLocationUuid(md.getUuid());
+        gnUtilityService.scrollTo();
 
         angular.extend(md, {
           links: md.getLinksByType('LINK'),
@@ -56,9 +60,6 @@
         // TODO: do not add duplicates
         gnMdViewObj.previousRecords.push(md);
 
-        // Set the route
-        this.setLocationUuid(md.getUuid());
-        gnUtilityService.scrollTo();
       };
 
       /**
