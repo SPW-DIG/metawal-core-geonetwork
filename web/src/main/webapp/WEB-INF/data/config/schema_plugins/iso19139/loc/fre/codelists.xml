@@ -44,7 +44,7 @@
 		<entry>
 			<code>information</code>
 			<label>Information</label>
-			<description>Online information about the resource</description>
+			<description>Information online relative à la ressource</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
@@ -63,6 +63,56 @@
 			<code>search</code>
 			<label>Interface de recherche</label>
 			<description>Interface de recherche pour trouver la ressource</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<!-->New entries for MW</!-->
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>browsing</code>
+			<label>Consultation</label>
+			<description>Consultation en ligne fournie</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>fileAccess</code>
+			<label>Accès au fichier</label>
+			<description>Accès à un fichier en ligne fourni</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>information.lineage</code>
+			<label>Information relative à la généalogie</label>
+			<description>Information relative à la généalogie</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>information.portrayal</code>
+			<label>Information relative à la symbologie ou à la légende</label>
+			<description>Information relative à la symbologie ou à la légende</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>information.content</code>
+			<label>Modèle de la donnée</label>
+			<description>Modèle de la donnée</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>information.qualityReport</code>
+			<label>Evaluation de la qualité</label>
+			<description>Rapport d'évaluation de la qualité</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>information.qualitySpecification</code>
+			<label>Spécification de qualité</label>
+			<description>Spécification de qualité</description>
+		</entry>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<entry>
+			<code>information.usage</code>
+			<label>Information sur l'utilisation</label>
+			<description>Information relative à l'utilisation</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 	</codelist>
