@@ -55,10 +55,12 @@
   <!-- TODO : retrieve local copy -->
   <xsl:variable name="inspire-thesaurus"
     select="document(concat(system-property(concat(substring-after($baseUrl, '/'), '.codeList.dir')), '/external/thesauri/theme/inspire-theme.rdf'))"/>
-<!-- Error with windows (path)  
-<xsl:variable name="inspire-thesaurus"
+<!-- Error with windows (path)  -->
+<!--
+  <xsl:variable name="inspire-thesaurus"
     select="document('https://raw.githubusercontent.com/SPW-DIG/metawal-core-geonetwork/metawal-develop/web/src/main/webapp/WEB-INF/data/config/codelist/external/thesauri/theme/inspire-theme.rdf')"/>
--->
+  -->
+
 
   <!--<xsl:variable name="inspire-thesaurus"
     select="document('http://geonetwork.svn.sourceforge.net/svnroot/geonetwork/utilities/gemet/thesauri/inspire-theme.rdf')"/>-->
@@ -124,8 +126,13 @@
       <!-- Add one data quality report per themes from Annex I -->      
       <xsl:variable name="keywords"
                     select="//gmd:keyword/gco:CharacterString"/>
-      <xsl:variable name="metadataLanguage"
+      <xsl:variable name="metadataLanguageIso19139"
                     select="//gmd:MD_Metadata/gmd:language/gmd:LanguageCode/@codeListValue"/>
+      <xsl:variable name="metadataLanguageTemplateRW"
+                    select="//gmd:MD_Metadata/gmd:language/gco:CharacterString"/>
+      <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) = '')
+                                        then $metadataLanguageTemplateRW
+                                        else $metadataLanguageIso19139"/>
       <xsl:variable name="metadataInspireThemes"
                     select="$inspire-thesaurus//skos:Concept[skos:prefLabel = $keywords]/
                                 skos:prefLabel[@xml:lang='en']"/>
@@ -190,7 +197,6 @@
         <xsl:variable name="title"
                         select="$specificationTitles/*[name() = $metadataLanguage]/
                                     spec[not(@theme)]/@title"/>
-
         <xsl:call-template name="generateDataQualityReport">
           <xsl:with-param name="title"
                           select="if (normalize-space($title) = '')
@@ -219,9 +225,15 @@
 
   <xsl:template name="generateDataQualityReport">
     <xsl:param name="title"/>
+    <xsl:param name="metadataLanguage"/>
     <xsl:param name="pass" select="'0'"/>
     <xsl:param name="date" select="format-dateTime(current-dateTime(),$dateFormat)"/>
-    
+    <xsl:param name="explanation_eng" select="'See the referenced specification'"/>
+    <xsl:param name="explanation_fre" select="'Voir la spécification référencée'"/>
+    <xsl:variable name="explanation" select="if (normalize-space($metadataLanguage) = 'fre')
+                                        then $explanation_fre
+                                        else $explanation_eng"/>
+
     <gmd:dataQualityInfo>
       <gmd:DQ_DataQuality>
         <gmd:scope>
@@ -259,7 +271,7 @@
                   </gmd:CI_Citation>
                 </gmd:specification>
                 <gmd:explanation>
-                  <gco:CharacterString>See the referenced specification</gco:CharacterString>
+                  <gco:CharacterString><xsl:value-of select="$explanation"/></gco:CharacterString>
                 </gmd:explanation>
                 <gmd:pass>
                   <gco:Boolean><xsl:value-of select="$pass"/></gco:Boolean>
