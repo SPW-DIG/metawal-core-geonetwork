@@ -7,6 +7,7 @@
   xmlns:gmd="http://www.isotc211.org/2005/gmd"
   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
   xmlns:util="java:org.fao.geonet.util.XslUtil"
+  xmlns:rw="http://metawal.wallonie.be/schemas/3.0"
   exclude-result-prefixes="#all">
   
   <xsl:import href="process-utility.xsl"/>
@@ -56,10 +57,10 @@
   <xsl:variable name="inspire-thesaurus"
     select="document(concat(system-property(concat(substring-after($baseUrl, '/'), '.codeList.dir')), '/external/thesauri/theme/inspire-theme.rdf'))"/>
 <!-- Error with windows (path)  -->
-<!--
-  <xsl:variable name="inspire-thesaurus"
-    select="document('https://raw.githubusercontent.com/SPW-DIG/metawal-core-geonetwork/metawal-develop/web/src/main/webapp/WEB-INF/data/config/codelist/external/thesauri/theme/inspire-theme.rdf')"/>
-  -->
+
+  <!--<xsl:variable name="inspire-thesaurus"
+    select="document('https://raw.githubusercontent.com/SPW-DIG/metawal-core-geonetwork/metawal-develop/web/src/main/webapp/WEB-INF/data/config/codelist/external/thesauri/theme/inspire-theme.rdf')"/>-->
+
 
 
   <!--<xsl:variable name="inspire-thesaurus"
@@ -129,7 +130,7 @@
       <xsl:variable name="metadataLanguageIso19139"
                     select="//gmd:MD_Metadata/gmd:language/gmd:LanguageCode/@codeListValue"/>
       <xsl:variable name="metadataLanguageTemplateRW"
-                    select="//gmd:MD_Metadata/gmd:language/gco:CharacterString"/>
+                    select="//rw:MD_Metadata/gmd:language/gco:CharacterString"/>
       <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) = '')
                                         then $metadataLanguageTemplateRW
                                         else $metadataLanguageIso19139"/>
@@ -225,15 +226,20 @@
 
   <xsl:template name="generateDataQualityReport">
     <xsl:param name="title"/>
-    <xsl:param name="metadataLanguage"/>
     <xsl:param name="pass" select="'0'"/>
     <xsl:param name="date" select="format-dateTime(current-dateTime(),$dateFormat)"/>
     <xsl:param name="explanation_eng" select="'See the referenced specification'"/>
     <xsl:param name="explanation_fre" select="'Voir la spécification référencée'"/>
+    <xsl:variable name="metadataLanguageIso19139"
+                    select="//gmd:MD_Metadata/gmd:language/gmd:LanguageCode/@codeListValue"/>
+    <xsl:variable name="metadataLanguageTemplateRW"
+                    select="//rw:MD_Metadata/gmd:language/gco:CharacterString"/>
+    <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) = '')
+                                        then $metadataLanguageTemplateRW
+                                        else $metadataLanguageIso19139"/>
     <xsl:variable name="explanation" select="if (normalize-space($metadataLanguage) = 'fre')
                                         then $explanation_fre
                                         else $explanation_eng"/>
-
     <gmd:dataQualityInfo>
       <gmd:DQ_DataQuality>
         <gmd:scope>
