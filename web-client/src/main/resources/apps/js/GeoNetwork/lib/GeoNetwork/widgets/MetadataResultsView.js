@@ -600,7 +600,6 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                     });
                     store.sort('buttontype');
                     
-                    
                     var linkButton = [], label = null, currentType = null, bt,
                          allowDynamic = r.get('dynamic'), allowDownload = r.get('download'),
                          hasDownloadAction = false;
@@ -714,16 +713,16 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
         console.log(linkButton);
         if (linkButton.length === 1) {
             if (linkButton[0].hasOwnProperty('type')) {
-            var handler = linkButton[0].handler || function () {
-                window.open(linkButton[0].href, '_blank');
-            };
-            bt = new Ext.Button({
-                text: label,
-                tooltip: linkButton[0].text,
-                handler: handler,
-                iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
-                renderTo: el
-            });
+                var handler = linkButton[0].handler || function () {
+                    window.open(linkButton[0].href, '_blank');
+                };
+                bt = new Ext.Button({
+                    text: label,
+                    tooltip: linkButton[0].text,
+                    handler: handler,
+                    iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
+                    renderTo: el
+                });
             } else {
                 bt = new Ext.Button({
                     text: label,
@@ -733,6 +732,14 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                 });
             }
         }
+        else {
+                bt = new Ext.Button({
+                    text: label,
+                    menu: new Ext.menu.Menu({cls: 'links-mn', items: linkButton}),
+                    iconCls: GeoNetwork.Util.protocolToCSS[currentType] || currentType,
+                    renderTo: el
+                });
+            }
     },
     /** private: method[dislayRelations]
      *  Search for children for all records which are series.
