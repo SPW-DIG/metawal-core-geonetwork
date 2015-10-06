@@ -129,11 +129,17 @@
                     select="//gmd:keyword/gco:CharacterString"/>
       <xsl:variable name="metadataLanguageIso19139"
                     select="//gmd:MD_Metadata/gmd:language/gmd:LanguageCode/@codeListValue"/>
+      <xsl:variable name="metadataLanguageIso19139templateRW"
+                    select="//gmd:MD_Metadata/gmd:language/gco:CharacterString"/>
       <xsl:variable name="metadataLanguageTemplateRW"
                     select="//rw:MD_Metadata/gmd:language/gco:CharacterString"/>
-      <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) = '')
+      <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) != '')
+                                        then $metadataLanguageIso19139
+                                        else if  (normalize-space($metadataLanguageIso19139templateRW) != '')
+                                        then $metadataLanguageIso19139templateRW 
+                                        else if  (normalize-space($metadataLanguageTemplateRW) != '')
                                         then $metadataLanguageTemplateRW
-                                        else $metadataLanguageIso19139"/>
+                                        else 'erro'"/>
       <xsl:variable name="metadataInspireThemes"
                     select="$inspire-thesaurus//skos:Concept[skos:prefLabel = $keywords]/
                                 skos:prefLabel[@xml:lang='en']"/>
@@ -173,8 +179,6 @@
           </xsl:call-template>
         </xsl:otherwise>
       </xsl:choose>
-      
-      
       <!-- For Annex II and III and reference to commission regulation 1089/2010 -->
       <xsl:variable name="isThemesFromAnnexIIorIII">
         <xsl:for-each select="$metadataInspireThemes">
@@ -232,9 +236,15 @@
     <xsl:param name="explanation_fre" select="'Voir la spécification référencée'"/>
     <xsl:variable name="metadataLanguageIso19139"
                     select="//gmd:MD_Metadata/gmd:language/gmd:LanguageCode/@codeListValue"/>
+    <xsl:variable name="metadataLanguageIso19139templateRW"
+                    select="//gmd:MD_Metadata/gmd:language/gco:CharacterString"/>
     <xsl:variable name="metadataLanguageTemplateRW"
                     select="//rw:MD_Metadata/gmd:language/gco:CharacterString"/>
-    <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) = '')
+    <xsl:variable name="metadataLanguage" select="if (normalize-space($metadataLanguageIso19139) != '')
+                                        then $metadataLanguageIso19139
+                                        else if  (normalize-space($metadataLanguageIso19139templateRW) != '')
+                                        then $metadataLanguageIso19139templateRW 
+                                        else if  (normalize-space($metadataLanguageTemplateRW) != '')
                                         then $metadataLanguageTemplateRW
                                         else $metadataLanguageIso19139"/>
     <xsl:variable name="explanation" select="if (normalize-space($metadataLanguage) = 'fre')
