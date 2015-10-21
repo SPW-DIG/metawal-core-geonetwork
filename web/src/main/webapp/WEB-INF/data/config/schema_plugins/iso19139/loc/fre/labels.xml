@@ -2750,7 +2750,7 @@ la non-évaluation</b>, dans le cadre de métadonnées INSPIRE
 		<label>Personnes liées à la ressource</label>
 		<description>Organisation ou personne liée à la ressource (partie prenante)</description>
 		<help>Indiquer les organisations ou personnes liées à la ressource. ll est obligatoire de compléter le nom de l'organisation, un email de contact et le rôle de la partie prenante. Les autres informations sont facultatives.</help>
-		<help><![CDATA[Trois parties prenantes doivent obligatoirement être renseignées :<ul><li>le <b><i>point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li>le <b><i>propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li>le <b><i>gestionnaire</i></b> : l'organisme ou la personne qui endosse la responsabilité de la ressource.</li></ul>]]></help>
+		<help><![CDATA[Trois parties prenantes doivent obligatoirement être renseignées :<ul><li>le <b><i>point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li>le <b><i>propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li>le <b><i>gestionnaire</i></b> : l'organisme ou la personne qui veille à garantir l’acquisition, la qualité, l’intégrité, le stockage, la mise à jour, la documentation et la diffusion de la ressource.</li></ul>]]></help>
 		<condition>Obligatoire</condition>
 	</element><!-- <element name="gmd:pointOfContact" id="29.0">
     <label>Contact pour la ressource</label>
@@ -3071,7 +3071,7 @@ diffusion restreinte.
 	<element name="gmd:role" id="379.0">
 		<label>Rôle</label>
 		<description>Rôle endossé par la personne ou l'organisation mentionnée vis-à-vis de la ressource.</description>
-		<help><![CDATA[Les rôles les plus fréquents sont :<ul><li><b><i>Point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li><b><i>Propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li><b><i>Gestionnaire</i></b> : l'organisme ou la personne qui endosse la responsabilité de la ressource.</li></ul>]]></help>
+		<help><![CDATA[Les rôles les plus fréquents sont :<ul><li><b><i>Point de contact</i></b> : l'organisme ou la personne qu'il faut contacter pour obtenir des renseignements sur la ressource.</li><li><b><i>Propriétaire</i></b> : l'organisme ou la personne morale ou physique qui possède la propriété intellectuelle de la ressource.</li><li><b><i>Gestionnaire</i></b> : l'organisme ou la personne qui veille à garantir l’acquisition, la qualité, l’intégrité, le stockage, la mise à jour, la documentation et la diffusion de la ressource.</li></ul>]]></help>
 		<condition>Obligatoire</condition>
 	</element>
 	<element name="gmd:role" id="379.0" context="gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:distributor/gmd:MD_Distributor/gmd:distributorContact/gmd:CI_ResponsibleParty/gmd:role">
