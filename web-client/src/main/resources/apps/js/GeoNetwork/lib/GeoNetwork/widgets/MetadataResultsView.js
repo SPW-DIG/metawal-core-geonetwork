@@ -544,16 +544,15 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
     dislayLinks: function (records) {
         var view = this;
         Ext.each(records, function (r) {
+            
             var links = r.get('links'),
                 id = r.get('id'),
                 uuid = r.get('uuid');
-            
             if (links.length > 0) {
                 var div = Ext.query('#md-links-' + id, view.el.dom.body),
                     el = Ext.get(div[0]);
 
                 for (i = 0; i < links.length; i++) {
-                    console.log(links[i]['type']);
                     if (links[i]['type']==="text/plain" || links[i]['type']==="application/msword" || links[i]['type']==="text/html" || links[i]['type']==="text/x-tex"){
                         if (links[i]['href'].substring(0, 51) ==="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
                             links[i]['buttontype'] = 'ESRI:REST';
@@ -563,7 +562,6 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                    } else if (links[i]['type']==="ESRI:REST" && links[i]['href'].substring(0, 51) !=="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
                          links[i]['buttontype'] = 'text/plain';
                    } else if (links[i]['type']==="application/vnd.ogc.wms_xml" || links[i]['type']==="OGC:WMS" ){
-                     console.log('1');
                         if (links[i].hasOwnProperty('buttontype')===false){
                             var linkwms =[];
                             linkwms['href'] = links[i]['href'];
@@ -582,7 +580,6 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                 };
                 
 
-                console.log(links);
                 // The template may not defined a md-links placeholder
                 if (el) {
                     var store = new Ext.data.ArrayStore({
@@ -710,7 +707,6 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
      *  and display a dropdown menu if not.
      */
     addLinkMenu: function (linkButton, label, currentType, el) {
-        console.log(linkButton);
         if (linkButton.length === 1) {
             if (linkButton[0].hasOwnProperty('type')) {
                 var handler = linkButton[0].handler || function () {
