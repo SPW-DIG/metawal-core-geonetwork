@@ -562,9 +562,14 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                    } else if (links[i]['type']==="ESRI:REST" && links[i]['href'].substring(0, 51) !=="http://geoportail.wallonie.be/walonmap/?agsDynUrls="){
                          links[i]['buttontype'] = 'text/plain';
                    } else if (links[i]['type']==="application/vnd.ogc.wms_xml" || links[i]['type']==="OGC:WMS" ){
+
                         if (links[i].hasOwnProperty('buttontype')===false){
                             var linkwms =[];
-                            linkwms['href'] = links[i]['href'];
+                            if (links[i]['href'].indexOf('?request=') > -1) {
+                                linkwms['href'] = links[i]['href'];
+                            }else{
+                                linkwms['href'] = links[i]['href']+ '?request=GetCapabilities&service=WMS';
+                            }
                             linkwms['name'] = links[i]['name'];
                             linkwms['protocol'] = links[i]['protocol'];
                             linkwms['title'] = links[i]['title'];
@@ -602,7 +607,6 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                          hasDownloadAction = false;
                     
                     store.each(function (record) {
-                        
                         // Avoid empty URL
                         if (record.get('href') !== '') {
                             // Check that current record type is the same as the previous record
@@ -625,12 +629,11 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                             }
                             
                             var text = null, handler = null;
-                            
                             // Only display WMS link if dynamic property set to true for current user & record
                             if ((currentType === 'application/vnd.ogc.wms_xml' || currentType === 'OGC:WMS')) {
                                 if (allowDynamic) {
                                     linkButton.push({
-                                        text: record.get('title') || record.get('name'),
+                                        text: record.get('name') || record.get('title'),
                                         type:'OGC:WMS',
                                         handler: function (b, e) {
                                             // FIXME : ref to app
@@ -641,7 +644,7 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                                 }
                             } else if (currentType === 'application/vnd.ogc.wmc') {
                                 linkButton.push({
-                                    text: record.get('title') || record.get('name'),
+                                    text: record.get('name') || record.get('title'),
                                     handler: function (b, e) {
                                         // FIXME : ref to app
                                         app.switchMode('1', true);
@@ -664,14 +667,14 @@ GeoNetwork.MetadataResultsView = Ext.extend(Ext.DataView, {
                                     };
                                     if (record.get('buttontype')==='ESRI:REST'){
                                         linkButton.push({
-                                            text: (record.get('title') || record.get('name')),
+                                            text: (record.get('name') || record.get('title')),
                                             type:'ESRI:REST',
     //                                      href: record.get('href')
                                             handler: handler
                                         });
                                     }else{
                                         linkButton.push({
-                                        text: (record.get('title') || record.get('name')),
+                                        text: (record.get('name') || record.get('title')),
 //                                      href: record.get('href')
                                         handler: handler
                                         });
