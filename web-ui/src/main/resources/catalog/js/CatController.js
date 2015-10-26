@@ -29,7 +29,7 @@
    *
    * A body-level scope makes sense for example:
    *
-   *     <body ng-controller="GnCatController">
+   *  <body ng-controller="GnCatController">
    */
   module.controller('GnCatController', [
     '$scope', '$http', '$q', '$rootScope', '$translate',
@@ -95,8 +95,11 @@
 
       gnConfigService.load().then(function(c) {
         // Config loaded
-        //gnMap.importProj4js();
-        // TODO: make map proj load in mapService.config instead of here
+        if (proj4 && angular.isArray(gnConfig['map.proj4js'])) {
+          angular.forEach(gnConfig['map.proj4js'], function(item) {
+            proj4.defs(item.code, item.value);
+          });
+        }
       });
 
       /**
