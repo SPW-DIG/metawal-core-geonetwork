@@ -1367,7 +1367,7 @@
 		<entry>
 			<code>restricted</code>
 			<label>Restreint</label>
-			<description>Cette valeur n’a pas d’application identifiée en France</description>
+			<description>Restreint aux membres identifiés d'une organisation ou d'un groupe</description>
 		</entry>
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<entry>
