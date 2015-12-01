@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<fields>
-	<field name="gmd:CI_ResponsibleParty">
-		<substitute name="rw:CI_ResponsibleParty"/>
-	</field>
-</fields>
