@@ -787,6 +787,13 @@
       </properties>
     </profile>
     <profile>
+      <id>mw-agf</id>
+      <properties>
+        <db.type>oracle</db.type>
+        <data.dir>WEB-INF/config-db</data.dir>
+      </properties>
+    </profile>
+    <profile>
       <id>mw-fxp</id>
       <properties>
         <db.type>postgres</db.type>
