@@ -275,5 +275,7 @@
     "ImportRecord": "Importer des fiches",
     "directoryManager": "Gestion des annuaires",
     "typeOfRecord": "Type de fiche",
-    "load": "Charger"
+    "load": "Charger",
+    "Abstract-hook":"Accroche",
+    "Abstract-descriptive":"Résumé détaillé"
 }
