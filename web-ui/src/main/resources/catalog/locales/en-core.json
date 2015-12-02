@@ -276,5 +276,7 @@
     "ImportRecord": "Import new records",
     "directoryManager": "Manage directory",
     "typeOfRecord": "Type of record",
-    "load": "Load"
+    "load": "Load",
+    "Abstract-hook":"Main description",
+    "Abstract-descriptive":"Detailed abstract"
 }
