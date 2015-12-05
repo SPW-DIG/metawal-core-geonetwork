@@ -16,6 +16,8 @@
 
   <xsl:import href="form-configurator.xsl"/>
 
+  <xsl:import href="menu-fn.xsl"/>
+
   <xsl:import href="menu-builder.xsl"/>
 
   <!-- 
@@ -354,6 +356,8 @@
     <xsl:param name="isMissingLabel" required="no"/>
     <xsl:param name="isFirst" required="no" as="xs:boolean" select="true()"/>
     <xsl:param name="isAddAction" required="no" as="xs:boolean" select="false()"/>
+    <xsl:param name="btnLabel" required="no" as="xs:string?" select="''"/>
+    <xsl:param name="btnClass" required="no" as="xs:string?" select="''"/>
 
     <xsl:variable name="tagId" select="generate-id()"/>
 
@@ -373,7 +377,7 @@
          data-gn-field-highlight="">
 
       <label class="col-sm-2 control-label">
-        <xsl:value-of select="$name"/>
+        <xsl:value-of select="$name"/>&#160;
       </label>
       <div class="col-sm-9">
         <!-- Create an empty input to contain the data-gn-field-tooltip
@@ -420,7 +424,13 @@
                 </div>
               </xsl:when>
               <xsl:otherwise>
-                <i class="btn btn-default fa fa-plus" data-gn-template-field-add-button="{$id}"/>
+                <button class="btn btn-default"
+                        data-gn-template-field-add-button="{$id}">
+                  <i class="{if ($btnClass != '') then $btnClass else 'fa fa-plus'}"/>
+                  <xsl:if test="$btnLabel != ''">&#160;
+                    <span><xsl:value-of select="$btnLabel"/></span>
+                  </xsl:if>
+                </button>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:if>
@@ -630,7 +640,7 @@
           data-gn-field-tooltip="{$schema}|{$qualifiedName}|{name(..)}|">
           <xsl:if test="normalize-space($label) != ''">
                   <xsl:value-of select="$label"/>
-          </xsl:if>
+          </xsl:if>&#160;
         </label>
         <div class="col-sm-9">
 
