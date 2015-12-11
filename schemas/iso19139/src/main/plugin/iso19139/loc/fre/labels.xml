@@ -3005,6 +3005,198 @@ la non-évaluation</b>, dans le cadre de métadonnées INSPIRE
     <li>Email : urbanisme@paris.pref.gouv.fr</li>
     </ul>
     ]]></help>
+
+        <condition/>
+    </element>
+    <element name="gmd:polygon" id="342.0">
+        <label>Polygone</label>
+        <description>Liste de points définissant le polygone de délimitation</description>
+        <help>Série de points définissant le polygone de délimitation. Les positions sont exprimées en latitude et longitude géographique. Il s'agit d'un objet géométrique.</help>
+        <condition>Obligatoire</condition>
+
+    </element>
+    <element name="gmd:portrayalCatalogueCitation" id="269.0">
+        <label>Référence bibliographique</label>
+        <description>Référence bibliographique du catalogue de présentation utilisé</description>
+        <help>Référence bibliographique au catalogue de représentation cité</help>
+        <condition>Obligatoire</condition>
+
+    </element>
+    <element name="gmd:portrayalCatalogueInfo" id="19.0">
+        <label>Informations sur la réprésentation</label>
+        <abbrLabel>Réprésentation</abbrLabel>
+        <description>Informations sur le catalogue de règles concernant la représentation des ressources</description>
+        <help>Informations concernant le catalogue de règles établi pour la représentation de ressources.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:positionName" id="377.0">
+        <label>Fonction</label>
+        <description>Rôle ou fonction de la personne responsable</description>
+        <help>Fonction ou position de la personne responsable.</help>
+        <condition>Condition</condition>
+    </element>
+    <element name="gmd:postalCode" id="384.0">
+        <label>Code postal</label>
+        <description>Code postale ou autre code pour l'emplacement</description>
+        <help>Code postal</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:presentationForm" id="368.0">
+        <label>Forme de la présentation</label>
+        <description>Mode dans lequel la ressource est représentée</description>
+        <help>Forme sous laquelle la source est disponible. Exemple : document numérique ou analogique, image, carte, modèle, etc. (sélection dans une liste).</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:processStep" id="84.0">
+        <label>Evénement</label>
+        <description>Informations sur des événements dans la vie du jeu de données</description>
+        <help>Informations concernant les étapes de traitement requises par la génération et l'actualisation d'un jeu de données avec indication des dates correspondantes. Les différentes étapes conduisant au jeu de données définitif sont mentionnées ici. Exemple : restitution photogrammétrique de clichés aériens, vérification et complètement sur le terrain puis établissement de la carte. Ces étapes peuvent être saisies dans la classe LI_ProcessStep (texte, date, source et personne en charge du traitement).</help>
+        <condition>Condition</condition>
+    </element>
+    <element name="gmd:processingLevelCode" id="249.0">
+        <label>Code sur les niveau de processus</label>
+        <description>Code du distributeur d'image qui identifie les niveaux de processus radiométrique et géométrique appliqués</description>
+        <help>Identification du distributeur de l'image indiquant le niveau de traitement radiométrique et géométrique appliqué.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:processor" id="90.0">
+        <label>Personnes responsables du processus</label>
+        <description>Identification des personnes et organisations associées avec l'étape de processus, ainsi que des moyens de communications à utiliser pour entrer en contact avec elles</description>
+        <help>Identification de la personne (voire des personnes) ou de l'organisation (voire des organisations) en charge du jeu de données décrit et mode de communication avec elle(s). Cette personne ou ce service endosse un rôle bien spécifique (propriétaire, prestataire, gestionnaire, etc.) pouvant être sélectionné dans la liste proposée ici. Ces informations sont du type CI_ResponsibleParty et sont gérées dans la classe du même nom.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:protocol" id="398.0" alias="protocol">
+        <label>Protocole</label>
+        <description>Protocole de la connexion à utiliser</description>
+        <help>Protocole de connexion utilisé, par exemple FTP.</help>
+        <condition/>
+        <helper sort="true">
+            <option value="OGC:CSW">OGC-CSW Catalogue Service for the Web</option>
+            <option value="OGC:KML">OGC-KML Keyhole Markup Language</option>
+            <option value="OGC:GML">OGC-GML Geography Markup Language</option>
+            <option value="OGC:ODS">OGC-ODS OpenLS Directory Service</option>
+            <option value="OGC:OGS">OGC-ODS OpenLS Gateway Service</option>
+            <option value="OGC:OUS">OGC-ODS OpenLS Utility Service</option>
+            <option value="OGC:OPS">OGC-ODS OpenLS Presentation Service</option>
+            <option value="OGC:ORS">OGC-ODS OpenLS Route Service</option>
+            <option value="OGC:SOS">OGC-SOS Sensor Observation Service</option>
+            <option value="OGC:SPS">OGC-SPS Sensor Planning Service</option>
+            <option value="OGC:SAS">OGC-SAS Sensor Alert Service</option>
+            <option value="OGC:WCS">OGC-WCS Web Coverage Service</option>
+            <option value="OGC:WCTS">OGC-WCTS Web Coordinate Transformation Service</option>
+            <option value="OGC:WFS">OGC-WFS Web Feature Service</option>
+            <option value="OGC:WFS-G">OGC-WFS-G Gazzetteer Service</option>
+            <option value="OGC:WMC">OGC-WMC Web Map Context</option>
+            <option value="OGC:OWS-C">OGC OWS Context</option>
+            <option value="OGC:WMS">OGC-WMS Web Map Service</option>
+            <option value="OGC:WNS">OGC-WNS Web Notification Service</option>
+            <option value="OGC:WPS">OGC-WPS Web Processing Service</option>
+            <option value="WWW:DOWNLOAD-1.0-ftp--download">Fichier à télécharger (FTP)</option>
+            <option value="WWW:DOWNLOAD-1.0-http--download">Fichier à télécharger</option>
+            <option value="FILE:GEO">Fichier SIG</option>
+            <option value="FILE:RASTER">Fichier SIG RASTER</option>
+            <option value="WWW:LINK-1.0-http--ical">iCalendar (URL)</option>
+            <option value="WWW:LINK-1.0-http--link" default="">Adresse Internet (URL)</option>
+            <option value="WWW:LINK-1.0-http--rss">Fil RSS (URL)</option>
+            <option value="DB:POSTGIS">Base de données / Table PostGIS</option>
+            <option value="DB:ORACLE">Base de données / ORACLE</option>
+            <option value="WWW:LINK-1.0-http--opendap">OPeNDAP URL</option>
+            <option value="RBNB:DATATURBINE">Data Turbine</option>
+            <option value="UKST">Unknown Service Type</option>
+        </helper>
+    </element>
+    <element name="gmd:purpose" id="26.0">
+        <label>But</label>
+        <description>Résumé des intentions pour lesquelles les ressources ont été développées</description>
+        <help>Motif(s) de la création de ce jeu de données.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:radiometricCalibrationDataAvailability" id="252.0">
+        <label>Disponibilité de la calibration radiométrique</label>
+        <description>Indication si oui ou non l'information sur la calibration radiométrique pour générer le produit standard corrigé radiométriquement est à disposition</description>
+        <help>Indication de la présence éventuelle d'informations relatives à l'étalonnage radiométrique utilisé pour générer le produit standard corrigé au plan radiométrique.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:rationale" id="88.0">
+        <label>But du processus</label>
+        <description>Exigences ou buts pour une étape de processus</description>
+        <help>Motif de l'étape de traitement ou but poursuivi.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:rationale" id="318.0" context="gmd:MD_ExtendedElementInformation">
+        <label>Raison</label>
+        <description>Raison de la création de l'élément étendu</description>
+        <help>Motif de l'extension de la norme par l'élément considéré.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:referenceSystemIdentifier" id="187.0">
+        <label>Nom du système de référence</label>
+        <description>Nom du système de référence spatiale, par lequel sont définis la projection, l'ellipsoïde et le datum géodésique utilisés</description>
+        <help>Nom du système de référence spatial englobant la définition de la projection, de l'ellipsoïde et du datum géodésique utilisés. Ces informations sont du type RS_Identifier et sont gérées dans la classe du même nom.</help>
+        <condition>Condition</condition>
+
+    </element>
+    <element name="gmd:referenceSystemInfo" id="13.0">
+        <label>Information sur le système de référence</label>
+        <abbrLabel>Système de Réf.</abbrLabel>
+        <description>Description des références spatiale et temporelle utilisées dans le jeu de données</description>
+        <help>Description des systèmes de référence spatiale et temporelle utilisés dans le jeu de données. Ces informations sont gérées dans la classe MD_ReferenceSystem.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:report" id="80.0">
+        <label>Rapport sur la qualité</label>
+        <description>Information de qualité quantitative pour les données concernée par le domaine</description>
+        <help>Information de qualité de nature quantitative portant sur les données.</help>
+        <condition>Condition</condition>
+    </element>
+    <element name="gmd:resolution" id="182.0">
+        <label>Résolution</label>
+        <description>Degré de détail dans le jeu de données de type raster</description>
+        <help>Degré de spécification de la trame, c.-à-d. description d'une extension, d'une dimension ou d'un nombre de cellules.</help>
+        <condition/>
+
+    </element>
+    <element name="gmd:resourceConstraints" id="35.0">
+        <label>Contraintes sur la ressource</label>
+        <description>Informations sur les contraintes concernant les ressources</description>
+        <help>Ces informations sont gérées dans la classe MD_Constraints.</help>
+
+        <help><![CDATA[
+    <b>Contraintes en matière d'accès et d'utilisation</b>
+    Il est possible de formuler 3 grandes familles de conditions d’accès et d’usage :
+    <ul>
+      <li>Les contraintes légales.</li>
+      <li>Les contraintes de sécurité, dans le cas de la défense nationale. Par exemple, les métadonnées d'une série de données réalisée dans le cadre d'un projet d'intervention des forces françaises sont non diffusables.</li>
+      <li>Les contraintes d’usage (par exemple : données maritimes impropres à la navigation).</li>
+    </ul>
+    Les métadonnées d’une ressource peuvent donc exprimer tout un ensemble de contraintes
+    en matière d’accès et d’utilisation couvrant ces 3 grandes familles de contraintes.
+    ]]></help>
+        <help for="inspire"><![CDATA[<b>Exigence INSPIRE :</b>
+    Une contrainte en matière d’accès et d’utilisation peut être l’un des deux éléments suivants
+    ou les deux :
+    <ul>
+    <li>Les conditions d’accès et d’utilisation décrivant les conditions applicables à l’accès
+    et à l’utilisation des séries et des services de données géographiques, et, le cas échéant, 
+    les frais correspondants. Si aucune condition ne s’applique à l’accès à la ressource et à 
+    son utilisation, on utilisera la mention «aucune condition ne s’applique». Si les conditions 
+    sont inconnues, on utilisera la mention «conditions inconnues».</li>
+    <li>Les limitations d’accès public c’est-à-dire les informations sur les restrictions à l’accès 
+    public et les raisons de ces restrictions lorsque les États membres restreignent l’accès public 
+    aux séries et aux services de données géographiques au titre de l'article L127-6 du code 
+    de l’environnement. S’il n’y a pas de restrictions concernant l’accès public, cet élément 
+    de métadonnées l’indiquera.</li>
+    </ul>
     
     <condition/>
   </element>
