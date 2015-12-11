@@ -16,5 +16,8 @@
 	</skos:Concept>
 	<skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/infrasig/ReportingINSPIRE">
 		<skos:prefLabel xml:lang="fr">Reporting INSPIRE</skos:prefLabel>
-	</skos:Concept>	
+	</skos:Concept>
+	<skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/infrasig/DonneeOfficielleWallonne">
+		<skos:prefLabel xml:lang="fr">Donnée officielle wallonne</skos:prefLabel>
+	</skos:Concept>
 </rdf:RDF>
