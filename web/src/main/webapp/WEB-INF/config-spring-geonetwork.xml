@@ -67,7 +67,7 @@
     <entry key="hibernate.jdbc.batch_size" value="3" />
     <entry key="hibernate.jdbc.batch_versioned_data" value="true" />
     <entry key="hibernate.enable_lazy_load_no_trans" value="true" />
-    <!--<entry key="hibernate.default_schema" value="metawal2"/>-->
+    <entry key="hibernate.default_schema" value="metawal2"/>
     <!-- If a specific schema has to be used
     <entry key="hibernate.default_schema" value="catalog"/>
 
@@ -140,6 +140,12 @@
     <constructor-arg name="langCode" value="eng"/>
   </bean>
   -->
+  <bean id="geoportailThemeClassifier"
+        class="org.fao.geonet.kernel.search.classifier.TermLabel" lazy-init="true">
+    <constructor-arg name="finder" ref="ThesaurusManager"/>
+    <constructor-arg name="conceptScheme" value="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
+    <constructor-arg name="langCode" value="fre"/>
+  </bean>
   <bean id="gemetKeywordClassifier"
         class="org.fao.geonet.kernel.search.classifier.TermLabel" lazy-init="true">
     <constructor-arg name="finder" ref="ThesaurusManager"/>
