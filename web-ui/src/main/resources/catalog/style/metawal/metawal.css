@@ -437,7 +437,7 @@ br.clear {
     float: left;
     margin-left: 10px;
     margin-right: 10px;
-    width: 700px;
+    width: 600px;
 }
 
 #mentions .region-a .in {
@@ -498,7 +498,15 @@ ul.menu {
     float: left;
     margin-left: 10px;
     margin-right: 10px;
-    width: 220px;
+    width: 180px;
+    margin-right: 0;
+}
+.panel-rw.two-cols-75-25 .region-c {
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 120px;
     margin-right: 0;
 }
 
@@ -506,28 +514,29 @@ ul.menu {
     position: relative;
 }
 
-#mentions .region-b .in p {
-    background: transparent url('images/black-20-bg.png') repeat 0 0;
-    width: 119px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 4px 0;
-}
 
 p, cite, ul, ol, dl {
     line-height: 1.5em;
     font-size: 1em;
 }
 
-#mentions .region-b .in p a {
-    background: transparent url('images/web2.png') no-repeat 0 0;
-    text-indent: -999em;
-    display: block;
-    width: 99px;
-    height: 16px;
-    margin: 0 auto;
-}
 
+#mentions .region-b .in p {
+color: #B3B3B3;
+display: inline;
+}
+#mentions .region-c .in p {
+color: #B3B3B3;;
+}
+#mentions .region-b .in p a {
+    text-indent: -999em;
+    display: inline-block;
+    width: 26px;
+    height: 24px;
+}
+.text-media{
+    margin-top: 2px;
+}
 #bottom a {
     color: #B3B3B3;
     text-decoration: none;
@@ -560,3 +569,20 @@ body {
     border-right-width: 0px !important;
     padding-right: 0px !important;
 }
+#linkedin {
+    background: url('images/linkedin24.png')no-repeat scroll 0 0;
+}
+
+#facebook {
+    background: url('images/facebook24.png')no-repeat scroll 0 0;
+}
+#twitter {
+    background: url('images/twitter24.png')no-repeat scroll 0 0;
+}
+#google {
+    background: url('images/googleplus24.png')no-repeat scroll 0 0;
+}
+#email {
+    background: url('images/email24.png') no-repeat scroll 0 0;
+}
+
