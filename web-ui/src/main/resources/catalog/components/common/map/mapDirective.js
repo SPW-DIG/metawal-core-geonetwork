@@ -89,8 +89,8 @@
                    scope.extent.form, oldValue, newValue
                );
                scope.extent.form = [
-                 parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)),
-                 parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[0]).toFixed(2))
+                 parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[1]).toFixed(2)),
+                 parseFloat(parseFloat(scope.extent.form[2]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[3]).toFixed(2))
                ];
              });
 
