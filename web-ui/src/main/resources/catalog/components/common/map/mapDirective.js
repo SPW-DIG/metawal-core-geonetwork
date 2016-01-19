@@ -67,8 +67,8 @@
              if (attrs.hleft !== '' && attrs.hbottom !== '' &&
                  attrs.hright !== '' && attrs.htop !== '') {
                scope.extent.md = [
-                 parseFloat(attrs.hleft), parseFloat(attrs.hbottom),
-                 parseFloat(attrs.hright), parseFloat(attrs.htop)
+                 parseFloat(parseFloat(attrs.hleft).toFixed(2)), parseFloat(parseFloat(attrs.hbottom).toFixed(2)),
+                 parseFloat(parseFloat(attrs.hright).toFixed(2)), parseFloat(parseFloat(attrs.htop).toFixed(2))
                ];
              }
 
@@ -88,6 +88,10 @@
                scope.extent.form = gnMap.reprojExtent(
                    scope.extent.form, oldValue, newValue
                );
+               scope.extent.form = [
+                 parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)),
+                 parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[0]).toFixed(2))
+               ];
              });
 
              // TODO: move style in db config
@@ -228,10 +232,10 @@
               */
              scope.onRegionSelect = function(region) {
                scope.$apply(function() {
-                 scope.extent.md = [parseFloat(region.west),
-                   parseFloat(region.south),
-                   parseFloat(region.east),
-                   parseFloat(region.north)];
+                 scope.extent.md = [parseFloat(parseFloat(region.west).toFixed(2)),
+                   parseFloat(parseFloat(region.south).toFixed(2)),
+                   parseFloat(parseFloat(region.east).toFixed(2)),
+                   parseFloat(parseFloat(region.north).toFixed(2))];
                  scope.location = region.name;
                  reprojExtent('md', 'map');
                  reprojExtent('md', 'form');
