@@ -277,5 +277,7 @@
     "typeOfRecord": "Type of record",
     "load": "Load",
     "Abstract-hook":"Main description",
-    "Abstract-descriptive":"Detailed abstract"
+    "Abstract-descriptive":"Detailed abstract",
+    "geoportailThemes":"Geoportal themes",
+    "entitesAdministratives":"Administrative entities"
 }

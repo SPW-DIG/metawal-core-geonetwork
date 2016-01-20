@@ -97,11 +97,13 @@
                indexKey="keyword"
                classifier="regionKeywordClassifier"/>
              -->
+        <facet name="entitesAdmin" label="entitesAdministratives"
+               indexKey="keyword"
+               classifier="entitesAdminClassifier"/>
         <facet name="geoportailTheme" label="geoportailThemes"
-               indexKey="geoportailTheme"
+               indexKey="keyword"
                classifier="geoportailThemeClassifier"/>
-
-      <facet name="gemetKeyword" label="gemetKeywords"
+        <facet name="gemetKeyword" label="gemetKeywords"
              indexKey="keyword"
              classifier="gemetKeywordClassifier"/>
 
@@ -134,6 +136,8 @@
           <item facet="region"
                 translator="term:http://geonetwork-opensource.org/thesaurus/naturalearth-and-seavox"/>
           -->
+          <item facet="entitesAdmin"
+                translator="term:http://metawal.wallonie.be/thesaurus/entitesadministratives"/>
           <item facet="geoportailTheme"
                 translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
           <item facet="gemetKeyword"
@@ -155,8 +159,6 @@
         <item facet="standard" max="15" sortBy="value"/>
         <item facet="isHarvested" max="2" sortBy="value" translator="apploc:"/>
         <item facet="metadataType" max="3" sortBy="value" translator="apploc:recordType-"/>
-        <item facet="geoportailTheme"
-                translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       </summaryType>
 
       <!-- (deprecated) old-style configuration supporting only
@@ -179,8 +181,7 @@
             <item facet="denominator" sortBy="numValue" sortOrder="desc"/>
             <item facet="resolution" sortBy="numValue" sortOrder="desc"/>
             <!--<item facet="metadataPOC" max="15"/>-->
-            <item facet="geoportailTheme"
-                translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
+
         </summaryType>
         <summaryType name="subtemplates">
             <item facet="subTemplateType"/>

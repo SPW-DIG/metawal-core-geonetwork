@@ -277,5 +277,7 @@
     "typeOfRecord": "Type de fiche",
     "load": "Charger",
     "Abstract-hook":"Accroche",
-    "Abstract-descriptive":"Résumé détaillé"
+    "Abstract-descriptive":"Résumé détaillé",
+    "geoportailThemes":"Thèmes du géoportail",
+    "entitesAdministratives":"Entités administratives"
 }
