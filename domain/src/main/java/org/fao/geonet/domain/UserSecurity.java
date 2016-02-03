@@ -55,8 +55,12 @@ public class UserSecurity extends GeonetEntity implements Serializable {
      * @return this UserSecurity object
      */
     public UserSecurity setPassword(String password) {
-        setPassword(password.toCharArray());
-        return this;
+        if (password == null) {
+            return null;
+        } else {
+            setPassword(password.toCharArray());
+            return this;
+        }
     }
 
     /**

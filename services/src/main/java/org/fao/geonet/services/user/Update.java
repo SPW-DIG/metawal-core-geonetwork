@@ -77,6 +77,8 @@ public class Update {
     @Autowired
     private ApplicationContext applicationContext;
 
+    private static Boolean ldap;
+
     @RequestMapping(value = "/{lang}/admin.user.resetpassword", produces = {
             MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
     public @ResponseBody OkResponse resetPassword(
@@ -89,7 +91,9 @@ public class Update {
         new LoadCurrentUserInfo(session, id).invoke();
 
         User user = userRepository.findOne(id);
-        setPassword(Params.Operation.RESETPW, password, user);
+
+        Boolean ldap = false;
+        setPassword(Params.Operation.RESETPW, password, user, ldap);
         userRepository.save(user);
 
         return new OkResponse();
@@ -105,17 +109,18 @@ public class Update {
             @RequestParam(value = Params.USERNAME) String username,
             @RequestParam(value = Params.PASSWORD, required = false) String password,
             @RequestParam(value = Params.PROFILE, required = false) String profile_,
-            @RequestParam(value = Params.SURNAME) String surname,
-            @RequestParam(value = Params.NAME) String name,
+            @RequestParam(value = Params.SURNAME, required = false) String surname,
+            @RequestParam(value = Params.NAME, required = false) String name,
             @RequestParam(value = Params.ADDRESS, required = false) String address,
             @RequestParam(value = Params.CITY, required = false) String city,
             @RequestParam(value = Params.STATE, required = false) String state,
             @RequestParam(value = Params.ZIP, required = false) String zip,
             @RequestParam(value = Params.COUNTRY, required = false) String country,
-            @RequestParam(value = Params.EMAIL) String email,
+            @RequestParam(value = Params.EMAIL,required = false) String email,
             @RequestParam(value = Params.ORG, required = false) String organ,
             @RequestParam(value = Params.KIND, required = false) String kind,
-            @RequestParam(value = Params.ENABLED) Boolean enabled)
+            @RequestParam(value = Params.ENABLED) Boolean enabled,
+            @RequestParam(value = Params.LDAP) Boolean ldap)
             throws Exception {
         if (id == null && operation.equalsIgnoreCase(Params.Operation.NEWUSER)) {
             id = "";
@@ -160,7 +165,8 @@ public class Update {
 
         User user = getUser(userRepository, operation, id, username);
 
-        setPassword(operation, password, user);
+        setPassword(operation, password, user, ldap);
+        setAuthType(operation, password, user, ldap);
         if (operation.equalsIgnoreCase(Params.Operation.RESETPW)) {
             userRepository.save(user);
         } else {
@@ -253,16 +259,30 @@ public class Update {
         }
     }
 
-    public void setPassword(String operation, String password, User user) {
+    public void setPassword(String operation, String password, User user, boolean ldap) {
         if (password != null) {
             user.getSecurity().setPassword(
                     PasswordUtil.encoder(applicationContext).encode(
                             password));
-        } else if (operation.equals(Params.Operation.RESETPW)
+        } else if (password == null){
+            if (ldap == true) {
+            user.getSecurity().setPassword(
+                        password);
+            }
+        }
+        else if (operation.equals(Params.Operation.RESETPW)
                    || operation.equals(Params.Operation.NEWUSER)) {
             throw new IllegalArgumentException(
                     "password is a required parameter for operation: "
                     + Params.Operation.RESETPW);
+        }
+    }
+    public void setAuthType(String operation, String password, User user, boolean ldap) {
+        if (ldap == true) {
+            user.getSecurity().setAuthType("LDAP");
+        } else {
+            String var = null;
+            user.getSecurity().setAuthType(var);
         }
     }
 
