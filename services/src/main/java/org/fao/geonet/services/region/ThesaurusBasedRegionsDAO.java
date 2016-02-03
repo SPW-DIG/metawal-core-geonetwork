@@ -24,6 +24,10 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.Callable;
 
+import java.util.List;
+import org.fao.geonet.kernel.KeywordBean;
+
+
 public class ThesaurusBasedRegionsDAO extends RegionsDAO {
     
     private static final ResultInterpreter<String> CATEGORY_ID_READER = new ResultInterpreter<String>() {
@@ -104,5 +108,23 @@ public class ThesaurusBasedRegionsDAO extends RegionsDAO {
 	        
 	    });
 	}
+
+    public java.util.List<KeywordBean> getRegionTopConcepts(final ServiceContext context) throws Exception{
+        return JeevesCacheManager.findInTenSecondCache(CATEGORY_ID_CACHE_KEY + context.getLanguage(),
+                new Callable<java.util.List<KeywordBean>>(){
+
+            @Override
+            public java.util.List<KeywordBean> call() throws Exception {
+                Thesaurus thesaurus = getThesaurus(context);
+                if (thesaurus != null) {
+                    return thesaurus.getTopConcepts(context.getLanguage());
+                } else {
+                    return null;
+                }
+            }
+
+        });
+    }
+
 
 }
