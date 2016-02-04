@@ -67,8 +67,10 @@
              * Define maps
              */
           var mapsConfig = {
-            center: [280274.03240585705, 6053178.654789996],
+            //center: [280274.03240585705, 6053178.654789996],
+            center: [514852.64485, 6573184.01281],
             zoom: 2
+            //zoom: 8
             //maxResolution: 9783.93962050256
           };
 
@@ -79,12 +81,19 @@
 
           var searchMap = new ol.Map({
             controls:[],
-            layers: [new ol.layer.Tile({
-              source: new ol.source.OSM()
-            })],
+            layers: [
+              new ol.layer.Tile({
+                source: new ol.source.OSM()
+              }),
+              new ol.layer.Tile({
+                source: new ol.source.TileArcGISRest({
+                  url: 'http://geoservices.wallonie.be/arcgis/rest/services/DONNEES_BASE/FDP_LIGHT/MapServer'
+                })
+              })
+            ],
             view: new ol.View({
               center: mapsConfig.center,
-              zoom: 2
+              zoom: 6
             })
           });
 

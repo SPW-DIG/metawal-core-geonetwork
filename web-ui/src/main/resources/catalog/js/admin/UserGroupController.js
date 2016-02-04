@@ -74,6 +74,8 @@
       $scope.isLoadingUsers = false;
       $scope.isLoadingGroups = false;
 
+      $scope.authtypeisLDAP = {"checked":""};
+
       $http.get('info?type=categories&_content_type=json').
           success(function(data) {
             $scope.categories = data.metadatacategory;
@@ -204,6 +206,7 @@
        * metadata records.
        */
       $scope.selectUser = function(u) {
+        $scope.authtypeisLDAP = {"checked":""};
         $scope.userOperation = 'editinfo';
         $scope.userIsAdmin = false;
         $scope.userIsEnabled = true;
@@ -259,7 +262,8 @@
         var params = {operation: 'resetpw',
           id: $scope.userSelected.id,
           password: $scope.resetPassword1,
-          password2: $scope.resetPassword2
+          password2: $scope.resetPassword2,
+          ldap:false
         };
 
         $http.post('admin.user.resetpassword', null, {params: params})
@@ -347,8 +351,13 @@
        * Save a user.
        */
       $scope.saveUser = function(formId) {
+        if ($scope.authtypeisLDAP.checked === true){
+        }else{
+          $scope.authtypeisLDAP.checked = false;
+        }
         $http.get('admin.user.update?' + $(formId).serialize() +
-                '&enabled=' + $scope.userIsEnabled)
+                '&enabled=' + $scope.userIsEnabled+
+                '&ldap=' + $scope.authtypeisLDAP.checked)
             .success(function(data) {
               $scope.unselectUser();
               loadUsers();

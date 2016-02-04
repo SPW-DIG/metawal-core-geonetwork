@@ -25,6 +25,10 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.Callable;
 
+import java.util.List;
+import org.fao.geonet.kernel.KeywordBean;
+
+
 public class ThesaurusBasedRegionsDAO extends RegionsDAO {
     
     private static final ResultInterpreter<String> CATEGORY_ID_READER = new ResultInterpreter<String>() {

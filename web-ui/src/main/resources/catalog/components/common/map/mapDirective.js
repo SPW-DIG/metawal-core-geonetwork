@@ -120,16 +120,25 @@
                style: boxStyle
              });
 
+             var walOnMapRest = new ol.layer.Tile({
+                source: new ol.source.TileArcGISRest({
+                  url: 'http://geoservices.wallonie.be/arcgis/rest/services/DONNEES_BASE/FDP_LIGHT/MapServer'
+                })
+              })
+
              var map = new ol.Map({
                layers: [
                  gnMap.getLayersFromConfig(),
-                 bboxLayer
+                 bboxLayer,
+                 walOnMapRest
                ],
                renderer: 'canvas',
                view: new ol.View({
-                 center: [0, 0],
-                 projection: scope.projs.map,
-                 zoom: 2
+                 center: [514852.64485, 6573184.01281],
+                 zoom: 7,
+                 //center: [0, 0],
+                 projection: scope.projs.map
+                 //zoom: 8
                })
              });
 

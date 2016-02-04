@@ -45,6 +45,7 @@
         <span data-ng-show="userSelected.security.authtype.length > 0">
           - {{userSelected.security.authtype}}
         </span>
+        
         <div class="btn-toolbar">
           <button type="button" class="btn btn-default pull-right"
             data-ng-hide="userSelected.security.authtype == 'LDAP'"
@@ -79,9 +80,17 @@
             <div class="form-group" data-ng-hide="user.id == userSelected.id">
               <label class="control-label col-sm-3" data-translate="">enable</label>
               <div class="col-sm-9">
-                <input type="checkbox" class=form-control" data-ng-model="userIsEnabled" />
+                <input type="checkbox" class="" data-ng-model="userIsEnabled" />
               </div>
             </div>
+
+            <div ng-if="userOperation == 'newuser'" class="form-group">
+              <label class="control-label col-sm-3" data-translate="">Initialisation via LDAP</label>
+              <div class="col-sm-9">
+                <input type="checkbox" class="" data-ng-model="authtypeisLDAP.checked" />
+              </div>
+            </div>
+
 
             <div data-ng-class="gnUserEdit.username.$error.required ? 'has-error' : ''" class="form-group">
               <label class="control-label col-sm-3" data-translate="">username</label>
@@ -95,7 +104,7 @@
               </div>
             </div>
             <!-- Password are disabled when updating user -->
-            <div ng-if="userOperation == 'newuser'">
+            <div ng-if="userOperation == 'newuser' && !authtypeisLDAP.checked">
               <div
                 data-ng-class="gnUserEdit.password.$error.required || gnUserEdit.password.$error.minlength ? 'has-error' : ''" class="form-group">
                 <label class="control-label col-sm-3" data-translate="">password</label>
@@ -128,6 +137,9 @@
                 </div>
               </div>
             </div>
+
+
+            <div ng-if="!authtypeisLDAP.checked">
             <div data-ng-class="gnUserEdit.name.$error.required ? 'has-error' : ''" class="form-group">
               <label class="control-label col-sm-3" data-translate="">name</label>
               <div class="col-sm-9">
@@ -158,8 +170,10 @@
                   data-ng-model="userSelected.organisation"/>
               </div>
             </div>
+            </div>
+
             
-            <fieldset>
+            <fieldset ng-if="!authtypeisLDAP.checked">
               <legend data-translate="">address</legend>
               
               <div class="form-group">

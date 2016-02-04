@@ -159,6 +159,7 @@ public final class Params {
     public static final String START_EDITING_SESSION = "starteditingsession";
 
 	public static final String ENABLED = "enabled";
+	public static final String LDAP = "ldap";
 
 	/**
      * TODO javadoc.
