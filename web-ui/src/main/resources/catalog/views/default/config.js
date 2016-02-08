@@ -165,11 +165,14 @@
             //  label: 'inspire',
             //  url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
             //}, {
-              label: 'advanced',
-              url: 'md.format.xml?xsl=xsl-view&view=advanced&id='
+              label: 'metawal',
+              url: 'md.format.xml?xsl=xsl-view&view=metawal&uuid='
             }, {
-              label: 'full',
-              url: 'md.format.xml?xsl=full_view&uuid='
+              label: 'advanced',
+              url: 'md.format.xml?xsl=xsl-view&view=advanced&uuid='
+            //}, {
+            //  label: 'full',
+            //  url: 'md.format.xml?xsl=full_view&uuid='
               /*
               // You can use a function to choose formatter
               url : function(md) {
