@@ -18,6 +18,12 @@
       <!-- TODO: Move schema label in schema-ident.xml (to be done in GN) -->
       <!-- TODO: Add schema URL - link to the official version (to be done in GN) -->
       <title>ISO Standard for metadata on Geographic Information - ISO </title>
+      <editor-config>Metadata editor</editor-config>
+      <glossary>Standard elements</glossary>
+      <glossary-help>List of all elements available in the standard.</glossary-help>
+      <codelists>Standard codelists</codelists>
+      <codelists-help>List of all codelists available in the standard.</codelists-help>
+      <noCodelist>No codelist defined.</noCodelist>
       <view>View: </view>
       <tab>Tab: </tab>
       <section>Section: </section>
@@ -28,13 +34,19 @@
       <more>More details: </more>
       <helper>Recommended values: </helper>
       <cond>Condition: </cond>
-      <glossary>Standard elements list: </glossary>
       <codelist>Standard codelists: </codelist>
       <flatModeExceptions>This view allows to add the following element even if not in the current record:</flatModeExceptions>
       <xpath>XPath: </xpath>
+      <displayIf>Display only if: </displayIf>
     </eng>
     <fre>
       <title>Standard ISO pour les métadonnées liées aux informations géographiques - ISO </title>
+      <editor-config>Encodage de métadonnée</editor-config>
+      <glossary>Éléments du standard</glossary>
+      <glossary-help>Liste des descripteurs définis dans le standard de métadonnées.</glossary-help>
+      <codelists>Listes de valeurs du standard</codelists>
+      <codelists-help>Listes de valeurs définies dans le standard de métadonnées.</codelists-help>
+      <noCodelist>Aucune liste de valeurs.</noCodelist>
       <view>Vue : </view>
       <tab>Onglet : </tab>
       <section>Section : </section>
@@ -45,40 +57,17 @@
       <more>Information complémentaire : </more>
       <helper>Valeurs recommandées : </helper>
       <cond>Condition : </cond>
-      <glossary>Liste des descripteurs du standard : </glossary>
       <codelist>Liste de valeurs : </codelist>
       <flatModeExceptions>Cette vue permet la saisie des éléments suivant même s'ils ne sont pas dans la fiche en cours d'édition :</flatModeExceptions>
       <xpath>XPath : </xpath>
+      <displayIf>Afficher uniquement si : </displayIf>
     </fre>
-    <!-- TODO: revert -->
-    <code>
-        <eng>Tag name</eng>
-        <fre>Nom de la balise</fre>
-    </code>
-    <desc>
-        <eng>Description</eng>
-        <fre>Description</fre>
-    </desc>
-    <moreInfo>
-        <eng>More details</eng>
-        <fre>Informations complémentaires</fre>
-    </moreInfo>
-    <tbc>
-        <eng>To be completed</eng>
-        <fre>A compléter</fre>
-    </tbc>
-    <tbd>
-        <eng>To be defined</eng>
-        <fre>A définir</fre>
-    </tbd>
-    <notapp>
-        <eng>Undefined element</eng>
-        <fre>Element non défini</fre>
-    </notapp>
   </xsl:variable>
 
   <xsl:variable name="schemaFolder"
               select="concat('../../schemas/', $schema, '/src/main/plugin/', $schema)"/>
+  <xsl:variable name="editorConfig"
+                select="document(concat($schemaFolder, '/layout/config-editor.xml'))"/>
   <xsl:variable name="schemaConfig"
                 select="document(concat($schemaFolder, '/schema-ident.xml'))"/>
   <xsl:variable name="labels"
@@ -87,8 +76,6 @@
                 select="document(concat($schemaFolder, '/loc/', $lang, '/strings.xml'))/strings/*"/>
   <xsl:variable name="codelists"
                 select="document(concat($schemaFolder, '/loc/', $lang, '/codelists.xml'))/codelists/codelist"/>
-  <xsl:variable name="editorConfig"
-                select="document(concat($schemaFolder, '/layout/config-editor.xml'))"/>
   <xsl:variable name="t"
                 select="$i18n/*[name() = $lang]"/>
 
@@ -118,9 +105,121 @@
     <xsl:text>&#xA;</xsl:text>
   </xsl:function>
 
+  <xsl:function name="gndoc:refTo">
+    <xsl:param name="id" as="xs:string?"/>
+    <xsl:text>:ref:`</xsl:text><xsl:value-of select="concat($schemaId, '-', $id)"/>`
+  </xsl:function>
+
+
+
+  <!-- max-line-length -->
+  <xsl:function name="gndoc:mll" as="xs:integer">
+    <xsl:param name="arg" as="node()*"/>
+
+    <xsl:sequence select="max(
+                     for $line in $arg
+                     return string-length($line))"/>
+  </xsl:function>
+
+
+
+  <!-- Table builder
+
+      =======  ==========
+      code     label
+      =======  ==========
+      after    Après
+      before   Avant
+      now      Maintenant
+      unknown  Inconnu
+      =======  ==========
+  -->
+  <xsl:function name="gndoc:table">
+    <xsl:param name="rows" as="node()"/>
+
+    <xsl:variable name="s" select="'  '"/>
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:text></xsl:text>
+    <!-- Rows -->
+    <xsl:for-each select="$rows">
+      <!-- Header -->
+      <xsl:if test="position() = 1">
+        <!-- Cols -->
+        <xsl:for-each select="*[1]/*">
+          <xsl:variable name="colName" select="name()"/>
+          <xsl:for-each select="1 to gndoc:mll($rows/*/*[name() = $colName])">=</xsl:for-each>
+          <xsl:if test="position() != last()">
+            <xsl:value-of select="$s"/>
+          </xsl:if>
+        </xsl:for-each>
+        <xsl:text>&#xA;</xsl:text>
+        <!-- Cols label -->
+        <xsl:for-each select="*[1]/*">
+          <xsl:variable name="colName" select="name()"/>
+          <xsl:variable name="maxColLength"
+                        select="gndoc:mll($rows/*/*[name() = $colName])"/>
+          <xsl:variable name="missingSpaces"
+                        select="$maxColLength - string-length($colName)"/>
+
+          <xsl:value-of select="$colName"/>
+          <xsl:if test="position() != last()">
+            <xsl:value-of select="$s"/>
+          </xsl:if>
+          <xsl:for-each select="1 to $missingSpaces"><xsl:text> </xsl:text></xsl:for-each>
+        </xsl:for-each>
+        <xsl:text>&#xA;</xsl:text>
+        <xsl:for-each select="*[1]/*">
+          <xsl:variable name="colName" select="name()"/>
+          <xsl:for-each select="1 to gndoc:mll($rows/*/*[name() = $colName])">=</xsl:for-each>
+          <xsl:if test="position() != last()">
+            <xsl:value-of select="$s"/>
+          </xsl:if>
+        </xsl:for-each>
+        <xsl:text>&#xA;</xsl:text>
+      </xsl:if>
+
+      <xsl:for-each select="*">
+        <xsl:for-each select="*">
+          <xsl:variable name="colName" select="name()"/>
+          <xsl:variable name="colValue" select="normalize-space()"/>
+          <xsl:variable name="maxColLength"
+                        select="gndoc:mll($rows/*/*[name() = $colName])"/>
+          <xsl:variable name="missingSpaces"
+                        select="$maxColLength - string-length($colValue)"/>
+          <xsl:value-of select="$colValue"/>
+          <xsl:if test="position() != last()">
+            <xsl:value-of select="$s"/>
+          </xsl:if>
+          <xsl:for-each select="1 to $missingSpaces"><xsl:text> </xsl:text></xsl:for-each>
+        </xsl:for-each>
+        <xsl:text>&#xA;</xsl:text>
+      </xsl:for-each>
+
+      <!-- Footer -->
+      <xsl:for-each select="*[1]/*">
+        <xsl:variable name="colName" select="name()"/>
+        <xsl:for-each select="1 to gndoc:mll($rows/*/*[name() = $colName])">=</xsl:for-each>
+        <xsl:if test="position() != last()">
+          <xsl:value-of select="$s"/>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:text>&#xA;</xsl:text>
+    </xsl:for-each>
+    <xsl:text>&#xA;</xsl:text>
+  </xsl:function>
+  
+  
   <!-- New line -->
   <xsl:function name="gndoc:nl">
-    <xsl:text>&#xA;</xsl:text>
+    <xsl:value-of select="gndoc:nl(1)"/>
+  </xsl:function>
+
+  <xsl:function name="gndoc:nl">
+    <xsl:param name="howMany" as="xs:integer"/>
+
+    <xsl:for-each select="1 to $howMany">
+      <xsl:text>&#xA;</xsl:text>
+    </xsl:for-each>
   </xsl:function>
 
   <xsl:template match="/">
@@ -135,6 +234,15 @@
     * schema URL
     * autodetection information from schema-ident.xml
     -->
+
+    <xsl:call-template name="write-editor-doc"/>
+    <xsl:call-template name="write-glossary"/>
+    <xsl:call-template name="write-codelist"/>
+  </xsl:template>
+
+  <xsl:template name="write-editor-doc">
+    <xsl:value-of select="gndoc:writeln($t/editor-config, '*')"/>
+    <xsl:value-of select="gndoc:nl()"/>
 
     <!-- Editor configuration description -->
     <xsl:for-each select="$editorConfig//views/view">
@@ -156,16 +264,14 @@
 
       <xsl:for-each select="flatModeExceptions/for">
         <xsl:if test="position() = 1">
-          <xsl:value-of select="gndoc:nl()"/>
-          <xsl:value-of select="gndoc:nl()"/>
+          <xsl:value-of select="gndoc:nl(2)"/>
           <xsl:value-of select="gndoc:writeln($t/flatModeExceptions)"/>
           <xsl:value-of select="gndoc:nl()"/>
         </xsl:if>
         <!-- TODO Translate element -->
         <xsl:value-of select="gndoc:writeln(concat('* ', @name))"/>
       </xsl:for-each>
-      <xsl:value-of select="gndoc:nl()"/>
-      <xsl:value-of select="gndoc:nl()"/>
+      <xsl:value-of select="gndoc:nl(2)"/>
 
 
       <!-- Tab details -->
@@ -227,8 +333,7 @@
             </xsl:for-each>
             <xsl:value-of select="gndoc:nl()"/>
             <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, @xpath))"/>
-            <xsl:value-of select="gndoc:nl()"/>
-            <xsl:value-of select="gndoc:nl()"/>
+            <xsl:value-of select="gndoc:nl(2)"/>
           </xsl:if>
 
 
@@ -281,189 +386,110 @@
               </xsl:for-each>
               <xsl:value-of select="gndoc:nl()"/>
 
-              <!-- TODO: Handle conditional helper -->
-              <xsl:for-each select="$nodeDesc/helper/option">
-                <xsl:if test="position() = 1">
-                  <xsl:value-of select="gndoc:writeln($t/helper)"/>
-                </xsl:if>
-                <xsl:value-of select="gndoc:writeln(concat('* ', ., ' (', @value, ')'))"/>
-              </xsl:for-each>
+              <xsl:apply-templates select="$nodeDesc/helper" mode="doc"/>
 
               <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, @xpath))"/>
-              <xsl:value-of select="gndoc:nl()"/>
-              <xsl:value-of select="gndoc:nl()"/>
+              <xsl:value-of select="gndoc:nl(2)"/>
             </xsl:if>
           </xsl:for-each>
             <!-- TODO Handle template field -->
             <!-- TODO CODELISTS - generate full mtd to find links between labels definition and codelists-->
-            <!--
-            <xsl:for-each select="$codelists/codelists/codelist">
-                <xsl:if test="substring-before(substring-after(@name, '_'),'Code')= $fieldRefUppercase">
-                    <xsl:text>:Code lists : </xsl:text>
-                    <xsl:text>&#xA;</xsl:text>
-                   <xsl:for-each select="entry">
-                       <xsl:text> - </xsl:text><xsl:value-of select="normalize-space(label)"/> <xsl:text> - </xsl:text>
-                       <xsl:value-of select="normalize-space(description)"/><xsl:text>&#xA;</xsl:text>
-                   </xsl:for-each>
-                   <xsl:value-of select="@name"/>
-               </xsl:if>
-            </xsl:for-each>
-            -->
 
-              <!--<xsl:for-each select="$labels//element">
-                  <xsl:variable name="labelRef"
-                      select="@name"/>
-                  <xsl:variable name="labelContext">
-                      <xsl:if test="@context">
-                          <xsl:value-of select="@context"/>
-                      </xsl:if>
-                  </xsl:variable>
-
-                  <xsl:choose>
-                      <xsl:when test="$fieldRef = $labelRef and $duplicateElement = 'no'">
-                          <xsl:if test="description[count(@iso)=0]">
-                              <xsl:if test="description[count(@iso)=0] = ''">
-                                  <xsl:value-of select="concat('- **',$i18n/desc/*[name() = $lang],'** - ',$i18n/tbc/*[name() = $lang])"/>
-                                  <xsl:text>&#xA;</xsl:text>
-                              </xsl:if>
-                              <xsl:if test="description[count(@iso)=0] != ''">
-                                  <xsl:value-of select="concat('- **',$i18n/desc/*[name() = $lang],'** - ')"/><xsl:value-of select="normalize-space(description[count(@*)=0])"/>
-                                  <xsl:text>&#xA;</xsl:text>
-                              </xsl:if>
-                          </xsl:if>
-                          <xsl:if test="description[count(@iso)=1]">
-                              <xsl:value-of select="concat('- **',$i18n/desc/*[name() = $lang],' (iso)** - ')"/><xsl:value-of select="normalize-space(description[count(@*)=1])"/>
-                              <xsl:text>&#xA;</xsl:text>
-                          </xsl:if>
-
-
-                          <xsl:if test="help[count(@for)=0]">
-                              <xsl:if test="help[count(@for)=0] = ''">
-                                  <xsl:value-of select="concat('- **',$i18n/moreInfo/*[name() = $lang],'** - ',$i18n/tbc/*[name() = $lang])"/>
-                                  <xsl:text>&#xA;</xsl:text>
-                              </xsl:if>
-                              <xsl:if test="help[count(@for)=0] != ''">
-                                  <xsl:for-each select="help[count(@for)=0]">
-                                      <xsl:value-of select="concat('- **',$i18n/moreInfo/*[name() = $lang],'** - ')"/><xsl:value-of select="normalize-space(.)"/>
-                                      <xsl:text>&#xA;</xsl:text>
-                                  </xsl:for-each>
-                              </xsl:if>
-                          </xsl:if>
-                          <xsl:if test="help[@for = 'inspire']">
-                              <xsl:for-each select="help[@for = 'inspire']">
-                                  <xsl:value-of select="concat('- **',$i18n/moreInfo/*[name() = $lang],' (Inspire)** - ')"/><xsl:value-of select="normalize-space(.)"/>
-                                  <xsl:text>&#xA;</xsl:text>
-                              </xsl:for-each>
-                          </xsl:if>
-                   </xsl:when>-->
-                  <!-- DUPLICATE ELEMENT
-                  <xsl:when test="$fieldRef = $labelRef and $duplicateElement = 'yes'">
-TEST YES
-duplicate - <xsl:value-of select="$fieldRef"/>- <xsl:value-of select="$fieldRefBase"/>
-                      <xsl:text>&#xA;</xsl:text>
-                  </xsl:when>
-                  -->
         </xsl:for-each>
       </xsl:for-each>
     </xsl:for-each>
+  </xsl:template>
 
-        <xsl:value-of select="$i18n/glossary/*[name() = $lang]"/><xsl:text>&#xA;</xsl:text>
-        <xsl:for-each select="1 to string-length($i18n/glossary/*[name() = $lang])">-</xsl:for-each><xsl:text>&#xA;</xsl:text>
 
-        <xsl:for-each select="$labels">
-            <xsl:sort select="@name"/>
-            <xsl:text>&#xA;</xsl:text>
-            <xsl:value-of select="@name"/> - <xsl:value-of select="label"/><xsl:text>&#xA;</xsl:text>
-            <xsl:for-each select="1 to string-length(concat(@name, ' - ',label))">*</xsl:for-each><xsl:text>&#xA;</xsl:text>
-            <xsl:text>&#xA;</xsl:text>
-            <xsl:if test="@context">
-                <xsl:text>&#x09;</xsl:text><xsl:value-of select="normalize-space(@context)"/><xsl:text>&#xA;</xsl:text>
-            </xsl:if>
-<!--TODO: HTML - Check result in order to tranform html element in rst element if necessary-->
-            <xsl:for-each select="description[count(@iso)=0][text()!='']">
-                <xsl:value-of select="concat('- **',$i18n/desc/*[name() = $lang],'** - ',$i18n/tbc/*[name() = $lang])"/>
-                <xsl:text>&#xA;</xsl:text>
-                <xsl:value-of select="concat('- **',$i18n/desc/*[name() = $lang],'** - ')"/><xsl:value-of select="normalize-space(.)"/>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:for-each>
-          <!--
-          Error on line 389 of config-editor-to-rst.xsl:
-  XPTY0004: A sequence of more than one item is not allowed as the first argument of
-  normalize-space() ("Indication sur le résultat de...", "")
-  at xsl:for-each (file:/data/dev/gn/mw/4.x/docs/utility/config-editor-to-rst.xsl#373)
-     processing /labels/element[160]
-          -->
-            <xsl:for-each select="description[count(@iso)=1]">
-                <xsl:value-of select="concat('- **',$i18n/desc/*[name() = $lang],' (iso)** - ')"/><xsl:value-of select="normalize-space(.)"/>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:for-each>
-            <xsl:if test="condition != ''">
-                <xsl:value-of select="concat('- **',$i18n/cond/*[name() = $lang],' (iso)** - ')"/><xsl:value-of select="normalize-space(condition)"/>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:if>
-            <xsl:if test="_condition != ''">
-                <xsl:value-of select="concat('- **',$i18n/cond/*[name() = $lang],' (iso)** - ')"/><xsl:value-of select="normalize-space(_condition)"/>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:if>
-            <xsl:if test="help[count(@for)=0]">
-                <xsl:if test="help[count(@for)=0] = ''">
-                    <xsl:value-of select="concat('- **',$i18n/moreInfo/*[name() = $lang],'** - ',$i18n/tbc/*[name() = $lang])"/>
-                    <xsl:text>&#xA;</xsl:text>
-                </xsl:if>
-                <xsl:if test="help[count(@for)=0] != ''">
-                <xsl:for-each select="help[count(@for)=0]">
-                    <xsl:value-of select="concat('- **',$i18n/moreInfo/*[name() = $lang],'** - ')"/><xsl:value-of select="normalize-space(.)"/>
-                    <xsl:text>&#xA;</xsl:text>
-                </xsl:for-each>
-                </xsl:if>
-            </xsl:if>
-            <xsl:if test="help[@for = 'inspire']">
-                <xsl:for-each select="help[@for = 'inspire']">
-                    <xsl:value-of select="concat('- **',$i18n/moreInfo/*[name() = $lang],' (Inspire)** - ')"/><xsl:value-of select="normalize-space(.)"/>
-                    <xsl:text>&#xA;</xsl:text>
-                </xsl:for-each>
-            </xsl:if>
-            <xsl:if test="helper">
-                <xsl:value-of select="concat('- **',$i18n/helper/*[name() = $lang],'**')"/><xsl:text>&#xA;</xsl:text>
-                <xsl:for-each select="helper/option">
-                    <xsl:text>&#x09;</xsl:text><xsl:value-of select="concat('- ',normalize-space(.))"/><xsl:text>&#xA;</xsl:text>
-                    <!--xsl:if test="@value">(<xsl:value-of select="@value"/>)</xsl:if-->
-                </xsl:for-each>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:if>
-<!--TO DO CODELISTS - generate full mtd to find links betewen labels definition and codelists-->
-<!--<xsl:for-each select="$codelists/codelists/codelist">
-     <xsl:if test="substring-before(substring-after(@name, '_'),'Code')= $fieldRefUppercase">
-           <xsl:text>Links  to be added </xsl:text>
+  <xsl:template name="write-glossary">
+    <xsl:value-of select="gndoc:writeln($t/glossary, '*')"/>
+    <xsl:value-of select="gndoc:nl()"/>
+    <xsl:value-of select="gndoc:writeln($t/glossary-help)"/>
+    <xsl:value-of select="gndoc:nl(2)"/>
+
+    <xsl:for-each select="$labels">
+      <xsl:sort select="@name"/>
+
+      <xsl:value-of select="gndoc:writeln(concat('**', label, '**'))"/>
+      <xsl:value-of select="gndoc:nl(2)"/>
+
+      <!-- A table would be better -->
+      <xsl:value-of select="gndoc:writeln(concat('* ', @context, ''))"/>
+      <xsl:for-each select="description|help">
+        <xsl:variable name="flag"
+                      select="if (@for) then concat('(', @for, ') ') else ''"/>
+        <xsl:value-of select="gndoc:writeln(concat('* ', $flag, normalize-space(.)))"/>
+      </xsl:for-each>
+
+      <xsl:value-of select="gndoc:nl()"/>
+
+      <xsl:for-each select="condition">
+        <xsl:value-of select="gndoc:writeln(concat('* ', $t/cond, normalize-space(.)))"/>
+      </xsl:for-each>
+
+      <xsl:apply-templates select="helper" mode="doc"/>
+
+      <!--TODO CODELISTS - generate full mtd to find links betewen labels definition and codelists-->
+      <xsl:value-of select="gndoc:nl(3)"/>
+    </xsl:for-each>
+  </xsl:template>
+
+
+
+
+  <xsl:template name="write-codelist">
+    <xsl:value-of select="gndoc:writeln($t/codelists, '*')"/>
+    <xsl:value-of select="gndoc:nl()"/>
+    <xsl:value-of select="gndoc:writeln($t/codelists-help)"/>
+    <xsl:value-of select="gndoc:nl(2)"/>
+
+    <xsl:if test="not($codelists)">
+      <xsl:value-of select="$t/noCodelist"/>
+    </xsl:if>
+
+    <xsl:apply-templates select="$codelists" mode="doc"/>
+  </xsl:template>
+
+
+
+
+
+
+  <xsl:template match="helper" mode="doc">
+    <xsl:for-each select="option">
+      <xsl:if test="position() = 1">
+        <xsl:value-of select="gndoc:writeln($t/helper)"/>
+        <!-- TODO conditional helper -->
+        <xsl:value-of select="gndoc:nl(2)"/>
+        <xsl:for-each select="@displayIf">
+          <xsl:value-of select="gndoc:writeln(concat('(', $t/displayIf, .))"/>
+        </xsl:for-each>
       </xsl:if>
-</xsl:for-each>-->
-        </xsl:for-each>
+      <xsl:value-of select="gndoc:writeln(concat('* ', normalize-space(.), ' (', @value, ')'))"/>
+    </xsl:for-each>
+  </xsl:template>
 
 
+  <xsl:template match="codelist" mode="doc">
+    <xsl:variable name="name" select="@name"/>
+    <xsl:value-of select="gndoc:writeln(concat(
+                            '**', $labels[@name = $name]/label, ' (', @name, ')**'
+                            ))"/>
+    <xsl:value-of select="gndoc:nl()"/>
+    <!--
+    Display using list
+    <xsl:apply-templates select="entry" mode="doc"/>
+    <xsl:value-of select="gndoc:nl(3)"/>
 
-        <!-- Create the codelists glossary -->
+    ... or table layout
+    -->
+    <xsl:value-of select="gndoc:table(.)"/>
+  </xsl:template>
 
-        <xsl:text>&#xA;</xsl:text><xsl:value-of select="$i18n/codeLists/*[name() = $lang]"/><xsl:text>&#xA;</xsl:text>
-        <xsl:for-each select="1 to string-length($i18n/codeLists/*[name() = $lang])">-</xsl:for-each><xsl:text>&#xA;</xsl:text>
-        <xsl:if test="not($codelists)">
-            <xsl:value-of select="$i18n/notapp/*[name() = $lang]"/>
-        </xsl:if>
-        <xsl:for-each select="$codelists">
 
-            <xsl:sort select="@name"/>
-            <xsl:if test="not(codelist)"></xsl:if>
-            <xsl:variable name="codeListName" select="@name"/>
-            <xsl:value-of select="$codeListName"/><xsl:text>&#xA;</xsl:text>
-            <xsl:for-each select="1 to string-length($codeListName)">*</xsl:for-each><xsl:text>&#xA;</xsl:text>
-            <xsl:for-each select="entry">
-                <xsl:value-of select="concat('- ',normalize-space(label))"/>
-                <xsl:if test="description"><xsl:text> - </xsl:text>
-                    <xsl:value-of select="normalize-space(description)"/>
-                </xsl:if>
-                <xsl:text>&#xA;</xsl:text>
-            </xsl:for-each>
-            <xsl:text>&#xA;</xsl:text>
-        </xsl:for-each>
-
-    </xsl:template>
+  <xsl:template match="entry" mode="doc">
+    <xsl:value-of select="gndoc:writeln(concat(
+                            '* ', label, ' (', code, '): ', normalize-space(description)
+                            ))"/>
+  </xsl:template>
 </xsl:stylesheet>
