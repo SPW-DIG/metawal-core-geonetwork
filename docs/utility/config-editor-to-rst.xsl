@@ -442,7 +442,7 @@ duplicate - <xsl:value-of select="$fieldRef"/>- <xsl:value-of select="$fieldRefB
         <xsl:for-each select="$codelists//codelist">
             
             <xsl:sort select="@name"/>
-            <xsl:if test="not(codelist)"> ya pas</xsl:if>
+            <xsl:if test="not(codelist)"></xsl:if>
             <xsl:variable name="codeListName" select="@name"/>
             <xsl:value-of select="$codeListName"/><xsl:text>&#xA;</xsl:text>
             <xsl:for-each select="1 to string-length($codeListName)">*</xsl:for-each><xsl:text>&#xA;</xsl:text>
