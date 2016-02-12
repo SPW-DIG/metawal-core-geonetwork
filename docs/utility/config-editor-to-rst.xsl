@@ -12,6 +12,8 @@
 
   <xsl:param name="lang"
              select="'fre'"/>
+  <xsl:param name="iso2lang"
+             select="'fr'"/>
   <xsl:param name="schema"
              select="'iso19115-3'"/>
 
@@ -19,29 +21,34 @@
   <xsl:variable name="i18n"
                 select="document('config-editor-i18n.xml')
                           /i18n"/>
-  <xsl:variable name="schemaFolder"
-                select="concat('../../schemas/', $schema, '/src/main/plugin/', $schema)"/>
+  <xsl:variable name="folder"
+                select="concat('../../schemas/', $schema)"/>
+  <xsl:variable name="docFolder"
+                select="concat($folder, '/doc/', $iso2lang)"/>
+  <xsl:variable name="pluginFolder"
+                select="concat($folder, '/src/main/plugin/', $schema)"/>
   <xsl:variable name="ec"
-                select="document(concat($schemaFolder, '/layout/config-editor.xml'))"/>
+                select="document(concat($pluginFolder, '/layout/config-editor.xml'))"/>
   <!-- A metadata template to detail encoding -->
   <xsl:variable name="tpl"
                 select="document(concat('../../schemas/', $schema, '/doc/tpl.xml'))"/>
   <xsl:variable name="sc"
-                select="document(concat($schemaFolder, '/schema-ident.xml'))
+                select="document(concat($pluginFolder, '/schema-ident.xml'))
                           /gns:schema"/>
   <xsl:variable name="l"
-                select="document(concat($schemaFolder, '/loc/', $lang, '/labels.xml'))
+                select="document(concat($pluginFolder, '/loc/', $lang, '/labels.xml'))
                           /labels/element"/>
   <xsl:variable name="s"
-                select="document(concat($schemaFolder, '/loc/', $lang, '/strings.xml'))
+                select="document(concat($pluginFolder, '/loc/', $lang, '/strings.xml'))
                           /strings/*"/>
   <xsl:variable name="c"
-                select="document(concat($schemaFolder, '/loc/', $lang, '/codelists.xml'))
+                select="document(concat($pluginFolder, '/loc/', $lang, '/codelists.xml'))
                           /codelists/codelist"/>
   <xsl:variable name="t"
                 select="$i18n/*[name() = $lang]"/>
   <xsl:variable name="schemaId"
                 select="$sc/gns:name"/>
+
 
 
   <xsl:template match="/">
@@ -108,9 +115,16 @@
           <xsl:value-of select="gndoc:writeln($t/flatModeExceptions)"/>
           <xsl:value-of select="gndoc:nl()"/>
         </xsl:if>
-        <!-- TODO Translate element -->
+
         <xsl:variable name="name" select="@name"/>
-        <xsl:value-of select="gndoc:writeln(concat('* ', $l[@name = $name]/label, ' (', $name, ')'))"/>
+        <xsl:choose>
+          <xsl:when test="normalize-space($l[@name = $name]/label) = ''">
+            <xsl:message>  * Missing label for <xsl:value-of select="$name"/> </xsl:message>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="gndoc:writeln(concat('* ', $l[@name = $name]/label, ' (', $name, ')'))"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:for-each>
       <xsl:value-of select="gndoc:nl(2)"/>
 
@@ -131,6 +145,8 @@
           <xsl:value-of select="gndoc:writeln($tabHelp)"/>
         </xsl:if>
         <xsl:value-of select="gndoc:nl()"/>
+
+        <xsl:value-of select="gndoc:figure($docFolder, concat('img/', $schemaId, '-tab-', $tabName, '.png'))"/>
 
 
         <xsl:value-of select="gndoc:writeln(
@@ -165,8 +181,15 @@
             </xsl:when>
             <xsl:when test="$sectionName != ''">
               <!-- Section name is a custom name. Use strings.xml. -->
-              <xsl:value-of select="gndoc:writeln(
+              <xsl:choose>
+                <xsl:when test="normalize-space($s[name() = $sectionName]) = ''">
+                  <xsl:message>  * Missing section name for <xsl:value-of select="$sectionName"/> </xsl:message>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="gndoc:writeln(
                                         concat($t/section, ' ', $s[name() = $sectionName]), '^')"/>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:when>
           </xsl:choose>
 
@@ -224,6 +247,14 @@
                                 select="$l[@name = $name]"/>
                   <xsl:value-of select="gndoc:writeln($nodeDesc/label, '&quot;')"/>
 
+                  <!--<xsl:choose>
+                    <xsl:when test="$nodeDesc/label = ''">
+                      <xsl:message> Missing label for field <xsl:value-of select="$name"/>. </xsl:message>
+                    </xsl:when>
+                    <xsl:otherwise>
+                    </xsl:otherwise>
+                  </xsl:choose>-->
+
                   <xsl:for-each select="$nodeDesc/(description|help)">
                     <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
                     <xsl:value-of select="gndoc:nl(2)"/>
@@ -260,7 +291,7 @@
               <!-- TODO Add inspire or other flag -->
               <xsl:value-of select="gndoc:writeln($nodeDesc/label, '&quot;')"/>
               <xsl:value-of select="gndoc:nl()"/>
-              <xsl:for-each select="$nodeDesc/description">
+              <xsl:for-each select="$nodeDesc/(description|help)">
                 <xsl:value-of select="gndoc:writeln(concat('* ', $t/desc, ' ', normalize-space(.)))"/>
               </xsl:for-each>
               <xsl:value-of select="gndoc:nl()"/>
@@ -342,11 +373,15 @@
       <xsl:value-of select="gndoc:nl(2)"/>
 
       <!-- A table would be better -->
-      <xsl:value-of select="gndoc:writeln(concat('* ', @context, ''))"/>
-      <xsl:for-each select="description|help">
-        <xsl:variable name="flag"
-                      select="if (@for) then concat('(', @for, ') ') else ''"/>
-        <xsl:value-of select="gndoc:writeln(concat('* ', $flag, normalize-space(.)))"/>
+      <xsl:if test="@context != ''">
+        <xsl:value-of select="gndoc:writeln(concat('* ', $t/context, ' ',  @context))"/>
+      </xsl:if>
+
+      <xsl:value-of select="gndoc:nl(1)"/>
+      <xsl:for-each select="(description|help)[text() != '']">
+        <xsl:value-of select="if (@for) then gndoc:writeln(concat('[', @for, ']')) else ''"/>
+        <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
+        <xsl:value-of select="gndoc:nl()"/>
       </xsl:for-each>
 
       <xsl:value-of select="gndoc:nl()"/>

@@ -3,6 +3,7 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:gndoc="http://geonetwork-opensource.org/doc"
                 xmlns:saxon="http://saxon.sf.net/"
+                xmlns:java="http://www.java.com/"
                 extension-element-prefixes="saxon"
                 exclude-result-prefixes="#all"
                 version="2.0">
@@ -16,6 +17,19 @@
               encoding="utf-8"
               escape-uri-attributes="yes"/>
 
+  <xsl:function name="java:file-exists"
+                xmlns:file="java.io.File"
+                as="xs:boolean">
+    <xsl:param name="file" as="xs:string"/>
+    <xsl:param name="base-uri" as="xs:string"/>
+
+    <xsl:variable name="absolute-uri"
+                  select="resolve-uri($file, $base-uri)"
+                  as="xs:anyURI"/>
+    <xsl:sequence select="file:exists(file:new($absolute-uri))"/>
+  </xsl:function>
+
+
   <!-- Write a line -->
   <xsl:function name="gndoc:writeln">
     <xsl:param name="line" as="xs:string?"/>
@@ -24,7 +38,7 @@
 
   <!-- Write line and underline it -->
   <xsl:function name="gndoc:writeln">
-    <xsl:param name="line" as="xs:string+"/>
+    <xsl:param name="line" as="xs:string?"/>
     <xsl:param name="underline" as="xs:string?"/>
     <xsl:text>&#xA;</xsl:text><xsl:value-of select="normalize-space($line)"/>
     <xsl:text>&#xA;</xsl:text><xsl:value-of select="replace(normalize-space($line), '.', $underline)"/>
@@ -42,6 +56,22 @@
   <xsl:function name="gndoc:refTo">
     <xsl:param name="id" as="xs:string?"/>
     <xsl:text>:ref:`</xsl:text><xsl:value-of select="replace($id, ':', '-')"/>`
+  </xsl:function>
+
+  <xsl:function name="gndoc:figure">
+    <xsl:param name="folder" as="xs:string?"/>
+    <xsl:param name="image" as="xs:string?"/>
+
+    <xsl:choose>
+      <xsl:when
+              xmlns:file="java.io.File"
+              test="file:exists(file:new(concat($folder, '/', $image)))">
+        <xsl:text>.. figure:: </xsl:text><xsl:value-of select="$image"/><xsl:text>&#xA;</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>  * Figure: <xsl:value-of select="concat($folder, $image, ' does not exist.')"/></xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:function>
 
 

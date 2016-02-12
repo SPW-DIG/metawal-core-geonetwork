@@ -37,6 +37,7 @@
     <hiddenInEditMode>Those values are defined in the standard but hidden when editing.</hiddenInEditMode>
     <nbOfViews>This standard can be encoded using </nbOfViews>
     <views> view(s).</views>
+    <context>Context: </context>
   </eng>
   <fre>
     <title>Standard ISO pour les métadonnées liées aux informations
@@ -77,5 +78,6 @@
     <hiddenInEditMode>Ces valeurs sont définies dans le standard</hiddenInEditMode>
     <nbOfViews>Ce standard peut être encodé en utilisant </nbOfViews>
     <views> vue(s).</views>
+    <context>Contexte de l'élément : </context>
   </fre>
 </i18n>
