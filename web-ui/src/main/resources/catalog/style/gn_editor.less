@@ -5,6 +5,8 @@
 @import (less) "../lib/jquery.ext/jquery.fileupload-ui.css";
 @import "gn.less";
 
+@mw-color: #316A7B;
+
 body {
   
 }
@@ -110,10 +112,18 @@ form.gn-editor {
 
   div[data-gn-toggle] {
     position: absolute;
-    left: -4px;
+    right: 3px;
     top: 2px;
     button {
-      padding: 2px;
+      padding: 5px;
+      background-color: @mw-color;
+      color: white;
+      -webkit-border-radius: 15px;
+      border-width: 0px;
+      i {
+      padding-left: 3px;
+      padding-top: 4px;
+      }
     }
   }
 
@@ -303,6 +313,7 @@ form.gn-editor {
       padding: 5px;
       border: 1px solid #ebebeb;
       border-radius: 3px;
+      margin-top: 10px;
   }
   .gn-field {
       border-radius: 3px;
@@ -464,6 +475,11 @@ form.gn-tab-mw-metadata {
     > legend {
       background-color: #316A7B;
       color: white;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      margin-left: -5px;
+      width: 95%;
     }
     fieldset legend {
       font-size: 14px;
