@@ -33,6 +33,10 @@
     <notFlatMode>This tab display elements from the XML metadata record and
       also provide controls to add all elements defined in the schema (XSD).</notFlatMode>
     <displayIf>Display only if: </displayIf>
+    <cf>See </cf>
+    <hiddenInEditMode>Those values are defined in the standard but hidden when editing.</hiddenInEditMode>
+    <nbOfViews>This standard can be encoded using </nbOfViews>
+    <views> view(s).</views>
   </eng>
   <fre>
     <title>Standard ISO pour les métadonnées liées aux informations
@@ -69,5 +73,9 @@
     <flatMode>Cet onglet affiche des élements du document XML.</flatMode>
     <notFlatMode>Cet onglet affiche des élements du document XML et permet également l'ajout d'élément définis dans le standard (Schéma XSD).</notFlatMode>
     <displayIf>Afficher uniquement si : </displayIf>
+    <cf>Cf. </cf>
+    <hiddenInEditMode>Ces valeurs sont définies dans le standard</hiddenInEditMode>
+    <nbOfViews>Ce standard peut être encodé en utilisant </nbOfViews>
+    <views> vue(s).</views>
   </fre>
 </i18n>
