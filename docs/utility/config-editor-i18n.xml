@@ -1,0 +1,73 @@
+<i18n>
+  <eng>
+    <!-- TODO: Move schema label in schema-ident.xml (to be done in GN) -->
+    <!-- TODO: Add schema URL - link to the official version (to be done in GN) -->
+    <title>ISO Standard for metadata on Geographic Information - ISO</title>
+    <schema-details>Schema technical details</schema-details>
+    <editor-config>Metadata editor</editor-config>
+    <glossary>Standard elements</glossary>
+    <glossary-help>List of all elements available in the standard.
+    </glossary-help>
+    <codelists>Standard codelists</codelists>
+    <codelists-help>List of all codelists available in the standard.
+    </codelists-help>
+    <noCodelist>No codelist defined.</noCodelist>
+    <view>View:</view>
+    <nbOfTabs>This view is composed of </nbOfTabs>
+    <tabs> tab(s).</tabs>
+    <tab>Tab: </tab>
+    <section>Section: </section>
+    <field>Field: </field>
+    <undefined>Undefined field: </undefined>
+    <tag>Tag: </tag>
+    <desc>Description: </desc>
+    <more>More details: </more>
+    <helper>Recommended values: </helper>
+    <cond>Condition: </cond>
+    <codelist>Standard codelists: </codelist>
+    <flatModeExceptions>This view also allows to add the following element even if
+      not in the current record:
+    </flatModeExceptions>
+    <xpath>XPath: </xpath>
+    <flatMode>This tab display elements from the XML metadata record.</flatMode>
+    <notFlatMode>This tab display elements from the XML metadata record and
+      also provide controls to add all elements defined in the schema (XSD).</notFlatMode>
+    <displayIf>Display only if: </displayIf>
+  </eng>
+  <fre>
+    <title>Standard ISO pour les métadonnées liées aux informations
+      géographiques - ISO
+    </title>
+    <schema-details>Informations techniques sur le schéma</schema-details>
+    <editor-config>Encodage des fiches</editor-config>
+    <glossary>Éléments du standard</glossary>
+    <glossary-help>Liste des descripteurs définis dans le standard de
+      métadonnées.
+    </glossary-help>
+    <codelists>Listes de valeurs du standard</codelists>
+    <codelists-help>Listes de valeurs définies dans le standard de
+      métadonnées.
+    </codelists-help>
+    <noCodelist>Aucune liste de valeurs.</noCodelist>
+    <view>Vue :</view>
+    <nbOfTabs>Cette vue est composée de </nbOfTabs>
+    <tabs> onglet(s).</tabs>
+    <tab>Onglet : </tab>
+    <section>Section : </section>
+    <field>Descripteur : </field>
+    <undefined>Non défini : </undefined>
+    <tag>Balise XML : </tag>
+    <desc>Description : </desc>
+    <more>Information complémentaire : </more>
+    <helper>Valeurs recommandées : </helper>
+    <cond>Condition : </cond>
+    <codelist>Liste de valeurs : </codelist>
+    <flatModeExceptions>Cette vue permet la saisie des éléments suivant même
+      s'ils ne sont pas dans la fiche en cours d'édition :
+    </flatModeExceptions>
+    <xpath>XPath : </xpath>
+    <flatMode>Cet onglet affiche des élements du document XML.</flatMode>
+    <notFlatMode>Cet onglet affiche des élements du document XML et permet également l'ajout d'élément définis dans le standard (Schéma XSD).</notFlatMode>
+    <displayIf>Afficher uniquement si : </displayIf>
+  </fre>
+</i18n>

@@ -6,229 +6,47 @@
     exclude-result-prefixes="xs"
     version="2.0">
 
-  <xsl:output method="text" encoding="UTF-8"/>
-  <xsl:strip-space elements="*"/>
-
-  <xsl:param name="lang" select="'fre'"/>
-  <xsl:param name="schema" select="'iso19115-3'"/>
+  <xsl:import href="rst-writer.xsl"/>
 
 
-  <xsl:variable name="i18n">
-    <eng>
-      <!-- TODO: Move schema label in schema-ident.xml (to be done in GN) -->
-      <!-- TODO: Add schema URL - link to the official version (to be done in GN) -->
-      <title>ISO Standard for metadata on Geographic Information - ISO </title>
-      <editor-config>Metadata editor</editor-config>
-      <glossary>Standard elements</glossary>
-      <glossary-help>List of all elements available in the standard.</glossary-help>
-      <codelists>Standard codelists</codelists>
-      <codelists-help>List of all codelists available in the standard.</codelists-help>
-      <noCodelist>No codelist defined.</noCodelist>
-      <view>View: </view>
-      <tab>Tab: </tab>
-      <section>Section: </section>
-      <field>Field: </field>
-      <undefined>Undefined field: </undefined>
-      <tag>Tag: </tag>
-      <desc>Description: </desc>
-      <more>More details: </more>
-      <helper>Recommended values: </helper>
-      <cond>Condition: </cond>
-      <codelist>Standard codelists: </codelist>
-      <flatModeExceptions>This view allows to add the following element even if not in the current record:</flatModeExceptions>
-      <xpath>XPath: </xpath>
-      <displayIf>Display only if: </displayIf>
-    </eng>
-    <fre>
-      <title>Standard ISO pour les métadonnées liées aux informations géographiques - ISO </title>
-      <editor-config>Encodage de métadonnée</editor-config>
-      <glossary>Éléments du standard</glossary>
-      <glossary-help>Liste des descripteurs définis dans le standard de métadonnées.</glossary-help>
-      <codelists>Listes de valeurs du standard</codelists>
-      <codelists-help>Listes de valeurs définies dans le standard de métadonnées.</codelists-help>
-      <noCodelist>Aucune liste de valeurs.</noCodelist>
-      <view>Vue : </view>
-      <tab>Onglet : </tab>
-      <section>Section : </section>
-      <field>Descripteur : </field>
-      <undefined>Non défini : </undefined>
-      <tag>Balise XML : </tag>
-      <desc>Description : </desc>
-      <more>Information complémentaire : </more>
-      <helper>Valeurs recommandées : </helper>
-      <cond>Condition : </cond>
-      <codelist>Liste de valeurs : </codelist>
-      <flatModeExceptions>Cette vue permet la saisie des éléments suivant même s'ils ne sont pas dans la fiche en cours d'édition :</flatModeExceptions>
-      <xpath>XPath : </xpath>
-      <displayIf>Afficher uniquement si : </displayIf>
-    </fre>
-  </xsl:variable>
 
+  <xsl:param name="lang"
+             select="'fre'"/>
+  <xsl:param name="schema"
+             select="'iso19115-3'"/>
+
+
+  <xsl:variable name="i18n"
+                select="document('config-editor-i18n.xml')
+                          /i18n"/>
   <xsl:variable name="schemaFolder"
-              select="concat('../../schemas/', $schema, '/src/main/plugin/', $schema)"/>
-  <xsl:variable name="editorConfig"
+                select="concat('../../schemas/', $schema, '/src/main/plugin/', $schema)"/>
+  <xsl:variable name="ec"
                 select="document(concat($schemaFolder, '/layout/config-editor.xml'))"/>
   <!-- A metadata template to detail encoding -->
   <xsl:variable name="tpl"
                 select="concat('../../schemas/', $schema, '/doc/tpl.xml')"/>
-  <xsl:variable name="schemaConfig"
-                select="document(concat($schemaFolder, '/schema-ident.xml'))"/>
+  <xsl:variable name="sc"
+                select="document(concat($schemaFolder, '/schema-ident.xml'))
+                          /gns:schema"/>
   <xsl:variable name="l"
-                select="document(concat($schemaFolder, '/loc/', $lang, '/labels.xml'))/labels/element"/>
+                select="document(concat($schemaFolder, '/loc/', $lang, '/labels.xml'))
+                          /labels/element"/>
   <xsl:variable name="s"
-                select="document(concat($schemaFolder, '/loc/', $lang, '/strings.xml'))/strings/*"/>
+                select="document(concat($schemaFolder, '/loc/', $lang, '/strings.xml'))
+                          /strings/*"/>
   <xsl:variable name="c"
-                select="document(concat($schemaFolder, '/loc/', $lang, '/codelists.xml'))/codelists/codelist"/>
+                select="document(concat($schemaFolder, '/loc/', $lang, '/codelists.xml'))
+                          /codelists/codelist"/>
   <xsl:variable name="t"
                 select="$i18n/*[name() = $lang]"/>
-
   <xsl:variable name="schemaId"
-                select="$schemaConfig/gns:schema/gns:name"/>
+                select="$sc/gns:name"/>
 
-  <!-- Write a line -->
-  <xsl:function name="gndoc:writeln">
-    <xsl:param name="line" as="xs:string?"/>
-<xsl:text>&#xA;</xsl:text><xsl:value-of select="$line"/>
-  </xsl:function>
-
-  <!-- Write line and underline it -->
-  <xsl:function name="gndoc:writeln">
-    <xsl:param name="line" as="xs:string+"/>
-    <xsl:param name="underline" as="xs:string?"/>
-    <xsl:text>&#xA;</xsl:text><xsl:value-of select="$line"/>
-    <xsl:text>&#xA;</xsl:text><xsl:value-of select="replace($line, '.', $underline)"/>
-    <xsl:text>&#xA;</xsl:text>
-  </xsl:function>
-
-  <!-- Create a RST reference. Prefixed by schema identifier to have them unique
-   accross all documentation refs. -->
-  <xsl:function name="gndoc:ref">
-    <xsl:param name="id" as="xs:string?"/>
-    <xsl:text>&#xA;.. _</xsl:text><xsl:value-of select="concat($schemaId, '-', $id)"/>:
-    <xsl:text>&#xA;</xsl:text>
-  </xsl:function>
-
-  <xsl:function name="gndoc:refTo">
-    <xsl:param name="id" as="xs:string?"/>
-    <xsl:text>:ref:`</xsl:text><xsl:value-of select="concat($schemaId, '-', $id)"/>`
-  </xsl:function>
-
-
-
-  <!-- max-line-length -->
-  <xsl:function name="gndoc:mll" as="xs:integer">
-    <xsl:param name="arg" as="node()*"/>
-
-    <xsl:sequence select="max(
-                     for $line in $arg
-                     return string-length($line))"/>
-  </xsl:function>
-
-
-
-  <!-- Table builder
-
-      =======  ==========
-      code     label
-      =======  ==========
-      after    Après
-      before   Avant
-      now      Maintenant
-      unknown  Inconnu
-      =======  ==========
-  -->
-  <xsl:function name="gndoc:table">
-    <xsl:param name="rows" as="node()"/>
-    <!-- Hide in edit mode-->
-
-    <xsl:variable name="s" select="'  '"/>
-    <xsl:text>&#xA;</xsl:text>
-    <xsl:text></xsl:text>
-    <!-- Rows -->
-    <xsl:for-each select="$rows">
-      <!-- Header -->
-      <xsl:if test="position() = 1">
-        <!-- Cols -->
-        <xsl:for-each select="*[1]/*">
-          <xsl:variable name="colName" select="name()"/>
-          <xsl:for-each select="1 to gndoc:mll($rows/*/*[name() = $colName])">=</xsl:for-each>
-          <xsl:if test="position() != last()">
-            <xsl:value-of select="$s"/>
-          </xsl:if>
-        </xsl:for-each>
-        <xsl:text>&#xA;</xsl:text>
-        <!-- Cols label -->
-        <xsl:for-each select="*[1]/*">
-          <xsl:variable name="colName" select="name()"/>
-          <xsl:variable name="maxColLength"
-                        select="gndoc:mll($rows/*/*[name() = $colName])"/>
-          <xsl:variable name="missingSpaces"
-                        select="$maxColLength - string-length($colName)"/>
-
-          <xsl:value-of select="$colName"/>
-          <xsl:if test="position() != last()">
-            <xsl:value-of select="$s"/>
-          </xsl:if>
-          <xsl:for-each select="1 to $missingSpaces"><xsl:text> </xsl:text></xsl:for-each>
-        </xsl:for-each>
-        <xsl:text>&#xA;</xsl:text>
-        <xsl:for-each select="*[1]/*">
-          <xsl:variable name="colName" select="name()"/>
-          <xsl:for-each select="1 to gndoc:mll($rows/*/*[name() = $colName])">=</xsl:for-each>
-          <xsl:if test="position() != last()">
-            <xsl:value-of select="$s"/>
-          </xsl:if>
-        </xsl:for-each>
-        <xsl:text>&#xA;</xsl:text>
-      </xsl:if>
-
-      <xsl:for-each select="*">
-        <xsl:for-each select="*">
-          <xsl:variable name="colName" select="name()"/>
-          <xsl:variable name="colValue" select="normalize-space()"/>
-          <xsl:variable name="maxColLength"
-                        select="gndoc:mll($rows/*/*[name() = $colName])"/>
-          <xsl:variable name="missingSpaces"
-                        select="$maxColLength - string-length($colValue)"/>
-          <xsl:value-of select="$colValue"/>
-          <xsl:if test="position() != last()">
-            <xsl:value-of select="$s"/>
-          </xsl:if>
-          <xsl:for-each select="1 to $missingSpaces"><xsl:text> </xsl:text></xsl:for-each>
-        </xsl:for-each>
-        <xsl:text>&#xA;</xsl:text>
-      </xsl:for-each>
-
-      <!-- Footer -->
-      <xsl:for-each select="*[1]/*">
-        <xsl:variable name="colName" select="name()"/>
-        <xsl:for-each select="1 to gndoc:mll($rows/*/*[name() = $colName])">=</xsl:for-each>
-        <xsl:if test="position() != last()">
-          <xsl:value-of select="$s"/>
-        </xsl:if>
-      </xsl:for-each>
-      <xsl:text>&#xA;</xsl:text>
-    </xsl:for-each>
-    <xsl:text>&#xA;</xsl:text>
-  </xsl:function>
-  
-  
-  <!-- New line -->
-  <xsl:function name="gndoc:nl">
-    <xsl:value-of select="gndoc:nl(1)"/>
-  </xsl:function>
-
-  <xsl:function name="gndoc:nl">
-    <xsl:param name="howMany" as="xs:integer"/>
-
-    <xsl:for-each select="1 to $howMany">
-      <xsl:text>&#xA;</xsl:text>
-    </xsl:for-each>
-  </xsl:function>
 
   <xsl:template match="/">
     <!-- Reference based on schema identifier -->
-    <xsl:value-of select="gndoc:ref('')"/>:
+    <xsl:value-of select="gndoc:ref($schemaId)"/>
 
     <!-- Schema details -->
     <xsl:value-of select="gndoc:writeln(concat($t/title, ' (', $schema, ')'), '#')"/>
