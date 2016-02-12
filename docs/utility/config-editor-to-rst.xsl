@@ -68,13 +68,16 @@
               select="concat('../../schemas/', $schema, '/src/main/plugin/', $schema)"/>
   <xsl:variable name="editorConfig"
                 select="document(concat($schemaFolder, '/layout/config-editor.xml'))"/>
+  <!-- A metadata template to detail encoding -->
+  <xsl:variable name="tpl"
+                select="concat('../../schemas/', $schema, '/doc/tpl.xml')"/>
   <xsl:variable name="schemaConfig"
                 select="document(concat($schemaFolder, '/schema-ident.xml'))"/>
-  <xsl:variable name="labels"
+  <xsl:variable name="l"
                 select="document(concat($schemaFolder, '/loc/', $lang, '/labels.xml'))/labels/element"/>
-  <xsl:variable name="strings"
+  <xsl:variable name="s"
                 select="document(concat($schemaFolder, '/loc/', $lang, '/strings.xml'))/strings/*"/>
-  <xsl:variable name="codelists"
+  <xsl:variable name="c"
                 select="document(concat($schemaFolder, '/loc/', $lang, '/codelists.xml'))/codelists/codelist"/>
   <xsl:variable name="t"
                 select="$i18n/*[name() = $lang]"/>
@@ -136,6 +139,7 @@
   -->
   <xsl:function name="gndoc:table">
     <xsl:param name="rows" as="node()"/>
+    <!-- Hide in edit mode-->
 
     <xsl:variable name="s" select="'  '"/>
     <xsl:text>&#xA;</xsl:text>
@@ -250,17 +254,18 @@
       <xsl:variable name="viewName"
                     select="@name"/>
       <xsl:variable name="viewHelp"
-                    select="$strings[name() = concat($viewName,'-help')]"/>
+                    select="$s[name() = concat($viewName,'-help')]"/>
 
       <xsl:value-of select="gndoc:ref(concat('view-', $viewName))"/>
 
       <xsl:value-of select="gndoc:writeln(
-                              concat($t/view, $strings[name() = $viewName],
+                              concat($t/view, $s[name() = $viewName],
                                      ' (', $viewName, ')'), '=')"/>
       <xsl:if test="$viewHelp != ''">
         <xsl:value-of select="gndoc:writeln($viewHelp)"/>
       </xsl:if>
 
+      <!-- TODO screenshot if available -->
 
       <xsl:for-each select="flatModeExceptions/for">
         <xsl:if test="position() = 1">
@@ -269,7 +274,8 @@
           <xsl:value-of select="gndoc:nl()"/>
         </xsl:if>
         <!-- TODO Translate element -->
-        <xsl:value-of select="gndoc:writeln(concat('* ', @name))"/>
+        <xsl:variable name="name" select="@name"/>
+        <xsl:value-of select="gndoc:writeln(concat('* ', $l[@name = $name]/label, ' (', $name, ')'))"/>
       </xsl:for-each>
       <xsl:value-of select="gndoc:nl(2)"/>
 
@@ -279,12 +285,12 @@
         <xsl:variable name="tabName"
                       select="@id"/>
         <xsl:variable name="tabHelp"
-                      select="$strings/*[name() = concat($tabName,'-help')]"/>
+                      select="$s/*[name() = concat($tabName,'-help')]"/>
 
         <xsl:value-of select="gndoc:ref(concat('tab-', $tabName))"/>
 
         <xsl:value-of select="gndoc:writeln(
-                              concat($t/tab, $strings[name() = $tabName],
+                              concat($t/tab, $s[name() = $tabName],
                                      ' (', $tabName, ')'), '-')"/>
         <xsl:if test="$tabHelp != ''">
           <xsl:value-of select="gndoc:writeln($tabHelp)"/>
@@ -299,18 +305,18 @@
           <xsl:variable name="sectionName"
                         select="@name"/>
           <xsl:variable name="sectionHelp"
-                        select="$strings/*[name() = concat($sectionName,'-help')]"/>
+                        select="$s/*[name() = concat($sectionName,'-help')]"/>
 
           <!-- Section name is optional -->
           <xsl:choose>
             <xsl:when test="contains($sectionName,':')">
               <!-- Section name is a standard element -->
               <xsl:value-of select="gndoc:writeln(
-                                        concat($t/section, $labels[name() = $sectionName]), '~')"/>
+                                        concat($t/section, $l[name() = $sectionName]), '~')"/>
             </xsl:when>
             <xsl:when test="$sectionName != ''">
               <xsl:value-of select="gndoc:writeln(
-                                        concat($t/section, $strings[name() = $sectionName]), '~')"/>
+                                        concat($t/section, $s[name() = $sectionName]), '~')"/>
             </xsl:when>
           </xsl:choose>
 
@@ -325,14 +331,14 @@
                           select="normalize-space(tokenize(@xpath,'/')[last()])"/>
             <!-- TODO: Handle context -->
             <xsl:variable name="nodeDesc"
-                          select="$labels[@name = $nodeName]"/>
+                          select="$l[@name = $nodeName]"/>
 
             <xsl:value-of select="gndoc:writeln(concat($t/section, $nodeDesc/label), '~')"/>
             <xsl:for-each select="$nodeDesc/description">
               <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
             </xsl:for-each>
             <xsl:value-of select="gndoc:nl()"/>
-            <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, @xpath))"/>
+            <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, '``', @xpath, '``'))"/>
             <xsl:value-of select="gndoc:nl(2)"/>
           </xsl:if>
 
@@ -347,19 +353,19 @@
               <xsl:variable name="name"
                             select="@name"/>
               <xsl:variable name="help"
-                            select="$strings/*[name() = concat($name,'-help')]"/>
+                            select="$s/*[name() = concat($name,'-help')]"/>
 
               <!-- name is optional -->
               <xsl:choose>
                 <xsl:when test="contains($name,':')">
                   <!-- Section name is a standard element -->
                   <xsl:value-of select="gndoc:writeln(
-                                        concat('**', $labels[name() = $name], '**'))"/>
+                                        concat('**', $l[name() = $name], '**'))"/>
                   <xsl:value-of select="gndoc:nl()"/>
                 </xsl:when>
                 <xsl:when test="$name != ''">
                   <xsl:value-of select="gndoc:writeln(
-                                        concat('* ', $t/desc, $strings[name() = $name]))"/>
+                                        concat('* ', $t/desc, $s[name() = $name]))"/>
                 </xsl:when>
               </xsl:choose>
 
@@ -376,7 +382,7 @@
                             select="normalize-space(tokenize(@xpath,'/')[last()])"/>
               <!-- TODO: Handle element with context = parent element or full xpath -->
               <xsl:variable name="nodeDesc"
-                            select="$labels[@name = $nodeName][position() = 1]"/>
+                            select="$l[@name = $nodeName][position() = 1]"/>
 
               <!-- TODO Add inspire or other flag -->
               <xsl:value-of select="gndoc:writeln(concat('**', $nodeDesc/label, '**'))"/>
@@ -388,7 +394,7 @@
 
               <xsl:apply-templates select="$nodeDesc/helper" mode="doc"/>
 
-              <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, @xpath))"/>
+              <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, '``', @xpath, '``'))"/>
               <xsl:value-of select="gndoc:nl(2)"/>
             </xsl:if>
           </xsl:for-each>
@@ -407,10 +413,12 @@
     <xsl:value-of select="gndoc:writeln($t/glossary-help)"/>
     <xsl:value-of select="gndoc:nl(2)"/>
 
-    <xsl:for-each select="$labels">
+    <xsl:for-each select="$l">
       <xsl:sort select="@name"/>
 
-      <xsl:value-of select="gndoc:writeln(concat('**', label, '**'))"/>
+      <xsl:variable name="name" select="@name"/>
+
+      <xsl:value-of select="gndoc:writeln(concat('**', label, ' (', $name, ')**'))"/>
       <xsl:value-of select="gndoc:nl(2)"/>
 
       <!-- A table would be better -->
@@ -429,7 +437,9 @@
 
       <xsl:apply-templates select="helper" mode="doc"/>
 
-      <!--TODO CODELISTS - generate full mtd to find links betewen labels definition and codelists-->
+      <!-- Insert code list table. Another option would be to make a reference to the codelists -->
+      <xsl:apply-templates select="$c[@name = $name]" mode="doc"/>
+
       <xsl:value-of select="gndoc:nl(3)"/>
     </xsl:for-each>
   </xsl:template>
@@ -443,11 +453,11 @@
     <xsl:value-of select="gndoc:writeln($t/codelists-help)"/>
     <xsl:value-of select="gndoc:nl(2)"/>
 
-    <xsl:if test="not($codelists)">
+    <xsl:if test="not($c)">
       <xsl:value-of select="$t/noCodelist"/>
     </xsl:if>
 
-    <xsl:apply-templates select="$codelists" mode="doc"/>
+    <xsl:apply-templates select="$c" mode="doc"/>
   </xsl:template>
 
 
@@ -462,7 +472,7 @@
         <!-- TODO conditional helper -->
         <xsl:value-of select="gndoc:nl(2)"/>
         <xsl:for-each select="@displayIf">
-          <xsl:value-of select="gndoc:writeln(concat('(', $t/displayIf, .))"/>
+          <xsl:value-of select="gndoc:writeln(concat('(', $t/displayIf, '``', ., '``'))"/>
         </xsl:for-each>
       </xsl:if>
       <xsl:value-of select="gndoc:writeln(concat('* ', normalize-space(.), ' (', @value, ')'))"/>
@@ -471,9 +481,11 @@
 
 
   <xsl:template match="codelist" mode="doc">
+    <xsl:value-of select="gndoc:nl(2)"/>
+
     <xsl:variable name="name" select="@name"/>
     <xsl:value-of select="gndoc:writeln(concat(
-                            '**', $labels[@name = $name]/label, ' (', @name, ')**'
+                            '**', $t/codelist, $l[@name = $name]/label, ' (', @name, ')**'
                             ))"/>
     <xsl:value-of select="gndoc:nl()"/>
     <!--
