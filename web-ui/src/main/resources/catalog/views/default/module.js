@@ -82,6 +82,7 @@
       $scope.location = gnSearchLocation;
       $scope.toggleMap = function () {
         $(searchMap.getTargetElement()).toggle();
+        searchMap.updateSize();
       };
       hotkeys.bindTo($scope)
         .add({
