@@ -296,6 +296,71 @@
 
   /**
    * @ngdoc directive
+   * @name gn_utility.directive:gnToggleSwitcher
+   * @function
+   *
+   * @description
+   * Add Next/Previous buttons to switch between the current tab and
+   * the next or previous tab (MW editor)
+   */
+   module.directive('gnToggleSwitcher', [
+    function() {
+      return {
+        restrict: 'A',
+        template: '<div class="btn-group mw-tab-switcher">'+
+            '<button class="btn" id="prevtab" data-ng-show="displayPrevious()"'+
+            ' type="button">Prev</button>'+
+            '<button class="btn" id="nexttab" data-ng-show="displayNext()"'+
+            ' type="button">Next</button>'+
+            '</div>',
+        link: function linkFn(scope, element, attr) {
+          var tabs = $('.mw-editor-tab-ul');
+          var currentTab = tabs.find('li.active.mw-editor-tab').index();
+          var tab = tabs.find('li');
+          var totalTabs = tabs.find('li.mw-editor-tab').length;
+          console.log(currentTab);
+          console.log(totalTabs);
+          scope.displayNext = function(){
+            if (totalTabs <2 ) {;
+              return false;
+            }
+            else {
+              if (currentTab == totalTabs) {
+                return false;
+              }
+              else {
+                return true;
+              }
+            }
+          };
+          scope.displayPrevious = function(){
+            if (totalTabs <2 ) {
+              return false;
+            }
+            else {
+              if (currentTab == 1) {
+                return false;
+              }
+              else {;
+                return true;
+              }
+            }
+          };
+          $('#prevtab').on('click', function() {
+            tab.filter('.active').prev('li')
+                .find('a').trigger('click');
+          });
+          $('#nexttab').on('click', function() {
+            tab.filter('.active').next('li')
+                .find('a').trigger('click');
+          });
+        }
+      };
+    }
+  ]);
+
+  /**
+   * @ngdoc directive
    * @name gn_utility.directive:gnDirectoryEntryPicker
    * @function
    *
