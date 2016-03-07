@@ -105,6 +105,8 @@
       $scope.location = gnSearchLocation;
       $scope.toggleMap = function () {
         $(searchMap.getTargetElement()).toggle();
+        searchMap.updateSize();
+        $('button.gn-minimap-toggle > i').toggleClass('fa-angle-double-left fa-angle-double-right');
       };
       hotkeys.bindTo($scope)
         .add({

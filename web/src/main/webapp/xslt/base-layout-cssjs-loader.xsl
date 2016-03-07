@@ -47,7 +47,6 @@
       <link href="{/root/gui/url}/static/nv.d3.css{$minimizedParam}" rel="stylesheet" media="screen" />
     </xsl:if>
     <link href="{$uiResourcesPath}style/metawal/metawal.css" rel="stylesheet"/>
-    <link href="{$uiResourcesPath}style/metawal/mw_infolist.css" rel="stylesheet"/>
     <link href="{/root/gui/url}/static/{$customFilename}.css{$minimizedParam}" rel="stylesheet" media="screen" />
 
     <link href="{/root/gui/url}/static/bootstrap-table.min.css" rel="stylesheet" media="screen"></link>

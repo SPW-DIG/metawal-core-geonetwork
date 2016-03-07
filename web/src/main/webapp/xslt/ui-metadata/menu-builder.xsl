@@ -43,8 +43,7 @@
       data-gn-scroll-spy="gn-editor-{$metadataId}"
       data-watch=""
       data-all-depth="{if ($isFlatMode) then 'true' else 'false'}"/>
-
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs {if ('metawal' = $currentView/@name) then 'mw-editor-tab-ul' else ''}">
       <!-- Make a drop down choice to swith to one view to another -->
       <li class="dropdown" id="gn-view-menu-{$metadataId}">
         <a class="dropdown-toggle" data-toggle="dropdown" href="" 
@@ -173,16 +172,16 @@
     <xsl:if test="$isTabDisplayed">
     </xsl:if>
     -->
-    <li class="{if ($tab = @id) then 'active' else ''} {if ($isTabDisplayed) then '' else 'disabled'}">
-      <a href="">
-        <xsl:if test="$tab != @id and $isTabDisplayed">
-          <xsl:attribute name="data-ng-click"
-            select="concat('switchToTab(''', @id, ''', ''', @mode, ''')')"/>
-        </xsl:if>
-        <xsl:variable name="tabId" select="@id"/>
-        <xsl:value-of select="$strings/*[name() = $tabId]"/>
-      </a>
-    </li>
-
+    <li class="{if ($tab = @id) then 'active' else ''} {if ($isTabDisplayed) then '' else 'disabled'} {if (starts-with(./@id,'mw-')) then 'mw-editor-tab' else ''}" id="21">
+        <div class="node"></div>
+        <a href="">
+          <xsl:if test="$tab != @id and $isTabDisplayed">
+            <xsl:attribute name="data-ng-click"
+              select="concat('switchToTab(''', @id, ''', ''', @mode, ''')')"/>
+          </xsl:if>
+          <xsl:variable name="tabId" select="@id"/>
+          <xsl:value-of select="$strings/*[name() = $tabId]"/>
+        </a>
+      </li>
   </xsl:template>
 </xsl:stylesheet>

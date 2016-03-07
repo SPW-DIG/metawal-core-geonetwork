@@ -1,0 +1,102 @@
+@mw-color: #316A7B;
+
+/**.tooltip-mw + .tooltip > .tooltip-inner {
+    max-width: 60%;
+    background-color: #316A7B;
+    margin-left: 25px;
+    text-align: justify;
+    opeacity:1;
+}
+.tooltip-mw + .tooltip.bottom .tooltip-arrow {
+    margin-left: 5%;
+    border-bottom-color: #316A7B;
+    opeacity:1;
+}
+.helpview-mw {
+    background-color: #316A7B;
+    opacity: 0.8;
+    color: white;
+    margin-left: 220px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+
+ul .mw-editor-tab {
+    border-bottom-width: 0px;
+    border-top: 1px solid #ddd;
+}
+li .mw-editor-tab {
+    
+}*/
+
+@colormw: #316A7B; // Appears 2 times
+
+.mw-editor-tab-ul {
+    border-bottom:0px !important;
+    padding-top: 15px;
+}
+.mw-editor-tab {
+    border-bottom-width: 0px !important;
+    border-top: 2px solid #dddddd !important;
+    text-align: center;
+    .node {
+        background: white;
+        border-radius: 50%;
+        border: 5px solid @colormw;
+        display: inline-block;
+        height: 20px;
+        margin-left: -10px;
+        position: absolute;
+        text-align: center;
+        top: -11px;
+        width: 20px;
+        z-index: 20;
+    }
+}
+.mw-editor-tab>a {
+    border-bottom-width: 0px !important;
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-width: 0px !important;
+    padding-top:15px !important;
+    width: 150px !important;
+    &:visited {
+        background-color: white !important;
+        border-width: 0px !important;
+    }
+    &:focus {
+        background-color: transparent !important;
+        background-color: white !important;
+        border-width: 0px !important;
+    }
+}
+li.active.mw-editor-tab {
+    a {
+        font-weight: bold;
+    }
+    .node {
+        background: @colormw;
+        border: 6px;
+        font-weight: bold;
+        height: 25px;
+        margin-left: -14.5px;
+        top:-11.5px;
+        width: 25px;
+    }
+}
+li.active.mw-editor-tab>a {
+    &:focus {
+        border-width: 0px !important;
+    }
+}
+.mw-tab-switcher {
+    bottom:-50px;
+    color:@colormw;
+    padding-bottom: 10px;
+    position: absolute!important;
+    right: 2px !important;
+    button {
+        background-color:#F8F8F8 !important;
+    }
+}
