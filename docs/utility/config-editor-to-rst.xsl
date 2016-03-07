@@ -48,6 +48,12 @@
                 select="$i18n/*[name() = $lang]"/>
   <xsl:variable name="schemaId"
                 select="$sc/gns:name"/>
+  <xsl:variable name="schemaTitle"
+                select="$sc/gns:title[@xml:lang = $iso2lang or not(@xml:lang)]"/>
+  <xsl:variable name="schemaDesc"
+                select="$sc/gns:description[@xml:lang = $iso2lang or not(@xml:lang)]"/>
+  <xsl:variable name="schemaUrl"
+                select="$sc/gns:standardUrl[@xml:lang = $iso2lang or not(@xml:lang)]"/>
 
 
 
@@ -56,11 +62,17 @@
     <xsl:value-of select="gndoc:ref($schemaId)"/>
 
     <!-- Schema details -->
-    <xsl:value-of select="gndoc:writeln(concat($t/title, ' (', $schema, ')'), '#')"/>
+    <xsl:value-of select="gndoc:writeln(concat($schemaTitle, ' (', $schema, ')'), '#')"/>
+
+    <xsl:value-of select="gndoc:nl(2)"/>
+    <xsl:value-of select="gndoc:writeln($schemaDesc)"/>
+    <xsl:value-of select="gndoc:nl(2)"/>
+    <xsl:value-of select="gndoc:writeln(concat($t/schema-url, $schemaUrl))"/>
+    <xsl:value-of select="gndoc:nl(2)"/>
+
     <!--
     TODO: add:
     * main namespace
-    * schema URL
     * autodetection information from schema-ident.xml
     -->
 
@@ -118,11 +130,12 @@
 
         <xsl:variable name="name" select="@name"/>
         <xsl:choose>
-          <xsl:when test="normalize-space($l[@name = $name]/label) = ''">
+          <xsl:when test="$l[@name = $name]/label = ''">
             <xsl:message>  * Missing label for <xsl:value-of select="$name"/> </xsl:message>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:value-of select="gndoc:writeln(concat('* ', $l[@name = $name]/label, ' (', $name, ')'))"/>
+            <!-- TODO handle context/xpath and remove select first -->
+            <xsl:value-of select="gndoc:writeln(concat('* ', $l[@name = $name][1]/label, ' (', $name, ')'))"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:for-each>
@@ -182,7 +195,7 @@
             <xsl:when test="$sectionName != ''">
               <!-- Section name is a custom name. Use strings.xml. -->
               <xsl:choose>
-                <xsl:when test="normalize-space($s[name() = $sectionName]) = ''">
+                <xsl:when test="normalize-space($s[name() = $sectionName][1]) = ''">
                   <xsl:message>  * Missing section name for <xsl:value-of select="$sectionName"/> </xsl:message>
                 </xsl:when>
                 <xsl:otherwise>
@@ -216,7 +229,7 @@
                                     '/')[last()]"/>
             <!-- TODO: Handle context -->
             <xsl:variable name="nodeDesc"
-                          select="$l[@name = $nodeName]"/>
+                          select="$l[@name = $nodeName][1]"/>
 
             <xsl:value-of select="gndoc:writeln(concat($t/section, ' ', $nodeDesc/label), '^')"/>
             <xsl:for-each select="$nodeDesc/description">
@@ -458,8 +471,9 @@
 
     <xsl:variable name="name" select="@name"/>
     <xsl:value-of select="gndoc:ref(concat($schemaId, '-cl-', $name))"/>
+    <!-- TODO: Handle context instead of selecting first -->
     <xsl:value-of select="gndoc:writeln(concat(
-                            $t/codelist, ' ', $l[@name = $name]/label, ' (', @name, ')'
+                            $t/codelist, ' ', $l[@name = $name][1]/label, ' (', @name, ')'
                             ), '=')"/>
     <xsl:value-of select="gndoc:nl()"/>
     <!--

@@ -1,9 +1,7 @@
 <i18n>
   <eng>
-    <!-- TODO: Move schema label in schema-ident.xml (to be done in GN) -->
-    <!-- TODO: Add schema URL - link to the official version (to be done in GN) -->
-    <title>ISO Standard for metadata on Geographic Information - ISO</title>
     <schema-details>Schema technical details</schema-details>
+    <schema-url>More details: </schema-url>
     <editor-config>Metadata editor</editor-config>
     <glossary>Standard elements</glossary>
     <glossary-help>List of all elements available in the standard.
@@ -40,10 +38,8 @@
     <context>Context: </context>
   </eng>
   <fre>
-    <title>Standard ISO pour les métadonnées liées aux informations
-      géographiques - ISO
-    </title>
     <schema-details>Informations techniques sur le schéma</schema-details>
+    <schema-url>Plus d'information : </schema-url>
     <editor-config>Encodage des fiches</editor-config>
     <glossary>Éléments du standard</glossary>
     <glossary-help>Liste des descripteurs définis dans le standard de

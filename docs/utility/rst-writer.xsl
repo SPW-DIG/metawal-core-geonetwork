@@ -69,7 +69,7 @@
         <xsl:text>.. figure:: </xsl:text><xsl:value-of select="$image"/><xsl:text>&#xA;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:message>  * Figure: <xsl:value-of select="concat($folder, $image, ' does not exist.')"/></xsl:message>
+        <xsl:message>  * Figure: <xsl:value-of select="concat($folder, '/', $image, ' does not exist.')"/></xsl:message>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:function>
