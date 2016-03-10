@@ -1,6 +1,6 @@
-* {
+/*{
     font-size: 12px;
-}
+}*/
 
 .container_16 .grid_16 {
     margin-bottom: 0;
@@ -586,3 +586,14 @@ body {
     background: url('images/email24.png') no-repeat scroll 0 0;
 }
 
+
+
+/* test area (gn_editor_mw.less*/
+/*
+.mw-textarea {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    resize: none;
+}
+*/
+/* test area */
