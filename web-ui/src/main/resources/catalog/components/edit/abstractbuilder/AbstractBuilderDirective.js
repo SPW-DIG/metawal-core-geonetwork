@@ -48,11 +48,24 @@
                         scope.abstract.descriptive;
              $(targetInput.get(0)).val(scope.abstractiso);
             };
-          scope.$watch('abstract', function(newValue, oldValue) {              
+          scope.$watch('abstract', function(newValue, oldValue) { 
+            $(element).find('textarea#hook')[0].style.height=$(element).find('textarea#hook')[0].scrollHeight +'px';
+            $(element).find('textarea#description')[0].style.height=$(element).find('textarea#description')[0].scrollHeight +'px';            
             if (newValue !== oldValue) {
               buildAbstract();
             }
           }, true);
+          //autosize textarea//
+          
+          jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+              var offset = this.offsetHeight - this.clientHeight;
+           
+              var resizeTextarea = function(el) {
+                  jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
+              };
+              jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+          });
+          
         }
       };
     }]);

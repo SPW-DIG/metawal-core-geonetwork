@@ -3,14 +3,14 @@
 	<div class="form-group gn-field">
 		<label data-translate="" class="col-sm-2 control-label">Abstract-hook</label>
 		<div class="col-sm-9 gn-value">
-			<textarea class="form-control" id='hook' data-gn-autogrow="" maxlength="{{maxValue}}" data-ng-model="abstract.hook"></textarea>
+			<textarea  data-autoresize class="form-control mw-editor-textarea" id='hook' maxlength="{{maxValue}}" data-ng-model="abstract.hook"></textarea>
 			<span class="label label-default"
 			      data-ng-class="{'label-danger':(maxChar - abstract.hook.length < maxChar*-.1),'label-warning':(maxChar - abstract.hook.length < 1)}">
 			      {{maxChar - abstract.hook.length}}/{{maxChar}}</span>			
 		</div>
 		<label data-translate="" class="col-sm-2 control-label">Abstract-descriptive</label>
 		<div class="col-sm-9 gn-value">
-			<textarea class="form-control" id='description' data-gn-autogrow="" data-ng-model="abstract.descriptive"></textarea>
+			<textarea data-autoresize class="form-control mw-editor-textarea" id='description'  data-ng-model="abstract.descriptive"></textarea>
 		</div>
 	</div>
 </div>
