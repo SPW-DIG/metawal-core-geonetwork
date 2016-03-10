@@ -88,9 +88,9 @@
       $scope.version = '0.0.1';
       //Update Links for social media
       $scope.socialMediaLink=$location.absUrl();
-      $scope.socialMediaLinkMail = encodeURIComponent($scope.socialMediaLink);
+      //$scope.socialMediaLinkMail = encodeURIComponent($scope.socialMediaLink);
       $scope.$on('$locationChangeSuccess', function(event) {
-        $scope.socialMediaLink=$location.absUrl();
+        $scope.socialMediaLink=encodeURIComponent($location.absUrl());
         //$scope.showSocialMediaLink =
         //    $scope.socialMediaLink.includes('/metadata/');
       });
