@@ -23,11 +23,15 @@ then
 fi
 
 mkdir -p ../manuals/$3/annexes/standards/
-java -classpath $GNLIB/saxon-9.1.0.8b-patch.jar net.sf.saxon.Transform --help
+mkdir -p ../../schemas/$1/doc/$3
 
+# Convert schema configuration to RST in schema folder
 java -classpath $GNLIB/saxon-9.1.0.8b-patch.jar net.sf.saxon.Transform \
         -s:build.xml \
         -xsl:schema-loc-to-rst.xsl \
-        -o:../manuals/$3/annexes/standards/$1.rst \
+        -o:../../schemas/$1/doc/$3/$1.rst \
         lang=$2 \
         schema=$1
+
+# Copy schema RST and images doc from schema to manuals folder
+cp ../../schemas/$1/doc/$3/* ../manuals/$3/annexes/standards/.
