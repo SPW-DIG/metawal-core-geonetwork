@@ -27,11 +27,11 @@ do
   mkdir -p ../manuals/$lang/standards/img
 
   # Loop on standards
-  for s in dublin-core iso19139 iso19110 iso19115-3
+  #for s in dublin-core iso19139 iso19110 iso19115-3
+  for s in iso19139 iso19115-3
   do
     echo "## Processing $s in $lang ..."
-    # Copy images for the doc in manual folder
-    cp ../../schemas/$s/doc/$lang/img/* ../manuals/$lang/standards/img/.
+    mkdir -p ../../schemas/$s/doc/$lang/img
     # Generate doc in schema folder
     java -classpath $GNLIB/saxon-9.1.0.8b-patch.jar net.sf.saxon.Transform \
         -s:../../schemas/$s/src/main/plugin/$s/schema-ident.xml \
@@ -41,6 +41,6 @@ do
         iso2lang=$lang \
         schema=$s
     # Copy doc in manual folder
-    cp ../../schemas/$s/doc/$lang/$s.rst ../manuals/$lang/standards/$s.rst
+    cp -fr ../../schemas/$s/doc/$lang/* ../manuals/$lang/standards/.
   done;
 done;

@@ -70,18 +70,15 @@
     <xsl:value-of select="gndoc:writeln(concat($t/schema-url, $schemaUrl))"/>
     <xsl:value-of select="gndoc:nl(2)"/>
 
-    <!--
-    TODO: add:
-    * main namespace
-    * autodetection information from schema-ident.xml
-    -->
-
     <xsl:call-template name="write-editor-doc"/>
     <xsl:call-template name="write-schema-details"/>
     <xsl:call-template name="write-glossary"/>
     <xsl:call-template name="write-codelist"/>
   </xsl:template>
 
+
+  <!-- Build documentation based on
+  editor configuration. -->
   <xsl:template name="write-editor-doc">
     <xsl:value-of select="gndoc:writeln($t/editor-config, '*')"/>
     <xsl:value-of select="gndoc:nl()"/>
@@ -118,8 +115,6 @@
         <xsl:text>* </xsl:text><xsl:value-of select="gndoc:refTo(concat($schemaId, '-tab-', @id))"/>
         <xsl:value-of select="gndoc:nl()"/>
       </xsl:for-each>
-
-      <!-- TODO screenshot if available -->
 
       <xsl:for-each select="flatModeExceptions/for">
         <xsl:if test="position() = 1">
@@ -169,202 +164,224 @@
 
         <!-- Sections
         TODO: check if field are allowed here ?
-        TODO: Make apply-templates with a mode to traverse the tree
         -->
-        <xsl:for-each select=".//section">
-          <xsl:variable name="sectionName"
-                        select="@name"/>
-
-          <!-- Section name is optional -->
-          <xsl:choose>
-            <!-- Section name is an element name -->
-            <xsl:when test="contains($sectionName,':')">
-              <!-- Section name is a standard element eg. mdb:MD_Metadata. Use labels.xml. -->
-              <xsl:variable name="nodeDesc"
-                            select="$l[@name = $sectionName]"/>
-              <xsl:value-of select="gndoc:writeln(
-                                        concat($t/section, ' ', $nodeDesc/label), '^')"/>
-
-              <xsl:for-each select="$nodeDesc/(description|help)">
-                <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
-                <xsl:value-of select="gndoc:nl(2)"/>
-              </xsl:for-each>
-
-              <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $sectionName))"/>
-            </xsl:when>
-            <xsl:when test="$sectionName != ''">
-              <!-- Section name is a custom name. Use strings.xml. -->
-              <xsl:choose>
-                <xsl:when test="normalize-space($s[name() = $sectionName][1]) = ''">
-                  <xsl:message>  * Missing section name for <xsl:value-of select="$sectionName"/> </xsl:message>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="gndoc:writeln(
-                                        concat($t/section, ' ', $s[name() = $sectionName]), '^')"/>
-                </xsl:otherwise>
-              </xsl:choose>
-            </xsl:when>
-          </xsl:choose>
-
-
-
-          <!-- Section help is optional. -->
-          <xsl:variable name="sectionHelp"
-                        select="$s/*[name() = concat($sectionName,'-help')]"/>
-
-          <xsl:if test="$sectionHelp != ''">
-            <xsl:value-of select="gndoc:writeln($sectionHelp)"/>
-          </xsl:if>
-          <xsl:value-of select="gndoc:nl()"/>
-
-
-          <!-- Section is an XPath. Retrieve last element name of the XPath
-          and display information from labels.xml -->
-          <xsl:if test="@xpath">
-            <xsl:variable name="nodeName"
-                          select="tokenize(
-                                      tokenize(
-                                        normalize-space(@xpath),
-                                      '\[')[1],
-                                    '/')[last()]"/>
-            <!-- TODO: Handle context -->
-            <xsl:variable name="nodeDesc"
-                          select="$l[@name = $nodeName][1]"/>
-
-            <xsl:value-of select="gndoc:writeln(concat($t/section, ' ', $nodeDesc/label), '^')"/>
-            <xsl:for-each select="$nodeDesc/description">
-              <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
-            </xsl:for-each>
-            <xsl:value-of select="gndoc:nl(2)"/>
-            <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $nodeName))"/>
-            <xsl:value-of select="gndoc:nl(2)"/>
-          </xsl:if>
-
-
-          <!-- TODO Handle template action -->
-          <!-- TODO Handle template help -->
-          <!-- TODO Handle nested elements -->
-
-          <xsl:for-each select="field">
-            <xsl:if test="@name">
-              <!-- TODO same as section / use apply-templates -->
-              <xsl:variable name="name"
-                            select="@name"/>
-              <xsl:variable name="help"
-                            select="$s/*[name() = concat($name,'-help')]"/>
-              <!-- name is optional -->
-              <xsl:choose>
-                <xsl:when test="contains($name,':')">
-                  <!-- Section name is a standard element eg. mdb:MD_Metadata. Use labels.xml. -->
-                  <xsl:variable name="nodeDesc"
-                                select="$l[@name = $name]"/>
-                  <xsl:value-of select="gndoc:writeln($nodeDesc/label, '&quot;')"/>
-
-                  <!--<xsl:choose>
-                    <xsl:when test="$nodeDesc/label = ''">
-                      <xsl:message> Missing label for field <xsl:value-of select="$name"/>. </xsl:message>
-                    </xsl:when>
-                    <xsl:otherwise>
-                    </xsl:otherwise>
-                  </xsl:choose>-->
-
-                  <xsl:for-each select="$nodeDesc/(description|help)">
-                    <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
-                    <xsl:value-of select="gndoc:nl(2)"/>
-                  </xsl:for-each>
-
-                  <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $name))"/>
-                </xsl:when>
-                <xsl:when test="$name != ''">
-                  <xsl:value-of select="gndoc:writeln($s[name() = $name], '&quot;')"/>
-                </xsl:when>
-              </xsl:choose>
-
-              <!-- help is optional -->
-              <xsl:if test="$help != ''">
-                <xsl:value-of select="gndoc:writeln($help)"/>
-              </xsl:if>
-              <xsl:value-of select="gndoc:nl()"/>
-            </xsl:if>
-
-            <xsl:if test="@xpath">
-              <!-- TODO same as section / use apply-templates -->
-              <!-- Extract node name from XPath,
-                  ie. last element name before the filter expression -->
-              <xsl:variable name="nodeName"
-                            select="tokenize(
-                                      tokenize(
-                                        normalize-space(@xpath),
-                                      '\[')[1],
-                                    '/')[last()]"/>
-              <!-- TODO: Handle element with context = parent element or full xpath -->
-              <xsl:variable name="nodeDesc"
-                            select="$l[@name = $nodeName][position() = 1]"/>
-
-              <!-- TODO Add inspire or other flag -->
-              <xsl:value-of select="gndoc:writeln($nodeDesc/label, '&quot;')"/>
-              <xsl:value-of select="gndoc:nl()"/>
-              <xsl:for-each select="$nodeDesc/(description|help)">
-                <xsl:value-of select="gndoc:writeln(concat('* ', $t/desc, ' ', normalize-space(.)))"/>
-              </xsl:for-each>
-              <xsl:value-of select="gndoc:nl()"/>
-
-              <xsl:apply-templates select="$nodeDesc/helper" mode="doc"/>
-
-              <xsl:value-of select="gndoc:writeln(concat('* ', $t/xpath, ' ``', @xpath, '``'))"/>
-              <xsl:value-of select="gndoc:nl(2)"/>
-
-              <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $nodeName))"/>
-            </xsl:if>
-          </xsl:for-each>
-            <!-- TODO Handle template field -->
-            <!-- TODO CODELISTS - generate full mtd to find links between labels definition and codelists-->
-
-        </xsl:for-each>
+        <xsl:apply-templates mode="write-doc" select=".//section"/>
       </xsl:for-each>
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template name="write-schema-details">
-    <xsl:variable name="rows">
-      <!-- TODO i18n-->
-      <row>
-        <name>Schema identifier</name>
-        <value><xsl:value-of select="$sc/gns:name"/></value>
-      </row>
-      <row>
-        <name>Version</name>
-        <value><xsl:value-of select="$sc/gns:version"/></value>
-      </row>
-      <row>
-        <name>Schema location</name>
-        <value><xsl:value-of select="$sc/gns:schemaLocation"/></value>
-      </row>
-      <row>
-        <name>Schema namespaces</name>
-        <value>
-          <!-- TODO: Some namespaces may be missing. -->
-          <xsl:value-of select="string-join($sc/gns:autodetect/namespace::*, ', ')"/>
-        </value>
-      </row>
-      <row>
-        <name>Schema detection mode</name>
-        <value>
-          <xsl:value-of select="name($sc/gns:autodetect/*)"/>
-          (<xsl:value-of select="$sc/gns:autodetect/*/@type"/>)
-        </value>
-      </row>
-      <row>
-        <name>Schema detection elements</name>
-        <value>
-          <xsl:value-of select="string-join($sc/gns:autodetect/*/*/name(), ', ')"/>
-        </value>
-      </row>
-    </xsl:variable>
 
+
+
+  <xsl:template match="field" mode="write-doc">
+    <!-- TODO Handle template field -->
+    <!-- TODO CODELISTS - generate full mtd to find links between labels definition and codelists-->
+    <xsl:if test="@name">
+      <!-- TODO same as section / use apply-templates -->
+      <xsl:variable name="name"
+                    select="@name"/>
+      <xsl:variable name="help"
+                    select="$s[name() = concat($name, '-help')]"/>
+      <!-- name is optional -->
+      <xsl:choose>
+        <xsl:when test="contains($name,':')">
+          <!-- Section name is a standard element eg. mdb:MD_Metadata. Use labels.xml. -->
+          <xsl:variable name="nodeDesc"
+                        select="$l[@name = $name]"/>
+          <xsl:value-of select="gndoc:writeln($nodeDesc/label, '&quot;')"/>
+
+          <!--<xsl:choose>
+            <xsl:when test="$nodeDesc/label = ''">
+              <xsl:message> Missing label for field <xsl:value-of select="$name"/>. </xsl:message>
+            </xsl:when>
+            <xsl:otherwise>
+            </xsl:otherwise>
+          </xsl:choose>-->
+
+          <xsl:for-each select="$nodeDesc/(description|help)">
+            <xsl:value-of select="gndoc:writelnhtml(normalize-space(.))"/>
+          </xsl:for-each>
+          <xsl:value-of select="gndoc:nl(2)"/>
+
+          <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $name))"/>
+        </xsl:when>
+        <xsl:when test="$name != ''">
+          <xsl:value-of select="gndoc:writeln($s[name() = $name], '&quot;')"/>
+        </xsl:when>
+      </xsl:choose>
+
+      <!-- help is optional -->
+      <xsl:if test="$help != ''">
+        <xsl:value-of select="gndoc:writeln($help)"/>
+      </xsl:if>
+      <xsl:value-of select="gndoc:nl()"/>
+    </xsl:if>
+
+    <xsl:if test="@xpath">
+      <!-- TODO same as section / use apply-templates -->
+      <!-- Extract node name from XPath,
+          ie. last element name before the filter expression -->
+      <xsl:variable name="nodeName"
+                    select="tokenize(
+                                      tokenize(
+                                        normalize-space(@xpath),
+                                      '\[')[1],
+                                    '/')[last()]"/>
+      <!-- TODO: Handle element with context = parent element or full xpath -->
+      <xsl:variable name="nodeDesc"
+                    select="$l[@name = $nodeName][position() = 1]"/>
+
+      <!-- TODO Add inspire or other flag -->
+      <xsl:value-of select="gndoc:writeln($nodeDesc/label, '&quot;')"/>
+      <xsl:value-of select="gndoc:nl()"/>
+      <xsl:for-each select="$nodeDesc/(description|help)">
+        <xsl:value-of select="gndoc:writelnhtml(normalize-space(.))"/>
+      </xsl:for-each>
+
+      <xsl:apply-templates select="$nodeDesc/helper" mode="doc"/>
+
+      <xsl:value-of select="gndoc:writelnfield($t/xpath, @xpath)"/>
+      <xsl:value-of select="gndoc:nl(2)"/>
+      <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $nodeName))"/>
+    </xsl:if>
+  </xsl:template>
+
+
+
+
+  <xsl:template match="text" mode="write-doc">
+    <xsl:variable name="ref" select="@ref"/>
+
+    <xsl:value-of select="gndoc:writelnfield($t/instruction)"/>
+    <xsl:value-of select="gndoc:writelnhtml($s[name() = $ref])"/>
+
+    <xsl:value-of select="gndoc:figure($docFolder, concat('img/', $schemaId, '-tab-', ancestor::tab/@id, '-text-', $ref, '.png'))"/>
+
+    <xsl:if test="exists(@if)">
+      <xsl:value-of select="gndoc:writelnfield($t/displayIf, @if)"/>
+    </xsl:if>
+  </xsl:template>
+
+
+  <xsl:template match="action" mode="write-doc">
+    <xsl:variable name="key"
+                  select="if (@btnLabel) then @btnLabel else @name"/>
+    <xsl:for-each select="@btnLabel|@name">
+      <xsl:variable name="ref" select="."/>
+      <xsl:value-of select="gndoc:writelnfield($t/actionName, $s[name() = $ref])"/>
+    </xsl:for-each>
+    <xsl:if test="exists(@type)">
+      <xsl:value-of select="gndoc:writelnfield($t/actionType, @type)"/>
+    </xsl:if>
+
+    <xsl:value-of select="gndoc:figure($docFolder, concat('img/', $schemaId, '-tab-', ancestor::tab/@id, '-action-', $key, '.png'))"/>
+
+    <xsl:if test="exists(@if)">
+      <xsl:value-of select="gndoc:writelnfield($t/displayIf, @if)"/>
+    </xsl:if>
+    <xsl:if test="exists(template/snippet)">
+      <xsl:value-of select="gndoc:writeCode(template/snippet)"/>
+    </xsl:if>
+  </xsl:template>
+
+
+
+
+  <xsl:template match="section" mode="write-doc">
+    <xsl:variable name="sectionName"
+                  select="@name"/>
+
+    <!-- Section name is optional -->
+    <xsl:choose>
+      <!-- Section name is an element name -->
+      <xsl:when test="contains($sectionName,':')">
+        <!-- Section name is a standard element eg. mdb:MD_Metadata. Use labels.xml. -->
+        <xsl:variable name="nodeDesc"
+                      select="$l[@name = $sectionName]"/>
+        <xsl:value-of select="gndoc:writeln(
+                                        concat($t/section, ' ', $nodeDesc/label), '^')"/>
+
+        <xsl:for-each select="$nodeDesc/(description|help)">
+          <xsl:value-of select="gndoc:writelnhtml(normalize-space(.))"/>
+        </xsl:for-each>
+        <xsl:value-of select="gndoc:nl(2)"/>
+
+        <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $sectionName))"/>
+      </xsl:when>
+      <xsl:when test="$sectionName != ''">
+        <!-- Section name is a custom name. Use strings.xml. -->
+        <xsl:choose>
+          <xsl:when test="normalize-space($s[name() = $sectionName][1]) = ''">
+            <xsl:message>  * Missing section name for <xsl:value-of select="$sectionName"/> </xsl:message>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="gndoc:writeln(
+                                        concat($t/section, ' ', $s[name() = $sectionName]), '^')"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+    </xsl:choose>
+
+    <!-- Section help is optional. -->
+    <xsl:variable name="sectionHelp"
+                  select="$s/*[name() = concat($sectionName,'-help')]"/>
+
+    <xsl:if test="$sectionHelp != ''">
+      <xsl:value-of select="gndoc:writeln($sectionHelp)"/>
+    </xsl:if>
+    <xsl:value-of select="gndoc:nl()"/>
+
+
+    <!-- Section is an XPath. Retrieve last element name of the XPath
+    and display information from labels.xml -->
+    <xsl:if test="@xpath">
+      <xsl:variable name="nodeName"
+                    select="tokenize(
+                                      tokenize(
+                                        normalize-space(@xpath),
+                                      '\[')[1],
+                                    '/')[last()]"/>
+      <!-- TODO: Handle context -->
+      <xsl:variable name="nodeDesc"
+                    select="$l[@name = $nodeName][1]"/>
+
+      <xsl:value-of select="gndoc:writeln(concat($t/section, ' ', $nodeDesc/label), '^')"/>
+      <xsl:for-each select="$nodeDesc/description">
+        <xsl:value-of select="gndoc:writelnhtml(normalize-space(.))"/>
+      </xsl:for-each>
+      <xsl:value-of select="gndoc:nl(2)"/>
+
+      <xsl:value-of select="$t/cf"/><xsl:value-of select="gndoc:refTo(concat($schemaId, '-elem-', $nodeName))"/>
+      <xsl:value-of select="gndoc:nl(2)"/>
+    </xsl:if>
+
+
+    <xsl:apply-templates mode="write-doc" select="field|section|text|action"/>
+  </xsl:template>
+
+  <xsl:template name="write-schema-details">
     <xsl:value-of select="gndoc:writeln($t/schema-details, '*')"/>
-    <xsl:value-of select="gndoc:table($rows)"/>
-    <xsl:value-of select="gndoc:nl(2)"/>
+    <xsl:value-of select="gndoc:writelnfield($t/schema-id, $sc/gns:name)"/>
+    <xsl:value-of select="gndoc:writelnfield($t/schema-version, $sc/gns:version)"/>
+    <xsl:value-of select="gndoc:writelnfield($t/schema-location, $sc/gns:schemaLocation)"/>
+    <xsl:value-of select="gndoc:writelnfield($t/schema-ns)"/>
+    <xsl:for-each select="$sc/gns:autodetect/namespace::*">
+      <xsl:sort select="."/>
+      <xsl:value-of select="gndoc:writeln(concat(' * ', .))"/>
+      <xsl:value-of select="gndoc:nl(1)"/>
+    </xsl:for-each>
+    <xsl:value-of select="gndoc:writelnfield(
+                                  $t/schema-dm,
+                                  concat(name($sc/gns:autodetect/*),
+                                  ' (', $sc/gns:autodetect/*/@type, ')'))"/>
+    <xsl:value-of select="gndoc:nl(1)"/>
+    <xsl:value-of select="gndoc:writelnfield($t/schema-dme)"/>
+    <xsl:for-each select="$sc/gns:autodetect/*/*/name()">
+      <xsl:sort select="."/>
+      <xsl:value-of select="gndoc:writeln(concat(' * ', .))"/>
+      <xsl:value-of select="gndoc:nl(1)"/>
+    </xsl:for-each>
+
   </xsl:template>
 
 
@@ -382,25 +399,27 @@
       <xsl:variable name="name" select="@name"/>
 
       <xsl:value-of select="gndoc:ref(concat($schemaId, '-elem-', $name))"/>
-      <xsl:value-of select="gndoc:writeln(concat(label, ' (', $name, ')'), '=')"/>
+      <xsl:value-of select="gndoc:writeln(label, '=')"/>
       <xsl:value-of select="gndoc:nl(2)"/>
 
-      <!-- A table would be better -->
+      <xsl:value-of select="gndoc:writelnfield($t/nodename,  $name)"/>
       <xsl:if test="@context != ''">
-        <xsl:value-of select="gndoc:writeln(concat('* ', $t/context, ' ',  @context))"/>
+        <xsl:value-of select="gndoc:writelnfield($t/context,  @context)"/>
       </xsl:if>
 
-      <xsl:value-of select="gndoc:nl(1)"/>
+      <xsl:value-of select="gndoc:writelnfield($t/desc)"/>
       <xsl:for-each select="(description|help)[text() != '']">
-        <xsl:value-of select="if (@for) then gndoc:writeln(concat('[', @for, ']')) else ''"/>
-        <xsl:value-of select="gndoc:writeln(normalize-space(.))"/>
+        <xsl:if test="exists(@for)">
+          <xsl:value-of select="gndoc:writelnfield($t/domain, @for)"/>
+        </xsl:if>
+        <xsl:value-of select="gndoc:writelnhtml(.)"/>
         <xsl:value-of select="gndoc:nl()"/>
       </xsl:for-each>
 
       <xsl:value-of select="gndoc:nl()"/>
 
       <xsl:for-each select="condition[normalize-space() != '']">
-        <xsl:value-of select="gndoc:writeln(concat('* ', $t/cond, ' ', normalize-space(.)))"/>
+        <xsl:value-of select="gndoc:writelnfield($t/cond, normalize-space(.))"/>
         <xsl:value-of select="gndoc:nl()"/>
       </xsl:for-each>
 

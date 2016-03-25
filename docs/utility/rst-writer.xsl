@@ -36,6 +36,31 @@
     <xsl:text>&#xA;</xsl:text><xsl:value-of select="normalize-space($line)"/>
   </xsl:function>
 
+  <xsl:function name="gndoc:writelnhtml">
+    <xsl:param name="line"/>
+    <xsl:text>&#xA;.. raw:: html</xsl:text>
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:text>&#xA;</xsl:text>
+    <!--<xsl:text>&#xA;  &lt;embed&gt;</xsl:text>-->
+    <xsl:text>&#xA;  </xsl:text><xsl:copy-of select="$line"/>
+    <!--<xsl:text>&#xA;  &lt;/embed&gt;</xsl:text>-->
+    <xsl:text>&#xA;</xsl:text>
+  </xsl:function>
+
+
+  <xsl:function name="gndoc:writelnfield">
+    <xsl:param name="line" as="xs:string?"/>
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:text>&#xA;:</xsl:text><xsl:value-of select="normalize-space($line)"/>:
+  </xsl:function>
+  <xsl:function name="gndoc:writelnfield">
+    <xsl:param name="field" as="xs:string?"/>
+    <xsl:param name="value" as="xs:string?"/>
+    <xsl:text>&#xA;</xsl:text>
+    <xsl:text>&#xA;:</xsl:text><xsl:value-of select="normalize-space($field)"/>:
+    <xsl:text>&#xA;    </xsl:text><xsl:value-of select="normalize-space($value)"/>
+  </xsl:function>
+
   <!-- Write line and underline it -->
   <xsl:function name="gndoc:writeln">
     <xsl:param name="line" as="xs:string?"/>
