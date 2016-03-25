@@ -280,7 +280,7 @@
       <xsl:value-of select="gndoc:writelnfield($t/displayIf, @if)"/>
     </xsl:if>
     <xsl:if test="exists(template/snippet)">
-      <xsl:value-of select="gndoc:writeCode(template/snippet)"/>
+      <xsl:value-of select="gndoc:writeCode(template/snippet/*)"/>
     </xsl:if>
   </xsl:template>
 

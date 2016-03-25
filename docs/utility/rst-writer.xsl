@@ -91,7 +91,7 @@
       <xsl:when
               xmlns:file="java.io.File"
               test="file:exists(file:new(concat($folder, '/', $image)))">
-        <xsl:text>.. figure:: </xsl:text><xsl:value-of select="$image"/><xsl:text>&#xA;</xsl:text>
+        <xsl:text>&#xA;.. figure:: </xsl:text><xsl:value-of select="$image"/><xsl:text>&#xA;</xsl:text>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message>  * Figure: <xsl:value-of select="concat($folder, '/', $image, ' does not exist.')"/></xsl:message>
