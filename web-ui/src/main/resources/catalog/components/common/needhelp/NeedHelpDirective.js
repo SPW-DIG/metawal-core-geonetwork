@@ -54,9 +54,8 @@
             'needhelp.html',
         link: function(scope, element, attrs) {
           scope.iconOnly = attrs.iconOnly === 'true';
-
-          //var helpBaseUrl = 'http://geonetwork-opensource.org/manuals/trunk/';
-          var helpBaseUrl = '../../doc/';
+          var helpBaseUrl = gnGlobalSettings.docUrl ||
+            'http://geonetwork-opensource.org/manuals/trunk/';
 
           var openPage = function() {
             var page = attrs.gnNeedHelp;
