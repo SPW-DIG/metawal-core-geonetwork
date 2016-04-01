@@ -175,6 +175,9 @@
             // record in results.
             // https://github.com/geonetwork/core-geonetwork/issues/759
             $rootScope.$broadcast('search');
+            $timeout(function() {
+                $rootScope.$broadcast('search');
+            }, 5000);
           });
         }
         else {
@@ -182,6 +185,9 @@
             $rootScope.$broadcast('mdSelectNone');
             // TODO: Same here.
             $rootScope.$broadcast('search');
+            $timeout(function() {
+                $rootScope.$broadcast('search');
+            }, 5000);
           });
         }
       };
