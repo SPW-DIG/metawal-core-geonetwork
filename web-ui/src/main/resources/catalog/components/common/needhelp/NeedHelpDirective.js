@@ -51,13 +51,13 @@
         restrict: 'A',
         replace: true,
         templateUrl: '../../catalog/components/common/needhelp/partials/' +
-            'needhelp.html',
+        'needhelp.html',
         link: function(scope, element, attrs) {
           scope.iconOnly = attrs.iconOnly === 'true';
           var helpBaseUrl = gnGlobalSettings.docUrl ||
             'http://geonetwork-opensource.org/manuals/trunk/';
 
-          var openPage = function() {
+          scope.showHelp = function() {
             var page = attrs.gnNeedHelp;
             var helpPageUrl = helpBaseUrl + gnGlobalSettings.lang + '/' + page;
             // GeoNetwork website language folder are different
@@ -65,17 +65,8 @@
               lang = gnGlobalSettings.lang == 'fr' ? 'fra' : 'eng';
               helpPageUrl = helpBaseUrl + lang + '/users/' + page;
             }
-            if (page) {
-              window.open(helpPageUrl);
-              return true;
-            } else {
-              console.log('No help page for ' + attrs.gnNeedHelp +
-                  ' and language ' + lang + '. Add page to helpLinks');
-              return false;
-            }
-          };
-          scope.showHelp = function() {
-            openPage();
+            window.open(helpPageUrl, 'gn-documentation');
+            return true;
           };
         }
       };

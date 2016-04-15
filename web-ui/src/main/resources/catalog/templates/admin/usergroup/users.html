@@ -30,6 +30,8 @@
           <i class="fa fa-plus"/>
           <span data-translate="">newUser</span>
         </button>
+
+        <div data-gn-need-help="administrator-guide/managing-users-and-groups/creating-user.html"></div>
       </div>
     </div>
   </div>
@@ -229,8 +231,10 @@
               <label>
                 <input type="checkbox"
                        data-ng-checked="userSelected.profile == 'Administrator'"
-                       data-ng-click="setUserProfile(true)"/>
-                <span data-translate="">isAdministrator</span>
+                       data-ng-click="setUserProfile(true)"
+                       data-ng-show="user.isAdministratorOrMore()"/>
+                <span data-translate=""
+                       data-ng-show="user.isAdministratorOrMore()">isAdministrator</span>
               </label>
 
               <div>
