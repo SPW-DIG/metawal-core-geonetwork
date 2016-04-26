@@ -244,6 +244,12 @@
                scope.$apply(function() {
                  reprojExtent('map', 'form');
                  reprojExtent('map', 'md');
+                 var x = 0;
+                 var len = scope.extent.form.length
+                 while(x < len){ 
+                  scope.extent.form[x] = parseFloat(scope.extent.form[x].toFixed(2)); 
+                  x++
+                 }
                  setDcOutput();
                });
              });
