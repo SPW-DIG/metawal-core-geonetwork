@@ -51,7 +51,9 @@
   </div>
   <div ng-if="broader.length || narrower.length || related.length"
        class="skos-concept-connected">
+    <div class="row">
     <div ng-if="broader.length">
+    <div ng-class="{'col-lg-4':narrower.length && related.length, 'col-lg-6':narrower.length || related.length, 'col-lg-12':!narrower.length && !related.length}">
       <strong>{{'parentConcept' | translate}}</strong>
       <hr/>
       <ul>
@@ -77,8 +79,10 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
     <div ng-if="narrower.length">
+     <div ng-class="{'col-lg-4': broader.length && related.length, 'col-lg-6':broader.length || related.length, 'col-lg-12':!broader.length && !related.length}">
       <strong>{{'moreSpecificConcept' | translate}}</strong>
       <hr/>      
       <ul>
@@ -102,8 +106,10 @@
           </a>
         </li>
       </ul>
+      </div>
     </div>
     <div ng-if="related.length">
+     <div ng-class="{'col-lg-4':broader.length && narrower.length, 'col-lg-6':broader.length || narrower.length, 'col-lg-12':broader.length && !narrower.length}">
       <strong>{{'associatedConcept' | translate}}</strong>
       <hr/> 
       <ul>
@@ -125,6 +131,8 @@
                data-ng-class="{'invisible': !c.over}"></i>
         </li>
       </ul>
+      </div>
+    </div>
     </div>
   </div>
   <!-- TODO: select by language, only show a limited number -->
