@@ -196,6 +196,9 @@
             }, {
               label: 'advanced',
               url: 'md.format.xml?xsl=xsl-view&view=advanced&uuid='
+            },{
+              label: 'geoportail',
+              url: 'md.format.xml?xsl=geoportail-view&view=advanced&uuid='
             //}, {
             //  label: 'full',
             //  url: 'md.format.xml?xsl=full_view&uuid='
