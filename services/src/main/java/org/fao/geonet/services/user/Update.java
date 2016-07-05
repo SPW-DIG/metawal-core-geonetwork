@@ -190,7 +190,7 @@ public class Update {
             }
         }
         
-        setPassword(operation, password, user);
+        setPassword(operation, password, user, ldap);
         if (operation.equalsIgnoreCase(Params.Operation.RESETPW)) {
             userRepository.save(user);
         } else {
