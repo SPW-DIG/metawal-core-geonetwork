@@ -49,22 +49,33 @@
              $(targetInput.get(0)).val(scope.abstractiso);
             };
           scope.$watch('abstract', function(newValue, oldValue) { 
-            $(element).find('textarea#hook')[0].style.height=$(element).find('textarea#hook')[0].scrollHeight +'px';
-            $(element).find('textarea#description')[0].style.height=$(element).find('textarea#description')[0].scrollHeight +'px';            
+            //$(element).find('textarea#hook')[0].style.height=$(element).find('textarea#hook')[0].scrollHeight +'px';
+            //console.log(($(element).find('textarea#hook')[0].style.height));
+            if ($(element).find('textarea#hook')[0].scrollHeight > 55) {
+              $(element).find('textarea#hook')[0].style.height=$(element).find('textarea#hook')[0].scrollHeight +'px'; 
+            } else{
+              $(element).find('textarea#hook')[0].style.height='55px';
+            }
+            if ($(element).find('textarea#description')[0].scrollHeight > 110) {
+              $(element).find('textarea#description')[0].style.height=$(element).find('textarea#description')[0].scrollHeight +'px'; 
+            } else{
+              $(element).find('textarea#description')[0].style.height='110px';
+            }
+            //$(element).find('textarea#description')[0].style.height=$(element).find('textarea#description')[0].scrollHeight +'px';           
             if (newValue !== oldValue) {
               buildAbstract();
             }
           }, true);
           //autosize textarea//
           
-          jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+         /* jQuery.each(jQuery('textarea[data-autoresize]'), function() {
               var offset = this.offsetHeight - this.clientHeight;
            
               var resizeTextarea = function(el) {
                   jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
               };
               jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
-          });
+          });*/
           
         }
       };
