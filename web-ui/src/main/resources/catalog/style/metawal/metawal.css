@@ -597,3 +597,349 @@ body {
 }
 */
 /* test area */
+
+
+
+.geoportail-tab li a{
+    color: #555 !important;
+    font-weight: bold !important;
+    font-size: 15px;
+}
+.geoportail-tab li.active a{
+    color: #74aec2 !important;
+}
+.geoportail-section {
+   padding-top: 20px; 
+}
+.geoportail-section-title {
+    background: #74aec2;
+    /*padding: 10px 20px;
+    margin: 0;*/
+    border-bottom: 0 !important;
+    height: 30px;
+}
+.geoportail-section-title h2{
+    background: white !important;
+    color: #74aec2  !important;
+    text-transform: uppercase !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 15px !important;
+    font-size: 16px !important;
+    font-weight: bold!important;
+    padding: 10px 20px !important;
+
+}
+.geoportail-section-title h3{
+    margin-top: 0px !important;
+    padding-top: 5px !important;
+    font-size: 16px !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    height: 30px !important;
+
+}
+.geoportail-section-content {
+    padding: 20px 20px 15px!important;
+    color: #636363;
+    font-family: Arial,Helvetica,sans-serif!important;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+.geoportail-section-content h5{
+    color: #74aec2 !important;
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+    padding-bottom: 5px !important;
+}
+.geoportail-section-content h6{
+    color: #74aec2 !important;
+    font-weight: bold !important;
+    font-size: 1em !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+.geoportail-section-content h4{
+    text-transform: uppercase;
+    border-bottom: 1px solid #74aec2;
+    padding: 0 0 3px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #74aec2;
+    margin: 0 0 15px;
+    line-height: 1;
+}
+.geoportail-section-content .twoside{
+    margin-left: -16px;
+    margin-right: -16px;
+}
+.geoportail-section-content .application a {
+    font-size: 1.1em !important;
+    color: #5cd1f6 !important;
+    font-weight: bold !important;
+}
+.geoportail-section-content .application a:hover {
+    font-size: 1.1em !important;
+    //color: #74aec2 !important;
+    background-color: transparent;
+}
+.mwdisabled{
+    opacity: .5 !important;
+}
+.twoside2{
+    padding-left: 15px !important; 
+    padding-right: 15px !important; 
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.bordertitel{
+    border-left-width: 1px !important;
+    border-color: white !important;
+    border-left-style: solid !important;
+}
+.bordercontent{
+    border-left-width: 1px;
+    border-color: #74aec2;
+    border-left-style: solid;
+}
+.geoportailtable {
+    table-layout: fixed;
+    margin-bottom: 0px;
+}
+.geoportailtable thead{
+    background-color: #B4D6E3;
+}
+.geoportailtable th{
+    overflow: hidden;
+    border-width: 1px !important;
+    border-color: #5395af !important;
+    border-style: solid !important;
+    border-bottom-width: 0px !important;
+    background: #b4d6e3;
+    color: #5395af;
+    padding-left: 20px !important;
+}
+.geoportailtable th:last-child {
+    padding-left: 0px !important;
+    text-align: center;
+}
+.geoportailtable tbody{
+    background-color: #F8F8F8;
+}
+.geoportailtable td{
+    overflow: hidden;
+    border-width: 1px !important;
+    border-color: #5395af !important;
+    border-style: solid !important;
+    border-top-width: 0px !important;
+    padding-top: 14px !important;
+}
+.geoportailtable td {
+    color: #636363!important;
+    padding-left: 20px !important;
+}
+.geoportailtable td:first-child {
+    font-weight: bold;
+    color: #74aec2 !important;
+    width:25%;
+}
+.geoportailtable td:last-child {
+    padding-top: 8px !important;
+    padding-left: 0px !important;
+    text-align: center;
+}
+.contacttemplateleft {
+    background: #b4d6e3;
+    color: #2d758e !important;
+    padding: 20px;
+    font-size: 16px !important;
+    //font-weight: normal !important;
+    font-weight: bold!important;
+}
+.contacttemplateright {
+    background:#f7f7f7;
+    padding: 20px;
+    font-size: 16px !important;
+    font-weight: normal !important;
+}
+.contacttemplateright a{
+    color: #74aec2 !important;
+    font-size: 1em;
+}
+.contacttemplateright:hover{
+    color: #fff !important;
+    background: #74aec2;
+    text-decoration: none;
+}
+.contacttemplateright:hover a{
+    color: #fff !important;
+    text-decoration: none;
+}
+
+
+.contacttemplateleft span{
+font-family: Arial,Helvetica,sans-serif!important;
+font: bold;
+padding-left: 10px !important;
+}
+.contacttemplateright span{
+font-family: Arial,Helvetica,sans-serif!important;
+font: normal;
+padding-left: 20px !important;
+}
+.geoportailcontact {
+    margin-bottom: 15px !important
+}
+
+.geoportail-carousel{
+    background-image: none !important;
+    top: 45% !important;
+    width: 10% !important;
+
+}
+.geoportail-carousel:hover{
+    background-image: none !important;
+}
+
+.carousel-control.right  i {
+    color: #74aec2;
+    rigth: -5% !important;
+}
+.carousel-control.left  i {
+    color: #74aec2;
+    left: -5% !important;
+}
+.carousel-inner > .item > img {
+    margin: 0 auto;
+    max-width: 80% !important;
+}
+
+.metaheader{
+    margin-top: 20px !important;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #74aec2;
+    border-bottom: 1px solid #b4d6e3;
+}
+.mainheaheader h2{
+font-size: 30px;
+line-height: 1.2;
+    color: #3d8aa8;
+}
+.mainheaheader p{
+    color: #74aec2;
+}
+.title {
+    font-weight: bold;
+    margin-left: 0px !important
+}
+.headerlogo {
+    height: 192px;
+}
+.headertext {
+    padding-left: 0px!important;
+}
+.headertextleft 
+{
+    padding-left: 0px!important;
+}
+.subsection {
+    margin-bottom: 20px !important;
+}
+.webservice {
+    padding-top: 15px;
+}
+.webservicebox {
+    margin-bottom: 7px !important;
+}
+.servicecenter{
+    height: 45px !important;
+    line-height: 45px !important;
+}
+.sheetleft{
+    padding-left: 0px!important;
+    padding-right: 10px!important;
+}
+.sheetright{
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+}
+.servicesheet {
+    background-color: #74aec2;
+    border: 1px solid #74aec2;
+    width: 100%;
+    height: 45px; 
+    border-radius: 0px !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    color: white;
+    padding-left:15px;
+    padding-right: 15px;
+}
+.servicetype {
+    border: 1px solid #74aec2 !important;
+    width: 100%;
+    height: 45px;
+    //margin-left: -15px;
+    border-radius: 0px !important;
+    text-decoration: none;
+    pointer-events: none;
+    text-align: left !important;
+    color: #74aec2;
+    font-size: 14px !important;
+    padding-left: 15px;
+}
+.servicetype a{
+    color: #74aec2;
+    pointer-events: visible;
+}
+.servicetype a:hover{
+    color: #74aec2;
+    pointer-events: visible;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.servicetype p {
+    height: 45px;
+    line-height: 45px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mwapplications {
+    border: 0px!important;
+    border-bottom: 1px solid #74aec2;
+    border-bottom-width: 50%;
+    color: #08c !important;
+}
+.mwapplications p{
+    border-bottom: 1px solid #74aec2;
+    /* width: 50%; */
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 15px;
+}
+.geoportail-logo {
+    max-height: 210px;
+    display: block;
+    margin: auto;
+}
+
+//EDITOR
+.gn-required>.gn-control {
+    display:none;
+}
+.EX_GeographicBoundingBox>a{
+   display:none; 
+}
+
+/*.gn-abstract:first-of-type>div>div>div>label:first-of-type {
+    display:none !important;
+}
+.gn-abstract:first-of-type>div>div>div>.gn-value:first-of-type {
+    display:none !important;
+}*/
