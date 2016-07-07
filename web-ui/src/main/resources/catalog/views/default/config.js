@@ -36,7 +36,10 @@
         'gnViewerSettings',
         'gnOwsContextService',
         'gnMap',
-        function(searchSettings, viewerSettings, gnOwsContextService, gnMap) {
+        'gnNcWms',
+        'gnConfig',
+        function(searchSettings, viewerSettings, gnOwsContextService,
+                 gnMap, gnNcWms, gnConfig) {
           // Load the context defined in the configuration
           viewerSettings.defaultContext =
             viewerSettings.mapConfig.viewerMap ||
@@ -55,7 +58,17 @@
             viewerSettings.mapConfig.listOfServices || {};
 
           // WMS settings
-          viewerSettings.singleTileWMS = true;
+          // If 3D mode is activated, single tile WMS mode is
+          // not supported by ol3cesium, so force tiling.
+          if (gnConfig['map.is3DModeAllowed']) {
+            viewerSettings.singleTileWMS = false;
+            // Configure Cesium to use a proxy. This is required when
+            // WMS does not have CORS headers. BTW, proxy will slow
+            // down rendering.
+            viewerSettings.cesiumProxy = true;
+          } else {
+            viewerSettings.singleTileWMS = true;
+          }
 
           var bboxStyle = new ol.style.Style({
             stroke: new ol.style.Stroke({
@@ -185,28 +198,21 @@
           // }
           searchSettings.formatter = {
             // defaultUrl: 'md.format.xml?xsl=full_view&id='
-            defaultUrl: 'md.format.xml?xsl=xsl-view&uuid=',
-            defaultPdfUrl: 'md.format.pdf?xsl=full_view&uuid=',
+            // defaultUrl: 'md.format.xml?xsl=xsl-view&uuid=',
+            // defaultPdfUrl: 'md.format.pdf?xsl=full_view&uuid=',
             list: [{
             //  label: 'inspire',
             //  url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
             //}, {
               label: 'metawal',
-              url: 'md.format.xml?xsl=xsl-view&view=metawal&uuid='
+              url: function(md) {
+                return '../api/records/' + md.getUuid() + '/formatters/xsl-view';
+              }
             }, {
-              label: 'advanced',
-              url: 'md.format.xml?xsl=xsl-view&view=advanced&uuid='
-            },{
               label: 'geoportail',
-              url: 'md.format.xml?xsl=geoportail-view&view=advanced&uuid='
-            //}, {
-            //  label: 'full',
-            //  url: 'md.format.xml?xsl=full_view&uuid='
-              /*
-              // You can use a function to choose formatter
-              url : function(md) {
-                return 'md.format.xml?xsl=full_view&uuid=' + md.getUuid();
-              }*/
+              url: function(md) {
+                return '../api/records/' + md.getUuid() + '/formatters/geoportail-view';
+              }
             }]
           };
 
@@ -228,5 +234,13 @@
             viewerMap: viewerMap,
             searchMap: searchMap
           });
+
+          viewerMap.getLayers().on('add', function(e) {
+            var layer = e.element;
+            if (layer.get('advanced')) {
+              gnNcWms.feedOlLayer(layer);
+            }
+          });
+
         }]);
 })();

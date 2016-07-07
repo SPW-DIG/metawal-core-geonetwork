@@ -136,6 +136,17 @@
                   return category.path;
                 };
 
+                /**
+                 * Adds a new attribute called 'label' instead
+                 * of '@label' for orderBy
+                 * @param {Object} category
+                 * @return {boolean|*}
+                 */
+                scope.buildLabel = function(category) {
+                  category.label = category['@label'];
+                  return category.label;
+                };
+
 
                 /**
                * Build the facet.q paramaeter

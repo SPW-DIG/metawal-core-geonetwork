@@ -62,14 +62,14 @@
             data-ng-mouseover="initConceptNavigationHelp(c)">
           <a class="skos-btn-icons btn-small btn-link"
              ng-click="navigateConcept(c)">
-             <i class="fa fa-circle-o "
+            <i class="fa fa-circle-o "
                title="{{'makeConceptCurrent' | translate}}"></i>
           </a>&nbsp;
           <a class="btn-small btn-link"
              ng-click="addConcept(c)"
              ng-mouseenter="c.over = true"
              ng-mouseleave="c.over = false">
-            
+
             <i title="{{c.help.broader}}"></i>
                     <span skos-label="c"
                           lang="{{mainLanguage}}"
@@ -84,7 +84,7 @@
     <div ng-if="narrower.length">
      <div ng-class="{'col-lg-4': broader.length && related.length, 'col-lg-6':broader.length || related.length, 'col-lg-12':!broader.length && !related.length}">
       <strong>{{'moreSpecificConcept' | translate}}</strong>
-      <hr/>      
+      <hr/>
       <ul>
         <li ng-repeat="c in narrower"
             data-ng-mouseover="initConceptNavigationHelp(c)">
@@ -97,7 +97,7 @@
              ng-click="addConcept(c)"
              ng-mouseenter="c.over = true"
              ng-mouseleave="c.over = false">
-            
+
             <i title="{{c.help.narrower}}"></i>
                     <span skos-label="c" lang="{{mainLanguage}}"
                           title="{{'addConcept' | translate}}"></span>
@@ -111,7 +111,7 @@
     <div ng-if="related.length">
      <div ng-class="{'col-lg-4':broader.length && narrower.length, 'col-lg-6':broader.length || narrower.length, 'col-lg-12':broader.length && !narrower.length}">
       <strong>{{'associatedConcept' | translate}}</strong>
-      <hr/> 
+      <hr/>
       <ul>
         <li ng-repeat="c in related"
             data-ng-mouseover="initConceptNavigationHelp(c)">

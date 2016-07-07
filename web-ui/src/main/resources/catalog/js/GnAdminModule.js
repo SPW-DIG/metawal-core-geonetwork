@@ -42,7 +42,7 @@
   ]);
 
   module.config(['$LOCALES',
-                 function($LOCALES) {
-                   $LOCALES.push('admin');
+    function($LOCALES) {
+      $LOCALES.push('admin');
     }]);
 })();
