@@ -44,14 +44,14 @@
           return {
             request: function(config) {
 
-              if (config.url.startsWith('http')) {
+              if (config.url.indexOf('http', 0) === 0) {
                 var url = config.url.split('/');
                 url = url[0] + '/' + url[1] + '/' + url[2] + '/';
 
                 if ($.inArray(url, gnGlobalSettings.requireProxy) != -1) {
-                // require proxy
+                  // require proxy
                   config.url = gnGlobalSettings.proxyUrl +
-                    encodeURIComponent(config.url);
+                      encodeURIComponent(config.url);
                 }
               }
 
@@ -66,18 +66,18 @@
               } else if (!config.status || config.status == -1) {
                 var defer = $q.defer();
 
-                if (config.url.startsWith('http')) {
+                if (config.url.indexOf('http', 0) === 0) {
                   var url = config.url.split('/');
                   url = url[0] + '/' + url[1] + '/' + url[2] + '/';
 
                   if ($.inArray(url, gnGlobalSettings.requireProxy) == -1) {
                     gnGlobalSettings.requireProxy.push(url);
                   }
-                  
+
                   $injector.invoke(['$http', function($http) {
                     // This modification prevents interception (infinite
                     // loop):
-                    
+
                     config.nointercept = true;
 
                     // retry again
