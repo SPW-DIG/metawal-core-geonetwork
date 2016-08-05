@@ -58,6 +58,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
   goog.require('gn_batch_process_button');
   goog.require('gn_checkbox_with_nilreason');
   goog.require('gn_crs_selector');
@@ -70,7 +83,9 @@
   goog.require('gn_logo_selector_directive');
   goog.require('gn_multilingual_field_directive');
   goog.require('gn_organisation_entry_selector');
+  goog.require('gn_record_fragment_selector');
   goog.require('gn_template_field_directive');
+
 
 
   angular.module('gn_fields', [
@@ -86,6 +101,7 @@
     'gn_logo_selector_directive',
     'gn_date_picker_directive',
     'gn_abstract_builder_directive',
+    'gn_record_fragment_selector',
     'gn_checkbox_with_nilreason'
   ]);
 })();
