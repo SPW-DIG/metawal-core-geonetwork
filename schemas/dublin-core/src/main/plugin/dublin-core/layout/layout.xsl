@@ -35,6 +35,10 @@
     <xsl:value-of select="$metadata/descendant::node()/dc:language[1]"/>
   </xsl:template>
 
+  <xsl:template name="get-dublin-core-title">
+    <xsl:value-of select="$metadata//dc:title"/>
+  </xsl:template>
+
   <!-- No multilingual support in Dublin core -->
   <xsl:template name="get-dublin-core-other-languages-as-json"/>
 
@@ -169,7 +173,7 @@
               not($isFlatMode) or
               gn-fn-metadata:isFieldFlatModeException($viewConfig, $name)
             ) and
-            $service != 'md.element.add' and
+            $service != 'embedded' and
             count(following-sibling::node()[name() = $name]) = 0">
 
       <!-- Create configuration to add action button for this element. -->

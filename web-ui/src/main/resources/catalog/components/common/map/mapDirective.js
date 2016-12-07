@@ -1,174 +1,181 @@
 /*
- * Copyright (C) 2001-2016 Food and Agriculture Organization of the
- * United Nations (FAO-UN), United Nations World Food Programme (WFP)
- * and United Nations Environment Programme (UNEP)
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or (at
- * your option) any later version.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
- *
- * Contact: Jeroen Ticheler - FAO - Viale delle Terme di Caracalla 2,
- * Rome - Italy. email: geonetwork@osgeo.org
- */
+* Copyright (C) 2001-2016 Food and Agriculture Organization of the
+* United Nations (FAO-UN), United Nations World Food Programme (WFP)
+* and United Nations Environment Programme (UNEP)
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or (at
+* your option) any later version.
+*
+* This program is distributed in the hope that it will be useful, but
+* WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
+*
+* Contact: Jeroen Ticheler - FAO - Viale delle Terme di Caracalla 2,
+* Rome - Italy. email: geonetwork@osgeo.org
+*/
 
 (function() {
-  goog.provide('gn_map_directive');
-  goog.require('gn_owscontext_service');
+goog.provide('gn_map_directive');
+goog.require('gn_owscontext_service');
 
-  angular.module('gn_map_directive',
-      ['gn_owscontext_service'])
+angular.module('gn_map_directive',
+['gn_owscontext_service'])
 
-      .directive(
-      'gnDrawBbox',
-      [
-       'gnMap',
-       'gnOwsContextService',
-       function(gnMap, gnOwsContextService) {
-         return {
-           restrict: 'A',
-           replace: true,
-           templateUrl: '../../catalog/components/common/map/' +
-           'partials/drawbbox.html',
-           scope: {
-             htopRef: '@',
-             hbottomRef: '@',
-             hleftRef: '@',
-             hrightRef: '@',
-             dcRef: '@',
-             extentXml: '=?',
-             lang: '=',
-             schema: '@',
-             location: '@'
-           },
-           link: function(scope, element, attrs) {
-             scope.drawing = false;
-             var mapRef = scope.htopRef || scope.dcRef || '';
-             scope.mapId = 'map-drawbbox-' +
-             mapRef.substring(1, mapRef.length);
+.directive(
+'gnDrawBbox',
+[
+'gnMap',
+'gnOwsContextService',
+function(gnMap, gnOwsContextService) {
+ return {
+   restrict: 'A',
+   replace: true,
+   templateUrl: '../../catalog/components/common/map/' +
+   'partials/drawbbox.html',
+   scope: {
+     htopRef: '@',
+     hbottomRef: '@',
+     hleftRef: '@',
+     hrightRef: '@',
+     dcRef: '@',
+     extentXml: '=?',
+     lang: '=',
+     schema: '@',
+     location: '@'
+   },
+   link: function(scope, element, attrs) {
+     scope.drawing = false;
+     var mapRef = scope.htopRef || scope.dcRef || '';
+     scope.mapId = 'map-drawbbox-' +
+     mapRef.substring(1, mapRef.length);
 
-             var extentTpl = {
-               'iso19139': '<gmd:EX_Extent ' +
-               'xmlns:gmd="http://www.isotc211.org/2005/gmd" ' +
-               'xmlns:gco="http://www.isotc211.org/2005/gco">' +
-               '<gmd:geographicElement>' +
-               '<gmd:EX_GeographicBoundingBox>' +
-               '<gmd:westBoundLongitude><gco:Decimal>{{west}}</gco:Decimal>' +
-               '</gmd:westBoundLongitude>' +
-               '<gmd:eastBoundLongitude><gco:Decimal>{{east}}</gco:Decimal>' +
-               '</gmd:eastBoundLongitude>' +
-               '<gmd:southBoundLatitude><gco:Decimal>{{south}}</gco:Decimal>' +
-               '</gmd:southBoundLatitude>' +
-               '<gmd:northBoundLatitude><gco:Decimal>{{north}}</gco:Decimal>' +
-               '</gmd:northBoundLatitude>' +
-               '</gmd:EX_GeographicBoundingBox></gmd:geographicElement>' +
-               '</gmd:EX_Extent>',
-               'iso19115-3': '<gex:EX_Extent ' +
-               'xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0" ' +
-               'xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0">' +
-               '<gex:geographicElement>' +
-               '<gex:EX_GeographicBoundingBox>' +
-               '<gex:westBoundLongitude><gco:Decimal>{{west}}</gco:Decimal>' +
-               '</gex:westBoundLongitude>' +
-               '<gex:eastBoundLongitude><gco:Decimal>{{east}}</gco:Decimal>' +
-               '</gex:eastBoundLongitude>' +
-               '<gex:southBoundLatitude><gco:Decimal>{{south}}</gco:Decimal>' +
-               '</gex:southBoundLatitude>' +
-               '<gex:northBoundLatitude><gco:Decimal>{{north}}</gco:Decimal>' +
-               '</gex:northBoundLatitude>' +
-               '</gex:EX_GeographicBoundingBox></gex:geographicElement>' +
-               '</gex:EX_Extent>'
-             };
-             var xmlExtentFn = function(coords, location) {
-               if (angular.isArray(coords) &&
-               coords.length === 4 &&
-               !isNaN(coords[0]) &&
-               !isNaN(coords[1]) &&
-               !isNaN(coords[2]) &&
-               !isNaN(coords[3]) &&
-               angular.isNumber(coords[0]) &&
-               angular.isNumber(coords[1]) &&
-               angular.isNumber(coords[2]) &&
-               angular.isNumber(coords[3])) {
-                 scope.extentXml = extentTpl[scope.schema || 'iso19139']
-                 .replace('{{west}}', coords[0])
-                 .replace('{{south}}', coords[1])
-                 .replace('{{east}}', coords[2])
-                 .replace('{{north}}', coords[3]);
-               }
-             };
+     var extentTpl = {
+       'iso19139': '<gmd:EX_Extent ' +
+       'xmlns:gmd="http://www.isotc211.org/2005/gmd" ' +
+       'xmlns:gco="http://www.isotc211.org/2005/gco">' +
+       '<gmd:geographicElement>' +
+       '<gmd:EX_GeographicBoundingBox>' +
+       '<gmd:westBoundLongitude><gco:Decimal>{{west}}</gco:Decimal>' +
+       '</gmd:westBoundLongitude>' +
+       '<gmd:eastBoundLongitude><gco:Decimal>{{east}}</gco:Decimal>' +
+       '</gmd:eastBoundLongitude>' +
+       '<gmd:southBoundLatitude><gco:Decimal>{{south}}</gco:Decimal>' +
+       '</gmd:southBoundLatitude>' +
+       '<gmd:northBoundLatitude><gco:Decimal>{{north}}</gco:Decimal>' +
+       '</gmd:northBoundLatitude>' +
+       '</gmd:EX_GeographicBoundingBox></gmd:geographicElement>' +
+       '</gmd:EX_Extent>',
+       'iso19115-3': '<gex:EX_Extent ' +
+       'xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0" ' +
+       'xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0">' +
+       '<gex:geographicElement>' +
+       '<gex:EX_GeographicBoundingBox>' +
+       '<gex:westBoundLongitude><gco:Decimal>{{west}}</gco:Decimal>' +
+       '</gex:westBoundLongitude>' +
+       '<gex:eastBoundLongitude><gco:Decimal>{{east}}</gco:Decimal>' +
+       '</gex:eastBoundLongitude>' +
+       '<gex:southBoundLatitude><gco:Decimal>{{south}}</gco:Decimal>' +
+       '</gex:southBoundLatitude>' +
+       '<gex:northBoundLatitude><gco:Decimal>{{north}}</gco:Decimal>' +
+       '</gex:northBoundLatitude>' +
+       '</gex:EX_GeographicBoundingBox></gex:geographicElement>' +
+       '</gex:EX_Extent>'
+     };
+     var xmlExtentFn = function(coords, location) {
+       if (angular.isArray(coords) &&
+       coords.length === 4 &&
+       !isNaN(coords[0]) &&
+       !isNaN(coords[1]) &&
+       !isNaN(coords[2]) &&
+       !isNaN(coords[3]) &&
+       angular.isNumber(coords[0]) &&
+       angular.isNumber(coords[1]) &&
+       angular.isNumber(coords[2]) &&
+       angular.isNumber(coords[3])) {
+	 scope.extentXml = extentTpl[scope.schema || 'iso19139']
+	 .replace('{{west}}', coords[0])
+	 .replace('{{south}}', coords[1])
+	 .replace('{{east}}', coords[2])
+	 .replace('{{north}}', coords[3]);
+       }
+     };
 
-             /**
-              * set dublin-core coverage output
-              */
-             var setDcOutput = function() {
-               if (scope.dcRef) {
-                 scope.dcExtent = gnMap.getDcExtent(
-                 scope.extent.md,
-                 scope.location);
-               }
-               xmlExtentFn(scope.extent.md, scope.location);
-             };
+     /**
+      * set dublin-core coverage output
+      */
+     var setDcOutput = function() {
+       if (scope.dcRef) {
+	 scope.dcExtent = gnMap.getDcExtent(
+	 scope.extent.md,
+	 scope.location);
+       }
+       xmlExtentFn(scope.extent.md, scope.location);
+     };
 
-             /**
-              * Different projections used in the directive:
-              * - md : the proj system in the metadata. It is defined as
-              *   4326 by iso19139 schema
-              * - map : the projection of the ol3 map, this projection
-              *   is set in GN settings
-              * - form : projection used for the form, it is chosen
-              *   from the combo list.
-              */
-             scope.projs = {
-               list: gnMap.getMapConfig().projectionList,
-               md: 'EPSG:4326',
-               map: gnMap.getMapConfig().projection,
-               form: gnMap.getMapConfig().projectionList[0].code
-             };
+     /**
+      * Different projections used in the directive:
+      * - md : the proj system in the metadata. It is defined as
+      *   4326 by iso19139 schema
+      * - map : the projection of the ol3 map, this projection
+      *   is set in GN settings
+      * - form : projection used for the form, it is chosen
+      *   from the combo list.
+      */
+     scope.projs = {
+       list: gnMap.getMapConfig().projectionList,
+       md: 'EPSG:4326',
+       map: gnMap.getMapConfig().projection,
+       form: gnMap.getMapConfig().projectionList[0].code,
+       formLabel: gnMap.getMapConfig().projectionList[0].label
+     };
 
-             scope.extent = {
-               md: null,
-               map: [],
-               form: []
-             };
+     scope.extent = {
+       md: null,
+       map: [],
+       form: []
+     };
 
-             if (attrs.hleft !== '' && attrs.hbottom !== '' &&
-                 attrs.hright !== '' && attrs.htop !== '') {
-               scope.extent.md = [
-                 parseFloat(parseFloat(attrs.hleft).toFixed(2)), parseFloat(parseFloat(attrs.hbottom).toFixed(2)),
-                 parseFloat(parseFloat(attrs.hright).toFixed(2)), parseFloat(parseFloat(attrs.htop).toFixed(2))
-               ];
-             }
+     if (attrs.hleft !== '' && attrs.hbottom !== '' &&
+	 attrs.hright !== '' && attrs.htop !== '') {
+       scope.extent.md = [
+	 parseFloat(parseFloat(attrs.hleft).toFixed(2)), parseFloat(parseFloat(attrs.hbottom).toFixed(2)),
+	 parseFloat(parseFloat(attrs.hright).toFixed(2)), parseFloat(parseFloat(attrs.htop).toFixed(2))
+       ];
+     }
 
-             var reprojExtent = function(from, to) {
-               scope.extent[to] = gnMap.reprojExtent(
-                   scope.extent[from],
-                   scope.projs[from], scope.projs[to]
-               );
-             };
+     var reprojExtent = function(from, to) {
+       var extent = gnMap.reprojExtent(
+	   scope.extent[from],
+	   scope.projs[from], scope.projs[to]
+       );
+       scope.extent[to] = extent.map(function(coord) {
+	 return Math.round(coord * 10000) / 10000;
+       });
+     };
 
-             // Init extent from md for map and form
-             reprojExtent('md', 'map');
-             reprojExtent('md', 'form');
-             setDcOutput();
+     // Init extent from md for map and form
+     reprojExtent('md', 'map');
+     reprojExtent('md', 'form');
+     setDcOutput();
 
-             scope.$watch('projs.form', function(newValue, oldValue) {
-               scope.extent.form = gnMap.reprojExtent(
-                   scope.extent.form, oldValue, newValue
-               );
+     scope.$watch('projs.form', function(newValue, oldValue) {
+       var extent = gnMap.reprojExtent(
+	   scope.extent.form, oldValue, newValue
+       );
                scope.extent.form = [
                  parseFloat(parseFloat(scope.extent.form[0]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[1]).toFixed(2)),
                  parseFloat(parseFloat(scope.extent.form[2]).toFixed(2)), parseFloat(parseFloat(scope.extent.form[3]).toFixed(2))
                ];
+               //scope.extent.form = extent.map(function(coord) {
+               //  return Math.round(coord * 10000) / 10000;
+               //});
              });
 
              // TODO: move style in db config
@@ -323,6 +330,8 @@
               * Zoom to extent.
               */
              scope.onRegionSelect = function(region) {
+               // Manage regions service and geonames
+               var bbox = region.bbox || region;
                scope.$apply(function() {
                  scope.extent.md = [parseFloat(parseFloat(region.west).toFixed(2)),
                    parseFloat(parseFloat(region.south).toFixed(2)),
@@ -335,6 +344,10 @@
                  drawBbox();
                  map.getView().fit(scope.extent.map, map.getSize());
                });
+             };
+
+             scope.resetRegion = function() {
+               element.find('.twitter-typeahead').find('input').val('');
              };
            }
          };

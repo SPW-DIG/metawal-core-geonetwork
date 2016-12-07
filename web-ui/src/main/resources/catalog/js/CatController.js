@@ -49,7 +49,8 @@
         default: 300,
         blur: 0
       }
-    }
+    },
+    current: null
   });
 
   module.constant('gnLangs', {
@@ -100,14 +101,17 @@
       //Update Links for social media
       $scope.socialMediaLink=$location.absUrl();
       $scope.$on('$locationChangeSuccess', function(event) {
-        $scope.socialMediaLink=encodeURIComponent($location.absUrl());
         //$scope.showSocialMediaLink =
         //    $scope.socialMediaLink.includes('/metadata/');
+        $scope.socialMediaLink = $location.absUrl();
+        $scope.showSocialMediaLink =
+            ($scope.socialMediaLink.indexOf('/metadata/') != -1);
       });
       // TODO : add language
       var tokens = location.href.split('/');
       $scope.service = tokens[6].split('?')[0];
       $scope.lang = tokens[5];
+      gnLangs.current = $scope.lang;
       $scope.iso2lang = gnLangs.getIso2Lang(tokens[5]);
       $scope.nodeId = tokens[4];
       // TODO : get list from server side
@@ -202,8 +206,8 @@
               error(function(data, status, headers, config) {
                 $rootScope.$broadcast('StatusUpdated',
                    {
-                     title: $translate('somethingWrong'),
-                     msg: $translate('msgNoCatalogInfo'),
+                     title: $translate.instant('somethingWrong'),
+                     msg: $translate.instant('msgNoCatalogInfo'),
                      type: 'danger'});
               });
         });
@@ -290,6 +294,10 @@
       $scope.clearStatusMessage = function() {
         $scope.status = null;
         $('.gn-info').hide();
+      };
+
+      $scope.allowPublishInvalidMd = function() {
+        return gnConfig['metadata.workflow.allowPublishInvalidMd'];
       };
 
       $scope.$on('StatusUpdated', function(event, status) {

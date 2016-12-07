@@ -75,7 +75,7 @@
                 var value = d3.format('.0f')(y.replace(',', ''));
                 return '<h3>' + key + '</h3>' +
                     '<p>' + value + ' ' +
-                    $translate('records') + ' (' +
+                    $translate.instant('records') + ' (' +
                     (value / total * 100).toFixed() + '%)</p>';
               })
               .showLabels(true);
@@ -116,12 +116,13 @@
       function getMetadataStat(by, isTemplate) {
         isTemplate = isTemplate || 'n';
         // Search by service type statistics
-        $http.get('statistics-content-metadata?_content_type=json?' +
+        $http.get('statistics-content-metadata?_content_type=json&' +
                 'by=' + by +
                 '&isTemplate=' + encodeURIComponent(isTemplate))
             .success(function(data) {
 
-              if (data == 'null') { // Null response returned
+              if ((data == 'null') || (data == null)) {
+                // Null response returned
                 // TODO : Add no data message
                 return;
               }
@@ -134,7 +135,7 @@
               $scope.statistics.md[by] = data;
               nv.addGraph(function() {
                 var chart = nv.models.pieChart()
-                .x(function(d) { return $translate(d.label) })
+                .x(function(d) { return $translate.instant(d.label) })
                 .y(function(d) { return d.total})
                 .values(function(d) { return d})
                 .tooltips(true)
@@ -143,7 +144,7 @@
                       // the current set of displayed values
                       return '<h3>' + key + '</h3>' +
                           '<p>' + parseInt(y).toFixed() + ' ' +
-                          $translate('records') + ' (' +
+                          $translate.instant('records') + ' (' +
                           (y / total * 100).toFixed() + '%)</p>';
                     })
                 .showLabels(true);

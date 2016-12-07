@@ -140,6 +140,7 @@
         </div>
       </xsl:when>
       <xsl:otherwise>
+
         <div
           class="form-group gn-field gn-{substring-after(name(), ':')} {if ($isRequired) then 'gn-required' else ''} {if ($isFirst) then '' else 'gn-extra-field'}"
           id="gn-el-{$editInfo/@ref}"
@@ -199,7 +200,7 @@
                     which should be in the sibbling axis. -->
                     <xsl:with-param name="relatedElement"
                                     select="concat('_',
-                        following-sibling::*[name() = $listOfValues/@rel]/*/gn:element/@ref)"/>
+                        following-sibling::*[name() = $listOfValues/@rel]/*[1]/gn:element/@ref)"/>
                     <!-- Related attribute name is based on element name
                     _<element_ref>_<attribute_name>. -->
                     <xsl:with-param name="relatedElementRef"
@@ -551,6 +552,13 @@
                     </span>
                   </xsl:when>
                   <!-- A directive -->
+                  <xsl:when test="@use = 'data-gn-language-picker'">
+                    <input class="form-control"
+                           value="{value}"
+                           data-gn-field-tooltip="{$schema}|{@tooltip}"
+                           data-gn-language-picker=""
+                           id="{$id}_{@label}"/>
+                  </xsl:when>
                   <xsl:when test="starts-with(@use, 'gn-')">
                     <input class="form-control"
                            type="hidden"
@@ -681,6 +689,10 @@
     <xsl:param name="label" as="xs:string?"/>
     <xsl:param name="directive" as="node()?"/>
     <xsl:param name="childEditInfo"/>
+    <!-- If not provided, add element can't define where to add element.
+    In such case, the add action is not rendered. eg. in table mode
+    elements can't be added in the same col and the parentEditInfo is
+    not provided to not render that part of the form. -->
     <xsl:param name="parentEditInfo"/>
     <!-- Hide add element if child of an XLink section. -->
     <xsl:param name="isDisabled" select="ancestor::node()[@xlink:href]"/>
@@ -690,7 +702,7 @@
     <xsl:param name="btnLabel" required="no" as="xs:string?" select="''"/>
     <xsl:param name="btnClass" required="no" as="xs:string?" select="''"/>
 
-    <xsl:if test="not($isDisabled)">
+    <xsl:if test="not($isDisabled) and $parentEditInfo/@ref != ''">
       <xsl:variable name="id" select="generate-id()"/>
       <xsl:variable name="qualifiedName"
                     select="concat($childEditInfo/@prefix, ':', $childEditInfo/@name)"/>
@@ -1401,7 +1413,7 @@
     <xsl:param name="values" as="node()"/>
     <xsl:param name="addControl" as="node()?"/>
 
-    <table class="table table-striped">
+    <table class="table table-striped gn-table">
       <xsl:for-each select="$values/header">
         <thead>
           <tr>
@@ -1445,31 +1457,35 @@
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:choose>
-                      <xsl:when test="@type = 'textarea'">
-                        <!-- TODO: Multilingual, codelist, date ... -->
-                        <textarea class="form-control"
-                                  name="_{*/gn:element/@ref}">
-                          <xsl:value-of select="*/text()"/>
-                        </textarea>
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <input class="form-control"
-                               type="{if (@type = 'Real' or @type = 'Integer' or @type = 'Percentage')
+                      <xsl:when test="@type">
+                        <xsl:choose>
+                          <xsl:when test="@type = 'textarea'">
+                            <!-- TODO: Multilingual, codelist, date ... -->
+                            <textarea class="form-control"
+                                      name="_{*/gn:element/@ref}">
+                              <xsl:value-of select="*/text()"/>
+                            </textarea>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <input class="form-control"
+                                   type="{if (@type = 'Real' or @type = 'Integer' or @type = 'Percentage')
                                   then 'number'
                                   else 'text'}"
-                               name="_{*/gn:element/@ref}"
-                               value="{*/normalize-space()}"/>
+                                   name="_{*/gn:element/@ref}"
+                                   value="{*/normalize-space()}"/>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <!-- Call schema render mode of the field without label and controls.-->
+                        <saxon:call-template name="{concat('dispatch-', $schema)}">
+                          <xsl:with-param name="base" select="."/>
+                          <xsl:with-param name="overrideLabel"
+                                          select="''"/>
+                        </saxon:call-template>
                       </xsl:otherwise>
                     </xsl:choose>
 
-                    <!-- TODO call schema render mode of the field without
-                    label and controls.
-
-                    <saxon:call-template name="{concat('dispatch-', $schema)}">
-                      <xsl:with-param name="base" select="."/>
-                      <xsl:with-param name="overrideLabel"
-                                      select="''"/>
-                    </saxon:call-template> -->
                   </xsl:otherwise>
                 </xsl:choose>
               </td>

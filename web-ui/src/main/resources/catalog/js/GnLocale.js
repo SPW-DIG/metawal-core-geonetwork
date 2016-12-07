@@ -55,18 +55,33 @@
   });
   module.constant('$LOCALES', ['core']);
 
-  module.factory('localeLoader', ['$http', '$q', 'gnLangs',
-    function($http, $q, gnLangs) {
+  module.factory('localeLoader', ['$http', '$q', 'gnLangs', '$translate', '$timeout',
+    function($http, $q, gnLangs, $translate, $timeout) {
       return function(options) {
 
         function buildUrl(prefix, lang, value, suffix) {
           if (value.indexOf('/') === 0) {
             return value.substring(1);
+          } else if (value.indexOf('|') > -1) {
+            /* Allows to configure locales for custom views,
+               providing the path and the locale type
+               separated by a |:
+
+             module.config(['$LOCALES', function($LOCALES) {
+              $LOCALES.push('../../catalog/views/sdi/locales/|search');
+             }]);
+
+             */
+            var localPrefix = value.split('|')[0];
+            var localValue = value.split('|')[1];
+            return localPrefix + gnLangs.getIso2Lang(lang) +
+                '-' + localValue + suffix;
           } else {
             return prefix + gnLangs.getIso2Lang(lang) + '-' + value + suffix;
           }
         };
         var allPromises = [];
+
         angular.forEach(options.locales, function(value, index) {
           var langUrl = buildUrl(options.prefix, options.key,
               value, options.suffix);
@@ -91,7 +106,6 @@
             }).success(function(data) {
               deferredInst.resolve(data);
             }).error(function() {
-              console.warn('Error loading ' + url);
               deferredInst.resolve({});
             });
           });
@@ -100,6 +114,7 @@
         // Finally, create a single promise containing all the promises
         // for each app module:
         var deferred = $q.all(allPromises);
+
         return deferred;
       };
     }]);
@@ -119,6 +134,8 @@
           location.href.split('/')[5] || 'eng';
       gnGlobalSettings.lang = gnLangs.getIso2Lang(gnGlobalSettings.iso3lang);
       $translateProvider.preferredLanguage(gnGlobalSettings.iso3lang);
+      // $translateProvider.useSanitizeValueStrategy('escape');
+      $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 
       moment.lang(gnGlobalSettings.lang);
     }]);

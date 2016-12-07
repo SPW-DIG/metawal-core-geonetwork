@@ -101,7 +101,7 @@
 
       $http.get('../api/tags').
           success(function(data) {
-            $scope.categories = data;
+            $scope.categories = [{id: null, name: ''}].concat(data);
           });
 
       function loadGroups() {
@@ -272,7 +272,11 @@
         };
 
         $http.post('../api/users/' + $scope.userSelected.id +
-            '/actions/forget-password' , null, {params: params})
+            '/actions/forget-password',
+            $.param(params),
+            {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
             .success(function(data) {
               $scope.resetPassword1 = null;
               $scope.resetPassword2 = null;
@@ -432,13 +436,13 @@
               $scope.unselectUser();
               loadUsers();
               $rootScope.$broadcast('StatusUpdated', {
-                msg: $translate('userUpdated'),
+                msg: $translate.instant('userUpdated'),
                 timeout: 2,
                 type: 'success'});
             },
             function(r) {
               $rootScope.$broadcast('StatusUpdated', {
-                title: $translate('userUpdateError'),
+                title: $translate.instant('userUpdateError'),
                 error: r.data,
                 timeout: 0,
                 type: 'danger'});
@@ -457,7 +461,7 @@
             })
             .error(function(data) {
               $rootScope.$broadcast('StatusUpdated', {
-                title: $translate('userDeleteError'),
+                title: $translate.instant('userDeleteError'),
                 error: data,
                 timeout: 0,
                 type: 'danger'});
@@ -498,14 +502,14 @@
         $scope.unselectGroup();
         loadGroups();
         $rootScope.$broadcast('StatusUpdated', {
-          msg: $translate('groupUpdated'),
+          msg: $translate.instant('groupUpdated'),
           timeout: 2,
           type: 'success'});
 
       };
       var uploadImportMdError = function(data) {
         $rootScope.$broadcast('StatusUpdated', {
-          title: $translate('groupUpdateError'),
+          title: $translate.instant('groupUpdateError'),
           error: data,
           timeout: 0,
           type: 'danger'});
@@ -524,12 +528,15 @@
       };
 
       $scope.saveGroup = function() {
+        if ($scope.groupSelected.defaultCategory === '') {
+          $scope.groupSelected.defaultCategory = null;
+        }
         $http.put('../api/groups' + (
             $scope.groupSelected.id != -99 ?
             '/' + $scope.groupSelected.id : ''
             ), $scope.groupSelected)
-            .success(uploadImportMdDone)
-            .error(uploadImportMdError);
+          .success(uploadImportMdDone)
+          .error(uploadImportMdError);
       };
 
       $scope.deleteGroup = function(formId) {
@@ -541,7 +548,7 @@
             })
             .error(function(data) {
               $rootScope.$broadcast('StatusUpdated', {
-                title: $translate('groupDeleteError'),
+                title: $translate.instant('groupDeleteError'),
                 error: data,
                 timeout: 0,
                 type: 'danger'});

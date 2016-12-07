@@ -46,6 +46,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import jeeves.server.UserSession;
+import springfox.documentation.annotations.ApiIgnore;
 
 import static org.fao.geonet.api.ApiParams.API_PARAM_RECORD_UUIDS;
 
@@ -64,7 +65,7 @@ import static org.fao.geonet.api.ApiParams.API_PARAM_RECORD_UUIDS;
 public class SelectionsApi {
 
     @ApiOperation(value = "Get current selection",
-        nickname = "get")
+        nickname = "getSelection")
     @RequestMapping(
         method = RequestMethod.GET,
         value = "/{bucket}",
@@ -80,6 +81,7 @@ public class SelectionsApi {
             example = "metadata")
         @PathVariable
             String bucket,
+        @ApiIgnore
         HttpSession httpSession
     )
         throws Exception {
@@ -93,7 +95,7 @@ public class SelectionsApi {
 
 
     @ApiOperation(value = "Select one or more items",
-        nickname = "add")
+        nickname = "addToSelection")
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/{bucket}",
@@ -112,7 +114,9 @@ public class SelectionsApi {
             required = false)
         @RequestParam(required = false)
             String[] uuid,
+        @ApiIgnore
         HttpSession httpSession,
+        @ApiIgnore
         HttpServletRequest request
     )
         throws Exception {
@@ -131,7 +135,7 @@ public class SelectionsApi {
 
 
     @ApiOperation(value = "Clear selection or remove items",
-        nickname = "clear")
+        nickname = "clearSelection")
     @RequestMapping(
         method = RequestMethod.DELETE,
         value = "/{bucket}",
@@ -151,7 +155,9 @@ public class SelectionsApi {
             required = false)
         @RequestParam(required = false)
             String[] uuid,
+        @ApiIgnore
         HttpSession httpSession,
+        @ApiIgnore
         HttpServletRequest request
     )
         throws Exception {

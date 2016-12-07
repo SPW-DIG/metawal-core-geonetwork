@@ -45,6 +45,7 @@ import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.GeonetworkDataDirectory;
 import org.fao.geonet.kernel.mef.Importer;
 import org.fao.geonet.kernel.mef.MEFLib;
+import org.fao.geonet.kernel.search.SearchManager;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.lib.Lib;
@@ -126,7 +127,7 @@ public class MetadataInsertDeleteApi {
             "By default, a backup is made in ZIP format. After that, " +
             "the record attachments are removed, the document removed " +
             "from the index and then from the database.",
-        nickname = "delete")
+        nickname = "deleteRecord")
     @RequestMapping(value = "/{metadataUuid}",
         method = RequestMethod.DELETE
     )
@@ -155,6 +156,7 @@ public class MetadataInsertDeleteApi {
         ApplicationContext appContext = ApplicationContextHolder.get();
         ServiceContext context = ApiUtils.createServiceContext(request);
         DataManager dataManager = appContext.getBean(DataManager.class);
+        SearchManager searchManager = appContext.getBean(SearchManager.class);
 
         if (metadata.getDataInfo().getType() != MetadataType.SUB_TEMPLATE && withBackup) {
             MetadataUtils.backupRecord(metadata, context);
@@ -165,6 +167,8 @@ public class MetadataInsertDeleteApi {
                 String.valueOf(metadata.getId())));
 
         dataManager.deleteMetadata(context, metadataUuid);
+
+        searchManager.forceIndexChanges();
     }
 
     @ApiOperation(
@@ -204,6 +208,7 @@ public class MetadataInsertDeleteApi {
         ServiceContext context = ApiUtils.createServiceContext(request);
         DataManager dataManager = appContext.getBean(DataManager.class);
         AccessManager accessMan = appContext.getBean(AccessManager.class);
+        SearchManager searchManager = appContext.getBean(SearchManager.class);
 
         Set<String> records = ApiUtils.getUuidsParameterOrSelection(uuids, ApiUtils.getUserSession(session));
 
@@ -230,6 +235,9 @@ public class MetadataInsertDeleteApi {
                 report.addMetadataId(metadata.getId());
             }
         }
+
+        searchManager.forceIndexChanges();
+
         return report;
     }
 
@@ -447,16 +455,25 @@ public class MetadataInsertDeleteApi {
             ServiceContext context = ApiUtils.createServiceContext(request);
             for (Path f : files) {
                 if (MEFLib.isValidArchiveExtensionForMEF(f.getFileName().toString())) {
-                    List<String> ids = MEFLib.doImport(
-                        "mef2", uuidProcessing, transformWith,
-                        settingManager.getSiteId(),
-                        metadataType, category, group, rejectIfInvalid,
-                        assignToCatalog, context, f);
-                    for (String id : ids) {
-                        report.addMetadataInfos(Integer.parseInt(id), String.format(
-                            "Metadata imported from MEF with id '%s'", id)
-                        );
-                        report.incrementProcessedRecords();
+                    try {
+                        MEFLib.Version version = MEFLib.getMEFVersion(f);
+                        List<String> ids = MEFLib.doImport(
+                            version == MEFLib.Version.V1 ? "mef" : "mef2",
+                            uuidProcessing, transformWith,
+                            settingManager.getSiteId(),
+                            metadataType, category, group, rejectIfInvalid,
+                            assignToCatalog, context, f);
+                        for (String id : ids) {
+                            report.addMetadataInfos(Integer.parseInt(id), String.format(
+                                "Metadata imported from MEF with id '%s'", id)
+                            );
+                            report.incrementProcessedRecords();
+                        }
+                    } catch (Exception e) {
+                        report.addError(e);
+                        report.addInfos(String.format(
+                            "Failed to import MEF file '%s'. Check error for details.",
+                            f.getFileName().toString()));
                     }
                 } else {
                     try {
@@ -785,11 +802,26 @@ public class MetadataInsertDeleteApi {
                     Path tempFile = Files.createTempFile("mef-import", ".zip");
                     try {
                         FileUtils.copyInputStreamToFile(f.getInputStream(), tempFile.toFile());
-                        List<String> id = MEFLib.doImport(
-                            "mef2", uuidProcessing, transformWith,
+
+                        MEFLib.Version version = MEFLib.getMEFVersion(tempFile);
+
+                        List<String> ids = MEFLib.doImport(
+                            version == MEFLib.Version.V1 ? "mef" : "mef2",
+                            uuidProcessing, transformWith,
                             settingManager.getSiteId(),
                             metadataType, category, group, rejectIfInvalid,
                             assignToCatalog, context, tempFile);
+                        ids.forEach(e -> {
+                            report.addMetadataInfos(Integer.parseInt(e), String.format(
+                                "Metadata imported with ID '%s'", e)
+                            );
+                            report.incrementProcessedRecords();
+                        });
+                    } catch (Exception e) {
+                        report.addError(e);
+                        report.addInfos(String.format(
+                            "Failed to import MEF file '%s'. Check error for details.",
+                            f.getOriginalFilename()));
                     } finally {
                         IO.deleteFile(tempFile, false, Geonet.MEF);
                     }

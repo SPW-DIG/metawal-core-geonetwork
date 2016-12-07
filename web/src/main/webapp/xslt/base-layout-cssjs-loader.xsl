@@ -156,8 +156,8 @@
         <script src="{$uiResourcesPath}lib/bootstrap.ext/tagsinput/bootstrap-tagsinput.js"></script>
         <script
           src="{$uiResourcesPath}lib/bootstrap.ext/datepicker/bootstrap-datepicker.js"></script>
-        <script src="{$uiResourcesPath}/lib/bootstrap-table/dist/bootstrap-table.js"></script>
-        <script src="{$uiResourcesPath}/lib/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+        <script src="{$uiResourcesPath}lib/bootstrap-table/dist/bootstrap-table.js"></script>
+        <script src="{$uiResourcesPath}lib/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
         <!--</xsl:if>-->
 
       </xsl:when>
@@ -193,6 +193,9 @@
     <xsl:variable name="mapConfig"
                   select="util:getSettingValue('map/config')"/>
 
+    <xsl:variable name="bingKey"
+                  select="util:getSettingValue('map/bingKey')"/>
+
     <xsl:variable name="isMapViewerEnabled">
       <xsl:choose>
         <xsl:when test="util:getSettingValue('map/isMapViewerEnabled')">
@@ -218,6 +221,7 @@
         </xsl:if>
         gnViewerSettings.mapConfig = <xsl:value-of select="$mapConfig"/>;
         gnGlobalSettings.isMapViewerEnabled = <xsl:value-of select="$isMapViewerEnabled"/>;
+        gnViewerSettings.bingKey = '<xsl:value-of select="$bingKey"/>';
         }]);
       </script>
     </xsl:if>

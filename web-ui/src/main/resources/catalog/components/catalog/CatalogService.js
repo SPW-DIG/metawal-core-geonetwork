@@ -388,9 +388,11 @@
    * Load the catalog config and push it to gnConfig.
    */
   module.factory('gnConfigService', [
-    '$http',
+    '$http', '$q',
     'gnConfig',
-    function($http, gnConfig) {
+    function($http, $q, gnConfig) {
+      var defer = $q.defer();
+      var loadPromise = defer.promise;
       return {
 
         /**
@@ -405,7 +407,7 @@
          * @return {HttpPromise} Future object
          */
         load: function() {
-          return $http.get('../api/site/settings', {cache: true})
+           return $http.get('../api/site/settings', {cache: true})
             .then(function(response) {
                 angular.extend(gnConfig, response.data);
                 // Replace / by . in settings name
@@ -419,8 +421,12 @@
                 if (window.location.search.indexOf('with3d') !== -1) {
                   gnConfig['map.is3DModeAllowed'] = true;
                 }
-              });
+              defer.resolve(gnConfig);
+              }, function () {
+                defer.reject();
+            });
         },
+        loadPromise: loadPromise,
 
         /**
          * @ngdoc method
@@ -462,6 +468,7 @@
         'denominator', 'resolution', 'geoDesc', 'geoBox', 'inspirethemewithac',
         'status', 'status_text', 'crs', 'identifier', 'responsibleParty',
         'mdLanguage', 'datasetLang', 'type', 'link'];
+      var listOfJsonFields = ['keywordGroup'];
       var record = this;
       this.linksCache = [];
       $.each(listOfArrayFields, function(idx) {
@@ -469,6 +476,14 @@
         if (angular.isDefined(record[field]) &&
             !angular.isArray(record[field])) {
           record[field] = [record[field]];
+        }
+      });
+      $.each(listOfJsonFields, function(idx) {
+        var field = listOfJsonFields[idx];
+        if (angular.isDefined(record[field])) {
+          try {
+            record[field] = angular.fromJson(record[field]);
+          } catch (e) {}
         }
       });
 
@@ -512,6 +527,12 @@
       },
       isPublished: function() {
         return this['geonet:info'].isPublishedToAll === 'true';
+      },
+      isValid: function() {
+        return this.valid === '1';
+      },
+      hasValidation: function() {
+        return (this.valid > -1);
       },
       isOwned: function() {
         return this['geonet:info'].owner === 'true';

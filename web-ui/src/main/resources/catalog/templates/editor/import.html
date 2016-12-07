@@ -260,6 +260,7 @@
 
       <div data-ng-repeat="report in reports track by $index">
         <div class="panel panel-default"
+             data-ng-show="report.message || report.infos"
              data-ng-class="report.code || (report.errors && report.errors.length > 0) ?
                           'panel-danger' : 'panel-success'">
           <div class="panel-heading" data-translate="">importReport</div>
@@ -269,6 +270,9 @@
               {{report.message}}
             </p>
             <p>
+              <div data-ng-repeat="(key, value) in report.infos">
+                <span>{{value.message}}</span>
+              </div>
               <!--id and uuid from single import-->
               <div data-ng-repeat="(key, value) in report.metadataInfos">
                 <span>{{value[0].message}}</span>
