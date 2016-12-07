@@ -250,7 +250,11 @@
 
       // Manage route at start and on $location change
       if (!$location.path()) {
-        $location.path('/search');
+        $location.path('/search').search({
+          'facet.q': 'status/notobsolete',
+          'resultType': 'details',
+          'sortBy': 'modified'
+        });
       }
       $scope.activeTab = $location.path().
           match(/^(\/[a-zA-Z0-9]*)($|\/.*)/)[1];
