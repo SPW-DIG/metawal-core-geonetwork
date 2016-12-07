@@ -6,8 +6,8 @@
       <i class="fa"
          data-ng-click="select()"
          data-ng-class="getIcon()"></i>&nbsp;
-      <span data-ng-show="searchResults.selectedCount > 0"
-            class="badge">{{searchResults.selectedCount}}</span>
+      <span class="badge">{{searchResults.selectedCount || 0}}</span>
+      <span class="hidden-xs" translate="">selected</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
@@ -25,7 +25,6 @@
   <div class="btn-group gn-selection-actions"
        ng-if="searchResults.selectedCount > 0 && !withoutActionMenu">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      <span class="hidden-xs" translate="">selected</span>
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
