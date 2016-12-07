@@ -1,21 +1,6 @@
 <div class="container-fluid">
   <div class="row gn-row-main">
-    <div class="col-sm-4 col-sm-push-8">
-      <div class="well well-md">
-        <h1 data-translate=""
-            data-translate-values="{orgName: '{{info.site.organization}}'}">welcomeTitle</h1>
-
-        <p data-translate="">welcomeText</p>
-        <a href="http://geoportail.wallonie.be/home/infrasig/informations-sur-les-metadonnees.html" alt="Metadata_info" title="{{'metadataInfo' | translate}}" target="_blank">
-          <i class="fa fa-info-circle"></i><span data-translate="">welcomeMoreInfo</span>
-        </a>
-      </div>
-    </div>
-    <div class="col-sm-8 col-sm-pull-4">
-      <h1 data-translate="">getstarted</h1>
-      <p data-translate=""
-         data-translate-values="{records: '{{searchInfo.count}}'}">searchOver</p>
-
+    <div class="col-sm-8 col-sm-push-2">
       <div class="input-group gn-form-any">
         <input type="text"
                class="form-control input-lg"
@@ -36,9 +21,9 @@
         </span>
       </div>
 
-      <div data-translate="" class="search-over"
-           data-translate-values="{records: '{{searchInfo.count}}'}">searchOver</div>
-
+      <div class="search-over">
+        <span data-translate="" data-translate-values="{records: '{{searchInfo.count}}'}">searchOver</span>
+      </div>
     </div>
   </div>
   <div class="row" data-ng-show="searchInfo.count == 0">

@@ -250,7 +250,7 @@
 
       // Manage route at start and on $location change
       if (!$location.path()) {
-        $location.path('/home');
+        $location.path('/search');
       }
       $scope.activeTab = $location.path().
           match(/^(\/[a-zA-Z0-9]*)($|\/.*)/)[1];
