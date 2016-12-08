@@ -36,18 +36,21 @@
               <div class="region-b">
                 <div class="in">
                   <p id="medialist">
-                    <a id="facebook" href="https://www.facebook.com/sharer.php?u={{socialMediaLink}}" target="_blank"
+                    <a title="{{'shareOnFacebook' | translate}}" id="facebook" href="https://www.facebook.com/sharer.php?u={{socialMediaLink}}" target="_blank"
                        title="Facebook">1</a>
-                    <a id="twitter" href="https://twitter.com/share?url={{socialMediaLink}}" target="_blank"
+                    <a title="{{'shareOnTwitter' | translate}}" id="twitter" href="https://twitter.com/share?url={{socialMediaLink}}" target="_blank"
                        title="Twitter">2</a>
-                    <a id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{socialMediaLink}}"
+                    <a title="{{'shareOnLinkedIn' | translate}}" id="linkedin" href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{socialMediaLink}}"
                        target="_blank" title="LinkedIn">3</a>
-                    <a id="google" href="https://plus.google.com/share?url={{socialMediaLink}}" target="_blank"
+                    <a title="{{'shareOnGooglePlus' | translate}}" id="google" href="https://plus.google.com/share?url={{socialMediaLink}}" target="_blank"
                        title="Google+">4</a>
-                    <a id="email" href="mailto:?subject=Home&amp;body={{socialMediaLink}}" target="_blank"
+                    <a title="{{'shareByEmail' | translate}}" id="email" href="mailto:?subject=Home&amp;body={{socialMediaLink}}" target="_blank"
                        title="Email">5</a>
+                    <a href=""
+                       style="text-indent: 0px"
+                       data-ng-click="getPermalink('', socialMediaLink)"
+                       title="{{'permalink' | translate}}"><i class="fa fa-fw fa-link"></i></a>
                   </p>
-
                 </div>
               </div>
             </div>
