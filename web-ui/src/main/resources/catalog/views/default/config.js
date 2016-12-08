@@ -198,17 +198,17 @@
             // defaultUrl: 'md.format.xml?xsl=xsl-view&uuid=',
             // defaultPdfUrl: 'md.format.pdf?xsl=full_view&uuid=',
             list: [{
+              label: 'geoportail',
+              url: function(md) {
+                return '../api/records/' + md.getUuid() + '/formatters/geoportail-view?root=div';
+              }
+            }, {
             //  label: 'inspire',
             //  url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
             //}, {
               label: 'metawal',
               url: function(md) {
-                return '../api/records/' + md.getUuid() + '/formatters/xsl-view';
-              }
-            }, {
-              label: 'geoportail',
-              url: function(md) {
-                return '../api/records/' + md.getUuid() + '/formatters/geoportail-view';
+                return '../api/records/' + md.getUuid() + '/formatters/xsl-view?root=div';
               }
             }]
           };
