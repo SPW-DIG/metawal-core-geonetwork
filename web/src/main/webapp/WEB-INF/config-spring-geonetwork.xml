@@ -101,7 +101,7 @@
     <entry key="hibernate.id.new_generator_mappings" value="true"/>
     <entry key="hibernate.cache.use_second_level_cache" value="true"/>
     <!--<entry key="hibernate.cache.region.factory_class" value="org.hibernate.cache.internal.NoCachingRegionFactory"/> -->
-    <entry key="hibernate.default_schema" value="metawal2"/>
+    <!--entry key="hibernate.default_schema" value="metawal2"/-->
     <entry key="hibernate.cache.region.factory_class"
            value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
     <entry key="hibernate.jdbc.batch_size" value="3"/>
@@ -193,6 +193,12 @@
         class="org.fao.geonet.kernel.search.classifier.TermLabel" lazy-init="true">
     <constructor-arg name="finder" ref="ThesaurusManager"/>
     <constructor-arg name="conceptScheme" value="http://metawal.wallonie.be/thesaurus/entitesadministratives"/>
+    <constructor-arg name="langCode" value="fre"/>
+  </bean>
+  <bean id="infraSIGThemeClassifier"
+        class="org.fao.geonet.kernel.search.classifier.TermLabel" lazy-init="true">
+    <constructor-arg name="finder" ref="ThesaurusManager"/>
+    <constructor-arg name="conceptScheme" value="http://metawal.wallonie.be/thesaurus/infrasig"/>
     <constructor-arg name="langCode" value="fre"/>
   </bean>
   <bean id="geoportailThemeClassifier"
