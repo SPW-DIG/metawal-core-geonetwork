@@ -323,8 +323,8 @@
       </gml:Envelope>
     </gml:BoundedBy>
     <!--skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region"/-->
-		<skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Province"/>
+		<skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/25110"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/25105"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/25119"/>
@@ -367,6 +367,7 @@
     <!--skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region"/-->
     <!--skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/-->
     <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Province"/>
+    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/51009"/>
 	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/53053"/>
 	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/52010"/>
@@ -449,8 +450,8 @@
       </gml:Envelope>
     </gml:BoundedBy>
     <!--skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region"/-->
-    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Province"/>
+    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/63012"/>
 	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/61039"/>
 	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/61081"/>
@@ -548,8 +549,8 @@
       </gml:Envelope>
     </gml:BoundedBy>
     <!--skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region"/-->
-    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Province"/>
+    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/83012"/>
 	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/83055"/>
 	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/82032"/>
@@ -607,8 +608,8 @@
       </gml:Envelope>
     </gml:BoundedBy>
     <!--skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region"/-->
-    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Province"/>
+    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Region/1"/>
     <skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/92140"/>
   	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/92137"/>
   	<skos:narrower rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/92097"/>
@@ -685,6 +686,7 @@
         <gml:upperCorner>4.084919681011172 50.51379124881017</gml:upperCorner>
       </gml:Envelope>
     </gml:BoundedBy>
+    <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune"/>
     <skos:broader rdf:resource="http://metawal.wallonie.be/thesaurus/entitesadministratives#Province/50000"/>
   </skos:Concept>
   <skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/entitesadministratives#Commune/92140">
