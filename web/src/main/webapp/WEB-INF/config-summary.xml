@@ -121,9 +121,11 @@
            classifier="regionKeywordClassifier"/>
          -->
     <facet name="entitesAdmin" label="entitesAdministratives"
-           indexKey="keyword"
+           indexKey="thesaurus-external.place.metawal_entites_administratives"
            classifier="entitesAdminClassifier"/>
-    <facet name="infraSIG" label="infraSIG" indexKey="keyword" classifier="infraSIGThemeClassifier"/>
+    <facet name="infraSIG" label="infraSIG" 
+           indexKey="keyword"
+           classifier="infraSIGThemeClassifier"/>
     <facet name="geoportailTheme" label="geoportailThemes"
            indexKey="keyword"
            classifier="geoportailThemeClassifier"/>
@@ -145,11 +147,11 @@
       <item facet="status" translator="codelist:gmd:MD_ScopeCode"/>
       <!--item facet="mdStatus" max="10" sortBy="value"
             translator="db:org.fao.geonet.repository.StatusValueRepository:findOne:int"/-->
-      <item facet="serviceType"/>
+      <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
       <item facet="infraSIG"
             translator="term:http://metawal.wallonie.be/thesaurus/infrasig"/>
       <item facet="denominator" sortBy="numValue" sortOrder="desc"/>
-      <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
+      <item facet="serviceType"/>
       <item facet="createDateYear" sortBy="value" sortOrder="desc" max="40"/>
       <item facet="entitesAdmin"
             translator="term:http://metawal.wallonie.be/thesaurus/entitesadministratives"/>
@@ -167,13 +169,15 @@
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="category" max="99" sortBy="value"
             translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/>
-
+      <item facet="publishedForGroup" max="199" sortBy="value"
+            translator="db:org.fao.geonet.repository.GroupRepository:findOneByName"/>
+      <item facet="infraSIG"
+            translator="term:http://metawal.wallonie.be/thesaurus/infrasig"/>
       <!--<item facet="sourceCatalog" translator="db:org.fao.geonet.repository.SourceRepository:findOneByUuid"/>-->
       <item facet="isValid" max="3" sortBy="value" translator="apploc:validStatus-"/>
       <item facet="groupOwner" max="199" sortBy="value"
             translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
-      <item facet="publishedForGroup" max="199" sortBy="value"
-            translator="db:org.fao.geonet.repository.GroupRepository:findOneByName"/>
+      
       <item facet="standard" max="15" sortBy="value"/>
       <item facet="isHarvested" max="2" sortBy="value" translator="apploc:"/>
       <item facet="metadataType" max="3" sortBy="value" translator="apploc:recordType-"/>
