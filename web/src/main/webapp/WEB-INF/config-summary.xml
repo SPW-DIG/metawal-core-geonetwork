@@ -123,7 +123,7 @@
     <facet name="entitesAdmin" label="entitesAdministratives"
            indexKey="thesaurus-external.place.metawal_entites_administratives"
            classifier="entitesAdminClassifier"/>
-    <facet name="infraSIG" label="infraSIG" 
+    <facet name="infraSIG" label="infraSIG"
            indexKey="keyword"
            classifier="infraSIGThemeClassifier"/>
     <facet name="geoportailTheme" label="geoportailThemes"
@@ -144,7 +144,7 @@
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <!--<item facet="orgName" max="25"/>-->
       <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
-      <item facet="status" translator="codelist:gmd:MD_ScopeCode"/>
+      <item facet="status" translator="codelist:gmd:MD_ProgressCode"/>
       <!--item facet="mdStatus" max="10" sortBy="value"
             translator="db:org.fao.geonet.repository.StatusValueRepository:findOne:int"/-->
       <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
@@ -177,7 +177,7 @@
       <item facet="isValid" max="3" sortBy="value" translator="apploc:validStatus-"/>
       <item facet="groupOwner" max="199" sortBy="value"
             translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
-      
+
       <item facet="standard" max="15" sortBy="value"/>
       <item facet="isHarvested" max="2" sortBy="value" translator="apploc:"/>
       <item facet="metadataType" max="3" sortBy="value" translator="apploc:recordType-"/>
