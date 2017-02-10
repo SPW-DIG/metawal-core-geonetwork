@@ -7,6 +7,7 @@ var gnHarvesterfilesystem = {
             "@type" : "filesystem",
             "owner" : [],
             "ownerGroup" : [],
+            "ownerUser": [""],
             "site" : {
                 "name" : "",
                 "uuid" : "",
@@ -15,7 +16,8 @@ var gnHarvesterfilesystem = {
                 "nodelete" : true,
                 "checkFileLastModifiedForUpdate" : true,
                 "recordType" : 'n',
-                "icon" : "blank.png"
+                "icon" : "blank.png",
+                "beforeScript": ""
             },
             "content" : {
                 "validate" : "NOVALIDATION",
@@ -45,6 +47,7 @@ var gnHarvesterfilesystem = {
         var body = '<node id="' + h['@id'] + '" '
                 + '    type="' + h['@type'] + '">'
                 + '  <ownerGroup><id>' + h.ownerGroup[0] + '</id></ownerGroup>'
+                + '  <ownerUser><id>' + h.ownerUser[0] + '</id></ownerUser>' 
                 + '  <site>'
                 + '    <name>' + h.site.name + '</name>'
                 + '    <recurse>' + h.site.recurse + '</recurse>'
@@ -53,6 +56,7 @@ var gnHarvesterfilesystem = {
                 + '    <directory>' + h.site.directory + '</directory>'
                 + '    <recordType>' + h.site.recordType + '</recordType>'
                 + '    <icon>' + h.site.icon + '</icon>'
+                + '    <beforeScript>' + h.site.beforeScript + '</beforeScript>'
                 + '  </site>'
                 + '  <options>'
                 + '    <oneRunOnly>' + h.options.oneRunOnly + '</oneRunOnly>'

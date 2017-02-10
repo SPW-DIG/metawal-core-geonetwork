@@ -99,7 +99,7 @@
         $scope.viewMenuAdmin = true;
       }else {$scope.viewMenuAdmin = false}
       //Update Links for social media
-      $scope.socialMediaLink=$location.absUrl();
+      $scope.socialMediaLink = $location.absUrl();
       $scope.$on('$locationChangeSuccess', function(event) {
         //$scope.showSocialMediaLink =
         //    $scope.socialMediaLink.includes('/metadata/');
@@ -121,7 +121,7 @@
 
       // Lang names to be displayed in language selector
       //$scope.langLabels = {'eng': 'English', 'dut': 'Nederlands',
-        //'fre': 'Français', 'ger': 'Deutsch', 'kor': '한국의', 'spa': 'Español'};
+      //'fre': 'Français', 'ger': 'Deutsch', 'kor': '한국의', 'spa': 'Español'};
       $scope.langLabels = {'eng': 'English', 'dut': 'Nederlands',
         'fre': 'Français', 'ger': 'Deutsch'};
       $scope.url = '';
@@ -288,6 +288,7 @@
               });
         });
       };
+      $scope.userAdminMenu = gnAdminMenu.UserAdmin;
       $scope.adminMenu = gnAdminMenu.Administrator;
       $scope.$on('loadCatalogInfo', function(event, status) {
         $scope.loadCatalogInfo();

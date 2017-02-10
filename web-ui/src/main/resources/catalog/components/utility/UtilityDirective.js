@@ -114,12 +114,12 @@
           scope.gnRegionService = gnRegionService;
 
           var addGeonames = !attrs['disableGeonames'];
-
+          scope.regionTypes = [];
           /**
           * Load list on init to fill the dropdown
           */
           gnRegionService.loadList().then(function(data) {
-            scope.regionTypes = data;
+            scope.regionTypes = angular.copy(data);
             if (addGeonames) {
               scope.regionTypes.unshift({
                 name: 'Geonames',
@@ -466,12 +466,12 @@
       return {
         restrict: 'A',
         template: '<button title="{{\'gnToggle\' | translate}}">' +
-        '<i class="fa fa-fw fa-angle-double-up"/>&nbsp;' +
-        '</button>',
+            '<i class="fa fa-fw fa-angle-double-up"/>&nbsp;' +
+            '</button>',
         link: function linkFn(scope, element, attr) {
           var selector = attr['gnSectionToggle'] ||
               'form > fieldset > legend[data-gn-slide-toggle]',
-            event = attr['event'] || 'click';
+              event = attr['event'] || 'click';
           element.on('click', function() {
             $(selector).each(function(idx, elem) {
               $(elem).trigger(event);
@@ -1198,4 +1198,40 @@
       }
     };
   }]);
+
+  /**
+   * @ngdoc directive
+   * @name gn_utility.directive:gnLynky
+   *
+   * @description
+   * If the text provided contains the following format:
+   * link|URL|Text, it's converted to an hyperlink, otherwise
+   * the text is displayed without any formatting.
+   *
+   */
+  module.directive('gnLynky', ['$compile',
+    function($compile) {
+      return {
+        restrict: 'A',
+        scope: {
+          text: '@gnLynky'
+        },
+        link: function(scope, element, attrs) {
+          if ((scope.text.indexOf('link') == 0) &&
+              (scope.text.split('|').length == 3)) {
+            scope.link = scope.text.split('|')[1];
+            scope.value = scope.text.split('|')[2];
+
+            element.replaceWith($compile('<a data-ng-href="{{link}}" ' +
+                'data-ng-bind-html="value"></a>')(scope));
+          } else {
+
+            element.replaceWith($compile('<span ' +
+                'data-ng-bind-html="text"></span>')(scope));
+          }
+        }
+
+      };
+    }
+  ]);
 })();
