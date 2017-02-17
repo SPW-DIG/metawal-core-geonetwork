@@ -119,8 +119,9 @@
      * @param {boolean} resetPagination If true, then
      * don't reset pagination info.
      */
+     
     this.triggerSearchFn = function(keepPagination) {
-
+      console.log($scope.searchObj.params);
       $scope.searching++;
       $scope.searchObj.params = angular.extend({},
           $scope.searchObj.defaultParams || defaultParams,
@@ -144,7 +145,6 @@
               }
             });
       }
-
       // Set default pagination if not set
       if ((!keepPagination &&
           !$scope.searchObj.permalink) ||

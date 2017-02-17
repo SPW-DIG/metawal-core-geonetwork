@@ -16,6 +16,7 @@ goog.addDependency('../../components/metadatamanager/MetadataManagerModule.js', 
 goog.addDependency('../../components/metadatamanager/MetadataManagerService.js', ['gn_metadata_manager_service'], []);
 goog.addDependency('../../components/pagination/PaginationDirective.js', ['gn_pagination_directive'], []);
 goog.addDependency('../../components/pagination/PaginationModule.js', ['gn_pagination'], ['gn_pagination_directive']);
+goog.addDependency('../../components/api_rw_pagination/ApiRwPaginationModule.js', ['gn_api_rw_pagination'], ['gn_api_rw_pagination_directive']);
 goog.addDependency('../../components/searchmanager/SearchManagerModule.js', ['gn_search_manager'], ['gn_search_manager_service']);
 goog.addDependency('../../components/searchmanager/SearchManagerService.js', ['gn_search_manager_service'], []);
 goog.addDependency('../../components/searchresults/SearchResultsDirective.js', ['gn_search_results_directive'], []);

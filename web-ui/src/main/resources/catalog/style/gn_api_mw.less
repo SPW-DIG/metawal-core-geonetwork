@@ -1,0 +1,922 @@
+//Define color
+
+@blue-default : #74aec2;
+@blue-ligther : #b4d6e3;
+@blue-darker : #2b647b;
+@blue-flash : #5cd1f6;
+@grey-default: #f1f1f1;
+@grey-darker: #d0e0e6;
+@white-default :#ffffff;
+
+body {
+ 	font-family: "Lato",Arial,sans-serif !important;
+    font-size: 15px !important;
+    line-height: 22px !important;
+    color: #636363!important;
+}
+@media (min-width: 768px) { .container-overview-api-rw, .container-tab-api-rw { max-width: 750px; } }
+
+.container-api-rw {
+	background-color: @grey-default;
+}
+.zero-api-rw {
+	margin:0px;
+	padding:0px;
+}
+/*.container-basket-api-rw {
+	
+}*/
+.facet-api-rw {
+	background-color: white;
+	padding:20px;
+	margin-bottom:40px;
+}
+
+/* TABS */
+
+.nav-api-rw-justified{
+	width:100%;
+}
+.nav-api-rw-justified li{
+    /*padding-top: 10px;*/
+    padding-bottom: 10px;
+    display: table-cell !important;
+    width: 1%;
+    float: none;
+   
+}
+.nav-api-rw-justified li a{
+    color:@blue-default;
+    background-color:#d0e0e6;
+    border-radius:0px;
+    margin-left:10px;
+    margin-right:10px;
+    font-size:28px;
+    text-transform:uppercase;
+    
+}
+.nav-api-rw-justified li a:active{
+    color:white;
+    /*background-color:@blue-flash;*/
+}
+.nav-api-rw-justified li a:hover{
+    background-color:#d0e0e6;
+    border:1px;
+	border-style: solid;
+	border-color: @blue-default;
+}
+.fa-2x {
+  vertical-align: middle;
+}
+.fa-rw {
+	background-color: @blue-default;
+}
+.form-control-feedback-api-rw {
+	right:0px !important;
+	color:@blue-default;
+	line-height:30px !important;
+}
+.form-date-control-feedback-api-rw {
+	position: absolute;
+    top: 1px;
+    right: 0;
+    color:@blue-default;
+    display: block;
+    width: 34px;
+    height: 28px;
+    text-align: center;
+    z-index: 100;
+    background-color: transparent;
+    border-color: transparent;
+}
+.day:active {
+	background-color:@blue-default !important;
+}
+.form-input-rw-api{
+	border-radius:0px !important;
+	border-color: @blue-default;
+	height:30px;
+}
+.form-input-rw-api:focus{
+	border-color: @blue-flash;
+}
+
+.facet-title-api-rw{
+    font-size: 14px;
+    color: #74aec2;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    padding-right: 30px;
+    margin-bottom: 10px;
+}
+
+.date-search-api-rw {
+	padding-left:0px;
+	padding-right:7px;
+}
+
+.date-search-api-rw label{
+	font-weight:normal;
+	text-align:left !important;
+}
+
+.sortby-search-api-rw label{
+	/*font-weight:normal;
+	text-align:left !important;
+	color: @blue-default;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size:14px;
+	font-weight:400;
+	line-height:20px;
+	text-transform:uppercase;
+	padding-top:5px;
+	color:rgb(99, 99, 99);
+	*/
+
+	cursor:pointer;
+	display:inline-block;
+	font-family:Lato, Arial, sans-serif;
+	font-size:14px;
+	font-weight:normal;
+	/*height:32.2222px;
+	line-height:20px;
+	margin-bottom:0px;*/
+	text-align:right;
+	text-size-adjust:100%;
+	
+}
+.sortby-search-api-rw div select{
+	padding-top:0px;
+	padding-bottom:0px;
+	color:white;
+	background-color:@grey-darker;
+	font-size:14px;
+	border:0px;
+	border-radius:0px !important;
+	height:30px;
+	-webkit-appearance: none;
+}
+.pagination-api-rw {
+	margin:0px;
+}
+.pagination-api-rw li a{
+	padding:4px 12px;
+	border:0px;
+	background-color:@blue-default!important;
+}
+.pagination-api-rw li a:active{
+	background-color:@blue-darker!important;
+}
+.pagination-api-rw li a:active:hover{
+	background-color:@blue-darker!important;
+}
+.pagination-api-rw li a:hover{
+	background-color:@blue-flash !important;
+}
+.btn-reset-api-rw {
+	background-color:@blue-flash;
+	border: 1px solid @blue-flash;
+	border-radius:1px;
+	color:white;
+	text-transform:	uppercase;
+	font-size:14px;
+}
+.btn-reset-api-rw:hover{
+	color:@blue-flash;
+	background-color:white;
+}
+
+.btn-addition-api-rw {
+	background-color:@blue-flash;
+	color:white;
+	border-radius: 50px;
+    width: 40px;
+    right: -40%;
+}
+.btn-addition-api-rw:hover{
+	color:white;
+}
+.request-api-rw {
+	text-align:center;
+	padding:0px;
+}
+/*.tab-api-rw{
+	padding: 0 10px;
+	width:50%;
+	display:table;
+	height:60px;
+	box-sizing:border-box;
+}*/
+
+
+/*
+.input-api-rw {
+	-webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0) !important;
+	border-radius:0px !important;
+	width: 100% !important;
+    box-sizing: border-box !important;
+    height: 30px !important;
+    line-height: 22px !important;
+    border-right:0px !important;
+    font-size: 14px !important;
+}
+.input-btn-api-rw {
+	border-radius:0px !important;
+	max-width: 30px;
+    box-sizing: border-box !important;
+    height: 30px !important;
+    line-height: 22px !important;
+    border-left:0px !important;
+}
+.input-btn-api-rw:hover {
+	background-color:white;
+}
+*/
+
+.container-tab-api-rw {
+
+}
+.container-leftside-api-rw{
+	margin-top:50px;
+}
+.container-rightside-api-rw{
+	margin-top:50px;
+}
+.container-overview-api-rw {
+	padding: 20px;
+	/*padding-bottom: 20px;*/
+	margin-top:50px;
+	margin-bottom:80px;
+	border:1px;
+	border-style: solid;
+	border-color: @blue-flash;
+}
+.overview-api-rw {
+	background-color: white;
+	padding:10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.hr-top-api-rw {
+	margin-bottom:0px;
+	border-top-color:#d4e2e7;
+}
+.hr-bottom-api-rw {
+	margin-top:0px;
+	border-top-color:#d4e2e7;
+}
+.sort-api-rw {
+	color: @blue-default;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size:14px;
+	font-weight:400;
+	line-height:20px;
+	text-transform:uppercase;
+}
+/*
+.api-container ul li a,p,h3 a{
+	color: @blue-default;
+}
+.api-container ul li h3 a {
+	color: @blue-default;
+}
+
+
+
+ul.gn-resultview li.list-group-item:hover {
+	background-color: @white-default !important;
+}
+*/
+
+
+
+.thumbnail-api-rw {
+	max-width: 140px;
+    height: auto;
+}
+.title-api-rw a{
+	color: rgb(116, 174, 194);
+    text-decoration: none;
+    font: normal normal bold normal 21px / 27.3px Lato, Arial, sans-serif;
+}
+
+.owner-api-rw{
+	color: rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+}
+
+.description-api-rw a{
+	color: rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    margin-bottom: 0px;
+}
+
+.views-api-rw {
+	color: rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+    outline: rgb(116, 174, 194) none 0px;
+}
+
+.btn-api-rw {
+	min-height: 50px;
+	border-radius: 0px;
+	background: #74aec2 none repeat scroll 0px 50%;
+	border-color: #74aec2;
+    color: white;
+}
+.btn-api-rw:hover {
+	cursor: pointer;
+    color: white;
+    background: #5cd1f6 none repeat scroll 0px 50%;
+    border-color: #5cd1f6;
+}
+.btn-api-txt-rw {
+	padding-left: 12px;
+}
+.btn-api-img-rw {
+	padding-right: 25px;
+}
+.icon-api-rw-datasheet {
+	width: 20px;
+	height: 21px;
+    background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -334px -402px;
+    box-sizing:auto padding-box border-box;
+}
+.icon-api-rw-map {
+	height: 21px;
+	display: block;
+    background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -288px -402px;
+    box-sizing:auto padding-box border-box;
+   
+}
+.icon-api-rw-notification {
+	width: 20px;
+	height: 21px;
+	display: block;
+    background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -294px -382px;
+    box-sizing:auto padding-box border-box;
+}
+.col-p-api-rw-2 {
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 2px;
+}
+.col-p-api-rw-0 {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.row-api-rw {
+	padding-bottom: 20px;
+}
+
+
+
+
+/*
+.result-item-is-map {
+    bottom: 0px;
+    color: rgb(99, 99, 99);
+    height: 255px;
+    left: 0px;
+    position: relative;
+    right: 0px;
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 707.333px;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 363.667px 137.5px;
+    transform-origin: 363.667px 137.5px;
+    /*background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box;
+    */
+    /*background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    box-sizing: auto padding-box border-box;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    margin: 20px 0px;
+    outline: rgb(99, 99, 99) none 0px;
+    padding: 10px;
+}/*#DIV_1*/
+
+/*.result-item-tags{
+    color: rgb(116, 174, 194);
+    float: right;
+    height: 21.3333px;
+    text-size-adjust: 100%;
+    width: 80.3542px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 40.1667px 10.6667px;
+    transform-origin: 40.1667px 10.6667px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal bold normal 15px / 22px Lato, Arial, sans-serif;
+    margin: 0px 0px 10px;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#DIV_2*/
+/*
+.result-item-tags ul{
+    color: rgb(116, 174, 194);
+    height: 21.3333px;
+    text-align: right;
+    text-size-adjust: 100%;
+    width: 80.3542px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 40.1667px 10.6667px;
+    transform-origin: 40.1667px 10.6667px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal bold normal 15px / 22px Lato, Arial, sans-serif;
+    margin: 0px;
+    outline: rgb(116, 174, 194) none 0px;
+    padding: 0px;
+}/*#UL_3*/
+/*
+.result-item-tags ul li{
+    color: rgb(116, 174, 194);
+    display: inline-block;
+    height: 20px;
+    text-align: right;
+    text-size-adjust: 100%;
+    width: 80.3542px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 40.1667px 10px;
+    transform-origin: 40.1667px 10px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal bold normal 15px / 20px Lato, Arial, sans-serif;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#LI_4*/
+/*
+.result-item-image {
+    color: rgb(99, 99, 99);
+    float: left;
+    height: 86.5625px;
+    text-align: left;
+    text-size-adjust: 100%;
+    vertical-align: middle;
+    width: 148px;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 74px 43.2708px;
+    transform-origin: 74px 43.2708px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    outline: rgb(99, 99, 99) none 0px;
+}/*#DIV_5*/
+/*
+.result-item-image a {
+    color: rgb(116, 174, 194);
+    text-align: left;
+    text-decoration: none;
+    text-size-adjust: 100%;
+    column-rule-color: rgb(116, 174, 194);
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#A_6*/
+/*
+.result-item-image a img {
+    box-shadow: rgba(0, 0, 0, 0.054902) 0px 1px 3px 0px;
+    color: rgb(116, 174, 194);
+    display: block;
+    height: 78.5625px;
+    max-width: 140px;
+    text-align: left;
+    text-size-adjust: 100%;
+    vertical-align: middle;
+    width: 140px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 74px 43.2708px;
+    transform-origin: 74px 43.2708px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+    outline: rgb(116, 174, 194) none 0px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out 0s;
+}/*#IMG_7*/
+/*
+.result-item-text {
+    clear: right;
+    color: rgb(99, 99, 99);
+    height: 149px;
+    text-size-adjust: 100%;
+    width: 547.333px;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 273.667px 74.5px;
+    transform-origin: 273.667px 74.5px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    margin: 0px 0px 20px 160px;
+    outline: rgb(99, 99, 99) none 0px;
+}/*#DIV_8*/
+/*
+.result-item-text h4 {
+    color: rgb(116, 174, 194);
+    height: 53.3333px;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    width: 547.333px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 273.667px 26.6667px;
+    transform-origin: 273.667px 26.6667px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal bold normal 21px / 27.3px Lato, Arial, sans-serif;
+    margin: 0px 0px 5px;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#H4_9*/
+/*
+.result-item-text h4 a {
+    color: rgb(116, 174, 194);
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-size-adjust: 100%;
+    column-rule-color: rgb(116, 174, 194);
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal bold normal 21px/27.3px Lato, Arial, sans-serif;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#A_10*/
+/*
+.result-item-text ul {
+    color: rgb(116, 174, 194);
+    height: 28px;
+    text-size-adjust: 100%;
+    width: 547.333px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 273.667px 14px;
+    transform-origin: 273.667px 14px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    margin: 10px 0px 15px;
+    outline: rgb(116, 174, 194) none 0px;
+    padding: 0px;
+}/*#UL_11*/
+/*
+.result-item-text-owner {
+    bottom: 0px;
+    color: rgb(116, 174, 194);
+    display: inline-block;
+    height: 21.3333px;
+    left: 0px;
+    position: relative;
+    right: 0px;
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 307.688px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 153.833px 13.6667px;
+    transform-origin: 153.833px 13.6667px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    margin: 0px 20px 0px 0px;
+    outline: rgb(116, 174, 194) none 0px;
+    padding: 3px 0px;
+}/*#LI_12*/
+/*
+.result-item-text ul li {
+    color: rgb(116, 174, 194);
+    text-align: left;
+    text-size-adjust: 100%;
+    column-rule-color: rgb(116, 174, 194);
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal bold normal 15px / 20px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#STRONG_13, #STRONG_15*/
+/*
+.result-item-text-date {
+    bottom: 0px;
+    color: rgb(116, 174, 194);
+    display: inline-block;
+    height: 21.3333px;
+    left: 0px;
+    position: relative;
+    right: 0px;
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 168.333px;
+    column-rule-color: rgb(116, 174, 194);
+    perspective-origin: 84.1667px 13.6667px;
+    transform-origin: 84.1667px 13.6667px;
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    margin: 0px 20px 0px 0px;
+    outline: rgb(116, 174, 194) none 0px;
+    padding: 3px 0px;
+}/*#LI_14*/
+/*
+.result-item-summary {
+    color: rgb(99, 99, 99);
+    height: 42.6667px;
+    text-size-adjust: 100%;
+    width: 547.333px;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 273.667px 21.3333px;
+    transform-origin: 273.667px 21.3333px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    outline: rgb(99, 99, 99) none 0px;
+}/*#DIV_16*/
+/*
+.result-item-summary p {
+    color: rgb(99, 99, 99);
+    height: 42.6667px;
+    text-size-adjust: 100%;
+    width: 547.333px;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 273.667px 21.3333px;
+    transform-origin: 273.667px 21.3333px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    margin: 0px 0px 10px;
+    outline: rgb(99, 99, 99) none 0px;
+}/*#P_17*/
+/*
+.result-item-summary p a {
+    color: rgb(116, 174, 194);
+    text-decoration: none;
+    text-size-adjust: 100%;
+    column-rule-color: rgb(116, 174, 194);
+    border: 0px none rgb(116, 174, 194);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    outline: rgb(116, 174, 194) none 0px;
+}/*#A_18*/
+/*
+.result-item-actions {
+    clear: both;
+    color: rgb(99, 99, 99);
+    height: 54.6667px;
+    text-size-adjust: 100%;
+    width: 707.333px;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 353.667px 27.3333px;
+    transform-origin: 353.667px 27.3333px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    margin: 0px;
+    outline: rgb(99, 99, 99) none 0px;
+    padding: 0px;
+}/*#UL_19*/
+/*
+.result-item-actions:after {
+    clear: both;
+    /*color: rgb(99, 99, 99);
+    /*content: '"' '"';*/
+    /*display: table;
+    text-size-adjust: 100%;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 0px 0px;
+    transform-origin: 0px 0px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(99, 99, 99) none 0px;*/
+/*}/*#UL_19:after*/
+/*
+.result-item-actions:before {
+    color: rgb(99, 99, 99);
+    /*content: '"' '"';*/
+    /*display: table;
+    text-size-adjust: 100%;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 0px 0px;
+    transform-origin: 0px 0px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 22px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(99, 99, 99) none 0px;
+}/*#UL_19:before*/
+/*
+.result-item-actions li {
+    /*box-sizing: border-box;
+    color: rgb(99, 99, 99);
+    display: table;
+    float: left;
+    height: 49.3333px;
+    text-size-adjust: 100%;
+    width: 234.667px;
+    word-break: break-word;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 117.333px 24.6667px;
+    transform-origin: 117.333px 24.6667px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    margin: 4px 0px 0px;
+    outline: rgb(99, 99, 99) none 0px;
+    padding: 0px 2px;*/
+/*}/*#LI_20, #LI_22*/
+/*
+.result-item-actions li a {
+    background-position: 0px 50%;
+    bottom: 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: table-cell;
+    height: 46.6667px;
+    left: 0px;
+    min-height: 50px;
+    position: relative;
+    right: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-size-adjust: 100%;
+    top: 0px;
+    vertical-align: middle;
+    width: 187.333px;
+    word-break: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 116px 24.6667px;
+    transform-origin: 116px 24.6667px;
+    /*background: rgb(116, 174, 194) none repeat scroll 0px 50% / auto padding-box border-box;
+    */
+    /*background: rgb(116, 174, 194) none repeat scroll 0px 50%;
+    box-sizing: auto padding-box border-box;
+    border: 1.33333px solid rgb(116, 174, 194);
+    font: normal normal bold normal 14px / 14px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 0px 30px 0px 12px;
+    transition: all 0.1s ease 0s;
+}/*#A_21*/
+/*
+.result-item-actions li a:before {
+    background-position: -334px -402px;
+    bottom: 11.6667px;
+    color: rgb(255, 255, 255);
+    /*content: '""';*/
+   /* cursor: pointer;
+    display: block;
+    height: 21px;
+    left: 198.333px;
+    position: absolute;
+    right: 10px;
+    text-align: left;
+    text-size-adjust: 100%;
+    top: 14px;
+    vertical-align: middle;
+    width: 21px;
+    word-break: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 10.5px 10.5px;
+    transform-origin: 10.5px 10.5px;
+    /*background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -334px -402px / auto padding-box border-box;
+    */
+	/*background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -334px -402px;
+	box-sizing: auto padding-box border-box;
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal bold normal 14px / 14px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(255, 255, 255) none 0px;
+}/*#A_21:before*/
+/*
+.result-item-actions-map  {
+    background-position: 0px 50%;
+    bottom: 0px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: table-cell;
+    height: 46.6667px;
+    left: 0px;
+    min-height: 50px;
+    position: relative;
+    right: 0px;
+    text-align: left;
+    text-decoration: none;
+    text-size-adjust: 100%;
+    top: 0px;
+    vertical-align: middle;
+    width: 187.333px;
+    word-break: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 116px 24.6667px;
+    transform-origin: 116px 24.6667px;
+    /*background: rgb(116, 174, 194) none repeat scroll 0px 50% / auto padding-box border-box;
+    */
+    /*background: rgb(116, 174, 194) none repeat scroll 0px 50%;
+    box-sizing: auto padding-box border-box;
+    border: 1.33333px solid rgb(116, 174, 194);
+    font: normal normal bold normal 14px / 14px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(255, 255, 255) none 0px;
+    padding: 0px 30px 0px 12px;
+    transition: all 0.1s ease 0s;
+}/*#A_23*/
+/*
+.result-item-actions-map:before {
+    background-position: -288px -402px;
+    bottom: 11.6667px;
+    color: rgb(255, 255, 255);
+    /*content: '""';*/
+    /*cursor: pointer;
+    display: block;
+    height: 21px;
+    left: 194.333px;
+    position: absolute;
+    right: 10px;
+    text-align: left;
+    text-size-adjust: 100%;
+    top: 14px;
+    vertical-align: middle;
+    width: 25px;
+    word-break: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 12.5px 10.5px;
+    transform-origin: 12.5px 10.5px;
+    /*background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -288px -402px / auto padding-box border-box;
+    */
+	/*background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -288px -402px;
+	box-sizing: auto padding-box border-box;
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal bold normal 14px / 14px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(255, 255, 255) none 0px;
+}/*#A_23:before*/
+/*
+.result-item-actions-notifications {
+    /*box-sizing: border-box;
+    color: rgb(99, 99, 99);
+    display: table;
+    float: left;
+    height: 50.6667px;
+    text-size-adjust: 100%;
+    width: 234.667px;
+    word-break: break-word;
+    column-rule-color: rgb(99, 99, 99);
+    perspective-origin: 117.333px 25.3333px;
+    transform-origin: 117.333px 25.3333px;
+    border: 0px none rgb(99, 99, 99);
+    font: normal normal normal normal 15px / 20px Lato, Arial, sans-serif;
+    list-style: none outside none;*/
+    /*margin: 4px 0px 0px;*/
+    /*outline: rgb(99, 99, 99) none 0px;
+    padding: 0px 2px;*/
+/*}/*#LI_24*/
+/*
+.result-item-actions-notifications button{
+    /*background-position: 0px 50%;
+    bottom: 0px;*/
+    /*color: rgb(255, 255, 255);
+    cursor: pointer;
+    /*height: 50px;
+    left: 0px;*/
+    /*min-height: 50px;
+    /*position: relative;
+    right: 0px;
+    text-align: left;
+    text-size-adjust: 100%;
+    top: 0px;
+    vertical-align: middle;
+    width: 232px;
+    word-break: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 116px 25px;
+    transform-origin: 116px 25px;
+    /*background: rgb(116, 174, 194) none repeat scroll 0px 50% auto padding-box border-box;
+    */
+    /*background: rgb(116, 174, 194) none repeat scroll 0px 50%;
+    /*box-sizing: auto padding-box border-box;*/
+    /*border: 1.33333px solid rgb(116, 174, 194);
+    font: normal normal bold normal 14px / 14px Lato, Arial, sans-serif;
+    /*list-style: none outside none;
+    outline: rgb(255, 255, 255) none 0px;*/
+    /*padding: 0px 30px 0px 12px;
+    /*transition: all 0.1s ease 0s;*/
+/*}/*#BUTTON_25*/
+/*
+.result-item-actions-notifications button:before {
+    background-position: -294px -382px;
+    bottom: 14.3333px;
+    color: rgb(255, 255, 255);
+    /*content: '""';*/
+    /*cursor: pointer;
+    display: block;
+    height: 19px;
+    left: 202.333px;
+    position: absolute;
+    right: 10px;
+    text-align: left;
+    text-size-adjust: 100%;
+    top: 14px;
+    vertical-align: middle;
+    width: 17px;
+    word-break: break-word;
+    column-rule-color: rgb(255, 255, 255);
+    align-self: flex-start;
+    perspective-origin: 8.5px 9.5px;
+    transform-origin: 8.5px 9.5px;
+    /*background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -294px -382px / auto padding-box border-box;
+    */
+	/*background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -294px -382px;
+    box-sizing: auto padding-box border-box;
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal bold normal 14px / 14px Lato, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(255, 255, 255) none 0px;
+}/*#BUTTON_25:before*/
+
+
+

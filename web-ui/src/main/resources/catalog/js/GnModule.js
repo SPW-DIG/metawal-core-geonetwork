@@ -37,9 +37,11 @@
   goog.require('gn_metadata_manager');
   goog.require('gn_needhelp');
   goog.require('gn_pagination');
+  goog.require('gn_api_rw_pagination');
   goog.require('gn_search_form_controller');
   goog.require('gn_search_manager');
   goog.require('gn_utility');
+
 
   /**
    * GnModule just manage angular injection with
@@ -57,6 +59,7 @@
     'gn_search_manager',
     'gn_metadata_manager',
     'gn_pagination',
+    'gn_api_rw_pagination',
     'gn_cat_controller',
     'gn_formfields',
     'gn_map',

@@ -1,0 +1,54 @@
+<div class="gn-pager row"
+     data-ng-show="config.pages > 0">
+
+  <div class="col-md-7 col-sm-12 zero-api-rw ">   
+    <div class="col-md-3 zero-api-rw ">
+    <span>
+      Page {{config.currentPage}} sur {{config.pages}} 
+    </span>
+    </div> 
+    <div class="col-md-9 pull-right zero-api-rw">
+      <div class="form-group sortby-search-api-rw">
+        <label class="col-md-10 control-label">Elements par page</label>
+        <div class="col-md-2 input-group pull-left">
+          <select ng-model="config.hitsPerPage" class="form-control" id="sel1" data-ng-change="updateSearch()" >
+            <option data-ng-repeat="nb in values">
+              {{nb}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="col-md-5 col-sm-12">
+    <ul class="pagination pagination-api-rw">
+      <li data-ng-hide="config.currentPage == 1">
+        <a href="#" data-ng-click="first()">double</a>
+      </li>
+      <li data-ng-hide="config.currentPage == 1">
+        <a href="#" data-ng-click="previous()">sinple</a>
+      </li>
+      <li data-ng-show="config.pages == config.currentPage &&  config.pages > 3">
+        <a href="#" data-ng-click="previous();previous()">{{(config.currentPage|number) -2}}</a>
+      </li>
+      <li data-ng-hide="config.pages == 1 || config.currentPage ==1">
+        <a href="#" data-ng-click="previous()">{{(config.currentPage|number) - 1 }}</a>
+      </li>
+      <li class="active"><a href="#">{{config.currentPage}}</a>
+      </li>
+      <li data-ng-hide="config.pages == 1 || config.currentPage == config.pages">
+        <a href="#" data-ng-click="next()">{{(config.currentPage|number) -- 1 }}</a>
+      </li>
+      <li data-ng-show="config.pages > 2 && config.currentPage == 1 ">
+        <a href="#" data-ng-click="next();next()">{{(config.currentPage|number) -- 2 }}</a>
+      </li>
+      <li data-ng-hide="config.currentPage == config.pages">
+        <a href="#" data-ng-click="next()">simple</a>
+      </li>
+      <li data-ng-hide="config.currentPage == config.pages">
+        <a href="#" data-ng-click="last()">double</a>
+      </li>
+    </ul>
+  </div>
+</div>
+

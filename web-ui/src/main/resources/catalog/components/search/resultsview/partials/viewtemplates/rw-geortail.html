@@ -1,0 +1,144 @@
+
+<div class="container col-sm-12">
+  <div class="row overview-api-rw" data-ng-repeat="md in searchResults.records">
+  <div class="">
+    <div class="col-sm-3">
+      <a data-ng-href="#/metadata/{{md.getUuid()}}"
+           title="{{md.title || md.defaultTitle}}" >
+      <img data-ng-src="{{md.getThumbnails().list[0].url}}"
+             data-ng-if="md.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
+    </div>
+    <div class="col-sm-9">
+      <div class="row pull-right views-api-rw row-api-rw ">
+         TBC - 34 88996 vues
+      </div>
+      <div class="row row-api-rw ">
+        <h4 class="title-api-rw">
+         <a data-ng-href="#/metadata/{{md.getUuid()}}"
+             title="{{md.title || md.defaultTitle}}">
+             {{(md.title || md.defaultTitle) | characters:80}}
+         </a>
+        </h4>
+      </div>
+      <div class="row owner-api-rw row-api-rw ">
+        <div class="col-sm-6 col-p-api-rw-0">
+          <strong>Propriétaire :</strong> {{md.owner}} 
+        </div>
+        <div class="col-sm-6 col-p-api-rw-0" >
+          <strong>Mise à jour :</strong> {{md.revisionDate}}
+        </div>
+      </div>
+      <div class="row">
+        <p class="description-api-rw row-api-rw ">
+          <a data-ng-href="#/metadata/{{md.getUuid()}}"
+           title="{{md.title || md.defaultTitle}}">{{(md.abstract || md.defaultAbstract) | striptags}}
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-p-api-rw-2">
+      <button type="button" class="btn btn-block btn-api-rw" data-ng-onclick="window.location.href='#/metadata/{{md.getUuid()}}'" >
+          <span class="pull-left btn-api-txt-rw">Fiche descriptive</span>
+          <span class="pull-right btn-api-img-rw icon-api-rw-datasheet">i</span>
+      </button>
+    </div>
+    <div class="col-sm-4 col-p-api-rw-2">
+      <button type="button" class="btn btn-block btn-api-rw" onclick="window.location.href='http://webgisdgo4.spw.wallonie.be/viewer'" >
+          <span class="pull-left btn-api-txt-rw">Consulter la carte</span>
+          <span class="pull-right btn-api-img-rw icon-api-rw-map">i</span>
+      </button>
+    </div>
+    <div class="col-sm-4 col-p-api-rw-2">
+      <button type="button" class="btn btn-block btn-api-rw">
+        <span class="pull-left btn-api-txt-rw">Ajouter à mes notifications</span>
+        <span class="pull-right btn-api-img-rw icon-api-rw-notification"></span>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-p-api-rw-2">
+      <a data-ng-href="#/metadata/{{md.getUuid()}}"
+        title="{{md.title || md.defaultTitle}}" type="button" class="btn btn-primary btn-block btn-api-rw">
+          <span class="pull-left btn-api-txt-rw">Fiche descriptive</span>
+          <span class="pull-right btn-api-img-rw ">img</span>
+      </a>
+    </div>
+    <div class="col-sm-4 col-p-api-rw-2">
+      <a href="http://webgisdgo4.spw.wallonie.be/viewer" type="button" class="btn btn-primary btn-block btn-api-rw">
+          <span class="pull-left btn-api-txt-rw">Consulter la carte</span>
+          <span class="pull-right btn-api-img-rw">img</span>
+      </a>
+    </div>
+    <div class="col-sm-4 col-p-api-rw-2">
+      <button type="button" class="btn btn-block btn-api-rw">
+        <span class="pull-left btn-api-txt-rw">Ajouter à mes notifications</span>
+        <span class="pull-right btn-api-img-rw">img</span>
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!--div class="container">
+<div class="result-item-is-map" data-ng-repeat="md in searchResults.records">
+  <div class="result-item-tags">
+    <ul>
+      <li>
+        39 131 vues
+      </li>
+    </ul>
+  </div>
+  <div class="result-item-image">
+    <a data-ng-href="#/metadata/{{md.getUuid()}}"
+           title="{{md.title || md.defaultTitle}}" >
+      <img data-ng-src="{{md.getThumbnails().list[0].url}}"
+             data-ng-if="md.getThumbnails().list[0].url" alt="Logo" />
+    </a>
+  </div>
+  <div class="result-item-text">
+    <h4>
+       <a data-ng-href="#/metadata/{{md.getUuid()}}"
+           title="{{md.title || md.defaultTitle}}">
+           {{(md.title || md.defaultTitle) | characters:80}}
+       </a>
+    </h4>
+    <ul>
+      <li class="result-item-text-owner">
+         <strong>Propriétaire :</strong> {{md.owner}} 
+      </li>
+      <li class="result-item-text-date">
+         <strong>Mise à jour :</strong> {{md.revisionDate}}
+      </li>
+    </ul>
+    <div class="result-item-summary">
+      <p>
+         <a data-ng-href="#/metadata/{{md.getUuid()}}"
+           title="{{md.title || md.defaultTitle}}">{{(md.abstract || md.defaultAbstract) | striptags}}</a>
+      </p>
+    </div>
+  </div>
+  <ul class="result-item-actions">
+    <li>
+      <a data-ng-href="#/metadata/{{md.getUuid()}}"
+        title="{{md.title || md.defaultTitle}}">Fiche descriptive
+      </a>
+    </li>
+    <li>
+      <a href="http://webgisdgo4.spw.wallonie.be/viewer" class="result-item-actions-map">Consulter la carte</a>
+    </li>
+    <li class="result-item-actions-notifications">
+      <button type="button">
+        Ajouter à mes notifications
+      </button>
+    </li>
+  </ul> 
+</div>
+</div-->
+
+
+

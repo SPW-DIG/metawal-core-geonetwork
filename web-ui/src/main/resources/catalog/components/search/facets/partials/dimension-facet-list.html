@@ -1,4 +1,4 @@
-<div class="gn-facet-list">
+<div class="gn-facet-list container-tab-api-rw ">
 
   <!--Collapse all button for first panel-->
   <a class=""
@@ -34,8 +34,13 @@
     </div>
   </div>
 
-
-
+<!--ul class="nav nav-pills nav-api-rw-justified">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a href="#">Profile</a></li>
+  <li role="presentation"><a href="#">Messages</a></li>
+</ul-->
+  <!--DEFAULT TAB START-->
+  <!--
   <ul class="nav nav-pills" data-ng-if="isTabMode">
     <li data-ng-repeat="c in tabs.category | orderBy: 'label'"
         data-ng-init="path = buildPath(c);"
@@ -48,4 +53,23 @@
       </a>
     </li>
   </ul>
+  -->
+  <!--DEFAULT TAB END-->
+
+  <!--API-RW TAB START-->
+  <ul class="nav nav-pills nav-api-rw-justified" data-ng-if="isTabMode">
+    <li data-ng-repeat="c in tabs.category | orderBy: 'label'"
+        data-ng-init="path = buildPath(c);"
+        role="presentation"
+        data-ng-class="{'active': c.isSelected}">
+      <a href="" title="{{c['@label'] || c['@value']}}"
+         data-ng-click="filter(c, $event)">
+        <i data-ng-if="c.isSelected" class="fa fa-caret-down fa-2x" aria-hidden="true"></i>
+        <i data-ng-if="!c.isSelected" class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
+        &nbsp;<span class="gn-facet-label">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
+        <span class="gn-facet-count">({{c['@count']}})</span>
+      </a>
+    </li>
+  </ul>
+  <!--API-RW TAB END-->
 </div>
