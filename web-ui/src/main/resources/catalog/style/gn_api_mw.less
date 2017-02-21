@@ -328,6 +328,7 @@ ul.gn-resultview li.list-group-item:hover {
 	background: #74aec2 none repeat scroll 0px 50%;
 	border-color: #74aec2;
     color: white;
+    padding:0px;
 }
 .btn-api-rw:hover {
 	cursor: pointer;
@@ -337,26 +338,47 @@ ul.gn-resultview li.list-group-item:hover {
 }
 .btn-api-txt-rw {
 	padding-left: 12px;
+    white-space: normal;
+    text-align: left;
+    width: 80%;
+    line-height: 100%;
 }
 .btn-api-img-rw {
-	padding-right: 25px;
+	/*padding-right: 25px;*/
+    position: absolute;
+    right: 10px;
+    top: 18px;
 }
 .icon-api-rw-datasheet {
-	width: 20px;
+	width: 21px;
 	height: 21px;
     background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -334px -402px;
     box-sizing:auto padding-box border-box;
 }
 .icon-api-rw-map {
 	height: 21px;
+    width: 25px;
 	display: block;
     background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -288px -402px;
     box-sizing:auto padding-box border-box;
-   
+}
+.icon-api-rw-download {
+    height: 16px;
+    width: 18px;
+    display: block;
+    background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -482px -322px;
+    box-sizing:auto padding-box border-box;
+}
+.icon-api-rw-walonmap {
+    height: 19px;
+    width: 19px;
+    display: block;
+    background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -275px -382px;
+    box-sizing:auto padding-box border-box;   
 }
 .icon-api-rw-notification {
-	width: 20px;
-	height: 21px;
+	width: 17px;
+	height: 19px;
 	display: block;
     background: rgba(0, 0, 0, 0) url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -294px -382px;
     box-sizing:auto padding-box border-box;
