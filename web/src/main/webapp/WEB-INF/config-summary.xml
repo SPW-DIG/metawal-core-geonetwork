@@ -79,6 +79,7 @@
   -->
 
   <facets>
+    <facet name="officialResource" indexKey="officialResource" label="officialResources"/>
     <facet name="keyword" indexKey="keyword" label="keywords" localized="true"/>
     <facet name="topicCat" indexKey="topicCat" label="topicCats" localized="true"/>
     <facet name="category" indexKey="_cat" label="categories" localized="true"/>
@@ -138,6 +139,15 @@
   </facets>
 
   <summaryTypes>
+    <summaryType name="apirw" format="DIMENSION">
+      <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
+      <item facet="geoportailTheme"
+            translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
+      <item facet="infraSIG"
+            translator="term:http://metawal.wallonie.be/thesaurus/infrasig"/>
+      <item facet="officialResource"/>     
+    </summaryType>
+
     <summaryType name="details" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="geoportailTheme"

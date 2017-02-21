@@ -292,6 +292,25 @@
 
       <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+
+      <xsl:for-each select="gmd:descriptiveKeywords[
+                          contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                   'Mots-clés InfraSIG')]/*/gmd:keyword">
+        <xsl:variable name="keywordOfficialResource" select="gco:CharacterString"/>
+        <xsl:if test="$keywordOfficialResource = 'Ressource officielle wallonne'">
+        <Field name="officialResource"
+                   string="Wallonie"
+                   store="true" index="true"/>
+        </xsl:if>
+        <xsl:if test="$keywordOfficialResource = 'Reporting INSPIRE'">
+        <Field name="officialResource"
+                   string="INSPIRE"
+                   store="true" index="true"/>
+        </xsl:if>
+
+      </xsl:for-each>
+
+
       <xsl:for-each select="//gmd:MD_Keywords">
         <!-- Index all keywords as text or anchor -->
         <xsl:variable name="listOfKeywords"
@@ -605,7 +624,7 @@
 
       <xsl:for-each select="srv:serviceType/gco:LocalName">
         <Field name="serviceType" string="{string(.)}" store="true" index="true"/>
-        <Field  name="type" string="service-{string(.)}" store="true" index="true"/>
+        <!--Field  name="type" string="service-{string(.)}" store="true" index="true"/-->
       </xsl:for-each>
 
       <xsl:for-each select="srv:serviceTypeVersion/gco:CharacterString">
