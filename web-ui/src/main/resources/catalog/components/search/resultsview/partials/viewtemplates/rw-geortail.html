@@ -10,7 +10,7 @@
     </div>
     <div class="col-sm-9">
       <div class="row pull-right views-api-rw row-api-rw ">
-         TBC - 34 88996 vues
+         {{md.popularity}} vues
       </div>
       <div class="row row-api-rw ">
         <h4 class="title-api-rw">
@@ -31,7 +31,7 @@
       <div class="row">
         <p class="description-api-rw row-api-rw ">
           <a data-ng-href="#/metadata/{{md.getUuid()}}"
-           title="{{md.title || md.defaultTitle}}">{{(md.abstract || md.defaultAbstract) | striptags}}
+           title="{{md.title || md.defaultTitle}}">{{(md.abstract || md.defaultAbstract) | striptags | limitTo: 160 }} <span data-ng-if="md.abstract.lenght() > 160 || md.defaultAbstract.lenght() > 160"> ...</span>
           </a>
         </p>
       </div>
