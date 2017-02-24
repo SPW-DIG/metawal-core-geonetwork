@@ -5,7 +5,10 @@
   <div class="row">
     <div class="col-md-3 container-leftside-api-rw">
       <div class="gn-search-facet facet-api-rw">
-        <p class="facet-title-api-rw request-api-rw">tbc :panier</p>
+        <p class="facet-title-api-rw request-api-rw">
+          <div data-ng-show="searchResults.records.length > 0"
+               data-gn-saved-selections-panel="user"></div>
+        </p>
       </div>
       <div class="gn-search-facet facet-api-rw">
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm.html'"></div>
@@ -30,7 +33,7 @@
           data-facet-type="facetsSummaryType"
           data-facet-list="facetConfig"
           data-current-facets="currentFacets"
-          data-tab-field="facetTabField">    
+          data-tab-field="facetTabField">
         </div>
       </div>
       <div class="row container-overview-api-rw">
@@ -70,7 +73,7 @@
            data-search-results="searchResults"
            data-template-url="resultTemplate"
            data-map="searchObj.searchMap">
-            
+
            </div>
            <div class="row"
            data-ng-show="searchResults.records.length > 0">
@@ -80,9 +83,9 @@
                  data-gn-pagination="paginationInfo"
                  data-hits-values="searchObj.hitsperpageValues"
                  data-enable-hot-keys="">
-                
+
             </div>
-            
+
           </div>
         </div>
       </div>
