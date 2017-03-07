@@ -290,6 +290,17 @@
         </xsl:for-each>
       </xsl:for-each>
 
+
+           <!-- Index all orgNameTree -->
+    <!--xsl:for-each select="gmd:pointOfContact[contains(gmd:CI_ResponsibleParty/gmd:role/gmd:CI_RoleCode/@codeListValue, 'custodian')]/gmd:CI_ResponsibleParty/gmd:organisationName/gco:CharacterString">
+       <Field  name="orgNameTree" string="{string(.)}" store="true" index="true"/>
+       <variable  name="orgNameTree" string="{string(.)}" store="true" index="true"/>
+       <xsl:message>
+         TEST CUSTODIAN
+         <xsl:value-of select="string(.)"/>
+      </xsl:message>
+    </xsl:for-each-->
+
       <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
       <!-- - - - - - - - - - RW accessConstraints  - - - - - - - - - - - - - -->
 
@@ -1039,8 +1050,34 @@
 
     <xsl:variable name="orgName" select="gmd:organisationName/(gco:CharacterString|gmx:Anchor)"/>
 
-    <Field name="orgName" string="{string($orgName)}" store="true" index="true"/>
-    <Field name="orgNameTree" string="{string($orgName)}" store="true" index="true"/>
+    <xsl:choose>
+      <xsl:when test="contains(gmd:role/*/@codeListValue, 'custodian')">
+        <Field name="orgName" string="{string($orgName)}" store="true" index="true"/>
+        <Field name="orgNameTree" string="{string($orgName)}" store="true" index="true"/>
+        <xsl:choose>
+          <xsl:when test="matches($orgName, '.*\(.*\)')">
+            <xsl:variable name="service"
+                          select="substring-before(substring-after($orgName, '('), ')')"/>
+            <Field name="{$fieldPrefix}orgNameTree"
+                   string="{$service}"
+                   store="true" index="true"/>
+          </xsl:when>
+          <xsl:when test="lower-case($orgName) = 'région wallonne'">
+            <Field name="{$fieldPrefix}orgNameTree"
+                   string="{$orgName}"
+                   store="true" index="true"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <Field name="{$fieldPrefix}orgNameTree"
+                   string="Autre - {gco:name/gco:CharacterString}"
+                   store="true" index="true"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:otherwise>
+        <Field name="orgName" string="{string($orgName)}" store="true" index="true"/>
+      </xsl:otherwise>
+    </xsl:choose>
 
     <xsl:variable name="uuid" select="@uuid"/>
     <xsl:variable name="role" select="gmd:role/*/@codeListValue"/>
