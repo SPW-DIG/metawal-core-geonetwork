@@ -180,7 +180,8 @@
       <item facet="diffusionmode"/>  
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
-      <!--<item facet="orgName" max="25"/>-->
+      <item facet="orgName" max="25"/>
+      <item facet="standard" max="15" sortBy="value"/>
       <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
       <item facet="status" translator="codelist:gmd:MD_ProgressCode"/>
       <!--item facet="mdStatus" max="10" sortBy="value"
