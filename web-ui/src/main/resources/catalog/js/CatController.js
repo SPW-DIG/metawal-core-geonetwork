@@ -185,7 +185,7 @@
     };
 
     return {
-      proxyUrl: '../../proxy?url=',
+      proxyUrl: '',
       locale: {},
       isMapViewerEnabled: false,
       requireProxy: [],
@@ -205,6 +205,7 @@
         // Remap some old settings with new one
         angular.extend(this.gnCfg, config || {});
         this.gnUrl = gnUrl || '../';
+        this.proxyUrl = this.gnUrl + '../proxy?url=';
         gnViewerSettings.mapConfig = this.gnCfg.mods.map;
         angular.extend(gnSearchSettings, this.gnCfg.mods.search);
         this.isMapViewerEnabled = this.gnCfg.mods.map.enabled;
@@ -214,7 +215,7 @@
         gnViewerSettings.layerName = this.gnCfg.mods.map.layer.name;
       },
       getDefaultConfig: function() {
-        return angular.copy(defaultConfig);
+        return angulaWr.copy(defaultConfig);
       }
     };
   }());
@@ -330,9 +331,12 @@
       });
       $scope.getPermalink = gnUtilityService.getPermalink;
 
-      var tokens = location.href.split('/');
-      // TODO: this does not work in API mode
-      $scope.service = tokens[6].split('?')[0];
+      try {
+        var tokens = location.href.split('/');
+        $scope.service = tokens[6].split('?')[0];
+      } catch(e) {
+        // console.log("Failed to extract current service from URL.");
+      }
 
       // If gnLangs current already set by config, do not use URL
       $scope.langs = gnGlobalSettings.gnCfg.mods.header.languages;
