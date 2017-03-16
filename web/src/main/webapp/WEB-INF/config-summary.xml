@@ -168,8 +168,8 @@
 
     <summaryType name="manager" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
-      <item facet="category" max="99" sortBy="value"
-            translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/>
+      <!--item facet="category" max="99" sortBy="value"
+            translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/-->
       <item facet="publishedForGroup" max="199" sortBy="value"
             translator="db:org.fao.geonet.repository.GroupRepository:findOneByName"/>
       <item facet="infraSIG"
