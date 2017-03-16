@@ -194,23 +194,41 @@
           // iso19139: 'md.format.xml?xsl=full_view&&id='
           // }
           searchSettings.formatter = {
-            // defaultUrl: 'md.format.xml?xsl=full_view&id='
             // defaultUrl: 'md.format.xml?xsl=xsl-view&uuid=',
             // defaultPdfUrl: 'md.format.pdf?xsl=full_view&uuid=',
             list: [{
-              label: 'geoportail',
+              /*label: 'géoportal',
               url: function(md) {
-                return '../api/records/' + md.getUuid() + '/formatters/geoportail-view?root=div';
+                var url;
+                if (md.getSchema() == 'iso19115-3'){
+                  console.log('iso19115');
+                  url = '../api/records/' + md.getUuid() + '/formatters/geoportail-view?root=div';
+                } else {
+                  console.log('not iso19115')
+                  url = '../api/records/' + md.getUuid() + '/formatters/xsl-view?root=div';
+                }
+                return url
+              }
+            }, {*/
+              label: 'Vue Géoportail',
+              url: function(md) {
+                return '../api/records/' + md.getUuid() + '/formatters/geoportail-view?root=div'
               }
             }, {
-            //  label: 'inspire',
-            //  url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
-            //}, {
+              label: 'Vue basique',
+              url: function(md) {
+                return '../api/records/' + md.getUuid() + '/formatters/xsl-view?root=div'
+              }
+            }/*,{
+              label: 'inspire',
+              url: 'md.format.xml?xsl=xsl-view' + '&view=inspire&id='
+            
+            }, {
               label: 'metawal',
               url: function(md) {
                 return '../api/records/' + md.getUuid() + '/formatters/xsl-view?root=div';
               }
-            }]
+            }*/]
           };
 
           // Mapping for md links in search result list.
