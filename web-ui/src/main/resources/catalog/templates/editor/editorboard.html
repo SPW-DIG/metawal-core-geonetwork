@@ -24,6 +24,7 @@
                      id="gn-any-field"
                      data-ng-model="searchObj.params.any"
                      data-ng-model-options="modelOptions"
+                     data-ng-keyup="$event.keyCode == 13 && triggerSearch()"
                      placeholder="{{'anyPlaceHolder' | translate}}"
                      data-typeahead="address for address in getAnySuggestions($viewValue)"
                      data-typeahead-loading="anyLoading" class="form-control"
