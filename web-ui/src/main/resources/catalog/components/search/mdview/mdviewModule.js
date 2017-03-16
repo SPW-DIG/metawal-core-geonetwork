@@ -72,6 +72,17 @@
           });
         });
       };
+      $scope.detectSchema15_3 = function(md) {
+        var detectedIso15_3;
+        if (md){
+          if (md.getSchema() == 'iso19115-3'){
+            detectedIso15_3 = true;
+          } else {
+            detectedIso15_3 = false;
+          }
+        }
+        return detectedIso15_3
+      };
       $scope.format = function(f) {
         $scope.usingFormatter = f !== undefined;
         $scope.currentFormatter = f;

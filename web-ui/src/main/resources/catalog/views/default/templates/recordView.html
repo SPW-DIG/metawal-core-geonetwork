@@ -51,7 +51,7 @@
           </a>
         </li>
         <li data-ng-repeat="f in formatter.list"
-            data-ng-class="f === currentFormatter ? 'disabled' : ''">
+            data-ng-class="f === currentFormatter ? 'disabled' : ''" data-ng-if="(f.label != 'Vue Géoportail' && f.label != 'Vue basique') || ((f.label === 'Vue Géoportail' && detectSchema15_3(mdView.current.record)) || (f.label === 'Vue basique' && !detectSchema15_3(mdView.current.record)))">
           <a href="" data-ng-click="format(f)">
             <i class="fa fa-fw"></i>
             {{f.label | translate}}
