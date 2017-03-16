@@ -2648,8 +2648,10 @@ période de temps couverte par le service.
     <helper rel="gmd:version">
       <option value="Texte">Texte</option>
       <option value="ESRI Shapefile" title="1.0">ESRI Shapefile</option>
+      <option value="ESRI sLAS" title="1.0">ESRI sLAS</option>
       <option value="Mapinfo MIF/MID" title="4.5">Mapinfo MIF/MID</option>
       <option value="Mapinfo TAB">Mapinfo TAB</option>
+      <option value="OGC GeoPackage">OGC GeoPackage</option>
       <option value="KML">KML</option>
       <option value="GML" title="3.2.1">GML</option>
       <option value="GeoTIFF" title="1.0">GeoTIFF</option>
@@ -2657,6 +2659,7 @@ période de temps couverte par le service.
       <option value="ECW">ECW</option>
       <option value="JPEG2000">JPEG2000</option>
       <option value="ZIP">ZIP</option>
+      <option value="LASZIP">LASZIP</option>
       <option value="PDF">PDF</option>
       <option value="PNG">PNG</option>
       <option value="JPEG">JPEG</option>
