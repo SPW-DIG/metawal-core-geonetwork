@@ -64,6 +64,11 @@
 
       $scope.toggleOnlyMyRecord = function() {
         $scope.onlyMyRecord = !$scope.onlyMyRecord;
+        if ($scope.onlyMyRecord) {
+          setOwner()
+        } else {
+          unsetOwner()
+        }
       };
       var setOwner = function() {
         $scope.searchObj.params['_owner'] = $scope.user.id;
