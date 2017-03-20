@@ -1,0 +1,1454 @@
+.catalog-walonmap .result-filters {
+    margin-top: 0px;
+}
+.catalog-walonmap .results {
+  margin-top:0;
+}
+.catalog-walonmap .span8 .results.results-unbordered {
+  padding-top:0;
+}
+.catalog-walonmap .sidebar {
+  margin-top:0;
+}
+.searchCriterium select,.searchCriterium input {
+	width: 350px;
+	border: 1px solid lightgray;
+    height: 23px;
+	margin-bottom: 3px;
+	box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+}
+
+* + html .searchCriterium select,.searchCriterium input {
+        margin-bottom: -5px;
+  }
+
+.searchCriterium input.searchsubmitBtn {
+    background: url("img/search-submit.png") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 25px;
+    left: 326px;
+    padding: 0;
+    position: relative;
+    text-indent: -9999px;
+    top: -20px;
+}
+
+.themes {color:#2181a2;}
+.sous_themes {color:#2181a2;}
+
+.titre {
+	padding-top: 7px;
+	color: #2181A2;
+	font-weight: 600;
+}
+
+.metadonnee-actions {
+	float: right;
+	width: 145px;
+}
+.metawalSummaryItem .description {
+  float: left;
+  width: 385px;
+}
+
+.metadonnee-wrapper {
+	border-bottom: 1px solid #D1D1D1;
+    border-left: 1px solid #D1D1D1;
+    border-right: 1px solid #D1D1D1;
+	border-top: none;
+	padding: 7px;
+}
+body .metawalSummaryItem .titre {
+  font-size: 12px;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+.metawalSummaryItem .abstract {
+    color: #636363;
+    font-size:0.9em;
+}
+.bodywrapper .meta-searchsubmit {
+	background: url("../img/bouton_login.gif") no-repeat scroll right top transparent;
+	border: medium none;
+	color: #FFFFFF !important;
+	font-size: 13px !important;
+	font-weight: lighter;
+	height: 27px !important;
+	padding: 4px 0 5px;
+	width: 119px;
+	float: right;
+	margin: 7px;
+	cursor: pointer;
+}
+
+.bodywrapper .meta-searchReinitLink {
+	font-size: 13px !important;
+	font-weight: lighter;
+	height: 27px !important;
+	padding: 4px 0 5px;
+	width: 119px;
+	float: right;
+	margin: 7px;
+	cursor: pointer;
+}
+
+.bodywrapper .meta-searchTri {
+	height: 27px !important;
+	padding: 4px 0 5px;
+	/*margin: 7px 0 7px 315px;*/
+    margin: 7px 0 7px 160px;
+	display: inline-block;
+}
+
+.bodywrapper .meta-searchTri .searchTri-select{
+	padding-top: 7px;
+}
+
+.metadonnee-wrapper .metawalSummaryItem .metadonnee-actions .meta-ficheDescriptive {
+	cursor: pointer;
+	height: 28px;
+	line-height: 20px;
+	padding: 4px 6px;
+	text-decoration: none;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	position:relative;
+/*	text-transform: uppercase;*/
+	font-size: 11px;
+	background: url(../img/bg_AlphabeticalMenu.gif) repeat-x top #e3e3e3;
+	color: #2181A2;
+	border: 1px solid #d1d1d1;
+    margin-top: 5px;
+    width:100%;
+    cursor: pointer;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#FFFFFF), to(#e3e3e3));
+background: -webkit-linear-gradient(#FFFFFF, #e3e3e3);
+background: -moz-linear-gradient(#FFFFFF, #e3e3e3);
+background: -ms-linear-gradient(#FFFFFF, #e3e3e3);
+background: -o-linear-gradient(#FFFFFF, #e3e3e3);
+background: linear-gradient(#FFFFFF, #e3e3e3);
+-pie-background: linear-gradient(#FFFFFF, #e3e3e3);
+
+    	behavior: url(PIE.htc);
+}
+
+.metadonnee-wrapper .metawalSummaryItem .metadonnee-actions .meta-ficheDescriptive:hover
+	{
+	cursor: pointer;
+	background: url(../img/bg_AlphabeticalMenu_on.gif) repeat-x top #2d5e6f;
+	color: #ccdbe0;
+	border: 1px solid #1d3d48;
+
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#2d5e6f), to(#2d5e6f));
+background: -webkit-linear-gradient(#2d5e6f, #2d5e6f);
+background: -moz-linear-gradient(#2d5e6f, #2d5e6f);
+background: -ms-linear-gradient(#2d5e6f, #2d5e6f);
+background: -o-linear-gradient(#2d5e6f, #2d5e6f);
+background: linear-gradient(#2d5e6f, #2d5e6f);
+-pie-background: linear-gradient(#2d5e6f, #2d5e6f);
+
+}
+
+#mdResultTabs {
+	background: none;
+	border: none;
+	font-size: 1em;
+}
+
+#mdResultTabs .noMdResultForType {
+	padding: 25px 15px 25px 15px;
+	border: 1px solid #D1D1D1;
+	border-top: none;
+	border-radius: 0 0 5px 5px;
+	color:#636363;
+}
+
+.bodywrapper #content .ui-tabs-panel.ui-widget-content.ui-corner-bottom {
+	padding: 0;
+	line-height: 20px;
+}
+
+#mdResultTabs .ui-tabs-panel .alternate2 {
+	background-color: #F5F5F5;
+}
+
+#mdResultTabs .ui-tabs-panel .alternate1 {
+	background-color: #FBFBFB;
+}
+
+.bodywrapper ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
+	margin-left: 0;
+	margin-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.metawalSummaryItem .thumbnail {
+	width: 65px;
+	float: left;
+	padding: 0 10px 0 0;
+}
+
+.metawalFullPage .image {
+	max-width: 250px;
+	float: left;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+.metawalFullPage .image img {
+	max-width: 250px;
+	float: left;
+	max-height: 120px;
+	padding: 10px 0 0;
+}
+
+.metawalFullPage .box {
+	/*border-style:solid;*/
+	/*border-width:1px;*/
+    font-size: 12px;
+    margin-top: 10px;
+    border-bottom: 1px dashed #999;
+
+}
+
+.metawalFullPage .boxFirst {
+	/*border-style:solid;*/
+	/*border-width:1px;*/
+    font-size: 12px;
+    margin-top: 10px;
+    border-bottom: 1px dashed #999;
+
+}
+
+.metawalFullPage .boxInt {
+	/*border-style:solid;*/
+	/*border-width:1px;*/
+    font-size: 12px;
+    margin-top: 10px;
+    border-bottom: 1px dashed #999;
+
+}
+
+.metawalFullPage .boxLast {
+	/*border-style:solid;*/
+	/*border-width:1px;*/
+    font-size: 12px;
+    margin-top: 10px;
+    border-bottom: 1px dashed #999;
+
+}
+
+.metawalItem .image {
+	max-width: 580px;
+}
+
+.metawalItem .image img {
+	max-width: 580px;
+}
+
+.bodywrapper #content li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active a {
+    color:white;
+}
+
+.bodywrapper #content li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active {
+    background: url("../img/tab-right.png") no-repeat scroll 100% 0 transparent;
+    background-position: 0 -43px;
+}
+
+.bodywrapper #content li.ui-state-default.ui-corner-top.ui-state-hover{
+    /*background: url("../img/tab-right.png") no-repeat scroll 100% 0 transparent;*/
+    background-color:#A9C8D3;
+    background-position: 0 -43px;
+}
+.bodywrapper #content li.ui-state-default.ui-corner-top.ui-state-hover a{
+    color:#285869;
+}
+
+.bodywrapper #content li.ui-state-default.ui-corner-top {
+    background: url("../img/tab-left.png") repeat-x scroll 0 0 transparent;
+}
+
+.bodywrapper #content li.ui-state-default.ui-corner-top a {
+	/*padding:3px 6px;*/
+	line-height: 29px;
+    padding: 0 15px;
+}
+
+.bodywrapper #content .ui-widget-header {
+	background:none;
+	border:none;
+	border-bottom: 1px solid #AAAAAA;
+}
+
+.ui-dropdownchecklist-text {
+	height:1em;
+	line-height:1em;
+}
+
+.ui-widget {
+	color: #636363;
+   	font-size: 1em;
+}
+
+div#mdType_geoservice.ui-tabs-panel div.mdTypeHeader div.geoserviceType
+div#ddcl-geoserviceType-ddw.ui-dropdownchecklist
+div.ui-dropdownchecklist-dropcontainer div.ui-dropdownchecklist-item:hover {
+	background-color: #CCCCCC;
+	color: white;
+}
+
+div.geoserviceType div#ddcl-geoserviceType-ddw.ui-dropdownchecklist
+div.ui-dropdownchecklist-dropcontainer div.ui-dropdownchecklist-item
+label.ui-dropdownchecklist-text {
+	font-size: 100% !important;
+	/*color: #666666;*/
+    padding: 2px;
+    /*background-color:white;*/
+    font-weight:normal;
+    height: 80px;
+}
+
+div.geoserviceType div#ddcl-geoserviceType-ddw.ui-dropdownchecklist
+div.ui-dropdownchecklist-dropcontainer div.ui-dropdownchecklist-item{
+	background-color:white;
+	background:none;
+	border: 0;
+}
+
+div.geoserviceType div#ddcl-geoserviceType-ddw.ui-dropdownchecklist
+div.ui-dropdownchecklist-dropcontainer {
+	border: 1px solid #AAAAAA;
+	height: 100% !important;
+	overflow: hidden;
+}
+
+div.geoserviceType span#ddcl-geoserviceType.ui-dropdownchecklist
+span.ui-dropdownchecklist-selector span.ui-dropdownchecklist-text{
+	font-size: 12px;
+	width: 80px !important;
+}
+
+div.geoserviceType span#ddcl-geoserviceType.ui-dropdownchecklist
+span.ui-dropdownchecklist-selector {
+	width: 80px !important;
+}
+
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdTabDescription.ui-tabs-panel div.box div.themes ul li.theme {
+	margin-left: 30px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdTabDescription.ui-tabs-panel div.box div.sous_themes ul li.sous_theme {
+	margin-left: 30px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdContact.ui-tabs-panel div.box div.roles ul li.role {
+	margin-left: 30px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdTabDescription.ui-tabs-panel div.box div.inspire_keywords ul li.inspire_theme {
+	margin-left: 30px;
+}
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default a {
+	padding: 0 15px;
+	color: #555555;
+	font-weight: normal;
+	font-size: 0.8em;
+	line-height: 29px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default.ui-state-active a {
+	padding: 0 15px;
+	color: white;
+	font-weight: normal;
+	font-size: 0.8em;
+    line-height: 29px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default.ui-state-hover a {
+	padding: 0 15px;
+	/*color: white;*/
+	color:#285869;
+	font-weight: normal;
+	font-size: 0.8em;
+	line-height: 29px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default.ui-tabs-selected.ui-state-hover a {
+	padding: 0 15px;
+	color:white;
+	font-weight: bold;
+	font-size: 0.8em;
+	line-height: 29px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default {
+    background: url("../img/tab-left.png") repeat-x scroll 0 0 transparent;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default.ui-state-active {
+    background: url("../img/tab-right.png") no-repeat scroll 0 -43px transparent;
+}
+
+
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+ul.mdDetailTabs li.ui-state-default.ui-state-hover {
+    /*background: url("../img/tab-right.png") no-repeat scroll 0 -43px transparent;*/
+     background-color:#A9C8D3;
+    background-position: 0 -43px;
+
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdTabConstrints.ui-tabs-panel {
+	font-size: 12px;
+	padding: 1em 1.4em;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdMoreInfo.ui-tabs-panel {
+	font-size: 12px;
+	/*padding: 1em 1.4em;*/
+	padding:0 0 10px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdTabConstrints.ui-tabs-panel div.accessConstraints {
+	margin-top: 13px;
+	margin-left: 5px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdTabQuality.ui-tabs-panel div.useLimitation {
+	margin-top: 13px;
+	margin-left: 5px;
+}
+
+div#metawalFullPage.metawalFullPage div.ui-tabs
+div#mdMoreInfo.ui-tabs-panel div.linkMetaWal {
+	margin-top: 13px;
+	margin-left: 5px;
+}
+
+div.mainContentWrapper div#mdResultTabs.ui-tabs ul.mdResultTabs {
+	background: url("../img/hr-bg.png") repeat-x scroll left bottom transparent;
+   border: medium none;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+div.mainContentWrapper div#mdResultTabs.ui-tabs ul.mdResultTabs {
+	height:expression("32px");
+}
+div.ui-tabs-panel {
+	color: #636363;
+}
+
+div.ui-dialog-titlebar span.ui-dialog-title {
+	font-size: 24px;
+    font-weight: bold;
+    line-height: normal;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0 0 0 20px;
+}
+
+.ui-widget-content {
+	color: #636363 !important;
+}
+.ui-widget-content.popup-content {
+	height: 300px;
+	overflow: auto;
+}
+
+.ui-widget-header {
+	color: #636363 !important;
+}
+
+/*- POPUP -*/
+  body .ui-dialog {
+    padding: 0;
+    border-radius: 0;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.3);
+  }
+  .ui-dialog .ui-dialog-titlebar {
+    background: url(../img/ui-title.jpg) repeat-x #316476;
+    border-radius: 0;
+    padding: 10px;
+    border: none;
+  }
+
+  .ui-dialog div.ui-dialog-titlebar span.ui-dialog-title {
+    padding: 0;
+    color: #fff;
+    font-weight: normal;
+    font-size: 18px;
+  }
+  .ui-dialog .ui-widget-header .ui-dialog-titlebar-close:hover {
+    background: none;
+    border: none;
+    padding: 1px;
+  }
+  .ui-dialog .ui-widget-header .ui-dialog-titlebar-close .ui-icon {
+    background: url(../img/close-popup.png) no-repeat top left;
+  }
+  .ui-dialog .mdHeaderDesc .titre {
+    font-size: 20px;
+    font-weight: lighter;
+    line-height: 22px;
+  }
+  .ui-dialog .mdHeaderDesc .organisme {
+    padding: 10px 0 0;
+  }
+
+  .ui-dialog .mdHeaderDesc .proprio {
+    padding: 10px 0 0;
+  }
+
+    .ui-dialog .mdHeaderDesc .dateMAJ {
+    padding: 10px 0 0;
+
+  }
+  .ui-dialog .mdHeaderDesc .dateMAJ span {
+        font-weight: bold;
+
+  }
+
+.ui-dialog .mdHeaderDesc .organisme span {
+      font-weight: bold;
+  }
+
+
+ .mdHeaderDesc .organisme {
+    padding: 10px 0 0;
+  }
+
+ .mdHeaderDesc .proprio {
+    padding: 10px 0 0;
+  }
+
+ .mdHeaderDesc .dateMAJ {
+    /*padding: 10px 0 0;*/
+     padding: 4px 0 0;
+
+
+ }
+ .mdHeaderDesc .dateMAJ span {
+        font-weight: bold;
+
+  }
+
+.mdHeaderDesc .organisme span {
+      font-weight: bold;
+  }
+
+
+  .ui-dialog .ui-tabs {
+    margin: 15px 0 0;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+  .ui-dialog .ui-tabs .mdDetailTabs {
+    border: none;
+    padding: 0;
+    background: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+  }
+  .ui-dialog .ui-tabs .mdDetailTabs li.ui-tabs-selected {
+    padding-bottom: 0;
+  }
+  div#metawalFullPage.metawalFullPage div.ui-tabs ul.mdDetailTabs li.ui-state-default.ui-state-active a {
+    font-weight: bold;
+  }
+  .ui-dialog .ui-tabs .mdDetailTabs li a {
+    font-size: 14px;
+  }
+  body .ui-tabs .ui-tabs-panel, div#metawalFullPage.metawalFullPage div.ui-tabs div#mdTabConstrints.ui-tabs-panel {
+    padding: 5px 10px 10px;
+  }
+  .box {
+    margin-top: 0;
+    padding: 0 0 10px;
+  }
+  .box .themes, .box .sous_themes {
+    color: #636363;
+  }
+  .box h3 {
+    color: #285869;
+    font-size: 15px;
+    padding: 5px 0 3px;
+  }
+  .box ul {
+    padding: 5px 0 0;
+  }
+  .box ul li {
+    list-style: none;
+    background: url(../img/list-popup.gif) no-repeat left 4px;
+    padding: 0 0 0 10px;
+    margin: 0 0 0 5px;
+  }
+  div#metawalFullPage.metawalFullPage {
+    /*width:100%;*/
+    width: 680px;
+    background-color:white;
+    font-size: 0.9em;
+    line-height: 1.3em;
+  }
+  div#metawalFullPage.metawalFullPage div.ui-tabs div#mdTabDescription.ui-tabs-panel div.box div.themes ul li.theme, div#metawalFullPage.metawalFullPage div.ui-tabs div#mdTabDescription.ui-tabs-panel div.box div.sous_themes ul li.sous_theme {
+    margin-left: 10px;
+  }
+div#metawalFullPage.metawalFullPage div.info-description {
+    background: url(../img/separator.gif) repeat-y 200px top;
+	clear:both;
+}
+div#metawalFullPage.metawalFullPage div.info-description h4.metaLabel{
+	width:200px;
+	float:left;
+	padding:0 0 8px 0;
+	font-size:12px;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description .metaContent{
+	float: right;
+    font-size: 12px;
+    padding: 0 0 3px 15px;
+    width: 434px;
+}
+
+
+
+div#metawalFullPage.metawalFullPage div.info-description .infoNA{
+	font-style: italic;
+}
+
+div#metawalFullPage.metawalFullPage div.info-descriptionLg .infoNA{
+	font-style: italic;
+}
+
+
+div#metawalFullPage.metawalFullPage div.info-description2 .infoNA{
+	font-style: italic;
+}
+
+div#metawalFullPage.metawalFullPage #mdContact{
+    /*border: 1px solid #C9CED0;*/
+    padding: 0;
+}
+div#metawalFullPage.metawalFullPage #mdContact div.box{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0;
+}
+div#metawalFullPage.metawalFullPage #mdContact div.box-col1{
+    float: left;
+    width: 200px;
+}
+div#metawalFullPage.metawalFullPage #mdContact div.box-col1 .metaContent {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none outside none;
+    margin: 0;
+    padding: 8px 0 0 10px;
+    text-transform: none;
+    width: 180px;
+}
+div#metawalFullPage.metawalFullPage ul,
+div#metawalFullPage.metawalFullPage ul li {
+    background:none;
+    margin: 0;
+    padding: 0;
+}
+div#metawalFullPage.metawalFullPage ul li.desc{
+	display: inline-block;
+}
+
+div#metawalFullPage.metawalFullPage ul li.desc:after {
+  content:",";
+}
+div#metawalFullPage.metawalFullPage ul li.desc:last-child:after{
+  content:none;
+}
+
+div#metawalFullPage.metawalFullPage ul li.accessLi{
+	display: inline-block;
+}
+div#metawalFullPage.metawalFullPage ul li.accessLi:FIRST-CHILD:BEFORE {
+  content:"(";
+}
+div#metawalFullPage.metawalFullPage ul li.accessLi:AFTER {
+  content:",";
+}
+div#metawalFullPage.metawalFullPage ul li.accessLi:last-child:after{
+  content:")";
+}
+
+div#metawalFullPage.metawalFullPage #mdContact div.box-col2{
+    float: left;
+    width: 440px;
+}
+div#metawalFullPage.metawalFullPage #mdContact div.info-description {
+    background: url("../img/separator.gif") repeat-y scroll 146px top transparent;
+    clear: both;
+}
+div#metawalFullPage.metawalFullPage #mdContact div.info-description h4.metaLabel{
+    float: left;
+    padding: 8px 0 0;
+    width: 150px;
+	text-transform:none;
+}
+div#metawalFullPage.metawalFullPage #mdContact div.info-description .metaContent{
+    float: left;
+    font-size: 12px;
+    /*padding: 8px 0 8px 0px;*/
+    /*width: 274px;*/
+    width: 440px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContact div.info-description .metaContent{
+    float: left;
+    font-size: 12px;
+    /*padding: 8px 0 8px 0px;*/
+    padding: 5px 0;
+    /*width: 274px;*/
+    width: 440px;
+}
+
+div#metawalFullPage.metawalFullPage h4{
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none outside none;
+    margin: 0;
+    padding: 8px 0 0 0;
+    /*text-transform: uppercase;*/
+}
+
+div#metawalFullPage.metawalFullPage h5{
+    font-size: 12px;
+    font-weight: normal;
+    list-style: none outside none;
+    margin: 0;
+    padding: 8px 0 0 0;
+    /*text-transform: uppercase;*/
+}
+
+div#metawalFullPage.metawalFullPage #mdContact h4{
+    padding: 8px 0 0 10px;
+}
+div#metawalFullPage.metawalFullPage .ui-widget-content a {
+    color: #2181A2;
+}
+
+/*JSC*/
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box-col1{
+    float: left;
+    width: 200px;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box-col1 .metaContent {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none outside none;
+    margin: 0;
+    padding: 8px 0 0 10px;
+    text-transform: none;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box-col2{
+    float: left;
+    width: 440px;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.info-description {
+    background: url("../img/separator.gif") repeat-y scroll 146px top transparent;
+    clear: both;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.info-description h4.metaLabel{
+    float: left;
+    padding: 8px 0 0;
+    width: 150px;
+	text-transform:none;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess div.info-description .metaContent{
+    float: left;
+    font-size: 12px;
+    /*padding: 8px 0 8px 0px;*/
+    padding: 5px 0;
+    /*width: 274px;*/
+    width: 440px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage #mdContactTabAccess h4{
+    padding: 8px 0 0 10px;
+}
+
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.box{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.boxFirst{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	border-bottom:none !important;
+	margin:0;
+	padding:0;
+}
+
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.boxInt{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	border-bottom:none !important;
+	margin:0;
+	padding:0;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.boxIntLast{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0 0 8px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.box-col1{
+    float: left;
+    /*width: 200px; JSC*/
+    width: 198px;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage div.box-col1 .metaContent {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none outside none;
+    margin: 0;
+    padding: 8px 0 8px 10px;
+    /*text-transform: uppercase;*/
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.box-col2{
+    float: left;
+    /*width: 440px;*/
+    width: 480px;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description {
+    background: url("../img/separator.gif") repeat-y scroll 146px top transparent;
+    clear: both;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description h4.metaLabel{
+    float: left;
+    padding: 8px 0 0;
+    width: 150px;
+	text-transform:none;
+}
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description .metaContent{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   padding: 8px 0 8px 0;
+    /*width: 274px;*/
+    width: 320px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   padding: 8px 0 8px 0;
+   /*width: 274px;*/
+   width: 330px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description .metaContentMotsCles2{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   padding: 8px 0 8px 0;
+   /*width: 274px;*/
+   width: 330px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-descriptionLg .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   /*padding: 8px 0 8px 0px;*/
+   /*width: 274px;*/
+   width: 480px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-descriptionLgEnLigne .metaContentMotsClesEnLigne{
+    float: left;
+    font-size: 12px;
+  	padding-left:0px !important;
+   	width: 460px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description2 .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   padding: 3px 5px;
+   /*width: 274px;*/
+   width: 330px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-description2 .metaContent{
+    float: left;
+    font-size: 12px;
+    padding: 8px 0 8px;
+    /*width: 274px;*/
+    width: 480px;
+}
+
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-descriptionLg {
+    width: 480px;
+    max-height:145px;
+    overflow:auto;
+    padding: 8px 0 8px;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-descriptionLgEnLigne {
+    width: 480px;
+    /*max-height:145px;  */
+    max-height:200px;
+    overflow:auto;
+    padding: 0 0 8px 0;
+}
+
+.ui-dialog div#metawalFullPage.metawalFullPage div.info-descriptionLg .metaContent{
+    float: left;
+    font-size: 12px;
+    /*width: 274px;*/
+   /* width: 440px;*/
+}
+
+
+.ui-dialog div#metawalFullPage.metawalFullPage h4{
+    padding: 8px 0 0 10px;
+}
+
+
+
+
+/*- END POPUP -*/
+
+
+/*- FICHE DESCRIPTIVE DANS PAGE WEB - GEOPORT-224 */
+
+.mdHeaderDesc {
+    color: #636363;
+    font-size: 0.9em;
+}
+
+
+.mdHeaderDesc .titre {
+    font-size: 20px;
+    font-weight: lighter;
+    line-height: 22px;
+    margin:0;
+  }
+.mdHeaderDesc .organisme {
+    padding: 10px 0 0;
+  }
+.mdHeaderDesc .proprio {
+    padding: 10px 0 0;
+  }
+.ui-tabs {
+    margin: 15px 0 0;
+    border: none;
+    padding: 0;
+    background: none;
+  }
+.ui-tabs .mdDetailTabs {
+    border: none;
+    padding: 0;
+    background: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+  }
+.ui-tabs .mdDetailTabs li.ui-tabs-selected {
+    padding-bottom: 0;
+  }
+  div#metawalFullPage.metawalFullPage div.ui-tabs ul.mdDetailTabs li.ui-state-default.ui-state-active a {
+    font-weight: bold;
+  }
+.ui-tabs .mdDetailTabs li a {
+    font-size: 14px;
+  }
+body .ui-tabs .ui-tabs-panel, div#metawalFullPage.metawalFullPage div.ui-tabs div#mdTabConstrints.ui-tabs-panel {
+    /*padding: 5px 10px 10px; JSC*/
+    padding: 0 0 10px;
+  }
+
+.container_16 .grid_16 .ficheDescFull{
+    width: 700px;
+}
+
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0;
+}
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box-col1{
+    float: left;
+    width: 200px;
+}
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box-col1 .metaContent {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none outside none;
+    margin: 0;
+    padding: 8px 0 0 10px;
+    text-transform: none;
+}
+
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.box-col2{
+    float: left;
+    width: 440px;
+}
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.info-description {
+    background: url("../img/separator.gif") repeat-y scroll 146px top transparent;
+    clear: both;
+}
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.info-description h4.metaLabel{
+    float: left;
+    padding: 8px 0 0;
+    width: 150px;
+	text-transform:none;
+}
+div#metawalFullPage.metawalFullPage #mdContactTabAccess div.info-description .metaContent{
+    float: left;
+    font-size: 12px;
+    /*padding: 8px 0 8px 0px;*/
+    /*width: 274px;*/
+    width: 440px;
+}
+
+div#metawalFullPage.metawalFullPage #mdContactTabAccess h4{
+    padding: 8px 0 0 10px;
+}
+
+
+div#metawalFullPage.metawalFullPage div.box{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0;
+}
+
+div#metawalFullPage.metawalFullPage div.boxFirst{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	border-bottom:none !important;
+	margin:0;
+	padding:0;
+}
+
+
+div#metawalFullPage.metawalFullPage div.boxInt{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	border-bottom:none !important;
+	margin:0;
+	padding:0;
+}
+
+div#metawalFullPage.metawalFullPage div.boxIntLast{
+    background: url(../img/separator_col1.gif) repeat-y left top;
+	clear:both;
+	/*border-bottom:#999999 1px solid;*/
+	border-bottom:#CCCCCC 1px solid;
+	margin:0;
+	padding:0 0 8px;
+}
+
+div#metawalFullPage.metawalFullPage div.box-col1{
+    float: left;
+    /*width: 200px; JSC*/
+    width: 198px;
+}
+div#metawalFullPage.metawalFullPage div.box-col1 .metaContent {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 12px;
+    font-weight: bold;
+    list-style: none outside none;
+    margin: 0;
+    padding: 10px 0 8px 10px;
+    /*text-transform: uppercase;*/
+}
+
+div#metawalFullPage.metawalFullPage div.box-col2{
+    float: left;
+    /*width: 440px;*/
+    width: 480px;
+}
+div#metawalFullPage.metawalFullPage div.info-description {
+    background: url("../img/separator.gif") repeat-y scroll 146px top transparent;
+    clear: both;
+}
+div#metawalFullPage.metawalFullPage div.info-description h4.metaLabel{
+    float: left;
+    padding: 8px 0 0;
+    width: 150px;
+	text-transform:none;
+}
+div#metawalFullPage.metawalFullPage div.info-description .metaContent{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   /*padding: 8px 0 8px 0px;*/
+    /*width: 274px;*/
+    width: 320px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-description .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   padding: 8px 0 3px 0;
+   /*padding: 8px 0 8px 0;
+   /*width: 274px;*/
+   width: 330px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-description .metaContentMotsCles2{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 0px;
+   /*padding: 8px 0 8px 0px;
+   /*width: 274px;*/
+   width: 330px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-descriptionLg .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   /*padding: 8px 0 8px 0px;*/
+   /*width: 274px;*/
+   width: 480px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-descriptionLgEnLigne .metaContentMotsClesEnLigne{
+    float: left;
+    font-size: 12px;
+  	padding-left:0px !important;
+   	width: 460px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-description2 .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   padding: 3px 5px;
+   /*width: 274px;*/
+   width: 330px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-description3 .metaContentMotsCles{
+    float: left;
+    font-size: 12px;
+   /*padding: 8px 0 3px 15px;*/
+   padding: 3px 5px;
+   /*width: 274px;*/
+   width: 480px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-description2 .metaContent{
+    float: left;
+    font-size: 12px;
+    /*padding: 8px 0 8px;*/
+    /*width: 274px;*/
+    width: 480px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-descriptionLg {
+    width: 480px;
+    max-height:145px;
+    overflow:auto;
+    /*padding: 8px 0 ;*/
+}
+
+div#metawalFullPage.metawalFullPage div.descLg{
+    max-height: 145px;
+}
+
+div#metawalFullPage.metawalFullPage div.info-descriptionLgEnLigne {
+    width: 480px;
+    /*max-height:145px; */
+    max-height:200px;
+    overflow:auto;
+    padding: 0 0 8px 0;
+}
+
+div#metawalFullPage.metawalFullPage div.info-descriptionLg .metaContent{
+    float: left;
+    font-size: 12px;
+    /*width: 274px;*/
+   /* width: 440px;*/
+}
+
+
+div#metawalFullPage.metawalFullPage h4{
+    padding: 8px 0 0 10px;
+}
+
+/*div#metawalFullPage.metawalFullPage div.info-description .metaContent{
+	float: right;
+    font-size: 12px;
+    //padding: 0 0 3px 15px;
+    width: 434px;
+}*/
+
+
+
+/* MODIFICATION FICHE DESCRIPTIVE - GEOPORT-217*/
+
+.metawalSummaryItem .abstract a{
+   color:#636363;
+	text-decoration:none;
+}
+.metawalSummaryItem .abstract a:hover{
+   color:#636363;
+   text-decoration:none;
+}
+
+.metawalSummaryItem .organisme{
+  font-size:10px
+}
+
+.metawalSummaryItem .organisme a{
+   color:#636363;
+	text-decoration:none;
+}
+.metawalSummaryItem .organisme a:hover{
+   color:#636363;
+   text-decoration:none;
+}
+
+.hidden{
+	display: none;
+}
+
+.bodywrapper div.metawalSummaryItem div.info {
+    padding: 5px;
+}
+
+div#metawalFullPage div.div_link_url {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.dialogUrl .divUrlFicheDesc, .dialogUrl .divUrlFicheDescInd {
+    padding:5px;
+}
+
+.dialogUrl a {
+    color: #2181A2 !important;
+}
+
+.dialogUrl .divUrlFicheDesc h4, .dialogUrl .divUrlFicheDescInd h4{
+    padding-bottom:3px;
+}
+
+.bodywrapper div.container_16 div.grid_16 div#metawalFullPage.metawalFullPage div.mdHeader div.social_sharing {
+    float: right;
+    padding: 10px;
+}
+
+.bodywrapper img {
+    border: 0px;
+}
+
+/*Affichage des métadonnées sous forme de vignettes*/
+.bodywrapper .columns3 {
+    clear: both;
+    overflow: hidden;
+    width: 99.9%;
+    border-left: 1px solid #D1D1D1;
+}
+
+.bodywrapper .columns3 .column-item {
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 33.32%;
+}
+
+.bodywrapper .columns3 .column-item .spacer {
+    /*padding: 10px;*/
+}
+
+.bodywrapper .metawalSummaryItem .imgMd .thumbnail_vignettes, .bodywrapper .metawalSummaryItem .imgMd .thumbnail {
+    max-height: 180px;
+    max-width: 180px;
+}
+
+.bodywrapper .metawalSummaryItem .description_vignettes {
+    float: left;
+}
+
+.bodywrapper .metadonnee-wrapper_vignettes {
+     border-bottom: 1px solid #D1D1D1;
+     border-left: 0px solid #D1D1D1;
+     border-right: 1px solid #D1D1D1;
+     border-top: none;
+     padding: 7px;
+     min-height: 240px;
+ }
+
+.bodywrapper .metadonnee-wrapper_vignettes .imgMd{
+    text-align: center;
+    height: 180px;
+}
+
+.bodywrapper .metawalFullPage .imgMd{
+    float: left;
+    height: 180px;
+}
+
+.bodywrapper .metadonnee-wrapper_vignettesApp .imgMd{
+    text-align: center;
+    height: 180px;
+
+}
+
+.bodywrapper .metadonnee-wrapper_vignettesApp {
+    border-bottom: 1px solid #D1D1D1;
+    border-left: 0px solid #D1D1D1;
+    border-right: 1px solid #D1D1D1;
+    border-top: none;
+    padding: 7px;
+    min-height: 240px;/*225px;  */
+}
+
+.bodywrapper .metawalSummaryItem .titre_vignettes {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 12px;
+    margin: 10px 0 0;
+    padding: 0;
+    height: 45px;
+}
+
+.bodywrapper .metadonnee-actions_vignettes {
+    float: right;
+}
+
+.bodywrapper .meta-searchDisplay {
+    display: inline-block;
+    height: 27px !important;
+    margin: 7px 0 7px 315px;
+    padding: 4px 0 5px;
+}
+
+
+.bodywrapper .meta-searchTri .selectDisplay {
+    display: block;
+    position: absolute;
+    text-align: right;
+    width: 48%;
+}
+
+.bodywrapper .meta-searchTri .selectTri {
+    display: block;
+    position: absolute;
+    text-align: left;
+    /*width: 50%; */
+    width:210px;
+    z-index:1000;
+}
+
+.metawalFullPage .social_sharing .metaExportRtf {
+padding-right:10px;
+}
+.metawalFullPage .social_sharing .metaExportPdf img, .metawalFullPage .social_sharing .metaExportRtf img{
+height:24px;
+width:auto;
+}
+.metawalFullPage .social_sharing a.metaExportPdf, .metawalFullPage .social_sharing a.metaExportRtf {background-image:none;}
+
+.ui-widget-overlay {position:fixed;z-index:100;background:rgba(0, 0, 0, 0.8) none repeat scroll 0% 0%;opacity:1;}
+body .ui-dialog {z-index:120;}
+.ui-dialog .ui-dialog-titlebar-close {text-indent:-99999px;}
+.ui-dialog .ui-widget-header .ui-dialog-titlebar-close .ui-icon {
+background-color: indianred;
+margin:-1px 0 0 0;
+}
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {min-width:150px;}
+
+.ui-widget-content a{
+	color: #74aec2;
+}
+
+.metaContent{
+	line-height: 1.5;
+}
+
+.divUrlFicheDesc{
+	margin-top: -30px;
+}
+
+.md-popin a{
+	word-wrap: break-word;
+}
+
+.md-access-site-title, .md-access-type-title{
+	color: #74aec2;
+	font-weight: bold;
+	margin: 0;
+	float: left;
+	width: 80px;
+	line-height: 45px;
+}
+
+.md-access-site-title{
+	line-height: 47px;
+}
+
+.sheet-service__type{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
