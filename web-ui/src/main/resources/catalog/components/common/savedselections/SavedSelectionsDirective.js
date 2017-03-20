@@ -58,9 +58,9 @@
               var md = new Metadata(record);
               return md.getLinksByType('OGC:WMS').length > 0;
             },
-            fn: function(uuid, records) {
-              for (var i = 0; i < uuid.length; i++) {
-                var uuid = uuid[i], record = records[uuid];
+            fn: function(uuids, records) {
+              for (var i = 0; i < uuids.length; i++) {
+                var uuid = uuids[i], record = records[uuid];
 
                 var md = new Metadata(record);
                 angular.forEach(md.getLinksByType('OGC:WMS'), function(link) {
@@ -79,6 +79,25 @@
               }
             },
             icon: 'fa-globe'
+          },
+          'DataDownloaderlist': {
+            label: 'downloadData',
+            filterFn: function(record) {
+              var md = new Metadata(record);
+              // TODO: Check when this action is displayed in metawal ?
+              return md.getLinksByType('ESRI:REST').length > 0;
+            },
+            fn: function(uuids, records) {
+              var uuidList = [];
+              for (var i = 0; i < uuids.length; i++) {
+                var uuid = uuids[i], record = records[uuid];
+                var md = new Metadata(record);
+                uuidList.push(uuid);
+              }
+              window.open('http://geoportail.wallonie.be/sites/geoportail/' +
+                'geodata-donwload.html?uuids=' + uuidList.join(','), 'download');
+            },
+            icon: 'fa-download'
           }
         },
         // Add user session selection types
@@ -98,12 +117,12 @@
           id: -20,
           name: 'MapLayerlist',
           records: [],
-          storage: null
-          // }, {
-          //   id: -30,
-          //   name: 'DataDownloaderlist',
-          //   records: [],
-          //   storage: null
+          storage: 'localStorage'
+        }, {
+          id: -30,
+          name: 'DataDownloaderlist',
+          records: [],
+          storage: 'localStorage'
         }]
       };
     }]);

@@ -23,8 +23,8 @@ INSERT INTO SelectionsDes (iddes, langid, label) VALUES (0,'eng','Preferred reco
 INSERT INTO SelectionsDes (iddes, langid, label) VALUES (1,'eng','Watch list');
 INSERT INTO SelectionsDes (iddes, langid, label) VALUES (0,'fin','Preferred records');
 INSERT INTO SelectionsDes (iddes, langid, label) VALUES (1,'fin','Watch list');
-INSERT INTO SelectionsDes (iddes, langid, label) VALUES (0,'fre','Fiches préférées');
-INSERT INTO SelectionsDes (iddes, langid, label) VALUES (1,'fre','Fiches observées');
+INSERT INTO SelectionsDes (iddes, langid, label) VALUES (0,'fre','Mes fiches préférées');
+INSERT INTO SelectionsDes (iddes, langid, label) VALUES (1,'fre','Mes notifications');
 INSERT INTO SelectionsDes (iddes, langid, label) VALUES (0,'ger','Preferred records');
 INSERT INTO SelectionsDes (iddes, langid, label) VALUES (1,'ger','Watch list');
 INSERT INTO SelectionsDes (iddes, langid, label) VALUES (0,'ita','Preferred records');
