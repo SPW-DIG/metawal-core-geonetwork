@@ -1,42 +1,46 @@
-<div class="panel panel-default"
+<div class="panel panel-default basket-panel-rw"
      data-ng-show="selections != null">
-  <div class="panel-heading"
-       data-gn-slide-toggle="">
-    <i class="fa fa-shopping-cart"/>&nbsp;
-    <span data-ng-show="selections.size > 0" data-translate="">basket</span>
-    <span data-ng-hide="selections.size > 0" data-translate="">emptyBasket</span>
+  <div class="panel-heading basket-panel-heading-rw"
+       >
+    <i class="fa fa-shopping-cart pull-right"/>&nbsp;
+    <span data-translate="">basket</span>
+    <!--span data-ng-show="selections.size > 0" data-translate="">basket</span-->
+    <!--span data-ng-hide="selections.size > 0" data-translate="">emptyBasket</span-->
   </div>
-  <div class="panel-body">
+  <div class="panel-body basket-panel-body-rw">
     <fieldset data-ng-repeat="sel in selections.list"
+              data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly)">
+    <!--fieldset data-ng-repeat="sel in selections.list"
               data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly) ||
-                            sel.records.length === 0">
-      <legend data-gn-slide-toggle="">
-        {{sel.label[lang] || (sel.name | translate)}}
-        <span>({{sel.records.length}})</span>
-        <i class="fa gn-icon-{{sel.name}} pull-right"/>
+                            sel.records.length === 0"-->
+      <legend data-gn-slide-toggle="" data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length == 0 }"  class="basket-legend-rw-api">
+        <h4 class="facet-title-api-rw">{{sel.label[lang] || (sel.name | translate)}}
+        <span class="basket-counting-rw-api">({{sel.records.length}})</span> <span class="text-rw-api-blue-default"><i class="fa gn-icon-{{sel.name}}"/></span></h4>
+       
       </legend>
 
-      <ul class="list-group" data-ng-repeat="r in sel.records">
-        <li class="list-group-item">
-          <div class="row">
+      <ul class="list-group basket-ul-api-rw" data-ng-repeat="r in sel.records">
+        <li class="list-group-item basket-li-api-rw">
+          <div class="row vertical-align-rw-api">
             <div class="col-md-10">
-              <a data-ng-href="#/metadata/{{r}}">
+              <a data-ng-href="#/metadata/{{r}}" class="basket-a-api-rw">
               {{selections.records[r].title || selections.records[r].defaultTitle || r}}
               </a>
             </div>
             <div class="col-md-2">
-              <button class="btn btn-link pull-right"
+              <button class="btn btn-link basket-icon-api-rw text-rw-api-white"
                       data-ng-click="remove(sel, r)"
                       data-title="{{'removeRecordFromSelection' | translate}}">
-                <i class="fa fa-times text-danger"></i>
+                <i class="fa fa-times-circle-o " aria-hidden="true"></i>
               </button>
             </div>
           </div>
         </li>
       </ul>
 
-      <button class="btn btn-default btn-block"
+      <button class="btn btn-default btn-block basket-button-api-rw "
               data-ng-if="actions[sel.name]"
+              data-ng-hide="sel.records.length === 0"
               data-ng-click="doAction(sel)">
         <i class="fa {{actions[sel.name].icon}}"></i>&nbsp;
         {{actions[sel.name].label | translate}}
