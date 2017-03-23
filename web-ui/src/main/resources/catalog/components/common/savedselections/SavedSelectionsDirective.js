@@ -45,12 +45,16 @@
           'PreferredList': {
             label: 'searchSelectedRecord',
             fn: searchRecordsInSelection,
-            icon: 'fa-search'
+            icon: 'fa-search',
+            icon_result: 'icon-api-rw-notification',
+            text_noselected:'noSearchSelectedRecord'
           },
           'AnonymousUserlist': {
             label: 'searchSelectedRecord',
             fn: searchRecordsInSelection,
-            icon: 'fa-search'
+            icon: 'fa-search',
+            icon_result: 'icon-api-rw-notification',
+            text_noselected:'noSearchSelectedRecord'
           },
           'MapLayerlist': {
             label: 'addToMap',
@@ -78,7 +82,9 @@
                 });
               }
             },
-            icon: 'fa-globe'
+            icon:'fa-globe',
+            icon_result: 'icon-api-rw-walonmap',
+            text_noselected:'noAddToMap'
           },
           'DataDownloaderlist': {
             label: 'downloadData',
@@ -97,7 +103,9 @@
               window.open('http://geoportail.wallonie.be/sites/geoportail/' +
                 'geodata-donwload.html?uuids=' + uuidList.join(','), 'download');
             },
-            icon: 'fa-download'
+            icon: 'fa-download',
+            icon_result: 'icon-api-rw-download',
+            text_noselected:'noDownloadData'
           }
         },
         // Add user session selection types
@@ -443,6 +451,8 @@
            scope.selectionsWithRecord = [];
            scope.selections = {};
            scope.uuid = scope.record['geonet:info'].uuid;
+
+           scope.actions =gnSavedSelectionConfig.actions
 
            $rootScope.$on('savedSelectionsUpdate', function(e, n, o) {
              scope.selections = n;

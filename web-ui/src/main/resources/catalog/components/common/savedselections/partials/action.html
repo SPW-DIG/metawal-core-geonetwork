@@ -1,5 +1,5 @@
 <!-- Single button -->
-<div class="btn-group"
+<!--div class="btn-group"
      data-ng-show="selections.list.length > 0">
   <button type="button"
           class="btn btn-default dropdown-toggle"
@@ -30,4 +30,23 @@
       </a>
     </li>
   </ul>
-</div>
+</div-->
+
+<div data-ng-class="{'col-sm-4 ' : record.type[0] == 'application' || record.type[0] == 'series' ,'col-sm-3': record.type[0] == 'service' ||record.type[0] == 'dataset'}" class="col-p-api-rw-2">
+      <a data-ng-href='#/metadata/{{record.getUuid()}}'"><button type="button" class="btn btn-block btn-api-rw">
+          <span class="pull-left btn-api-txt-rw">Fiche descriptive</span>
+          <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
+      </button></a>
+    </div>
+<div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeAdded(s)">
+      <button type="button" class="btn btn-block btn-api-rw" data-ng-click="add(s)" >
+          <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+          <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+      </button>
+    </div>
+<div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeRemoved(s)">
+      <button type="button" class="btn btn-block btn-api-rw" data-ng-click="remove(s)" >
+          <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+          <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}"  style="vertical-align:middle;"></span>
+      </button>
+    </div>
