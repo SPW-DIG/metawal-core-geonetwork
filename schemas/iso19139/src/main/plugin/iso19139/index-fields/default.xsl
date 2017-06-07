@@ -291,6 +291,45 @@
       </xsl:for-each>
 
       <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+      <!-- - - - - - - - - - RW accessConstraints  - - - - - - - - - - - - - -->
+
+      <xsl:choose>
+        <xsl:when test="gmd:resourceConstraints/gmd:MD_LegalConstraints/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue = 'restricted'">
+          <Field name="accessConstraints" string="restricted" store="true" index="true"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <Field name="accessConstraints" string="public" store="true" index="true"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+      <!-- - - - - - - - - - - - - RW diffusion  - - - - - - - - - - - - - - -->
+
+      <xsl:for-each select="gmd:descriptiveKeywords[
+                          contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                   'Mots-clés InfraSIG')]/*/gmd:keyword">
+        <xsl:variable name="downloaddata" select="gco:CharacterString"/>
+        <xsl:if test="$downloaddata = 'PanierTelechargementGeoportail'">
+        <Field name="diffusionmode"
+                   string="download"
+                   store="true" index="true"/>
+        </xsl:if>
+      </xsl:for-each>
+      <xsl:for-each select="gmd:transferOptions/gmd:MD_DigitalTransferOptions/*/gmd:CI_OnlineResource">
+        <xsl:if test="contains(gmd:protocol/gco:CharacterString,'WWW:LINK-1.0-http--link') and (gmd:function/gmd:CI_OnLineFunctionCode/@codeListValue  = 'browsing') and (gmd:applicationProfile/gco:CharacterString='' or count(gmd:applicationProfile/gco:CharacterString) = 0)">
+            <Field name="diffusionmode" string="thematicmap" store="true" index="true"/>
+         </xsl:if>
+      </xsl:for-each>
+      <xsl:for-each select="gmd:transferOptions/gmd:MD_DigitalTransferOptions/*/gmd:CI_OnlineResource">
+        <xsl:if test="contains(gmd:protocol/gco:CharacterString,'ESRI:REST') and (gmd:function/gmd:CI_OnLineFunctionCode/@codeListValue  = 'browsing')">
+            <Field name="diffusionmode" string="walonmap" store="true" index="true"/>
+         </xsl:if>
+      </xsl:for-each>
+
+
+
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+      <!-- - - - - - - - - - RW official ressources  - - - - - - - - - - - - -->
 
 
       <xsl:for-each select="gmd:descriptiveKeywords[
@@ -309,6 +348,7 @@
         </xsl:if>
 
       </xsl:for-each>
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 
       <xsl:for-each select="//gmd:MD_Keywords">
@@ -855,15 +895,15 @@
     </xsl:choose>
 
 
-    <xsl:choose>
+    <!--xsl:choose-->
       <!-- Check if metadata is a service metadata record -->
-      <xsl:when test="gmd:identificationInfo/srv:SV_ServiceIdentification">
+      <!--xsl:when test="gmd:identificationInfo/srv:SV_ServiceIdentification">
         <Field name="type" string="service" store="false" index="true"/>
-      </xsl:when>
+      </xsl:when-->
       <!-- <xsl:otherwise>
       ... gmd:*_DataIdentification / hierachicalLevel is used and return dataset, serie, ...
-      </xsl:otherwise>-->
-    </xsl:choose>
+      </xsl:otherwise>>
+    </xsl:choose-->
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
