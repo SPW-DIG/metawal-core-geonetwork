@@ -153,52 +153,51 @@
     }
   ]);
 
-  module.directive('gnApiRwPeriodChooser', [
+  module.directive('gnApiRwPeriodChooserResources', [
     function() {
       return {
         restrict: 'A',
         replace: true,
         templateUrl: '../../catalog/views/default/directives/' +
-            'partials/rw-periodchooser.html',
+            'partials/rw-resources-periodchooser.html',
         scope: {
-          label: '@gnApiRwPeriodChooser',
+          label: '@gnApiRwPeriodChooserResources',
           dateFrom: '=',
-          dateTo: '='
+          dateTo: '=',
+          fctn: '&extFunction'
         },
         link: function linkFn(scope, element, attr) {
           var today = moment();
           scope.format = 'DD-MM-YYYY';
-          
-          /*scope.options = ['today', 'yesterday', 'thisWeek', 'thisMonth',
-            'last3Months', 'last6Months', 'thisYear'];
-          scope.setPeriod = function(option) {
-            if (option === 'today') {
-              var date = today.format(scope.format);
-              scope.dateFrom = date;
-            } else if (option === 'yesterday') {
-              var date = today.clone().subtract(1, 'day')
-                .format(scope.format);
-              scope.dateFrom = date;
-              scope.dateTo = today.format(scope.format);
-              return;
-            } else if (option === 'thisWeek') {
-              scope.dateFrom = today.clone().startOf('week')
-                .format(scope.format);
-            } else if (option === 'thisMonth') {
-              scope.dateFrom = today.clone().startOf('month')
-                .format(scope.format);
-            } else if (option === 'last3Months') {
-              scope.dateFrom = today.clone().startOf('month').
-                  subtract(3, 'month').format(scope.format);
-            } else if (option === 'last6Months') {
-              scope.dateFrom = today.clone().startOf('month').
-                  subtract(6, 'month').format(scope.format);
-            } else if (option === 'thisYear') {
-              scope.dateFrom = today.clone().startOf('year')
-                .format(scope.format);
-            }
-            scope.dateTo = today.add(1, 'day').format(scope.format);
-          };*/
+          $("#resourcesdatetimepicker").datepicker().on('change.dp', function (e) {
+            scope.fctn();
+            $(this).datepicker('hide');
+          });
+
+        }
+      };
+    }
+  ]);
+  module.directive('gnApiRwPeriodChooserRecords', [
+    function() {
+      return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: '../../catalog/views/default/directives/' +
+            'partials/rw-records-periodchooser.html',
+        scope: {
+          label: '@gnApiRwPeriodChooserRecords',
+          dateFrom: '=',
+          dateTo: '=',
+          fctn: '&extFunction'
+        },
+        link: function linkFn(scope, element, attr) {
+          var today = moment();
+          scope.format = 'DD-MM-YYYY';
+          $("#recordsdatetimepicker").datepicker().on('change.dp', function (e) {
+            scope.fctn();
+            $(this).datepicker('hide');
+          });
         }
       };
     }
