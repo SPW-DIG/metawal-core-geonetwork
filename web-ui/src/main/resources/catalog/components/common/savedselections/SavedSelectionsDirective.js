@@ -32,6 +32,7 @@
     function($location, Metadata, gnMap, gnSearchSettings) {
       var viewerMap = gnSearchSettings.viewerMap;
 
+
       var searchRecordsInSelection = function(uuid, records) {
         // TODO: Redirect to search app if not in a search page
         $location.path('/search').search('_uuid', uuid.join(' or '));
@@ -435,7 +436,8 @@
             'panel.html',
         link: link,
         scope: {
-          user: '=gnSavedSelectionsPanel'
+          user: '=gnSavedSelectionsPanel',
+          tabsType: '=params'
         }
       };
     }]);
@@ -445,8 +447,8 @@
    * Button to add or remove item from user saved selection.
    */
   module.directive('gnSavedSelectionsAction',
-      ['gnSavedSelectionConfig', '$rootScope',
-       function(gnSavedSelectionConfig, $rootScope) {
+      ['gnSavedSelectionConfig', '$rootScope', 'Metadata',
+       function(gnSavedSelectionConfig, $rootScope,Metadata) {
          function link(scope, element, attrs, controller) {
            scope.selectionsWithRecord = [];
            scope.selections = {};
@@ -474,14 +476,62 @@
            controller.getSelections(scope.user).then(function(selections) {
              scope.selections = selections;
            });
+           ///Add url to thematic map (protocol=WWW:LINK-1.0-http--link and function=browing)
+           ///TO BE COMPLETED - add function
+           scope.md = new Metadata(scope.record);
+           for (var i = scope.md.getLinksByType().length - 1; i >= 0; i--) {
+            console.log('md.getLinksByType');
+            scope.mdurldisabled=true;
+            console.log(scope.md.getLinksByType().length);
+            console.log(scope.md.getLinksByType()[i].hasOwnProperty('protocol'));
+             if (scope.md.getLinksByType()[i].protocol === 'WWW:LINK-1.0-http--link') {
+               scope.mdurl =scope. md.getLinksByType()[i].url;
+               if (scope.mdurl ==='') {
+                 scope.mdurldisabled=true;
+               }
+               scope.mdurldisabled=false;
+               console.log(scope.mdurl);
+             }
+           }
 
-           scope.add = function(selection) {
+          scope.disable = function(selection,elem){
+            var md = new Metadata(elem);
+            if (selection.name==='DataDownloaderlist') {
+              if (elem.keyword.indexOf('PanierTelechargementGeoportail') > -1){
+                return false
+              } else {
+              return true}
+            }
+            else if (selection.name==='MapLayerlist') {
+              //var md = new Metadata(elem);
+              if (md.getLinksByType('ESRI:REST').length > 0 || md.getLinksByType('OGC:WMS').length > 0 ){
+                return false
+              } else {
+                return true
+              }
+            } 
+            else {
+              return false
+            }
+          };
+
+           scope.doaction = function(selection) {
+            if (selection.records.indexOf(scope.uuid) > -1) {
+              controller.remove(selection, scope.user, scope.uuid);
+            } else {
+              controller.add(selection, scope.user, scope.uuid);
+            };
+           };
+
+           /*scope.add = function(selection) {
+            console.log('add');
              controller.add(selection, scope.user, scope.uuid);
            };
 
            scope.remove = function(selection) {
+            console.log('remove');
              controller.remove(selection, scope.user, scope.uuid);
-           };
+           };*/
 
 
            function check(selection, canBeAdded) {

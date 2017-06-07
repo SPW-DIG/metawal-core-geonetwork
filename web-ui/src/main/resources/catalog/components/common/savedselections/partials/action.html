@@ -32,21 +32,60 @@
   </ul>
 </div-->
 
-<div data-ng-class="{'col-sm-4 ' : record.type[0] == 'application' || record.type[0] == 'series' ,'col-sm-3': record.type[0] == 'service' ||record.type[0] == 'dataset'}" class="col-p-api-rw-2">
-      <a data-ng-href='#/metadata/{{record.getUuid()}}'"><button type="button" class="btn btn-block btn-api-rw">
-          <span class="pull-left btn-api-txt-rw">Fiche descriptive</span>
-          <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
-      </button></a>
-    </div>
-<div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeAdded(s)">
-      <button type="button" class="btn btn-block btn-api-rw" data-ng-click="add(s)" >
-          <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
-          <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
-      </button>
-    </div>
-<div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeRemoved(s)">
-      <button type="button" class="btn btn-block btn-api-rw" data-ng-click="remove(s)" >
-          <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
-          <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}"  style="vertical-align:middle;"></span>
-      </button>
-    </div>
+<div class="row col-12">
+  <div data-ng-class="{'col-sm-4 ' : record.type[0] == 'application' || record.type[0] == 'series' ,'col-sm-3': record.type[0] == 'service' ||record.type[0] == 'dataset'}" class="col-p-api-rw-2">
+    <a data-ng-href='#/metadata/{{record.getUuid()}}'"><button type="button" class="btn btn-block btn-api-rw">
+      <span class="pull-left btn-api-txt-rw">Fiche descriptive</span>
+      <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
+    </button></a>
+  </div>
+  <div class="col-sm-4 col-p-api-rw-2" data-ng-if="record.type[0] == 'application' || record.type[0] == 'series'">
+    <a href={{mdurl}} data-ng-class="{disabled : {{mdurldisabled}} == true}" ><button type="button" class="btn btn-block btn-api-rw" data-ng-class="{disabled : {{mdurldisabled}} == true}">
+      <span class="pull-left btn-api-txt-rw">Consulter la carte</span>
+      <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
+    </button></a>
+  </div>
+  <!--div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list">{{s.name}}
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)" data-ng-if="!(record.type[0] == 'service' && s.name==='DataDownloaderlist) || !(record.type[0] == 'dataset' && s.name==='WatchList)'>
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+    </button>
+  </div-->
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service'" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' } | filter:{name: '!AnonymousUserlist'}">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+    </button>
+  </div>
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset'" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserlist'}">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+    </button>
+  </div>
+  <div class="col-sm-4 col-p-api-rw-2" data-ng-if="record.type[0] == 'application' || record.type[0] == 'series'" data-ng-repeat="s in selections.list | filter: { name: 'WatchList' }">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+    </button>
+  </div>
+  <!-- Remove if doaction(s) manage delete and add -->
+    <!--div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s)">
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+    </button>
+  </div-->
+  <!--div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeAdded(s)">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="add(s)">
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
+    </button>
+  </div>
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeRemoved(s)">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="remove(s)" >
+      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
+      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}"  style="vertical-align:middle;"></span>
+    </button>
+  </div-->
+</div>
