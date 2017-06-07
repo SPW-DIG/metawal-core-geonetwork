@@ -31,14 +31,102 @@ body {
 	
 }*/
 
+/* Remove cursor to link if disabled*/
+.disabled {
+    cursor:default;
+}
+
+
+/* FACET */
+.rw-api-list-group {
+    border-left: 0px dotted rgba(0, 0, 0, 0.2); 
+    margin-left: 0em; 
+    padding-left: 0.5em;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+{
+
+
+}
+/*
+.rw-api-checkbox input[type=checkbox]:not(old),
+.rw-api-checkbox input[type=radio   ]:not(old){
+  width     : 2em;
+  margin    : 0;
+  padding   : 0;
+  font-size : 1em;
+  opacity   : 0;
+}
+
+.rw-api-checkbox input[type=checkbox]:not(old) + label,
+.rw-api-checkbox input[type=radio   ]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -2em;
+  line-height  : 1.5em;
+}
+
+.rw-api-checkbox input[type=checkbox]:not(old) + label > span,
+.rw-api-checkbox input[type=radio   ]:not(old) + label > span{
+  display          : inline-block !important;
+  width            : 1.875em !important;
+  height           : 1.875em !important;
+  margin           : 0.25em 0.5em 0.25em 0.25em !important;
+  border           : 0.0625em solid rgb(192,192,192) !important;
+  border-radius    : 0em !important;
+  background       : rgb(224,224,224) !important;
+  background-image :    -moz-linear-gradient(rgb(240,240,240),rgb(224,224,224))!important;
+  background-image :     -ms-linear-gradient(rgb(240,240,240),rgb(224,224,224))!important;
+  background-image :      -o-linear-gradient(rgb(240,240,240),rgb(224,224,224))!important;
+  background-image : -webkit-linear-gradient(rgb(240,240,240),rgb(224,224,224))!important;
+  background-image :         linear-gradient(rgb(240,240,240),rgb(224,224,224))!important;
+  vertical-align   : bottom;
+}
+
+.rw-api-checkbox input[type=checkbox]:not(old):checked + label > span,
+.rw-api-checkbox input[type=radio   ]:not(old):checked + label > span{
+  background-image :    -moz-linear-gradient(rgb(224,224,224),rgb(240,240,240))!important;
+  background-image :     -ms-linear-gradient(rgb(224,224,224),rgb(240,240,240))!important;
+  background-image :      -o-linear-gradient(rgb(224,224,224),rgb(240,240,240))!important;
+  background-image : -webkit-linear-gradient(rgb(224,224,224),rgb(240,240,240))!important;
+  background-image :         linear-gradient(rgb(224,224,224),rgb(240,240,240))!important;
+}
+
+.rw-api-checkbox input[type=checkbox]:not(old):checked + label > span:before{
+  content     : '✓' !important;
+  display     : block !important;
+  width       : 1em !important;
+  color       : rgb(153,204,102) !important;
+  font-size   : 0.875em !important;
+  line-height : 1em !important;
+  text-align  : center !important;
+  text-shadow : 0 0 0.0714em rgb(115,153,77) !important;
+  font-weight : bold !important;
+}
+
+.rw-api-checkbox input[type=radio]:not(old):checked +  label > span > span{
+  display          : block !important;
+  width            : 0.5em !important;
+  height           : 0.5em !important;
+  margin           : 0.125em !important;
+  border           : 0.0625em solid rgb(115,153,77) !important;
+  border-radius    : 0em !important;
+  background       : rgb(153,204,102) !important;
+  background-image :    -moz-linear-gradient(rgb(179,217,140),rgb(153,204,102)) !important;
+  background-image :     -ms-linear-gradient(rgb(179,217,140),rgb(153,204,102)) !important;
+  background-image :      -o-linear-gradient(rgb(179,217,140),rgb(153,204,102)) !important;
+  background-image : -webkit-linear-gradient(rgb(179,217,140),rgb(153,204,102)) !important;
+  background-image :         linear-gradient(rgb(179,217,140),rgb(153,204,102)) !important;
+}
+*/
+
 /* BASKET  START*/
 
-.vertical-align-rw-api
-{
+.vertical-align-rw-api {
     display: flex;
     align-items: center;
 }
-
 
 .basket-panel-rw {
     border: 0px solid transparent;
@@ -64,7 +152,6 @@ body {
 .basket-legend-rw-api{
     padding-bottom:10px;
     color: @blue-flash !important;
-    
 }
 
 .basket-legend-record-rw-api{
@@ -73,7 +160,6 @@ body {
 .basket-legend-no-record-rw-api{
     border-bottom:0px solid;
     padding-bottom: 0px;
-
 }
 
 .basket-legend-rw-api > h4{
@@ -133,7 +219,6 @@ body {
     color:white;
     border-color: @blue-flash;
     border-radius: 0px !important;
-
 }
 .basket-button-api-rw:hover{
     background-color:white;
@@ -161,8 +246,6 @@ body {
 .text-rw-api-blue-default {
  color:@blue-default;  
 }
-
-
 
 /* BASKET END*/
 
@@ -236,10 +319,34 @@ body {
 	border-radius:0px !important;
 	border-color: @blue-default;
 	height:30px;
+    color:@blue-default;
 }
 .form-input-rw-api:focus{
 	border-color: @blue-flash;
 }
+
+/* Form date selector */ 
+.form-input-rw-api::-webkit-input-placeholder {
+    /*color: @blue-flash;*/
+    opacity:0.7;
+}
+.form-input-rw-api:-moz-placeholder {
+    /* FF 4-18 */
+    /*color: @blue-flash;*/
+    opacity:0.7;
+}
+.form-input-rw-api::-moz-placeholder {
+    /* FF 19+ */
+    /*color: @blue-flash;*/
+    opacity:0.7;
+}
+.form-input-rw-api:-ms-input-placeholder {
+    /* IE 10+ */
+    /*color: @blue-flash;*/
+    opacity:0.7;
+}
+
+/* Form date selector */
 
 .facet-title-api-rw{
     font-size: 14px;
