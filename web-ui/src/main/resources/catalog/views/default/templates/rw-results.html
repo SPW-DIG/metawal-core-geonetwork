@@ -4,17 +4,45 @@
      data-runSearch="true">
   <div class="row">
     <div class="col-md-3 container-leftside-api-rw">
+     tuu {{searchObj.params}} {{service&dataset}}
       <div class="gn-search-facet facet-api-rw">
         <p class="facet-title-api-rw request-api-rw">
           <div data-ng-show="searchResults.records.length > 0"
-               data-gn-saved-selections-panel="user"></div>
+               data-gn-saved-selections-panel="user"
+               data-params="tabsType"></div>
         </p>
       </div>
       <div class="gn-search-facet facet-api-rw">
+      et quoi = {{tabsType}}
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm.html'"></div>
+        <!--div class="panel panel-default"
+           data-ng-show="searchResults.records.length > 0">
+           uuuu
+        <div class="panel-heading" data-gn-slide-toggle="">
+          <i class="fa fa-search"/>&nbsp;
+          <span data-translate="">filter</span>
+        </div>
+        tttt
+        <div class="panel-body">
+        fff
+          <div data-gn-facet-dimension-list="searchResults.dimension"
+               data-params="searchObj.params"
+               data-facet-type="facetsSummaryType"
+               data-facet-list="facetConfig"
+               data-current-facets="currentFacets">
+          </div>
+        </div>
+      </div-->
+      <div data-gn-facet-dimension-list="searchResults.dimension"
+               data-params="searchObj.params"
+               data-facet-type="facetsSummaryType"
+               data-facet-list="facetConfig"
+               data-current-facets="currentFacets">
+          </div>
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-themes.html'"></div>
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-owner.html'"></div>
-        <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-diffusion.html'"></div>
+        <div ng-if="tabsType ==='service&dataset'" data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-diffusion.html'"></div>
+        <div ng-if="tabsType ==='application&series'" data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-consultation.html'"></div>
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-resources.html'"></div>
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-date.html'"></div>
         <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-reset.html'"></div>
