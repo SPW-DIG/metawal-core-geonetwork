@@ -129,7 +129,7 @@
 
       // Add hidden filters which may
       // restrict search
-      if ($scope.searchObj.filters) {
+      /*if ($scope.searchObj.filters) {
         angular.forEach($scope.searchObj.filters,
             function(value, key) {
               var p = $scope.searchObj.params[key];
@@ -143,7 +143,31 @@
                 $scope.searchObj.params[key] = value;
               }
             });
+      }*/
+
+
+      // Add hidden filters which may
+      // restrict search
+      // MW3.4 limit incremetation type in request
+      if ($scope.searchObj.filters) {
+        angular.forEach($scope.searchObj.filters,
+            function(value, key) {
+              console.log('key' + key + ' ' + value);
+              var p = $scope.searchObj.params[key];
+              if (key != 'type') {
+                  if (p) {
+                    if (!angular.isArray(p)) {
+                      $scope.searchObj.params[key] = [p];
+                    }
+                    $scope.searchObj.params[key].push(value);
+
+                  } else {
+                    $scope.searchObj.params[key] = value;
+                  }
+              }else { if ($scope.searchObj.params[key]) {} else {$scope.searchObj.params[key] = value}}
+            });
       }
+
       // Set default pagination if not set
       if ((!keepPagination &&
           !$scope.searchObj.permalink) ||
@@ -179,7 +203,6 @@
             $scope.searchResults.count = data.count;
             $scope.searchResults.facet = data.facet;
             $scope.searchResults.dimension = data.dimension;
-
             // compute page number for pagination
             if ($scope.searchResults.records.length > 0 &&
                 $scope.hasPagination) {
