@@ -192,7 +192,7 @@
                   defer.reject();
                   break;
                 }
-                this.addWmtsFromScratch(map, layerInfo.url, layerInfo.name)
+                this.addWmtsFromScratch(map, layerInfo.url, layerInfo.name, true)
                     .then(function(layer) {
                       if (layerInfo.title) {
                         layer.set('title', layerInfo.title);
@@ -210,7 +210,7 @@
                   defer.reject();
                   break;
                 }
-                this.addWmsFromScratch(map, layerInfo.url, layerInfo.name)
+                this.addWmsFromScratch(map, layerInfo.url, layerInfo.name, true)
                     .then(function(layer) {
                       if (layerInfo.title) {
                         layer.set('title', layerInfo.title);
@@ -364,6 +364,7 @@
           getBboxFeatureFromMd: function(md, proj) {
             var feat = new ol.Feature();
             var extent = this.getBboxFromMd(md);
+            var projExtent = proj.getExtent();
             if (extent) {
               var geometry;
               // If is composed of one geometry of type point
@@ -376,12 +377,10 @@
                 geometry = new ol.geom.MultiPolygon(null);
                 for (var j = 0; j < extent.length; j++) {
                   // TODO: Point will not be supported in multi geometry
-                  var projectedExtent =
-                      ol.extent.containsExtent(
-                      proj.getWorldExtent(),
-                      extent[j]) ?
-                      ol.proj.transformExtent(extent[j], 'EPSG:4326', proj) :
-                      proj.getExtent();
+                  var projectedExtent = ol.extent.getIntersection(
+                    ol.proj.transformExtent(extent[j], 'EPSG:4326', proj),
+                    projExtent
+                  );
                   var coords = this.getPolygonFromExtent(projectedExtent);
                   geometry.appendPolygon(new ol.geom.Polygon(coords));
                 }
@@ -834,13 +833,16 @@
 
               if (angular.isArray(getCapLayer.Dimension)) {
                 for (var i = 0; i < getCapLayer.Dimension.length; i++) {
-                  if (getCapLayer.Dimension[i].name == 'elevation') {
-                    layer.set('elevation',
-                        getCapLayer.Dimension[i].values.split(','));
+                  var dimension = getCapLayer.Dimension[i];
+                  if (dimension.name == 'elevation') {
+                    layer.set('elevation', {
+                      units: dimension.units,
+                      values: dimension.values.split(',')
+                  });
                   }
-                  if (getCapLayer.Dimension[i].name == 'time') {
+                  if (dimension.name == 'time') {
                     layer.set('time',
-                        getCapLayer.Dimension[i].values.split(','));
+                      dimension.values.split(','));
                   }
                 }
               }
@@ -1188,21 +1190,25 @@
                   olL = $this.createOlWMSFromCap(map, capL, url);
 
                   var finishCreation = function() {
-                    if (!createOnly) {
-                      map.addLayer(olL);
-                    }
-                    gnWmsQueue.removeFromQueue(url, name);
-                    defer.resolve(olL);
+
+                    $q.resolve(olL).
+                    then(gnViewerSettings.getPreAddLayerPromise).
+                    finally(
+                      function(){
+                        if (!createOnly) {
+                          map.addLayer(olL);
+                        }
+                        gnWmsQueue.removeFromQueue(url, name);
+                        defer.resolve(olL);
+                      });
                   };
 
-                  // attach the md object to the layer
-                  if (md) {
-                    olL.set('md', md);
-                    finishCreation();
-                  }
-                  else {
-                    $this.feedLayerMd(olL).finally(finishCreation);
-                  }
+                  var feedMdPromise = md ?
+                    $q.resolve(md).then(function(md) {
+                      olL.set('md', md);
+                    }) : $this.feedLayerMd(olL);
+
+                  feedMdPromise.then(finishCreation);
                 }
 
               }, function() {
