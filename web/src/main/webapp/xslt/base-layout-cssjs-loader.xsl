@@ -107,6 +107,8 @@
         <script src="{$uiResourcesPath}lib/angular.ext/bindHtml.js"></script>
         <script src="{$uiResourcesPath}lib/angular.ext/tabs.js"></script>
         <script src="{$uiResourcesPath}lib/angular.ext/slider.js"></script>
+        <script src="{$uiResourcesPath}lib/angular.ext/date.js"></script>
+        <script src="{$uiResourcesPath}lib/angular.ext/angular-floatThead.js"></script>
         <script
           src="{$uiResourcesPath}lib/angular.ext/colorpicker/angularjs-color-picker.js"></script>
         <script src="{$uiResourcesPath}lib/tinycolor.js"></script>
@@ -137,7 +139,7 @@
                       $angularApp = 'gn_admin'">
           <script src="{$uiResourcesPath}lib/zip/zip.js"></script>
           <!-- Jsonix resources (OWS Context) -->
-          <script src="{$uiResourcesPath}lib/jsonix/jsonix/Jsonix-min.js"></script>
+          <script src="{$uiResourcesPath}lib/jsonix/jsonix/Jsonix-all.js"></script>
           <script type="text/javascript">
             zip.workerScriptsPath = "../../catalog/lib/zip/";
           </script>
@@ -150,16 +152,20 @@
         <script src="{$uiResourcesPath}lib/jquery.ext/jquery.fileupload.js"></script>
         <script src="{$uiResourcesPath}lib/jquery.ext/jquery.fileupload-process.js"></script>
         <script src="{$uiResourcesPath}lib/jquery.ext/jquery.fileupload-angular.js"></script>
+        <script src="{$uiResourcesPath}lib/jquery.ext/jquery.floatThead-slim.js"></script>
         <script src="{$uiResourcesPath}lib/bootstrap.ext/typeahead.js/typeahead.bundle.js"></script>
         <script
           src="{$uiResourcesPath}lib/bootstrap.ext/typeahead.js/handlebars-v2.0.0.js"></script>
         <script src="{$uiResourcesPath}lib/bootstrap.ext/tagsinput/bootstrap-tagsinput.js"></script>
         <script
           src="{$uiResourcesPath}lib/bootstrap.ext/datepicker/bootstrap-datepicker.js"></script>
+        <script
+          src="{$uiResourcesPath}lib/bootstrap.ext/datepicker/bootstrap-datepicker.fr.js"></script>
         <script src="{$uiResourcesPath}lib/bootstrap-table/dist/bootstrap-table.js"></script>
         <script src="{$uiResourcesPath}lib/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
         <!--</xsl:if>-->
 
+        <script src="{$uiResourcesPath}lib/underscore/underscore-min.js"></script>
       </xsl:when>
       <xsl:otherwise>
       </xsl:otherwise>
@@ -191,6 +197,38 @@
 
     <xsl:variable name="appConfig"
                   select="util:getSettingValue('ui/config')"/>
+
+    <xsl:if test="$angularApp = 'gn_search'">
+      <script src="{$uiResourcesPath}lib/d3_timeseries/d3.min.js"></script>
+      <script src="{$uiResourcesPath}lib/timeline/timeline-zoomable.js"></script>
+      <link rel="stylesheet" href="{$uiResourcesPath}lib/timeline/timeline.css"/>
+      <link rel="stylesheet" href="{$uiResourcesPath}lib/d3_timeseries/nv.d3.min.css"/>
+      <script type="text/javascript">
+        var module = angular.module('gn_search');
+        module.config(['gnViewerSettings', 'gnGlobalSettings',
+        function(gnViewerSettings, gnGlobalSettings) {
+        <xsl:if test="$owsContext">
+          gnViewerSettings.owsContext = '<xsl:value-of select="$owsContext"/>';
+        </xsl:if>
+        <xsl:if test="$wmsUrl and $layerName">
+          gnViewerSettings.wmsUrl = '<xsl:value-of select="$wmsUrl"/>';
+          gnViewerSettings.layerName = '<xsl:value-of select="$layerName"/>';
+          gnViewerSettings.layerGroup = '<xsl:value-of select="$layerGroup"/>';
+        </xsl:if>
+        gnGlobalSettings.shibbolethEnabled = <xsl:value-of select="$shibbolethOn"/>;
+        }]);
+      </script>
+    </xsl:if>
+
+    <xsl:if test="$angularApp = 'gn_login'">
+      <script type="text/javascript">
+        var module = angular.module('gn_login');
+        module.config(['gnGlobalSettings',
+        function(gnGlobalSettings) {
+        gnGlobalSettings.shibbolethEnabled = <xsl:value-of select="$shibbolethOn"/>;
+        }]);
+      </script>
+    </xsl:if>
 
     <!-- XML highlighter JS dependency. -->
     <xsl:if test="$angularApp = 'gn_editor'">

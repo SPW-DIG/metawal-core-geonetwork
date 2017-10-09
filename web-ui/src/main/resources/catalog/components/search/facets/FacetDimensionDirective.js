@@ -33,8 +33,10 @@
     function(gnFacetConfigService, gnLangs) {
       return {
         restrict: 'A',
-        templateUrl: '../../catalog/components/search/facets/' +
-            'partials/dimension-facet-list.html',
+        templateUrl: function(elem, attrs) {
+          return attrs.template || '../../catalog/components/search/facets/' +
+            'partials/dimension-facet-list.html';
+        },
         scope: {
           dimension: '=gnFacetDimensionList',
           facetType: '=',
@@ -179,8 +181,10 @@
     function(gnFacetConfigService, RecursionHelper, $parse) {
       return {
         restrict: 'A',
-        templateUrl: '../../catalog/components/search/facets/' +
-            'partials/dimension-facet-category.html',
+        templateUrl: function(elem, attrs) {
+          return attrs.template || '../../catalog/components/search/facets/' +
+            'partials/dimension-facet-category.html';
+        },
         scope: {
           category: '=gnFacetDimensionCategory',
           categoryKey: '=',
@@ -236,23 +240,50 @@
                   $event.preventDefault();
                 };
 
-                scope.isOnDrillDownPath = function(category, $event) {
+                scope.isOnDrillDownPath = function(category) {
                   return gnFacetConfigService
                   .isOnDrillDownPath(scope, category);
                 };
 
-                scope.isInFilter = function(category, $event) {
+                scope.isInFilter = function(category) {
                   return gnFacetConfigService.isInFilter(scope, category);
                 };
 
                 scope.toggleNode = function(evt) {
                   el = evt ?
-                      $(evt.currentTarget).parent() :
+                      $(evt.currentTarget).parent().parent() :
                       element.find('span.fa');
                   el.find('.fa').first()
                   .toggleClass('fa-minus-square')
                   .toggleClass('fa-plus-square');
                   el.children('div').toggleClass('hidden');
+                  !evt || evt.preventDefault();
+                  return false;
+                };
+
+                scope.toggleAllNode = function(evt) {
+                  el = evt ?
+                  $(evt.currentTarget).parent().parent() :
+                  element.find('span.fa');
+                  var isExpanded = undefined;
+                  el.find('.fa').each(function(idx, e) {
+                    e = $(e);
+                    if (angular.isUndefined(isExpanded)) {
+                      isExpanded = !e.hasClass('fa-plus-square');
+                    }
+                    e.removeClass(isExpanded ?
+                    'fa-minus-square' : 'fa-plus-square');
+                    e.addClass(isExpanded ?
+                    'fa-plus-square' : 'fa-minus-square');
+                  });
+                  el.find('div[data-gn-facet-dimension-category]')
+                  .each(function(idx, e) {
+                    if (isExpanded) {
+                      $(e).addClass('hidden');
+                    } else {
+                      $(e).removeClass('hidden');
+                    }
+                  });
                   !evt || evt.preventDefault();
                   return false;
                 };

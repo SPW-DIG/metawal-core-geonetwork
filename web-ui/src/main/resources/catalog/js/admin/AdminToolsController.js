@@ -67,12 +67,12 @@
   module.controller('GnAdminToolsController', [
     '$scope', '$http', '$rootScope', '$translate', '$compile',
     '$q', '$timeout', '$routeParams', '$location',
-    'gnSearchManagerService',
+    'gnSearchManagerService', 'gnConfigService',
     'gnUtilityService', 'gnSearchSettings', 'gnGlobalSettings',
 
     function($scope, $http, $rootScope, $translate, $compile,
              $q, $timeout, $routeParams, $location,
-             gnSearchManagerService,
+             gnSearchManagerService, gnConfigService,
              gnUtilityService, gnSearchSettings, gnGlobalSettings) {
       $scope.modelOptions =
           angular.copy(gnGlobalSettings.modelOptions);
@@ -444,6 +444,22 @@
                 type: 'danger'});
             });
       };
+      $scope.indexInEs = function() {
+        return $http.put('../api/site/index/es')
+            .success(function(data) {
+              $rootScope.$broadcast('StatusUpdated', {
+                msg: $translate.instant('indexInEsDone'),
+                timeout: 2,
+                type: 'success'});
+            })
+            .error(function(data) {
+              $rootScope.$broadcast('StatusUpdated', {
+                title: $translate.instant('indexInEsDoneError'),
+                error: data,
+                timeout: 0,
+                type: 'danger'});
+            });
+      };
 
       $scope.optimizeIndex = function() {
         return $http.get('admin.index.optimize')
@@ -528,9 +544,23 @@
             });
       };
 
+      gnConfigService.loadPromise.then(function(settings) {
+        $scope.isBackupArchiveEnabled =
+          settings['metadata.backuparchive.enable'];
+      });
 
+      $scope.triggerBackupArchive = function() {
+        return $http({method: 'PUT', url: '../api/records/backups'}).
+        then(function(data) {
+          $rootScope.$broadcast('StatusUpdated', {
+            title: $translate.instant('generatingArchiveBackup'),
+            error: data,
+            timeout: 2,
+            type: 'success'
+          });
+        });
 
-
+      };
 
       $scope.replacer = {};
       $scope.replacer.group = '';

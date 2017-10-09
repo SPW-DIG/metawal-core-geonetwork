@@ -32,6 +32,7 @@ import org.fao.geonet.kernel.SchemaManager;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.lib.Lib;
 import org.fao.geonet.repository.MetadataRepository;
+import org.fao.geonet.utils.FilePathChecker;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
@@ -57,7 +58,9 @@ public class XslProcessUtils {
      * @param id      The metadata identifier corresponding to the metadata record to process
      * @param process The process name
      */
-    public static Element process(ServiceContext context, String id, String process, boolean save,
+    public static Element process(ServiceContext context, String id,
+                                  String process,
+                                  boolean save, boolean index,
                                   XsltMetadataProcessingReport report,
                                   String siteUrl,
                                   Map<String, String[]> params) throws Exception {
@@ -89,6 +92,8 @@ public class XslProcessUtils {
             // -----------------------------------------------------------------------
             // --- check processing exist for current schema
             String schema = info.getDataInfo().getSchemaId();
+
+            FilePathChecker.verify(process);
 
             Path xslProcessing = schemaMan.getSchemaDir(schema).resolve("process").resolve(process + ".xsl");
             if (!Files.exists(xslProcessing)) {
@@ -145,12 +150,13 @@ public class XslProcessUtils {
 
                     boolean validate = false;
                     boolean ufo = true;
-                    boolean index = false;
                     String language = context.getLanguage();
                     // Always udpate metadata date stamp on metadata processing (minor edit has no effect).
                     boolean updateDateStamp = true;
                     dataMan.updateMetadata(context, id, processedMetadata, validate, ufo, index, language, new ISODate().toString(), updateDateStamp);
-                    dataMan.indexMetadata(id, true);
+                    if (index) {
+                        dataMan.indexMetadata(id, true, null);
+                    }
                 }
 
                 report.addMetadataId(iId);

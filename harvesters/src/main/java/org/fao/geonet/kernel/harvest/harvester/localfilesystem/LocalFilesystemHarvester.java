@@ -188,13 +188,13 @@ public class LocalFilesystemHarvester extends AbstractHarvester<HarvestResult> {
         repository.deleteAllByIdAttribute(OperationAllowedId_.metadataId, Integer.parseInt(id));
         aligner.addPrivileges(id, params.getPrivileges(), localGroups, dataMan, context, log);
 
-        metadata.getCategories().clear();
+        metadata.getMetadataCategories().clear();
         aligner.addCategories(metadata, params.getCategories(), localCateg, context, log, null, true);
 
         dataMan.flush();
 
         if (indexAfterUpdate == true) {
-            dataMan.indexMetadata(id, true);
+            dataMan.indexMetadata(id, true, null);
         }
     }
 
@@ -244,7 +244,7 @@ public class LocalFilesystemHarvester extends AbstractHarvester<HarvestResult> {
         dataMan.flush();
 
         if (index) {
-            dataMan.indexMetadata(id, true);
+            dataMan.indexMetadata(id, true, null);
         }
         return id;
     }

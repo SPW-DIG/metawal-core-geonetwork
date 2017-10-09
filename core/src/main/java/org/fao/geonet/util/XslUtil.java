@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2016 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2017 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -25,6 +25,8 @@ package org.fao.geonet.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Function;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import jeeves.component.ProfileManager;
 import jeeves.server.ServiceConfig;
 import jeeves.server.context.ServiceContext;
@@ -70,6 +72,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -681,5 +687,46 @@ public final class XslUtil {
             ex.printStackTrace();
             return str;
         }
+    }
+
+    private static final Random RANDOM = new Random();
+
+    public static String randomId() {
+        return "N" + RANDOM.nextInt(Integer.MAX_VALUE);
+    }
+
+    public static String getMax(Object values) {
+        String[] strings = values.toString().split(" ");
+        String max = "";
+
+        for (int i = 0; i < strings.length; i++) {
+            String val = strings[i];
+            if(val.compareTo(max) > 0) {
+                max = val;
+            }
+        }
+        return max;
+    }
+
+    private static final Cache<String, Boolean> URL_VALIDATION_CACHE;
+
+    static {
+        URL_VALIDATION_CACHE = CacheBuilder.<String, Boolean>newBuilder().
+                maximumSize(100000).
+                expireAfterAccess(25, TimeUnit.HOURS).
+                build();
+    }
+
+    public static boolean validateURL(final String urlString) throws ExecutionException {
+        return URL_VALIDATION_CACHE.get(urlString, new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                try {
+                    return (Integer.parseInt(getUrlStatus(urlString)) / 100 == 2);
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+        });
     }
 }

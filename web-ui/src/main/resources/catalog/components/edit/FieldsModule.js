@@ -87,6 +87,7 @@
 
   goog.require('gn_abstract_builder_directive');
   goog.require('gn_batch_process_button');
+  goog.require('gn_bounding');
   goog.require('gn_checkbox_with_nilreason');
   goog.require('gn_crs_selector');
   goog.require('gn_date_picker_directive');
@@ -116,6 +117,7 @@
     'gn_date_picker_directive',
     'gn_abstract_builder_directive',
     'gn_record_fragment_selector',
-    'gn_checkbox_with_nilreason'
+    'gn_checkbox_with_nilreason',
+    'gn_bounding'
   ]);
 })();

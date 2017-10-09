@@ -201,16 +201,18 @@
           <tr data-ng-if="mdView.current.record.legalConstraints">
             <th data-translate="">legalConstraints</th>
             <td>
-              <p data-ng-repeat="c in mdView.current.record.legalConstraints track by $index">
-                {{c}}</p>
+              <p data-ng-repeat="c in mdView.current.record.legalConstraints track by $index"
+                 data-ng-bind-html="c | newlines">
+              </p>
             </td>
           </tr>
 
           <tr data-ng-if="mdView.current.record.securityConstraints">
             <th data-translate="">securityConstraints</th>
             <td>
-              <p data-ng-repeat="c in mdView.current.record.securityConstraints track by $index">
-                {{c}}</p>
+              <p data-ng-repeat="c in mdView.current.record.securityConstraints track by $index"
+                 data-ng-bind-html="c | newlines">
+              </p>
             </td>
           </tr>
 
@@ -218,50 +220,16 @@
           <tr data-ng-if="mdView.current.record.resourceConstraints">
             <th data-translate="">resourceConstraints</th>
             <td>
-              <p data-ng-repeat="c in mdView.current.record.resourceConstraints track by $index">
-                {{c}}</p>
+              <p data-ng-repeat="c in mdView.current.record.resourceConstraints track by $index"
+                 data-ng-bind-html="c | newlines">
+              </p>
             </td>
           </tr>
 
           <tr data-ng-if="mdView.current.record.getAllContacts().resource">
             <th data-translate="">resourceContact</th>
             <td>
-              <div class="gn-contact"
-                   data-ng-repeat="c in mdView.current.record.getAllContacts().resource track by $index">
-                <h3>
-                  <i class="fa fa-envelope"></i>
-                  {{c.role | translate}}
-                </h3>
-                <div class="row">
-                  <div class="col-md-8">
-                    <address>
-                      <strong>
-                        {{c.org}}<br/>
-                      </strong>
-                      <div data-ng-if="c.email != ''">
-                        <a href="mailto:{{c.email}}">
-                          <span data-ng-hide="c.name">{{c.email}}</span>
-                          <span data-ng-show="c.name">{{c.name}}</span>
-                          <span data-ng-show="c.position">({{c.position}})</span>
-                        </a>
-                      </div>
-                      <div data-ng-if="c.email === ''">{{c.name}}
-                        <span data-ng-show="c.position">({{c.position}})</span>
-                      </div>
-                      <div data-ng-if="c.address != ''">{{c.address}}</div>
-                      <a href="tel:{{c.phone}}"
-                         data-ng-if="c.phone != ''">
-                        <span data-translate="">call</span> {{c.phone}}
-                      </a>
-                    </address>
-                  </div>
-                  <div class="col-md-4">
-                    <img data-ng-if="c.logo"
-                         class="gn-source-logo"
-                         data-ng-src="{{::c.logo}}"/>
-                  </div>
-                </div>
-              </div>
+              <div data-gn-metadata-contacts="mdView.current.record.getAllContacts().resource" data-gn-mode="org-role" />
             </td>
           </tr>
           <tr data-ng-if="mdView.current.record.credit">
@@ -318,11 +286,14 @@
               </ul>
             </td>
           </tr>
-          <tr data-ng-if="::mdView.current.record.crs">
+          <tr data-ng-if="::mdView.current.record.crsDetails">
             <th data-translate="">crs</th>
             <td>
               <ul>
-                <li data-ng-repeat="r in ::mdView.current.record.crs">{{r}}</li>
+                <li data-ng-repeat="r in ::mdView.current.record.crsDetails">
+                  <span ng-if="r.name != ''">{{ r.name }} ({{ r.code }})</span>
+                  <span ng-if="r.name == ''">{{ r.code }}</span>
+                </li>
               </ul>
             </td>
           </tr>
@@ -339,7 +310,7 @@
               <p data-ng-bind-html="::mdView.current.record.lineage | newlines"/>
             </td>
           </tr>
-          <tr data-ng-if="hasRelations.sources || hasRelations.hassources">
+          <tr>
             <th></th>
             <td>
               <div data-gn-related="mdView.current.record"
@@ -386,42 +357,7 @@
           <tr data-ng-if="::mdView.current.record.getAllContacts()">
             <th data-translate="">contact</th>
             <td>
-              <div class="gn-contact"
-                   data-ng-repeat="c in ::mdView.current.record.getAllContacts().metadata track by $index">
-                <h3>
-                  <i class="fa fa-envelope"></i>
-                  {{c.role | translate}}
-                </h3>
-                <div class="row">
-                  <div class="col-md-8">
-                    <address>
-                      <strong>
-                        {{c.org}}<br/>
-                      </strong>
-                      <div data-ng-if="c.email != ''">
-                        <a href="mailto:{{c.email}}">
-                          <span data-ng-hide="c.name">{{c.email}}</span>
-                          <span data-ng-show="c.name">{{c.name}}</span>
-                          <span data-ng-show="c.position">({{c.position}})</span>
-                        </a>
-                      </div>
-                      <div data-ng-if="c.email === ''">{{c.name}}
-                        <span data-ng-show="c.position">({{c.position}})</span>
-                      </div>
-                      <p data-ng-if="c.address != ''">{{c.address}}</p>
-                      <a href="tel:{{c.phone}}"
-                         data-ng-if="c.phone != ''">
-                        <span data-translate="">call</span> {{c.phone}}
-                      </a>
-                    </address>
-                  </div>
-                  <div class="col-md-4">
-                    <img data-ng-if="c.logo"
-                         class="gn-source-logo"
-                         data-ng-src="{{::c.logo}}"/>
-                  </div>
-                </div>
-              </div>
+              <div data-gn-metadata-contacts="::mdView.current.record.getAllContacts().metadata" data-gn-mode="org-role" />
             </td>
           </tr>
           <tr data-ng-if="::mdView.current.record.mdLanguage">

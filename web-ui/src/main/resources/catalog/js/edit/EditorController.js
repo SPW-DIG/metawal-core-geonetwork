@@ -445,34 +445,59 @@
         $scope.layout.hideTopToolBar = false;
         // Close the editor tab
         window.onbeforeunload = null;
+
+        // if there is no history, attempt to close tab
+        if (window.history.length == 1) {
+          window.close();
+          // This last point may trigger
+          // "Scripts may close only the windows that were opened by it."
+          // when the editor was not opened by a script.
+        }
+
         // Go to editor home
         $location.path('');
-        // Tentative to close the browser tab
-        window.close();
-        // This last point may trigger
-        // "Scripts may close only the windows that were opened by it."
-        // when the editor was not opened by a script.
       };
 
       $scope.cancel = function(refreshForm) {
         $scope.savedStatus = gnCurrentEdit.savedStatus;
-        return gnEditor.cancel(refreshForm)
-            .then(function(form) {
-              // Refresh editor form after cancel
-              //  $scope.savedStatus = gnCurrentEdit.savedStatus;
-              //  $rootScope.$broadcast('StatusUpdated', {
-              //    title: $translate.instant('cancelMetadataSuccess')
-              //  });
-              //  gnEditor.refreshEditorForm(null, true);
-              closeEditor();
-            }, function(error) {
-              $scope.savedStatus = gnCurrentEdit.savedStatus;
-              $rootScope.$broadcast('StatusUpdated', {
-                title: $translate.instant('cancelMetadataError'),
-                error: error,
-                timeout: 0,
-                type: 'danger'});
-            });
+        if ($location.search()['justcreated']) {
+          // Remove newly created record
+          var md = gnCurrentEdit.metadata;
+          gnMetadataActions.deleteMd(md).
+              then(function(data) {
+                $rootScope.$broadcast('StatusUpdated', {
+                  title: $translate.instant('metadataRemoved',
+                  {title: md.title || md.defaultTitle}),
+                  timeout: 2
+                });
+                closeEditor();
+              }, function(reason) {
+                $rootScope.$broadcast('StatusUpdated', {
+                  title: $translate.instant(reason.data.error.message),
+                  timeout: 0,
+                  type: 'danger'
+                });
+              });
+
+        } else {
+          return gnEditor.cancel(refreshForm)
+              .then(function(form) {
+                // Refresh editor form after cancel
+                //  $scope.savedStatus = gnCurrentEdit.savedStatus;
+                //  $rootScope.$broadcast('StatusUpdated', {
+                //    title: $translate.instant('cancelMetadataSuccess')
+                //  });
+                //  gnEditor.refreshEditorForm(null, true);
+                closeEditor();
+              }, function(error) {
+                $scope.savedStatus = gnCurrentEdit.savedStatus;
+                $rootScope.$broadcast('StatusUpdated', {
+                  title: $translate.instant('cancelMetadataError'),
+                  error: error,
+                  timeout: 0,
+                  type: 'danger'});
+              });
+        }
       };
 
       $scope.close = function() {

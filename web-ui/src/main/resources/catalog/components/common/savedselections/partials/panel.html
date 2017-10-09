@@ -1,11 +1,10 @@
 <div class="panel panel-default basket-panel-rw"
-     data-ng-show="selections != null">
-  <div class="panel-heading basket-panel-heading-rw"
-       >
+     data-ng-show="selections != null && selections.list.length > 0">
+  <div class="panel-heading"
+       data-gn-slide-toggle="">
     <i class="fa fa-shopping-cart pull-right"/>&nbsp;
-    <span data-translate="">basket</span>
-    <!--span data-ng-show="selections.size > 0" data-translate="">basket</span-->
-    <!--span data-ng-hide="selections.size > 0" data-translate="">emptyBasket</span-->
+<!--    <span data-ng-show="selections.size > 0" data-translate="">basket</span>
+    <span data-ng-hide="selections.size > 0" data-translate="">emptyBasket</span>-->
   </div>
   <div class="panel-body basket-panel-body-rw">
 

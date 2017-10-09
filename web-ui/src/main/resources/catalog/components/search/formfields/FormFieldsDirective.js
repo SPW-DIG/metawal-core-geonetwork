@@ -118,7 +118,7 @@
               var field = $(element).tagsinput('input');
               field.typeahead({
                 minLength: 0,
-                hint: true,
+                hint: scope.$eval(attrs.gnTypeaheadDisableHint) ? false : true,
                 highlight: true
               }, angular.extend({
                 name: 'datasource',
@@ -601,7 +601,8 @@
             scope: {
               selectedInfo: '=',
               lang: '=',
-              allowBlank: '@'
+              allowBlank: '@',
+              infos: '=?schemaInfoComboValues'
             },
             link: function(scope, element, attrs) {
               var initialized = false;
@@ -609,7 +610,8 @@
 
               var addBlankValueAndSetDefault = function() {
                 var blank = {label: '', code: ''};
-                if (scope.infos != null && scope.allowBlank !== undefined) {
+                if (scope.infos != null && scope.infos.length &&
+                    scope.allowBlank !== undefined) {
                   scope.infos.unshift(blank);
                 }
                 // Search default value
@@ -702,7 +704,9 @@
             scope.recordTypes = [
               {key: 'METADATA', value: 'METADATA'},
               {key: 'TEMPLATE', value: 'TEMPLATE'},
-              {key: 'SUB_TEMPLATE', value: 'SUB_TEMPLATE'}
+              {key: 'SUB_TEMPLATE', value: 'SUB_TEMPLATE'},
+              {key: 'TEMPLATE_OF_SUB_TEMPLATE',
+                value: 'TEMPLATE_OF_SUB_TEMPLATE'}
             ];
           }
         };
@@ -787,6 +791,7 @@
               dragboxInteraction.active = false;
 
               scope.clear = function() {
+                scope.valueInternalChange = true;
                 scope.value = '';
                 scope.extent = extentFromValue(scope.value);
                 scope.updateMap();
@@ -815,14 +820,14 @@
                 scope.extent = extent.map(function(coord) {
                   return Math.round(coord * 10000) / 10000;
                 });
-                scope.value = valueFromExtent(scope.extent);
-                scope.updateMap();
+                scope.onBboxChange();
 
                 scope.$apply();
               });
               scope.dragboxInteraction = dragboxInteraction;
 
               scope.onBboxChange = function() {
+                scope.valueInternalChange = true;
                 scope.value = valueFromExtent(scope.extent);
                 scope.updateMap();
               };
@@ -831,6 +836,18 @@
                 clearMap();
                 scope.map.removeLayer(layer);
               });
+
+              // watch external change of value
+              if (scope.$eval(attrs['watchValueChange'])) {
+                scope.$watch('value', function(newValue) {
+                  if (scope.valueInternalChange) {
+                    scope.valueInternalChange = false;
+                  } else {
+                    scope.extent = extentFromValue(newValue);
+                    scope.updateMap();
+                  }
+                });
+              }
             }
           };
         }

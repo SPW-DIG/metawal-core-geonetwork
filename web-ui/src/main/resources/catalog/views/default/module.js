@@ -32,13 +32,14 @@
   goog.require('gn_mdactions_directive');
   goog.require('gn_related_directive');
   goog.require('gn_search');
+  goog.require('gn_gridrelated_directive');
   goog.require('gn_search_default_config');
   goog.require('gn_search_default_directive');
 
   var module = angular.module('gn_search_default',
       ['gn_search', 'gn_search_default_config',
        'gn_search_default_directive', 'gn_related_directive',
-       'cookie_warning', 'gn_mdactions_directive']);
+       'cookie_warning', 'gn_mdactions_directive', 'gn_gridrelated_directive']);
 
 
   module.controller('gnsSearchPopularController', [
@@ -69,6 +70,27 @@
         }
       };
     }]);
+
+
+  module.controller('gnsSearchTopEntriesController', [
+    '$scope', 'gnGlobalSettings',
+    function($scope, gnGlobalSettings) {
+      $scope.resultTemplate = '../../catalog/components/' +
+        'search/resultsview/partials/viewtemplates/grid4maps.html';
+      $scope.searchObj = {
+        permalink: false,
+        filters: {
+          'type': 'interactiveMap'
+        },
+        params: {
+          sortBy: 'changeDate',
+          from: 1,
+          to: 30
+        }
+      };
+    }]);
+
+
   module.controller('gnsDefault', [
     '$scope',
     '$location',
@@ -181,7 +203,7 @@
         if (nextRecordId === mdView.records.length) {
           // When last record of page reached, go to next page...
           // Not the most elegant way to do it, but it will
-          // be easier using Solr search components
+          // be easier using index search components
           $scope.$broadcast('nextPage');
         } else {
           $scope.openRecord(nextRecordId);
@@ -235,7 +257,18 @@
               link.name, link.url)) {
             return;
           }
-          gnMap.addWmsFromScratch(viewerMap, link.url, link.name, false, md).then(function (layer) {
+          var loadLayerPromise;
+
+          // handle WMTS layer info
+          if (link.protocol.indexOf('WMTS') > -1) {
+            loadLayerPromise = gnMap.addWmtsFromScratch(
+              viewerMap, link.url, link.name, undefined, md);
+          } else {
+            loadLayerPromise = gnMap.addWmsFromScratch(
+              viewerMap, link.url, link.name, undefined, md);
+          }
+
+          loadLayerPromise.then(function (layer) {
             if (layer) {
               gnMap.feedLayerWithRelated(layer, link.group);
             }
@@ -247,8 +280,18 @@
               link.name, link.url)) {
             return;
           }
-          gnMap.addWmsFromScratch(viewerMap, link.url, link.name, false, md).
-          then(function(layer) {
+          var loadLayerPromise;
+
+          // handle WMTS layer info
+          if (link.protocol.indexOf('WMTS') > -1) {
+            loadLayerPromise = gnMap.addWmtsFromScratch(
+              viewerMap, link.url, link.name, undefined, md);
+          } else {
+            loadLayerPromise = gnMap.addWmsFromScratch(
+              viewerMap, link.url, link.name, undefined, md);
+          }
+
+          loadLayerPromise.then(function(layer) {
             if(layer) {
               gnMap.feedLayerWithRelated(layer, link.group);
             }
@@ -281,27 +324,41 @@
         $scope.activeTab = $location.path().
             match(/^(\/[a-zA-Z0-9]*)($|\/.*)/)[1];
 
-        if (gnSearchLocation.isSearch() && (!angular.isArray(
+        // resize search map for any views exluding viewer
+        if (!gnSearchLocation.isMap() && (!angular.isArray(
             searchMap.getSize()) || searchMap.getSize()[0] < 0)) {
           setTimeout(function() {
             searchMap.updateSize();
 
-            // TODO: load custom context to the search map
-            //gnOwsContextService.loadContextFromUrl(
-            //  gnViewerSettings.defaultContext,
-            //  searchMap);
-
+            // if an extent was obtained from a loaded context, apply it
+            if(searchMap.get('lastExtent')) {
+              searchMap.getView().fit(
+                searchMap.get('lastExtent'),
+                searchMap.getSize(), { nearest: true });
+            }
           }, 0);
         }
+
+        // resize viewer map for corresponding view
         if (gnSearchLocation.isMap() && (!angular.isArray(
             viewerMap.getSize()) || viewerMap.getSize().indexOf(0) >= 0)) {
           setTimeout(function() {
             viewerMap.updateSize();
+
+            // if an extent was obtained from a loaded context, apply it
+            if(viewerMap.get('lastExtent')) {
+              viewerMap.getView().fit(
+                viewerMap.get('lastExtent'),
+                viewerMap.getSize(), { nearest: true });
+            }
+
+            var map = $location.search().map;
+            if (angular.isDefined(map)) {
+              $scope.resultviewFns.loadMap({url: map});
+            }
           }, 0);
         }
       });
-
-
 
       angular.extend($scope.searchObj, {
         advancedMode: false,

@@ -134,11 +134,12 @@
             function(value, key) {
               var p = $scope.searchObj.params[key];
               if (p) {
-                if (!angular.isArray(p)) {
-                  $scope.searchObj.params[key] = [p];
+                if (p !== value && (!p.indexOf || p.indexOf(value) === -1)) {
+                  if (!angular.isArray(p)) {
+                    $scope.searchObj.params[key] = [p];
+                  }
+                  $scope.searchObj.params[key].push(value);
                 }
-                $scope.searchObj.params[key].push(value);
-
               } else {
                 $scope.searchObj.params[key] = value;
               }
@@ -204,8 +205,7 @@
             $scope.searchResults.facet = data.facet;
             $scope.searchResults.dimension = data.dimension;
             // compute page number for pagination
-            if ($scope.searchResults.records.length > 0 &&
-                $scope.hasPagination) {
+            if ($scope.hasPagination) {
 
               var paging = $scope.paginationInfo;
 
@@ -366,7 +366,8 @@
     $scope.$on('clearResults', function() {
       $scope.searchResults = {
         records: [],
-        count: 0
+        count: 0,
+        selectionBucket: $scope.searchObj.selectionBucket
       };
     });
 

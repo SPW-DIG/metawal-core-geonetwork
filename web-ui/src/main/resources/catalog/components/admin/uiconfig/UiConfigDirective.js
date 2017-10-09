@@ -39,7 +39,11 @@
             'uiconfig.html',
         link: function(scope, element, attrs) {
           var testAppUrl = '../../catalog/views/api/?config=';
-          scope.jsonConfig = angular.fromJson(scope.config);
+
+          // merge on top of default config
+          scope.jsonConfig = angular.merge(
+              gnGlobalSettings.getMergeableDefaultConfig(),
+              angular.fromJson(scope.config));
 
           scope.sortOrderChoices = ['', 'reverse'];
 
@@ -95,4 +99,25 @@
         }
       };
     }]);
+
+  // used to edit an object as a JSON string
+  module.directive('gnJsonEdit', function() {
+    return {
+      restrict: 'A',
+      scope: {
+        value: '=gnJsonEdit'
+      },
+      link: function(scope, element, attrs) {
+        element.val(JSON.stringify(scope.value));
+        element.on('change', function() {
+          var newValue = $(this).val();
+          try {
+            angular.merge(scope.value, JSON.parse(newValue));
+          } catch (e) {
+            console.warn('Error parsing JSON: ', newValue);
+          }
+        });
+      }
+    };
+  });
 })();

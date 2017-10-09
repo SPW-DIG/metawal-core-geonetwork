@@ -1,6 +1,5 @@
 <div>
   <p class="help-block" data-translate="">ui/config-help</p>
-
   <fieldset data-ng-repeat="(m, mCfg) in jsonConfig.mods">
     <legend>
       <input type="checkbox"
@@ -17,9 +16,15 @@
     <div class="col-sm-12"
          data-ng-repeat="(key, value) in mCfg"
          data-ng-switch="key">
+
+      <!-- DEPRECATED SETTINGS (hidden) -->
       <div data-ng-switch-when="enabled"></div>
       <div data-ng-switch-when="context"></div>
       <div data-ng-switch-when="layer"></div>
+      <div data-ng-switch-when="searchMapLayers"></div>
+      <div data-ng-switch-when="viewerMapLayers"></div>
+      <div data-ng-switch-when="mapExtent"></div>
+      <div data-ng-switch-when="mapBackgroundLayer"></div>
 
 
       <!-- arrays -->
@@ -431,9 +436,6 @@
           {{('ui-' + key + '-help') | translate}} </p>
       </div>
 
-
-
-
       <!-- numbers -->
       <div data-ng-switch-when="paginationInfo">
         <label class="control-label">{{('ui-' + key) | translate}}</label>
@@ -450,7 +452,31 @@
       <div data-ng-switch-when="is3DModeAllowed">
         <input type="checkbox"
                id="{{key}}-checkbox"
-               data-ng-model="value"/>&nbsp;
+               data-ng-model="mCfg[key]"/>&nbsp;
+        <label class="control-label"
+               for="{{key}}-checkbox">{{('ui-' + key) | translate}}</label>
+
+        <p class="help-block"
+           data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+      </div>
+
+      <div data-ng-switch-when="isSaveMapInCatalogAllowed">
+        <input type="checkbox"
+               id="{{key}}-checkbox"
+               data-ng-model="mCfg[key]"/>&nbsp;
+        <label class="control-label"
+               for="{{key}}-checkbox">{{('ui-' + key) | translate}}</label>
+
+        <p class="help-block"
+           data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+      </div>
+
+      <div data-ng-switch-when="isExportMapAsImageEnabled">
+        <input type="checkbox"
+               id="{{key}}-checkbox"
+               data-ng-model="mCfg[key]"/>&nbsp;
         <label class="control-label"
                for="{{key}}-checkbox">{{('ui-' + key) | translate}}</label>
 
@@ -462,13 +488,76 @@
       <div data-ng-switch-when="useOSM">
         <input type="checkbox"
                id="{{key}}-checkbox"
-               data-ng-model="value"/>&nbsp;
+               data-ng-model="mCfg[key]"/>&nbsp;
         <label class="control-label"
                for="{{key}}-checkbox">{{('ui-' + key) | translate}}</label>
 
         <p class="help-block"
            data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
           {{('ui-' + key + '-help') | translate}} </p>
+      </div>
+
+      <div data-ng-switch-when="disabledTools">
+        <label class="control-label">{{('ui-' + key) | translate}}</label>
+        <div>
+          <input type="checkbox"
+               id="{{key}}-processes-checkbox"
+               data-ng-model="mCfg[key].processes"
+               ng-true-value="false" ng-false-value="true"/>&nbsp;
+          <label class="control-label"
+                 for="{{key}}-processes-checkbox" data-translate>
+            processesTool</label>
+        </div>
+        <p class="help-block"
+          data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+      </div>
+
+      <div data-ng-switch-when="graticuleOgcService">
+        <label class="control-label">{{('ui-' + key) | translate}}</label>
+        <div class="input-group">
+          <span class="input-group-addon">Type </span>
+          <input type="text"
+                 class="form-control"
+                 data-ng-model="mCfg[key].type"/>
+          <span class="input-group-addon">Layer </span>
+          <input type="text"
+                 class="form-control"
+                 data-ng-model="mCfg[key].layer"/>
+          <span class="input-group-addon">Url </span>
+          <input type="text"
+                 class="form-control"
+                 data-ng-model="mCfg[key].url"/>
+        </div>
+        <p class="help-block"
+           data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+      </div>
+
+      <!-- map configs -->
+      <div data-ng-switch-when="map-viewer">
+        <h3>{{('ui-' + key) | translate}}</h3>
+        <p class="help-block"
+           data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+        <div ng-include="'../../catalog/components/admin/uiconfig/partials/mapconfig.html'">
+        </div>
+      </div>
+      <div data-ng-switch-when="map-search">
+        <h3>{{('ui-' + key) | translate}}</h3>
+        <p class="help-block"
+           data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+        <div ng-include="'../../catalog/components/admin/uiconfig/partials/mapconfig.html'">
+        </div>
+      </div>
+      <div data-ng-switch-when="map-editor">
+        <h3>{{('ui-' + key) | translate}}</h3>
+        <p class="help-block"
+           data-ng-show="(('ui-' + key + '-help') | translate) != ('ui-' + key + '-help')">
+          {{('ui-' + key + '-help') | translate}} </p>
+        <div ng-include="'../../catalog/components/admin/uiconfig/partials/mapconfig.html'">
+        </div>
       </div>
 
       <div data-ng-switch-default>
