@@ -1,3 +1,12 @@
 {
-	"apirwFacetOwner":"Propiétaires"
+	"apirwSearch":"Recherche",
+	"apirwFacetthemes":"Thèmes",
+	"apirwFacetOwner":"Propiétaires",
+	"apirwFacetDiffusion":"Mode de diffusion",
+	"apirwFacetResourcesTypes":"Ressources officielles",
+	"apirwFacetModificationDate":"Date de moficiation",
+	"apirwAfter":"Après le",
+	"apirwModificationData":"De la donnée / du service",
+	"apirwModificationMetada":"De la fiche descriptive",
+	"apirwreinitiate": "Réinitialisaer"
 }

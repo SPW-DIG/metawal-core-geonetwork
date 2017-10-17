@@ -1,3 +1,7 @@
 {
-	"apirwFacetOwner":"Owners"
+	"apirwFacetOwner":"Owners",
+	"apirwModificationDate":"Modification date",
+	"apirwAfter":"After",
+	"apirwModificationData":"Of the dataset/ service",
+	"apirwModificationMetada":"Of the metadata"
 }
