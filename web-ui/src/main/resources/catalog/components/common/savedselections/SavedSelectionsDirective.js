@@ -47,7 +47,7 @@
             label: 'searchSelectedRecord',
             fn: searchRecordsInSelection,
             icon: 'fa-search',
-            icon_result: 'icon-api-rw-notification',
+            icon_result: 'icon-api-rw-download',
             text_noselected:'noSearchSelectedRecord'
           },
           'AnonymousUserlist': {
@@ -482,17 +482,13 @@
            ///TO BE COMPLETED - add function
            scope.md = new Metadata(scope.record);
            for (var i = scope.md.getLinksByType().length - 1; i >= 0; i--) {
-            console.log('md.getLinksByType');
             scope.mdurldisabled=true;
-            console.log(scope.md.getLinksByType().length);
-            console.log(scope.md.getLinksByType()[i].hasOwnProperty('protocol'));
              if (scope.md.getLinksByType()[i].protocol === 'WWW:LINK-1.0-http--link') {
                scope.mdurl =scope. md.getLinksByType()[i].url;
                if (scope.mdurl ==='') {
                  scope.mdurldisabled=true;
                }
                scope.mdurldisabled=false;
-               console.log(scope.mdurl);
              }
            }
 

@@ -10,5 +10,17 @@
 	"apirwModificationMetada":"Of the metadata",
 	"apirwreinitiate": "Reinitiate",
 	"noDownloadData" : "No selection",
-	"noAddToMap":"No selection"
+	"noAddToMap":"No selection",
+	"factSheet":"Descriptive sheet",
+	"seeMap":"See the map",
+	"DataDownloaderlist_add":"Add my downloads",
+	"DataDownloaderlist_remove":"Remove from my downloads",
+	"MapLayerlist_add":"Add to my WalOnMap selection",
+	"MapLayerlist_remove":"Remove from my WalOnMap selection",
+	"AnonymousUserlist_add":"Add to'anonymous'",
+	"AnonymousUserlist_remove":"Remove from 'anonymous'",
+	"PreferredList_add":"Add to my services",
+	"PreferredList_remove":"Remove from my services",
+	"WatchList_add":"Add to my notifications",
+	"WatchList_remove":"Remove from my notifications"
 }
