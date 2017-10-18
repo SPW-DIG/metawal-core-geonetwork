@@ -1,7 +1,14 @@
 {
+	"apirwSearch":"Search",
+	"apirwFacetthemes":"Themes",
 	"apirwFacetOwner":"Owners",
+	"apirwFacetDiffusion":"Mode de diffusion",
+	"apirwFacetResourcesTypes":"Ressources officielles",
 	"apirwModificationDate":"Modification date",
 	"apirwAfter":"After",
 	"apirwModificationData":"Of the dataset/ service",
-	"apirwModificationMetada":"Of the metadata"
+	"apirwModificationMetada":"Of the metadata",
+	"apirwreinitiate": "Reinitiate",
+	"noDownloadData" : "No selection",
+	"noAddToMap":"No selection"
 }

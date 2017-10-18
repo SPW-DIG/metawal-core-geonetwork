@@ -8,5 +8,7 @@
 	"apirwAfter":"Après le",
 	"apirwModificationData":"De la donnée / du service",
 	"apirwModificationMetada":"De la fiche descriptive",
-	"apirwreinitiate": "Réinitialisaer"
+	"apirwreinitiate": "Réinitialiser",
+	"noDownloadData" : "Aucune sélection",
+	"noAddToMap":"Aucune sélection"
 }
