@@ -22,5 +22,18 @@
 	"PreferredList_add":"Add to my services",
 	"PreferredList_remove":"Remove from my services",
 	"WatchList_add":"Add to my notifications",
-	"WatchList_remove":"Remove from my notifications"
+	"WatchList_remove":"Remove from my notifications",
+	"basket":"My baskets",
+	"DataDownloaderlist_basket_title":"My downloads",
+	"DataDownloaderlist_basket_button":"Download",
+	"MapLayerlist_basket_title":"My WalOnMap selection",
+	"MapLayerlist_basket_button":"View",
+	"AnonymousUserlist_basket_title":"Basket title for 'anonymous'",
+	"AnonymousUserlist_basket_button":"Button title for  'anonymous'",
+	"PreferredList_basket_title":"My services",
+	"PreferredList_basket_button":"Manage",
+	"WatchList_basket_title":"My notifications",
+	"WatchList_basket_button":"Manage",
+	"textSearchSelectedRecord":"Quick acces to your prefered services.",
+	"textNotificationData":"Reveive email when data or service is updated."
 }
