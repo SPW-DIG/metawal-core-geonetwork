@@ -10,5 +10,17 @@
 	"apirwModificationMetada":"De la fiche descriptive",
 	"apirwreinitiate": "Réinitialiser",
 	"noDownloadData" : "Aucune sélection",
-	"noAddToMap":"Aucune sélection"
+	"noAddToMap":"Aucune sélection",
+	"factSheet":"Fiche descriptive",
+	"seeMap":"Consulter la carte",
+	"DataDownloaderlist_add":"Ajouter à mes téléchargements",
+	"DataDownloaderlist_remove":"Supprimer de mes téléchargements",
+	"MapLayerlist_add":"Ajouter à ma sélection WalOnMap",
+	"MapLayerlist_remove":"Supprimer de ma sélection WalOnMap",
+	"AnonymousUserlist_add":"Ajouter à 'anonymous'",
+	"AnonymousUserlist_remove":"Supprimer de 'anonymous'",
+	"PreferredList_add":"Ajouter à mes services",
+	"PreferredList_remove":"Supprimer de mes services",
+	"WatchList_add":"Ajouter à mes notifications",
+	"WatchList_remove":"Supprimer de mes notifications"
 }
