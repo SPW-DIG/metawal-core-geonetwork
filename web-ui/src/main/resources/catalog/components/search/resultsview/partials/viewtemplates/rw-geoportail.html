@@ -31,7 +31,7 @@
       <div class="row">
         <p class="description-api-rw row-api-rw ">
           <a data-ng-href="#/metadata/{{md.getUuid()}}"
-           title="{{md.title || md.defaultTitle}}">{{(md.abstract || md.defaultAbstract) | striptags | limitTo: 160 }} <span data-ng-if="md.abstract.lenght() > 160 || md.defaultAbstract.lenght() > 160"> ...</span>
+           title="{{md.title || md.defaultTitle}}">{{(md.abstract  || md.defaultAbstract | regexOneSentence)}}
           </a>
         </p>
       </div>
