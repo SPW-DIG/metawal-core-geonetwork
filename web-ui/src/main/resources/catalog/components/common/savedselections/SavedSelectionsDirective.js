@@ -47,7 +47,7 @@
             label: 'searchSelectedRecord',
             fn: searchRecordsInSelection,
             icon: 'fa-search',
-            icon_result: 'icon-api-rw-download',
+            icon_result: 'icon-api-rw-service',
             text_noselected:'noSearchSelectedRecord'
           },
           'AnonymousUserlist': {

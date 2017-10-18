@@ -22,5 +22,18 @@
 	"PreferredList_add":"Ajouter à mes services",
 	"PreferredList_remove":"Supprimer de mes services",
 	"WatchList_add":"Ajouter à mes notifications",
-	"WatchList_remove":"Supprimer de mes notifications"
+	"WatchList_remove":"Supprimer de mes notifications",
+	"basket":"Mes paniers",
+	"DataDownloaderlist_basket_title":"Mes téléchargements",
+	"DataDownloaderlist_basket_button":"Télécharger",
+	"MapLayerlist_basket_title":"Ma sélection WalOnMap",
+	"MapLayerlist_basket_button":"Visualiser",
+	"AnonymousUserlist_basket_title":"Titre basket de 'anonymous'",
+	"AnonymousUserlist_basket_button":"Boutton basket de 'anonymous'",
+	"PreferredList_basket_title":"Mes services",
+	"PreferredList_basket_button":"Gérer",
+	"WatchList_basket_title":"Mes notifications",
+	"WatchList_basket_button":"Gérer",
+	"textSearchSelectedRecord":"Accédez rapidement à la liste de vos services favoris.",
+	"textNotificationData":"Soyez informés par email dès qu’une donnée ou service est mis à jour."
 }
