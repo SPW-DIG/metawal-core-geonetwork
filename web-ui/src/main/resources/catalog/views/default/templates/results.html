@@ -128,7 +128,7 @@
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-reset.html'"></div>
         </div>
         <div class="gn-search-facet facet-api-rw">
-          <p class="facet-title-api-rw request-api-rw">demander l'ajout d'une donnée ou d'un service au catalogue</p>
+          <p class="facet-title-api-rw request-api-rw" data-translate="">addingRequest</p>
           <button class="col-md-12 btn btn-block btn-addition-api-rw" onclick="window.location.href='http://geoportail.wallonie.be/contact'"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
         </div>
       </div>
@@ -146,14 +146,15 @@
         </div>
         <div class="row container-overview-api-rw">
           <div class="row">
-            <div class="col-md-7 zero-api-rw ">
-              <div class="col-md-5 zero-api-rw ">
-                <p class="sort-api-rw">TRIER PAR:</p>
-              </div>
-              <div class="col-md-7 pull-left zero-api-rw "
-                data-api-rw-sortby-combo=""
-                data-params="searchObj.params"
-                data-gn-sortby-values="searchObj.sortbyValues"></div>
+            <div class="col-md-12 col-lg-6 zero-api-rw ">
+                <div class="col-md-3 zero-api-rw ">
+                  <p class="sort-api-rw" data-translate="">sortBy</p>
+                </div>
+                <div class="col-md-9 pull-right zero-api-rw "
+                  data-api-rw-sortby-combo=""
+                  data-params="searchObj.params"
+                  data-gn-sortby-values="searchObj.sortbyValues">  
+                </div>
             </div>
           </div>
           <div class="row"

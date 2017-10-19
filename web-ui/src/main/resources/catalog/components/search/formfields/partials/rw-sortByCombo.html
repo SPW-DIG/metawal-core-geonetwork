@@ -1,10 +1,17 @@
 <div class="form-group sortby-search-api-rw">
-  <!--label class="col-md-6 control-label pull-left">trier par</label-->
-  <div class="col-md-12 input-group pull-left">
-    <select ng-model="params.sortBy" class="form-control" id="sel1" data-ng-change="sortBy()" >
-      <option data-ng-repeat="v in ::values">
-        {{v.sortBy | translate}}
-      </option>
-    </select>
+  <div class="btn-group api-rw-center-btn">
+    <button type="button"
+            class="btn btn-default dropdown-toggle api-rw-btn-norounded"
+            data-toggle="dropdown"
+            aria-expanded="false">
+      <span 
+            class="pull-left">{{params.sortBy | translate}}</span>
+      <span class="pull-right icon-api-rw-select-down"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li data-ng-repeat="v in ::values"
+          data-ng-class="v.sortBy === params.sortBy ? 'disabled' : ''">
+        <a data-ng-click="sortBy(v)">{{v.sortBy | translate}}</a></li>
+    </ul>
   </div>
 </div>

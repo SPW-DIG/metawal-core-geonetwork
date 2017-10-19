@@ -35,5 +35,7 @@
 	"WatchList_basket_title":"My notifications",
 	"WatchList_basket_button":"Manage",
 	"textSearchSelectedRecord":"Quick acces to your prefered services.",
-	"textNotificationData":"Reveive email when data or service is updated."
+	"textNotificationData":"Reveive email when data or service is updated.",
+	"addingRequest":"Request aiming to add data or service in the catalog",
+	"sortBy":"Sort by :"
 }
