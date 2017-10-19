@@ -100,8 +100,8 @@
      data-ng-search-form=""
      data-runSearch="true" data-ng-if="searchObj.params.resultType ==='apirw' ">
   <div class="row">
-    <div class="container">
-      <div class="col-md-4 container-leftside-api-rw">
+    <div class="container zero-api-rw-pad">
+      <div class="col-md-4 container-leftside-api-rw zero-api-rw-pad">
         <div class="gn-search-facet facet-api-rw">
           <p class="facet-title-api-rw request-api-rw">
 
@@ -132,10 +132,10 @@
           <button class="col-md-12 btn btn-block btn-addition-api-rw" onclick="window.location.href='http://geoportail.wallonie.be/contact'"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
         </div>
       </div>
-      <div class="col-md-8 container-rightside-api-rw">
+      <div class="col-md-8 container-rightside-api-rw zero-api-rw-pad-right">
         <div class="row"
           data-ng-show="searchResults.records.length > 0">
-          <div class="col-md-12 api-rw-withoutmargin"
+          <div class="col-md-12 zero-api-rw"
             data-gn-facet-dimension-list="searchResults.dimension"
             data-params="searchObj.params"
             data-facet-type="facetsSummaryType"
