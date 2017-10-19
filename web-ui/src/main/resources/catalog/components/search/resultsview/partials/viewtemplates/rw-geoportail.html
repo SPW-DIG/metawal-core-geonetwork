@@ -1,8 +1,8 @@
 
-<div class="container col-sm-12">
+<div class="container col-sm-12 zero-api-rw">
   <div class="row overview-api-rw" data-ng-repeat="md in searchResults.records">
   <div class="">
-    <div class="col-sm-3">
+    <div class="col-sm-3 zero-api-rw">
       <a data-ng-href="#/metadata/{{md.getUuid()}}"
            title="{{md.title || md.defaultTitle}}" >
       <img data-ng-src="{{md.getThumbnails().list[0].url}}"
@@ -21,10 +21,10 @@
         </h4>
       </div>
       <div class="row owner-api-rw row-api-rw ">
-        <div class="col-sm-7 col-p-api-rw-0">
+        <div class="col-md-12 col-lg-7 col-p-api-rw-0">
           <strong>Propriétaire:</strong> {{(md.getAllContacts().resource | filter:{role:'Propriétaire'})[0].org }}
         </div>
-        <div class="col-sm-5 col-p-api-rw-0" >
+        <div class="col-md-12 col-lg-5 col-p-api-rw-0" >
           <strong>Mise à jour:</strong> {{md.revisionDate | date:'dd MMMM yyyy'}}
         </div>
       </div>
