@@ -20,8 +20,14 @@ body {
 	background-color: @grey-default;
 }
 .zero-api-rw {
-	margin:0px;
+	margin:0px !important;
 	padding:0px;
+}
+.zero-api-rw-pad-left {
+    padding-left:0px;
+}
+.zero-api-rw-pad-right {
+    padding-right:0px;
 }
 .zero-api-rw1 {
     margin:0px;
@@ -262,18 +268,21 @@ body {
 	margin-bottom:40px;
 }
 
-/* TABS */
-
-.api-rw-withoutmargin {
-    margin: 0px;
+.api-rw-facet-tab-li:first-of-type {
+    padding-right:10px;
 }
+.api-rw-facet-tab-li:last-of-type {
+    padding-left:10px;
+}
+
+/* TABS */
 
 .nav-api-rw-justified{
 	width:100%;
 }
 .nav-api-rw-justified li{
     /*padding-top: 10px;*/
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
     display: table-cell !important;
     width: 1%;
     float: none;

@@ -95,11 +95,12 @@
   <!--DEFAULT TAB END-->
 
   <!--API-RW TAB START-->
-  <ul class="nav nav-pills nav-api-rw-justified" data-ng-if="isTabMode">
+  <ul class="nav nav-pills nav-api-rw-justified zero-api-rw" data-ng-if="isTabMode">
     <li data-ng-repeat="c in tabs.category | orderBy: 'label'"
         data-ng-init="path = buildPath(c);"
         role="presentation"
-        data-ng-class="{'active': c.isSelected}">
+        data-ng-class="{'active': c.isSelected}"
+        class="api-rw-facet-tab-li">
       <a href="" title="{{c['@label'] || c['@value']}}"
          data-ng-click="filter(c, $event)">
         <i data-ng-if="c.isSelected" class="fa fa-caret-down fa-2x" aria-hidden="true"></i>
