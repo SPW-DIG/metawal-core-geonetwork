@@ -35,5 +35,7 @@
 	"WatchList_basket_title":"Mes notifications",
 	"WatchList_basket_button":"Gérer",
 	"textSearchSelectedRecord":"Accédez rapidement à la liste de vos services favoris.",
-	"textNotificationData":"Soyez informés par email dès qu’une donnée ou service est mis à jour."
+	"textNotificationData":"Soyez informés par email dès qu’une donnée ou service est mis à jour.",
+	"addingRequest":"demander l'ajout d'une donnée ou d'un service au catalogue",
+	"sortBy":"trier par :"
 }
