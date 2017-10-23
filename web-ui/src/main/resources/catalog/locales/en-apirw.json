@@ -37,5 +37,8 @@
 	"textSearchSelectedRecord":"Quick acces to your prefered services.",
 	"textNotificationData":"Reveive email when data or service is updated.",
 	"addingRequest":"Request aiming to add data or service in the catalog",
-	"sortBy":"Sort by :"
+	"sortBy":"Sort by :",
+	"page":"Page",
+	"on":"on",
+	"elementsPerPage":"Elements per page"
 }
