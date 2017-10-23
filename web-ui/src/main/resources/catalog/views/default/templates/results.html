@@ -179,6 +179,7 @@
           </div>
           <div data-ng-show="searchResults.records.length > 0"
              data-gn-results-container=""
+             class="row"
              data-params="searchObj.params"
              data-search-results="searchResults"
              data-template-url="resultTemplate"
@@ -187,16 +188,15 @@
           </div>
           <div class="row"
              data-ng-show="searchResults.records.length > 0">
-             <div class="col-sm-12">
-             <hr class="hr-bottom-api-rw">
+             <hr class="hr-top-api-rw zero-api-rw">
+          </div>
+          <div class="row" style="margin-top: 20px;"
+             data-ng-show="searchResults.records.length > 0">
               <div class=""
-                   data-gn-pagination="paginationInfo"
+                   data-gn-api-rw-pagination="paginationInfo"
                    data-hits-values="searchObj.hitsperpageValues"
                    data-enable-hot-keys="">
-
               </div>
-
-            </div>
           </div>
         </div>
       </div>
