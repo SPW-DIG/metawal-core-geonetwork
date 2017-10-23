@@ -3,6 +3,7 @@
 @blue-default : #74aec2;
 @blue-ligther : #b4d6e3;
 @blue-darker : #2b647b;
+@blue-intense-darker : #3c7f9a;
 @blue-flash : #5cd1f6;
 @grey-default: #f1f1f1;
 @grey-darker: #d0e0e6;
@@ -478,27 +479,55 @@ body {
 }
 
 
+/* Pagination - START */
+.pagination-api-rw {
+	margin:0px;
+}
 .api-rw-pagination-number{
     margin-right:5px;
 }
-
-.pagination-api-rw {
-	margin:0px;
+.api-rw-pagination-dot{
+    top:5px;
+    text-decoration: none !important;
+    color: #428bca !important;
+    background-color: initial !important;
+    border: 0px !important;
+    padding:0px !important;
+    padding-right: 5px !important;
+    margin-left: 0px !important;
+}
+.api-rw-pagination-icon{
+    padding-top:7px!important;
+    border-radius:0px !important;
+    width: 29px;
+    margin-right: 5px!important;
+    height: 29px;
+}
+.pagination-api-rw li{
+    width:29px;
+    height:29px;
 }
 .pagination-api-rw li a{
 	padding:4px 12px;
 	border:0px;
 	background-color:@blue-default!important;
+    color:white;
 }
-.pagination-api-rw li a:active{
-	background-color:@blue-darker!important;
+.pagination-api-rw > .active > a {
+    background-color: @blue-intense-darker !important;
 }
-.pagination-api-rw li a:active:hover{
-	background-color:@blue-darker!important;
+.pagination-api-rw > .active > a:hover{
+    background-color: @blue-intense-darker !important;
 }
 .pagination-api-rw li a:hover{
 	background-color:@blue-flash !important;
+    color:white !important;
 }
+
+/* Pagination - END */
+
+
+
 .btn-reset-api-rw {
 	background-color:@blue-flash;
 	border: 1px solid @blue-flash;
@@ -761,6 +790,41 @@ ul.gn-resultview li.list-group-item:hover {
     background: url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -531px -501px;
     box-sizing:auto padding-box border-box;   
 }
+
+.icon-api-rw-select-previous{
+    margin-top:1px;
+    height: 13px;
+    width: 8px;
+    display: block;
+    background: url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -563px -143px;
+    box-sizing:auto padding-box border-box;   
+}
+.icon-api-rw-select-next{
+    margin-top:1px;
+    height: 13px;
+    width: 10px;
+    display: block;
+    background: url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -563px -157px;
+    box-sizing:auto padding-box border-box;   
+}
+.icon-api-rw-select-first{
+    margin-left: -3px;
+    height: 15px;
+    width: 18px;
+    display: block;
+    background: url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -546px -487px;
+    box-sizing:auto padding-box border-box;   
+}
+.icon-api-rw-select-last{
+    margin-left: -3px;
+    height: 14px;
+    width: 13px;
+    display: block;
+    background: url("http://geoportail.wallonie.be/modules/templates-geoportail/img/sprites/icons.png") repeat scroll -560px -371px;
+    box-sizing:auto padding-box border-box;   
+}
+
+
 
 .col-p-api-rw-2 {
 	padding-left: 2px;

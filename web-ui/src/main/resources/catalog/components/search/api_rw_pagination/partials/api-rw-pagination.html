@@ -28,11 +28,14 @@
   </div>
   <div class="col-md-12 col-lg-6 zero-api-rw">
     <ul class="pagination pagination-api-rw pull-right">
-      <li data-ng-hide="config.currentPage == 1">
-        <a href="#" data-ng-click="first()" class="api-rw-pagination-number">double</a>
+      <li ng-class='{"invisible": (config.pages <= 1 || (config.pages > 1 && config.currentPage ===1))}'>
+        <a href="#" data-ng-click="first()" class="api-rw-pagination-icon"><span class="icon-api-rw-select-first"></span></a>
       </li>
-      <li data-ng-hide="config.currentPage == 1">
-        <a href="#" data-ng-click="previous()" class="api-rw-pagination-number">sinple</a>
+      <li ng-class='{"invisible": (config.pages <= 1 || (config.pages > 1 && config.currentPage ===1))}'>
+        <a href="#" data-ng-click="previous()" class="api-rw-pagination-icon"><span class="icon-api-rw-select-previous"></span></a>
+      </li>
+      <li ng-class='{"invisible": (config.pages <= 1 || (config.pages > 1 && config.currentPage <= 2))}'>
+        <span class="api-rw-pagination-dot">...</span>
       </li>
       <li data-ng-show="config.pages == config.currentPage &&  config.pages > 3">
         <a href="#" data-ng-click="previous();previous()" class="api-rw-pagination-number">{{(config.currentPage|number) -2}}</a>
@@ -48,11 +51,14 @@
       <li data-ng-show="config.pages > 2 && config.currentPage == 1 ">
         <a href="#" data-ng-click="next();next()" class="api-rw-pagination-number">{{(config.currentPage|number) -- 2 }}</a>
       </li>
-      <li data-ng-hide="config.currentPage == config.pages">
-        <a href="#" data-ng-click="next()" class="api-rw-pagination-number"><span class="icon-api-rw-select-down"></span></a>
+      <li ng-class='{"invisible": (config.pages <= 3 || (config.pages > 3 && config.currentPage > (config.pages-2)))}'>
+        <span class="api-rw-pagination-dot">...</span>
       </li>
-      <li data-ng-hide="config.currentPage == config.pages">
-        <a href="#" data-ng-click="last()" class="api-rw-pagination-number">double</a>
+      <li ng-class='{"invisible": (config.pages <= 1 || (config.pages > 1 && config.currentPage > (config.pages-1)))}'>
+        <a href="#" data-ng-click="next()" class="api-rw-pagination-icon"><span class="icon-api-rw-select-next"></span></a>
+      </li>
+      <li ng-class='{"invisible": (config.pages <= 1 || (config.pages > 1 && config.currentPage > (config.pages-1)))}'>
+        <a href="#" data-ng-click="last()" class="api-rw-pagination-icon"><span class="icon-api-rw-select-last"></span></a>
       </li>
     </ul>
   </div>
