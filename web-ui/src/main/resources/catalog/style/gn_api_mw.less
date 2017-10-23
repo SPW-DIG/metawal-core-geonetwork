@@ -7,6 +7,7 @@
 @grey-default: #f1f1f1;
 @grey-darker: #d0e0e6;
 @white-default :#ffffff;
+@black-normal:#555555;
 
 body {
  	font-family: "Lato",Arial,sans-serif !important;
@@ -427,6 +428,45 @@ body {
 
 /* Search paramter - END */
 
+.api-rw-nohover:hover {
+    color: @black-normal !important;
+}
+/* Checkbox - START */
+
+.api-rw-checkbox{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 1px solid #d2d2d2;
+    z-index: 10;
+
+}
+.api-rw-checkbox:hover::after{
+    background-color: @blue-ligther;
+    top:1.5px;
+    left:2px;
+    content:"\2713";
+    color: @blue-ligther;
+    line-height: 10px;
+    z-index: -1;
+    display: block;
+    position: absolute;
+}
+.api-rw-checkbox:checked::after{
+    background-color: @blue-darker;
+    top:1.5px;
+    left:2px;
+    content:"\2713";
+    color: @blue-darker;
+    line-height: 10px;
+    z-index: -1;
+    display: block;
+    position: absolute;
+}
+/* Checkbox - END */
 
 .api-rw-center-btn-page {
     top:-8px;

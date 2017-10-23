@@ -10,11 +10,12 @@
     <label title="{{c['@label'] || c['@value']}}"
            data-ng-class="{'gn-facet-active': isSelected}" class="rw-api-checkbox">
       <input type="checkbox"
+             class="api-rw-checkbox"
              data-ng-checked="isInFilter(c)"
              data-ng-click="filter(c, $event)"/>&nbsp;
              <label><span><span></span></span></label>
-      <span class="gn-facet-label">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
-      <span class="gn-facet-count">({{c['@count']}})</span>
+      <span class="gn-facet-label api-rw-nohover">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
+      <span class="gn-facet-count api-rw-nohover">({{c['@count']}})</span>
     </label>
 
     <div data-gn-facet-dimension-category="c.category"
