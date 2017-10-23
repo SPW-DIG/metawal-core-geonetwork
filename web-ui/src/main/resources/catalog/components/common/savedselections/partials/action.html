@@ -53,22 +53,22 @@
   </div-->
   <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service'" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' } | filter:{name: '!AnonymousUserlist'}">
     <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="!(s.records| filter:filter).length" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="(s.records| filter:filter).length" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
+       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
     </button>
   </div>
   <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset'" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserlist'}">
     <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="!(s.records| filter:filter).length" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="(s.records| filter:filter).length" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
     </button>
   </div>
   <div class="col-sm-4 col-p-api-rw-2" data-ng-if="record.type[0] == 'application' || record.type[0] == 'series'" data-ng-repeat="s in selections.list | filter: { name: 'WatchList' }">
     <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="!(s.records| filter:filter).length" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="(s.records| filter:filter).length" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
     </button>
   </div>
