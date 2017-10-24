@@ -40,5 +40,6 @@
 	"sortBy":"Sort by :",
 	"page":"Page",
 	"on":"on",
-	"elementsPerPage":"Elements per page"
+	"elementsPerPage":"Elements per page",
+	"noresult":"No results found..."
 }
