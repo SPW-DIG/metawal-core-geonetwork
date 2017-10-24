@@ -1,10 +1,9 @@
-<div class="gn-pager row"
-     data-ng-show="config.pages > 0">
+<div class="gn-pager row"">
 
   <div class="col-md-12 col-lg-6 zero-api-rw">   
     <div class="col-md-4 zero-api-rw ">
       <span data-translate="">page</span> {{config.currentPage}} 
-      <span data-translate="">on</span> {{config.pages}} 
+      <span data-translate="">on</span> <span ng-if="config.pages>=1"> {{config.pages}} </span><span ng-if="config.pages<0"> 0</span>
     </div> 
     <div class="col-md-8 pull-right zero-api-rw">
       <div class="form-group sortby-search-api-rw">
@@ -26,7 +25,7 @@
       </div>
     </div> 
   </div>
-  <div class="col-md-12 col-lg-6 zero-api-rw">
+  <div ng-hide="config.pages === -1" class="col-md-12 col-lg-6 zero-api-rw">
     <ul class="pagination pagination-api-rw pull-right">
       <li ng-class='{"invisible": (config.pages <= 1 || (config.pages > 1 && config.currentPage ===1))}'>
         <a href="#" data-ng-click="first()" class="api-rw-pagination-icon"><span class="icon-api-rw-select-first"></span></a>
