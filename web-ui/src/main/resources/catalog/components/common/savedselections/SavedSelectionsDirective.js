@@ -28,8 +28,8 @@
       []);
 
   module.factory('gnSavedSelectionConfig', [
-    '$location', 'Metadata', 'gnMap', 'gnSearchSettings',
-    function($location, Metadata, gnMap, gnSearchSettings) {
+    '$location', 'Metadata', 'gnMap', 'gnSearchSettings','$window',
+    function($location, Metadata, gnMap, gnSearchSettings,$window) {
       var viewerMap = gnSearchSettings.viewerMap;
 
 
@@ -82,6 +82,33 @@
                   });
                 });
               }
+            },
+            apirw: function(uuids, records) {
+              var mapbasket = [];
+              var url = 'http://geoportail.wallonie.be/files/GeoViewer/Main/index.html#panier='
+              for (var i = 0; i < uuids.length; i++) {
+                var uuid = uuids[i], record = records[uuid];
+                var md = new Metadata(record);
+                var elem = {};
+                elem['metadataUrl']= $location.$$protocol + '://'+$location.$$host+':'+$location.$$port+'/geonetwork/srv/eng/catalog.search#/metadata/'+md.getUuid();
+                elem['label']=md.defaultTitle;
+                elem['serviceId']=md.getUuid();
+                if (md.getLinksByType('ESRI:REST').length > 0){
+                  elem['type']='AGS_DYNAMIC';
+                  elem['url']=md.getLinksByType('ESRI:REST')[0].url; 
+                }
+                else if (md.getLinksByType('OGC:WMS').length > 0){
+                  elem['type']='WMS';
+                  elem['url']=md.getLinksByType('OGC:WMS')[0].url;
+                }
+                else if (md.getLinksByType('OGC:WMTS').length > 0){
+                  elem['type']='WMTS';
+                  elem['url']=md.getLinksByType('OGC:WMTS')[0].url;
+                }
+                mapbasket.push(elem);
+              }
+              //console.log(url+JSON.stringify(mapbasket));
+              $window.open(url+JSON.stringify(mapbasket));
             },
             icon:'fa-globe',
             icon_result: 'icon-api-rw-walonmap',
@@ -413,12 +440,14 @@
         };
 
         scope.doAction = function(sel) {
-          var actionFn = scope.actions[sel.name].fn;
+          /*var actionFn = scope.actions[sel.name].fn;
           if (angular.isFunction(actionFn)) {
             actionFn(sel.records, scope.selections.records);
+          }*/
+          var actionApirw = scope.actions[sel.name].apirw;
+          if (angular.isFunction(actionApirw)) {
+            actionApirw(sel.records, scope.selections.records);
           }
-          // Local selection with no storage
-          // trigger a clear selection once done.
           if (sel.storage === null) {
             var nbRecords = sel.records.length;
             for (var i = 0; i < nbRecords; i++) {
