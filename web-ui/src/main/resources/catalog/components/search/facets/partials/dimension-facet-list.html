@@ -78,7 +78,7 @@
   <li role="presentation"><a href="#">Messages</a></li>
 </ul-->
   <!--DEFAULT TAB START-->
-  <!--
+  <div data-ng-if='facetType != "apirw"'>
   <ul class="nav nav-pills" data-ng-if="isTabMode">
     <li data-ng-repeat="c in tabs.category | orderBy: 'label'"
         data-ng-init="path = buildPath(c);"
@@ -91,11 +91,13 @@
       </a>
     </li>
   </ul>
-  -->
+</div>
+  
   <!--DEFAULT TAB END-->
 
   <!--API-RW TAB START-->
-  <ul class="nav nav-pills nav-api-rw-justified zero-api-rw" data-ng-if="isTabMode">
+  <div data-ng-if='facetType === "apirw"'>
+  <ul class="nav nav-pills nav-api-rw-justified zero-api-rw" data-ng-if="isTabMode" data-ng-if='facetType === "apirw"'>
     <li data-ng-repeat="c in tabs.category | orderBy: 'label'"
         data-ng-init="path = buildPath(c);"
         role="presentation"
@@ -110,5 +112,6 @@
       </a>
     </li>
   </ul>
+</div>
   <!--API-RW TAB END-->
 </div>
