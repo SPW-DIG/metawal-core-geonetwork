@@ -4,14 +4,32 @@
             class="btn btn-default dropdown-toggle api-rw-btn-norounded"
             data-toggle="dropdown"
             aria-expanded="false">
-      <span 
-            class="pull-left">{{params.sortBy | translate}}</span>
-      <span class="pull-right icon-api-rw-select-down"></span>
+
+      <span ng-if="params.sortOrder"
+            class="pull-left">
+            <span data-translate="">{{params.sortBy}} </span> 
+            (<span data-translate="">reverse</span>)
+            </span> 
+      <span ng-if="!params.sortOrder"
+            class="pull-left">
+            <span data-translate="">{{params.sortBy}} </span> 
+            (<span data-translate="">noreverse</span>)
+            </span>
     </button>
     <ul class="dropdown-menu" role="menu">
       <li data-ng-repeat="v in ::values"
-          data-ng-class="v.sortBy === params.sortBy ? 'disabled' : ''">
-        <a data-ng-click="sortBy(v)">{{v.sortBy | translate}}</a></li>
+          data-ng-class="v.sortBy+v.sortOrder === params.sortBy+params.sortOrder ? 'disabled' : ''">
+        <a ng-if="v.sortOrder" 
+            data-ng-click="sortBy(v)">
+            <span data-translate="">{{v.sortBy}} </span>
+            (<span data-translate="">reverse</span>)
+            </a>
+        <a ng-if="!v.sortOrder" 
+            data-ng-click="sortBy(v)">
+            <span data-translate="">{{v.sortBy}} </span>
+            (<span data-translate="">noreverse</span>)
+            </a>
+      </li>
     </ul>
   </div>
 </div>

@@ -41,5 +41,7 @@
 	"page":"Page",
 	"on":"on",
     "elementsPerPage":"Eléments par page",
-    "noresult":"Aucun résultat n'a été trouvé..."
+    "noresult":"Aucun résultat n'a été trouvé...",
+    "reverse":"croissant",
+    "noreverse":"décroissant"
 }
