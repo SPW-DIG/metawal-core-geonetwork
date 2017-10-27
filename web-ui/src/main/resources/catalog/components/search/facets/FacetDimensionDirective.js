@@ -92,7 +92,7 @@
                     if (scope.tabs == null) {
                       scope.initialValues = value.category;
                     } else {
-                      angular.extend(value.category, scope.initialValues);
+                      angular.extend(scope.initialValues,value.category);
                     }
                     scope.tabs = value;
                     scope.categoryKey = scope.getLabel(scope.tabs);
