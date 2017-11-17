@@ -4,7 +4,7 @@
       data-ng-if="$index < maxItems"
       class="list-group-item">
     <span data-ng-click="toggleNode($event)"
-          class="fa fa-fw gn-facet-toggle"
+          class="fa fa-fw gn-facet-toggle rw-api-fa"
           data-ng-class="c.category?(isSelected?'fa-minus-square':'fa-plus-square'):'invisible'"></span>
 
     <label title="{{c['@label'] || c['@value']}}"
@@ -15,7 +15,7 @@
              data-ng-click="filter(c, $event)"/>&nbsp;
              <label><span><span></span></span></label>
       <span class="gn-facet-label api-rw-nohover">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
-      <span class="gn-facet-count api-rw-nohover">({{c['@count']}})</span>
+      <span class="gn-facet-count api-rw-nohover rw-api-fa">({{c['@count']}})</span>
     </label>
 
     <div data-gn-facet-dimension-category="c.category"
@@ -28,7 +28,7 @@
   <li class="list-group-item"
       data-ng-if="category.length - initialMaxItems > 0">
     <button data-ng-click="toggleAll()"
-            class="btn btn-link">
+            class="btn btn-link rw-api-fa">
       {{category.length - initialMaxItems}}&nbsp;
       {{(category.length >= maxItems) ? ('more' | translate) : ('less' | translate)}}
     </button>
