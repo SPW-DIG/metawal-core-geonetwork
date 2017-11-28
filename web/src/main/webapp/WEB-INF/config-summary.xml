@@ -162,6 +162,11 @@
       <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
     </summaryType>
 
+    <summaryType name="apiwom" format="DIMENSION">  
+      <item facet="geoportailTheme"
+            translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
+    </summaryType>
+
     <summaryType name="apirw2" format="DIMENSION">  
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="officialResource"/>
