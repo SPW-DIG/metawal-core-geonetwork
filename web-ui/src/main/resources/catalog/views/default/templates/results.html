@@ -1,7 +1,7 @@
 <div class="container-fluid"
      data-ng-search-form=""
      data-runSearch="true"
-     data-ng-if="searchObj.params.resultType !='apirw' ">
+     data-ng-if="searchObj.params.resultType !='apirw' && searchObj.params.resultType !='apiwom'">
   <div data-ng-include="'../../catalog/views/default/templates/searchForm.html'"></div>
 
   <div class="row">
@@ -197,3 +197,38 @@
     </div>
   </div>
 </div>
+
+
+<div class="container-fluid container-api-rw "
+     data-ng-search-form=""
+     data-runSearch="true" data-ng-if="searchObj.params.resultType ==='apiwom' ">
+  <div class="row">
+    <div class="container zero-api-rw-pad">
+      <div class="col-md-12 container-rightside-api-rw zero-api-rw-pad-right">
+        <div class="row container-overview-api-rw">
+          <div class="row">
+            <span class="loading fa fa-spinner fa-spin"
+              data-ng-show="searching">
+            </span>
+            <div ng-if="!searching && searchResults.count == 0">
+              <span data-translate="">noresult</span>
+            </div>
+          </div>
+          <div data-ng-show="searchResults.records.length > 0"
+             data-gn-results-container=""
+             class="row"
+             data-params="searchObj.params"
+             data-search-results="searchResults"
+             data-template-url="resultTemplate"
+             data-map="searchObj.searchMap">
+
+          </div>
+          <div class="row"">
+             <hr class="hr-top-api-rw zero-api-rw">
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

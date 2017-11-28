@@ -170,6 +170,10 @@
             }
           };
 
+          scope.loadLayerWOM = function() {
+            console.log('layerOnWOM');
+          };
+
 
           if (scope.map) {
             scope.hoverOL.setMap(scope.map);

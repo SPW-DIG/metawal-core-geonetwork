@@ -194,7 +194,40 @@
 
       var finalParams = angular.extend(params, hiddenParams);
       gnSearchManagerService.gnSearch(finalParams).then(
+
           function(data) {
+
+            // TEST WOM  START//
+            console.log(data);
+            $scope.womTOC =  function() {
+              console.log("$scope.searchResults.dimension");
+              console.log(data.dimension);
+              console.log(data.metadata);
+              $scope.toc = data.dimension.category;
+              for (var i = 0; i < data.metadata.length; i++) {
+                console.log("result i");
+
+                for (var j = 0; j < $scope.toc.length; j++){
+                  console.log("toc j");
+                  console.log($scope.toc[j]['@label']);
+                  for (var k = 0; k < data.metadata[i].keyword.length; k++) {
+                    //console.log(data.metadata[i].keyword[k]);
+                    if(data.metadata[i].keyword[k] === $scope.toc[j]['@label']) {
+                      console.log('of');
+                      $scope.toc[j]['records'].push(data.metadata[i]);
+                      for (var l = 0; l < $scope.toc[k].category.length; l++) {
+                         if(data.metadata[i].keyword[k] === $scope.toc[j].category[l]['@label']) {
+                          $scope.toc[j].category[l]['records'].push(data.metadata[i]);
+                         }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            // TEST WOM END//
+
+
             $scope.searching--;
             $scope.searchResults.records = [];
             for (var i = 0; i < data.metadata.length; i++) {
