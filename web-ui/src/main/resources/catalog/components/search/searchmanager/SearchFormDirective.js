@@ -199,33 +199,82 @@
           function(data) {
 
             // TEST WOM  START//
-            console.log(data);
-            $scope.womTOC =  function() {
-              console.log("$scope.searchResults.dimension");
-              console.log(data.dimension);
-              console.log(data.metadata);
-              $scope.toc = data.dimension.category;
-              for (var i = 0; i < data.metadata.length; i++) {
-                console.log("result i");
+            //$scope.womTOC =  function() {
+              // var result = _.findWhere(data.dimension, {@name: 'geoportailThemeLabel'});
+             // console.log('result');
+              //console.log(result);
 
-                for (var j = 0; j < $scope.toc.length; j++){
-                  console.log("toc j");
-                  console.log($scope.toc[j]['@label']);
-                  for (var k = 0; k < data.metadata[i].keyword.length; k++) {
-                    //console.log(data.metadata[i].keyword[k]);
-                    if(data.metadata[i].keyword[k] === $scope.toc[j]['@label']) {
-                      console.log('of');
-                      $scope.toc[j]['records'].push(data.metadata[i]);
-                      for (var l = 0; l < $scope.toc[k].category.length; l++) {
-                         if(data.metadata[i].keyword[k] === $scope.toc[j].category[l]['@label']) {
-                          $scope.toc[j].category[l]['records'].push(data.metadata[i]);
-                         }
+              // Create list of thesaurus and labels (all languages)//
+              console.log('data.dimension====');
+              console.log(data.dimension);
+              console.log(data.length);
+              console.log(data.dimension.length);
+              console.log('==data');
+              if (data.length != 0){
+                var elementThesaurusLabel = data.dimension.find(function(item){
+                    return item['@name'] == 'geoportailThemeLabel';
+                });
+                var thesausuLabelList=[];
+                console.log(elementThesaurusLabel);
+                for (var i = 0; i < elementThesaurusLabel.category.length; i++) {
+                  var list = []
+                  console.log('1');
+                  list.id = elementThesaurusLabel.category[i]['@label'].split('=')[0];
+                  console.log('2');
+                  list.element = elementThesaurusLabel.category[i]['@label'].split('=')[1].split('|');
+                  console.log('3');
+                  thesausuLabelList.push(list);
+                }
+                //console.log(thesausuLabelList);
+                var elementTheme = data.dimension.find(function(item){
+                    return item['@name'] == 'geoportailTheme';
+                });
+                console.log(elementTheme);
+                for (var i = 0; i < elementTheme.category.length; i++) {
+                  for (var j = 0; j < thesausuLabelList.length; j++) {
+                    console.log('4');
+                    if (thesausuLabelList[j].id.includes(elementTheme.category[i]['@value'])) {
+                      console.log('5');
+                      elementTheme.category[i]["i18nLavel"]=thesausuLabelList[j].element;
+                      elementTheme.category[i]["records"]=[];
+                    }
+                  }
+                  if (elementTheme.category[i].category) {
+                    for (var k = 0; k < elementTheme.category[i].category.length; k++) {
+                      for (var l = 0; l < thesausuLabelList.length; l++) {
+                        console.log('6');
+                        if (thesausuLabelList[l].id.includes(elementTheme.category[i].category[k]['@value'])) {
+                          console.log('7');
+                          elementTheme.category[i].category[k]["i18nLavel"]=thesausuLabelList[l].element;
+                         elementTheme.category[i].category[k]["records"]=[];
+                        }
+                      }
+                    }
+                  }
+                }
+                $scope.toc = elementTheme.category;
+                for (var i = 0; i < data.metadata.length; i++) {
+                  for (var j = 0; j < $scope.toc.length; j++){
+                    for (var k = 0; k < data.metadata[i].keyword.length; k++) {
+                      //console.log(data.metadata[i].keyword[k]);
+                      if($scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                        $scope.toc[j].records.push(new Metadata(data.metadata[i]));
+                      }
+                      else {
+                        for (var l = 0; l < $scope.toc[j].category.length; l++) {
+                          if ($scope.toc[j].category[l]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                            $scope.toc[j].category[l].records.push(new Metadata(data.metadata[i]));
+                          }
+                        }
                       }
                     }
                   }
                 }
               }
+              /*console.log($scope.toc);
+              return $scope.toc
             }
+            $scope.womTOC1 = $scope.womTOC();*/
             // TEST WOM END//
 
 
