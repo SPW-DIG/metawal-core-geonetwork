@@ -205,12 +205,7 @@
               //console.log(result);
 
               // Create list of thesaurus and labels (all languages)//
-              console.log('data.dimension====');
-              console.log(data.dimension);
-              console.log(data.length);
-              console.log(data.dimension.length);
-              console.log('==data');
-              if (data.length != 0){
+             /* if (data.length != 0){
                 var elementThesaurusLabel = data.dimension.find(function(item){
                     return item['@name'] == 'geoportailThemeLabel';
                 });
@@ -276,6 +271,7 @@
             }
             $scope.womTOC1 = $scope.womTOC();*/
             // TEST WOM END//
+            
 
 
             $scope.searching--;
