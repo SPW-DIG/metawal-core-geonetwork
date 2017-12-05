@@ -65,7 +65,7 @@
 
   <xsl:variable name="geoportail-wallon-thesaurus"
                 select="document(concat('file:///', replace($thesauriDir, '\\', '/'), '/external/thesauri/theme/Themes_geoportail_wallon.rdf'))"/>
- <xsl:variable name="geoportail-wallon-theme"
+  <xsl:variable name="geoportail-wallon-theme"
                 select="$geoportail-wallon-thesaurus//skos:Concept"/>
 
   <!-- If identification creation, publication and revision date
@@ -373,7 +373,11 @@
       <!-- - - - - - - - - - Geoportail thesaurus label list - - - - - - - - -->
       <xsl:for-each select="gmd:descriptiveKeywords[
                           contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
-                                   'Thèmes du géoportail wallon, version 1.0')]/*/gmd:keyword">
+                                   'Thèmes du géoportail wallon, version 1.0')]/*/gmd:keyword
+                           | 
+                           gmd:descriptiveKeywords[
+                          contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
+                                   'Thèmes du géoportail wallon')]/*/gmd:keyword">
         <xsl:variable name="keywordGeoportailthesaurus" select="gco:CharacterString"/>
         <xsl:variable name="geoportailThemeTest"
               select="$geoportail-wallon-theme[skos:prefLabel = $keywordGeoportailthesaurus]/@rdf:about"/>
