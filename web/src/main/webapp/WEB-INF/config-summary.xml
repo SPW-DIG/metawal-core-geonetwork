@@ -115,6 +115,7 @@
     <facet name="subTemplateType" indexKey="_root" label="subTemplateTypes"/>
     <facet name="groupOwner" indexKey="_groupOwner" label="groupOwners"/>
     <facet name="publishedForGroup" indexKey="_groupPublished" label="publishedForGroup"/>
+	  <facet name="isPublishedToAll" indexKey="_isPublishedToAll" label="isPublishedToAll" />
     <!--
     Example configuration for hierarchical facet based on
     the GeoNetwork region thesaurus or GEMET.
@@ -141,6 +142,7 @@
 
     <facet name="maintenanceAndUpdateFrequency" indexKey="cl_maintenanceAndUpdateFrequency"
            label="maintenanceAndUpdateFrequencies"/>
+    <facet name="mdActions" indexKey="_mdActions" label="mdActions"/>
   </facets>
 
   <summaryTypes>
@@ -228,6 +230,7 @@
       <item facet="standard" max="15" sortBy="value"/>
       <item facet="isHarvested" max="2" sortBy="value" translator="apploc:"/>
       <item facet="metadataType" max="3" sortBy="value" translator="apploc:recordType-"/>
+	    <item facet="isPublishedToAll" max="2" sortBy="value" translator="apploc:"/>
     </summaryType>
 
     <!-- (deprecated) old-style configuration supporting only

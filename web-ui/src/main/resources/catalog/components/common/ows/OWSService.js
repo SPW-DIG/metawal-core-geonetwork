@@ -81,36 +81,38 @@
           var url = result.Capability.Request.GetMap.
               DCPType[0].HTTP.Get.OnlineResource;
 
-          // Push all leaves into a flat array of Layers.
-          var getFlatLayers = function(layer) {
+          // Push all leaves into a flat array of Layers
+          // Also adjust crs (by inheritance) and url
+          var getFlatLayers = function(layer, inheritedCrs) {
             if (angular.isArray(layer)) {
               for (var i = 0, len = layer.length; i < len; i++) {
-                getFlatLayers(layer[i]);
+                getFlatLayers(layer[i], inheritedCrs);
               }
             } else if (angular.isDefined(layer)) {
+              // replace with complete CRS list if available
+              if (layer.CRS && layer.CRS.length > inheritedCrs.length) {
+                inheritedCrs = layer.CRS;
+              }
+
+              // add to flat layer array if we're on a leave (layer w/o child)
               layer.url = url;
+              layer.CRS = inheritedCrs;
               layers.push(layer);
-              getFlatLayers(layer.Layer);
+
+              // make sure Layer element is an array
+              if (layer.Layer && !angular.isArray(layer.Layer)) {
+                layer.Layer = [layer.Layer];
+              }
+
+              // process recursively on child layers
+              getFlatLayers(layer.Layer, inheritedCrs);
             }
           };
 
-          // Make sur Layer property is an array even if
-          // there is only one element.
-          var setLayerAsArray = function(node) {
-            if (node) {
-              if (angular.isDefined(node.Layer) &&
-                  !angular.isArray(node.Layer)) {
-                node.Layer = [node.Layer];
-              }
-              if (angular.isDefined(node.Layer)) {
-                for (var i = 0; i < node.Layer.length; i++) {
-                  setLayerAsArray(node.Layer[i]);
-                }
-              }
-            }
-          };
-          getFlatLayers(result.Capability.Layer);
-          setLayerAsArray(result.Capability);
+          getFlatLayers(result.Capability.Layer, []);
+          if (!angular.isArray(result.Capability.Layer)) {
+            result.Capability.Layer = [result.Capability.Layer];
+          }
           result.Capability.layers = layers;
           result.Capability.version = result.version;
           return result.Capability;
@@ -215,10 +217,6 @@
                 request: 'GetCapabilities'
               });
 
-              if (url.indexOf('http://sextant-test.ifremer.fr/' +
-                  'cgi-bin/sextant/qgis-server/ows/surval') >= 0) {
-                url = '../../catalog/qgis.xml';
-              }
               //send request and decode result
               if (true) {
                 $http.get(url, {

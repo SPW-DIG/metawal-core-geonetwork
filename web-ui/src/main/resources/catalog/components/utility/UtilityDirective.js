@@ -358,10 +358,9 @@
               // Moment will properly parse YYYY, YYYY-MM,
               // YYYY-MM-DDTHH:mm:ss which are the formats
               // used in the common metadata standards.
-              // By the way check Z
-              var date = null, suffix = 'Z';
-              if (originalDate.indexOf(suffix,
-                  originalDate.length - suffix.length) !== -1) {
+              // By the way check Z which may be used in GML times
+              var date = null;
+              if (originalDate.match('[Zz]$') !== null) {
                 date = moment(originalDate, 'YYYY-MM-DDtHH-mm-SSSZ');
               } else {
                 date = moment(originalDate);
@@ -729,6 +728,10 @@
 
   /**
    * Use to initialize bootstrap datepicker
+   * Can handle two pickers to select a range
+   * The change callback will be called when the value is updated from the
+   * calendar component. When modified from outside, the internal value of the
+   * picker will be updated accordingly so that the calendar stays in sync.
    */
   module.directive('gnBootstrapDatepicker', ['$timeout', 'gnLangs',
     function($timeout, gnLangs) {
@@ -786,6 +789,11 @@
         };
       };
 
+      // check that the date is in dd-mm-yyyy string format
+      function isDateValid(date) {
+        return moment(date, 'DD-MM-YYYY', true).isValid();
+      }
+
       return {
         restrict: 'A',
         scope: {
@@ -800,13 +808,10 @@
           var isRange = ($(element).find('input').length == 2);
           var highlight = attrs['dateOnlyHighlight'] === 'true';
 
-          if (isRange && ! scope.date) {
-            scope.date = {};
-          }
+          // TODO: handle available dates change?
+          // scope.$watch('dates', function(dates, old) {
+          // });
 
-          scope.$watch('dates', function(dates, old) {
-
-          });
           var init = function() {
             if (scope.dates) {
               // Time epoch
@@ -852,7 +857,7 @@
 
             var datepickConfig = {
               container: typeof sxtSettings != 'undefined' ?
-                '.g' : 'body',
+                  '.g' : 'body',
               autoclose: true,
               keepEmptyValues: true,
               clearBtn: true,
@@ -860,30 +865,54 @@
               language: gnLangs.getIso2Lang(gnLangs.getCurrent())
             };
 
-            if(angular.isDefined(scope.dates)) {
+            if (angular.isDefined(scope.dates)) {
               angular.extend(datepickConfig, {
                 beforeShowDay: function(dt, a, b) {
                   var isEnable = available(dt);
                   return highlight ? (isEnable ? 'gn-date-hl' : undefined) :
-                    isEnable;
+                      isEnable;
                 },
                 startDate: limits.min,
                 endDate: limits.max
               });
             }
             $(element).datepicker(datepickConfig)
-              .on('changeDate clearDate', function(ev) {
-              // view -> model
-              scope.$apply(function() {
-                if (!isRange) {
-                  scope.date = $(element).find('input')[0].value;
-                }
-                else {
-                  scope.date.from = $(element).find('input')[0].value;
-                  scope.date.to = $(element).find('input')[1].value;
-                }
-              });
-            });
+                .on('changeDate clearDate', function(ev) {
+                  // view -> model
+                  scope.$apply(function() {
+                    if (!isRange) {
+                      var date = $(element).find('input')[0].value;
+                      scope.date = date !== '' ? date : undefined;
+                    }
+                    else {
+                      var target = ev.target;
+                      var pickers = $(element).find('input');
+                      var dateFrom = pickers[0].value;
+                      var dateTo = pickers[1].value;
+                      var changed = false;
+
+                      // only apply the date which was modified if it is valid
+                      // (or cleared)
+                      if (target === pickers[0] &&
+                      (isDateValid(dateFrom) || dateFrom == '')) {
+                        scope.date.from = dateFrom !== '' ?
+                        dateFrom : undefined;
+                        changed = true;
+                      } else if (target === pickers[1] &&
+                      (isDateValid(dateTo) || dateTo == '')) {
+                        scope.date.to = dateTo !== '' ?
+                        dateTo : undefined;
+                        changed = true;
+                      }
+
+                      // call the change function if the value was changed
+                      if (changed) {
+                        scope.internalChange = true;
+                        scope.onChangeFn();
+                      }
+                    }
+                  });
+                });
             rendered = true;
 
             // set initial dates (use $timeout to avoid messing with ng digest)
@@ -912,20 +941,32 @@
               }
               if (v != o) {
                 $(element).find('input')[0].value = v || '';
-
               }
             });
           }
           else {
-            scope.$watchCollection('date', function(v, o) {
-              if (angular.isUndefined(v)) {
+            scope.$watchCollection('date', function(newValue, oldValue) {
+              if (!scope.date) {
                 scope.date = {};
                 return;
               }
-              if (v != o) {
-                scope.onChangeFn();
-                $(element).find('input')[0].value = (v && v.from) || '';
-                $(element).find('input')[1].value = (v && v.to) || '';
+              // skip if internal change
+              if (scope.internalChange) {
+                scope.internalChange = false;
+                return;
+              }
+              var dateFrom = (newValue && newValue.from) || '';
+              var dateTo = (newValue && newValue.to) || '';
+              var previousFrom = (oldValue && oldValue.from) || '';
+              var previousTo = (oldValue && oldValue.to) || '';
+              if (dateFrom != previousFrom || dateTo != previousTo) {
+                $timeout(function() {
+                  var picker = $(element).data('datepicker');
+                  $(element).find('input')[0].value = dateFrom;
+                  $(element).find('input')[1].value = dateTo;
+                  picker.pickers[0].update();
+                  picker.pickers[1].update();
+                });
               }
             });
           }
@@ -1150,19 +1191,19 @@
           function checkActive() {
             // regexps for getting the service & path
             var serviceRE = /\/?([^\/\?#]*)\??[^\/]*(?:#|$)/;
-            var pathRE = /#\/?([^\?]*)/
+            var pathRE = /#\/?([^\?]*)/;
 
             // compare current url & input href
             var url = $location.absUrl();
             var currentService =
-              url.match(serviceRE) ? url.match(serviceRE)[1] : '';
+                url.match(serviceRE) ? url.match(serviceRE)[1] : '';
             var currentPath = $location.path().substring(1);
             var targetService =
-              link.match(serviceRE) ? link.match(serviceRE)[1] : '';
+                link.match(serviceRE) ? link.match(serviceRE)[1] : '';
             var targetPath =
-              link.match(pathRE) ? link.match(pathRE)[1] : '';
+                link.match(pathRE) ? link.match(pathRE)[1] : '';
             var isActive = currentService == targetService &&
-              (!targetPath || currentPath.indexOf(targetPath) > -1);
+                (!targetPath || currentPath.indexOf(targetPath) > -1);
 
             if (isActive) {
               element.parent().addClass('active');
@@ -1199,7 +1240,8 @@
 
       } else if (angular.isString(value)) {
         if (value) {
-          return value.replace(/(\r)?\n/g, '<br/>');
+          return value.replace(/(\r)?\n/g, '<br/>')
+              .replace(/(&#13;)?&#10;/g, '<br/>');
         } else {
           return value;
         }
