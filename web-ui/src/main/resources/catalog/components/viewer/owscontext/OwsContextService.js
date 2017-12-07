@@ -190,7 +190,7 @@
                 // {type=bing_aerial} (mapquest, osm ...)
                 var re = this.getREForPar('type');
                 type = layer.name.match(re) ? re.exec(layer.name)[1] : null;
-                if (type && type != 'wmts' && type != 'wms') {
+                if (type && type != 'wmts' && type != 'wms' && type != 'esri') {
                   var opt;
                   re = this.getREForPar('name');
                   if (layer.name.match(re)) {
@@ -217,8 +217,26 @@
                       map.getLayers().setAt(0, olLayer);
                     }
                   }
-                }
+                } else if (layer.server &&
+                           layer.server[0] &&
+                           layer.server[0].service === 'ESRI:REST') {
 
+                  var olLayer = new ol.layer.Tile({
+                    source: new ol.source.TileArcGISRest({
+                      url: layer.server[0].onlineResource[0].href
+                    })
+                  });
+                  olLayer.displayInLayerManager = false;
+                  olLayer.background = true;
+                  olLayer.set('group', 'Background layers');
+                  olLayer.set('label', layer.name);
+                  olLayer.setVisible(!layer.hidden);
+                  bgLayers.push(olLayer);
+                  if (!layer.hidden && !isFirstBgLayer) {
+                    isFirstBgLayer = true;
+                    map.getLayers().setAt(0, olLayer);
+                  }
+                }
                 // {type=wmts,name=Ocean_Basemap} or WMS
                 else {
 

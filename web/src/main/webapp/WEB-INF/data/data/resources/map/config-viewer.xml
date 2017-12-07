@@ -1,14 +1,15 @@
 <ows-context:OWSContext xmlns:ows-context="http://www.opengis.net/ows-context"
                         xmlns:ows="http://www.opengis.net/ows"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
                         version="0.3.1" id="ows-context-ex-1-v3">
   <ows-context:General>
     <ows:BoundingBox crs="EPSG:3857">
-      <ows:LowerCorner>-8604130.477526832 -320097.07393612247</ows:LowerCorner>
-      <ows:UpperCorner>8948257.201654762 8720263.135408245</ows:UpperCorner>
+      <ows:LowerCorner>319080.8778979519 6393554.018905915</ows:LowerCorner>
+      <ows:UpperCorner>731840.8306379037 6669644.565071972</ows:UpperCorner>
     </ows:BoundingBox>
   </ows-context:General>
   <ows-context:ResourceList>
-    <ows-context:Layer name="{type=osm}"
+   <ows-context:Layer name="{type=osm}"
                        group="Background layers"
                        hidden="false"
                        opacity="1">
@@ -31,6 +32,16 @@
                        hidden="true"
                        opacity="1">
       <ows:Title>Stamen Toner</ows:Title>
+    </ows-context:Layer>
+    <ows-context:Layer queryable="false"
+                       name="{type=esri,name=mw}"
+                       hidden="true" opacity="1"
+                       group="Background layers">
+      <ows:Title xmlns:ows="http://www.opengis.net/ows">Metawal</ows:Title>
+      <ows-context:Server service="ESRI:REST">
+        <ows-context:OnlineResource xlink:href="http://geoservices.wallonie.be/arcgis/rest/services/DONNEES_BASE/FDP_LIGHT/MapServer"/>
+      </ows-context:Server>
+      <ows-context:StyleList/>
     </ows-context:Layer>
     <!--
     Example for TMS:
