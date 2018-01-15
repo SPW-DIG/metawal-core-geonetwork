@@ -227,10 +227,11 @@
      data-ng-search-form=""
      data-runSearch="true" data-ng-if="searchObj.params.resultType ==='apiwom' ">
   <div class="row">
-    <div class="container zero-api-rw-pad">
-      <div class="col-md-12 container-rightside-api-rw zero-api-rw-pad-right">
-        <div class="row container-overview-api-rw">
-          <div class="row">
+    <div class="">
+      <div data-ng-include="'../../catalog/views/default/templates/wom/wom-searchForm.html'"></div>
+      <div class="col-md-12 api-wom-zero">
+        <div class="row">
+          <div class="row ">
             <span class="loading fa fa-spinner fa-spin"
               data-ng-show="searching">
             </span>

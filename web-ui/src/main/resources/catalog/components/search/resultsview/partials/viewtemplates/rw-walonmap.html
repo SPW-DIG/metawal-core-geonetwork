@@ -1,22 +1,25 @@
 <div class="container col-sm-12 zero-api-rw">
 	<div class="row overview-api-wom zero-api-rw" data-ng-repeat="elem in toc">
-		<div class="overview-api-wom-title">{{elem['@label']}}</div> 
-		<div class="row overview-api-wom zero-api-rw" data-ng-repeat="md in elem.records">
+		<div class="overview-api-wom-title collapsed"  ng-class="{'collapse-title-api-wom': elem.records}" type="text-api-wom" data-toggle="collapse"
+				data-target="#{{elem['idTheme']}}" aria-expanded="false" aria-controls="collapseExample">
+				{{elem['@label']}}
+    </div>
+		<div class="row overview-api-wom zero-api-rw collapse" data-ng-repeat="md in elem.records" class="collapse" id="{{elem['idTheme']}}">
 			<div class="row zero-api-rw">
-				<div class="col-sm-1 zero-api-rw-pad-right  zero-api-rw-pad-left">
+				<div class="col-xs-1 zero-api-rw checkbox-api-wom">
 					<div class="checkbox">
-						<label>
+						<label class="label-api-wom">
 							<input type="checkbox" value="" data-ng-model="layerOnWOM" data-ng-change="loadLayerWOM()" id="loadLayerWOM" >
 							<span class="cr"><i class="cr-icon fa fa-check" aria-hidden="true"></i></span>
 						</label>
 					</div>
 				</div>
-				<div class="col-sm-10 zero-api-rw-pad-right  zero-api-rw-pad-left">
+				<div class="col-xs-10 zero-api-rw text-api-wom">
 					<p class="title-api-rw">
 						<button  
 							type="button" 
 							data-toggle="collapse" 
-							data-target="#{{md.getUuid()}}" 
+							data-target="#{{md.getUuid()}}-{{elem['idTheme']}}" 
 							aria-expanded="false" 
 							aria-controls="collapseExample"
 							class="text-left title-api-rw record-title-api-wom ">
@@ -24,105 +27,111 @@
 						</button>
 					</p>
 				</div>
-				<div class="col-sm-1 zero-api-rw-pad-right  zero-api-rw-pad-left">
+				<div class="col-xs-1 zero-api-rw">
 					<span class="pull-right icon-api-wom-datasheet-blue">&nbsp;
 					</span>
 				</div>
 			</div>
-		<div class="collapse" id="{{md.getUuid()}}">
-			<div class="col-sm-3">
-				<a data-ng-href="#/metadata/{{md.getUuid()}}"
-				title="{{md.title || md.defaultTitle}}" >
-				<img data-ng-src="{{md.getThumbnails().list[0].url}}"
-				data-ng-if="md.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
-			</div>
-			<div class="col-sm-9 zero-api-rw">
-				<div class="row owner-api-rw row-api-rw ">
-					<div class="col-md-12 col-lg-12 col-p-api-rw-0">
-						<strong>Propriétaire:</strong> {{(md.getAllContacts().resource | filter:{role:'Propriétaire'})[0].org }}
+			<div class="collapse" id="{{md.getUuid()}}-{{elem['idTheme']}}">
+				<div class="row card-api-wom">
+					<div class="col-xs-3">
+						<a data-ng-href="#/metadata/{{md.getUuid()}}"
+						title="{{md.title || md.defaultTitle}}" >
+						<img data-ng-src="{{md.getThumbnails().list[0].url}}"
+						data-ng-if="md.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
+					</div>
+					<div class="col-xs-9">
+						<div class="row owner-api-rw row-api-rw ">
+							<div class="col-xs-12 col-lg-12 col-p-api-rw-0">
+								<strong>Propriétaire:</strong> {{(md.getAllContacts().resource | filter:{role:'Propriétaire'})[0].org }}
+							</div>
+						</div>
+						<div class="row">
+							<p class="description-api-rw row-api-rw p-api-wom-pad-bottom">
+								<a data-ng-href="#/metadata/{{md.getUuid()}}"
+								title="{{md.title || md.defaultTitle}}">{{(md.abstract  || md.defaultAbstract | regexOneSentence)}}
+								</a>
+							</p>
+							<a class="col-xs-7 pull-right" 
+								data-ng-href='#/metadata/{{record.getUuid()}}'">
+								<button type="button" class="btn btn-block btn-api-wom">
+									<span class="btn-api-txt-wom" 
+									data-translate="">factSheet</span>
+									<span class="icon-api-wom-datasheet">&nbsp;
+									</span>
+								</button>
+							</a>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<p class="description-api-rw row-api-rw p-api-wom-pad-bottom">
-						<a data-ng-href="#/metadata/{{md.getUuid()}}"
-						title="{{md.title || md.defaultTitle}}">{{(md.abstract  || md.defaultAbstract | regexOneSentence)}}
-						</a>
-					</p>
-					<a class="col-md-4 col-p-api-rw-0 pull-right" 
-						data-ng-href='#/metadata/{{record.getUuid()}}'">
-						<button type="button" class="btn btn-block btn-api-wom">
-							<span class="btn-api-txt-wom" 
-							data-translate="">factSheet</span>
-							<span class="icon-api-wom-datasheet">&nbsp;
-							</span>
-						</button>
-					</a>
-				</div>
 			</div>
 		</div>
-	</div>
 	<div class="row overview-api-wom zero-api-rw" data-ng-repeat="subelem in elem.category">
-	<div class="overview-api-wom-subtitle">{{subelem['@label']}}</div> 
-	<div class="row overview-api-wom zero-api-rw" data-ng-repeat="submd in subelem.records">
-		<div class="row zero-api-rw">
-			<div class="col-sm-1 zero-api-rw-pad-right  zero-api-rw-pad-left">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" value="" data-ng-model="layerOnWOM" data-ng-change="loadLayerWOM()" id="loadLayerWOM" >
-						<span class="cr"><i class="cr-icon fa fa-check" aria-hidden="true"></i></span>
-					</label>
+		<div class="overview-api-wom-subtitle collapse-subtitle-api-wom collapsed" type="text-api-wom" data-toggle="collapse" data-target="#{{subelem['idTheme']}}" aria-expanded="false" aria-controls="collapseExample">{{subelem['@label']}}</div> 
+			<div class="zero-api-rw collapse" " id="{{subelem['idTheme']}}">
+			<div class="row overview-api-wom" data-ng-repeat="submd in subelem.records">
+				<div class="row zero-api-rw">
+					<div class="col-xs-1  zero-api-rw checkbox-api-wom">
+						<div class="checkbox">
+							<label class="label-api-wom">
+								<input type="checkbox" value="" data-ng-model="layerOnWOM" data-ng-change="loadLayerWOM()" id="loadLayerWOM" >
+								<span class="cr"><i class="cr-icon fa fa-check" aria-hidden="true"></i></span>
+							</label>
+						</div>
+					</div>
+					<div class="col-xs-10 zero-api-rw text-api-wom">
+						<p class="title-api-rw">
+							<button  
+							type="button" 
+							data-toggle="collapse" 
+							data-target="#{{submd.getUuid()}}-submd-{{subelem['idTheme']}}" 
+							aria-expanded="false" 
+							aria-controls="collapseExample"
+							class="text-left title-api-rw record-title-api-wom ">
+							{{(submd.title || submd.defaultTitle | characters:80)}}
+						</button>
+					</p>
+				</div>
+				<div class="col-xs-1 zero-api-rw">
+					<span class="pull-right icon-api-wom-datasheet-blue">&nbsp;
+					</span>
 				</div>
 			</div>
-			<div class="col-sm-10 zero-api-rw-pad-right  zero-api-rw-pad-left">
-				<p class="title-api-rw">
-					<button  
-					type="button" 
-					data-toggle="collapse" 
-					data-target="#{{submd.getUuid()}}-submd" 
-					aria-expanded="false" 
-					aria-controls="collapseExample"
-					class="text-left title-api-rw record-title-api-wom ">
-					{{(submd.title || submd.defaultTitle | characters:80)}}
-				</button>
-			</p>
-		</div>
-		<div class="col-sm-1 zero-api-rw-pad-right  zero-api-rw-pad-left">
-			<span class="pull-right icon-api-wom-datasheet-blue">&nbsp;
-			</span>
-		</div>
-	</div>
-	<div class="collapse" id="{{submd.getUuid()}}-submd">
-		<div class="col-sm-3">
-			<a data-ng-href="#/metadata/{{submd.getUuid()}}"
-			title="{{submd.title || submd.defaultTitle}}" >
-			<img data-ng-src="{{submd.getThumbnails().list[0].url}}"
-			data-ng-if="submd.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
-		</div>
-		<div class="col-sm-9 zero-api-rw">
-			<div class="row owner-api-rw row-api-rw ">
-				<div class="col-md-12 col-lg-12 col-p-api-rw-0">
-					<strong>Propriétaire:</strong> {{(submd.getAllContacts().resource | filter:{role:'Propriétaire'})[0].org }}
+			<div class="collapse" id="{{submd.getUuid()}}-submd-{{subelem['idTheme']}}">
+				<div class="row card-api-wom">
+					<div class="col-xs-3">
+						<a data-ng-href="#/metadata/{{submd.getUuid()}}"
+						title="{{submd.title || submd.defaultTitle}}" >
+						<img data-ng-src="{{submd.getThumbnails().list[0].url}}"
+						data-ng-if="submd.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
+					</div>
+					<div class="col-xs-9 zero-api-rw">
+						<div class="row owner-api-rw row-api-rw ">
+							<div class="col-xs-12 col-lg-12 col-p-api-rw-0">
+								<strong>Propriétaire:</strong> {{(submd.getAllContacts().resource | filter:{role:'Propriétaire'})[0].org }}
+							</div>
+						</div>
+						<div class="row">
+							<p class="description-api-rw row-api-rw p-api-wom-pad-bottom">
+								<a data-ng-href="#/metadata/{{submd.getUuid()}}"
+								title="{{submd.title || submd.defaultTitle}}">{{(submd.abstract  || submd.defaultAbstract | regexOneSentence)}}
+								</a>
+							</p>
+							<a class="col-xs-7 pull-right" 
+							data-ng-href='#/metadata/{{record.getUuid()}}'">
+								<button type="button" class="btn btn-block btn-api-wom">
+									<span class="btn-api-txt-wom" 
+									data-translate="">factSheet</span>
+									<span class="icon-api-wom-datasheet">&nbsp;
+									</span>
+								</button>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<p class="description-api-rw row-api-rw p-api-wom-pad-bottom">
-					<a data-ng-href="#/metadata/{{submd.getUuid()}}"
-					title="{{submd.title || submd.defaultTitle}}">{{(submd.abstract  || submd.defaultAbstract | regexOneSentence)}}
-				</a>
-			</p>
-			<a class="col-md-4 col-p-api-rw-0 pull-right" 
-			data-ng-href='#/metadata/{{record.getUuid()}}'">
-			<button type="button" class="btn btn-block btn-api-wom">
-				<span class="btn-api-txt-wom" 
-				data-translate="">factSheet</span>
-				<span class="icon-api-wom-datasheet">&nbsp;
-				</span>
-			</button>
-		</a>
+		</div>
 	</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
