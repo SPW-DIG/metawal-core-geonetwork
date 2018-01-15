@@ -252,20 +252,24 @@
                           console.log('3');
                           thesausuLabelList.push(list);
                         }
-                        //console.log(thesausuLabelList);
+                        console.log(thesausuLabelList);
                         var elementTheme = data.dimension.find(function(item){
                             return item['@name'] == 'geoportailTheme';
                         });
                         console.log(elementTheme);
                         for (var i = 0; i < elementTheme.category.length; i++) {
+                          console.log(thesausuLabelList.length);
                           for (var j = 0; j < thesausuLabelList.length; j++) {
                             console.log('4');
                             if (thesausuLabelList[j].id.includes(elementTheme.category[i]['@value'])) {
                               console.log('5');
                               elementTheme.category[i]["i18nLavel"]=thesausuLabelList[j].element;
                               elementTheme.category[i]["records"]=[];
+                              elementTheme.category[i]["idTheme"]=elementTheme.category[i]['@value'].split('/').slice(-1)[0];
+                              //console.log(elementTheme.category[i]['@value'].split('/').slice(-1));
                             }
                           }
+                          console.log(elementTheme);
                           if (elementTheme.category[i].category) {
                             for (var k = 0; k < elementTheme.category[i].category.length; k++) {
                               for (var l = 0; l < thesausuLabelList.length; l++) {
@@ -273,27 +277,44 @@
                                 if (thesausuLabelList[l].id.includes(elementTheme.category[i].category[k]['@value'])) {
                                   console.log('7');
                                   elementTheme.category[i].category[k]["i18nLavel"]=thesausuLabelList[l].element;
-                                 elementTheme.category[i].category[k]["records"]=[];
+                                  elementTheme.category[i].category[k]["records"]=[];
+                                  elementTheme.category[i].category[k]["idTheme"]=elementTheme.category[i].category[k]['@value'].split('/').slice(-1)[0];
                                 }
                               }
                             }
                           }
                         }
                         $scope.toc = elementTheme.category;
+                        console.log($scope.toc);
                         for (var i = 0; i < data.metadata.length; i++) {
                           for (var j = 0; j < $scope.toc.length; j++){
                             for (var k = 0; k < data.metadata[i].keyword.length; k++) {
-                              //console.log(data.metadata[i].keyword[k]);
-                              if($scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
-                                $scope.toc[j].records.push(new Metadata(data.metadata[i]));
-                              }
-                              else {
+                              if ($scope.toc[j]['category']) {
+                                if ($scope.toc[j]['i18nLavel'] && $scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                                  $scope.toc[j].records.push(new Metadata(data.metadata[i]));
+                                }
                                 for (var l = 0; l < $scope.toc[j].category.length; l++) {
                                   if ($scope.toc[j].category[l]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
                                     $scope.toc[j].category[l].records.push(new Metadata(data.metadata[i]));
                                   }
                                 }
+                              } else {
+                                if ($scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                                  $scope.toc[j].records.push(new Metadata(data.metadata[i]));
+                                }
                               }
+                              //console.log(data.metadata[i].keyword[k]);
+                              /*if($scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                                $scope.toc[j].records.push(new Metadata(data.metadata[i]));
+                              }
+                              else {
+                                //console.log($scope.toc[j]);
+                                for (var l = 0; l < $scope.toc[j].category.length; l++) {
+                                  if ($scope.toc[j].category[l]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                                    $scope.toc[j].category[l].records.push(new Metadata(data.metadata[i]));
+                                  }
+                                }
+                              }*/
                             }
                           }
                         }
@@ -586,6 +607,16 @@
           var waitForPagination = function() {
             // wait for pagination to be set before triggering search
             if (element.find('[data-gn-pagination]').length > 0) {
+              var unregisterFn = scope.$watch('hasPagination', function() {
+                if (scope.hasPagination) {
+                  scope.triggerSearch(true);
+                  unregisterFn();
+                }
+              });
+            } else {
+              scope.triggerSearch(false);
+            }
+            if (element.find('[data-gn-api-rw-pagination]').length > 0) {
               var unregisterFn = scope.$watch('hasPagination', function() {
                 if (scope.hasPagination) {
                   scope.triggerSearch(true);
