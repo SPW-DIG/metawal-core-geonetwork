@@ -120,10 +120,11 @@
            * @param {boolean} isChild is child of a parent metadata
            * @param {string} metadataUuid , the uuid of the metadata to create
            *                 (when metadata uuid is set to manual)
+           * @param {boolean} hasCategoryOfSource copy categories from source
            * @return {HttpPromise} Future object
            */
         copy: function(id, groupId, withFullPrivileges,
-            isTemplate, isChild, metadataUuid) {
+            isTemplate, isChild, metadataUuid, hasCategoryOfSource) {
           // new md type determination
           var mdType;
           switch (isTemplate) {
@@ -149,7 +150,8 @@
             isChildOfSource: isChild ? 'true' : 'false',
             group: groupId,
             isVisibleByAllGroupMembers: withFullPrivileges,
-            targetUuid: metadataUuid || ''
+            targetUuid: metadataUuid || '',
+            hasCategoryOfSource: hasCategoryOfSource ? 'true' : 'false'
           });
           return $http.put('../api/records/duplicate?' + url, {
             headers: {
@@ -194,13 +196,15 @@
            * @param {string} tab is the metadata editor tab to open
            * @param {string} metadataUuid , the uuid of the metadata to create
            *                 (when metadata uuid is set to manual)
+           * @param {boolean} hasCategoryOfSource copy categories from source
            * @return {HttpPromise} Future object
            */
         create: function(id, groupId, withFullPrivileges,
-            isTemplate, isChild, tab, metadataUuid) {
+            isTemplate, isChild, tab, metadataUuid, hasCategoryOfSource) {
 
           return this.copy(id, groupId, withFullPrivileges,
-              isTemplate, isChild, metadataUuid).success(function(id) {
+              isTemplate, isChild, metadataUuid, hasCategoryOfSource)
+            .success(function(id) {
             var path = '/metadata/' + id;
             if (tab) {
               path += '/tab/' + tab;
@@ -224,7 +228,7 @@
          * @return {HttpPromise} of the $http get
          */
         getMdObjByUuid: function(uuid, isTemplate) {
-          return $http.get('q?_uuid=' + uuid + '' +
+          return $http.get('qi?_uuid=' + uuid + '' +
               '&fast=index&_content_type=json&buildSummary=false' +
               (isTemplate !== undefined ? '&isTemplate=' + isTemplate : '')).
               then(function(resp) {
@@ -529,9 +533,9 @@
         'securityConstraints', 'resourceConstraints', 'legalConstraints',
         'denominator', 'resolution', 'geoDesc', 'geoBox', 'inspirethemewithac',
         'status', 'status_text', 'crs', 'identifier', 'responsibleParty',
-        'mdLanguage', 'datasetLang', 'type', 'link', 'crsDetails'];
-      // See below; probably not necessary
-      var listOfJsonFields = ['keywordGroup', 'crsDetails'];
+        'mdLanguage', 'datasetLang', 'type', 'link', 'crsDetails',
+        'creationDate', 'publicationDate', 'revisionDate'];
+      var listOfJsonFields = ['keywordGroup', 'crsDetails'];    // See below; probably not necessary
       var record = this;
       this.linksCache = [];
       $.each(listOfArrayFields, function(idx) {
