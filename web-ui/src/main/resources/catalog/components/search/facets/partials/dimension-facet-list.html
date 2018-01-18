@@ -1,40 +1,40 @@
 <div class="gn-facet-list container-tab-api-rw ">
-<div data-ng-if='facetType === "apirw"'>
+  <div data-ng-if='facetType === "apirw"'>
 
-  <!--Collapse all button for first panel-->
-  <!--a class=""
-     href
-     data-ng-hide="isTabMode"
-     data-ng-click="collapseAll()"
-     title="{{'collapseAllFacet' | translate}}">
-    <i class="fa fa-lg fa-caret-square-o-right"></i>
-  </a>
-  <a class=""
-     href
-     data-ng-hide="isTabMode"
-     data-ng-click="expandAll()"
-     title="{{'expandAllFacet' | translate}}">
-    <i class="fa fa-lg fa-caret-square-o-down"></i>
-  </a-->
+    <!--Collapse all button for first panel-->
+    <!--a class=""
+       href
+       data-ng-hide="isTabMode"
+       data-ng-click="collapseAll()"
+       title="{{'collapseAllFacet' | translate}}">
+      <i class="fa fa-lg fa-caret-square-o-right"></i>
+    </a>
+    <a class=""
+       href
+       data-ng-hide="isTabMode"
+       data-ng-click="expandAll()"
+       title="{{'expandAllFacet' | translate}}">
+      <i class="fa fa-lg fa-caret-square-o-down"></i>
+    </a-->
 
-  <div data-ng-if="!isTabMode"
-       data-ng-repeat="f in dimension"
-       data-ng-init="fLabel = getLabel(f);fLvlCollapse[fLabel] = false"
-       class="gn-facet gn-facet-{{f['@label']}}"
-       data-ng-show="f.category && isDisplayed(f)">
+    <div data-ng-if="!isTabMode"
+         data-ng-repeat="f in dimension"
+         data-ng-init="fLabel = getLabel(f);fLvlCollapse[fLabel] = false"
+         class="gn-facet gn-facet-{{f['@label']}}"
+         data-ng-show="f.category && isDisplayed(f)">
 
-    <!--h4 data-gn-collapsible="fLvlCollapse[fLabel]">
-      <i class="fa fa-fw" data-ng-class="fLvlCollapse[fLabel] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'"></i>
-      {{fLabel | translate}} 
-    </h4-->
-    <div data-gn-facet-dimension-category="f.category"
-         data-category-key="fLabel"
-         data-params="params"
-         data-facet-config="facetConfig"
-         data-ng-class="{'collapse': fLvlCollapse[fLabel]}">
+      <!--h4 data-gn-collapsible="fLvlCollapse[fLabel]">
+        <i class="fa fa-fw" data-ng-class="fLvlCollapse[fLabel] ? 'fa-arrow-circle-right' : 'fa-arrow-circle-down'"></i>
+        {{fLabel | translate}} 
+      </h4-->
+      <div data-gn-facet-dimension-category="f.category"
+           data-category-key="fLabel"
+           data-params="params"
+           data-facet-config="facetConfig"
+           data-ng-class="{'collapse': fLvlCollapse[fLabel]}">
+      </div>
     </div>
-  </div>
- </div>
+   </div>
 
 
  <div data-ng-if='facetType != "apirw"'>
@@ -85,7 +85,8 @@
         role="presentation"
         data-ng-class="{'active': c.isSelected}">
       <a href="" title="{{c['@label'] || c['@value']}}"
-         data-ng-click="filter(c, $event)">
+         data-ng-click="filter(c, $event)"
+         >
         <span class="gn-facet-label">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
         <span class="gn-facet-count">({{c['@count']}})</span>
       </a>
@@ -105,13 +106,17 @@
         class="api-rw-facet-tab-li">
       <a href="" title="{{c['@label'] || c['@value']}}"
          data-ng-click="filter(c, $event)">
-        <i data-ng-if="c.isSelected" class="fa fa-caret-down fa-2x" aria-hidden="true"></i>
-        <i data-ng-if="!c.isSelected" class="fa fa-caret-right fa-2x" aria-hidden="true"></i>
+        <i data-ng-if="c.isSelected" class="fa fa-caret-down fa-2x" aria-hidden="true" style="    margin-top: -10px;"></i>
+        <i data-ng-if="!c.isSelected" class="fa fa-caret-right fa-2x" aria-hidden="true" style="    margin-top: -10px;"></i>
+        <!--span class="icon-api-rw-tab-active"></span-->
         &nbsp;<span class="gn-facet-label">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
         <span class="gn-facet-count">({{c['@count']}})</span>
       </a>
+      <button data-ng-if="c.isSelected" class="col-xs-1 col-xs-offset-2 btn btn-block icon-api-rw-tab-shower"></button>
     </li>
+
   </ul>
+
 </div>
   <!--API-RW TAB END-->
 </div>

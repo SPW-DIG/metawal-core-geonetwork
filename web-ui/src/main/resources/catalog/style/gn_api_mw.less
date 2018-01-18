@@ -54,7 +54,9 @@ body {
     margin-bottom: 0;
     font-size: 13px;
 }
-
+.rw-api-list-group > list-group-item:hover {
+    color : @blue-darker !important;
+}
 {
 
 
@@ -295,9 +297,25 @@ body {
     float: none;
    
 }
+
+.nav-api-rw-justified > li.active > a, a:hover, a:focus {
+    height:60px;
+    background-color:@blue-flash !important;
+}
+.nav-api-rw-justified > li > a {
+    height:60px;
+}
+/*.nav-api-rw-justified > li.active > a:hover {
+    background-color:@blue-flash;
+}
+.nav-api-rw-justified > li.active > a {
+    background-color:@blue-flash;
+}*/
+
+
 .nav-api-rw-justified li a{
     color:@blue-default;
-    background-color:#d0e0e6;
+    background-color:@grey-darker;
     border-radius:0px;
     //margin-left:10px;
     //margin-right:10px;
@@ -313,7 +331,7 @@ body {
     /*background-color:@blue-flash;*/
 }
 .nav-api-rw-justified li a:hover{
-    background-color:#d0e0e6;
+    background-color:@grey-darker!important;
     border:1px;
 	border-style: solid;
 	border-color: @blue-default;
@@ -828,7 +846,23 @@ ul.gn-resultview li.list-group-item:hover {
     background: url("../catalog/style/metawal/images/rw-sprite-icons.png") repeat scroll -560px -371px;
     box-sizing:auto padding-box border-box;   
 }
-
+.icon-api-rw-add-mtd{
+    height: 42px;
+    width: 42px;
+    display: block;
+    background: url("../catalog/style/metawal/images/rw-sprite-icons.png") repeat scroll -524px -226px;
+    box-sizing:auto padding-box border-box;   
+}
+.icon-api-rw-tab-shower{
+    height: 23px;
+    width: 30px;
+    display: block;
+    background: url("../catalog/style/metawal/images/rw-sprite-icons.png") repeat scroll -258px -402px;
+    box-sizing:auto padding-box border-box;  
+    position:  absolute;
+    top:89px; 
+    left:25%;
+}
 
 
 .col-p-api-rw-2 {
@@ -977,6 +1011,63 @@ ul.gn-resultview li.list-group-item:hover {
 .checkbox label input[type="checkbox"]:disabled+.cr {
   opacity: .5;
 }
+
+
+/*test checkbox onception*/
+.checkbox-api-rw {
+  margin-top:2px;
+}
+
+.checkbox-api-rw label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox-api-rw .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid @blue-default;
+  /*border-radius: .25em;*/
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.checkbox-api-rw .cr .cr-icon {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  background-color: @blue-default;
+  border: 1px solid @blue-default;
+  line-height: 0;
+  top: 10%;
+  left: 10%;
+}
+
+.checkbox-api-rw label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-api-rw label input[type="checkbox"]+.cr>.cr-icon {
+  opacity: 0;
+}
+
+.checkbox-api-rw label input[type="checkbox"]:checked+.cr>.cr-icon {
+  opacity: 1;
+  color:@blue-default;
+}
+
+.checkbox-api-rw label input[type="checkbox"]:disabled+.cr {
+  opacity: .5;
+}
+/*Test checkbox conception end*/
+
+
+
+
+
 
 .collapse-title-api-wom:after {
     font-family: FontAwesome;

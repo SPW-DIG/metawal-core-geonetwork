@@ -3,11 +3,29 @@
       data-ng-init="path = buildPath(c); label = buildLabel(c); isSelected = isOnDrillDownPath(c)"
       data-ng-if="$index < maxItems"
       class="list-group-item">
+      <label title="{{c['@label'] || c['@value']}}"
+      data-ng-class="{'gn-facet-active': isSelected}">
     <span data-ng-click="toggleNode($event)"
           class="fa fa-fw gn-facet-toggle rw-api-fa"
           data-ng-class="c.category?(isSelected?'fa-minus-square':'fa-plus-square'):'invisible'"></span>
 
-    <label title="{{c['@label'] || c['@value']}}"
+
+    <div class="checkbox-api-rw">
+            <label class="">
+
+              <input type="checkbox"
+                data-ng-checked="isInFilter(c)"
+                data-ng-click="filter(c, $event)"
+                id="checkboxelem" >
+              <span class="cr"><i class="cr-icon " aria-hidden="true"></i></span>
+            
+            <span class="gn-facet-label api-rw-nohover">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
+      <span class="gn-facet-count api-rw-nohover rw-api-fa">({{c['@count']}})</span>
+      </label>
+          </div>
+        </label>  
+
+    <!--label title="{{c['@label'] || c['@value']}}"
            data-ng-class="{'gn-facet-active': isSelected}" class="rw-api-checkbox">
       <input type="checkbox"
              class="api-rw-checkbox"
@@ -16,7 +34,7 @@
              <label><span><span></span></span></label>
       <span class="gn-facet-label api-rw-nohover">{{(c['@label'] || c['@value']) | characters:30}}</span>&nbsp;
       <span class="gn-facet-count api-rw-nohover rw-api-fa">({{c['@count']}})</span>
-    </label>
+    </label-->
 
     <div data-gn-facet-dimension-category="c.category"
          data-category-key="categoryKey"
