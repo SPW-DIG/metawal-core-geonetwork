@@ -271,22 +271,27 @@
                           }
                         }
                         $scope.toc = elementTheme.category;
+                        //console.log($scope.toc);
                         for (var i = 0; i < data.metadata.length; i++) {
                           for (var j = 0; j < $scope.toc.length; j++){
+                            //console.log(data.metadata[i]);
+                            if (data.metadata[i].keyword) {
                             for (var k = 0; k < data.metadata[i].keyword.length; k++) {
                               if ($scope.toc[j]['category']) {
                                 if ($scope.toc[j]['i18nLavel'] && $scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
                                   $scope.toc[j].records.push(new Metadata(data.metadata[i]));
                                 }
                                 for (var l = 0; l < $scope.toc[j].category.length; l++) {
-                                  if ($scope.toc[j].category[l]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                                  if ($scope.toc[j].category[l]['i18nLavel'] && $scope.toc[j].category[l]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
                                     $scope.toc[j].category[l].records.push(new Metadata(data.metadata[i]));
                                   }
                                 }
+                                //console.log($scope.toc);
                               } else {
-                                if ($scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
+                                if ($scope.toc[j]['i18nLavel'] && $scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
                                   $scope.toc[j].records.push(new Metadata(data.metadata[i]));
                                 }
+                                //console.log($scope.toc);
                               }
                               //console.log(data.metadata[i].keyword[k]);
                               /*if($scope.toc[j]['i18nLavel'].includes(data.metadata[i].keyword[k])) {
@@ -300,6 +305,7 @@
                                   }
                                 }
                               }*/
+                            }
                             }
                           }
                         }
