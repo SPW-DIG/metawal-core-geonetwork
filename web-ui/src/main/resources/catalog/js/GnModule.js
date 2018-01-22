@@ -25,9 +25,26 @@
   goog.provide('gn_module');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   goog.require('gn');
   goog.require('gn_admin_menu');
   goog.require('gn_alert');
+  goog.require('gn_api_rw_pagination');
   goog.require('gn_cat_controller');
   goog.require('gn_cors_interceptor');
   goog.require('gn_formfields');
@@ -37,7 +54,6 @@
   goog.require('gn_metadata_manager');
   goog.require('gn_needhelp');
   goog.require('gn_pagination');
-  goog.require('gn_api_rw_pagination');
   goog.require('gn_search_form_controller');
   goog.require('gn_search_manager');
   goog.require('gn_utility');

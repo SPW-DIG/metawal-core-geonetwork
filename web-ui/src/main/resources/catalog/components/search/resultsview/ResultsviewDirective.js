@@ -250,16 +250,16 @@
     }]);
 
   module.filter('regexOneSentence', function() {
-     return function(val){
-       var RegExp = /^.*?[\.!\?](?:\s|$)/;
-       var match = RegExp.exec(val);
-       if (!match){
-        return val
-       }
-       else {
+    return function(val) {
+      var RegExp = /^.*?[\.!\?](?:\s|$)/;
+      var match = RegExp.exec(val);
+      if (!match) {
+        return val;
+      }
+      else {
         return match[0];
-       }
-     };
+      }
+    };
   });
 
 })();

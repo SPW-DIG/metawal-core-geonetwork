@@ -28,8 +28,8 @@
       []);
 
   module.factory('gnSavedSelectionConfig', [
-    '$location', 'Metadata', 'gnMap', 'gnSearchSettings','$window',
-    function($location, Metadata, gnMap, gnSearchSettings,$window) {
+    '$location', 'Metadata', 'gnMap', 'gnSearchSettings', '$window',
+    function($location, Metadata, gnMap, gnSearchSettings, $window) {
       var viewerMap = gnSearchSettings.viewerMap;
 
 
@@ -48,14 +48,14 @@
             fn: searchRecordsInSelection,
             icon: 'fa-search',
             icon_result: 'icon-api-rw-service',
-            text_noselected:'noSearchSelectedRecord'
+            text_noselected: 'noSearchSelectedRecord'
           },
           'AnonymousUserlist': {
             label: 'searchSelectedRecord',
             fn: searchRecordsInSelection,
             icon: 'fa-search',
             icon_result: 'icon-api-rw-notification',
-            text_noselected:'noSearchSelectedRecord'
+            text_noselected: 'noSearchSelectedRecord'
           },
           'MapLayerlist': {
             label: 'addToMap',
@@ -85,34 +85,38 @@
             },
             apirw: function(uuids, records) {
               var mapbasket = [];
-              var url = 'http://geoportail.wallonie.be/files/GeoViewer/Main/index.html#panier='
+              var url = 'http://geoportail.wallonie.be/files/' +
+                  'GeoViewer/Main/index.html#panier=';
               for (var i = 0; i < uuids.length; i++) {
                 var uuid = uuids[i], record = records[uuid];
                 var md = new Metadata(record);
                 var elem = {};
-                elem['metadataUrl']= $location.$$protocol + '://'+$location.$$host+':'+$location.$$port+'/geonetwork/srv/eng/catalog.search#/metadata/'+md.getUuid();
-                elem['label']=md.defaultTitle;
-                elem['serviceId']=md.getUuid();
-                if (md.getLinksByType('ESRI:REST').length > 0){
-                  elem['type']='AGS_DYNAMIC';
-                  elem['url']=md.getLinksByType('ESRI:REST')[0].url; 
+                elem['metadataUrl'] = $location.$$protocol + '://' +
+                    $location.$$host + ':' + $location.$$port +
+                    '/geonetwork/srv/eng/catalog.search#' +
+                    '/metadata/' + md.getUuid();
+                elem['label'] = md.defaultTitle;
+                elem['serviceId'] = md.getUuid();
+                if (md.getLinksByType('ESRI:REST').length > 0) {
+                  elem['type'] = 'AGS_DYNAMIC';
+                  elem['url'] = md.getLinksByType('ESRI:REST')[0].url;
                 }
-                else if (md.getLinksByType('OGC:WMS').length > 0){
-                  elem['type']='WMS';
-                  elem['url']=md.getLinksByType('OGC:WMS')[0].url;
+                else if (md.getLinksByType('OGC:WMS').length > 0) {
+                  elem['type'] = 'WMS';
+                  elem['url'] = md.getLinksByType('OGC:WMS')[0].url;
                 }
-                else if (md.getLinksByType('OGC:WMTS').length > 0){
-                  elem['type']='WMTS';
-                  elem['url']=md.getLinksByType('OGC:WMTS')[0].url;
+                else if (md.getLinksByType('OGC:WMTS').length > 0) {
+                  elem['type'] = 'WMTS';
+                  elem['url'] = md.getLinksByType('OGC:WMTS')[0].url;
                 }
                 mapbasket.push(elem);
               }
               //console.log(url+JSON.stringify(mapbasket));
-              $window.open(url+JSON.stringify(mapbasket));
+              $window.open(url + JSON.stringify(mapbasket));
             },
-            icon:'fa-globe',
+            icon: 'fa-globe',
             icon_result: 'icon-api-rw-walonmap',
-            text_noselected:'noAddToMap'
+            text_noselected: 'noAddToMap'
           },
           'DataDownloaderlist': {
             label: 'downloadData',
@@ -129,11 +133,12 @@
                 uuidList.push(uuid);
               }
               window.open('http://geoportail.wallonie.be/sites/geoportail/' +
-                'geodata-donwload.html?uuids=' + uuidList.join(','), 'download');
+                  'geodata-donwload.html?uuids=' +
+                  uuidList.join(','), 'download');
             },
             icon: 'fa-download',
             icon_result: 'icon-api-rw-download',
-            text_noselected:'noDownloadData'
+            text_noselected: 'noDownloadData'
           }
         },
         // Add user session selection types
@@ -485,13 +490,13 @@
    */
   module.directive('gnSavedSelectionsAction',
       ['gnSavedSelectionConfig', '$rootScope', 'Metadata',
-       function(gnSavedSelectionConfig, $rootScope,Metadata) {
+       function(gnSavedSelectionConfig, $rootScope, Metadata) {
          function link(scope, element, attrs, controller) {
            scope.selectionsWithRecord = [];
            scope.selections = {};
            scope.uuid = scope.record['geonet:info'].uuid;
 
-           scope.actions =gnSavedSelectionConfig.actions
+           scope.actions = gnSavedSelectionConfig.actions;
 
            $rootScope.$on('savedSelectionsUpdate', function(e, n, o) {
              scope.selections = n;
@@ -513,47 +518,51 @@
            controller.getSelections(scope.user).then(function(selections) {
              scope.selections = selections;
            });
-           ///Add url to thematic map (protocol=WWW:LINK-1.0-http--link and function=browing)
+           ///Add url to thematic map
+           // (protocol=WWW:LINK-1.0-http--link and function=browing)
            ///TO BE COMPLETED - add function
            scope.md = new Metadata(scope.record);
            for (var i = scope.md.getLinksByType().length - 1; i >= 0; i--) {
-            scope.mdurldisabled=true;
-             if (scope.md.getLinksByType()[i].protocol === 'WWW:LINK-1.0-http--link') {
-               scope.mdurl =scope. md.getLinksByType()[i].url;
-               if (scope.mdurl ==='') {
-                 scope.mdurldisabled=true;
+             scope.mdurldisabled = true;
+             if (scope.md.getLinksByType()[i].protocol ===
+             'WWW:LINK-1.0-http--link') {
+               scope.mdurl = scope. md.getLinksByType()[i].url;
+               if (scope.mdurl === '') {
+                 scope.mdurldisabled = true;
                }
-               scope.mdurldisabled=false;
+               scope.mdurldisabled = false;
              }
            }
 
-          scope.disable = function(selection,elem){
-            var md = new Metadata(elem);
-            if (selection.name==='DataDownloaderlist') {
-              if (elem.keyword.indexOf('PanierTelechargementGeoportail') > -1){
-                return false
-              } else {
-              return true}
-            }
-            else if (selection.name==='MapLayerlist') {
-              //var md = new Metadata(elem);
-              if (md.getLinksByType('ESRI:REST').length > 0 || md.getLinksByType('OGC:WMS').length > 0 ){
-                return false
-              } else {
-                return true
-              }
-            } 
-            else {
-              return false
-            }
-          };
+           scope.disable = function(selection, elem) {
+             var md = new Metadata(elem);
+             if (selection.name === 'DataDownloaderlist') {
+               if (elem.keyword.indexOf(
+               'PanierTelechargementGeoportail') > -1) {
+                 return false;
+               } else {
+                 return true}
+             }
+             else if (selection.name === 'MapLayerlist') {
+               //var md = new Metadata(elem);
+               if (md.getLinksByType('ESRI:REST').length > 0 ||  
+               md.getLinksByType('OGC:WMS').length > 0) {
+                 return false;
+               } else {
+                 return true;
+               }
+             }
+             else {
+               return false;
+             }
+           };
 
            scope.doaction = function(selection) {
-            if (selection.records.indexOf(scope.uuid) > -1) {
-              controller.remove(selection, scope.user, scope.uuid);
-            } else {
-              controller.add(selection, scope.user, scope.uuid);
-            };
+             if (selection.records.indexOf(scope.uuid) > -1) {
+               controller.remove(selection, scope.user, scope.uuid);
+             } else {
+               controller.add(selection, scope.user, scope.uuid);
+             }
            };
 
            /*scope.add = function(selection) {

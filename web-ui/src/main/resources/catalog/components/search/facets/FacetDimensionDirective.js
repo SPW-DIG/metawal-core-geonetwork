@@ -94,7 +94,7 @@
                     if (scope.tabs == null) {
                       scope.initialValues = value.category;
                     } else {
-                      angular.extend(scope.initialValues,value.category);
+                      angular.extend(scope.initialValues, value.category);
                     }
                     scope.tabs = value;
                     scope.categoryKey = scope.getLabel(scope.tabs);
@@ -102,30 +102,41 @@
                       c.isSelected = scope.activeTab === c;
                     });
                     var typeList = {
-                      "dataset":{"@value":"dataset","@label":"Dataset","@count":"0","isSelected":false,"path":"dataset","label":"Dataset"},
-                      "service":{"@value":"service","@label":"Service","@count":"0","isSelected":false,"path":"service","label":"Service"}
+                      'dataset': {'@value': 'dataset', '@label': 'Dataset',
+                        '@count': '0', 'isSelected': false,
+                        'path': 'dataset', 'label': 'Dataset'},
+                      'service': {'@value': 'service', '@label': 'Service',
+                        '@count': '0', 'isSelected': false,
+                        'path': 'service', 'label': 'Service'}
                     };
-                    if (scope.tabs.category === undefined || scope.tabs.category.length === 0) {
-                      scope.tabs['category']=[];
-                      for (var i = 0; i < scope.params.type.split(' or ').length; i++) {
-                        scope.tabs['category'].push(typeList[scope.params.type.split(' or ')[i]]);
+                    if (scope.tabs.category === undefined ||
+                        scope.tabs.category.length === 0) {
+                      scope.tabs['category'] = [];
+                      for (var i = 0;
+                           i < scope.params.type.split(' or ').length; i++) {
+                        scope.tabs['category'].push(
+                            typeList[scope.params.type.split(' or ')[i]]);
                       }
-                    } else if (scope.tabs.category.length < scope.params.type.split(' or ').length) {
+                    } else if (scope.tabs.category.length <
+                        scope.params.type.split(' or ').length) {
                       var categoryList = [];
                       for (var i = 0; i < scope.tabs.category.length; i++) {
                         categoryList.push(scope.tabs.category[i]['@value']);
                       }
-                      for (var i = 0; i < scope.params.type.split(' or ').length; i++) {
-                        if (categoryList.indexOf(scope.params.type.split(' or ')[i]) != -1) {
+                      for (var i = 0;
+                           i < scope.params.type.split(' or ').length; i++) {
+                        if (categoryList.indexOf(
+                            scope.params.type.split(' or ')[i]) != -1) {
                         } else {
-                          scope.tabs['category'].push(typeList[scope.params.type.split(' or ')[i]]);
+                          scope.tabs['category'].push(
+                              typeList[scope.params.type.split(' or ')[i]]);
                         }
                       }
                     } else {}
                   }
                 });
               }
-            });          
+            });
 
 
             scope.buildPath = function(category, $event) {

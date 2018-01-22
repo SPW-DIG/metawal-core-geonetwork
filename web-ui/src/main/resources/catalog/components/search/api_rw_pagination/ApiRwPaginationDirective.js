@@ -27,7 +27,7 @@
   var module = angular.module('gn_api_rw_pagination_directive', []);
 
   module.directive('gnApiRwPagination', ['hotkeys', '$translate',
-                                    function(hotkeys, $translate) {
+    function(hotkeys, $translate) {
 
       return {
         restrict: 'A',
@@ -37,7 +37,8 @@
           config: '=gnApiRwPagination',
           values: '=hitsValues'
         },
-        templateUrl: '../../catalog/components/search/api_rw_pagination/partials/' +
+        templateUrl: '../../catalog/components/search/' +
+            'api_rw_pagination/partials/' +
             'api-rw-pagination.html',
         link: function(scope, element, attrs, controller) {
 
