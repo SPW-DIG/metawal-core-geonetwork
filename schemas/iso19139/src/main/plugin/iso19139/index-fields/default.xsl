@@ -386,10 +386,6 @@
       <!-- - - - - - - - - - Geoportail thesaurus label list - - - - - - - - -->
       <xsl:for-each select="gmd:descriptiveKeywords[
                           contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
-                                   'Thèmes du géoportail wallon, version 1.0')]/*/gmd:keyword
-                           | 
-                           gmd:descriptiveKeywords[
-                          contains(*/gmd:thesaurusName/*/gmd:title/gco:CharacterString,
                                    'Thèmes du géoportail wallon')]/*/gmd:keyword">
         <xsl:variable name="keywordGeoportailthesaurus" select="gco:CharacterString"/>
         <xsl:variable name="geoportailThemeTest"

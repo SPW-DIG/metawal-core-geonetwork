@@ -316,11 +316,14 @@
                   }
                 }
               }
+              /*console.log($scope.toc);
+              return $scope.toc
+            }
+            $scope.womTOC1 = $scope.womTOC();*/
             // TEST WOM END//
 
 
-
-            //$scope.searching--;
+            $scope.searching--;
             $scope.searchResults.records = [];
             for (var i = 0; i < data.metadata.length; i++) {
               $scope.searchResults.records.push(new Metadata(data.metadata[i]));
