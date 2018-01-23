@@ -1,7 +1,5 @@
-<nav class="navbar navbar-default navbar-fixed-top gn-top-bar" role="navigation"
-     data-ng-if="!unsupportedSchema">
-
-
+<nav id="top-toolbar" class="navbar navbar-default navbar-fixed-top gn-top-bar" 
+     role="navigation" data-ng-if="!unsupportedSchema">
   <p class="navbar-text gn-tooltip"
      data-ng-mouseover="getSaveStatus()" title="{{savedStatus}}">
     <span data-ng-class="saveError ? 'text-danger' : ''">{{savedStatus}}</span><br/>

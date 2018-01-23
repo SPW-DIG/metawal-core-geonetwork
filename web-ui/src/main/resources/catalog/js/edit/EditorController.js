@@ -137,6 +137,9 @@
        */
       var duration = 300;
 
+
+
+
       /**
        * Function to call after form load
        * to move view menu to top toolbar
@@ -226,6 +229,12 @@
                 // TODO: Set metadata title in page HEAD ?
                 $scope.layout.hideTopToolBar = true;
 
+                // Add padding-top depending on the haight og the top-toolbar
+                $scope.topToolbarHeight = {}
+                $scope.topToolbarHeight['padding-top'] = (
+                  parseFloat(document.getElementById('top-toolbar')
+                  .offsetHeight.toString()) + 30).toString() + "px"; 
+  
                 angular.extend(gnCurrentEdit, {
                   id: $routeParams.id,
                   formId: '#gn-editor-' + $routeParams.id,
