@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gml="http://www.opengis.net/gml"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset">
+    <dc:identifier>http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset</dc:identifier>
+    <dc:title>Priority data set</dc:title>
+    <dc:description>List of datasets related to environmental reporting, which should be made available by Member States through the European Spatial Data Infrastructure in a stepwise manner. The list also reflects the data gaps identified during the evaluation of the state-of-implementation and the fitness of the Directive for its intended purpose (a so-called REFIT evaluation)</dc:description>
+    <dc:URI>http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset</dc:URI>
+    <dc:creator/>
+    <dc:publisher/>
+    <dct:issued>2018-01-24T17:33:52</dct:issued>
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/AirQualityManagementZonesAndAgglomerations-dir-2008-50">
+    <skos:prefLabel xml:lang="en">Air quality management zones and agglomerations</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Air quality management zones and agglomerations</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Air quality management zones &amp;amp; agglomerations reported under Directive 2008/50/EC of the European Parliament and of the Council on ambient air quality and cleaner air for Europe (including Implementing Decision 2011/850/EU)</skos:definition>
+    <skos:scopeNote xml:lang="en">Air quality management zones and agglomerations: Air quality management zones &amp;amp; agglomerations reported under Directive 2008/50/EC of the European Parliament and of the Council on ambient air quality and cleaner air for Europe (including Implementing Decision 2011/850/EU)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/AirQualityMonitoringNetworks-dir-2008-50">
+    <skos:prefLabel xml:lang="en">Air quality monitoring networks</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Air quality monitoring networks</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Air quality monitoring networks reported under Directive 2008/50/EC of the European Parliament and of the Council on ambient air quality and cleaner air for Europe (including Implementing Decision 2011/850/EU)</skos:definition>
+    <skos:scopeNote xml:lang="en">Air quality monitoring networks: Air quality monitoring networks reported under Directive 2008/50/EC of the European Parliament and of the Council on ambient air quality and cleaner air for Europe (including Implementing Decision 2011/850/EU)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/AirQualityMonitoringStationsData-dir-2008-50">
+    <skos:prefLabel xml:lang="en">Air quality monitoring stations</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Air quality monitoring stations</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Air quality monitoring stations reported under Directive 2008/50/EC of the European Parliament and of the Council on ambient air quality and cleaner air for Europe (including Implementing Decision 2011/850/EU)</skos:definition>
+    <skos:scopeNote xml:lang="en">Air quality monitoring stations: Air quality monitoring stations reported under Directive 2008/50/EC of the European Parliament and of the Council on ambient air quality and cleaner air for Europe (including Implementing Decision 2011/850/EU)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/RoadsRailwaysAndTransportNetworks-dir-2002-49">
+    <skos:prefLabel xml:lang="en">Roads, railways and air transport network</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Roads, railways and air transport network</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Roads, railways and air transport network reported under Directive 2002/49/EC  of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:definition>
+    <skos:scopeNote xml:lang="en">Roads, railways and air transport network: Roads, railways and air transport network reported under Directive 2002/49/EC  of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/Agglomerations-dir-2002-49">
+    <skos:prefLabel xml:lang="en">Agglomeration (Noise Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Agglomeration (Noise Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Agglomerations reported under Directive 2002/49/EC  of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:definition>
+    <skos:scopeNote xml:lang="en">Agglomeration (Noise Directive): Agglomerations reported under Directive 2002/49/EC  of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/Population-dir-2002-49">
+    <skos:prefLabel xml:lang="en">Population (Noise Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Population (Noise Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Population reported under Directive 2002/49/EC of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:definition>
+    <skos:scopeNote xml:lang="en">Population (Noise Directive): Population reported under Directive 2002/49/EC of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/AreaManagementRestrictionRegulationAndReportingUnits-dir-2002-49">
+    <skos:prefLabel xml:lang="en">Area management/restriction/regulation zones and reporting units (strategic noise maps, noise restriction zones)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Area management/restriction/regulation zones and reporting units (strategic noise maps, noise restriction zones)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Area management/restriction/regulation zones and reporting units (strategic noise maps, noise restriction zones) under Directive 2002/49/EC of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:definition>
+    <skos:scopeNote xml:lang="en">Area management/restriction/regulation zones and reporting units (strategic noise maps, noise restriction zones): Area management/restriction/regulation zones and reporting units (strategic noise maps, noise restriction zones) under Directive 2002/49/EC of the European Parliament and of the Council of 25 June 2002 relating to the assessment and management of environmental noise</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfWaterBodies-dir-2000-60">
+    <skos:prefLabel xml:lang="en">Location of water bodies</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of water bodies</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of water bodies reported under Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy (including Directive 2008/105/EC as amended by 2013/39/EU - surface water EQS and Directive 2006/118/EC - groundwater)</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of water bodies: Location of water bodies reported under Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy (including Directive 2008/105/EC as amended by 2013/39/EU - surface water EQS and Directive 2006/118/EC - groundwater)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfProtectedAreas-dir-2000-60">
+    <skos:prefLabel xml:lang="en">Location of protected areas (Art 6 and 7)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of protected areas (Art 6 and 7)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of protected areas (Art 6 and 7) reported under Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy (including Directive 2008/105/EC as amended by 2013/39/EU - surface water EQS and Directive 2006/118/EC - groundwater)</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of protected areas (Art 6 and 7): Location of protected areas (Art 6 and 7) reported under Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy (including Directive 2008/105/EC as amended by 2013/39/EU - surface water EQS and Directive 2006/118/EC - groundwater)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/MonitoringStationsAssociatedWithWaterBodies-dir-2000-60">
+    <skos:prefLabel xml:lang="en">Monitoring stations associated to water bodies</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Monitoring stations associated to water bodies</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Monitoring stations associated to water bodies reported under Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy (including Directive 2008/105/EC as amended by 2013/39/EU - surface water EQS and Directive 2006/118/EC - groundwater)</skos:definition>
+    <skos:scopeNote xml:lang="en">Monitoring stations associated to water bodies: Monitoring stations associated to water bodies reported under Directive 2000/60/EC of the European Parliament and of the Council of 23 October 2000 establishing a framework for Community action in the field of water policy (including Directive 2008/105/EC as amended by 2013/39/EU - surface water EQS and Directive 2006/118/EC - groundwater)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/AreasOfPotentialSignificantFloodRisk-dir-2007-60">
+    <skos:prefLabel xml:lang="en">Areas of Potential significant Flood Risk (APSFR)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Areas of Potential significant Flood Risk (APSFR)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Areas of Potential significant Flood Risk (APSFR) reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:definition>
+    <skos:scopeNote xml:lang="en">Areas of Potential significant Flood Risk (APSFR): Areas of Potential significant Flood Risk (APSFR) reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/SpatialDataOfPreliminaryFloodRiskAssessment-dir-2007-60">
+    <skos:prefLabel xml:lang="en">Spatial data of the Preliminary Flood Risk Assessment (PFRA)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Spatial data of the Preliminary Flood Risk Assessment (PFRA)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Spatial data of the Preliminary Flood Risk Assessment (PFRA) reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:definition>
+    <skos:scopeNote xml:lang="en">Spatial data of the Preliminary Flood Risk Assessment (PFRA): Spatial data of the Preliminary Flood Risk Assessment (PFRA) reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/FloodedAreas-dir-2007-60">
+    <skos:prefLabel xml:lang="en">Flooded areas</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Flooded areas</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Flooded areas reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:definition>
+    <skos:scopeNote xml:lang="en">Flooded areas: Flooded areas reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/FloodRiskZones-dir-2007-60">
+    <skos:prefLabel xml:lang="en">Flood Risk Zones</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Flood Risk Zones</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Flood Risk Zones reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:definition>
+    <skos:scopeNote xml:lang="en">Flood Risk Zones: Flood Risk Zones reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/ManagementUnitsAndCompetentAuthority-dir-2007-60">
+    <skos:prefLabel xml:lang="en">Management Units and Competent Authority</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Management Units and Competent Authority</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Management Units and Competent Authority reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:definition>
+    <skos:scopeNote xml:lang="en">Management Units and Competent Authority: Management Units and Competent Authority reported under Directive 2007/60/EC of the European Parliament and of the Council of 23 October 2007 on the assessment and management of flood risks</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/MarineReportingUnits-dir-2008-56">
+    <skos:prefLabel xml:lang="en">Marine reporting units (marine regions and sub-regions including assessment units)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Marine reporting units (marine regions and sub-regions including assessment units)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Marine reporting units (marine regions and sub-regions including assessment units) reported under Directive 2008/56/EC of the European Parliament and of the Council of 17 June 2008 establishing a framework for community action in the field of marine environmental policy (Marine Strategy Framework Directive)</skos:definition>
+    <skos:scopeNote xml:lang="en">Marine reporting units (marine regions and sub-regions including assessment units): Marine reporting units (marine regions and sub-regions including assessment units) reported under Directive 2008/56/EC of the European Parliament and of the Council of 17 June 2008 establishing a framework for community action in the field of marine environmental policy (Marine Strategy Framework Directive)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/MonitoringStations-dir-2008-56">
+    <skos:prefLabel xml:lang="en">Monitoring stations</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Monitoring stations</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Monitoring stations reported under Directive 2008/56/EC of the European Parliament and of the Council of 17 June 2008 establishing a framework for community action in the field of marine environmental policy (Marine Strategy Framework Directive)</skos:definition>
+    <skos:scopeNote xml:lang="en">Monitoring stations: Monitoring stations reported under Directive 2008/56/EC of the European Parliament and of the Council of 17 June 2008 establishing a framework for community action in the field of marine environmental policy (Marine Strategy Framework Directive)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/WaterSupplyZones-dir-1998-98">
+    <skos:prefLabel xml:lang="en">Water supply zones (Drinking Water Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Water supply zones (Drinking Water Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Water supply zones reported under Directive 98/83/EC of 3 November 1998 on the quality of water intended for human consumption</skos:definition>
+    <skos:scopeNote xml:lang="en">Water supply zones (Drinking Water Directive): Water supply zones reported under Directive 98/83/EC of 3 November 1998 on the quality of water intended for human consumption</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/SmallWaterSupplies-dir-1998-98">
+    <skos:prefLabel xml:lang="en">Small water supplies  (Drinking Water Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Small water supplies  (Drinking Water Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Small water supplies reported under Directive 98/83/EC of 3 November 1998 on the quality of water intended for human consumption</skos:definition>
+    <skos:scopeNote xml:lang="en">Small water supplies  (Drinking Water Directive): Small water supplies reported under Directive 98/83/EC of 3 November 1998 on the quality of water intended for human consumption</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/BathingAreas-dir-2006-7">
+    <skos:prefLabel xml:lang="en">Bathing areas (Bathing Water Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Bathing areas (Bathing Water Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Bathing areas reported under Directive 2006/7/EC of the European Parliament and of the Council of 15 February 2006 concerning the management of bathing water quality and repealing Directive 76/160/EEC</skos:definition>
+    <skos:scopeNote xml:lang="en">Bathing areas (Bathing Water Directive): Bathing areas reported under Directive 2006/7/EC of the European Parliament and of the Council of 15 February 2006 concerning the management of bathing water quality and repealing Directive 76/160/EEC</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/BiogeographicalRegions-dir-1992-43">
+    <skos:prefLabel xml:lang="en">Biogeographical regions (Habitats Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Biogeographical regions (Habitats Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Biogeographical regions reported under the Council Directive 92/43/EEC on the conservation of natural habitats and of wild fauna and flora</skos:definition>
+    <skos:scopeNote xml:lang="en">Biogeographical regions (Habitats Directive): Biogeographical regions reported under the Council Directive 92/43/EEC on the conservation of natural habitats and of wild fauna and flora</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/HabitatMapsUsingINSPIREGeographicalGridSystem-dir-1992-43">
+    <skos:prefLabel xml:lang="en">Habitat maps using INSPIRE geographical grid system (Habitats Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Habitat maps using INSPIRE geographical grid system (Habitats Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Habitat maps using INSPIRE geographical grid system reported under the Council Directive 92/43/EEC on the conservation of natural habitats and of wild fauna and flora</skos:definition>
+    <skos:scopeNote xml:lang="en">Habitat maps using INSPIRE geographical grid system (Habitats Directive): Habitat maps using INSPIRE geographical grid system reported under the Council Directive 92/43/EEC on the conservation of natural habitats and of wild fauna and flora</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfSites-dir-1992-43">
+    <skos:prefLabel xml:lang="en">Location of sites (Habitats Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of sites (Habitats Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of sites reported under the Council Directive 92/43/EEC on the conservation of natural habitats and of wild fauna and flora</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of sites (Habitats Directive): Location of sites reported under the Council Directive 92/43/EEC on the conservation of natural habitats and of wild fauna and flora</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/BiogeographicalRegions-dir-2009-147">
+    <skos:prefLabel xml:lang="en">Biogeographical regions (Birds Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Biogeographical regions (Birds Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Biogeographical regions reported under Directive 2009/147/EC on the conservation of wild birds</skos:definition>
+    <skos:scopeNote xml:lang="en">Biogeographical regions (Birds Directive): Biogeographical regions reported under Directive 2009/147/EC on the conservation of wild birds</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/HabitatMapsUsingINSPIREGeographicalGridSystem-dir-2009-147">
+    <skos:prefLabel xml:lang="en">Habitat maps using INSPIRE geographical grid system  (Birds Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Habitat maps using INSPIRE geographical grid system  (Birds Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Habitat maps using INSPIRE geographical grid system reported under Directive 2009/147/EC on the conservation of wild birds</skos:definition>
+    <skos:scopeNote xml:lang="en">Habitat maps using INSPIRE geographical grid system  (Birds Directive): Habitat maps using INSPIRE geographical grid system reported under Directive 2009/147/EC on the conservation of wild birds</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfSites-dir-2009-147">
+    <skos:prefLabel xml:lang="en">Location of sites (Birds Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of sites (Birds Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of sites reported under Directive 2009/147/EC on the conservation of wild birds</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of sites (Birds Directive): Location of sites reported under Directive 2009/147/EC on the conservation of wild birds</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/MapsOfDistributionOfSpeciesUsingINSPIREGrids-reg-2014-1143">
+    <skos:prefLabel xml:lang="en">Maps of distribution of species using INSPIRE grids</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Maps of distribution of species using INSPIRE grids</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Maps of distribution of species using INSPIRE grids reported under Regulation (EU) No 1143/2014 on the prevention and management of the introduction and spread of invasive alien species</skos:definition>
+    <skos:scopeNote xml:lang="en">Maps of distribution of species using INSPIRE grids: Maps of distribution of species using INSPIRE grids reported under Regulation (EU) No 1143/2014 on the prevention and management of the introduction and spread of invasive alien species</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationsOfFacilities-reg-2006-166">
+    <skos:prefLabel xml:lang="en">Locations of facilities (E-PRTR data reporting)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Locations of facilities (E-PRTR data reporting)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Locations of facilities reported under Regulation (EC) No 166/2006 concerning the establishment of a European Pollutant Release and Transfer Register and amending Council Directives 91/689/EEC and 96/61/EC</skos:definition>
+    <skos:scopeNote xml:lang="en">Locations of facilities (E-PRTR data reporting): Locations of facilities reported under Regulation (EC) No 166/2006 concerning the establishment of a European Pollutant Release and Transfer Register and amending Council Directives 91/689/EEC and 96/61/EC</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/InformationRelatedToActualPollutantReleases-reg-2006-166">
+    <skos:prefLabel xml:lang="en">Information related to actual pollutant releases (E-PRTR data reporting)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Information related to actual pollutant releases (E-PRTR data reporting)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Information related to actual pollutant releases reported under  Regulation (EC) No 166/2006 concerning the establishment of a European Pollutant Release and Transfer Register and amending Council Directives 91/689/EEC and 96/61/EC</skos:definition>
+    <skos:scopeNote xml:lang="en">Information related to actual pollutant releases (E-PRTR data reporting): Information related to actual pollutant releases reported under  Regulation (EC) No 166/2006 concerning the establishment of a European Pollutant Release and Transfer Register and amending Council Directives 91/689/EEC and 96/61/EC</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfIndustrialAndAgriculturalInstallationsFallingUnderIndustrialEmissionsDirective -dir-2010-75">
+    <skos:prefLabel xml:lang="en">Location of industrial and agricultural installations (Industrial Emissions Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of industrial and agricultural installations (Industrial Emissions Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of industrial and agricultural installations reported under Directive 2010/75/EU on industrial emissions (integrated pollution prevention and control)</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of industrial and agricultural installations (Industrial Emissions Directive): Location of industrial and agricultural installations reported under Directive 2010/75/EU on industrial emissions (integrated pollution prevention and control)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfCombustionPlants-dir-2010-75">
+    <skos:prefLabel xml:lang="en">Location of combustion plants  (Industrial Emissions Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of combustion plants  (Industrial Emissions Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of combustion plants reported under under Directive 2010/75/EU on industrial emissions (integrated pollution prevention and control)</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of combustion plants  (Industrial Emissions Directive): Location of combustion plants reported under under Directive 2010/75/EU on industrial emissions (integrated pollution prevention and control)</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfUrbanAgglomerations-dir-1991-271">
+    <skos:prefLabel xml:lang="en">Location of urban agglomerations (Urban Waste-Water Treatment Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of urban agglomerations (Urban Waste-Water Treatment Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of urban agglomerations reported under the Council Directive 91/271/EEC concerning urban waste-water treatment</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of urban agglomerations (Urban Waste-Water Treatment Directive): Location of urban agglomerations reported under the Council Directive 91/271/EEC concerning urban waste-water treatment</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfPlants-dir-1991-271">
+    <skos:prefLabel xml:lang="en">Location of plants (Urban Waste-Water Treatment Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of plants (Urban Waste-Water Treatment Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of plants reported under the Council Directive 91/271/EEC concerning urban waste-water treatment</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of plants (Urban Waste-Water Treatment Directive): Location of plants reported under the Council Directive 91/271/EEC concerning urban waste-water treatment</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfDischargePointsLinkedToWaterFrameworkDirectiveWaterBody-dir-1991-271">
+    <skos:prefLabel xml:lang="en">Location of discharge points linked to Water Framework Directive water body</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of discharge points linked to Water Framework Directive water body</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of discharge points linked to Water Framework Directive water body</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of discharge points linked to Water Framework Directive water body: Location of discharge points linked to Water Framework Directive water body</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/SensitiveAreasLessSensitiveAreasAndCatchments-dir-1991-271">
+    <skos:prefLabel xml:lang="en">Sensitive areas, less sensitive areas and catchments</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Sensitive areas, less sensitive areas and catchments</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Sensitive areas, less sensitive areas and catchments reported under the Council Directive 91/271/EEC concerning urban waste-water treatment</skos:definition>
+    <skos:scopeNote xml:lang="en">Sensitive areas, less sensitive areas and catchments: Sensitive areas, less sensitive areas and catchments reported under the Council Directive 91/271/EEC concerning urban waste-water treatment</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/NitratesMonitoringStations-dir-1991-676">
+    <skos:prefLabel xml:lang="en">Nitrates monitoring stations</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Nitrates monitoring stations</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Nitrates monitoring stations reported under the Council Directive 91/676/EEC concerning the protection of waters against pollution caused by nitrates from agricultural sources</skos:definition>
+    <skos:scopeNote xml:lang="en">Nitrates monitoring stations: Nitrates monitoring stations reported under the Council Directive 91/676/EEC concerning the protection of waters against pollution caused by nitrates from agricultural sources</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/NitratesVulnerableZones-dir-1991-676">
+    <skos:prefLabel xml:lang="en">Nitrates vulnerable zones</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Nitrates vulnerable zones</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Nitrates vulnerable zones reported under the Council Directive 91/676/EEC concerning the protection of waters against pollution caused by nitrates from agricultural sources</skos:definition>
+    <skos:scopeNote xml:lang="en">Nitrates vulnerable zones: Nitrates vulnerable zones reported under the Council Directive 91/676/EEC concerning the protection of waters against pollution caused by nitrates from agricultural sources</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfIslandsAndExemptedIsolatedSettlements-dir-1999-31">
+    <skos:prefLabel xml:lang="en">Location of islands and exempted isolated settlements</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of islands and exempted isolated settlements</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of islands and exempted isolated settlements reported under the Council Directive 1999/31/EC on the landfill of waste</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of islands and exempted isolated settlements: Location of islands and exempted isolated settlements reported under the Council Directive 1999/31/EC on the landfill of waste</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfFacilities-dir-2006-21">
+    <skos:prefLabel xml:lang="en">Location of facilities (waste from extractive industries Directive)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of facilities (waste from extractive industries Directive)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of facilities reported under Directive 2006/21/EC on the management of waste from extractive industries and amending Directive 2004/35/EC - Statement by the European Parliament, the Council and the Commission</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of facilities (waste from extractive industries Directive): Location of facilities reported under Directive 2006/21/EC on the management of waste from extractive industries and amending Directive 2004/35/EC - Statement by the European Parliament, the Council and the Commission</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfEstablishments-dir-2012-18">
+    <skos:prefLabel xml:lang="en">Location of establishments</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of establishments</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of establishments reported under Directive 2012/18/EU on the control of major-accident hazards involving dangerous substances, amending and subsequently repealing Council Directive 96/82/EC</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of establishments: Location of establishments reported under Directive 2012/18/EU on the control of major-accident hazards involving dangerous substances, amending and subsequently repealing Council Directive 96/82/EC</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfBoreholes-reco-2014-70">
+    <skos:prefLabel xml:lang="en">Location of boreholes</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of boreholes</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of boreholes reported under the Commission Recommendation 2014/70/EU on minimum principles for the exploration and production of hydrocarbons (such as shale gas) using high-volume hydraulic fracturing</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of boreholes: Location of boreholes reported under the Commission Recommendation 2014/70/EU on minimum principles for the exploration and production of hydrocarbons (such as shale gas) using high-volume hydraulic fracturing</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfPlannedBoreholes-reco-2014-70">
+    <skos:prefLabel xml:lang="en">Location of planned boreholes</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of planned boreholes</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of planned boreholes reported under the Commission Recommendation 2014/70/EU on minimum principles for the exploration and production of hydrocarbons (such as shale gas) using high-volume hydraulic fracturing</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of planned boreholes: Location of planned boreholes reported under the Commission Recommendation 2014/70/EU on minimum principles for the exploration and production of hydrocarbons (such as shale gas) using high-volume hydraulic fracturing</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/AgriculturalFcilitiesReceivingSludge-dir-1986-278">
+    <skos:prefLabel xml:lang="en">Agricultural facilities receiving sludge</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Agricultural facilities receiving sludge</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Agricultural facilities receiving sludge reported under the Council Directive 86/278/EEC on the protection of the environment, and in particular of the soil, when sewage sludge is used in agriculture</skos:definition>
+    <skos:scopeNote xml:lang="en">Agricultural facilities receiving sludge: Agricultural facilities receiving sludge reported under the Council Directive 86/278/EEC on the protection of the environment, and in particular of the soil, when sewage sludge is used in agriculture</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfTheAgriculturalSitesWhereSludgeIsDeposited-dir-1986-278">
+    <skos:prefLabel xml:lang="en">Location of the agricultural sites where sludge is deposited</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of the agricultural sites where sludge is deposited</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of the agricultural sites where sludge is deposited reported under the Council Directive 86/278/EEC on the protection of the environment, and in particular of the soil, when sewage sludge is used in agriculture</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of the agricultural sites where sludge is deposited: Location of the agricultural sites where sludge is deposited reported under the Council Directive 86/278/EEC on the protection of the environment, and in particular of the soil, when sewage sludge is used in agriculture</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfStorageFacilities-reg-2008-1102">
+    <skos:prefLabel xml:lang="en">Location of storage facilities</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of storage facilities</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of storage facilities reported under Regulation (EC) No 1102/2008 on the banning of exports of metallic mercury and certain mercury compounds and mixtures and the safe storage of metallic mercury</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of storage facilities: Location of storage facilities reported under Regulation (EC) No 1102/2008 on the banning of exports of metallic mercury and certain mercury compounds and mixtures and the safe storage of metallic mercury</skos:scopeNote>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset/LocationOfSites-ecdf-32">
+    <skos:prefLabel xml:lang="en">Location of sites (CDDA)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Location of sites (CDDA)</skos:prefLabel>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/PriorityDataset"/>
+    <skos:definition xml:lang="en">Location of sites reported under the EIONET Core Data Flow</skos:definition>
+    <skos:scopeNote xml:lang="en">Location of sites (CDDA): Location of sites reported under the EIONET Core Data Flow</skos:scopeNote>
+  </skos:Concept>
+</rdf:RDF>
