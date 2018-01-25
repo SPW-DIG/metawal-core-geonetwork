@@ -158,9 +158,10 @@
           }).add({
             combo: 'enter',
             description: $translate.instant('hotkeySearchTheCatalog'),
-            allowIn: 'INPUT',
+            allowIn: ['INPUT'],
             callback: function() {
-              $location.search('tab=search');
+              angular.element($('#gn-any-field')).scope().
+                $parent.triggerSearch()
             }
             //}).add({
             //  combo: 'r',
