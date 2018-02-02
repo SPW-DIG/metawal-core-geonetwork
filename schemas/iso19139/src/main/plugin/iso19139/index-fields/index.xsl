@@ -46,6 +46,14 @@
               encoding="utf-8"
               escape-uri-attributes="yes"/>
 
+  <!-- Store date stamp in identifier.
+       One record could have multiple versions and can originate from more than one scope (ie. harvester)
+      A record with same UUID and same dateStamp are considered identical.
+  -->
+  <xsl:variable name="withHistory"
+                select="true()"
+                as="xs:boolean"/>
+
   <!-- Define if operatesOn type should be defined
   by analysis of protocol in all transfers options.
   -->
@@ -92,6 +100,12 @@
                   select="gmd:fileIdentifier/gco:CharacterString[. != '']"/>
 
 
+    <!-- In ISO19139 consider datestamp element the last update date
+    even if the standard says creation date. Most of the catalog implementations
+    update the datestamp on change. -->
+    <xsl:variable name="lastRevisionDate" as="xs:string?"
+                  select="gmd:dateStamp[1]/gco:DateTime[. != '']"/>
+
     <xsl:variable name="mainLanguageCode" as="xs:string?"
                   select="gmd:language[1]/gmd:LanguageCode/
                         @codeListValue[normalize-space(.) != '']"/>
@@ -126,6 +140,11 @@
       <document>
         <!--<xsl:value-of select="saxon:serialize(., 'default-serialize-mode')"/>-->
       </document>
+      <id>
+        <xsl:value-of select="if ($withHistory)
+                              then concat($identifier, '-', $lastRevisionDate)
+                              else $identifier"/>
+      </id>
       <uuid>
         <xsl:value-of select="$identifier"/>
       </uuid>
@@ -139,9 +158,6 @@
         </standardName>
       </xsl:for-each>
 
-      <harvestedDate>
-        <xsl:value-of select="format-dateTime(current-dateTime(), $dateFormat)"/>
-      </harvestedDate>
 
 
       <!-- Indexing record information -->

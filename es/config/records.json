@@ -1001,7 +1001,7 @@
           "synInspireAnnexesType": {
             "match": "inspireAnnex*",
             "mapping": {
-              "type":     "string",
+              "type":     "keyword",
               "fielddata": true,
               "analyzer": "synInspireAnnexes",
               "search_analyzer": "keyword"
@@ -1012,7 +1012,7 @@
           "synInspireThemeType": {
             "match": "inspireTheme*",
             "mapping": {
-              "type":     "string",
+              "type":     "keyword",
               "fielddata": true,
               "analyzer": "synInspireThemes",
               "search_analyzer": "keyword"
@@ -1023,7 +1023,7 @@
           "inspireServiceType": {
             "match": "inspireServiceType",
             "mapping": {
-              "type":     "string",
+              "type":     "keyword",
               "fielddata": true,
               "analyzer": "keepInspireServiceTypes",
               "search_analyzer": "keyword"
@@ -1056,7 +1056,7 @@
           "type": "date"
         },
         "document": {
-          "type" : "string",
+          "type" : "text",
           "index" : "no",
           "doc_values": false
         },
@@ -1092,11 +1092,35 @@
         "isValid": {
           "type": "boolean"
         },
+        "etfIsValid": {
+          "type": "boolean"
+        },
+        "etfIsValidOptional": {
+          "type": "boolean"
+        },
+        "inspireConformResource": {
+          "type": "keyword"
+        },
         "isSchemaValid": {
           "type": "boolean"
         },
         "isAboveThreshold": {
           "type": "boolean"
+        },
+        "etfCompletenessIndicator": {
+          "type": "double"
+        },
+        "etfCompletenessIndicatorOptional": {
+          "type": "double"
+        },
+        "completenessIndicator": {
+          "type": "double"
+        },
+        "inspireThemeFirst_syn": {
+          "type": "keyword"
+        },
+        "inspireTheme_syn": {
+          "type": "keyword"
         },
         "isOpenData": {
           "type": "keyword"
@@ -1212,10 +1236,18 @@
         "topic": {
           "type": "keyword"
         },
+        "validDate": {
+          "type": "date",
+          "format": "date_hour_minute_second"
+        },
         "validReport": {
-          "type" : "string",
+          "type" : "text",
           "index" : "no",
           "doc_values": false
+        },
+        "schemaValidDate": {
+          "type": "date",
+          "format": "date_hour_minute_second"
         },
         "useLimitation": {
           "type": "text",
@@ -1227,6 +1259,12 @@
           }
         },
         "groupPublished": {
+          "type": "keyword"
+        },
+        "changeDate": {
+          "type": "keyword"
+        },
+        "createDate": {
           "type": "keyword"
         },
         "groupOwner": {

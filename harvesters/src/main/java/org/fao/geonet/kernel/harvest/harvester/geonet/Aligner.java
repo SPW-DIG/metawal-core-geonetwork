@@ -576,7 +576,7 @@ public class Aligner extends BaseAligner {
         }
         context.getBean(MetadataRepository.class).save(metadata);
 
-        dataMan.indexMetadata(id, Math.random() < 0.01, null);
+        dataMan.indexMetadata(id, Math.random() < 0.01, null, null);
         result.addedMetadata++;
 
         return id;
@@ -839,7 +839,7 @@ public class Aligner extends BaseAligner {
         metadataRepository.save(metadata);
 //        dataMan.flush();
 
-        dataMan.indexMetadata(id, Math.random() < 0.01, null);
+        dataMan.indexMetadata(id, Math.random() < 0.01, null, null);
     }
 
     private void updateFile(String id, String file, String dir, String changeDate,

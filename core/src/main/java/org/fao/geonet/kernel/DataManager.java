@@ -573,7 +573,7 @@ public class DataManager implements ApplicationEventPublisherAware {
 
     public void indexMetadata(final List<String> metadataIds) throws Exception {
         for (String metadataId : metadataIds) {
-            indexMetadata(metadataId, false, null);
+            indexMetadata(metadataId, false, null, null);
         }
 
         getSearchManager().forceIndexChanges();
@@ -582,7 +582,7 @@ public class DataManager implements ApplicationEventPublisherAware {
     /**
      * TODO javadoc.
      */
-    public void indexMetadata(final String metadataId, boolean forceRefreshReaders, ISearchManager searchManager) throws Exception {
+    public void indexMetadata(final String metadataId, boolean forceRefreshReaders, String indexingDate, ISearchManager searchManager) throws Exception {
         indexLock.lock();
         try {
             if (waitForIndexing.contains(metadataId)) {
@@ -791,9 +791,9 @@ public class DataManager implements ApplicationEventPublisherAware {
             }
 
             if (searchManager == null) {
-                getSearchManager().index(getSchemaManager().getSchemaDir(schema), md, metadataId, moreFields, metadataType, root, forceRefreshReaders);
+                getSearchManager().index(getSchemaManager().getSchemaDir(schema), md, metadataId, moreFields, metadataType, root, forceRefreshReaders, null);
             } else {
-                searchManager.index(getSchemaManager().getSchemaDir(schema), md, metadataId, moreFields, metadataType, root, forceRefreshReaders);
+                searchManager.index(getSchemaManager().getSchemaDir(schema), md, metadataId, moreFields, metadataType, root, forceRefreshReaders, indexingDate);
             }
         } catch (Exception x) {
             Log.error(Geonet.DATA_MANAGER, "The metadata document index with id=" + metadataId + " is corrupt/invalid - ignoring it. Error: " + x.getMessage(), x);
@@ -1341,7 +1341,7 @@ public class DataManager implements ApplicationEventPublisherAware {
      */
     public void setTemplate(final int id, final MetadataType type, final String title) throws Exception {
         setTemplateExt(id, type);
-        indexMetadata(Integer.toString(id), true, null);
+        indexMetadata(Integer.toString(id), true, null, null);
     }
 
     /**
@@ -1383,7 +1383,7 @@ public class DataManager implements ApplicationEventPublisherAware {
      */
     public void setHarvested(int id, String harvestUuid) throws Exception {
         setHarvestedExt(id, harvestUuid);
-        indexMetadata(Integer.toString(id), true, null);
+        indexMetadata(Integer.toString(id), true, null, null);
     }
 
     /**
@@ -1515,7 +1515,7 @@ public class DataManager implements ApplicationEventPublisherAware {
             }
         });
 
-        indexMetadata(Integer.toString(metadataId), true, null);
+        indexMetadata(Integer.toString(metadataId), true, null, null);
 
         return rating;
     }
@@ -1703,7 +1703,7 @@ public class DataManager implements ApplicationEventPublisherAware {
         copyDefaultPrivForGroup(context, stringId, groupId, fullRightsForGroup);
 
         if (index) {
-            indexMetadata(stringId, forceRefreshReaders, null);
+            indexMetadata(stringId, forceRefreshReaders, null, null);
         }
 
         if (notifyChange) {
@@ -1917,13 +1917,13 @@ public class DataManager implements ApplicationEventPublisherAware {
         } finally {
             if (index) {
                 //--- update search criteria
-                indexMetadata(metadataId, true, null);
+                indexMetadata(metadataId, true, null, null);
             }
         }
 
         if (metadata.getDataInfo().getType() == MetadataType.SUB_TEMPLATE) {
             if (!index) {
-                indexMetadata(metadataId, true, null);
+                indexMetadata(metadataId, true, null, null);
             }
             MetaSearcher searcher = searcherForReferencingMetadata(context, metadata);
             Map<Integer, Metadata> result = ((LuceneSearcher) searcher).getAllMdInfo(context, 500);
@@ -2439,7 +2439,7 @@ public class DataManager implements ApplicationEventPublisherAware {
             notifyMetadataChange(md, metadataId);
 
             //--- update search criteria
-            indexMetadata(metadataId, true, null);
+            indexMetadata(metadataId, true, null, null);
         }
     }
 
@@ -2755,7 +2755,7 @@ public class DataManager implements ApplicationEventPublisherAware {
      */
     public MetadataStatus setStatus(ServiceContext context, int id, int status, ISODate changeDate, String changeMessage) throws Exception {
         MetadataStatus statusObject = setStatusExt(context, id, status, changeDate, changeMessage);
-        indexMetadata(Integer.toString(id), true, null);
+        indexMetadata(Integer.toString(id), true, null, null);
         return statusObject;
     }
 

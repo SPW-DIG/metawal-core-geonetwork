@@ -143,6 +143,6 @@ public class MetadataWorkflowApi {
 
         //--- reindex metadata
         DataManager dataManager = appContext.getBean(DataManager.class);
-        dataManager.indexMetadata(String.valueOf(metadata.getId()), true, null);
+        dataManager.indexMetadata(String.valueOf(metadata.getId()), true, null, null);
     }
 }

@@ -39,16 +39,12 @@ import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.domain.ISODate;
 import org.fao.geonet.domain.Metadata;
-import org.fao.geonet.domain.MetadataDataInfo_;
 import org.fao.geonet.domain.MetadataType;
-import org.fao.geonet.domain.Metadata_;
-import org.fao.geonet.domain.Pair;
 import org.fao.geonet.es.EsClient;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.SelectionManager;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.repository.MetadataRepository;
-import org.fao.geonet.repository.SortUtils;
 import org.fao.geonet.repository.specification.MetadataSpecs;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
@@ -56,15 +52,13 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specifications;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -197,14 +191,16 @@ public class EsSearchManager implements ISearchManager {
 
     @Override
     public void index(Path schemaDir, Element metadata, String id, List<Element> moreFields,
-                      MetadataType metadataType, String root, boolean forceRefreshReaders) throws Exception {
+                      MetadataType metadataType, String root, boolean forceRefreshReaders, String indexingDate) throws Exception {
 
         SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
 
         Element docs = new Element("docs");
         Element allFields = new Element("doc");
-        allFields.addContent(new Element(ID).setText(id));
+        allFields.addContent(new Element("dbid").setText(id));
         allFields.addContent(new Element(DOC_TYPE).setText("metadata"));
+        allFields.addContent(new Element("harvestedDate").setText(indexingDate));
+
         addMDFields(allFields, schemaDir, metadata, root);
         addMoreFields(allFields, moreFields);
 
@@ -217,26 +213,78 @@ public class EsSearchManager implements ISearchManager {
         String catalog = doc.get("source").asText();
         doc.remove("source");
         doc.put("sourceCatalogue", catalog);
+
+        // Add reference to GeoNetwork catalogue
         doc.put("scope", settingManager.getSiteName());
         doc.put("harvesterUuid", settingManager.getSiteId());
         doc.put("harvesterId", settingManager.getNodeURL());
-        Map<String, String> docListToIndex = new HashMap<>();
-        docListToIndex.put(id, mapper.writeValueAsString(doc));
-        listOfDocumentsToIndex.put(id, mapper.writeValueAsString(doc));
+
+        // Document id may be UUID or UUID+dateStamp when using history
+        String documentId = doc.get("id").asText();
+
+        // Build bulk query to update or insert document
+//        listOfDocumentsToIndex.put(documentId, mapper.writeValueAsString(doc));
+        String jsonDoc = mapper.writeValueAsString(doc);
+        listOfDocumentsToIndex.put(documentId, String.format(
+            "{"
+                + "\"script\": {"
+                + "\"source\": "
+                + "\"ctx._source.harvestedDate.add(params.harvestedDate)\", "
+                + "\"lang\": \"painless\", "
+                +  "\"params\": %s"
+                + "} "
+                + ",\"upsert\": %s"
+                + "}",
+            jsonDoc,
+            jsonDoc));
+
         if (listOfDocumentsToIndex.size() == commitInterval) {
-            sendDocumentsToIndex();
+            sendDocumentsToIndex(indexingDate);
         }
     }
 
-    private void sendDocumentsToIndex() throws IOException {
+    private void sendIndexingTaskReport(String harvestedDate, String message, int current, int total) throws IOException {
+        SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
+
+        // Log report
+        //${property.harvesterUuid}-${property.timestamp}
+        String timestamp = new ISODate().toString();
+        String script = String.format(
+                "{\"doc\": {\"documentType\": \"harvesterTaskReport\","
+                + "\"timestamp\": \"%s\","
+                + "\"harvesterUuid\": \"%s\","
+                + "\"harvestedDate\": \"%s\","
+                + "\"reportStep\": \"%s\","
+                + "\"reportLevel\": \"%s\","
+                + "\"reportMessage\": \"%s\","
+                + "\"reportCurrent\": \"%d\","
+                + "\"reportTotal\": \"%d\""
+                + "}}",
+            timestamp,
+            settingManager.getSiteId(),
+            harvestedDate,
+            null,
+            "INFO",
+            message,
+            current, total);
+
+        Map<String, String> docs = new HashMap<String, String>();
+        docs.put(settingManager.getSiteId() + "-" + timestamp, script);
+        client.bulkRequest(index, docs);
+    }
+    private void sendDocumentsToIndex(String indexingDate) throws IOException {
         synchronized (this) {
             if (listOfDocumentsToIndex.size() > 0) {
+                sendIndexingTaskReport(indexingDate, String.format("Indexing %d records", listOfDocumentsToIndex.size()), -1, -1);
                 client.bulkRequest(index, listOfDocumentsToIndex);
                 listOfDocumentsToIndex.clear();
             }
         }
     }
 
+
+    private static final List<String> listOfArrayFields =
+        Arrays.asList(new String[]{"harvestedDate", "scope"});
     /**
      * Convert document to JSON.
      */
@@ -265,7 +313,8 @@ public class EsSearchManager implements ISearchManager {
                         elementNames.add(name);
 
                         List<Element> nodeElements = record.getChildren(name);
-                        boolean isArray = nodeElements.size() > 1;
+                        boolean isArray = nodeElements.size() > 1
+                            || listOfArrayFields.contains(name);
 
                         // Field starting with _ not supported in Kibana
                         // Those are usually GN internal fields
@@ -281,7 +330,7 @@ public class EsSearchManager implements ISearchManager {
                         for (int k = 0; k < nodeElements.size(); k++) {
                             Element node = nodeElements.get(k);
 
-                            if (name.equals("id")) {
+                            if (name.equals("dbid")) {
                                 id = node.getTextNormalize();
                             }
 
@@ -318,8 +367,12 @@ public class EsSearchManager implements ISearchManager {
         DataManager dataMan = context.getBean(DataManager.class);
         MetadataRepository metadataRepository = context.getBean(MetadataRepository.class);
 
+        String indexingDate = new ISODate().toString();
+
+        sendIndexingTaskReport(indexingDate, String.format("Start indexing in remote index at %s", indexingDate), -1, -1);
         if (reset) {
             clearIndex();
+            sendIndexingTaskReport(indexingDate, "Past records removed.", -1, -1);
         }
 
         if (StringUtils.isNotBlank(bucket)) {
@@ -341,10 +394,12 @@ public class EsSearchManager implements ISearchManager {
                     }
                 }
             }
+            sendIndexingTaskReport(indexingDate, String.format("%d records to index from selection.", listOfIdsToIndex.size()), -1, -1);
+
             for(String id : listOfIdsToIndex) {
-                dataMan.indexMetadata(id + "", false, this);
+                dataMan.indexMetadata(id + "", false, indexingDate, this);
             }
-            sendDocumentsToIndex();
+            sendDocumentsToIndex(indexingDate);
         } else {
             final Specifications<Metadata> metadataSpec =
                 Specifications.where(MetadataSpecs.isType(MetadataType.METADATA))
@@ -352,12 +407,16 @@ public class EsSearchManager implements ISearchManager {
             final List<Integer> metadataIds = metadataRepository.findAllIdsBy(
                 Specifications.where(metadataSpec)
             );
+
+            sendIndexingTaskReport(indexingDate, String.format("%d records to index.", metadataIds.size()), -1, -1);
             for(Integer id : metadataIds) {
-                dataMan.indexMetadata(id + "", false, this);
+                dataMan.indexMetadata(id + "", false, indexingDate, this);
             }
-            sendDocumentsToIndex();
+
+            sendDocumentsToIndex(indexingDate);
         }
 
+        sendIndexingTaskReport(indexingDate, "Indexing done.", -1, -1);
         return true;
     }
 

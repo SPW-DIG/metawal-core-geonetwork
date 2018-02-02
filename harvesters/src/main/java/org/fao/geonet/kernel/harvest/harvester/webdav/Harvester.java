@@ -333,7 +333,7 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult> {
 
         dataMan.flush();
 
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true, null, null);
         result.addedMetadata++;
     }
 
@@ -487,7 +487,7 @@ class Harvester extends BaseAligner implements IHarvester<HarvestResult> {
 
             dataMan.flush();
 
-            dataMan.indexMetadata(record.id, true, null);
+            dataMan.indexMetadata(record.id, true, null, null);
             result.updatedMetadata++;
         }
     }

@@ -668,9 +668,10 @@ public class SearchManager implements ISearchManager {
      *
      * @param forceRefreshReaders if true then block all searches until they can obtain a up-to-date
      *                            reader
+     * @param indexingDate
      */
     public void index(Path schemaDir, Element metadata, String id, List<Element> moreFields,
-                      MetadataType metadataType, String root, boolean forceRefreshReaders)
+                      MetadataType metadataType, String root, boolean forceRefreshReaders, String indexingDate)
         throws Exception {
         ConfigurableApplicationContext applicationContext = ApplicationContextHolder.get();
         LuceneIndexLanguageTracker tracker = applicationContext.getBean(LuceneIndexLanguageTracker.class);

@@ -29,7 +29,9 @@ import io.searchbox.client.JestResult;
 import io.searchbox.client.config.HttpClientConfig;
 import io.searchbox.core.Bulk;
 import io.searchbox.core.BulkResult;
+import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
+import io.searchbox.core.Update;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.utils.Log;
 import org.springframework.beans.factory.InitializingBean;
@@ -118,6 +120,7 @@ public class EsClient implements InitializingBean {
         return this;
     }
 
+
     public boolean bulkRequest(String index, Map<String, String> docs) throws IOException {
         if (!activated) {
             return false;
@@ -130,9 +133,16 @@ public class EsClient implements InitializingBean {
         Iterator iterator = docs.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, String> entry = (Map.Entry) iterator.next();
-            bulk.addAction(
+            if (!entry.getValue().startsWith("{\"script\"")) {
+                bulk.addAction(
                 new Index.Builder(entry.getValue()).id(entry.getKey()).build()
-            );
+                );
+            } else {
+                bulk.addAction(
+                    new Update.Builder(entry.getValue()).id(entry.getKey()).index(index).type(index).build()
+                );
+            }
+
         }
         try {
             BulkResult result = client.execute(bulk.build());

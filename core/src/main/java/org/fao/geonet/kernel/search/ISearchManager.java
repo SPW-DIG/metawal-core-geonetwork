@@ -52,9 +52,10 @@ public interface ISearchManager {
      *
      * @param forceRefreshReaders if true then block all searches until they can obtain a up-to-date
      *                            reader
+     * @param indexingDate
      */
     void index(Path schemaDir, Element metadata, String id, List<Element> moreFields,
-               MetadataType metadataType, String root, boolean forceRefreshReaders)
+               MetadataType metadataType, String root, boolean forceRefreshReaders, String indexingDate)
         throws Exception;
 
     /**

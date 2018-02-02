@@ -445,7 +445,7 @@
             });
       };
       $scope.indexInEs = function() {
-        return $http.put('../api/site/index/es')
+        return $http.put('../api/site/index/es', {}, {params: {reset: false}})
             .success(function(data) {
               $rootScope.$broadcast('StatusUpdated', {
                 msg: $translate.instant('indexInEsDone'),
@@ -459,6 +459,23 @@
                 timeout: 0,
                 type: 'danger'});
             });
+      };
+
+      $scope.clearEsIndex = function() {
+        return $http.delete('../api/site/index/es')
+          .success(function(data) {
+            $rootScope.$broadcast('StatusUpdated', {
+              msg: $translate.instant('clearEsIndexDone'),
+              timeout: 2,
+              type: 'success'});
+          })
+          .error(function(data) {
+            $rootScope.$broadcast('StatusUpdated', {
+              title: $translate.instant('clearEsIndexError'),
+              error: data,
+              timeout: 0,
+              type: 'danger'});
+          });
       };
 
       $scope.optimizeIndex = function() {

@@ -190,7 +190,7 @@ public class Update extends NotInReadOnlyModeService {
 			}
 
 			if (reindex) {
-				dataMan.indexMetadata(id, true, null);
+				dataMan.indexMetadata(id, true, null, null);
 			}
 
 

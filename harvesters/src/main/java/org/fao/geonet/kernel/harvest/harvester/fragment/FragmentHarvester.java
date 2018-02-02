@@ -429,10 +429,10 @@ public class FragmentHarvester extends BaseAligner {
 
         String id = String.valueOf(metadata.getId());
 
-        // Note: we use fragmentAllPrivs here because subtemplates need to be 
+        // Note: we use fragmentAllPrivs here because subtemplates need to be
         // visible/accessible to all
         addPrivileges(id, fragmentAllPrivs, localGroups, dataMan, context, log);
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true, null, null);
 
         dataMan.flush();
 
@@ -604,7 +604,7 @@ public class FragmentHarvester extends BaseAligner {
         repository.deleteAllByIdAttribute(OperationAllowedId_.metadataId, iId);
 
         if (isSubtemplate) {
-          // Note: we use fragmentAllPrivs here because subtemplates need to be 
+          // Note: we use fragmentAllPrivs here because subtemplates need to be
           // visible/accessible to all
           addPrivileges(id, fragmentAllPrivs, localGroups, dataMan, context, log);
         } else {
@@ -614,12 +614,12 @@ public class FragmentHarvester extends BaseAligner {
         metadata.getMetadataCategories().clear();
         addCategories(metadata, params.categories, localCateg, context, log, null, true);
 
-        if (isSubtemplate) { 
+        if (isSubtemplate) {
             dataMan.setSubtemplateTypeAndTitleExt(iId, title);
         }
         dataMan.setHarvestedExt(iId, params.uuid, Optional.of(harvestUri));
 
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true, null, null);
 
         dataMan.flush();
     }
@@ -667,7 +667,7 @@ public class FragmentHarvester extends BaseAligner {
         }
         addPrivileges(id, params.privileges, localGroups, dataMan, context, log);
 
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true, null, null);
 
         if (log.isDebugEnabled()) {
             log.debug("	- Commit " + id);

@@ -171,7 +171,7 @@ public class UpdateAdminOper extends NotInReadOnlyModeService {
 		}
 
         //--- index metadata
-        dm.indexMetadata(id, true, null);
+        dm.indexMetadata(id, true, null, null);
 
         //--- return id for showing
 		return new Element(Jeeves.Elem.RESPONSE).addContent(new Element(Geonet.Elem.ID).setText(id));
@@ -198,7 +198,7 @@ public class UpdateAdminOper extends NotInReadOnlyModeService {
 
 			dm.doValidate(metadata.getDataInfo().getSchemaId(), mdId + "",
 					new Document(metadata.getXmlData(false)), context.getLanguage());
-			dm.indexMetadata(mdId + "", true, null);
+			dm.indexMetadata(mdId + "", true, null, null);
 		}
 
 		boolean isInvalid =

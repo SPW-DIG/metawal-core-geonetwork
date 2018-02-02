@@ -210,7 +210,7 @@ public class MetadataValidateApiTest extends AbstractServiceIntegrationTest {
                 false,
                 false);
 
-        dataManager.indexMetadata("" + dbInsertedMetadata.getId(), true, null);
+        dataManager.indexMetadata("" + dbInsertedMetadata.getId(), true, null, null);
         assertEquals(1, countTemplateIndexed(dbInsertedMetadata.getUuid(), "-1", type == MetadataType.SUB_TEMPLATE ? "s" : "n"));
         return dbInsertedMetadata;
     }

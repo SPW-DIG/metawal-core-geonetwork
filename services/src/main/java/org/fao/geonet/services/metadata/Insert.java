@@ -181,7 +181,7 @@ public class Insert extends NotInReadOnlyModeService {
         }
 
         // Index
-        dm.indexMetadata(id.get(0), true, null);
+        dm.indexMetadata(id.get(0), true, null, null);
 
         // Return response
         Element response = new Element(Jeeves.Elem.RESPONSE);

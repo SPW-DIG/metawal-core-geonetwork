@@ -315,7 +315,7 @@ public class Aligner extends BaseAligner {
 
         addPrivileges(id, params.getPrivileges(), localGroups, dataMan, context, log);
 
-        dataMan.indexMetadata(id, Math.random() < 0.01, null);
+        dataMan.indexMetadata(id, Math.random() < 0.01, null, null);
         result.addedMetadata++;
     }
 
@@ -371,7 +371,7 @@ public class Aligner extends BaseAligner {
 
                 dataMan.flush();
 
-                dataMan.indexMetadata(id, Math.random() < 0.01, null);
+                dataMan.indexMetadata(id, Math.random() < 0.01, null, null);
                 result.updatedMetadata++;
             }
         }
