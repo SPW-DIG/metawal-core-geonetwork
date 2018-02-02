@@ -114,7 +114,10 @@
     '$scope',
     '$location',
     'gnSearchSettings',
-    function($scope, $location, gnSearchSettings) {
+    'gnUtilityService',
+    '$translate', '$timeout',
+    'hotkeys',
+    function($scope, $location, gnSearchSettings, gnUtilityService, $translate, $timeout, hotkeys) {
 
       gnSearchSettings.resultViewTpls = [{
         tplUrl: '../../catalog/components/search/resultsview/' +
@@ -145,6 +148,54 @@
         hitsPerPage: gnSearchSettings.hitsperpageValues[0]
       };
 
-    }
+      $timeout(function() {
+        hotkeys.bindTo($scope)
+        .add({
+          combo: 'd',
+          description: $translate.instant('hotkeyDirectory'),
+          callback: function(event) {
+            $location.path('/directory');
+          }
+        }).add({
+          combo: 'i',
+          description: $translate.instant('hotkeyImport'),
+          callback: function(event) {
+            $location.path('/import');
+          }
+        }).add({
+          combo: 'n',
+          description: $translate.instant('hotkeyAddRecord'),
+          callback: function(event) {
+            $location.path('/create');
+          }
+        }).add({
+          combo: 't',
+          description: $translate.instant('hotkeyFocusToSearch'),
+          callback: function(event) {
+            event.preventDefault();
+            var anyField = $('#gn-any-field');
+            if (anyField) {
+              gnUtilityService.scrollTo();
+              $location.path('/board');
+              anyField.focus();
+            }
+          }
+        }).add({
+          combo: 'enter',
+          description: $translate.instant('hotkeySearchTheCatalog'),
+          allowIn: ['INPUT'],
+          callback: function() {
+            angular.element($('#gn-any-field')).scope().
+              $parent.triggerSearch()            
+          }
+        }).add({
+          combo: 'b',
+          description: $translate.instant('hotkeyBatchEdit'),
+          callback: function(event) {
+            $location.path('/batchedit');
+          }
+        });
+      }, 500);
+      }
   ]);
 })();

@@ -43,5 +43,9 @@
 	"elementsPerPage":"Elements per page",
 	"noresult":"No results found...",
 	"reverse":"ascending",
-    "noreverse":"descending"
+    "noreverse":"descending",
+    "isPublishedToAll": "Published to all",
+	"officialResources": "Official data",
+    "accessConstraints":"Consultation",
+    "diffusionmodes": "Diffusion modes"
 }

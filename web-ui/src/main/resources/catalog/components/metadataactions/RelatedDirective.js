@@ -185,11 +185,12 @@
               };
               scope.hasAction = function(mainType) {
                 var fn = gnRelatedResources.map[mainType].action;
+                // Redirect to WalOnMAp (following configuration not need)
                 // If function name ends with ToMap do not display the action
-                if (fn && fn.name && fn.name.match(/.*ToMap$/) &&
+                /*if (fn && fn.name && fn.name.match(/.*ToMap$/) &&
                    gnGlobalSettings.isMapViewerEnabled === false) {
                   return false;
-                }
+                }*/
                 return angular.isFunction(fn);
               };
 

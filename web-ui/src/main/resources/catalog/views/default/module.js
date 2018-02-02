@@ -109,12 +109,13 @@
     'gnOwsContextService',
     'hotkeys',
     'gnGlobalSettings',
+    '$window',
     function($scope, $location, $filter,
              suggestService, $http, $translate,
              gnUtilityService, gnSearchSettings, gnViewerSettings,
              gnMap, gnMdView, mdView, gnWmsQueue,
              gnSearchLocation, gnOwsContextService,
-             hotkeys, gnGlobalSettings) {
+             hotkeys, gnGlobalSettings, $window) {
 
       var viewerMap = gnSearchSettings.viewerMap;
       var searchMap = gnSearchSettings.searchMap;
@@ -158,9 +159,10 @@
           }).add({
             combo: 'enter',
             description: $translate.instant('hotkeySearchTheCatalog'),
-            allowIn: 'INPUT',
+            allowIn: ['INPUT'],
             callback: function() {
-              $location.search('tab=search');
+              angular.element($('#gn-any-field')).scope().
+                $parent.triggerSearch()
             }
             //}).add({
             //  combo: 'r',
@@ -256,7 +258,9 @@
 
       $scope.resultviewFns = {
         addMdLayerToMap: function (link, md) {
-          var config = {
+          // Redirect to WALONMAP
+          $window.open('http://geoportail.wallonie.be/walonmap/#WMS=' + link.id.split('?request=GetCapabilities&service=WMS')[0] + '|0','_blank');
+          /*var config = {
             uuid: md ? md.getUuid() : null,
             type: link.protocol.indexOf('WMTS') > -1 ? 'wmts' : 'wms',
             url: $filter('gnLocalized')(link.url) || link.url
@@ -281,7 +285,7 @@
           // Open the add service layer tab
           $location.path('map').search({
             add: encodeURIComponent(angular.toJson([config]))});
-          return;
+          return;*/
       },
         addAllMdLayersToMap: function (layers, md) {
           angular.forEach(layers, function (layer) {
