@@ -110,6 +110,7 @@
       };
     }
   ]);
+
   module.controller('GnEditorBoardController', [
     '$scope',
     '$location',
@@ -147,23 +148,42 @@
       gnSearchSettings.paginationInfo = {
         hitsPerPage: gnSearchSettings.hitsperpageValues[0]
       };
+    }
+  ]);
+
+  module.controller('GnEditorHotKeyController', [
+    '$scope',
+    '$location',
+    'gnSearchSettings',
+    'gnUtilityService',
+    '$timeout',
+    'hotkeys',
+    '$translate',
+    function($scope, $location, gnSearchSettings, gnUtilityService,
+             $timeout, hotkeys, $translate) {
 
       $timeout(function() {
         hotkeys.bindTo($scope)
-        .add({
-          combo: 'd',
-          description: $translate.instant('hotkeyDirectory'),
-          callback: function(event) {
-            $location.path('/directory');
-          }
-        }).add({
+          .add({
+            combo: 'd',
+            description: $translate.instant('hotkeyDirectory'),
+            callback: function(event) {
+              $location.path('/directory');
+            }
+          }).add({
           combo: 'i',
-          description: $translate.instant('hotkeyImport'),
+          description: $translate.instant('hotkeyImportRecord'),
           callback: function(event) {
             $location.path('/import');
           }
         }).add({
-          combo: 'n',
+          combo: 'h',
+          description: $translate.instant('hotkeyEditorBoard'),
+          callback: function(event) {
+            $location.path('/board');
+          }
+        }).add({
+          combo: '+',
           description: $translate.instant('hotkeyAddRecord'),
           callback: function(event) {
             $location.path('/create');
@@ -185,8 +205,8 @@
           description: $translate.instant('hotkeySearchTheCatalog'),
           allowIn: ['INPUT'],
           callback: function() {
-            angular.element($('#gn-any-field')).scope().
-              $parent.triggerSearch()            
+            angular.element($('#gn-any-field'))
+              .scope().triggerSearch()
           }
         }).add({
           combo: 'b',
@@ -196,6 +216,8 @@
           }
         });
       }, 500);
-      }
+    }
   ]);
+
+
 })();
