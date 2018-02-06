@@ -221,7 +221,12 @@ public class EsSearchManager implements ISearchManager {
 
         // Document id may be UUID or UUID+dateStamp when using history
         String documentId = doc.get("id").asText();
-
+        if (documentId.endsWith("-")) {
+            // This is a template which does not have UUID and/or a dateStamp
+            // Build id from db info instead of XML.
+            doc.put("id",
+                doc.get("uuid").asText() + "-" + doc.get("changeDate").asText());
+        }
         // Build bulk query to update or insert document
 //        listOfDocumentsToIndex.put(documentId, mapper.writeValueAsString(doc));
         String jsonDoc = mapper.writeValueAsString(doc);
@@ -250,7 +255,7 @@ public class EsSearchManager implements ISearchManager {
         //${property.harvesterUuid}-${property.timestamp}
         String timestamp = new ISODate().toString();
         String script = String.format(
-                "{\"doc\": {\"documentType\": \"harvesterTaskReport\","
+                "{\"documentType\": \"harvesterTaskReport\","
                 + "\"timestamp\": \"%s\","
                 + "\"harvesterUuid\": \"%s\","
                 + "\"harvestedDate\": \"%s\","
@@ -259,7 +264,7 @@ public class EsSearchManager implements ISearchManager {
                 + "\"reportMessage\": \"%s\","
                 + "\"reportCurrent\": \"%d\","
                 + "\"reportTotal\": \"%d\""
-                + "}}",
+                + "}",
             timestamp,
             settingManager.getSiteId(),
             harvestedDate,
