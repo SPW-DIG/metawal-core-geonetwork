@@ -148,13 +148,13 @@
                      value="{{::r.url | gnLocalized: lang}}"/>
             </p>
           </div>
-          
+
           <div data-ng-switch-when="MDFCATS">
           <p class="text-muted">
             <h2>{{(r.title | gnLocalized: lang) }}</h2>
-            
+
            <h2 data-translate="">technicalInformation</h2>
-           
+
            <div data-gn-attribute-table-renderer="r.featureType.attributeTable.element">
 	        </div>
             </p>
@@ -183,7 +183,10 @@
         <button type="button"
                 class="btn btn-default btn-sm btn-block"
                 data-ng-show="hasAction(mainType)"
-                data-ng-click="config.doAction(mainType, r, md)">
+                data-ng-click="config.doAction(mainType, r, md)"
+                title="{{::r.initiativeType | translate}}{{::(r.associationType != '' ? ' / ' +
+                (r.associationType | translate) : '')}}"
+                style="min-width: 150px">
 
           <span class="visible-lg-*">
             {{::(config.getLabel(mainType, type)) | translate}}
@@ -191,11 +194,13 @@
           <br/>
           <span class="visible-lg-*"
                 data-ng-if="mainType == 'MDSIBLING'">
-            ({{::r.initiativeType | translate}}{{::(r.associationType != '' ? ' / ' + (r.associationType | translate) : '')}})
+            ({{::r.initiativeType | translate}}{{::(r.associationType != '' ? ' / ' + (r.associationType | translate
+            | characters:12) : '')}})
           </span>
 
         </button>
       </div>
 
   </div>
+</div>
 </div>
