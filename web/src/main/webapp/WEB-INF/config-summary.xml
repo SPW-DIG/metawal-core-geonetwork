@@ -115,7 +115,7 @@
     <facet name="subTemplateType" indexKey="_root" label="subTemplateTypes"/>
     <facet name="groupOwner" indexKey="_groupOwner" label="groupOwners"/>
     <facet name="publishedForGroup" indexKey="_groupPublished" label="publishedForGroup"/>
-	  <facet name="isPublishedToAll" indexKey="_isPublishedToAll" label="isPublishedToAll" />
+    <facet name="isPublishedToAll" indexKey="_isPublishedToAll" label="isPublishedToAll" />
     <!--
     Example configuration for hierarchical facet based on
     the GeoNetwork region thesaurus or GEMET.
@@ -216,21 +216,40 @@
 
     <summaryType name="manager" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
-      <!--item facet="category" max="99" sortBy="value"
-            translator="db:org.fao.geonet.repository.MetadataCategoryRepository:findOneByName"/-->
-      <item facet="publishedForGroup" max="199" sortBy="value"
-            translator="db:org.fao.geonet.repository.GroupRepository:findOneByName"/>
+      <item facet="officialResource"/>
+      <item facet="accessConstraints"/> 
+      <item facet="diffusionmode"/>  
+      <item facet="geoportailTheme"
+            translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
+      <item facet="standard" max="15" sortBy="value"/>
+      <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
+      <item facet="status" translator="codelist:gmd:MD_ProgressCode"/>
+      <!--item facet="mdStatus" max="10" sortBy="value"
+            translator="db:org.fao.geonet.repository.StatusValueRepository:findOne:int"/-->
+      <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
       <item facet="infraSIG"
             translator="term:http://metawal.wallonie.be/thesaurus/infrasig"/>
-      <!--<item facet="sourceCatalog" translator="db:org.fao.geonet.repository.SourceRepository:findOneByUuid"/>-->
+      <item facet="denominator" sortBy="numValue" sortOrder="desc"/>
+      <item facet="serviceType"/>
+      <item facet="createDateYear" sortBy="value" sortOrder="desc" max="40"/>
+      <item facet="entitesAdmin"
+            translator="term:http://metawal.wallonie.be/thesaurus/entitesadministratives"/>
+      <item facet="topicCat" translator="codelist:gmd:MD_TopicCategoryCode" max="20"/>
+      <item facet="gemetKeyword"
+            translator="term:http://geonetwork-opensource.org/gemet"/>
+      <item facet="inspireThemeURI" sortBy="value" max="35"
+            translator="term:http://geonetwork-opensource.org/inspire-theme"/>
+
+
+      <item facet="publishedForGroup" max="199" sortBy="value"
+            translator="db:org.fao.geonet.repository.GroupRepository:findOneByName"/>
+     
       <item facet="isValid" max="3" sortBy="value" translator="apploc:validStatus-"/>
       <item facet="groupOwner" max="199" sortBy="value"
             translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
-
-      <item facet="standard" max="15" sortBy="value"/>
       <item facet="isHarvested" max="2" sortBy="value" translator="apploc:"/>
       <item facet="metadataType" max="3" sortBy="value" translator="apploc:recordType-"/>
-	    <item facet="isPublishedToAll" max="2" sortBy="value" translator="apploc:"/>
+      <item facet="isPublishedToAll" max="2" sortBy="value" translator="apploc:"/>
     </summaryType>
 
     <!-- (deprecated) old-style configuration supporting only
