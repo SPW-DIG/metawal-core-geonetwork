@@ -40,12 +40,12 @@
 	"sortBy":"trier par :",
 	"page":"Page",
 	"on":"on",
-    "elementsPerPage":"Eléments par page",
-    "noresult":"Aucun résultat n'a été trouvé...",
-    "reverse":"croissant",
-    "noreverse":"décroissant",
-    "isPublishedToAll": "Publié pour tous",
+  "elementsPerPage":"Eléments par page",
+  "noresult":"Aucun résultat n'a été trouvé...",
+  "reverse":"croissant",
+  "noreverse":"décroissant",
+  "isPublishedToAll": "Publié pour tous",
 	"officialResources": "Données officielles",
-    "accessConstraints":"Consultation",
-    "diffusionmodes": "Modes de diffusion "
+  "accessConstraints":"Consultation",
+  "diffusionmodes": "Modes de diffusion"
 }
