@@ -599,7 +599,7 @@ body {
 /* test area */
 
 
-
+/* TTRANSFERT TO LESS
 .geoportail-tab li a{
     color: #555 !important;
     font-weight: bold !important;
@@ -608,13 +608,15 @@ body {
 .geoportail-tab li.active a{
     color: #74aec2 !important;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  .rw-fr-geoportail-section
+
 .geoportail-section {
-   padding-top: 20px; 
-}
+    padding-top: 20px;
+ }
 .geoportail-section-title {
     background: #74aec2;
-    /*padding: 10px 20px;
-    margin: 0;*/
     border-bottom: 0 !important;
     height: 30px;
 }
@@ -685,25 +687,41 @@ body {
     //color: #74aec2 !important;
     background-color: transparent;
 }
+
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  .rw-fr-geoportail-disabled
 .mwdisabled{
     opacity: .5 !important;
 }
+/* STOP TRANSFERT TO LESS */
+/* TTRANSFERT TO LESS  rw-fr-geoportail-twocolumns
 .twoside2{
-    padding-left: 15px !important; 
-    padding-right: 15px !important; 
+    padding-left: 15px !important;
+    padding-right: 15px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  rw-fr-geoportail-border-title
 .bordertitel{
     border-left-width: 1px !important;
     border-color: white !important;
     border-left-style: solid !important;
 }
+
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  rw-fr-geoportail-border-content
 .bordercontent{
     border-left-width: 1px;
     border-color: #74aec2;
     border-left-style: solid;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  rw-fr-geoportail-table
 .geoportailtable {
     table-layout: fixed;
     margin-bottom: 0px;
@@ -750,14 +768,9 @@ body {
     padding-left: 0px !important;
     text-align: center;
 }
-.contacttemplateleft {
-    background: #b4d6e3;
-    color: #2d758e !important;
-    padding: 20px;
-    font-size: 16px !important;
-    //font-weight: normal !important;
-    font-weight: bold!important;
-}
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  rw-fr-geoportail-contact-rightside
 .contacttemplateright {
     background:#f7f7f7;
     padding: 20px;
@@ -777,45 +790,62 @@ body {
     color: #fff !important;
     text-decoration: none;
 }
-
-
-.contacttemplateleft span{
-font-family: Arial,Helvetica,sans-serif!important;
-font: bold;
-padding-left: 10px !important;
-}
 .contacttemplateright span{
 font-family: Arial,Helvetica,sans-serif!important;
 font: normal;
 padding-left: 20px !important;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  rw-fr-geoportail-contact-leftside
+.contacttemplateleft {
+    background: #b4d6e3;
+    color: #2d758e !important;
+    padding: 20px;
+    font-size: 16px !important;
+    //font-weight: normal !important;
+    font-weight: bold!important;
+}
+.contacttemplateleft span{
+font-family: Arial,Helvetica,sans-serif!important;
+font: bold;
+padding-left: 10px !important;
+}
+/* STOP TRANSFERT TO LESS */
+
+/* TTRANSFERT TO LESS  rw-fr-geoportail-contact
 .geoportailcontact {
     margin-bottom: 15px !important
 }
+/* STOP TRANSFERT TO LESS */
 
+/* TRANSFERT TO LESS .rw-fr-geoportail-carousel-button
 .geoportail-carousel{
-    background-image: none !important;
-    top: 45% !important;
-    width: 10% !important;
+     background-image: none !important;
+     top: 45% !important;
+     width: 10% !important;
 
-}
-.geoportail-carousel:hover{
-    background-image: none !important;
-}
+ }
+ .geoportail-carousel:hover{
+     background-image: none !important;
+ }
 
-.carousel-control.right  i {
-    color: #74aec2;
-    rigth: -5% !important;
-}
-.carousel-control.left  i {
-    color: #74aec2;
-    left: -5% !important;
-}
-.carousel-inner > .item > img {
-    margin: 0 auto;
-    max-width: 80% !important;
-}
-
+ .carousel-control.right  i {
+     color: #74aec2;
+     rigth: -5% !important;
+ }
+ .carousel-control.left  i {
+     color: #74aec2;
+     left: -5% !important;
+ }
+ /* STOP TRANSFERT TO LESS */
+ /* TRANSFERT TO LESS .rw-fr-geoportail-carousel
+ .carousel-inner > .item > img {
+     margin: 0 auto;
+     max-width: 80% !important;
+ }
+ /* STOP TRANSFERT TO LESS */
+/* TRANSFERT TO LESS
 .metaheader{
     margin-top: 20px !important;
     font-weight: bold;
@@ -831,23 +861,36 @@ line-height: 1.2;
 .mainheaheader p{
     color: #74aec2;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TRANSFERT TO LESS   rw-fr-geoportail-data-key
 .title {
     font-weight: bold;
     margin-left: 0px !important
 }
+/* STOP TRANSFERT TO LESS */
+/* TRANSFERT TO LESS
 .headerlogo {
     height: 192px;
 }
+/* STOP TRANSFERT TO LESS */
+/* TRANSFERT TO LESS
 .headertext {
     padding-left: 0px!important;
 }
-.headertextleft 
+.headertextleft
 {
     padding-left: 0px!important;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TRANSFERT TO LESS
 .subsection {
     margin-bottom: 20px !important;
 }
+/* STOP TRANSFERT TO LESS */
+
+/* TRANSFERT TO LESS rw-fr-geoportail-webservice-...
 .webservice {
     padding-top: 15px;
 }
@@ -870,7 +913,7 @@ line-height: 1.2;
     background-color: #74aec2;
     border: 1px solid #74aec2;
     width: 100%;
-    height: 45px; 
+    height: 45px;
     border-radius: 0px !important;
     text-align: left !important;
     font-size: 14px !important;
@@ -909,6 +952,7 @@ line-height: 1.2;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/* TRANSFERT TO LESS rw-fr-geoportail-application-element
 .mwapplications {
     border: 0px!important;
     border-bottom: 1px solid #74aec2;
@@ -918,23 +962,25 @@ line-height: 1.2;
 .mwapplications p{
     border-bottom: 1px solid #74aec2;
     /* width: 50%; */
-    text-align: center;
+    /*text-align: center;
     margin-left: 5%;
     margin-right: 5%;
     padding-bottom: 15px;
 }
+/* END TRANSFERT TO LESS */
+/* TRANSFERT TO LESS rw-fr-geoportail-logo-dimension
 .geoportail-logo {
     max-height: 210px;
     display: block;
     margin: auto;
 }
-
+/* END TRANSFERT TO LESS */
 //EDITOR
 .gn-required>.gn-control {
     display:none;
 }
 .EX_GeographicBoundingBox>a{
-   display:none; 
+   display:none;
 }
 
 /*.gn-abstract:first-of-type>div>div>div>label:first-of-type {
