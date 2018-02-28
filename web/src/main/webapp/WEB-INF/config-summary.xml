@@ -82,7 +82,7 @@
     <facet name="officialResource" indexKey="officialResource" label="officialResources"/>
     <facet name="accessConstraints" indexKey="accessConstraints" label="accessConstraints"/>
     <facet name="diffusionmode" indexKey="diffusionmode" label="diffusionmodes"/>
-    
+
     <facet name="keyword" indexKey="keyword" label="keywords" localized="true"/>
     <facet name="topicCat" indexKey="topicCat" label="topicCats" localized="true"/>
     <facet name="category" indexKey="_cat" label="categories" localized="true"/>
@@ -97,7 +97,6 @@
     <facet name="resolution" indexKey="resolution" label="resolutions"/>
     <facet name="spatialRepresentationType" indexKey="cl_spatialRepresentationType"
            label="spatialRepresentationTypes"/>
-    <facet name="orgName" indexKey="orgName" label="orgNames" localized="true"/>
     <facet name="orgNameTree" indexKey="responsiblePartyorgNameTree" label="orgNamesTree" classifier="dashSplitClassifier"/>
     <facet name="metadataPOC" indexKey="metadataPOC" label="metadataPOCs"/>
     <facet name="serviceType" indexKey="serviceType" label="serviceTypes"/>
@@ -150,33 +149,33 @@
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <item facet="officialResource"/>
-      <item facet="accessConstraints"/> 
-      <item facet="diffusionmode"/>   
-      <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/> 
+      <item facet="accessConstraints"/>
+      <item facet="diffusionmode"/>
+      <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
     </summaryType-->
 
-    <summaryType name="apirw" format="DIMENSION">  
+    <summaryType name="apirw" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="officialResource"/>
-      <item facet="accessConstraints"/> 
-      <item facet="diffusionmode"/>  
+      <item facet="accessConstraints"/>
+      <item facet="diffusionmode"/>
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <!--<item facet="orgName" max="25"/>-->
       <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
     </summaryType>
 
-    <summaryType name="apiwom" format="DIMENSION"> 
+    <summaryType name="apiwom" format="DIMENSION">
       <item facet="geoportailThemeLabel"/>
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
     </summaryType>
 
-    <summaryType name="apirw2" format="DIMENSION">  
+    <summaryType name="apirw2" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="officialResource"/>
-      <item facet="accessConstraints"/> 
-      <item facet="diffusionmode"/>  
+      <item facet="accessConstraints"/>
+      <item facet="diffusionmode"/>
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <!--<item facet="orgName" max="25"/>-->
@@ -186,8 +185,8 @@
     <summaryType name="details" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="officialResource"/>
-      <item facet="accessConstraints"/> 
-      <item facet="diffusionmode"/>  
+      <item facet="accessConstraints"/>
+      <item facet="diffusionmode"/>
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <item facet="orgName" max="25"/>
@@ -217,8 +216,8 @@
     <summaryType name="manager" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="officialResource"/>
-      <item facet="accessConstraints"/> 
-      <item facet="diffusionmode"/>  
+      <item facet="accessConstraints"/>
+      <item facet="diffusionmode"/>
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <item facet="standard" max="15" sortBy="value"/>
@@ -243,7 +242,7 @@
 
       <item facet="publishedForGroup" max="199" sortBy="value"
             translator="db:org.fao.geonet.repository.GroupRepository:findOneByName"/>
-     
+
       <item facet="isValid" max="3" sortBy="value" translator="apploc:validStatus-"/>
       <item facet="groupOwner" max="199" sortBy="value"
             translator="db:org.fao.geonet.repository.GroupRepository:findOne:int"/>
