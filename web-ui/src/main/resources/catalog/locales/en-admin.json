@@ -441,6 +441,11 @@
     "harvesterMainConfigurationFor": "Configuration for protocol ",
     "harvesterName": "Node name",
     "harvesterNameHelp": "The name describing the remote node.",
+    "harvesterOverrideUUID" : "Action on collided records",
+    "harvesterOverrideUUID-skip" : "Skip record",
+    "harvesterOverrideUUID-overwrite" : "Overwrite record",
+    "harvesterOverrideUUID-random" : "Create new UUID",
+    "harvesterOverrideUUIDHelp" : "When a harvester finds the same uuid on a record collected by another method (another harvester, importer, dashboard editor,...), should this record be skipped, overrided or generate a new UUID?",
     "harvesterRecords": "Harvested records",
     "harvesterSchedule": "Schedule",
     "harvesterScheduleinactive": "Failed to activate harvester.",
@@ -1212,5 +1217,14 @@
     "styleVariable-gnResultsBackgroundColor": "Background",
     "gnMdViewCss": "Metadata view",
     "styleVariable-gnMdViewBackgroundColor": "Background",
-    "gnCssStyleIntroMessage": "Properties defined here replace the default system properties. An empty field restores the corresponding default value."
+    "gnCssStyleIntroMessage": "Properties defined here replace the default system properties. An empty field restores the corresponding default value.",
+    "wfs-indexing": "WFS Indexing",
+    "wfsIndexingTitle": "WFS Indexing Dashboard",
+    "wfsIndexingSubtitle": "Here are listed the ongoing and finished jobs for indexing features from remote WFS services. Once indexed, features can then be filtered according to their attributes and the filter applied to the original map layer.",
+    "wfsIndexingFeatureType": "Feature type",
+    "wfsIndexingMetadata": "Associated metadata",
+    "wfsIndexingMetadataNotFound": "Metadata could not be found.",
+    "wfsIndexingMetadataUuid": "Metadata UUID",
+    "wfsIndexingRefreshError": "An error occurred when refreshing the list:",
+    "wfsIndexingError": "Error encountered"
 }

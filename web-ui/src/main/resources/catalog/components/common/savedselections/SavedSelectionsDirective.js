@@ -634,7 +634,7 @@
              }
            }
 
-           scope.canBeAdded = function(selection) {e
+           scope.canBeAdded = function(selection) {
              return checkStatus(selection, true);
            };
            scope.canBeRemoved = function(selection) {
