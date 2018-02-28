@@ -189,7 +189,7 @@
       <item facet="diffusionmode"/>
       <item facet="geoportailTheme"
             translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
-      <item facet="orgName" max="25"/>
+      <!--<item facet="orgName" max="25"/>-->
       <item facet="standard" max="15" sortBy="value"/>
       <item facet="orgNameTree" sortBy="value" sortOrder="asc" max="125"/>
       <item facet="status" translator="codelist:gmd:MD_ProgressCode"/>
@@ -262,7 +262,7 @@
       <item facet="inspireThemeURI" sortBy="value" sortOrder="asc" max="35"
             translator="term:http://geonetwork-opensource.org/inspire-theme"/>
       <item facet="keyword" max="15"/>
-      <item facet="orgName" max="25"/>
+      <!--<item facet="orgName" max="25"/>-->
       <item facet="createDateYear" sortBy="value" sortOrder="desc" max="40"/>
       <item facet="format" max="15" sortBy="value" sortOrder="asc"/>
       <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
@@ -297,7 +297,7 @@
       <item facet="inspireTheme" sortBy="value" sortOrder="asc" max="35"/>
       <item facet="denominator" sortBy="value" sortOrder="asc" max="20"/>
       <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
-      <item facet="orgName" max="15"/>
+      <!--<item facet="orgName" max="15"/>-->
       <item facet="metadataPOC" max="15"/>
       <item facet="serviceType"/>
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
@@ -309,7 +309,7 @@
       <item facet="inspireTheme" sortBy="value" sortOrder="asc"/>
       <item facet="denominator" sortBy="value" sortOrder="asc"/>
       <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
-      <item facet="orgName" max="100"/>
+      <!--<item facet="orgName" max="100"/>-->
       <item facet="metadataPOC"/>
       <item facet="serviceType"/>
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
