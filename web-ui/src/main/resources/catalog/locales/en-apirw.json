@@ -43,9 +43,11 @@
 	"elementsPerPage":"Elements per page",
 	"noresult":"No results found...",
 	"reverse":"ascending",
-    "noreverse":"descending",
-    "isPublishedToAll": "Published to all",
+  "noreverse":"descending",
+  "isPublishedToAll": "Published to all",
 	"officialResources": "Official data",
-    "accessConstraints":"Consultation",
-    "diffusionmodes": "Diffusion modes"
+  "accessConstraints":"Consultation",
+  "diffusionmodes": "Diffusion modes",
+  "restricted":"Restricted",
+  "public":"Public"
 }

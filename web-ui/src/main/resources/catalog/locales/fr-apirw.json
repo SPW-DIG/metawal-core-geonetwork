@@ -47,5 +47,7 @@
   "isPublishedToAll": "Publié pour tous",
 	"officialResources": "Données officielles",
   "accessConstraints":"Consultation",
-  "diffusionmodes": "Modes de diffusion"
+  "diffusionmodes": "Modes de diffusion",
+  "restricted":"Restreint",
+  "public":"Public"
 }
