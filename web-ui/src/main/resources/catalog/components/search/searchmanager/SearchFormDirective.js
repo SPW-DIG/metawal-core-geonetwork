@@ -176,10 +176,10 @@
               var p = $scope.searchObj.params[key];
               if (key != 'type') {
                 if (p) {
-                  if (!angular.isArray(p)) {
-                    $scope.searchObj.params[key] = [p];
-                  }
-                  $scope.searchObj.params[key].push(value);
+                    if (!angular.isArray(p)) {
+                      $scope.searchObj.params[key] = [p];
+                    }
+                    $scope.searchObj.params[key].push(value);
 
                 } else {
                   $scope.searchObj.params[key] = value;
@@ -216,8 +216,8 @@
       var finalParams = angular.extend(params, hiddenParams);
       $scope.finalParams = finalParams;
       gnSearchManagerService.gnSearch(
-                              finalParams, null,
-                              $scope.searchObj.internal).then(
+        finalParams, null,
+        $scope.searchObj.internal).then(
           function(data) {
 
             // TEST WOM  START//
@@ -228,7 +228,7 @@
             //console.log(result);
 
             // Create list of thesaurus and labels (all languages)//
-            if (data.length != 0 && data.dimension.length != 0) {
+            /*if (data.length != 0 && data.dimension.length != 0) {
               // console.log(data.dimension);
               var elementThesaurusLabel = data.dimension.find(function(item) {
                 return item['@name'] == 'geoportailThemeLabel';
@@ -326,7 +326,7 @@
               } else {
                 // console.log("noki");
               }
-            }
+            }*/
             /*console.log($scope.toc);
               return $scope.toc
             }
@@ -550,7 +550,7 @@
 
           var waitForPagination = function() {
             // wait for pagination to be set before triggering search
-            if (element.find('[data-gn-pagination]').length > 0) {
+            if (element.find('[data-gn-pagination]').length > 0 || element.find('[data-gn-api-rw-pagination]').length > 0) {
               var unregisterFn = scope.$watch('hasPagination', function() {
                 if (scope.hasPagination) {
                   scope.triggerSearch(true);
@@ -560,7 +560,7 @@
             } else {
               scope.triggerSearch(false);
             }
-            if (element.find('[data-gn-api-rw-pagination]').length > 0) {
+            /*if (element.find('[data-gn-api-rw-pagination]').length > 0) {
               var unregisterFn = scope.$watch('hasPagination', function() {
                 if (scope.hasPagination) {
                   scope.triggerSearch(true);
@@ -569,7 +569,7 @@
               });
             } else {
               scope.triggerSearch(false);
-            }
+            }*/
           };
 
           // Run a first search on directive rendering if attr is specified
