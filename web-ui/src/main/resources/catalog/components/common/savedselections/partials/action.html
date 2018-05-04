@@ -1,40 +1,6 @@
-<!-- Single button -->
-<!--div class="btn-group"
-     data-ng-show="selections.list.length > 0">
-  <button type="button"
-          class="btn btn-default dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false">
-    <i class="fa fa-thumb-tack"></i>&nbsp;
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li class="dropdown-header"
-        data-ng-show="canBeAdded()"
-        data-translate="">addToSelection</li>
-    <li data-ng-repeat="s in selections.list"
-        data-ng-show="canBeAdded(s)">
-      <a data-ng-click="add(s)">
-        {{s.label[lang] || (s.name | translate)}}
-      </a>
-    </li>
-
-    <li class="dropdown-header"
-        data-ng-show="canBeRemoved()"
-        data-translate="">removeFromSelection</li>
-    <li data-ng-repeat="s in selections.list"
-        data-ng-show="canBeRemoved(s)">
-      <a data-ng-click="remove(s)">
-        {{s.label[lang] || (s.name | translate)}}
-      </a>
-    </li>
-  </ul>
-</div-->
-
 <div class="row col-12">
   <div data-ng-class="{'col-sm-4 ' : record.type[0] == 'application' || record.type[0] == 'series' ,'col-sm-3': record.type[0] == 'service' ||record.type[0] == 'dataset'}" class="col-p-api-rw-2">
-    <a data-ng-href='#/metadata/{{record.getUuid()}}'"><button type="button" class="btn btn-block btn-api-rw">
+    <a data-ng-href='#/metadata/{{record.getUuid()}}'><button type="button" class="btn btn-block btn-api-rw">
       <span class="pull-left btn-api-txt-rw" data-translate="">factSheet</span>
       <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
     </button></a>
@@ -45,50 +11,41 @@
       <span class="pull-right btn-api-img-rw icon-api-rw-map"></span>
     </button></a>
   </div>
-  <!--div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list">{{s.name}}
-    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)" data-ng-if="!(record.type[0] == 'service' && s.name==='DataDownloaderlist) || !(record.type[0] == 'dataset' && s.name==='WatchList)'>
-      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
-      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
-    </button>
-  </div-->
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service'" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' } | filter:{name: '!AnonymousUserlist'}">
-    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == true" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' } | filter:{name: '!AnonymousUserlist'}">
+    <button type="button" class="btn btn-block btn-api-rw"  data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
-       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
     </button>
   </div>
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset'" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserlist'}">
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == false" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' }">
+    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw"  data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
+    </button>
+  </div>
+
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == true" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserlist'} | filter:{name: '!AnonymousUserServicelist'}">
     <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
     </button>
   </div>
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == false" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserServicelist'}">
+    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
+    </button>
+  </div>
+
   <div class="col-sm-4 col-p-api-rw-2" data-ng-if="record.type[0] == 'application' || record.type[0] == 'series'" data-ng-repeat="s in selections.list | filter: { name: 'WatchList' }">
-    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
     </button>
   </div>
-  <!-- Remove if doaction(s) manage delete and add -->
-    <!--div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list">
-    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s)">
-      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
-      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
-    </button>
-  </div-->
-  <!--div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeAdded(s)">
-    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="add(s)">
-      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
-      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}" style="vertical-align:middle;"></span>
-    </button>
-  </div>
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' || record.type[0] == 'dataset'" data-ng-repeat="s in selections.list" data-ng-show="canBeRemoved(s)">
-    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="remove(s)" >
-      <span class="pull-left btn-api-txt-rw">{{s.label[lang] || (s.name | translate)}}</span>
-      <span class="pull-right btn-api-img-rw {{actions[s.name].icon_result}}"  style="vertical-align:middle;"></span>
-    </button>
-  </div-->
 </div>

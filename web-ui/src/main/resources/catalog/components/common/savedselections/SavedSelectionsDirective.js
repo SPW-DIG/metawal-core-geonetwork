@@ -25,7 +25,7 @@
   goog.provide('gn_saved_selections_directive');
 
   var module = angular.module('gn_saved_selections_directive',
-      []);
+    []);
 
   module.factory('gnSavedSelectionConfig', [
     '$location', 'Metadata', 'gnMap', 'gnSearchSettings', '$window',
@@ -70,12 +70,12 @@
                 var md = new Metadata(record);
                 angular.forEach(md.getLinksByType('OGC:WMS'), function(link) {
                   if (gnMap.isLayerInMap(viewerMap,
-                      link.name, link.url)) {
+                    link.name, link.url)) {
                     return;
                   }
                   gnMap.addWmsFromScratch(viewerMap,
-                      link.url, link.name,
-                      false, md).then(function(layer) {
+                    link.url, link.name,
+                    false, md).then(function(layer) {
                     if (layer) {
                       gnMap.feedLayerWithRelated(layer, link.group);
                     }
@@ -86,15 +86,15 @@
             apirw: function(uuids, records) {
               var mapbasket = [];
               var url = 'http://geoportail.wallonie.be/files/' +
-                  'GeoViewer/Main/index.html#panier=';
+                'GeoViewer/Main/index.html#panier=';
               for (var i = 0; i < uuids.length; i++) {
                 var uuid = uuids[i], record = records[uuid];
                 var md = new Metadata(record);
                 var elem = {};
                 elem['metadataUrl'] = $location.$$protocol + '://' +
-                    $location.$$host + ':' + $location.$$port +
-                    '/geonetwork/srv/eng/catalog.search#' +
-                    '/metadata/' + md.getUuid();
+                  $location.$$host + ':' + $location.$$port +
+                  '/geonetwork/srv/eng/catalog.search#' +
+                  '/metadata/' + md.getUuid();
                 elem['label'] = md.defaultTitle;
                 elem['serviceId'] = md.getUuid();
                 if (md.getLinksByType('ESRI:REST').length > 0) {
@@ -133,8 +133,8 @@
                 uuidList.push(uuid);
               }
               window.open('http://geoportail.wallonie.be/sites/geoportail/' +
-                  'geodata-donwload.html?uuids=' +
-                  uuidList.join(','), 'download');
+                'geodata-donwload.html?uuids=' +
+                uuidList.join(','), 'download');
             },
             icon: 'fa-download',
             icon_result: 'icon-api-rw-download',
@@ -146,24 +146,30 @@
         //   multiple layers in one go
         // * AnonymousUserList is a list of preferred records
         //   for anonymous user only stored in localStorage.
-        localList: [{
+        localList: [ {
           id: -10,
+          name: 'MapLayerlist',
+          records: [],
+          storage: 'localStorage'
+        }, {
+          id: -20,
+          name: 'DataDownloaderlist',
+          records: [],
+          storage: 'localStorage'
+        }, {
+          id: -30,
+          name: 'AnonymousUserServicelist',
+          records: [],
+          storage: 'localStorage',
+          isAnonymousOnly: true
+        },{
+          id: -40,
           name: 'AnonymousUserlist',
           records: [],
           // Can be localStorage, sessionStorage or
           // null (ie. not preserved on page refresh).
           storage: 'localStorage',
           isAnonymousOnly: true
-        }, {
-          id: -20,
-          name: 'MapLayerlist',
-          records: [],
-          storage: 'localStorage'
-        }, {
-          id: -30,
-          name: 'DataDownloaderlist',
-          records: [],
-          storage: 'localStorage'
         }]
       };
     }]);
@@ -204,20 +210,20 @@
       // the title to be displayed in the panel. Only the uuid
       // is stored in saved selections.
       SavedSelectionController.prototype.loadrecords =
-          function(defer, selections, allRecords) {
-        selections.notFound = [];
-        var ctrl = this;
+        function(defer, selections, allRecords) {
+          selections.notFound = [];
+          var ctrl = this;
 
-        if (allRecords.length === 0) {
-          selections.records = {};
-          selections.size = 0;
-          defer.resolve(selections);
-          return;
-        }
+          if (allRecords.length === 0) {
+            selections.records = {};
+            selections.size = 0;
+            defer.resolve(selections);
+            return;
+          }
 
-        // TODO: Handle case when there is
-        // too many items in the saved selections
-        gnSearchManagerService.search(
+          // TODO: Handle case when there is
+          // too many items in the saved selections
+          gnSearchManagerService.search(
             'q?_content_type=json&buildSummary=false&from=1&to=200&' +
             'fast=index&_uuid=' +
             allRecords.join(' or ')).then(
@@ -254,182 +260,182 @@
 
               defer.resolve(selections);
             });
-      };
+        };
 
       // Load the list of db saved selection + local selection
       // and then load the content of each selections
       // from db or local/session storage.
       SavedSelectionController.prototype.init =
-          function(user, localOnly) {
-        var defer = $q.defer(), allRecords = [], ctrl = this;
-        selections.list = [];
+        function(user, localOnly) {
+          var defer = $q.defer(), allRecords = [], ctrl = this;
+          selections.list = [];
 
-        angular.forEach(gnSavedSelectionConfig.localList, function(s) {
-          if (!(user && user.id !== undefined && s.isAnonymousOnly)) {
-            selections.list.push(s);
-          }
-        });
-
-        // Load user data
-        // List of selections does not change often. Cache them.
-        $http.get('../api/userselections', {cache: true}).then(function(r) {
-          if (user != undefined) {
-            selections.list = selections.list.concat(r.data);
-          }
-          var getUserSelections = [];
-          // Load records for each selection
-          angular.forEach(selections.list, function(sel) {
-            // Local selections have negative identifiers
-            if (sel.id > -1) {
-              if (user != undefined) {
-                getUserSelections.push(
-                    $http.get('../api/userselections/' +
-                    sel.id + '/' + user).then(
-                    function(response) {
-                      sel.records = response.data;
-                      allRecords = allRecords.concat(response.data);
-                    }));
-              }
-            } else {
-              if (sel.storage !== null) {
-                var key = storagePrefix + sel.name,
-                    array = window[sel.storage].getItem(key);
-                var records = array != 'null' ? angular.fromJson(array) : [];
-                sel.records = records;
-                window[sel.storage].setItem(key, angular.toJson(records));
-              }
-              allRecords = allRecords.concat(sel.records);
+          angular.forEach(gnSavedSelectionConfig.localList, function(s) {
+            if (!(user && user.id !== undefined && s.isAnonymousOnly)) {
+              selections.list.push(s);
             }
           });
 
-          $q.all(getUserSelections).then(function() {
-            ctrl.loadrecords(defer, selections, allRecords);
+          // Load user data
+          // List of selections does not change often. Cache them.
+          $http.get('../api/userselections', {cache: true}).then(function(r) {
+            if (user != undefined) {
+              selections.list = selections.list.concat(r.data);
+            }
+            var getUserSelections = [];
+            // Load records for each selection
+            angular.forEach(selections.list, function(sel) {
+              // Local selections have negative identifiers
+              if (sel.id > -1) {
+                if (user != undefined) {
+                  getUserSelections.push(
+                    $http.get('../api/userselections/' +
+                      sel.id + '/' + user).then(
+                      function(response) {
+                        sel.records = response.data;
+                        allRecords = allRecords.concat(response.data);
+                      }));
+                }
+              } else {
+                if (sel.storage !== null) {
+                  var key = storagePrefix + sel.name,
+                    array = window[sel.storage].getItem(key);
+                  var records = array != 'null' ? angular.fromJson(array) : [];
+                  sel.records = records;
+                  window[sel.storage].setItem(key, angular.toJson(records));
+                }
+                allRecords = allRecords.concat(sel.records);
+              }
+            });
+
+            $q.all(getUserSelections).then(function() {
+              ctrl.loadrecords(defer, selections, allRecords);
+            });
           });
-        });
-        return defer.promise;
-      };
+          return defer.promise;
+        };
 
       SavedSelectionController.prototype.getSelections =
-          function(user) {
-        if (user && this.userId !== user.id) {
-          this.userId = user.id;
-          return this.init(this.userId);
-        } else if (user === undefined) {
-          this.userId = undefined;
-          return this.init();
-        } else {
-          var defer = $q.defer();
-          defer.resolve(selections);
-          return defer.promise;
-        }
-      };
+        function(user) {
+          if (user && this.userId !== user.id) {
+            this.userId = user.id;
+            return this.init(this.userId);
+          } else if (user === undefined) {
+            this.userId = undefined;
+            return this.init();
+          } else {
+            var defer = $q.defer();
+            defer.resolve(selections);
+            return defer.promise;
+          }
+        };
 
       SavedSelectionController.prototype.add =
-          function(selection, user, uuid) {
-        var ctrl = this;
+        function(selection, user, uuid) {
+          var ctrl = this;
 
-        var tooManyItems = selection.records.length > maxSize;
-        if (tooManyItems) {
-          $rootScope.$broadcast('StatusUpdated', {
-            msg: $translate.instant('tooManyItemsInSelection', {maxSize: maxSize}),
-            timeout: 0,
-            type: 'danger'});
-          return;
-        }
-
-        if (selection.id > -1) {
-          if (typeof selection === 'string') {
-            selection = this.getSelectionId(selection);
+          var tooManyItems = selection.records.length > maxSize;
+          if (tooManyItems) {
+            $rootScope.$broadcast('StatusUpdated', {
+              msg: $translate.instant('tooManyItemsInSelection', {maxSize: maxSize}),
+              timeout: 0,
+              type: 'danger'});
+            return;
           }
 
-          return $http.put('../api/userselections/' +
+          if (selection.id > -1) {
+            if (typeof selection === 'string') {
+              selection = this.getSelectionId(selection);
+            }
+
+            return $http.put('../api/userselections/' +
               selection.id + '/' + this.userId, null, {
-                params: {
-                  uuid: uuid
-                }
-              }).then(function(r) {
-            ctrl.init(ctrl.userId);
-          });
-        } else {
-          this.addToStore(this.getSelection(selection), uuid);
-          ctrl.init(ctrl.userId, true);
-        }
-      };
+              params: {
+                uuid: uuid
+              }
+            }).then(function(r) {
+              ctrl.init(ctrl.userId);
+            });
+          } else {
+            this.addToStore(this.getSelection(selection), uuid);
+            ctrl.init(ctrl.userId, true);
+          }
+        };
 
       SavedSelectionController.prototype.remove =
-          function(selection, user, uuid) {
-        var ctrl = this;
-        if (selection.id > -1) {
-          return $http.delete('../api/userselections/' +
+        function(selection, user, uuid) {
+          var ctrl = this;
+          if (selection.id > -1) {
+            return $http.delete('../api/userselections/' +
               selection.id + '/' + this.userId, {
-                params: {
-                  uuid: uuid
-                }
-              }).then(function(r) {
-            ctrl.init(ctrl.userId);
-          });
-        } else {
-          this.removeFromStore(this.getSelection(selection), uuid);
-        }
-      };
+              params: {
+                uuid: uuid
+              }
+            }).then(function(r) {
+              ctrl.init(ctrl.userId);
+            });
+          } else {
+            this.removeFromStore(this.getSelection(selection), uuid);
+          }
+        };
 
       // For local selection, the storage is in synch with
       // the selection records property.
       SavedSelectionController.prototype.addToStore =
-          function(selection, uuid) {
-        if (selection.storage !== null) {
-          var key = storagePrefix + selection.name,
+        function(selection, uuid) {
+          if (selection.storage !== null) {
+            var key = storagePrefix + selection.name,
               array = window[selection.storage].getItem(key);
-          var records = array != 'null' ? angular.fromJson(array) : [];
-          records.push(uuid);
-          window[selection.storage].setItem(key, angular.toJson(records));
-        }
-        selection.records.push(uuid);
-      };
-
-      SavedSelectionController.prototype.removeFromStore =
-          function(selection, uuid) {
-        if (selection.storage !== null) {
-          var key = storagePrefix + selection.name,
-              array = window[selection.storage].getItem(key);
-          var records = array != 'null' ? angular.fromJson(array) : [];
-          var idx = records.indexOf(uuid);
-          if (idx > -1) {
-            records.splice(idx, 1);
+            var records = array != 'null' ? angular.fromJson(array) : [];
+            records.push(uuid);
             window[selection.storage].setItem(key, angular.toJson(records));
           }
-        }
-        if (selection.records) {
-          var idx = selection.records.indexOf(uuid);
-          if (idx > -1) {
-            selection.records.splice(idx, 1);
-            this.init(this.userId, true);
+          selection.records.push(uuid);
+        };
+
+      SavedSelectionController.prototype.removeFromStore =
+        function(selection, uuid) {
+          if (selection.storage !== null) {
+            var key = storagePrefix + selection.name,
+              array = window[selection.storage].getItem(key);
+            var records = array != 'null' ? angular.fromJson(array) : [];
+            var idx = records.indexOf(uuid);
+            if (idx > -1) {
+              records.splice(idx, 1);
+              window[selection.storage].setItem(key, angular.toJson(records));
+            }
           }
-        }
-      };
+          if (selection.records) {
+            var idx = selection.records.indexOf(uuid);
+            if (idx > -1) {
+              selection.records.splice(idx, 1);
+              this.init(this.userId, true);
+            }
+          }
+        };
 
       SavedSelectionController.prototype.getSelectionId =
-          function(name) {
-        for (var i = 0; i < selections.list.length; i++) {
-          if (selections.list[i].name === name) {
-            return selections.list[i].id;
+        function(name) {
+          for (var i = 0; i < selections.list.length; i++) {
+            if (selections.list[i].name === name) {
+              return selections.list[i].id;
+            }
           }
-        }
-      };
+        };
 
       // Return the selection object if an id is provided
       SavedSelectionController.prototype.getSelection =
-          function(selOrId) {
-        if (typeof selOrId === 'number') {
-          for (var i = 0; i < selections.list.length; i++) {
-            if (selections.list[i].id === selOrId) {
-              return selections.list[i];
+        function(selOrId) {
+          if (typeof selOrId === 'number') {
+            for (var i = 0; i < selections.list.length; i++) {
+              if (selections.list[i].id === selOrId) {
+                return selections.list[i];
+              }
             }
+          } else {
+            return selOrId;
           }
-        } else {
-          return selOrId;
-        }
-      };
+        };
 
 
       return {
@@ -485,8 +491,8 @@
         restrict: 'A',
         require: '^gnSavedSelections',
         templateUrl: '../../catalog/components/' +
-            'common/savedselections/partials/' +
-            'panel.html',
+        'common/savedselections/partials/' +
+        'panel.html',
         link: link,
         scope: {
           user: '=gnSavedSelectionsPanel',
@@ -500,160 +506,200 @@
    * Button to add or remove item from user saved selection.
    */
   module.directive('gnSavedSelectionsAction',
-      ['gnSavedSelectionConfig', '$rootScope', 'Metadata',
-       function(gnSavedSelectionConfig, $rootScope, Metadata) {
-         function link(scope, element, attrs, controller) {
-           scope.selectionsWithRecord = [];
-           scope.selections = {};
-           scope.uuid = scope.record['geonet:info'].uuid;
-
-           scope.actions = gnSavedSelectionConfig.actions;
-
-           $rootScope.$on('savedSelectionsUpdate', function(e, n, o) {
-             scope.selections = n;
-             // Check in which selection this record is in
-             scope.selectionsWithRecord = [];
-             for (var i = 0; i < scope.selections.list.length; i++) {
-               var s = scope.selections.list[i];
-               if (s.records) {
-                 for (var j = 0; j < s.records.length; j++) {
-                   if (s.records[j] === scope.uuid) {
-                     scope.selectionsWithRecord.push(s.id);
-                     break;
-                   }
-                 }
-               }
-             }
-           });
-
-           controller.getSelections(scope.user).then(function(selections) {
-             scope.selections = selections;
-           });
-           ///Add url to thematic map
-           // (protocol=WWW:LINK-1.0-http--link and function=browing)
-           ///TO BE COMPLETED - add function
-           scope.md = new Metadata(scope.record);
-           for (var i = scope.md.getLinksByType().length - 1; i >= 0; i--) {
-             scope.mdurldisabled = true;
-             if (scope.md.getLinksByType()[i].protocol ===
-             'WWW:LINK-1.0-http--link') {
-               scope.mdurl = scope. md.getLinksByType()[i].url;
-               if (scope.mdurl === '') {
-                 scope.mdurldisabled = true;
-               }
-               scope.mdurldisabled = false;
-             }
-           }
-
-           scope.disable = function(selection, elem) {
-             var md = new Metadata(elem);
-             if (selection.name === 'DataDownloaderlist') {
-               if (elem.keyword.indexOf(
-               'PanierTelechargementGeoportail') > -1) {
-                 return false;
-               } else {
-                 return true}
-             }
-             else if (selection.name === 'MapLayerlist') {
-               //var md = new Metadata(elem);
-               if (md.getLinksByType('ESRI:REST').length > 0 ||  
-               md.getLinksByType('OGC:WMS').length > 0) {
-                 return false;
-               } else {
-                 return true;
-               }
-             }
-             else {
-               return false;
-             }
-           };
-
-           scope.doaction = function(selection) {
-             if (selection.records.indexOf(scope.uuid) > -1) {
-               controller.remove(selection, scope.user, scope.uuid);
-             } else {
-               controller.add(selection, scope.user, scope.uuid);
-             }
-           };
-
-           /*scope.add = function(selection) {
-            console.log('add');
-             controller.add(selection, scope.user, scope.uuid);
-           };
-
-           scope.remove = function(selection) {
-            console.log('remove');
-             controller.remove(selection, scope.user, scope.uuid);
-           };*/
+    ['gnSavedSelectionConfig', '$rootScope', 'Metadata',
+      function(gnSavedSelectionConfig, $rootScope, Metadata) {
+        function link(scope, element, attrs, controller) {
+          // API JS Metawal/Geoportail
+          // Detect auth (GP or MW)
+          // Add specific class to trigger GP auth if undefined user in MW and GP
+          if (scope.user === undefined) {
+            console.log('undefined MW user');
+            scope.GNuser = false;
+           } else{
+            console.log('defined MW user');
+            scope.GNuser = true;
+          }
+          if (window && window.geoportail){
+            console.log(window.geoportail);
+            if (window.geoportail.logged === true) {
+              scope.GPuser = true
+              scope.geoportailAuth = "js-metadata-downloads-toggledisabled";
+              scope.addPreferredListButton = true;
+            } else {
+              scope.GPuser = false
+              scope.geoportailAuth = "js-metadata-downloads-toggledisabled";
+              scope.addPreferredListButton = false;
+            }
+          }
+          // END API JS Metawal/Geoportail
+          // START API JS Geoportail - TEST localhost
+          //scope.addPreferredListButton = true;
+          // END API JS Geoportail - TEST localhost
 
 
-           function check(selection, canBeAdded) {
-             // Authenticated user can't use local anymous selections
-             if (scope.user && scope.user.id !== undefined &&
+
+          scope.doaction = function(selection) {
+            if (selection.records.indexOf(scope.uuid) > -1) {
+              controller.remove(selection, scope.user, scope.uuid);
+            } else {
+              controller.add(selection, scope.user, scope.uuid);
+            }
+          };
+
+
+          scope.selectionsWithRecord = [];
+          scope.selections = {};
+          scope.uuid = scope.record['geonet:info'].uuid;
+
+          scope.actions = gnSavedSelectionConfig.actions;
+
+          $rootScope.$on('savedSelectionsUpdate', function(e, n, o) {
+            scope.selections = n;
+            // Check in which selection this record is in
+            scope.selectionsWithRecord = [];
+            for (var i = 0; i < scope.selections.list.length; i++) {
+              var s = scope.selections.list[i];
+              if (s.records) {
+                for (var j = 0; j < s.records.length; j++) {
+                  if (s.records[j] === scope.uuid) {
+                    scope.selectionsWithRecord.push(s.id);
+                    break;
+                  }
+                }
+              }
+            }
+          });
+
+
+
+          controller.getSelections(scope.user).then(function(selections) {
+            scope.selections = selections;
+          });
+          ///Add url to thematic map
+          // (protocol=WWW:LINK-1.0-http--link and function=browing)
+          ///TO BE COMPLETED - add function
+          scope.md = new Metadata(scope.record);
+          for (var i = scope.md.getLinksByType().length - 1; i >= 0; i--) {
+            scope.mdurldisabled = true;
+            if (scope.md.getLinksByType()[i].protocol ===
+              'WWW:LINK-1.0-http--link') {
+              scope.mdurl = scope. md.getLinksByType()[i].url;
+              if (scope.mdurl === '') {
+                scope.mdurldisabled = true;
+              }
+              scope.mdurldisabled = false;
+            }
+          }
+
+          scope.disable = function(selection, elem) {
+            var md = new Metadata(elem);
+            if (selection.name === 'DataDownloaderlist') {
+              if (elem.keyword.indexOf(
+                'PanierTelechargementGeoportail') > -1) {
+                return false;
+              } else {
+                return true}
+            }
+            else if (selection.name === 'MapLayerlist') {
+              //var md = new Metadata(elem);
+              if (md.getLinksByType('ESRI:REST').length > 0 ||
+                md.getLinksByType('OGC:WMS').length > 0) {
+                return false;
+              } else {
+                return true;
+              }
+            }
+            else {
+              return false;
+            }
+          };
+
+          scope.doaction = function(selection) {
+            if (selection.records.indexOf(scope.uuid) > -1) {
+              controller.remove(selection, scope.user, scope.uuid);
+            } else {
+              controller.add(selection, scope.user, scope.uuid);
+            }
+          };
+
+          /*scope.add = function(selection) {
+           console.log('add');
+            controller.add(selection, scope.user, scope.uuid);
+          };
+
+          scope.remove = function(selection) {
+           console.log('remove');
+            controller.remove(selection, scope.user, scope.uuid);
+          };*/
+
+
+          function check(selection, canBeAdded) {
+            // Authenticated user can't use local anymous selections
+            if (scope.user && scope.user.id !== undefined &&
               selection.isAnonymousOnly === true) {
-               return false;
-             }
+              return false;
+            }
 
-             // Check if selection has an advanced filter
-             var selConfig = gnSavedSelectionConfig.actions[selection.name];
-             var isValidRecord = false;
-             if (selConfig && selConfig.filterFn &&
+            // Check if selection has an advanced filter
+            var selConfig = gnSavedSelectionConfig.actions[selection.name];
+            var isValidRecord = false;
+            if (selConfig && selConfig.filterFn &&
               angular.isFunction(selConfig.filterFn)) {
-               isValidRecord = selConfig.filterFn(scope.record);
-             } else {
-               isValidRecord = true;
-             }
+              isValidRecord = selConfig.filterFn(scope.record);
+            } else {
+              isValidRecord = true;
+            }
 
-             if (angular.isArray(selection.records) &&
-                 isValidRecord && canBeAdded) {
-               // Check if record already in current selection
-               return selection.records.indexOf(scope.uuid) === -1;
-             } else if (angular.isArray(selection.records) &&
-                        isValidRecord && canBeAdded === false) {
-               // Check if record not already in current selection
-               return selection.records.indexOf(scope.uuid) !== -1;
-             } else {
-               return false;
-             }
-           }
+            if (angular.isArray(selection.records) &&
+              isValidRecord && canBeAdded) {
+              // Check if record already in current selection
+              return selection.records.indexOf(scope.uuid) === -1;
+            } else if (angular.isArray(selection.records) &&
+              isValidRecord && canBeAdded === false) {
+              // Check if record not already in current selection
+              return selection.records.indexOf(scope.uuid) !== -1;
+            } else {
+              return false;
+            }
+          }
 
-           function checkStatus(selection, addedOrRemoved) {
-             if (selection) {
-               return check(selection, addedOrRemoved);
-             } else {
-               var result = false;
-               if (scope.selections.list === undefined) {
-                 return false;
-               }
-               for (var i = 0; i < scope.selections.list.length; i++) {
-                 if (check(scope.selections.list[i], addedOrRemoved)) {
-                   result = true;
-                 }
-               }
-               return result;
-             }
-           }
+          function checkStatus(selection, addedOrRemoved) {
+            if (selection) {
+              return check(selection, addedOrRemoved);
+            } else {
+              var result = false;
+              if (scope.selections.list === undefined) {
+                return false;
+              }
+              for (var i = 0; i < scope.selections.list.length; i++) {
+                if (check(scope.selections.list[i], addedOrRemoved)) {
+                  result = true;
+                }
+              }
+              return result;
+            }
+          }
 
-           scope.canBeAdded = function(selection) {
-             return checkStatus(selection, true);
-           };
-           scope.canBeRemoved = function(selection) {
-             return checkStatus(selection, false);
-           };
+          scope.canBeAdded = function(selection) {
+            return checkStatus(selection, true);
+          };
+          scope.canBeRemoved = function(selection) {
+            return checkStatus(selection, false);
+          };
 
-         }
-         return {
-           restrict: 'A',
-           templateUrl: '../../catalog/components/common/' +
-            'savedselections/partials/action.html',
-           require: '^gnSavedSelections',
-           link: link,
-           scope: {
-             selection: '@gnSavedSelectionsAction',
-             record: '=',
-             user: '=',
-             lang: '='
-           }
-         };
-       }]);
+        }
+        return {
+          restrict: 'A',
+          templateUrl: '../../catalog/components/common/' +
+          'savedselections/partials/action.html',
+          require: '^gnSavedSelections',
+          link: link,
+          scope: {
+            selection: '@gnSavedSelectionsAction',
+            record: '=',
+            user: '=',
+            lang: '='
+          }
+        };
+      }]);
 })();
