@@ -101,6 +101,7 @@
     <facet name="metadataPOC" indexKey="metadataPOC" label="metadataPOCs"/>
     <facet name="serviceType" indexKey="serviceType" label="serviceTypes"/>
     <facet name="type" indexKey="type" label="types"/>
+    <facet name="rwType" indexKey="rwType" label="rwTypes"/>
     <facet name="createDateYear" indexKey="createDateYear" label="createDateYears"/>
     <facet name="format" indexKey="format" label="formats"/>
     <facet name="title" indexKey="title" label="titles"/>
@@ -184,6 +185,7 @@
 
     <summaryType name="details" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
+      <item facet="rwType"/>
       <item facet="officialResource"/>
       <item facet="accessConstraints"/>
       <item facet="diffusionmode"/>
@@ -215,6 +217,7 @@
 
     <summaryType name="manager" format="DIMENSION">
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
+      <item facet="rwType"/>
       <item facet="officialResource"/>
       <item facet="accessConstraints"/>
       <item facet="diffusionmode"/>

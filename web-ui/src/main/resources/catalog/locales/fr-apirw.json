@@ -53,5 +53,6 @@
   "accessConstraints":"Consultation",
   "diffusionmodes": "Modes de diffusion",
   "restricted":"Restreint",
-  "public":"Public"
+  "public":"Public",
+  "rwTypes":"Type rw"
 }

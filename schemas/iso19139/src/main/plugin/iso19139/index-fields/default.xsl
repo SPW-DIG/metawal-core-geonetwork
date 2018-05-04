@@ -179,6 +179,26 @@
     <!-- the double // here seems needed to index MD_DataIdentification when
          it is nested in a SV_ServiceIdentification class -->
 
+    <xsl:for-each select=".">
+      <!-- - - - - - RWMetawal-type - - - - - - - -->
+      <!-- TODO Adapt rules depending on the GP rules -->
+      <xsl:choose>
+        <xsl:when test="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue='dataset'">
+          <Field name="rwType" string="dataset" store="true" index="true"/>
+        </xsl:when>
+        <xsl:when test="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue='service'">
+          <Field name="rwType" string="service" store="true" index="true"/>
+        </xsl:when>
+        <xsl:when test="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue='series'">
+          <Field name="rwType" string="staticmap" store="true" index="true"/>
+        </xsl:when>
+        <xsl:when test="gmd:hierarchyLevel/gmd:MD_ScopeCode/@codeListValue='application'">
+          <Field name="rwType" string="interactivemap" store="true" index="true"/>
+        </xsl:when>
+      </xsl:choose>
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+    </xsl:for-each>
+
     <xsl:for-each select="gmd:identificationInfo//gmd:MD_DataIdentification|
                 gmd:identificationInfo//*[contains(@gco:isoType, 'MD_DataIdentification')]|
                 gmd:identificationInfo/srv:SV_ServiceIdentification">
@@ -960,7 +980,7 @@
     </xsl:choose>
 
 
-    <!--xsl:choose-->
+  <!--xsl:choose-->
       <!-- Check if metadata is a service metadata record -->
       <!--xsl:when test="gmd:identificationInfo/srv:SV_ServiceIdentification">
         <Field name="type" string="service" store="false" index="true"/>
