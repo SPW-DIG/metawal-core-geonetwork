@@ -1,51 +1,98 @@
 <div class="row col-12">
-  <div data-ng-class="{'col-sm-4 ' : record.type[0] == 'application' || record.type[0] == 'series' ,'col-sm-3': record.type[0] == 'service' ||record.type[0] == 'dataset'}" class="col-p-api-rw-2">
-    <a data-ng-href='#/metadata/{{record.getUuid()}}'><button type="button" class="btn btn-block btn-api-rw">
-      <span class="pull-left btn-api-txt-rw" data-translate="">factSheet</span>
-      <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
-    </button></a>
+  <div
+    data-ng-class="{'col-sm-4 ' : record.type[0] == 'application' || record.type[0] == 'series' ,'col-sm-3': record.type[0] == 'service' ||record.type[0] == 'dataset'}"
+    class="col-p-api-rw-2">
+    <a data-ng-href='#/metadata/{{record.getUuid()}}'>
+      <button type="button" class="btn btn-block btn-api-rw">
+        <span class="pull-left btn-api-txt-rw" data-translate="">factSheet</span>
+        <span class="pull-right btn-api-img-rw icon-api-rw-datasheet"></span>
+      </button>
+    </a>
   </div>
   <div class="col-sm-4 col-p-api-rw-2" data-ng-if="record.type[0] == 'application' || record.type[0] == 'series'">
-    <a href={{mdurl}} data-ng-class="{disabled : mdurldisabled == true}" ><button type="button" class="btn btn-block btn-api-rw" data-ng-class="{disabled : mdurldisabled == true}">
-      <span class="pull-left btn-api-txt-rw" data-translate="">seeMap</span>
-      <span class="pull-right btn-api-img-rw icon-api-rw-map"></span>
-    </button></a>
+    <a href={{mdurl}} data-ng-class="{disabled : mdurldisabled == true}">
+      <button type="button" class="btn btn-block btn-api-rw" data-ng-class="{disabled : mdurldisabled == true}">
+        <span class="pull-left btn-api-txt-rw" data-translate="">seeMap</span>
+        <span class="pull-right btn-api-img-rw icon-api-rw-map"></span>
+      </button>
+    </a>
   </div>
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == true" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' } | filter:{name: '!AnonymousUserlist'}">
-    <button type="button" class="btn btn-block btn-api-rw"  data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
-      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
-    </button>
-  </div>
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == false" data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' }">
-    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw"  data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
-      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
-    </button>
-  </div>
-
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == true" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserlist'} | filter:{name: '!AnonymousUserServicelist'}">
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == true"
+       data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' } | filter:{name: '!AnonymousUserServicelist'} | filter:{name: '!AnonymousUserlist'}">
     <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
-      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}"
+            style="vertical-align:middle;"></span>
     </button>
   </div>
-  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == false" data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserServicelist'}">
-    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
-      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == false"
+       data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' }">
+    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+            ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=AnonymousUserlist, 'icon-api-rw-notification':actions[s.name]===AnonymousUserlist}"
+            style="vertical-align:middle;"></span>
     </button>
   </div>
 
-  <div class="col-sm-4 col-p-api-rw-2" data-ng-if="record.type[0] == 'application' || record.type[0] == 'series'" data-ng-repeat="s in selections.list | filter: { name: 'WatchList' }">
-    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_add" | translate)}}</span>
-      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw" data-translate="">{{(s.name + "_remove" | translate)}}</span>
-      <span class="pull-right btn-api-img-rw"  ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}" style="vertical-align:middle;"></span>
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == true"
+       data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserlist'} | filter:{name: '!AnonymousUserServicelist'}">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)" ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}"
+            style="vertical-align:middle;">
+
+      </span>
+    </button>
+  </div>
+  <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == false"
+       data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserServicelist'}">
+    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+            ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : s.name!='AnonymousUserlist', 'icon-api-rw-notification':s.name==='AnonymousUserlist'}"
+            style="vertical-align:middle;"></span>
+    </button>
+  </div>
+
+  <div class="col-sm-4 col-p-api-rw-2" data-ng-if="(record.type[0] == 'application' || record.type[0] == 'series') && GNuser == true"
+       data-ng-repeat="s in selections.list | filter: { name: 'WatchList' }">
+    <button type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+            ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : s.name!='AnonymousUserlist', 'icon-api-rw-notification':s.name==='AnonymousUserlist'}"
+            style="vertical-align:middle;"></span>
+    </button>
+  </div>
+  <div class="col-sm-4 col-p-api-rw-2" data-ng-if="(record.type[0] == 'application' || record.type[0] == 'series') && GNuser == false"
+       data-ng-repeat="s in selections.list | filter: { name: 'AnonymousUserlist' }">
+    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+            ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}"
+            style="vertical-align:middle;"></span>
     </button>
   </div>
 </div>
