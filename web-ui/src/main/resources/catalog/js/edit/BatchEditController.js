@@ -41,7 +41,7 @@
         permalink: false,
         sortbyValues: gnSearchSettings.sortbyValues,
         hitsperpageValues: gnSearchSettings.hitsperpageValues,
-        selectionBucket: 'be101',
+        selectionBucket: 'e101',
         params: {
           sortBy: 'changeDate',
           _isTemplate: 'y or n',
@@ -80,7 +80,7 @@
       $scope.$watch('searchResults.selectedCount',
           function(newvalue, oldvalue) {
             if (oldvalue != newvalue) {
-              $http.get('../api/selections/be101').
+              $http.get('../api/selections/e101').
                   success(function(uuids) {
                     $http.get('q?_content_type=json&_isTemplate=y or n or s&' +
                           'fast=index&resultType=manager&' +
@@ -117,7 +117,7 @@
       // Get current selection which returns the list of uuids.
       // Then search those records.
       $scope.searchSelection = function(params) {
-        $http.get('../api/selections/be101').success(function(uuids) {
+        $http.get('../api/selections/e101').success(function(uuids) {
           $scope.searchObj.params = angular.extend({
             _uuid: uuids.join(' or ')
           },
@@ -389,7 +389,7 @@
 
         // TODO: Apply changes to a mix of records is maybe not the best
         // XPath will be applied whatever the standard is.
-        return $http.put('../api/records/batchediting?bucket=be101',
+        return $http.put('../api/records/batchediting?bucket=e101',
             params
         ).success(function(data) {
           $scope.processReport = data;
