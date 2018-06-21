@@ -54,5 +54,6 @@
   "diffusionmodes": "Diffusion modes",
   "restricted":"Restricted",
   "public":"Public",
-  "rwTypes":"Type rw"
+  "rwTypes":"Type rw",
+  "AnonymousUserlist":"Mes notifications"
 }
