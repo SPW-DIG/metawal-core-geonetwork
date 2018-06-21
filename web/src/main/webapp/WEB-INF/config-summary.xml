@@ -97,6 +97,7 @@
     <facet name="resolution" indexKey="resolution" label="resolutions"/>
     <facet name="spatialRepresentationType" indexKey="cl_spatialRepresentationType"
            label="spatialRepresentationTypes"/>
+    <facet name="orgName" indexKey="orgName" label="orgNames" localized="true"/>
     <facet name="orgNameTree" indexKey="responsiblePartyorgNameTree" label="orgNamesTree" classifier="dashSplitClassifier"/>
     <facet name="metadataPOC" indexKey="metadataPOC" label="metadataPOCs"/>
     <facet name="serviceType" indexKey="serviceType" label="serviceTypes"/>
@@ -300,7 +301,6 @@
       <item facet="inspireTheme" sortBy="value" sortOrder="asc" max="35"/>
       <item facet="denominator" sortBy="value" sortOrder="asc" max="20"/>
       <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
-      <!--<item facet="orgName" max="15"/>-->
       <item facet="metadataPOC" max="15"/>
       <item facet="serviceType"/>
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
@@ -312,7 +312,8 @@
       <item facet="inspireTheme" sortBy="value" sortOrder="asc"/>
       <item facet="denominator" sortBy="value" sortOrder="asc"/>
       <item facet="spatialRepresentationType" translator="codelist:gmd:MD_SpatialRepresentationTypeCode"/>
-      <!--<item facet="orgName" max="100"/>-->
+      <item facet="orgName" max="100"/>
+      <item facet="orgNameTree" max="100"/>
       <item facet="metadataPOC"/>
       <item facet="serviceType"/>
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
