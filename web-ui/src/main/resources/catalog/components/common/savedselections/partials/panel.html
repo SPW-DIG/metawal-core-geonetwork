@@ -8,28 +8,35 @@
 
 <div class="panel-default basket-panel-rw"
      data-ng-show="selections != null && selections.list.length > 0">
-  <div class="panel-heading basket-panel-heading-rw"
-       >
+  <div class="panel-heading basket-panel-heading-rw">
     <span class="pull-right icon-api-rw-basket-basket pull-margin-right"></span>
     <span data-translate="">basket</span>
     <!--span data-ng-show="selections.size > 0" data-translate="">basket</span>
     <span data-ng-hide="selections.size > 0" data-translate="">emptyBasket</span-->
-
   </div>
   <div class="panel-body basket-panel-body-rw">
-
     <fieldset data-ng-repeat="sel in selections.list"
-              data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly)" ng-if="tabsType ==='dataset or service' ">
+              ng-if="tabsType ==='dataset or service' ">
     <!--fieldset data-ng-repeat="sel in selections.list"
               data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly) ||
                             sel.records.length === 0"-->
-      <legend data-gn-slide-toggle="" data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"  class="basket-legend-rw-api">
-        <h4 class="facet-title-api-rw">{{(sel.name + "_basket_title" | translate)}}
-        <span class="basket-counting-rw-api">({{sel.records.length}})</span> <span class="text-rw-api-blue-default"><i class="fa gn-icon-{{sel.name}}"/></span><span class="pull-right" data-ng-class="{'{{(actions[sel.name].icon_result + '-basket')}}':sel.name!=WatchList, 'icon-api-rw-notification-basket':sel.name=== 'WatchList'}"></span></h4>
-       
+      <legend data-gn-slide-toggle=""
+              data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"
+              class="basket-legend-rw-api">
+        <h4 class="facet-title-api-rw">
+          {{(sel.name + "_basket_title" | translate)}}
+          <span class="basket-counting-rw-api">
+            ({{sel.records.length}})
+          </span>
+          <span class="text-rw-api-blue-default">
+            <i class="fa gn-icon-{{sel.name}}"/>
+          </span>
+          <span class="pull-right" data-ng-class="{'{{(actions[sel.name].icon_result + '-basket')}}':sel.name!=WatchList && sel.name!=AnonymousUserlist && sel.name!=AnonymousUserServicelist, 'icon-api-rw-notification-basket':sel.name=== 'WatchList', 'icon-api-rw-notification-basket':sel.name=== 'AnonymousUserlist' , 'icon-api-rw-service-basket':sel.name=== 'AnonymousUserServicelist'}">
+          </span>
+        </h4>
       </legend>
-
-      <ul data-ng-show="sel.name === 'DataDownloaderlist' || sel.name ==='MapLayerlist'" class="list-group basket-ul-api-rw" >
+      <ul data-ng-show="sel.name === 'DataDownloaderlist' || sel.name ==='MapLayerlist'"
+          class="list-group basket-ul-api-rw" >
         <li data-ng-hide="sel.records.length != 0" class="list-group-item">
           <span class="basket-text-api-rw" data-translate>{{actions[sel.name].text_noselected}}</span>
         </li>
@@ -62,19 +69,23 @@
         {{(sel.name + "_basket_button" | translate | uppercase)}}
       </button>
     </fieldset>
-        <fieldset data-ng-repeat="sel in selections.list | filter:{name:'WatchList'}"
-              data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly)" ng-if="tabsType ==='application or series' ">
+    <fieldset data-ng-repeat="sel in selections.list | filter:{name:'WatchList'} | filter:{name:!'AnonymousUserlist'}"
+              ng-if="tabsType ==='application or series' ">
     <!--fieldset data-ng-repeat="sel in selections.list"
               data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly) ||
                             sel.records.length === 0"-->
-      <legend data-gn-slide-toggle="" data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"  class="basket-legend-rw-api">
-        <h4 class="facet-title-api-rw">{{sel.label[lang] || (sel.name | translate)}}
-        <span class="basket-counting-rw-api">({{sel.records.length}})</span> <span class="text-rw-api-blue-default"><i class="fa gn-icon-{{sel.name}}"/></span></h4>
-       
+      <legend data-gn-slide-toggle=""
+              data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"
+              class="basket-legend-rw-api">
+        <h4 class="facet-title-api-rw">
+          {{sel.label[lang] || (sel.name | translate)}}
+          <span class="basket-counting-rw-api">
+            ({{sel.records.length}})
+          </span>
+          <span class="text-rw-api-blue-default"><i class="fa gn-icon-{{sel.name}}"/></span>
+        </h4>
       </legend>
-
       <p data-ng-hide="sel.records.length != 0" class="basket-text-api-rw">{{actions[sel.name].text_noselected}}</p>
-
       <ul class="list-group basket-ul-api-rw" data-ng-repeat="r in sel.records">
         <li class="list-group-item basket-li-api-rw">
           <div class="row vertical-align-rw-api">
@@ -93,7 +104,49 @@
           </div>
         </li>
       </ul>
-
+      <button class="btn btn-default btn-block basket-button-api-rw "
+              data-ng-if="actions[sel.name]"
+              data-ng-hide="sel.records.length === 0"
+              data-ng-click="doAction(sel)">
+        <i class="fa {{actions[sel.name].icon}}"></i>&nbsp;
+        {{actions[sel.name].label | translate}}
+      </button>
+    </fieldset>
+    <fieldset data-ng-repeat="sel in selections.list | filter:{name:'AnonymousUserlist'}"
+              ng-if="tabsType ==='application or series' ">
+      <!--fieldset data-ng-repeat="sel in selections.list"
+                data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly) ||
+                              sel.records.length === 0"-->
+      <legend data-gn-slide-toggle=""
+              data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"
+              class="basket-legend-rw-api">
+        <h4 class="facet-title-api-rw">
+          {{sel.label[lang] || (sel.name | translate)}}
+          <span class="basket-counting-rw-api">
+            ({{sel.records.length}})
+          </span>
+          <span class="text-rw-api-blue-default"><i class="fa gn-icon-{{sel.name}}"/></span>
+        </h4>
+      </legend>
+      <p data-ng-hide="sel.records.length != 0" class="basket-text-api-rw">{{actions[sel.name].text_noselected}}</p>
+      <ul class="list-group basket-ul-api-rw" data-ng-repeat="r in sel.records">
+        <li class="list-group-item basket-li-api-rw">
+          <div class="row vertical-align-rw-api">
+            <div class="col-md-10">
+              <a data-ng-href="#/metadata/{{r}}" class="basket-a-api-rw">
+                {{selections.records[r].title || selections.records[r].defaultTitle || r}}
+              </a>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-link basket-icon-api-rw text-rw-api-white"
+                      data-ng-click="remove(sel, r)"
+                      data-title="{{'removeRecordFromSelection' | translate}}">
+                <i class="fa fa-times-circle-o " aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
       <button class="btn btn-default btn-block basket-button-api-rw "
               data-ng-if="actions[sel.name]"
               data-ng-hide="sel.records.length === 0"

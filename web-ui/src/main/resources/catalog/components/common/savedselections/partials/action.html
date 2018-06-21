@@ -36,7 +36,7 @@
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
             data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"
-            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=AnonymousUserlist, 'icon-api-rw-notification':actions[s.name]===AnonymousUserlist}"
+            ng-class="{'{{actions[s.name].icon_result}}' : s.name!='AnonymousUserlist' && s.name!='AnonymousUserServicelist', 'icon-api-rw-notification':s.name==='AnonymousUserlist', 'icon-api-rw-service':s.name==='AnonymousUserServicelist'}"
             style="vertical-align:middle;"></span>
     </button>
   </div>
@@ -78,7 +78,7 @@
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
             data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"
-            ng-class="{'{{actions[s.name].icon_result}}' : s.name!='AnonymousUserlist', 'icon-api-rw-notification':s.name==='AnonymousUserlist'}"
+            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}"
             style="vertical-align:middle;"></span>
     </button>
   </div>
@@ -91,7 +91,7 @@
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
             data-translate="">{{(s.name + "_remove" | translate)}}</span>
       <span class="pull-right btn-api-img-rw"
-            ng-class="{'{{actions[s.name].icon_result}}' : actions[s.name]!=WatchList, 'icon-api-rw-notification':actions[s.name]===WatchList}"
+            ng-class="{'{{actions[s.name].icon_result}}' :s.name!='AnonymousUserlist', 'icon-api-rw-notification':s.name==='AnonymousUserlist'}"
             style="vertical-align:middle;"></span>
     </button>
   </div>
