@@ -170,24 +170,34 @@
       eg. 2017-02-08T13:18:03.138+00:02
       -->
       <xsl:for-each select="gmd:dateStamp/*[text() != '' and position() = 1]">
-        <dateStamp>
-          <xsl:variable name="date"
-                        select="if (name() = 'gco:Date' and string-length(.) = 4)
-                                then concat(., '-01-01T00:00:00')
-                                else if (name() = 'gco:Date' and string-length(.) = 7)
-                                then concat(., '-01T00:00:00')
-                                else if (name() = 'gco:Date' or string-length(.) = 10)
-                                then concat(., 'T00:00:00')
-                                else if (contains(., '.'))
-                                then tokenize(., '\.')[1]
-                                else ."/>
+        <xsl:choose>
+          <xsl:when test="matches(., '^\d{4}(-\d{2})?(-\d{2})?((T\d{2}(:\d{2})?(:\d{2}(.\d+)?)?)+(\+.*)?)?$')">
+            <dateStamp>
+              <xsl:variable name="date"
+                            select="if (name() = 'gco:Date' and string-length(.) = 4)
+                              then concat(., '-01-01T00:00:00')
+                              else if (name() = 'gco:Date' and string-length(.) = 7)
+                              then concat(., '-01T00:00:00')
+                              else if (name() = 'gco:Date' or string-length(.) = 10)
+                              then concat(., 'T00:00:00')
+                              else if (contains(., '.'))
+                              then tokenize(., '\.')[1]
+                              else ."/>
 
-          <xsl:value-of select="translate(string(
-                                   adjust-dateTime-to-timezone(
-                                      xs:dateTime($date),
-                                      xs:dayTimeDuration('PT0H'))
-                                     ), 'Z', '')"/>
-        </dateStamp>
+              <xsl:value-of select="translate(string(
+                                 adjust-dateTime-to-timezone(
+                                    xs:dateTime($date),
+                                    xs:dayTimeDuration('PT0H'))
+                                   ), 'Z', '')"/>
+            </dateStamp>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- Some invalid date in DE, FI. -->
+            <xsl:variable name="msg">WARNING: <xsl:value-of select="$identifier"/> / Wrong date time format <xsl:value-of select="."/>. Default to empty.</xsl:variable>
+            <xsl:message><xsl:value-of select="$msg"/></xsl:message>
+            <error><xsl:value-of select="$msg"/></error>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:for-each>
 
 
@@ -263,16 +273,26 @@
               select="gmd:alternateTitle/gco:CharacterString/text()"/>
           </resourceAltTitle>
 
-          <xsl:for-each select="gmd:date/gmd:CI_Date[gmd:date/*/text() != '' and
+          <xsl:for-each select="gmd:date/gmd:CI_Date[
+                                  gmd:date/*/text() != '' and
                                   matches(gmd:date/*/text(), '[0-9]{4}.*')]">
             <xsl:variable name="dateType"
                           select="gmd:dateType[1]/gmd:CI_DateTypeCode/@codeListValue"
                           as="xs:string?"/>
             <xsl:variable name="date"
                           select="string(gmd:date[1]/gco:Date|gmd:date[1]/gco:DateTime)"/>
-            <xsl:element name="{$dateType}DateForResource">
-              <xsl:value-of select="$date"/>
-            </xsl:element>
+
+            <xsl:choose>
+              <xsl:when test="matches(., '^\d{4}(-\d{2})?(-\d{2})?((T\d{2}(:\d{2})?(:\d{2}(.\d+)?)?)+(\+.*)?)?$')">
+                <xsl:element name="{$dateType}DateForResource">
+                  <xsl:value-of select="$date"/>
+                </xsl:element>
+              </xsl:when>
+              <xsl:otherwise>
+                <error>WARNING: Date <xsl:value-of select="$dateType"/> with value '<xsl:value-of select="$date"/>' was not a valid date format.</error>
+              </xsl:otherwise>
+            </xsl:choose>
+
             <xsl:element name="{$dateType}YearForResource">
               <xsl:value-of select="substring($date, 0, 5)"/>
             </xsl:element>
@@ -568,12 +588,14 @@
           </xsl:for-each>
 
           <!-- TODO: index bounding polygon -->
-          <xsl:for-each select=".//gmd:EX_GeographicBoundingBox[
+          <xsl:variable name="bboxes"
+                        select=".//gmd:EX_GeographicBoundingBox[
                                 ./gmd:westBoundLongitude/gco:Decimal castable as xs:decimal and
                                 ./gmd:eastBoundLongitude/gco:Decimal castable as xs:decimal and
                                 ./gmd:northBoundLatitude/gco:Decimal castable as xs:decimal and
                                 ./gmd:southBoundLatitude/gco:Decimal castable as xs:decimal
-                                ]">
+                                ]"/>
+          <xsl:for-each select="$bboxes">
             <xsl:variable name="format" select="'#0.000000'"></xsl:variable>
 
             <xsl:variable name="w"
