@@ -23,6 +23,7 @@
 
 package org.fao.geonet.kernel.search;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -220,12 +221,16 @@ public class EsSearchManager implements ISearchManager {
         doc.put("harvesterId", settingManager.getNodeURL());
 
         // Document id may be UUID or UUID+dateStamp when using history
-        String documentId = doc.get("id").asText();
-        if (documentId.endsWith("-")) {
-            // This is a template which does not have UUID and/or a dateStamp
-            // Build id from db info instead of XML.
-            doc.put("id",
-                doc.get("uuid").asText() + "-" + doc.get("changeDate").asText());
+        JsonNode documentIdNode = doc.get("id");
+        String documentId = id;
+        if (documentIdNode != null) {
+            documentId = documentIdNode.asText();
+            if (documentId.endsWith("-")) {
+                // This is a template which does not have UUID and/or a dateStamp
+                // Build id from db info instead of XML.
+                doc.put("id",
+                    doc.get("uuid").asText() + "-" + doc.get("changeDate").asText());
+            }
         }
         // Build bulk query to update or insert document
 //        listOfDocumentsToIndex.put(documentId, mapper.writeValueAsString(doc));
