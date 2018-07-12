@@ -30,7 +30,16 @@
   </div>
   <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'service' && GNuser == false"
        data-ng-repeat="s in selections.list | filter: { name: '!DataDownloaderlist' }">
-    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+    <button ng-if="s.name==='MapLayerlist'" type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+            ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : s.name!='AnonymousUserlist' && s.name!='AnonymousUserServicelist', 'icon-api-rw-notification':s.name==='AnonymousUserlist', 'icon-api-rw-service':s.name==='AnonymousUserServicelist'}"
+            style="vertical-align:middle;"></span>
+    </button>
+    <button ng-if="s.name!='MapLayerlist'" type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
             ng-disabled="disable(s,record)">
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw">{{(s.name + "_add" | translate)}}</span>
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
@@ -57,7 +66,17 @@
   </div>
   <div class="col-sm-3 col-p-api-rw-2" data-ng-if="record.type[0] == 'dataset' && GNuser == false"
        data-ng-repeat="s in selections.list | filter: { name: '!PreferredList' } | filter:{name: '!AnonymousUserServicelist'}">
-    <button type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+    <button ng-if="s.name!='MapLayerlist'" type="button" ng-class="geoportailAuth" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
+            ng-disabled="disable(s,record)">
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_add" | translate)}}</span>
+      <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)!=-1" class="pull-left btn-api-txt-rw"
+            data-translate="">{{(s.name + "_remove" | translate)}}</span>
+      <span class="pull-right btn-api-img-rw"
+            ng-class="{'{{actions[s.name].icon_result}}' : s.name!='AnonymousUserlist', 'icon-api-rw-notification':s.name==='AnonymousUserlist'}"
+            style="vertical-align:middle;"></span>
+    </button>
+    <button ng-if="s.name==='MapLayerlist'" type="button" class="btn btn-block btn-api-rw" data-ng-click="doaction(s)"
             ng-disabled="disable(s,record)">
       <span data-ng-show="s.records.indexOf(record['geonet:info'].uuid)===-1" class="pull-left btn-api-txt-rw"
             data-translate="">{{(s.name + "_add" | translate)}}</span>

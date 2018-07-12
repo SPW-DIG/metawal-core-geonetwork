@@ -149,6 +149,8 @@ body {
     box-shadow: 0px;
 }
 
+
+
 .basket-panel-heading-rw {
     background-color: @white-default !important;
     border-color: @white-default !important;
@@ -173,8 +175,42 @@ body {
   border-bottom-width:0px;
 }
 
+.facet-title-api-rw > .icon-api-rw-basket-collapser {
+  margin-top:4px;
+  height: 15px;
+  width: 20px;
+  display: block;
+  background: url("../catalog/style/metawal/images/rw-sprite-icons.png") repeat scroll -421px -382px;
+  box-sizing:auto padding-box border-box;
+}
+
+.facet-title-api-rw.collapsed > .icon-api-rw-basket-collapser {
+  margin-top:0px;
+  height: 15px;
+  width: 20px;
+  display: block;
+  background: url("../catalog/style/metawal/images/rw-sprite-icons.png") repeat scroll -563px -118px;
+}
+
 .basket-legend-record-rw-api{
-    border-bottom:0px solid #d0e0e6 !important;
+  border-bottom:0px solid #d0e0e6 !important;
+  margin-left:0px !important;
+  margin-right: 0px !important;
+  padding-left:12px!important;
+}
+.basket-legend-no-record-rw-api{
+  border-bottom:0px solid #d0e0e6 !important;
+  margin-left:0px !important;
+  margin-right: 0px !important;
+  padding-left:12px!important;
+}
+
+.basket-legend-rw-api::after {
+  width: 0px!important;
+}
+
+.basket-legend-record-rw-api:after{
+  width:0px !important;
 }
 .basket-legend-no-record-rw-api{
     border-bottom:0px solid;
@@ -182,7 +218,8 @@ body {
 }
 
 .basket-legend-rw-api > h4{
-    padding-right:0px;
+  padding-right:0px;
+  padding-left:0px;
 }
 .basket-legend-rw-api > h4:hover{
     color: @blue-flash;
@@ -197,6 +234,7 @@ body {
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
+    margin-left:0px !important;
 }
 .basket-panel-rw {
     border: 0px solid transparent;

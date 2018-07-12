@@ -5,7 +5,6 @@
     <i class="fa fa-shopping-cart pull-right"/>&nbsp;
 <!--    <span data-ng-show="selections.size > 0" data-translate="">basket</span>
     <span data-ng-hide="selections.size > 0" data-translate="">emptyBasket</span>-->
-
 <div class="panel-default basket-panel-rw"
      data-ng-show="selections != null && selections.list.length > 0">
   <div class="panel-heading basket-panel-heading-rw">
@@ -20,10 +19,18 @@
     <!--fieldset data-ng-repeat="sel in selections.list"
               data-ng-hide="(user.id !== undefined && sel.isAnonymousOnly) ||
                             sel.records.length === 0"-->
-      <legend data-gn-slide-toggle=""
-              data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"
-              class="basket-legend-rw-api">
-        <h4 class="facet-title-api-rw">
+      <!--legend data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"
+              data-ng-class="{'collapsed': sel.records.length === 0 }"
+              class="basket-legend-rw-api"
+              data-toggle="collapse"
+              href="#{{sel.name}}"-->
+        <legend data-ng-class="{'basket-legend-record-rw-api' : sel.records.length != 0 ,'basket-legend-no-record-rw-api': sel.records.length === 0 }"
+                class="basket-legend-rw-api">
+        <h4 class="facet-title-api-rw"
+            data-toggle="collapse"
+            href="#{{sel.name}}"
+            data-ng-class="{'collapsed': sel.records.length === 0 }">
+          <span class="pull-left icon-api-rw-basket-collapser"></span>
           {{(sel.name + "_basket_title" | translate)}}
           <span class="basket-counting-rw-api">
             ({{sel.records.length}})
@@ -35,6 +42,8 @@
           </span>
         </h4>
       </legend>
+      <div id="{{sel.name}}"
+           data-ng-class="{'collapse in' : sel.records.length != 0 ,'collapse': sel.records.length === 0 }">
       <ul data-ng-show="sel.name === 'DataDownloaderlist' || sel.name ==='MapLayerlist'"
           class="list-group basket-ul-api-rw" >
         <li data-ng-hide="sel.records.length != 0" class="list-group-item">
@@ -63,11 +72,19 @@
       <ul data-ng-show="sel.name ==='WatchList'" class="list-group" >
         <p class="basket-text-simple-api-rw" data-translate="">textNotificationData</p>
       </ul>
-      <button class="btn btn-default btn-block basket-button-api-rw "
-              data-ng-if="sel.name"
-              data-ng-click="doAction(sel)">
+      <button data-ng-if="sel.name==='MapLayerlist'"
+              class="btn btn-default btn-block basket-button-api-rw "
+              data-ng-click="basketAction(sel.name)">
         {{(sel.name + "_basket_button" | translate | uppercase)}}
       </button>
+      <button data-ng-if="sel.name!='MapLayerlist'"
+              class="btn btn-default btn-block basket-button-api-rw "
+              data-ng-class="geoportailAuthPanel"
+              data-ng-if="sel.name"
+              data-ng-click="basketAction(sel.name)">
+        {{(sel.name + "_basket_button" | translate | uppercase)}}
+      </button>
+    </div>
     </fieldset>
     <fieldset data-ng-repeat="sel in selections.list | filter:{name:'WatchList'} | filter:{name:!'AnonymousUserlist'}"
               ng-if="tabsType ==='application or series' ">
@@ -104,7 +121,17 @@
           </div>
         </li>
       </ul>
-      <button class="btn btn-default btn-block basket-button-api-rw "
+      <button data-ng-if="sel.name!='MapLayerlist'"
+              ng-class="geoportailAuthPanel"
+              class="btn btn-default btn-block basket-button-api-rw "
+              data-ng-if="actions[sel.name]"
+              data-ng-hide="sel.records.length === 0"
+              data-ng-click="doAction(sel)">
+        <i class="fa {{actions[sel.name].icon}}"></i>&nbsp;
+        {{actions[sel.name].label | translate}}
+      </button>
+      <button data-ng-if="sel.name==='MapLayerlist'"
+              class="btn btn-default btn-block basket-button-api-rw "
               data-ng-if="actions[sel.name]"
               data-ng-hide="sel.records.length === 0"
               data-ng-click="doAction(sel)">
@@ -147,7 +174,17 @@
           </div>
         </li>
       </ul>
-      <button class="btn btn-default btn-block basket-button-api-rw "
+      <button data-ng-if="sel.name!='MapLayerlist'"
+              class="btn btn-default btn-block basket-button-api-rw "
+              data-ng-class="geoportailAuthPanel"
+              data-ng-if="actions[sel.name]"
+              data-ng-hide="sel.records.length === 0"
+              data-ng-click="doAction(sel)">
+        <i class="fa {{actions[sel.name].icon}}"></i>&nbsp;
+        {{actions[sel.name].label | translate}}
+      </button>
+      <button data-ng-if="sel.name==='MapLayerlist'"
+              class="btn btn-default btn-block basket-button-api-rw "
               data-ng-if="actions[sel.name]"
               data-ng-hide="sel.records.length === 0"
               data-ng-click="doAction(sel)">

@@ -7,24 +7,25 @@
 
       <span ng-if="params.sortOrder"
             class="pull-left">
-            <span data-translate="">{{params.sortBy}} </span> 
+            <span data-translate="">{{params.sortBy}} </span>
             (<span data-translate="">reverse</span>)
-            </span> 
+            </span>
       <span ng-if="!params.sortOrder"
             class="pull-left">
-            <span data-translate="">{{params.sortBy}} </span> 
+            <span data-translate="">{{params.sortBy}} </span>
             (<span data-translate="">noreverse</span>)
             </span>
+      <span class="pull-right icon-api-rw-select-down"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
       <li data-ng-repeat="v in ::values"
           data-ng-class="v.sortBy+v.sortOrder === params.sortBy+params.sortOrder ? 'disabled' : ''">
-        <a ng-if="v.sortOrder" 
+        <a ng-if="v.sortOrder"
             data-ng-click="sortBy(v)">
             <span data-translate="">{{v.sortBy}} </span>
             (<span data-translate="">reverse</span>)
             </a>
-        <a ng-if="!v.sortOrder" 
+        <a ng-if="!v.sortOrder"
             data-ng-click="sortBy(v)">
             <span data-translate="">{{v.sortBy}} </span>
             (<span data-translate="">noreverse</span>)

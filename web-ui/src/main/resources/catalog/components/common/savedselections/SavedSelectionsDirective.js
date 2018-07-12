@@ -465,12 +465,92 @@
    * Panel to manage user saved selection content
    */
   module.directive('gnSavedSelectionsPanel', [
-    '$translate', 'gnLangs', 'gnSavedSelectionConfig',
-    function($translate, gnLangs, gnSavedSelectionConfig) {
+    '$translate', 'gnLangs', 'gnSavedSelectionConfig', 'gpBasketService','$window',
+    function($translate, gnLangs, gnSavedSelectionConfig, gpBasketService, $window) {
       function link(scope, element, attrs, controller) {
         scope.lang = gnLangs.current;
         scope.selections = null;
         scope.actions = gnSavedSelectionConfig.actions;
+        scope.test='toto';
+        /* Start action */
+        scope.basketAction = function(sel){
+          console.log(sel);
+          if (window && window.geoportail) {
+            console.log(window);
+            if (sel==='AnonymousUserServicelist' || sel==='AnonymousUserlist'){
+              scope.url = $window.location.origin + window.geoportail.homePath+'/cartes-et-donnees/mes-notifications-et-services.html';
+            }
+            if (sel==='DataDownloaderlist'){
+              scope.url = $window.location.origin +'/sites/geoportail/geodata-donwload.html';
+            }
+            console.log($window.location.origin);
+            $window.location.href = scope.url;
+          }
+        };
+
+        scope.remove = function(selection, uuid) {
+          controller.remove(selection, scope.user, uuid);
+        };
+
+        /* DETECTIN JAHIA ID */
+        if (window && window.geoportail){
+          console.log('panel');
+          console.log(window.geoportail);
+          if (window.geoportail.logged === true) {
+            //console.log('window.geoportail.logged === true');
+            //scope.GPuser = true
+            scope.geoportailAuthPanel = "js-metadata-downloads-toggle";
+          } else {
+            scope.geoportailAuthPanel = "js-metadata-downloads-toggledisabled";
+          }
+        }
+
+        //Comparative table between GN and Geoportail
+        scope.listGeoportailBasketList = [
+          {GPBasketName:'Notification', GNBasketName:'AnonymousUserlist'},
+          {GPBasketName:'Download', GNBasketName:'DataDownloaderlist'},
+          {GPBasketName:'Service', GNBasketName:'AnonymousUserServicelist'}
+        ];
+        //Request Geoportail services aiming to discover the basket of an user
+        scope.requestGPbasket = function(url, GNBasketName) {
+          console.log('test');
+          console.log(url);
+          console.log(GNBasketName);
+          gpBasketService.gpbasket(url).then(function (data) {
+            console.log(data);
+            console.log('data console.log(scope.listGeoportailBasketList[i].GPBasketName)');
+            console.log(GNBasketName);
+            for (var j = 0; j < data.list.length; j++) {
+              console.log(GNBasketName);
+              var item = gnSavedSelectionConfig.localList.find(function (item) {
+                return item.name === GNBasketName;
+              });
+              console.log(item);
+              if (item.records.indexOf(data.list[j].metawalId) === -1) {
+                console.log("element doesn't exist to add ");
+                console.log(item);
+                console.log(data.list[j].metawalId);
+                scope.initiateGP(item, data.list[j].metawalId);
+              }
+              //scope.initiateGP(item, data.list[j].metawalId);
+            }
+
+          }, function (error) {
+            console.log(error);
+          })
+        };
+
+        //Update basket according to the result of the discovery of the Geoportail basket
+        scope.initiateGP = function(selection, uuid) {
+          console.log('doactionGP');
+          console.log(selection);
+          console.log(controller);
+          console.log(uuid);
+          scope.uuid = uuid;
+          controller.add(selection, scope.user, scope.uuid);
+          console.log('fin doactionGP');
+        };
+
 
         scope.$watch('user', function(n, o) {
           if (n !== o || scope.selections === null) {
@@ -478,27 +558,50 @@
             controller.getSelections(scope.user).then(function(selections) {
               scope.selections = selections;
               console.log('scope.selections'+scope.selections)
+              console.log(scope.selections)
+
+
+              /// Add
+              for (var i = 0; i < scope.listGeoportailBasketList.length ; i++) {
+                var GNBasketName = scope.listGeoportailBasketList[i].GNBasketName;
+                var GPBasketName = scope.listGeoportailBasketList[i].GPBasketName;
+                console.log(GNBasketName + '-' + GPBasketName);
+                var url = "http://jahia7.spw.test.wallonie.be/fr/sites/geoportail.manage" + scope.listGeoportailBasketList[i].GPBasketName + ".do?action=list";
+                scope.requestGPbasket(url, GNBasketName);
+              }
             });
           }
         });
+        console.log(controller.getSelections(scope.user));
+        console.log(controller);
+        //console.log(sel.records);
+        console.log(selection)
+/*
+        scope.basketAction = function(){
+          console.log('test basketAction')
+        }
 
         scope.remove = function(selection, uuid) {
           controller.remove(selection, scope.user, uuid);
         };
-
+*/
         scope.doAction = function(sel) {
+          console.log('docation2');
+          console.log(sel);
           /*var actionFn = scope.actions[sel.name].fn;
           if (angular.isFunction(actionFn)) {
             actionFn(sel.records, scope.selections.records);
           }*/
-          var actionApirw = scope.actions[sel.name].apirw;
-          if (angular.isFunction(actionApirw)) {
-            actionApirw(sel.records, scope.selections.records);
-          }
-          if (sel.storage === null) {
-            var nbRecords = sel.records.length;
-            for (var i = 0; i < nbRecords; i++) {
-              controller.remove(sel, scope.user, sel.records[0]);
+          if (window.geoportail.logged === true) {
+            var actionApirw = scope.actions[sel.name].apirw;
+            if (angular.isFunction(actionApirw)) {
+              actionApirw(sel.records, scope.selections.records);
+            }
+            if (sel.storage === null) {
+              var nbRecords = sel.records.length;
+              for (var i = 0; i < nbRecords; i++) {
+                controller.remove(sel, scope.user, sel.records[0]);
+              }
             }
           }
         };
@@ -579,7 +682,7 @@
               scope.GPuser = true
               scope.geoportailAuth = "js-metadata-downloads-toggle";
               scope.addPreferredListButton = true;
-              for (var i = 0; i < scope.listGeoportailBasketList.length ; i++) {
+             /* for (var i = 0; i < scope.listGeoportailBasketList.length ; i++) {
                 var GNBasketName = scope.listGeoportailBasketList[i].GNBasketName;
                 var GPBasketName = scope.listGeoportailBasketList[i].GPBasketName;
                 console.log(GNBasketName + '-' + GPBasketName);
@@ -588,7 +691,7 @@
                 //console.log(gpBasketService.gpbasket(url));
                 //r defer = $q.defer();
                 scope.requestGPbasket(url,GNBasketName);
-                /*gpBasketService.gpbasket(url).then(function(data) {
+                gpBasketService.gpbasket(url).then(function(data) {
                   console.log(data);
                   console.log('data console.log(scope.listGeoportailBasketList[i].GPBasketName)');
                   console.log(scope.GPuser);
@@ -611,9 +714,9 @@
 
                 }, function (error) {
                   console.log(error);
-                })*/
+                })
 
-                /*scope.test = function(url){
+                scope.test = function(url){
                   return $http.get(url)
                     .then(function(response) {
                         console.log(response);
@@ -633,9 +736,9 @@
                     console.log(scope.test.list[j].metawalId);
                     scope.initaiteGP(item,scope.test.list[j].metawalId);
                   }
-                }*/
+                }
 
-                /*$http.get(url)
+                $http.get(url)
                   .then(function(response) {
                     console.log(response);
                     //console.log('gnSavedSelectionConfig avant');
@@ -655,8 +758,8 @@
                     }
                     //console.log('gnSavedSelectionConfig après');
                     //console.log(gnSavedSelectionConfig);
-                  });*/
-              }
+                  });
+              }*/
 
             } else {
               console.log('window.geoportail.logged === false');
@@ -672,6 +775,7 @@
 
 
           scope.doaction = function(selection) {
+            console.log('doaction1');
             if (selection.records.indexOf(scope.uuid) > -1) {
               controller.remove(selection, scope.user, scope.uuid);
             } else {
@@ -748,20 +852,45 @@
           };
 
           scope.doaction = function(selection) {
-           // console.log('selection=');
+            //console.log('selection=');
             //console.log(selection);
             //console.log(scope.user);
             //console.log(scope.uuid);
             //scope.action = null;
-            if (selection.records.indexOf(scope.uuid) > -1) {
-              controller.remove(selection, scope.user, scope.uuid);
-              scope.action = 'remove';
-              scope.updateGPBasket(selection, scope.uuid, scope.action);
-            } else {
-              controller.add(selection, scope.user, scope.uuid);
-              scope.action = 'add';
-              scope.updateGPBasket(selection, scope.uuid, scope.action);
+            if (window.geoportail.logged === true) {
+              if (selection.records.indexOf(scope.uuid) > -1) {
+                controller.remove(selection, scope.user, scope.uuid);
+                scope.action = 'remove';
+                scope.updateGPBasket(selection, scope.uuid, scope.action);
+              } else {
+                controller.add(selection, scope.user, scope.uuid);
+                scope.action = 'add';
+                scope.updateGPBasket(selection, scope.uuid, scope.action);
+              }
             }
+            else if (selection.name === "AnonymousUserlist"){
+              if (scope.user != undefined) {
+                if (selection.records.indexOf(scope.uuid) > -1) {
+                  controller.remove(selection, scope.user, scope.uuid);
+                  scope.action = 'remove';
+                  scope.updateGPBasket(selection, scope.uuid, scope.action);
+                } else {
+                  controller.add(selection, scope.user, scope.uuid);
+                  scope.action = 'add';
+                  scope.updateGPBasket(selection, scope.uuid, scope.action);
+                }
+              }
+            }else if (selection.name === "MapLayerlist"){
+              if (selection.records.indexOf(scope.uuid) > -1) {
+                controller.remove(selection, scope.user, scope.uuid);
+                scope.action = 'remove';
+                scope.updateGPBasket(selection, scope.uuid, scope.action);
+              } else {
+                controller.add(selection, scope.user, scope.uuid);
+                scope.action = 'add';
+                scope.updateGPBasket(selection, scope.uuid, scope.action);
+              }
+            }else {}
           };
 
           scope.initiateGP = function(selection, uuid) {
