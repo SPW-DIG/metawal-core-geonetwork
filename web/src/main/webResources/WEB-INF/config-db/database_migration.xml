@@ -42,13 +42,14 @@
   <util:map id="migrationMap"
             map-class="java.util.LinkedHashMap"
             key-type="java.lang.String"
-            value-type="java.lang.String">
+            value-type="java.util.List">
   </util:map>
 
 
   <util:map id="dataMigrationMap"
             map-class="java.util.LinkedHashMap"
             key-type="java.lang.String"
-            value-type="java.lang.String">
+            value-type="java.util.List">
+
   </util:map>
 </beans>

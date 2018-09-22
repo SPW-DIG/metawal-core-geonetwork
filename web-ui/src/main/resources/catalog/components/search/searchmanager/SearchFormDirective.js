@@ -216,8 +216,8 @@
       var finalParams = angular.extend(params, hiddenParams);
       $scope.finalParams = finalParams;
       gnSearchManagerService.gnSearch(
-        finalParams, null,
-        $scope.searchObj.internal).then(
+                              finalParams, null,
+                              $scope.searchObj.internal).then(
           function(data) {
 
             // TEST WOM  START//

@@ -30,7 +30,7 @@
   <parent>
     <groupId>org.geonetwork-opensource</groupId>
     <artifactId>geonetwork</artifactId>
-    <version>3.4.2-SNAPSHOT</version>
+    <version>3.4.4-SNAPSHOT</version>
   </parent>
 
 
@@ -346,6 +346,12 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>core</artifactId>
       <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -496,28 +502,53 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>schema-iso19139</artifactId>
-      <version>${project.version}</version>
+      <version>${gn.schemas.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>schema-iso19110</artifactId>
-      <version>${project.version}</version>
+      <version>${gn.schemas.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>schema-iso19115-3</artifactId>
-      <version>${project.version}</version>
+      <version>${gn.schemas.version}</version>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>schema-dublin-core</artifactId>
-      <version>${project.version}</version>
+      <version>${gn.schemas.version}</version>
     </dependency>
 
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>wfsfeature-harvester</artifactId>
       <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>servlet-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>servlet-api-2.5</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-servlet_3.0_spec</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>jsp-api-2.1</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.0.1</version>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -767,7 +798,6 @@
             xml/schemas/**,
             WEB-INF/data/*.db,
             WEB-INF/data/index/**,
-            WEB-INF/data/data/formatter/**,
             WEB-INF/data/data/backup/**,
             WEB-INF/data/data/resources/htmlcache/**,
             catalog/lib/style/bootstrap/docs/**,
@@ -786,7 +816,7 @@
             catalog/lib/style/bootstrap/Gemfile*,
             catalog/lib/style/bootstrap/.*,
             catalog/lib/style/bootstrap/*.txt,
-            catalog/lib/style/bootstrap/*.md,            
+            catalog/lib/style/bootstrap/*.md,
             catalog/lib/bootstrap-table/*.json,
             catalog/lib/bootstrap-table/Gemfile*,
             catalog/lib/bootstrap-table/.*,
