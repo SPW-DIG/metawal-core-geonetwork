@@ -74,7 +74,8 @@
             'ice': 'is',
             'ita' : 'it',
             'rus': 'ru',
-            'chi': 'zh'
+            'chi': 'zh',
+            'slo': 'sk'
           }
         },
         'home': {
