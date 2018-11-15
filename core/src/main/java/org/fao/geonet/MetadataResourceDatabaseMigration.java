@@ -73,12 +73,10 @@ public class MetadataResourceDatabaseMigration implements DatabaseMigrationTask 
     private static final String XPATH_RESOURCES =
             "*//*[contains(text(), '/resources.get?')]";
     private static final String XPATH_THUMBNAIL_WITH_NO_URL =
-            "*//gmd:MD_BrowseGraphic" +
-                    "[gmd:fileDescription/gco:CharacterString = 'thumbnail' or " +
-                    "gmd:fileDescription/gco:CharacterString = 'large_thumbnail']/gmd:fileName/" +
+            "*//gmd:MD_BrowseGraphic/gmd:fileName/" +
                     "gco:CharacterString[not(starts-with(normalize-space(text()), 'http'))]";
     private static final String XPATH_THUMBNAIL_WITH_URL =
-            "*//gmd:graphicOverview/gmd:MD_BrowseGraphic[gmd:fileDescription/gco:CharacterString]/gmd:fileName/gco:CharacterString[starts-with(normalize-space(text()), 'http')]";
+            "*//gmd:graphicOverview/gmd:MD_BrowseGraphic/gmd:fileName/gco:CharacterString[starts-with(normalize-space(text()), 'http')]";
     private static final String XPATH_ATTACHMENTS_WITH_URL =
             "*//gmd:CI_OnlineResource[gmd:protocol/gco:CharacterString = 'WWW:DOWNLOAD-1.0-http--download']/gmd:linkage/gmd:URL";
 
@@ -184,6 +182,7 @@ public class MetadataResourceDatabaseMigration implements DatabaseMigrationTask 
                     boolean changed = updateMetadataResourcesLink(xml, uuid, settingManager);
                     if (changed) {
                         String updatedData = Xml.getString(xml);
+                        System.out.println(uuid + ":" + updatedData);
                         update.setString(1, updatedData);
                         update.setInt(2, id);
                         update.addBatch();
