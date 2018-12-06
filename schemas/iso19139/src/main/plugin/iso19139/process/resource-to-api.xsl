@@ -46,7 +46,7 @@ attached it to the metadata for data.
     <xsl:copy>
      <xsl:value-of select="concat($nodeUrl,
                               'api/records/', $uuid,
-                               '/attachements/',
+                               '/attachments/',
                                replace(text(), '.*fname=([^&amp;]*)', '$1'))"/>
       <!--
                   onlineSrcParams.put("url", sm.getNodeURL() + String.format("api/records/%s/attachments/%s", uuid, filename));
