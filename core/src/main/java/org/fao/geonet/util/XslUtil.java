@@ -38,6 +38,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Locale;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -47,15 +48,18 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.fao.geonet.ApplicationContextHolder;
+import org.fao.geonet.SystemInfo;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.domain.User;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.SchemaManager;
+import org.fao.geonet.kernel.ThesaurusManager;
 import org.fao.geonet.kernel.search.CodeListTranslator;
 import org.fao.geonet.kernel.search.LuceneSearcher;
 import org.fao.geonet.kernel.search.Translator;
@@ -166,6 +170,10 @@ public final class XslUtil {
         return "";
     }
 
+    public static String getBuildNumber() {
+        return ApplicationContextHolder.get().getBean(SystemInfo.class).getScmRevision();
+    }
+
     /**
      * Get a setting value
      */
@@ -202,6 +210,8 @@ public final class XslUtil {
                 SettingManager settingsMan = serviceContext.getBean(SettingManager.class);
                 if (settingsMan != null) {
                     String json = settingsMan.getValue(key);
+
+                    if (StringUtils.isEmpty(json)) return "";
 
                     ObjectMapper objectMapper = new ObjectMapper();
                     Object jsonObj = objectMapper.readValue(json, Object.class);
@@ -650,7 +660,7 @@ public final class XslUtil {
 
             final Envelope envelope = jts.getEnvelopeInternal();
             return
-                String.format("%f|%f|%f|%f",
+                String.format(Locale.US, "%f|%f|%f|%f",
                     envelope.getMinX(), envelope.getMinY(),
                     envelope.getMaxX(), envelope.getMaxY());
         } catch (Throwable e) {
@@ -716,7 +726,7 @@ public final class XslUtil {
         if (context != null) baseUrl = context.getBaseUrl();
 
         SettingInfo si = new SettingInfo();
-        return si.getSiteUrl() + "/" + baseUrl;
+        return si.getSiteUrl() + (!baseUrl.startsWith("/")?"/":"") + baseUrl;
     }
 
     public static String getLanguage() {
@@ -829,5 +839,27 @@ public final class XslUtil {
                 }
             }
         });
+    }
+
+
+    /**
+     * Utility method to retrieve the thesaurus dir from xsl processes.
+     *
+     * Usage:
+     *
+     *    <xsl:stylesheet
+     *      xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0"
+     *      ...
+     *      xmlns:java="java:org.fao.geonet.util.XslUtil" ...>
+     *
+     *     <xsl:variable name="thesauriDir" select="java:getThesaurusDir()"/>
+     *
+     * @return Thesaurus directory
+     */
+    public static String getThesaurusDir() {
+        ApplicationContext applicationContext = ApplicationContextHolder.get();
+        ThesaurusManager thesaurusManager = applicationContext.getBean(ThesaurusManager.class);
+
+        return thesaurusManager.getThesauriDirectory().toString();
     }
 }

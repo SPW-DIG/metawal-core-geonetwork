@@ -53,6 +53,7 @@ import org.fao.geonet.exceptions.NotAllowedEx;
 import org.fao.geonet.exceptions.ServiceNotFoundEx;
 import org.fao.geonet.exceptions.ServiceNotMatchedEx;
 import org.fao.geonet.kernel.GeonetworkDataDirectory;
+import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.util.XslUtil;
 import org.fao.geonet.utils.BLOB;
 import org.fao.geonet.utils.BinaryFile;
@@ -635,8 +636,17 @@ public class ServiceManager {
                         req.getOutputStream().write(Xml.getJSON(response).getBytes(Constants.ENCODING));
                         req.endStream();
                     } else {
-                        req.beginStream("application/xml; charset=UTF-8", cache);
-                        req.write(response);
+                        if (response.getAttribute("redirect") != null) {
+                            HttpServiceRequest req2 = (HttpServiceRequest) req;
+                            req2.getHttpServletResponse().setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+                            req2.getHttpServletResponse().setHeader("Location", response.getAttribute("url").getValue());
+                            req2.getHttpServletResponse().setHeader("Content-type", response.getAttribute("mime-type").getValue());
+
+                        } else {
+                            req.beginStream("application/xml; charset=UTF-8", cache);
+                            req.write(response);
+
+                        }
                     }
                 }
             }
@@ -949,6 +959,11 @@ public class ServiceManager {
         root.addContent(new Element(Jeeves.Elem.BASE_SERVICE).setText(baseUrl + "/" + nodeId));
         root.addContent(new Element(Jeeves.Elem.NODE_ID).setText(nodeId));
         root.addContent(new Element(Jeeves.Elem.LOC_SERVICE).setText(baseUrl + "/" + nodeId + "/" + lang));
+
+        SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
+        root.addContent(new Element("nodeUrl").setText(settingManager.getNodeURL()));
+        root.addContent(new Element("baseUrl").setText(settingManager.getBaseURL()));
+        root.addContent(new Element("serverUrl").setText(settingManager.getServerURL()));
     }
 
     @SuppressWarnings("unchecked")

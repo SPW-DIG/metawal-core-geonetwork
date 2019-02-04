@@ -45,7 +45,7 @@
           />
         </title>
         <meta charset="utf-8"/>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+        <meta name="viewport" content="initial-scale=1.0"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
 
         <meta name="description" content=""/>
@@ -85,6 +85,7 @@
             <!-- AngularJS application -->
             <xsl:if test="$angularApp != 'gn_search' and $angularApp != 'gn_viewer' and $angularApp != 'gn_formatter_viewer'">
               <div class="navbar navbar-default gn-top-bar"
+                   role="navigation"
                    data-ng-hide="layout.hideTopToolBar"
                    data-ng-include="'{$uiResourcesPath}templates/top-toolbar.html'"></div>
             </xsl:if>
@@ -104,7 +105,7 @@
   <xsl:template name="no-js-alert">
     <noscript>
       <xsl:call-template name="header"/>
-      <div class="container-fluid">
+      <div class="container page">
         <div class="row gn-row-main">
           <div class="col-sm-8 col-sm-offset-2">
             <h1><xsl:value-of select="$env/system/site/name"/></h1>

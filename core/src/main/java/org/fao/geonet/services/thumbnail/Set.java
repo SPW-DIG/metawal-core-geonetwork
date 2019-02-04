@@ -154,7 +154,7 @@ public class Set {
             dataMan.setThumbnail(context, id, type.equals("small"), file.getOriginalFilename(), false);
         }
 
-        dataMan.indexMetadata(id, true, null, null);
+        dataMan.indexMetadata(id, true, null);
 
         return new Response(id, dataMan.getNewVersion(id));
     }
@@ -210,7 +210,7 @@ public class Set {
         saveThumbnail(scaling, file, type, dataDir, scalingDir, scalingFactor, dataMan, id, context);
 
         //-----------------------------------------------------------------------
-        dataMan.indexMetadata(id, true, null, null);
+        dataMan.indexMetadata(id, true, null);
         Element response = new Element("Response");
         response.addContent(new Element("id").setText(id));
 

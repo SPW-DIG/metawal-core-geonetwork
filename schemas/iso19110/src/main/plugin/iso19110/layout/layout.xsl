@@ -59,6 +59,7 @@
                     select="gn-fn-metadata:getLabel($schema, $name, $labels)"/>
       <xsl:call-template name="render-element-to-add">
         <xsl:with-param name="label" select="$label/label"/>
+        <xsl:with-param name="class" select="if ($label/class) then $label/class else ''"/>
         <xsl:with-param name="btnLabel" select="if ($label/btnLabel) then $label/btnLabel else ''"/>
         <xsl:with-param name="btnClass" select="if ($label/btnClass) then $label/btnClass else ''"/>
         <xsl:with-param name="directive" select="$directive"/>
@@ -175,7 +176,7 @@
       <xsl:with-param name="forceDisplayAttributes" select="true()" />
       <xsl:with-param name="type"
                       select="gn-fn-iso19110:getFieldType(name(),
-            name(gmx:Anchor))"/>
+            name(gmx:Anchor), $xpath)"/>
       <xsl:with-param name="name" select="if ($isEditing) then */gn:element/@ref else ''"/>
       <xsl:with-param name="editInfo" select="*/gn:element"/>
       <xsl:with-param name="parentEditInfo" select="gn:element"/>
@@ -189,9 +190,9 @@
 
   <!-- Render simple element which usually match a form field -->
   <xsl:template mode="mode-iso19110" priority="100"
-                match="*[gco:CharacterString|gco:Date|gco:DateTime|gco:Integer|gco:Decimal|
-    gco:Boolean|gco:Real|gco:Measure|gco:Length|gco:Distance|gco:Angle|
-    gco:Scale|gco:RecordType|gmx:MimeFileType|gmd:URL|gco:LocalName]">
+                match="*[gco:CharacterString|gco:Date|gco:DateTime|gco:Integer|gco:UnlimitedInteger|
+                        gco:Decimal|gco:Boolean|gco:Real|gco:Measure|gco:Length|gco:Distance|gco:Angle|
+                        gco:Scale|gco:RecordType|gmx:MimeFileType|gmd:URL|gco:LocalName]">
 
     <xsl:variable name="elementSchema"
                   select="if(namespace-uri() = 'http://www.isotc211.org/2005/gfc')
@@ -244,7 +245,7 @@
                       select="gn-fn-iso19110:getFieldType(name(),
             name(gco:CharacterString|gco:Date|gco:DateTime|gco:Integer|gco:Decimal|
                 gco:Boolean|gco:Real|gco:Measure|gco:Length|gco:Distance|gco:Angle|
-                gco:Scale|gco:RecordType|gmx:MimeFileType|gmd:URL))"/>
+                gco:Scale|gco:RecordType|gmx:MimeFileType|gmd:URL), $xpath)"/>
       <xsl:with-param name="name" select="if ($isEditing) then */gn:element/@ref else ''"/>
       <xsl:with-param name="editInfo" select="*/gn:element"/>
       <xsl:with-param name="parentEditInfo" select="gn:element"/>

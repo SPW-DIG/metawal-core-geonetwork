@@ -70,7 +70,7 @@ public class LanguageUtils {
     static public String locale2gnCode (String code) {
         if (code.equals("fra")) {
             return "fre";
-        } else if (code.equals("slk")) {
+        } else if (code.equals("slk")) { // transforms ISO 639-2/T into ISO 639-2/B
             return "slo";
         } else {
             return code;

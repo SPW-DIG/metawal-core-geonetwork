@@ -111,8 +111,8 @@
 
       $scope.saveNewPassword = function() {
         var data = $.param( {
-                    username: $scope.resetUsername,
-                    password: $scope.resetPassword
+          username: $scope.resetUsername,
+          password: $scope.resetPassword
         });
 
         $http.post('../api/mapservers/' +
@@ -121,12 +121,12 @@
           {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
           })
-            .success(function(data) {
-              $scope.resetPassword = null;
-              $('#passwordResetModal').modal('hide');
-            }).error(function(data) {
-              // TODO
-            });
+          .success(function(data) {
+            $scope.resetPassword = null;
+            $('#passwordResetModal').modal('hide');
+          }).error(function(data) {
+            // TODO
+          });
 
       };
       $scope.deleteMapServer = function() {

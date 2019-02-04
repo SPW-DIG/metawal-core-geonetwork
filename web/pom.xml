@@ -30,7 +30,7 @@
   <parent>
     <groupId>org.geonetwork-opensource</groupId>
     <artifactId>geonetwork</artifactId>
-    <version>3.4.4-SNAPSHOT</version>
+    <version>3.6.1-SNAPSHOT</version>
   </parent>
 
 
@@ -122,6 +122,10 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jolokia</groupId>
+      <artifactId>jolokia-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -375,6 +379,11 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>inspire-atom</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>doi</artifactId>
       <version>${project.version}</version>
     </dependency>
 
@@ -827,7 +836,7 @@
           <!--          <warSourceDirectory>src/main/geonetwork</warSourceDirectory> -->
           <webXml>${build.webapp.resources}/WEB-INF/web.xml</webXml>
           <attachClasses>true</attachClasses>
-          <warName>geonetwork</warName>
+          <warName>${application.name}</warName>
           <webappDirectory>${project.build.directory}/geonetwork</webappDirectory>
         </configuration>
       </plugin>
@@ -838,7 +847,7 @@
           <contextXml>${basedir}/jetty-context.xml</contextXml>
           <webAppSourceDirectory>${project.build.directory}/geonetwork</webAppSourceDirectory>
           <webApp>
-            <contextPath>/geonetwork</contextPath>
+            <contextPath>/${application.name}</contextPath>
             <descriptor>${project.build.directory}/WEB-INF/web.xml</descriptor>
             <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
               <resourcesAsCSV>
@@ -914,6 +923,7 @@
       </activation>
       <properties>
         <env>dev</env>
+        <wro.debug>true</wro.debug>
       </properties>
     </profile>
     <profile>
@@ -935,6 +945,19 @@
       </activation>
       <properties>
         <es.spring.profile>es</es.spring.profile>
+
+        <es.port>9200</es.port>
+        <es.host>localhost</es.host>
+        <es.url>http://${es.host}:${es.port}</es.url>
+        <es.index.features>gn-features</es.index.features>
+        <es.index.features.type>features</es.index.features.type>
+        <es.index.records>gn-records</es.index.records>
+        <es.index.records.type>records</es.index.records.type>
+        <es.index.searchlogs>gn-searchlogs</es.index.searchlogs>
+        <es.index.searchlogs.type>searchlogs</es.index.searchlogs.type>
+
+        <kb.port>5601</kb.port>
+        <kb.url>http://localhost:${kb.port}</kb.url>
       </properties>
     </profile>
 

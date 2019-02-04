@@ -162,6 +162,24 @@
               defer.reject();
               return $q.defer().promise;
             }
+            
+            //Check if the layer has some projection restriction
+            //If no restriction, just (try to) add it
+            if(layerInfo.projectionList && layerInfo.projectionList.length 
+                && layerInfo.projectionList.length > 0) {
+              var addIt = false;
+              
+              $.each(layerInfo.projectionList, function(i, p){
+                if(map.getView().getProjection().getCode() == p) {
+                  addIt = true;
+                }
+              });
+              
+              if(!addIt) {
+                defer.reject();
+                return $q.defer().promise;
+              }
+            }
 
             switch (layerInfo.type) {
               case 'osm':
@@ -171,11 +189,24 @@
                 }));
                 break;
 
-              case 'tms':
+              case 'tms':            
+                var prop = { 
+                  // Settings are usually encoded
+                    url: decodeURI(layerInfo.url)
+                };
+                
+                if(layerInfo.projection) {
+                  prop.projection = layerInfo.projection;
+                }
+                
+                if(layerInfo.attribution) {
+                  prop.attributions = [
+                    new ol.Attribution({"html": layerInfo.attribution})
+                  ]
+                }
+                
                 defer.resolve(new ol.layer.Tile({
-                  source: new ol.source.XYZ({
-                        url: layerInfo.url
-                  }),
+                  source: new ol.source.XYZ(prop),
                   title: layerInfo.title || 'TMS Layer'
                 }));
                 break;
@@ -219,6 +250,11 @@
                         layer.set('title', layerInfo.title);
                         layer.set('label', layerInfo.title);
                       }
+                      
+                      if(layerInfo.attribution) {
+                        layer.getSource().setAttributions(layerInfo.attribution);
+                      }
+                      
                       defer.resolve(layer);
                     });
                 break;
@@ -237,6 +273,11 @@
                         layer.set('title', layerInfo.title);
                         layer.set('label', layerInfo.title);
                       }
+                      
+                      if(layerInfo.attribution) {
+                        layer.getSource().setAttributions(layerInfo.attribution);
+                      }
+                      
                       defer.resolve(layer);
                     });
                 break;
@@ -882,13 +923,13 @@
                   }
                 }
               }
-    
+
               url = getCapLayer.url || url;
               if (url.slice(-1) === '?') {
                 url = url.substring(0, url.length-1);
               }
 
-              if(getCapLayer.useProxy 
+              if(getCapLayer.useProxy
                   && url.indexOf(gnGlobalSettings.proxyUrl) != 0) {
                 url = gnGlobalSettings.proxyUrl + encodeURIComponent(url);
               }
@@ -1037,7 +1078,7 @@
               }
 
               if (!isLayerAvailableInMapProjection) {
-                errors.push($translate.instant('layerNotAvailableInMapProj'));
+              //  errors.push($translate.instant('layerNotAvailableInMapProj'));
                 console.warn($translate.instant('layerNotAvailableInMapProj'));
               }
 
@@ -1164,10 +1205,11 @@
               layer.set('errors', errors);
               layer.set('featureTooltip', true);
               layer.set('url', url);
+              layer.set('wfs', url);
               ngeoDecorateLayer(layer);
               layer.displayInLayerManager = true;
-              layer.set('label', getCapLayer.name.prefix + ':' +
-                  getCapLayer.name.localPart);
+              layer.set('label', getCapLayer.title ||
+                (getCapLayer.name.prefix + ':' + getCapLayer.name.localPart));
               return layer;
             }
 
@@ -1264,7 +1306,7 @@
            * @param {boolean} createOnly or add it to the map
            * @param {!Object} md object
            */
-          addWmsFromScratch: function(map, url, name, createOnly, md, version) {
+          addWmsFromScratch: function(map, url, name, createOnly, md, version, style) {
             var defer = $q.defer();
             var $this = this;
 
@@ -1321,7 +1363,7 @@
               	       capL.useProxy = true;
   	              }
 
-                  olL = $this.createOlWMSFromCap(map, capL, url);
+                  olL = $this.createOlWMSFromCap(map, capL, url, style);
 
                   var finishCreation = function() {
 
@@ -1345,11 +1387,12 @@
                   feedMdPromise.then(finishCreation);
                 }
 
-              }, function() {
+              }, function(error) {
                 var o = {
                   url: url,
                   name: name,
-                  msg: $translate.instant('getCapFailure')
+                  msg: $translate.instant('getCapFailure') +
+                    (error  ? ', ' + error : '')
                 };
                 gnWmsQueue.error(o);
                 defer.reject(o);
@@ -1940,8 +1983,7 @@
          * appear in the layer manager
          */
         selected: function(layer) {
-          return layer.displayInLayerManager && !layer.get('fromWps') &&
-              (!layer.get('errors') || !layer.get('errors').length);
+          return layer.displayInLayerManager && !layer.get('fromWps');
         },
         visible: function(layer) {
           return layer.displayInLayerManager && layer.visible;

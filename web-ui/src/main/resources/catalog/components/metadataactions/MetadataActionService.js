@@ -78,11 +78,12 @@
        * @param {string} eventName
        */
       var openModal = function(o, scope, eventName) {
-        var popup = gnPopup.create(o, scope);
+        // var popup = gnPopup.create(o, scope);
+        var popup = gnPopup.createModal(o, scope);
         var myListener = $rootScope.$on(eventName,
             function(e, o) {
               $timeout(function() {
-                popup.close();
+                popup.modal('hide');
               }, 0);
               myListener();
             });
@@ -225,16 +226,18 @@
         }, scope, 'PrivilegesUpdated');
       };
 
-      this.openUpdateStatusPanel = function(scope) {
+      this.openUpdateStatusPanel = function(scope, statusType, t) {
+        scope.task = t;
         openModal({
           title: 'updateStatus',
-          content: '<div data-gn-metadata-status-updater="md"></div>'
+          content: '<div data-gn-metadata-status-updater="md" ' +
+                        'data-status-type="' + statusType + '" task="t"></div>'
         }, scope, 'metadataStatusUpdated');
       };
 
       this.startWorkflow = function(md, scope) {
         return $http.put('../api/records/' + md.getId() +
-            '/status?status=1&comment=Enable workflow').then(
+            '/status', {status: 1, changeMessage: 'Enable workflow'}).then(
             function(data) {
               gnMetadataManager.updateMdObj(md);
               scope.$emit('metadataStatusUpdated', true);
@@ -412,6 +415,17 @@
             type: 'danger'
           });
         });
+      };
+
+      /**
+       * Format a CRS description object for rendering
+       * @param {Object} crsDetails expected keys: code, codeSpace, name
+       */
+      this.formatCrs = function(crsDetails) {
+        var crs = (crsDetails.codeSpace && crsDetails.codeSpace + ':') +
+          crsDetails.code;
+        if (crsDetails.name) return crsDetails.name + ' (' + crs + ')';
+        else return crs;
       };
     }]);
 })();

@@ -1012,6 +1012,19 @@ public class SchemaManager {
     }
 
     /**
+     * Reload a schema.
+     *
+     * Compile validation rules (conversion from SCH to XSL).
+     *
+     * @param schemaIdentifier The schema identifier.
+     */
+    public void reloadSchema(String schemaIdentifier) {
+        MetadataSchema metadataSchema = this.getSchema(schemaIdentifier);
+        metadataSchema.loadSchematronRules(basePath);
+    }
+
+
+    /**
      * Read the elements from the schema plugins catalog for use by other methods.
      */
     private Element getSchemaPluginCatalog() throws Exception {
@@ -1272,7 +1285,7 @@ public class SchemaManager {
             stage = "reading schema-ident file " + idFile;
             Element root = Xml.loadFile(idFile);
             stage = "validating schema-ident file " + idFile;
-            Xml.validate(new Document(root));
+            Xml.validate(root);
 
             final String schemaName = schemasDir.getFileName().toString();
             if (hmSchemas.containsKey(schemaName)) { // exists so ignore it

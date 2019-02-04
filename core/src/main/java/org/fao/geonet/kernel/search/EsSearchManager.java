@@ -23,10 +23,10 @@
 
 package org.fao.geonet.kernel.search;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.common.collect.ImmutableSet;
 import com.google.gson.JsonElement;
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Get;
@@ -38,14 +38,15 @@ import jeeves.server.context.ServiceContext;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Geonet;
+import org.fao.geonet.domain.AbstractMetadata;
 import org.fao.geonet.domain.ISODate;
 import org.fao.geonet.domain.Metadata;
 import org.fao.geonet.domain.MetadataType;
 import org.fao.geonet.es.EsClient;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.SelectionManager;
+import org.fao.geonet.kernel.datamanager.IMetadataUtils;
 import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.repository.MetadataRepository;
 import org.fao.geonet.repository.specification.MetadataSpecs;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
@@ -59,13 +60,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 
 public class EsSearchManager implements ISearchManager {
     public static final String ID = "id";
@@ -75,11 +77,21 @@ public class EsSearchManager implements ISearchManager {
     public static final String FIELDNAME = "name";
     public static final String FIELDSTRING = "string";
 
-    @Value("${es.index.records}")
+    @Value("${es.index.records:gn-records}")
     private String index = "records";
+
+    @Value("${es.index.records.type:records}")
+    private String indexType = "records";
 
     public String getIndex() {
         return index;
+    }
+
+    public String getIndexType() {
+        return indexType;
+    }
+    public void setIndexType(String indexType) {
+        this.indexType = indexType;
     }
 
     @Autowired
@@ -190,18 +202,17 @@ public class EsSearchManager implements ISearchManager {
     private int commitInterval = 200;
     private Map<String, String> listOfDocumentsToIndex = new HashMap<>();
 
+
     @Override
     public void index(Path schemaDir, Element metadata, String id, List<Element> moreFields,
-                      MetadataType metadataType, String root, boolean forceRefreshReaders, String indexingDate) throws Exception {
+                      MetadataType metadataType, String root, boolean forceRefreshReaders) throws Exception {
 
         SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
 
         Element docs = new Element("docs");
         Element allFields = new Element("doc");
-        allFields.addContent(new Element("dbid").setText(id));
+        allFields.addContent(new Element(ID).setText(id));
         allFields.addContent(new Element(DOC_TYPE).setText("metadata"));
-        allFields.addContent(new Element("harvestedDate").setText(indexingDate));
-
         addMDFields(allFields, schemaDir, metadata, root);
         addMoreFields(allFields, moreFields);
 
@@ -214,87 +225,50 @@ public class EsSearchManager implements ISearchManager {
         String catalog = doc.get("source").asText();
         doc.remove("source");
         doc.put("sourceCatalogue", catalog);
-
-        // Add reference to GeoNetwork catalogue
         doc.put("scope", settingManager.getSiteName());
         doc.put("harvesterUuid", settingManager.getSiteId());
         doc.put("harvesterId", settingManager.getNodeURL());
-
-        // Document id may be UUID or UUID+dateStamp when using history
-        JsonNode documentIdNode = doc.get("id");
-        String documentId = id;
-        if (documentIdNode != null) {
-            documentId = documentIdNode.asText();
-            if (documentId.endsWith("-")) {
-                // This is a template which does not have UUID and/or a dateStamp
-                // Build id from db info instead of XML.
-                doc.put("id",
-                    doc.get("uuid").asText() + "-" + doc.get("changeDate").asText());
-            }
-        }
-        // Build bulk query to update or insert document
-//        listOfDocumentsToIndex.put(documentId, mapper.writeValueAsString(doc));
-        String jsonDoc = mapper.writeValueAsString(doc);
-        listOfDocumentsToIndex.put(documentId, String.format(
-            "{"
-                + "\"script\": {"
-                + "\"source\": "
-                + "\"ctx._source.harvestedDate.add(params.harvestedDate)\", "
-                + "\"lang\": \"painless\", "
-                +  "\"params\": %s"
-                + "} "
-                + ",\"upsert\": %s"
-                + "}",
-            jsonDoc,
-            jsonDoc));
-
+        Map<String, String> docListToIndex = new HashMap<>();
+        docListToIndex.put(id, mapper.writeValueAsString(doc));
+        listOfDocumentsToIndex.put(id, mapper.writeValueAsString(doc));
         if (listOfDocumentsToIndex.size() == commitInterval) {
-            sendDocumentsToIndex(indexingDate);
+            sendDocumentsToIndex();
         }
     }
 
-    private void sendIndexingTaskReport(String harvestedDate, String message, int current, int total) throws IOException {
-        SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
-
-        // Log report
-        //${property.harvesterUuid}-${property.timestamp}
-        String timestamp = new ISODate().toString();
-        String script = String.format(
-                "{\"documentType\": \"harvesterTaskReport\","
-                + "\"timestamp\": \"%s\","
-                + "\"harvesterUuid\": \"%s\","
-                + "\"harvestedDate\": \"%s\","
-                + "\"reportStep\": \"%s\","
-                + "\"reportLevel\": \"%s\","
-                + "\"reportMessage\": \"%s\","
-                + "\"reportCurrent\": \"%d\","
-                + "\"reportTotal\": \"%d\""
-                + "}",
-            timestamp,
-            settingManager.getSiteId(),
-            harvestedDate,
-            null,
-            "INFO",
-            message,
-            current, total);
-
-        Map<String, String> docs = new HashMap<String, String>();
-        docs.put(settingManager.getSiteId() + "-" + timestamp, script);
-        client.bulkRequest(index, docs);
-    }
-    private void sendDocumentsToIndex(String indexingDate) throws IOException {
+    private void sendDocumentsToIndex() throws IOException {
         synchronized (this) {
             if (listOfDocumentsToIndex.size() > 0) {
-                sendIndexingTaskReport(indexingDate, String.format("Indexing %d records", listOfDocumentsToIndex.size()), -1, -1);
-                client.bulkRequest(index, listOfDocumentsToIndex);
+                client.bulkRequest(index, indexType, listOfDocumentsToIndex);
                 listOfDocumentsToIndex.clear();
             }
         }
     }
+    private static ImmutableSet<String> booleanFields;
+    private static ImmutableSet<String> booleanValues;
 
+    static {
+        booleanFields = ImmutableSet.<String>builder()
+            .add("hasxlinks")
+            .add("hasInspireTheme")
+            .add("hasOverview")
+            .add(IndexFields.HAS_ATOM)
+            .add(Geonet.IndexFieldNames.HASXLINKS)
+            .add("isHarvested")
+            .add("isPublishedToAll")
+            .add("isTemplate")
+            .add("isValid")
+            .add("isSchemaValid")
+            .add("isAboveThreshold")
+            .add("isOpenData")
+            .build();
+        booleanValues = ImmutableSet.<String>builder()
+            .add("1")
+            .add("y")
+            .add("true")
+            .build();
+    }
 
-    private static final List<String> listOfArrayFields =
-        Arrays.asList(new String[]{"harvestedDate", "scope"});
     /**
      * Convert document to JSON.
      */
@@ -322,9 +296,12 @@ public class EsSearchManager implements ISearchManager {
                         // Register list of already processed names
                         elementNames.add(name);
 
+                        // JSON object may be generated in the XSL processing.
+                        // In such case an object type attribute is set.
+                        boolean isObject = "object".equals(currentField.getAttributeValue("type"));
+
                         List<Element> nodeElements = record.getChildren(name);
-                        boolean isArray = nodeElements.size() > 1
-                            || listOfArrayFields.contains(name);
+                        boolean isArray = nodeElements.size() > 1;
 
                         // Field starting with _ not supported in Kibana
                         // Those are usually GN internal fields
@@ -340,7 +317,7 @@ public class EsSearchManager implements ISearchManager {
                         for (int k = 0; k < nodeElements.size(); k++) {
                             Element node = nodeElements.get(k);
 
-                            if (name.equals("dbid")) {
+                            if (name.equals("id")) {
                                 id = node.getTextNormalize();
                             }
 
@@ -349,15 +326,41 @@ public class EsSearchManager implements ISearchManager {
                             }
 
                             if (isArray) {
-                                arrayNode.add(node.getTextNormalize());
+                                if (isObject) {
+                                    try {
+                                        arrayNode.add(
+                                            mapper.readTree(node.getTextNormalize()));
+                                    } catch (IOException e) {
+                                        // Invalid JSON object provided
+                                        e.printStackTrace();
+                                    }
+                                } else {
+                                    arrayNode.add(
+                                        booleanFields.contains(propertyName) ?
+                                            parseBoolean(node.getTextNormalize()) :
+                                            node.getTextNormalize());
+                                }
                             } else if (name.equals("geojson")) {
                                 doc.put("geom", node.getTextNormalize());
-                            } else if (
                                 // Skip some fields causing errors / TODO
-                                !name.startsWith("conformTo_")) {
-                                doc.put(
-                                    propertyName,
-                                    node.getTextNormalize());
+                            } else if (!name.startsWith("conformTo_")) {
+                                if (isObject) {
+                                    try {
+                                        doc.set(propertyName,
+                                            mapper.readTree(
+                                                nodeElements.get(0).getTextNormalize()
+                                            ));
+                                    } catch (IOException e) {
+                                        // Invalid JSON object provided
+                                        e.printStackTrace();
+                                    }
+                                } else {
+                                    doc.put(
+                                        propertyName,
+                                        booleanFields.contains(propertyName) ?
+                                            parseBoolean(node.getTextNormalize()) :
+                                            node.getTextNormalize());
+                                }
                             }
                         }
                     }
@@ -367,6 +370,14 @@ public class EsSearchManager implements ISearchManager {
         }
         return listOfXcb;
     }
+
+    /*
+     * Normalize various GN boolean value to only true/false allowed in boolean fields in ES
+     */
+    private String parseBoolean(String value) {
+        return String.valueOf(booleanValues.contains(value));
+    }
+
     @Override
     public void forceIndexChanges() throws IOException {
     }
@@ -375,14 +386,10 @@ public class EsSearchManager implements ISearchManager {
     public boolean rebuildIndex(ServiceContext context, boolean xlinks,
                                 boolean reset, String bucket) throws Exception {
         DataManager dataMan = context.getBean(DataManager.class);
-        MetadataRepository metadataRepository = context.getBean(MetadataRepository.class);
+        IMetadataUtils metadataRepository = context.getBean(IMetadataUtils.class);
 
-        String indexingDate = new ISODate().toString();
-
-        sendIndexingTaskReport(indexingDate, String.format("Start indexing in remote index at %s", indexingDate), -1, -1);
         if (reset) {
             clearIndex();
-            sendIndexingTaskReport(indexingDate, "Past records removed.", -1, -1);
         }
 
         if (StringUtils.isNotBlank(bucket)) {
@@ -395,7 +402,7 @@ public class EsSearchManager implements ISearchManager {
                      iter.hasNext(); ) {
                     String uuid = (String) iter.next();
 //                    String id = dataMan.getMetadataId(uuid);
-                    Metadata metadata = metadataRepository.findOneByUuid(uuid);
+                    AbstractMetadata metadata = metadataRepository.findOneByUuid(uuid);
                     if (metadata != null) {
                         listOfIdsToIndex.add(metadata.getId() + "");
                     } else {
@@ -404,12 +411,10 @@ public class EsSearchManager implements ISearchManager {
                     }
                 }
             }
-            sendIndexingTaskReport(indexingDate, String.format("%d records to index from selection.", listOfIdsToIndex.size()), -1, -1);
-
             for(String id : listOfIdsToIndex) {
-                dataMan.indexMetadata(id + "", false, indexingDate, this);
+                dataMan.indexMetadata(id + "", false, this);
             }
-            sendDocumentsToIndex(indexingDate);
+            sendDocumentsToIndex();
         } else {
             final Specifications<Metadata> metadataSpec =
                 Specifications.where(MetadataSpecs.isType(MetadataType.METADATA))
@@ -417,22 +422,18 @@ public class EsSearchManager implements ISearchManager {
             final List<Integer> metadataIds = metadataRepository.findAllIdsBy(
                 Specifications.where(metadataSpec)
             );
-
-            sendIndexingTaskReport(indexingDate, String.format("%d records to index.", metadataIds.size()), -1, -1);
             for(Integer id : metadataIds) {
-                dataMan.indexMetadata(id + "", false, indexingDate, this);
+                dataMan.indexMetadata(id + "", false, this);
             }
-
-            sendDocumentsToIndex(indexingDate);
+            sendDocumentsToIndex();
         }
 
-        sendIndexingTaskReport(indexingDate, "Indexing done.", -1, -1);
         return true;
     }
 
     public void clearIndex() throws Exception {
         SettingManager settingManager = ApplicationContextHolder.get().getBean(SettingManager.class);
-        client.deleteByQuery(index,
+        client.deleteByQuery(index, indexType,
             "harvesterUuid:\\\"" + settingManager.getSiteId() + "\\\"");
     }
 
@@ -459,7 +460,7 @@ public class EsSearchManager implements ISearchManager {
     @Override
     public Map<String, String> getDocsChangeDate() throws Exception {
         String query = "{\"query\": {\"filtered\": {\"query_string\": \"*:*\"}}}";
-        Search search = new Search.Builder(query).addIndex(index).addType(index).build();
+        Search search = new Search.Builder(query).addIndex(index).addType(indexType).build();
         // TODO: limit to needed field
 //        params.setFields(ID, Geonet.IndexFieldNames.DATABASE_CHANGE_DATE);
         SearchResult searchResult = client.getClient().execute(search);
@@ -533,7 +534,7 @@ public class EsSearchManager implements ISearchManager {
 
     @Override
     public void delete(String txt) throws Exception {
-        client.deleteByQuery(index, txt);
+        client.deleteByQuery(index, indexType, txt);
 //        client.commit();
     }
 
@@ -553,12 +554,12 @@ public class EsSearchManager implements ISearchManager {
 
     }
 
-    public int getNumDocs(String query) throws Exception {
+    public Long getNumDocs(String query) throws Exception {
         if (StringUtils.isBlank(query)) {
             query = "*:*";
         }
         String searchQuery = "{\"query\": {\"filtered\": {\"query_string\": \"" + query + "\"}}}";
-        Search search = new Search.Builder(searchQuery).addIndex(index).addType(index).build();
+        Search search = new Search.Builder(searchQuery).addIndex(index).addType(indexType).build();
         SearchResult searchResult = client.getClient().execute(search);
         return searchResult.getTotal();
     }
@@ -610,18 +611,18 @@ public class EsSearchManager implements ISearchManager {
         this.client = client;
     }
 
-    public List<Element> getDocs(String query, Integer start, Integer rows) throws IOException, JDOMException {
+    public List<Element> getDocs(String query, Integer start, Long rows) throws IOException, JDOMException {
         final List<String> result = getDocIds(query, start, rows);
         List<Element> xmlDocs = new ArrayList<>(result.size());
-        MetadataRepository metadataRepository = ApplicationContextHolder.get().getBean(MetadataRepository.class);
+        IMetadataUtils metadataRepository = ApplicationContextHolder.get().getBean(IMetadataUtils.class);
         for (String id : result) {
-            Metadata metadata = metadataRepository.findOne(id);
+            AbstractMetadata metadata = metadataRepository.findOne(id);
             xmlDocs.add(metadata.getXmlData(false));
         }
         return xmlDocs;
     }
 
-    public List<String> getDocIds(String query, Integer start, Integer rows) throws IOException, JDOMException {
+    public List<String> getDocIds(String query, Integer start, Long rows) throws IOException, JDOMException {
 //        final SolrQuery solrQuery = new SolrQuery(query == null ? "*:*" : query);
 //        solrQuery.setFilterQueries(DOC_TYPE + ":metadata");
 //        solrQuery.setFields(SolrSearchManager.ID);
@@ -642,13 +643,21 @@ public class EsSearchManager implements ISearchManager {
     }
 
     public List<Element> getAllDocs(String query) throws Exception {
-        int hitsNumber = getNumDocs(query);
+        Long hitsNumber = getNumDocs(query);
         return getDocs(query, 0, hitsNumber);
     }
 
     public List<String> getAllDocIds(String query) throws Exception {
-        int hitsNumber = getNumDocs(query);
+        Long hitsNumber = getNumDocs(query);
         return getDocIds(query, 0, hitsNumber);
     }
 
+    public static String analyzeField(String analyzer,
+                                      String fieldValue) {
+
+        return EsClient.analyzeField(
+            ApplicationContextHolder.get().getBean(EsSearchManager.class).getIndex(),
+            analyzer,
+            fieldValue);
+    }
 }

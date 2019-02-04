@@ -46,8 +46,8 @@
 
 
   module.factory('gnSavedSelectionConfig', [
-    '$location', 'Metadata', 'gnMap', 'gnSearchSettings', '$window', '$http',
-    function($location, Metadata, gnMap, gnSearchSettings, $window, $http) {
+    '$location', 'Metadata', 'gnMap', 'gnSearchSettings', '$window', '$http', 'gnExternalViewer',
+    function($location, Metadata, gnMap, gnSearchSettings, $window, $http, gnExternalViewer) {
       var viewerMap = gnSearchSettings.viewerMap;
       var searchRecordsInSelection = function(uuid, records) {
         // TODO: Redirect to search app if not in a search page
@@ -85,6 +85,19 @@
 
                 var md = new Metadata(record);
                 angular.forEach(md.getLinksByType('OGC:WMS'), function(link) {
+                  if (gnExternalViewer.isEnabled()) {
+                    gnExternalViewer.viewService({
+                      id: md.getId(),
+                      uuid: md.getUuid()
+                    }, {
+                      url: link.url,
+                      type: 'wms',
+                      name: link.name,
+                      title: link.title
+                    })
+                    return;
+                  }
+
                   if (gnMap.isLayerInMap(viewerMap,
                     link.name, link.url)) {
                     return;

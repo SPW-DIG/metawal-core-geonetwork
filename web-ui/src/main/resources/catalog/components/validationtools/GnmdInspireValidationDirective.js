@@ -28,18 +28,16 @@
 
   module.directive(
       'gnMdValidationTools', ['gnConfig', '$http', '$interval',
-        'gnAlertService', '$translate', 'gnPopup',
-        function(gnConfig, $http, $interval, 
-            gnAlertService, $translate, gnPopup) {
+      'gnAlertService', '$translate', 'gnPopup',
+      'gnCurrentEdit', 'gnConfigService',
+        function(gnConfig, $http, $interval, gnAlertService,
+                 $translate, gnPopup, gnCurrentEdit, gnConfigService) {
           return {
             restrict: 'AEC',
             replace: true,
             templateUrl:
             '../../catalog/components/validationtools/partials/mdValidationTools.html',
             link: function postLink(scope, element, attrs) {
-
-              scope.isInspireValidationEnabled =
-              gnConfig[gnConfig.key.isInspireEnabled];
               scope.isDownloadingRecord = false;
               scope.isDownloadedRecord = false;
               scope.isEnabled = false;
@@ -47,6 +45,16 @@
               scope.$watch('gnCurrentEdit.uuid', function(newValue, oldValue) {
                 scope.isEnabled = true;
                 scope.inspMdUuid = newValue;
+
+                gnConfigService.load().then(function(c) {
+                  // INSPIRE validator only support ISO19139 records.
+                  // TODO: For other schema support we may need to convert the record
+                  // to ISO19139 first. eg. ISO19115-3
+                  scope.isInspireValidationEnabled =
+                    gnConfig[gnConfig.key.isInspireEnabled] &&
+                    angular.isString(gnConfig['system.inspire.remotevalidation.url']) &&
+                    (gnCurrentEdit.schema === 'iso19139');
+                });
               });
 
               scope.validateInspire = function() {

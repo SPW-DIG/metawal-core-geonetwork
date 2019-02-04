@@ -47,9 +47,11 @@
     '$scope', '$http', '$compile', 'gnSearchSettings', 'gnSearchLocation',
     'gnMetadataActions', 'gnAlertService', '$translate', '$location',
     'gnMdView', 'gnMdViewObj', 'gnMdFormatter', 'gnConfig',
+    'gnGlobalSettings', 'gnConfigService',
     function($scope, $http, $compile, gnSearchSettings, gnSearchLocation,
              gnMetadataActions, gnAlertService, $translate, $location,
-             gnMdView, gnMdViewObj, gnMdFormatter, gnConfig) {
+             gnMdView, gnMdViewObj, gnMdFormatter, gnConfig,
+             gnGlobalSettings, gnConfigService) {
 
       $scope.formatter = gnSearchSettings.formatter;
       $scope.gnMetadataActions = gnMetadataActions;
@@ -59,15 +61,21 @@
       $scope.recordIdentifierRequested = gnSearchLocation.getUuid();
       $scope.isUserFeedbackEnabled = false;
       $scope.isRatingEnabled = false;
+      $scope.isSocialbarEnabled = gnGlobalSettings.gnCfg.mods.recordview.isSocialbarEnabled;
 
-      statusSystemRating =
-         gnConfig[gnConfig.key.isRatingUserFeedbackEnabled];
-      if (statusSystemRating == 'advanced') {
-        $scope.isUserFeedbackEnabled = true;
-      }
-      if (statusSystemRating == 'basic') {
-        $scope.isRatingEnabled = true;
-      }
+      gnConfigService.load().then(function(c) {
+        $scope.isRecordHistoryEnabled = gnConfig['system.metadata.history.enabled'];
+
+        var statusSystemRating =
+          gnConfig['system.localrating.enable'];
+
+        if (statusSystemRating == 'advanced') {
+          $scope.isUserFeedbackEnabled = true;
+        }
+        if (statusSystemRating == 'basic') {
+          $scope.isRatingEnabled = true;
+        }
+      });
 
       $scope.search = function(params) {
         $location.path('/search');
@@ -137,7 +145,6 @@
               }
             }).then(
                 function(response,status) {
-                  console.log(response.status);
                   if (response.status!=200){
                     $('#gn-metadata-display').append("<div class='alert alert-danger top-buffer'>"+$translate.instant("metadataViewLoadError")+"</div>");
                   } else {
