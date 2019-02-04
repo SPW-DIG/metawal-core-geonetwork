@@ -93,6 +93,7 @@
     <facet name="inspireThemeURI" indexKey="inspirethemeuri" label="inspireThemesURI"/>
 
     <facet name="geoportailThemeLabel" indexKey="geoportailthemelabel" label="geoportailThemeLabel"/>
+    <facet name="geoportailThemeLabelNoHierarchy" indexKey="geoportailthemelabelnohierarchy" label="geoportailThemeLabelNoHierarchy"/>
     <facet name="denominator" indexKey="denominator" label="denominators"/>
     <facet name="resolution" indexKey="resolution" label="resolutions"/>
     <facet name="spatialRepresentationType" indexKey="cl_spatialRepresentationType"
@@ -134,9 +135,11 @@
     <facet name="infraSIG" label="infraSIG"
            indexKey="keyword"
            classifier="infraSIGThemeClassifier"/>
-    <facet name="geoportailTheme" label="geoportailThemes"
+    <!--facet name="geoportailTheme" label="geoportailThemes"
            indexKey="keyword"
-           classifier="geoportailThemeClassifier"/>
+           classifier="geoportailThemeClassifier"/-->
+    <facet name="geoportailTheme" label="geoportailThemes"
+           indexKey="keyword"/>
     <facet name="gemetKeyword" label="gemetKeywords"
            indexKey="keyword"
            classifier="gemetKeywordClassifier"/>
@@ -185,6 +188,8 @@
     </summaryType>
 
     <summaryType name="details" format="DIMENSION">
+      <item facet="geoportailThemeLabelNoHierarchy"
+            translator="term:http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
       <item facet="type" translator="codelist:gmd:MD_ScopeCode"/>
       <item facet="rwType"/>
       <item facet="officialResource"/>
