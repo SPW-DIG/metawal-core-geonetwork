@@ -230,7 +230,7 @@
                 // TODO: Set metadata title in page HEAD ?
                 $scope.layout.hideTopToolBar = true;
 
-                // Add padding-top depending on the haight og the top-toolbar
+                // Add padding-top depending on the height of the top-toolbar
                 $scope.topToolbarHeight = {}
                 $scope.topToolbarHeight['padding-top'] = (
                   parseFloat(document.getElementById('top-toolbar')
