@@ -45,5 +45,9 @@ UPDATE Schematron SET filename = 'schematron-rules-inspire-strict.xsl' WHERE fil
 UPDATE Schematron SET filename = 'schematron-rules-inspire.xsl' WHERE filename = 'schematron-rules-inspire-disabled.xsl';
 
 
+UPDATE metadata SET data = replace(data, '&amp;access=private', '') WHERE data LIKE '%&amp;access=private%';
+
+
+
 UPDATE Settings SET value='3.6.1' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
