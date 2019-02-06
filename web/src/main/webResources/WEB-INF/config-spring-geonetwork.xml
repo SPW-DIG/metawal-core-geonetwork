@@ -203,12 +203,12 @@
     <constructor-arg name="conceptScheme" value="http://metawal.wallonie.be/thesaurus/infrasig"/>
     <constructor-arg name="langCode" value="fre"/>
   </bean>
-  <bean id="geoportailThemeClassifier"
+  <!--bean id="geoportailThemeClassifier"
         class="org.fao.geonet.kernel.search.classifier.TermLabel" lazy-init="true">
     <constructor-arg name="finder" ref="ThesaurusManager"/>
     <constructor-arg name="conceptScheme" value="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon"/>
     <constructor-arg name="langCode" value="fre"/>
-  </bean>
+  </bean-->
   <bean id="gemetKeywordClassifier"
         class="org.fao.geonet.kernel.search.classifier.TermLabel" lazy-init="true">
     <constructor-arg name="finder" ref="ThesaurusManager"/>
