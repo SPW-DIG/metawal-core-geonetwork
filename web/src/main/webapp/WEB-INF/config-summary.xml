@@ -213,7 +213,7 @@
       <item facet="gemetKeyword"
             translator="term:http://geonetwork-opensource.org/gemet"/>
       <item facet="inspireThemeURI" sortBy="value" max="35"
-            translator="term:http://geonetwork-opensource.org/inspire-theme"/>
+            translator="term:http://inspire.ec.europa.eu/theme"/>
       <!--<item facet="format" max="15" sortBy="value" sortOrder="asc"/>-->
       <!--<item facet="maintenanceAndUpdateFrequency" translator="codelist:gmd:MD_MaintenanceFrequencyCode"/>-->
 
@@ -244,7 +244,7 @@
       <item facet="gemetKeyword"
             translator="term:http://geonetwork-opensource.org/gemet"/>
       <item facet="inspireThemeURI" sortBy="value" max="35"
-            translator="term:http://geonetwork-opensource.org/inspire-theme"/>
+            translator="term:http://inspire.ec.europa.eu/theme"/>
 
 
       <item facet="publishedForGroup" max="199" sortBy="value"
