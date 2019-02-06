@@ -21,6 +21,6 @@
 	</skos:Concept>
 	<skos:Concept rdf:about="http://metawal.wallonie.be/thesaurus/infrasig/DonneeOfficielleWallonne">
 		<skos:prefLabel xml:lang="fr">Donnée officielle wallonne</skos:prefLabel>
-		<skos:prefLabel xml:lang="fr">Official Walloon data</skos:prefLabel>
+		<skos:prefLabel xml:lang="en">Official Walloon data</skos:prefLabel>
 	</skos:Concept>
 </rdf:RDF>
