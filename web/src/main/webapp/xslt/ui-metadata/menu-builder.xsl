@@ -159,8 +159,7 @@
           </li>
         </xsl:if>
       </xsl:if>
-
-    </div>
+    </ul>
   </xsl:template>
 
 
