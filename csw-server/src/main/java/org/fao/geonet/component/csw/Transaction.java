@@ -207,7 +207,6 @@ public class Transaction extends AbstractOperation implements CatalogService {
 
     /**
      * @param xml
-     * @param fileIds
      * @param context
      * @param toIndex
      * @return
@@ -279,7 +278,7 @@ public class Transaction extends AbstractOperation implements CatalogService {
             dataMan.setOperation(context, id, "" + ReservedGroup.all.getId(), ReservedOperation.view);
         }
 
-        dataMan.indexMetadata(id, true, null, null);
+        dataMan.indexMetadata(id, true, null);
 
         documents.add(new InsertedMetadata(schema, id, xml));
 
