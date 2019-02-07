@@ -113,18 +113,6 @@
           }, {
             'sortBy': 'title',
             'sortOrder': 'reverse'
-          }, {
-            'sortBy': 'rating',
-            'sortOrder': ''
-          }, {
-            'sortBy': 'popularity',
-            'sortOrder': ''
-          }, {
-            'sortBy': 'denominatorDesc',
-            'sortOrder': ''
-          }, {
-            'sortBy': 'denominatorAsc',
-            'sortOrder': 'reverse'
           }],
           'sortBy': 'relevance',
           'resultViewTpls': [{

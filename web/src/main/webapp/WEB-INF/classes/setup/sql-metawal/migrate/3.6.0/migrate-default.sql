@@ -45,6 +45,25 @@ UPDATE Schematron SET filename = 'schematron-rules-inspire-strict.xsl' WHERE fil
 UPDATE Schematron SET filename = 'schematron-rules-inspire.xsl' WHERE filename = 'schematron-rules-inspire-disabled.xsl';
 
 
+UPDATE metadata SET data = replace(data, 'Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCD)', 'Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCoD)')
+  WHERE data LIKE '%Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCD)%';
+UPDATE metadata SET data = replace(data, 'Direction des Eaux souterraines (SPW - DGO3 - DEE - DESo)', 'Direction des Eaux souterraines (SPW - DGO3 - DEE - DESO)')
+  WHERE data LIKE '%Direction des Eaux souterraines (SPW - DGO3 - DEE - DESo)%';
+UPDATE metadata SET data = replace(data, 'Direction des Eaux de Surface (SPW - DG03 - DEE)', 'Direction des Eaux de Surface (SPW - DGO3 - DEE)')
+  WHERE data LIKE '%Direction des Eaux de Surface (SPW - DG03 - DEE)%';
+UPDATE metadata SET data = replace(data, 'Direction de l''intégration des géodonnées (SPW - SG - DIG)', 'Direction de l''intégration des géodonnées (SPW - SG - DGM - DIG)')
+  WHERE data LIKE '%Direction de l''intégration des géodonnées (SPW - SG - DIG)%';
+UPDATE metadata SET data = replace(data, 'Direction de l''Intégration des géodonnées (SPW - SG - DGM - DIG)', 'Direction de l''intégration des géodonnées (SPW - SG - DGM - DIG)')
+  WHERE data LIKE '%Direction de l''Intégration des géodonnées (SPW - SG - DGM - DIG)%';
+
+
+UPDATE metadata SET data = replace(data, 'SPF Economie, P.M.E., Classes moyennes et Energie, DG Statistique - Statistics Belgium', 'SPF Economie, PME, Classes moyennes et Energie')
+  WHERE data LIKE '%SPF Economie, P.M.E., Classes moyennes et Energie, DG Statistique - Statistics Belgium%';
+UPDATE metadata SET data = replace(data, 'SPF Economie, PME, Classes Moyennes et Energie', 'SPF Economie, PME, Classes moyennes et Energie')
+  WHERE data LIKE '%SPF Economie, PME, Classes Moyennes et Energie%';
+UPDATE metadata SET data = replace(data, 'Direction générale Statistique - Statistics Belgium (SPF Economie, PME, Classes Moyennes et Energiel)', 'SPF Economie, PME, Classes moyennes et Energie')
+  WHERE data LIKE '%Direction générale Statistique - Statistics Belgium (SPF Economie, PME, Classes Moyennes et Energiel)%';
+
 UPDATE metadata SET data = replace(data, '&amp;access=private', '') WHERE data LIKE '%&amp;access=private%';
 UPDATE metadata SET data = replace(data, '>ArcGIS Mapping Service<', '>ESRI:REST<') WHERE data LIKE '%ArcGIS Mapping Service%';
 UPDATE metadata SET data = replace(data, '>Collection de cartes statiques<', '>Série de cartes statiques<') WHERE data LIKE '%Collection de cartes statiques%';
