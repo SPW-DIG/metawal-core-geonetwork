@@ -47,6 +47,8 @@ UPDATE Schematron SET filename = 'schematron-rules-inspire.xsl' WHERE filename =
 
 UPDATE metadata SET data = replace(data, 'Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCD)', 'Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCoD)')
   WHERE data LIKE '%Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCD)%';
+UPDATE metadata SET data = replace(data, 'Direction des Eaux souterraines (SPW - DGO3 - DEE - DESo)', 'Direction des Eaux souterraines (SPW - DGO3 - DEE - DESO)')
+  WHERE data LIKE '%Direction des Eaux souterraines (SPW - DGO3 - DEE - DESo)%';
 UPDATE metadata SET data = replace(data, 'Direction des Eaux de Surface (SPW - DG03 - DEE)', 'Direction des Eaux de Surface (SPW - DGO3 - DEE)')
   WHERE data LIKE '%Direction des Eaux de Surface (SPW - DG03 - DEE)%';
 UPDATE metadata SET data = replace(data, 'Direction de l''intégration des géodonnées (SPW - SG - DIG)', 'Direction de l''intégration des géodonnées (SPW - SG - DGM - DIG)')
