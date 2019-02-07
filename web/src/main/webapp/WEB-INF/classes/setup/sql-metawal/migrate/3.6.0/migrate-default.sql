@@ -46,6 +46,8 @@ UPDATE Schematron SET filename = 'schematron-rules-inspire.xsl' WHERE filename =
 
 
 UPDATE metadata SET data = replace(data, '&amp;access=private', '') WHERE data LIKE '%&amp;access=private%';
+UPDATE metadata SET data = replace(data, '>ArcGIS Mapping Service<', '>ESRI:REST<') WHERE data LIKE '%ArcGIS Mapping Service%';
+UPDATE metadata SET data = replace(data, '>Collection de cartes statiques<', '>Série de cartes statiques<') WHERE data LIKE '%Collection de cartes statiques%';
 
 
 
