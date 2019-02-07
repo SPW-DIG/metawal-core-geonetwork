@@ -17,6 +17,8 @@
     "Keywords": "Keywords",
     "crs": "Coordinate reference system",
     "custodian": "Custodian",
+    "thematicmap": "Carte thématique",
+    "walonmap": "WalOnMap",
     "distributor": "Distributor",
     "search": "Search",
     "METADATA": "Metadata",
