@@ -64,6 +64,8 @@ UPDATE metadata SET data = replace(data, 'SPF Economie, PME, Classes Moyennes et
 UPDATE metadata SET data = replace(data, 'Direction générale Statistique - Statistics Belgium (SPF Economie, PME, Classes Moyennes et Energiel)', 'SPF Economie, PME, Classes moyennes et Energie')
   WHERE data LIKE '%Direction générale Statistique - Statistics Belgium (SPF Economie, PME, Classes Moyennes et Energiel)%';
 
+UPDATE metadata SET data = replace(data, 'http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml', 'https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml') WHERE data LIKE '%http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml%';
+
 UPDATE metadata SET data = replace(data, '&amp;access=private', '') WHERE data LIKE '%&amp;access=private%';
 UPDATE metadata SET data = replace(data, '>ArcGIS Mapping Service<', '>ESRI:REST<') WHERE data LIKE '%ArcGIS Mapping Service%';
 UPDATE metadata SET data = replace(data, '>Collection de cartes statiques<', '>Série de cartes statiques<') WHERE data LIKE '%Collection de cartes statiques%';
