@@ -77,6 +77,12 @@ UPDATE metadata SET data = replace(data, '&amp;access=private', '') WHERE data L
 UPDATE metadata SET data = replace(data, '>ArcGIS Mapping Service<', '>ESRI:REST<') WHERE data LIKE '%ArcGIS Mapping Service%';
 UPDATE metadata SET data = replace(data, '>Collection de cartes statiques<', '>Série de cartes statiques<') WHERE data LIKE '%Collection de cartes statiques%';
 
+-- Remove usage of categories
+UPDATE groups SET defaultcategory_id = null;
+DELETE FROM group_category;
+DELETE FROM metadatacateg;
+DELETE FROM categoriesdes;
+DELETE FROM categories;
 
 
 UPDATE Settings SET value='3.6.1' WHERE name='system/platform/version';
