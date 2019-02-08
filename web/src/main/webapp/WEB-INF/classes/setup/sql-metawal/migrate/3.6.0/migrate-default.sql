@@ -45,6 +45,13 @@ UPDATE Schematron SET filename = 'schematron-rules-inspire-strict.xsl' WHERE fil
 UPDATE Schematron SET filename = 'schematron-rules-inspire.xsl' WHERE filename = 'schematron-rules-inspire-disabled.xsl';
 
 
+UPDATE metadata
+  SET data = REPLACE(
+      data,
+      'theme.inspire-theme', 'theme.httpinspireeceuropaeutheme-theme')
+  WHERE data LIKE '%theme.inspire-theme%';
+
+
 UPDATE metadata SET data = replace(data, 'Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCD)', 'Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCoD)')
   WHERE data LIKE '%Cellule SIG de la DGARNE (SPW - DGO3 - DEMNA - DCD)%';
 UPDATE metadata SET data = replace(data, 'Direction des Eaux souterraines (SPW - DGO3 - DEE - DESo)', 'Direction des Eaux souterraines (SPW - DGO3 - DEE - DESO)')
