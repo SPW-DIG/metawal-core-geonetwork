@@ -273,6 +273,8 @@
       $scope.resultviewFns = {
         addMdLayerToMap: function (link, md) {
           // Redirect to WALONMAP
+          // If no layer, GetCapabilities and get all layers and make a list all |0,1,2,3
+          // If layer, |id de la layer
           $window.open('http://geoportail.wallonie.be/walonmap/#WMS=' + link.id.split('?request=GetCapabilities&service=WMS')[0] + '|0','_blank');
           /*var config = {
             uuid: md ? md.getUuid() : null,
@@ -347,6 +349,7 @@
       setActiveTab();
       $scope.$on('$locationChangeSuccess', setActiveTab);
 
+      var sortConfig = gnSearchSettings.sortBy.split('#');
       angular.extend($scope.searchObj, {
         advancedMode: false,
         from: 1,
@@ -362,12 +365,14 @@
         defaultParams: {
           'facet.q': '',
           resultType: gnSearchSettings.facetsSummaryType || 'details',
-          sortBy: gnSearchSettings.sortBy || 'relevance'
+          sortBy: sortConfig[0] || 'relevance',
+          sortOrder: sortConfig[1] || ''
         },
         params: {
           'facet.q': gnSearchSettings.defaultSearchString || '',
           resultType: gnSearchSettings.facetsSummaryType || 'details',
-          sortBy: gnSearchSettings.sortBy || 'relevance'
+          sortBy: sortConfig[0] || 'relevance',
+          sortOrder: sortConfig[1] || ''
         },
         sortbyValues: gnSearchSettings.sortbyValues
       });
