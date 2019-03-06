@@ -393,6 +393,7 @@
     </xsl:for-each>
   </xsl:template>
 
+
   <!-- For multilingual elements. Check that the local
   is defined in record. If not, remove the element. -->
   <xsl:template match="gmd:textGroup">
@@ -426,33 +427,6 @@
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="populate-free-text">
-    <xsl:variable name="freeText"
-                  select="gmd:PT_FreeText/gmd:textGroup"/>
-
-    <!-- Loop on locales in order to preserve order.
-        Keep main language on top.
-        Translations having no locale are ignored. eg. when removing a lang. -->
-    <xsl:for-each select="$locales[@id = $mainLanguageId]">
-      <xsl:variable name="localId"
-                    select="@id"/>
-
-      <xsl:variable name="element"
-                    select="$freeText[*/@locale = concat('#', $localId)]"/>
-
-      <xsl:apply-templates select="$element"/>
-    </xsl:for-each>
-
-    <xsl:for-each select="$locales[@id != $mainLanguageId]">
-      <xsl:variable name="localId"
-                    select="@id"/>
-
-      <xsl:variable name="element"
-                    select="$freeText[*/@locale = concat('#', $localId)]"/>
-
-      <xsl:apply-templates select="$element"/>
-    </xsl:for-each>
-  </xsl:template>
 
   <!-- For multilingual elements. Check that the local
   is defined in record. If not, remove the element. -->
