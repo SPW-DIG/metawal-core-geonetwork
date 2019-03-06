@@ -51,7 +51,8 @@
               var tokens = scope.abstractiso.split('\n\n');
               if (tokens.length >= 2) {
                 scope.abstract.hook = tokens[0];
-                scope.abstract.descriptive = tokens[1];
+                tokens.shift();
+                scope.abstract.descriptive = tokens.join('\n\n')
               } else {
                 scope.abstract.descriptive = scope.abstractiso;
               }

@@ -407,8 +407,11 @@
                       fileStoreFilter: '*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}',
                       process: 'thumbnail-add',
                       fields: {
-                        'url': {isMultilingual: false},
-                        'name': {param: 'desc'}
+                        'url': {
+                          param: 'thumbnail_url',
+                          isMultilingual: false
+                        },
+                        'name': {param: 'thumbnail_desc'}
                       }
                     }, {
                       group: 'onlineDiscover',
@@ -1444,7 +1447,7 @@
 
                   if (curUrl) {
                     scope.loadCurrentLink();
-                    scope.isImage = curUrl.match(/.*.(png|jpg|gif)$/i);
+                    scope.isImage = curUrl.match(/.*.(png|jpg|jpeg|gif)$/i);
                   }
 
                 };
