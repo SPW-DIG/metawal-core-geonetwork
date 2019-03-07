@@ -154,7 +154,6 @@
               }
 
             };
-            http://localhost:8080/geonetwork/srv/api/records/01788925-ea24-4a7e-ac0d-aa10f8210b8c/attachments/oldmaps.jpeg
             scope.$watch('gnCurrentEdit.uuid', function(n, o) {
               if (angular.isUndefined(scope.uuid) ||
                 n != o) {
@@ -1087,7 +1086,8 @@
                       scope.config.types[0];
                   scope.config.multilingualFields = [];
                   angular.forEach(typeConfig.fields, function(f, k) {
-                    if (f.isMultilingual !== false) {
+                    if (scope.isMdMultilingual &&
+                        f.isMultilingual !== false) {
                       scope.config.multilingualFields.push(k);
                     }
                   });
@@ -1244,13 +1244,12 @@
                  * @param {string} value of the attribute
                  */
                 function setParameterValue(pName, value) {
-                  var p = scope.params;
                   if (scope.isFieldMultilingual(pName)) {
                     $.each(scope.mdLangs, function(key, v) {
-                      p[pName][v] = value;
+                      scope.params[pName][v] = value;
                     });
                   } else {
-                    p[pName] = value;
+                    scope.params[pName] = value;
                   }
                 }
 
@@ -1518,10 +1517,12 @@
                         }
                       });
                     }
+                    // Set a default label
                     if (!scope.isEditing &&
                         angular.isDefined(newValue.copyLabel)) {
-                      scope.params[newValue.copyLabel] =
-                          $translate(newValue.label);
+                      setParameterValue(
+                        newValue.copyLabel,
+                        $translate.instant(newValue.label));
                     }
 
                     if (newValue.sources && newValue.sources.thumbnailMaker) {
