@@ -69,8 +69,7 @@
   <!-- Legislation -->
   <skos:Concept rdf:about="https://inspire.ec.europa.eu/documents/commission-regulation-eu-no-10892010-23-november-2010-implementing-directive-20072ec">
     <skos:prefLabel xml:lang="en">COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</skos:prefLabel>
-    <skos:prefLabel xml:lang="fr">Règlement (UE) n ° 1089/2010 de la Commission du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</skos:prefLabel>
-
+    <skos:prefLabel xml:lang="fr">RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</skos:prefLabel>
     <skos:broader rdf:resource="https://inspire.ec.europa.eu/Legislation/Data-Specifications/2892"/>
   </skos:Concept>
 
