@@ -306,7 +306,9 @@
              }
              else {
                var params = {id: gnCurrentEdit.id};
-
+               if (gnCurrentEdit.tab) {
+                 params.currTab = gnCurrentEdit.tab;
+               }
                // If a new session, ask the server to save the original
                // record and update session start time
                if (startNewSession) {
@@ -314,7 +316,7 @@
                  gnCurrentEdit.sessionStartTime = moment();
                }
                $http.get('../api/records/' + gnCurrentEdit.id + '/editor',
-               params).then(function(data) {
+                 {params: params}).then(function(data) {
                  refreshForm($(data.data));
                });
              }
