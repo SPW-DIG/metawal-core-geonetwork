@@ -170,6 +170,10 @@
                          } else {
                            scope.relations[idx] = value;
                          }
+                         if (scope.relations.siblings && scope.relations.associated) {
+                           scope.relations.siblings = angular.merge(scope.relations.associated, scope.relations.siblings);
+                           scope.relations.associated = {};
+                         }
                        });
                        if (controller) {
                           controller.finishRequest(elem, scope.relationFound);
