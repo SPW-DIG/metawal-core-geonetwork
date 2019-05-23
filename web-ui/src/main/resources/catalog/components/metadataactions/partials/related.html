@@ -191,8 +191,13 @@
             {{::(config.getLabel(mainType, type)) | translate}}
           </span>
           <br/>
-          <span class="visible-lg-*"
+          <!-- METAWAL - Update MDSIBLING behaviour because the RW references links on MTD origin and MTD destination -->
+          <!-- span class="visible-lg-*"
                 data-ng-if="mainType == 'MDSIBLING'">
+            ({{::r.associationType | translate}}{{::(r.initiativeType != '' ? ' / ' + (r.initiativeType | translate) : '')}})
+          </span -->
+          <span class="visible-lg-*"
+                data-ng-if="mainType == 'MDSIBLING' && r.initiativeType">
             ({{::r.associationType | translate}}{{::(r.initiativeType != '' ? ' / ' + (r.initiativeType | translate) : '')}})
           </span>
 
