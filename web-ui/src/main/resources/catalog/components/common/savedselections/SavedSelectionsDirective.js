@@ -27,7 +27,7 @@
   var module = angular.module('gn_saved_selections_directive',
     []);
 
-  module.factory('gpBasketService', function($http) {
+  module.factory('gpBasketService', ['$http', function($http) {
     return {
       gpbasket: function(url){
         var promise = $http.get(url)
@@ -41,7 +41,7 @@
         return promise
       }
     };
-  });
+  }]);
 
 
 
