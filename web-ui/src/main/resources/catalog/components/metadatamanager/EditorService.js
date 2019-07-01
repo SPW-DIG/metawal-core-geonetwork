@@ -37,15 +37,17 @@
   module.value('gnCurrentEdit', {});
 
   module.factory('gnEditor',
-      ['$q',
-       '$http',
-       '$translate',
-       '$compile',
-       'gnUrlUtils',
-       'gnXmlTemplates',
-       'gnHttp',
-       'gnCurrentEdit',
-       function($q, $http, $translate, $compile,
+      [
+        '$rootScope',
+        '$q',
+        '$http',
+        '$translate',
+        '$compile',
+        'gnUrlUtils',
+        'gnXmlTemplates',
+        'gnHttp',
+        'gnCurrentEdit',
+       function($rootScope, $q, $http, $translate, $compile,
                gnUrlUtils, gnXmlTemplates,
                gnHttp, gnCurrentEdit) {
 
@@ -233,8 +235,14 @@
                 if (!silent) {
                   setStatus({msg: 'saveMetadataError', saving: false});
                 }
+
                 gnCurrentEdit.working = false;
-                defer.reject(error);
+
+                // Error is returned in XML format, convert it to JSON
+                var x2js = new X2JS();
+                var errorJson = x2js.xml_str2json(error);
+
+                defer.reject(errorJson.apiError);
               });
              return defer.promise;
            },
@@ -341,7 +349,7 @@
                extent = angular.fromJson(value);
              } catch (e) {
                console.warn(
-                 'Failed to parse the following extent as JSON: ' +
+               'Failed to parse the following extent as JSON: ' +
                value);
              }
              angular.extend(gnCurrentEdit, {
@@ -377,7 +385,7 @@
                  gnCurrentEdit.allLanguages.code2iso[code] = iso;
                  gnCurrentEdit.allLanguages.iso2code[iso] = code;
                  gnCurrentEdit.allLanguages.iso.push(iso);
-                 ;
+
                });
              }
 
@@ -541,10 +549,14 @@
              var defer = $q.defer();
              $http.delete('../api/records/' + gnCurrentEdit.id +
              '/editor/attributes?ref=' + ref.replace('COLON', ':'))
-              .success(function(data) {
+              .then(function(data) {
                var target = $('#gn-attr-' + ref);
                target.slideUp(duration, function() { $(this).remove();});
-             });
+               defer.resolve();
+               $rootScope.$broadcast('attributeRemoved', ref);
+             }, function(errorData) {
+                defer.reject(errorData);
+              });
              return defer.promise;
            },
            /**

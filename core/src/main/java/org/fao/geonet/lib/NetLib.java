@@ -175,7 +175,6 @@ public class NetLib {
             props.put("http.proxyPort", "");
             props.put("http.nonProxyHosts", "");
         }
-
     }
 
     //---------------------------------------------------------------------------

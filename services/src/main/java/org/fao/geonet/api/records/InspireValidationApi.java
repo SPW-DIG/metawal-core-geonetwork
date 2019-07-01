@@ -23,27 +23,14 @@
 
 package org.fao.geonet.api.records;
 
-import static org.fao.geonet.api.ApiParams.API_CLASS_RECORD_TAG;
-import static org.fao.geonet.api.ApiParams.API_PARAM_RECORD_UUID;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactoryConfigurationError;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import javassist.NotFoundException;
+import jeeves.server.context.ServiceContext;
+import jeeves.services.ReadWriteController;
 import org.apache.http.HttpStatus;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.api.API;
@@ -57,7 +44,6 @@ import org.fao.geonet.api.records.formatters.cache.Key;
 import org.fao.geonet.api.tools.i18n.LanguageUtils;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.domain.AbstractMetadata;
-import org.fao.geonet.events.history.RecordProcessingChangeEvent;
 import org.fao.geonet.events.history.RecordValidationTriggeredEvent;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.EditLib;
@@ -79,21 +65,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import javassist.NotFoundException;
-import jeeves.server.context.ServiceContext;
-import jeeves.services.ReadWriteController;
 import org.springframework.web.context.request.NativeWebRequest;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.fao.geonet.api.ApiParams.API_CLASS_RECORD_TAG;
+import static org.fao.geonet.api.ApiParams.API_PARAM_RECORD_UUID;
+
 @RequestMapping(value = {
-        "/api/records",
-        "/api/" + API.VERSION_0_1 +
+        "/{portal}/api/records",
+        "/{portal}/api/" + API.VERSION_0_1 +
         "/records"
 })
 @Api(value = API_CLASS_RECORD_TAG,
@@ -102,6 +96,15 @@ tags = API_CLASS_RECORD_TAG)
 @PreAuthorize("hasRole('Editor')")
 @ReadWriteController
 public class InspireValidationApi {
+
+    @Autowired
+    private SettingManager settingManager;
+
+    @Autowired
+    private SchemaManager schemaManager;
+
+    @Autowired
+    private DataManager dataManager;
 
     String supportedSchemaRegex = "(iso19139|iso19115-3).*";
 
@@ -149,7 +152,6 @@ public class InspireValidationApi {
             ) throws Exception {
 
         ApplicationContext appContext = ApplicationContextHolder.get();
-        final SettingManager settingManager = appContext.getBean(SettingManager.class);
         AbstractMetadata metadata = ApiUtils.canEditRecord(metadataUuid, request);
 
         new RecordValidationTriggeredEvent(metadata.getId(), ApiUtils.getUserSession(request.getSession()).getUserIdAsInt(), null).publish(appContext);
@@ -203,8 +205,9 @@ public class InspireValidationApi {
 
             md.detach();
             ServiceContext context = ApiUtils.createServiceContext(request);
-            Attribute schemaLocAtt =  appContext.getBean(SchemaManager.class).getSchemaLocation(
+            Attribute schemaLocAtt =  schemaManager.getSchemaLocation(
                 "iso19139", context);
+
 
             if (schemaLocAtt != null) {
                 if (md.getAttribute(
@@ -220,7 +223,7 @@ public class InspireValidationApi {
 
             InputStream metadataToTest = convertElement2InputStream(md);
 
-            String testId = InspireValidatorUtils.submitFile(URL, metadataToTest, metadata.getUuid());
+            String testId = InspireValidatorUtils.submitFile(URL, metadataToTest, metadata.getUuid(), settingManager);
 
             return testId;
         } catch (Exception e) {
@@ -277,15 +280,13 @@ public class InspireValidationApi {
             HttpSession session
             ) throws Exception {
 
-        ApplicationContext appContext = ApplicationContextHolder.get();
-        final SettingManager settingManager = appContext.getBean(SettingManager.class);
         String URL = settingManager.getValue(Settings.SYSTEM_INSPIRE_REMOTE_VALIDATION_URL);
 
         try {
-            if (InspireValidatorUtils.isReady(URL, testId, null)) {
+            if (InspireValidatorUtils.isReady(URL, testId, null, settingManager)) {
                 Map<String, String> values = new HashMap<>();
 
-                values.put("status", InspireValidatorUtils.isPassed(URL, testId, null));
+                values.put("status", InspireValidatorUtils.isPassed(URL, testId, null, settingManager));
                 values.put("report", InspireValidatorUtils.getReportUrl(URL, testId));
                 response.setStatus(HttpStatus.SC_OK);
 
@@ -302,8 +303,4 @@ public class InspireValidationApi {
         response.setStatus(HttpStatus.SC_CREATED);
         return new HashMap<>();
     }
-
-
-
-
 }
