@@ -275,7 +275,7 @@
           // Redirect to WALONMAP
           // If no layer, GetCapabilities and get all layers and make a list all |0,1,2,3
           // If layer, |id de la layer
-          $window.open('http://geoportail.wallonie.be/walonmap/#WMS=' + link.id.split('?request=GetCapabilities&service=WMS')[0] + '|0','_blank');
+          $window.open('https://geoportail.wallonie.be/walonmap/#WMS=' + link.id.split('?request=GetCapabilities&service=WMS')[0] + '|0','_blank');
           /*var config = {
             uuid: md ? md.getUuid() : null,
             type: link.protocol.indexOf('WMTS') > -1 ? 'wmts' : 'wms',
