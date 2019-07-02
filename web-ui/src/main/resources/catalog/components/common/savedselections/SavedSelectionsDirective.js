@@ -36,7 +36,7 @@
           return response.data;
         },
         function(error){
-          return response.error;
+          return error;
         })
         return promise
       }
@@ -533,20 +533,23 @@
             console.log(data);
             console.log('data console.log(scope.listGeoportailBasketList[i].GPBasketName)');
             console.log(GNBasketName);
-            for (var j = 0; j < data.list.length; j++) {
-              console.log(GNBasketName);
-              var item = gnSavedSelectionConfig.localList.find(function (item) {
-                return item.name === GNBasketName;
-              });
-              console.log(item);
-              if (item.records.indexOf(data.list[j].metawalId) === -1) {
-                console.log("element doesn't exist to add ");
+            if (data.list){
+              for (var j = 0; j < data.list.length; j++) {
+                console.log(GNBasketName);
+                var item = gnSavedSelectionConfig.localList.find(function (item) {
+                  return item.name === GNBasketName;
+                });
                 console.log(item);
-                console.log(data.list[j].metawalId);
-                scope.initiateGP(item, data.list[j].metawalId);
+                if (item.records.indexOf(data.list[j].metawalId) === -1) {
+                  console.log("element doesn't exist to add ");
+                  console.log(item);
+                  console.log(data.list[j].metawalId);
+                  scope.initiateGP(item, data.list[j].metawalId);
+                }
+                //scope.initiateGP(item, data.list[j].metawalId);
               }
-              //scope.initiateGP(item, data.list[j].metawalId);
             }
+
 
           }, function (error) {
             console.log(error);
@@ -570,8 +573,8 @@
             scope.selections = null;
             controller.getSelections(scope.user).then(function(selections) {
               scope.selections = selections;
-              console.log('scope.selections'+scope.selections)
-              console.log(scope.selections)
+              console.log('scope.selections'+scope.selections);
+              console.log(scope.selections);
 
 
               /// Add
@@ -588,7 +591,7 @@
         console.log(controller.getSelections(scope.user));
         console.log(controller);
         //console.log(sel.records);
-        console.log(selection)
+        console.log(scope.selection);
 /*
         scope.basketAction = function(){
           console.log('test basketAction')
@@ -870,6 +873,7 @@
             //console.log(scope.user);
             //console.log(scope.uuid);
             //scope.action = null;
+            if (window.geoportail){
             if (window.geoportail.logged === true) {
               if (selection.records.indexOf(scope.uuid) > -1) {
                 controller.remove(selection, scope.user, scope.uuid);
@@ -904,6 +908,7 @@
                 scope.updateGPBasket(selection, scope.uuid, scope.action);
               }
             }else {}
+          }
           };
 
           scope.initiateGP = function(selection, uuid) {
