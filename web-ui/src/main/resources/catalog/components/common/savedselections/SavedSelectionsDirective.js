@@ -114,7 +114,7 @@
             },
             apirw: function(uuids, records) {
               var mapbasket = [];
-              var url = 'http://geoportail.wallonie.be/files/' +
+              var url = 'https://geoportail.wallonie.be/files/' +
                 'GeoViewer/Main/index.html#panier=';
               for (var i = 0; i < uuids.length; i++) {
                 var uuid = uuids[i], record = records[uuid];
@@ -161,7 +161,7 @@
                 var md = new Metadata(record);
                 uuidList.push(uuid);
               }
-              window.open('http://geoportail.wallonie.be/sites/geoportail/' +
+              window.open('https://geoportail.wallonie.be/sites/geoportail/' +
                 'geodata-donwload.html?uuids=' +
                 uuidList.join(','), 'download');
             },
