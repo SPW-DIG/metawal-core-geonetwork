@@ -2,8 +2,11 @@
     <ul ng-repeat="type in ::types"
         ng-if="::relations[type]"
         class="gn-related-list">
-      <li class="gn-related-type">{{type | translate}}</li>
-      <li ng-repeat="r in ::relations[type]" >
+      <li class="gn-related-type" ng-click="display=display?false:true">
+        {{type | translate}}
+        <span style="color: rgb(66, 139, 202);cursor: pointer;">({{ ::relations[type].length }})</span>
+      </li>
+      <li ng-show="display" ng-repeat="r in ::relations[type]" >
         <a href="{{location.origin}}{{location.pathname}}#/metadata/{{r.id}}"
            title="{{r.title | gnLocalized: lang}}">
           {{r.title | gnLocalized: lang}}
