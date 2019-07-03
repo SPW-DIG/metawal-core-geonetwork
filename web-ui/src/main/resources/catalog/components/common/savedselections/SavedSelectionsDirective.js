@@ -477,8 +477,8 @@
    * Panel to manage user saved selection content
    */
   module.directive('gnSavedSelectionsPanel', [
-    '$translate', 'gnLangs', 'gnSavedSelectionConfig', 'gpBasketService','$window',
-    function($translate, gnLangs, gnSavedSelectionConfig, gpBasketService, $window) {
+    '$translate', 'gnLangs', 'gnSavedSelectionConfig', 'gpBasketService','$window', 'gnGlobalSettings',
+    function($translate, gnLangs, gnSavedSelectionConfig, gpBasketService, $window, gnGlobalSettings) {
       function link(scope, element, attrs, controller) {
         scope.lang = gnLangs.current;
         scope.selections = null;
@@ -555,7 +555,7 @@
               for (var i = 0; i < scope.listGeoportailBasketList.length ; i++) {
                 var GNBasketName = scope.listGeoportailBasketList[i].GNBasketName;
                 var GPBasketName = scope.listGeoportailBasketList[i].GPBasketName;
-                var url = "http://jahia7.spw.test.wallonie.be/fr/sites/geoportail.manage" + scope.listGeoportailBasketList[i].GPBasketName + ".do?action=list";
+                var url = gnGlobalSettings.gnCfg.jahiaUrl + "/fr/sites/geoportail.manage" + scope.listGeoportailBasketList[i].GPBasketName + ".do?action=list";
                 scope.requestGPbasket(url, GNBasketName);
               }
             });
@@ -600,8 +600,10 @@
    * Button to add or remove item from user saved selection.
    */
   module.directive('gnSavedSelectionsAction',
-    ['gnSavedSelectionConfig', '$rootScope', 'Metadata', '$http', 'gpBasketService', '$q',
-      function(gnSavedSelectionConfig, $rootScope, Metadata, $http, gpBasketService,$q) {
+    ['gnSavedSelectionConfig', '$rootScope', 'Metadata', '$http', 'gpBasketService',
+      '$q', 'gnGlobalSettings',
+      function(gnSavedSelectionConfig, $rootScope, Metadata, $http, gpBasketService,
+               $q, gnGlobalSettings) {
         function link(scope, element, attrs, controller) {
           // API JS Metawal/Geoportail
           // Detect auth (GP or MW)
@@ -777,7 +779,7 @@
             var item = scope.listGeoportailBasketList.find(function (item) {
               return item.GNBasketName === selection.name;
             });
-            var url = "http://jahia7.spw.test.wallonie.be/fr/sites/geoportail.manage"+ item.GPBasketName +".do";
+            var url = gnGlobalSettings.gnCfg.jahiaUrl + "/fr/sites/geoportail.manage"+ item.GPBasketName +".do";
             var data = $.param({
               metawalId: uuid,
               action: action

@@ -42,6 +42,7 @@
   module.constant('gnViewerSettings', {});
   module.constant('gnGlobalSettings', function() {
     var defaultConfig = {
+      'jahiaUrl': 'https://geoportail.wallonie.be',
       'langDetector': {
         'fromHtmlTag': false,
         'regexp': '^(?:\/.+)?/.+\/([a-z]{2,3})\/.+',
