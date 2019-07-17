@@ -10,7 +10,7 @@ UPDATE metadata
 UPDATE metadata
   SET data = REPLACE(
       data,
-      'http://geoportail.wallonie.be/ressources/id/', 'https://geodata.wallonie.be/id/')
+      'http://geoportail.wallonie.be/ressources/id/', 'http://geodata.wallonie.be/id/')
   WHERE data LIKE '%http://geoportail.wallonie.be/ressources/id/%';
 
 UPDATE metadata
