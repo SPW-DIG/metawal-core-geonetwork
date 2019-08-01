@@ -49,10 +49,11 @@ goog.require('gn_alert');
   module.constant('gnViewerSettings', {});
   module.constant('gnGlobalSettings', function() {
     var defaultConfig = {
+      'jahiaUrl': 'https://geoportail.wallonie.be',
       'langDetector': {
         'fromHtmlTag': false,
         'regexp': '^(?:\/.+)?/.+\/([a-z]{2,3})\/.+',
-        'default': 'eng'
+        'default': 'fre'
       },
       'nodeDetector': {
         'regexp': '^(?:\/.+)?\/(.+)\/[a-z]{2,3}\/.+',
@@ -76,17 +77,7 @@ goog.require('gn_alert');
             'eng': 'en',
             'dut': 'nl',
             'fre': 'fr',
-            'ger': 'de',
-            'kor': 'ko',
-            'spa': 'es',
-            'cze': 'cs',
-            'cat': 'ca',
-            'fin': 'fi',
-            'ice': 'is',
-            'ita' : 'it',
-            'rus': 'ru',
-            'chi': 'zh',
-            'slo': 'sk'
+            'ger': 'de'
           },
           'isLogoInHeader': false,
           'logoInHeaderPosition': 'left'
@@ -365,7 +356,7 @@ goog.require('gn_alert');
         }
         iso3lang = this.getIso3Lang(iso2lang || detector.default);
       }
-      this.current = iso3lang || 'eng';
+      this.current = iso3lang || 'fre';
 
       // Set locale to global settings. This is
       // used by locale loader.
@@ -391,7 +382,7 @@ goog.require('gn_alert');
       return false;
     },
     getIso2Lang: function(iso3lang) {
-      return this.langs[iso3lang] || 'en';
+      return this.langs[iso3lang] || 'fr';
     },
     getIso3Lang: function(iso2lang) {
       for (p in this.langs) {
@@ -399,7 +390,7 @@ goog.require('gn_alert');
           return p;
         }
       }
-      return 'eng';
+      return 'fre';
     }
   });
 
@@ -442,7 +433,7 @@ goog.require('gn_alert');
 
       // If gnLangs current already set by config, do not use URL
       $scope.langs = gnGlobalSettings.gnCfg.mods.header.languages;
-      $scope.lang = gnLangs.detectLang(null, gnGlobalSettings);
+      $scope.lang = gnLangs.detectLang(gnGlobalSettings.gnCfg.langDetector, gnGlobalSettings);
       $scope.iso2lang = gnLangs.getIso2Lang($scope.lang);
 
       $scope.getSocialLinksVisible = function() {
