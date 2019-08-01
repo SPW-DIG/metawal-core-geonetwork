@@ -1,28 +1,22 @@
 <ul class="list-group" ng-if="::relations">
-    <ul ng-repeat="type in ::types"
-        ng-if="::relations[type]"
-        class="gn-related-list">
-      <li class="gn-related-type" ng-click="display=display?false:true">
-        {{type | translate}}
-        <span>({{ ::relations[type].length }})</span>
-        <span ng-if="::relations[type].length > 2"
-              style="color: rgb(66, 139, 202);cursor: pointer;">
-          <span ng-if="display?false:true">+</span>
-          <span ng-if="display?true:false">-</span>
-        </span>
-      </li>
-      <li ng-repeat="r in ::relations[type]" >
-        <a ng-if="$index < 2" href="{{location.origin}}{{location.pathname}}#/metadata/{{r.id}}"
-           title="{{r.title | gnLocalized: lang}}">
-          {{r.title | gnLocalized: lang}}
-        </a>
-        <a ng-if="$index >= 2" ng-show="display" href="{{location.origin}}{{location.pathname}}#/metadata/{{r.id}}"
-           title="{{r.title | gnLocalized: lang}}">
-          {{r.title | gnLocalized: lang}}
-        </a>
-        <span ng-if="$index === 2 && !display">...</span>
-      </li>
-
-    </ul>
+  <ul ng-repeat="type in ::types"
+      ng-if="::relations[type]"
+      ng-init="displayState[type] = false;"
+      class="gn-related-list">
+    <li class="gn-related-type">
+      {{::relations[type].length}}&nbsp;{{type | translate}}
+    </li>
+    <li ng-repeat="r in ::relations[type]" >
+      <a ng-show="$index < max || displayState[type]"
+         href="{{location.origin}}{{location.pathname}}#/metadata/{{r.id}}"
+         title="{{r.title | gnLocalized: lang}}">
+        {{r.title | gnLocalized: lang}}
+      </a>
+    </li>
+    <li ng-if="relations[type].length > max && !display">
+      <a ng-click="displayState[type] = !displayState[type]">
+        {{relations[type].length - max}}&nbsp;{{(displayState[type] ? 'less' : 'more') | translate}} ...
+      </a>
+    </li>
   </ul>
 </ul>

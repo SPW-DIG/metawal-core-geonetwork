@@ -543,6 +543,8 @@
           controller.add(selection, scope.user, scope.uuid);
         };
 
+        scope.isSavedSelectionEnabled =
+          gnGlobalSettings.gnCfg.mods.search.savedSelection.enabled;
 
         scope.$watch('user', function(n, o) {
           if (n !== o || scope.selections === null) {

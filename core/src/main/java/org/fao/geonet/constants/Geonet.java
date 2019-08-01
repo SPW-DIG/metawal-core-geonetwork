@@ -204,8 +204,8 @@ public final class Geonet {
         public static final String CONV_STYLESHEETS = STYLESHEETS + "/conversion";
         public static final String IMPORT_STYLESHEETS = CONV_STYLESHEETS + "/import";
         public static final String WFS_STYLESHEETS = "convert/WFSToFragments";
-        public static final String DIF_STYLESHEETS = "convert/ThreddsDIFToISO";
         public static final String TDS_STYLESHEETS = "convert/ThreddsToFragments";
+        public static final String TDS_19119_19139_STYLESHEETS = "convert/ThreddsCatalogto19119";
         public static final String ISO19119TOJZKIT_STYLESHEET = "convert/19119ToJZKitRepository.xsl";
         public static final String OGC_STYLESHEETS = "convert/OGCWxSGetCapabilitiesto19119";
         public static final String CONVERT_STYLESHEETS = "convert/";
@@ -417,6 +417,18 @@ public final class Geonet {
          * engine. Default is 10 results
          */
         public static final String HITS_PER_PAGE = "hitsPerPage";
+
+        /**
+         * Parameter name: {@value #MAX_RECORDS} - Number of maximum results returned by the search
+         * engine, given the from / to user provided parameters. Default is 100 results.
+         */
+        public static final String MAX_RECORDS = "maxRecords";
+
+        /**
+         * Parameter name: {@value #ALLOW_UNBOUNDED_QUERIES} - Allow XmlSearch to return as many 
+         * records as the search returns (this was the default behaviour before 3.8.x).
+         */
+        public static final String ALLOW_UNBOUNDED_QUERIES = "allowUnboundedQueries";
 
         /**
          * Parameter name: {@value #SIMILARITY} - Use the Lucene FuzzyQuery. Values range from 0.0
