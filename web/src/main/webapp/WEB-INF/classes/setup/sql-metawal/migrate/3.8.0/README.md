@@ -7,7 +7,9 @@ First and before starting the application, run the SQL migration as described in
 
 ## Application deployment
 
-Then start the application.
+
+* Remove wro4j-cache*
+* ouThen start the application.
 
 
 ## ISO19115-3:2014 to ISO19115-3:2018 migration
@@ -74,3 +76,10 @@ SELECT distinct(schemaid), count(*) FROM metadata GROUP BY schemaId
 ```
 
 Return a majority of iso19115-3.2018.
+
+
+
+## ISO19115-3:2018 / Improve INSPIRE TG2 compliancy
+
+
+Same procedure as previous step but with process `inspire-tg2`.
