@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://re3gistry.gim.be/codelist/media-types">
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Type de médias</dc:title>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Ce registre contient les types de média utilisés pour le partage de données spatiales en particulier dans les services de téléchargement du Géoportail de la Wallonie. Il est basé sur le registre INSPIRE et IANA.</dc:description>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2019-08-12T13:16:15</dcterms:issued>
+    <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/">2019-08-12T13:16:15</dcterms:modified>
+    <skos:hasTopConcept rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+    <skos:hasTopConcept rdf:resource="http://re3gistry.gim.be/codelist/media-types/image" />
+    <skos:hasTopConcept rdf:resource="http://re3gistry.gim.be/codelist/media-types/text" />
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://re3gistry.gim.be/codelist/media-types/application">
+    <skos:prefLabel xml:lang="fr">application</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce type contient les sous-types du type de média application utilisés pour le partage de données spatiales en particulier dans les services de téléchargement du Géoportail de la Wallonie. Il est basé sur le registre INSPIRE et IANA.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-ascii-grid" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-ecw" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-filegdb" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-gmz" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-las" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-laz" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-oracledump" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-shapefile" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/geopackage+sqlite3" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/gml+xml" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.sqlite3" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/json" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/pdf" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/xml" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.ms-excel" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/msword" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/zip" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/geo+json" />
+    <skos:narrower rdf:resource="http://re3gistry.gim.be/codelist/media-types/gpx+xml" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://re3gistry.gim.be/codelist/media-types/image">
+    <skos:prefLabel xml:lang="fr">image</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce type contient les sous-types du type de média image utilisés pour le partage de données spatiales en particulier dans les services de téléchargement du Géoportail de la Wallonie. Il est basé sur le registre INSPIRE et IANA.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/jp2" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/tiff" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/png" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/vnd.dwg" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/vnd.dxf" />
+    <skos:narrower rdf:resource="http://re3gistry.gim.be/codelist/media-types/x-geo+tiff" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://re3gistry.gim.be/codelist/media-types/text">
+    <skos:prefLabel xml:lang="fr">texte</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce type contient les sous-types du type de média text utilisés pour le partage de données spatiales en particulier dans les services de téléchargement du Géoportail de la Wallonie. Il est basé sur le registre INSPIRE et IANA.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/text/csv" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-ascii-grid">
+    <skos:prefLabel xml:lang="fr">Ascii Grid (.asc ou .grd)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichiers ASCII GRID ayant l'extension suivante : asc, grd</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-ecw">
+    <skos:prefLabel xml:lang="fr">ECW (.ecw)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichiers Enhanced Compressed Wavelet (ECW) avec l'extension : ecw</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-filegdb">
+    <skos:prefLabel xml:lang="fr">ESRI File Geodatabase (.fgdb)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les Geodatabse Fichier d'ESRI, Le fichier est une archive zip contenant le répertoire gdb.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-gmz">
+    <skos:prefLabel xml:lang="fr">GMLZip (x-gmz)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce type de média doit être utilisé pour une archive zip contenant un ou plusieurs documents GML.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-las">
+    <skos:prefLabel xml:lang="fr">LAS (.las)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichiers ASPRS LASer ayant l'extension : las. Le format de fichier LAS est un format public permettant l'échange de données en 3 dimensions de nuages ​​de points.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-laz">
+    <skos:prefLabel xml:lang="fr">LASZip (.laz)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : laz</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-oracledump">
+    <skos:prefLabel xml:lang="fr">Oracle-Dump</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les dumps Oracle. Ce media type est incomplet car il manque une référence à la spécification du format.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-shapefile">
+    <skos:prefLabel xml:lang="fr">ESRI Shapefile (.shp)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichier shape d'ESRI. L'archive zip contient au moins les fichiers shp, shx et dbf.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/geopackage+sqlite3">
+    <skos:prefLabel xml:lang="fr">OGC GeoPackage (.gpkg)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : gpkg</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/gml+xml">
+    <skos:prefLabel xml:lang="fr">GML (.gml)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : xml, gml</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml">
+    <skos:prefLabel xml:lang="fr">KML (.kml)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : kml</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz">
+    <skos:prefLabel xml:lang="fr">KMZ (.kmz)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : kmz</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.sqlite3">
+    <skos:prefLabel xml:lang="fr">SQLITE (.sqlite3, .sqlie, .db)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : db ou sqlite ou sqlite3</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/image/jp2">
+    <skos:prefLabel xml:lang="fr">JPEG2000 (.jp2, .jpg2, .j2k)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : jp2 ou jpg2 ou j2k.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/image" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/image/tiff">
+    <skos:prefLabel xml:lang="fr">TIFF (.tif, .tiff)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : tif ou tiff</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/image" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/text/csv">
+    <skos:prefLabel xml:lang="fr">Comma Separated Value (.csv)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : csv</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/text" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/json">
+    <skos:prefLabel xml:lang="fr">JSON (.json)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : json</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/pdf">
+    <skos:prefLabel xml:lang="fr">Adobe PDF (.pdf)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : pdf</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/xml">
+    <skos:prefLabel xml:lang="fr">XML (.xml)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : xml</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/rdf+xml">
+    <skos:prefLabel xml:lang="fr">RDF (.rdf)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : rdf</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.ms-excel">
+    <skos:prefLabel xml:lang="fr">Microsoft Excel (.xls)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : xls</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+    <skos:prefLabel xml:lang="fr">Microsoft Excel (.xlsx)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : xlsx</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/msword">
+    <skos:prefLabel xml:lang="fr">Microsoft Word (.doc)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : doc</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+    <skos:prefLabel xml:lang="fr">Microsoft Word (.docx)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : docx</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/zip">
+    <skos:prefLabel xml:lang="fr">Fichier ZIP (.zip)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichier compressés ayant l'extension : zip dont le type de media des fichiers contenus dans l'archive ne sont repris repris dans le registre conformément aux recommandations IANA.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/image/png">
+    <skos:prefLabel xml:lang="fr">PNG (.png)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : png</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/image" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/image/vnd.dwg">
+    <skos:prefLabel xml:lang="fr">Autodesk AutoCAD DWG (.dwg)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : dwg</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/image" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/geo+json">
+    <skos:prefLabel xml:lang="fr">GEOJSON (.geojson)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : geojson</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/image/vnd.dxf">
+    <skos:prefLabel xml:lang="fr">Drawing eXchange Format (.dxf)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : dxf</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://re3gistry.gim.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://re3gistry.gim.be/codelist/media-types/image" />
+  </skos:Concept>
+</rdf:RDF>
+
