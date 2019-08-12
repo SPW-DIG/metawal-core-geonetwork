@@ -9,7 +9,7 @@ First and before starting the application, run the SQL migration as described in
 
 
 * Remove wro4j-cache*
-* ouThen start the application.
+* Then start the application.
 
 
 ## ISO19115-3:2014 to ISO19115-3:2018 migration
@@ -33,7 +33,7 @@ Return iso19139 and a majority of iso19115-3.
  http://localhost:8080/geonetwork/doc/api/index.html#/processes/processRecordsUsingXslt
  * Click on `try it out` button
  * Configure parameters
-  * process=iso19115-3.2018-schemaupgrade
+  * process=iso19115-3.2018-schemaupgrade cf. https://github.com/SPW-DIG/iso19115-3/blob/3.8.x/src/main/plugin/iso19115-3/process/iso19115-3.2018-schemaupgrade.xsl
   * bucket=e101
  * Set `response content type` to `application/json` 
  * Click on `execute` button
