@@ -82,4 +82,4 @@ Return a majority of iso19115-3.2018.
 ## ISO19115-3:2018 / Improve INSPIRE TG2 compliancy
 
 
-Same procedure as previous step but with process `inspire-tg2`.
+Same procedure as previous step but with process `inspire-tg2` (see https://github.com/SPW-DIG/iso19115-3.2018/blob/3.8.x/src/main/plugin/iso19115-3.2018/process/inspire-tg2.xsl).
