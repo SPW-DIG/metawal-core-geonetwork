@@ -71,6 +71,9 @@ goog.require('gn_alert');
         'global': {
           'humanizeDates': true
         },
+        'footer':{
+          'enabled': true
+        },
         'header': {
           'enabled': true,
           'languages': {
