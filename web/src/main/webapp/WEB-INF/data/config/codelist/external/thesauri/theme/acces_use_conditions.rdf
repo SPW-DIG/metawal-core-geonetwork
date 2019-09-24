@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <skos:ConceptScheme rdf:about="http://metawal.wallonie.be/thesaurus/conditions">
+      <dc:title>Conditions d'utilisation et d'accès, version 1.0</dc:title>
+      <dc:description>Conditions d'utilisation et d'accès - Metawal</dc:description>
+      <dc:creator>
+        <foaf:Organization>
+          <foaf:name>SPW - DIG</foaf:name>
+        </foaf:Organization>
+      </dc:creator>
+      <dcterms:issued>2019-09-24</dcterms:issued>
+      <dcterms:modified>2019-09-24</dcterms:modified>
+  </skos:ConceptScheme>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#conditionsUnknown">
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      <skos:prefLabel xml:lang="fr">Conditions d'accès et d'utilisation inconnues</skos:prefLabel>
+      <skos:scopeNote xml:lang="fr">Les conditions d'accès et d'utilisation sont inconnes</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#noConditionsApply">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:prefLabel xml:lang="fr">Aucune condition d'accès et d'utilisation</skos:prefLabel>
+        <skos:scopeNote xml:lang="fr">Il n'y a aucune condition d'accès et d'utilisation</skos:scopeNote>
+    </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CGA">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:prefLabel xml:lang="fr">Conditions générales d’accès</skos:prefLabel>
+        <skos:scopeNote xml:lang="fr">La donnée est accessible par toute personne physique ou morale, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et pour toute finalité.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeA1">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+        <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type A1 </skos:prefLabel>
+        <skos:scopeNote xml:lang="fr">La donnée est accessible par toute personne physique ou morale, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent mais pour toute finalité autre que commerciale.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeB1">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type B1</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La donnée est accessible par toute personne physique ou morale. La Donnée n’est accessible que pendant la durée de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation. pour une durée indéterminée. La Donnée n’est pas toujours accessible gratuitement selon les modalités décrites dans le fichier PDF. La Donnée n’est pas toujours accessible sur l’entièreté du territoire qu’elle couvre selon les modalités décrites dans le fichier PDF. La Donnée n’est accessible que pour la finalité convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeB2">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type B2</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La Donnée n’est accessible qu’aux partenaires liés au SPW par une convention cosignée (ex. Convention WALTOPO), pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et pour toute finalité.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC1">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type C1</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La Donnée n’est accessible que pour les Zones de police et les Communes (collège communal), pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et qu’à des fins d’étude.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC2">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type C2</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La Donnée n’est accessible que pour des agents internes à la DGO1 – Routes et Bâtiments du SPW, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent  et qu’à des fins d’étude.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC2">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type C2</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La Donnée n’est accessible que pour des agents internes à la DGO1 – Routes et Bâtiments du SPW, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent  et qu’à des fins d’étude.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC3">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type C3</skos:prefLabel>
+        <skos:scopeNote xml:lang="fr">L’accès à la donnée est conditionné à une demande transmise par le demandeur au Helpdesk carto du SPW (helpdesk.carto@spw.wallonie.be). Cette demande sera automatique soumise au gestionnaire de la donnée dont l'accord est requis pour la délivrance, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et qu’à des fins d’étude.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeD1">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type D1</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La Donnée n’est accessible gratuitement que pour les services publics (commune, province, communautés et régions belges, fédéral, Intercommunale, police, services d’incendie, OIP, et leurs équivalents étrangers) et les soumissionnaires ou adjudicataires dans le cadre d'un marché public lancé par les services publics susmentionnés, ou pour l’enseignement et la recherche académique sans but lucratif.  La Donnée n’est accessible que pendant la durée du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation.  La Donnée n’est distribuée que sur l’étendue de la zone d’intérêt du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation. La Donnée n’est accessible que pour la finalité du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeD2">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’accès  – Type D2</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">La Donnée n’est accessible que pour les compagnies d’assurance, gratuitement et que pendant la durée du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation. La Donnée n’est distribuée que sur l’étendue de la zone d’intérêt du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation.  La Donnée n’est accessible que pour la finalité du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la Donnée et telle que reprise dans la Licence d’utilisation.</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CGU">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions générales d’utilisation </skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">L’Utilisateur ne peut pas redistribuer les Données à un tiers ni publier les Données sur Internet via un service web, L'utilisateur peut publier les Données sur support statique (carte papier, brochure, support de présentation orale, pdf ou image sur Internet, rapport, etc.).</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeA">
+         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+         <skos:prefLabel xml:lang="fr">Conditions particulières d’utilisation - Type A</skos:prefLabel>
+         <skos:scopeNote xml:lang="fr">L’Utilisateur ne peut pas redistribuer la Donnée à un tiers. L’Utilisateur est autorisé à publier la Donnée sur Internet via un service web ou sur support statique (carte papier, brochure, support de présentation orale, pdf ou image sur Internet, rapport, etc.). L’Utilisateur indique la mention « Sources des données : Service public de Wallonie » ou « Sources des données : SPW » sur tout document et sur toute carte issus de la Donnée qu’il publie, à moins qu’une mention particulière soit mentionnée dans la Fiche descriptive de la Donnée. Dans la mesure du possible, la mention comporte un hyperlien vers http://geoportail.wallonie.be</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeB">
+          <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+          <skos:prefLabel xml:lang="fr">Conditions particulières d’utilisation - Type B</skos:prefLabel>
+          <skos:scopeNote xml:lang="fr">L’Utilisateur ne peut pas redistribuer la Donnée à un tiers ni la publier sur Internet via un service web ni sur support statique (carte papier, brochure, support de présentation orale, pdf ou image sur Internet, rapport, etc.).</skos:scopeNote>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeC">
+          <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+          <skos:prefLabel xml:lang="fr">Conditions particulières d’utilisation - Type C</skos:prefLabel>
+          <skos:scopeNote xml:lang="fr">L’Utilisateur peut redistribuer la Donnée à un tiers, publier la Donnée sur Internet via un service web ou sur support statique (carte papier, brochure, support de présentation orale, pdf ou image sur Internet, rapport, etc.). </skos:scopeNote>
+  </rdf:Description>
+  </rdf:RDF>
+
+
