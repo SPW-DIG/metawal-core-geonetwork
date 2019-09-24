@@ -72,7 +72,7 @@ goog.require('gn_alert');
           'humanizeDates': true
         },
         'footer':{
-          'enabled': true
+          'enabled': true,
           'showSocialBarInFooter': true
         },
         'header': {
