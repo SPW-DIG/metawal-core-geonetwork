@@ -14,12 +14,12 @@
       <dcterms:issued>2019-09-24</dcterms:issued>
       <dcterms:modified>2019-09-24</dcterms:modified>
   </skos:ConceptScheme>
-  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#conditionsUnknown">
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown">
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <skos:prefLabel xml:lang="fr">Conditions d'accès et d'utilisation inconnues</skos:prefLabel>
-      <skos:scopeNote xml:lang="fr">Les conditions d'accès et d'utilisation sont inconnes</skos:scopeNote>
+      <skos:scopeNote xml:lang="fr">Les conditions d'accès et d'utilisation sont inconnues</skos:scopeNote>
   </rdf:Description>
-  <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/conditions#noConditionsApply">
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
         <skos:prefLabel xml:lang="fr">Aucune condition d'accès et d'utilisation</skos:prefLabel>
         <skos:scopeNote xml:lang="fr">Il n'y a aucune condition d'accès et d'utilisation</skos:scopeNote>
