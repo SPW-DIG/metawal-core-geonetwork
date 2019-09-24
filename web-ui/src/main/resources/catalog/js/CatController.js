@@ -24,12 +24,12 @@
 (function() {
   goog.provide('gn_cat_controller');
 
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
 goog.require('gn_admin_menu');
 goog.require('gn_external_viewer');
 goog.require('gn_history');
@@ -73,6 +73,7 @@ goog.require('gn_alert');
         },
         'footer':{
           'enabled': true
+          'showSocialBarInFooter': true
         },
         'header': {
           'enabled': true,
@@ -88,7 +89,6 @@ goog.require('gn_alert');
         'home': {
           'enabled': true,
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/home',
-          'showSocialBarInFooter': true,
           'fluidLayout': true
         },
         'search': {
@@ -452,7 +452,7 @@ goog.require('gn_alert');
 
       $scope.getSocialLinksVisible = function() {
         var onMdView =  $location.absUrl().indexOf('/metadata/') > -1;
-        return !onMdView && gnGlobalSettings.gnCfg.mods.home.showSocialBarInFooter;
+        return !onMdView && gnGlobalSettings.gnCfg.mods.footer.showSocialBarInFooter;
       };
 
       function detectNode(detector) {
