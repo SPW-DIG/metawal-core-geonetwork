@@ -35,5 +35,8 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metada
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/workflow/allowSumitApproveInvalidMd', 'true', 2, 100004, 'n');
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/workflow/allowPublishNonApprovedMd', 'true', 2, 100005, 'n');
 
-UPDATE Settings SET value='3.8.0' WHERE name='system/platform/version';
+
+UPDATE users SET isenabled = 'n' WHERE profile != 0 && username != 'FMEupdate';
+
+UPDATE Settings SET value='3.8.1' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
