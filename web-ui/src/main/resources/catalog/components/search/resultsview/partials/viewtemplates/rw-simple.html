@@ -72,8 +72,10 @@
         <div style="float:left; display:block; width: calc(100% - 162px)">
 
           <div class="row gn-md-title">
-            <h3 data-ng-click="openRecord($index, md, searchResults.records)">
-              <a data-ng-href="#/metadata/{{md.getUuid()}}"
+            <h3>
+              <a gn-metadata-open="md"
+                 gn-records="searchResults.records"
+                 gn-formatter="formatter.defaultUrl"
                  title="{{md.title || md.defaultTitle}}">
 
                 <i class="fa gn-icon-{{md.type[0]}}" title="{{md.type[0] | translate}}"/>
@@ -81,7 +83,9 @@
             </h3>
           </div>
 
-          <div data-ng-click="openRecord($index, md, searchResults.records)"
+          <div gn-metadata-open="md"
+               gn-records="searchResults.records"
+               gn-formatter="formatter.defaultUrl"
                class="text-justify gn-md-abstract-rw ellipsis">
             <div>
               <p>{{(md.abstract || md.defaultAbstract) | regexOneSentence | striptags}}</p>
