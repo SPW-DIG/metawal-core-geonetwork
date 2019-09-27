@@ -47,11 +47,11 @@
     '$scope', '$http', '$compile', 'gnSearchSettings', 'gnSearchLocation',
     'gnMetadataActions', 'gnAlertService', '$translate', '$location',
     'gnMdView', 'gnMdViewObj', 'gnMdFormatter', 'gnConfig',
-    'gnGlobalSettings', 'gnConfigService', '$rootScope',
+    'gnGlobalSettings', 'gnConfigService', '$rootScope', '$timeout',
     function($scope, $http, $compile, gnSearchSettings, gnSearchLocation,
              gnMetadataActions, gnAlertService, $translate, $location,
              gnMdView, gnMdViewObj, gnMdFormatter, gnConfig,
-             gnGlobalSettings, gnConfigService, $rootScope) {
+             gnGlobalSettings, gnConfigService, $rootScope, $timeout) {
 
       $scope.formatter = gnSearchSettings.formatter;
       $scope.gnMetadataActions = gnMetadataActions;
@@ -191,9 +191,12 @@
           $scope.loadFormatter(f);
         }
       }
-      // $scope.$watch('mdView.current.record', loadFormatter);
-      $rootScope.$on('$locationChangeSuccess', loadFormatter)
-      loadFormatter();
+      $scope.$watch('mdView.current.record', loadFormatter);
+      $rootScope.$on('$locationChangeSuccess', loadFormatter);
+      // On page load, we need to wait the feedMd to be completed
+      // Before loading ot not the load formatter
+      // $timeout(loadFormatter, 500);
+      // loadFormatter();
 
       // Know from what path we come from
       $scope.gnMdViewObj = gnMdViewObj;
