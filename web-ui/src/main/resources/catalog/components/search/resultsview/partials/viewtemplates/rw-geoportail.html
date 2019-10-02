@@ -7,6 +7,9 @@
            title="{{md.title || md.defaultTitle}}" >
       <img data-ng-src="{{md.getThumbnails().list[0].url}}"
              data-ng-if="md.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
+        <img class="icon-api-rw-nothumbnail" data-ng-if="!md.getThumbnails().list[0].url"
+             src="../../../catalog/style/metawal/images/rw_no_preview.gif" alt="No preview">
+      </a>
     </div>
     <div class="col-sm-9">
       <div class="row pull-right views-api-rw row-api-rw ">
