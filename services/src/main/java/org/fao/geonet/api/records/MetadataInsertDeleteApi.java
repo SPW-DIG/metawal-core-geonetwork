@@ -445,6 +445,8 @@ public class MetadataInsertDeleteApi {
             } catch (ResourceNotFoundException e) {
                 metadataUuid = targetUuid;
             }
+        } else {
+            metadataUuid = UUID.randomUUID().toString();
         }
 
         // TODO : Check user can create a metadata in that group
