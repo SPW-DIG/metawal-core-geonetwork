@@ -39,5 +39,7 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metada
 UPDATE users SET isenabled = 'n' WHERE profile != 0;
 UPDATE users SET isenabled = 'y' WHERE id IN (SELECT userid FROM usergroups where groupid = 25);
 
+UPDATE metadata SET data = replace(data, 'Commission RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d''application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l''interopérabilité des séries et des services de données géographiques', 'RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d''application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l''interopérabilité des séries et des services de données géographiques') WHERE  data LIKE '%Commission RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d''application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l''interopérabilité des séries et des services de données géographiques%';
+
 UPDATE Settings SET value='3.8.1' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
