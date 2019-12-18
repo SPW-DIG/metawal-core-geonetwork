@@ -141,6 +141,8 @@
       $scope.location = gnSearchLocation;
       $scope.fluidLayout = gnGlobalSettings.gnCfg.mods.home.fluidLayout;
       $scope.fluidEditorLayout = gnGlobalSettings.gnCfg.mods.editor.fluidEditorLayout;
+      $scope.fluidHeaderLayout = gnGlobalSettings.gnCfg.mods.header.fluidHeaderLayout;
+      $scope.showGNName = gnGlobalSettings.gnCfg.mods.header.showGNName;
       $scope.toggleMap = function () {
         $(searchMap.getTargetElement()).toggle();
         searchMap.updateSize();
@@ -264,7 +266,9 @@
           $window.open('https://geoportail.wallonie.be/walonmap/#WMS=' + link.id.split('?request=GetCapabilities&service=WMS')[0] + '|0','_blank');
           /*var config = {
             uuid: md ? md.getUuid() : null,
-            type: link.protocol.indexOf('WMTS') > -1 ? 'wmts' : 'wms',
+            type:
+              link.protocol.indexOf('WMTS') > -1 ? 'wmts' :
+              (link.protocol == 'ESRI:REST' ? 'esrirest' : 'wms'),
             url: $filter('gnLocalized')(link.url) || link.url
           };
 

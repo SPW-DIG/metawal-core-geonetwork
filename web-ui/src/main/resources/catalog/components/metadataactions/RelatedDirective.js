@@ -116,6 +116,7 @@
               title: '@',
               list: '@',
               filter: '@',
+              container: '@',
               user: '=',
               hasResults: '=?'
             },
@@ -172,19 +173,25 @@
                          }
                          if (scope.relations.siblings && scope.relations.associated) {
                            for (var i = 0; i < scope.relations.associated.length; i++) {
-                             if (scope.relations.siblings.filter(function(e) {
-                               return e.id === scope.relations.associated[i].id; }).length > 0) {
+                             if (scope.relations.siblings.filter(function (e) {
+                               return e.id === scope.relations.associated[i].id;
+                             }).length > 0) {
                                /* siblings object contains associated element */
-                             }else {
+                             } else {
                                scope.relations.siblings.push(scope.relations.associated[i])
                              }
                            }
                            scope.relations.associated = {};
                          }
                        });
+
+                       if (angular.isDefined(scope.container)
+                           && scope.relations == null) {
+                         $(scope.container).hide();
+                       }
                        if (controller) {
-                          controller.finishRequest(elem, scope.relationFound);
-                        }
+                         controller.finishRequest(elem, scope.relationFound);
+                       }
                      } , function() {
                       if (controller) {
                         controller.finishRequest(elem, false);

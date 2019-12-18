@@ -540,7 +540,7 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
             adjustedUrl = context.getBean(SettingManager.class).getSiteURL(lang) + url;
         } else {
             final URI uri = new URI(url);
-            Set allowedRemoteHosts = context.getApplicationContext().getBean("formatterRemoteFormatAllowedHosts", Set.class);
+            Set allowedRemoteHosts = context.getBean("formatterRemoteFormatAllowedHosts", Set.class);
             Assert.isTrue(allowedRemoteHosts.contains(uri.getHost()), "xml.format is not allowed to make requests to " + uri.getHost());
         }
 
@@ -673,7 +673,7 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
         boolean doXLinks = serializer.resolveXLinks();
 
 
-        Element metadata = serializer.removeHiddenElements(false, md, false);
+        Element metadata = serializer.removeHiddenElements(false, md, true);
         if (doXLinks) Processor.processXLink(metadata, context);
 
         boolean withholdWithheldElements = hide_withheld != null && hide_withheld;
@@ -794,7 +794,7 @@ public class FormatterApi extends AbstractFormatService implements ApplicationLi
     }
 
     protected boolean isDevMode(ServiceContext context) {
-        return context.getApplicationContext().getBean(SystemInfo.class).isDevMode();
+        return context.getBean(SystemInfo.class).isDevMode();
     }
 
     public class FormatMetadata implements Callable<StoreInfoAndDataLoadResult> {

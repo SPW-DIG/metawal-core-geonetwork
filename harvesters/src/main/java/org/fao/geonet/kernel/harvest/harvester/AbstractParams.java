@@ -54,10 +54,13 @@ import static org.quartz.JobBuilder.newJob;
 /**
  * Params to configure a harvester. It contains things like url, username, password,...
  */
-public abstract class AbstractParams {
+public abstract class AbstractParams implements Cloneable {
     public static final String TRANSLATIONS = "translations";
     private static final long MAX_EVERY = Integer.MAX_VALUE;
 
+    public abstract String getIcon();
+
+    public abstract AbstractParams copy();
 
     public enum OverrideUuid {
         SKIP, OVERRIDE, RANDOM
@@ -92,6 +95,7 @@ public abstract class AbstractParams {
      */
     private boolean ifRecordExistAppendPrivileges;
 
+    private String batchEdits;
 
     private List<Privileges> alPrivileges = new ArrayList<>();
     private List<String> alCategories = new ArrayList<>();
@@ -188,6 +192,7 @@ public abstract class AbstractParams {
         getTrigger();
 
         setImportXslt(Util.getParam(content, "importxslt", "none"));
+        setBatchEdits(Util.getParam(content, "batchEdits", ""));
 
         this.setValidate(readValidateFromParams(content));
 
@@ -267,6 +272,7 @@ public abstract class AbstractParams {
         getTrigger();
 
         setImportXslt(Util.getParam(content, "importxslt", getImportXslt()));
+        setBatchEdits(Util.getParam(content, "batchEdits", getBatchEdits()));
         this.setValidate(readValidateFromParams(content));
 
         if (privil != null) {
@@ -316,6 +322,7 @@ public abstract class AbstractParams {
         copy.setIfRecordExistAppendPrivileges(isIfRecordExistAppendPrivileges());
 
         copy.setImportXslt(getImportXslt());
+        copy.setBatchEdits(getBatchEdits());
         copy.setValidate(getValidate());
 
         for (Privileges p : alPrivileges) {
@@ -595,5 +602,13 @@ public abstract class AbstractParams {
 
     public void setIfRecordExistAppendPrivileges(boolean ifRecordExistAppendPrivileges) {
         this.ifRecordExistAppendPrivileges = ifRecordExistAppendPrivileges;
+    }
+
+    public String getBatchEdits() {
+        return batchEdits;
+    }
+
+    public void setBatchEdits(String batchEdits) {
+        this.batchEdits = batchEdits;
     }
 }

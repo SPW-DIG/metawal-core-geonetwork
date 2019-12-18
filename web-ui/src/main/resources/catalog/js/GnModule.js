@@ -58,6 +58,7 @@
   goog.require('gn_search_form_controller');
   goog.require('gn_search_manager');
   goog.require('gn_utility');
+  goog.require('gn_openlayers');
 
 
   /**
@@ -85,6 +86,7 @@
     'gn_alert',
     'gn_admin_menu',
     'gn_cors_interceptor',
+    'gn_openlayers',
     'gn_indexingtask'
   ]);
 
