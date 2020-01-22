@@ -292,7 +292,8 @@
               <th data-translate="">legalConstraints</th>
               <td>
                 <p data-ng-repeat="c in mdView.current.record.legalConstraints track by $index">
-                  <span data-gn-lynky="{{c}}" />
+                  <span data-ng-if="c.indexOf('inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations') === -1
+                  && c !== 'Conditions d\'accès et d\'utilisation spécifiques'" data-gn-lynky="{{c}}" />
                 </p>
               </td>
             </tr>
