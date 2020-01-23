@@ -77,6 +77,7 @@ public enum OutputSchema {
         if (schema.equals("csw:Record")) return "csw";
         if (schema.equals("csw:IsoRecord")) return "gmd";
         if (schema.equals("own")) return "own";
+        if (schema.equals("mw")) return "mw";
 
         Map<String, Namespace> typenames = schemaManager.getHmSchemasTypenames();
         for (Map.Entry<String, Namespace> entry : typenames.entrySet()) {
