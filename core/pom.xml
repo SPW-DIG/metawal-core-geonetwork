@@ -217,26 +217,6 @@
       <artifactId>jts</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-analyzers-common</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-misc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-queries</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-queryparser</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-facet</artifactId>
-    </dependency>
-    <dependency>
       <groupId>pcj</groupId>
       <artifactId>pcj</artifactId>
     </dependency>
@@ -255,15 +235,6 @@
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-email</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>avalon-framework</groupId>
-      <artifactId>avalon-framework-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.avalon.framework</groupId>
-      <artifactId>avalon-framework-impl</artifactId>
-      <version>4.3.1</version>
     </dependency>
     <dependency>
       <groupId>commons-digester</groupId>
@@ -505,13 +476,17 @@
     </dependency>
     <dependency>
       <groupId>org.geonetwork-opensource</groupId>
-      <artifactId>es-core</artifactId>
+      <artifactId>index</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.elasticsearch.client</groupId>
+      <artifactId>elasticsearch-rest-high-level-client</artifactId>
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
@@ -575,6 +550,71 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>findbugs-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>it</id> <!-- Profile to enable integration tests-->
+      <properties>
+        <skipIT>false</skipIT>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>3.0.0-M4</version>
+            <configuration>
+              <groups>org.fao.geonet.repository.AbstractSpringDataTest</groups>
+              <includes>
+                <include>**/*.java</include>
+              </includes>
+              <runOrder>alphabetical</runOrder>
+              <forkCount>${system.numCores}</forkCount>
+            </configuration>
+            <executions>
+              <execution>
+                <id>integration-test</id>
+                <goals>
+                  <goal>integration-test</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>verify</id>
+                <goals>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>com.github.alexcojocaru</groupId>
+            <artifactId>elasticsearch-maven-plugin</artifactId>
+            <version>6.13</version>
+            <configuration>
+              <version>${es.version}</version>
+              <clusterName>test</clusterName>
+              <transportPort>9300</transportPort>
+              <httpPort>9200</httpPort>
+            </configuration>
+            <executions>
+              <execution>
+                <id>start-elasticsearch</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>runforked</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>stop-elasticsearch</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                  <goal>stop</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>

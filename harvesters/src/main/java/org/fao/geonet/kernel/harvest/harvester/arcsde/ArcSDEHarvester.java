@@ -350,7 +350,7 @@ public class ArcSDEHarvester extends AbstractHarvester<HarvestResult, ArcSDEPara
 
         metadataManager.flush();
 
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true);
     }
 
     /**
@@ -400,7 +400,7 @@ public class ArcSDEHarvester extends AbstractHarvester<HarvestResult, ArcSDEPara
 
         aligner.addPrivileges(id, params.getPrivileges(), localGroups, context);
 
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true);
 
         return id;
     }

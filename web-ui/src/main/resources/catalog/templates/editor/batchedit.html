@@ -241,7 +241,7 @@
                                data-ng-if="field.use === 'data-gn-metadata-picker'"
                                data-ng-disabled="field.isDeleted"
                                data-gn-metadata-picker=""
-                               data-display-field="defaultTitle"
+                               data-display-field="resourceTitle"
                                data-value-field="uuid"
                                data-ng-blur="putChange(field, $event)"/>
                         <input type="text"
@@ -406,7 +406,7 @@
               <h4 data-translate="">aboutToUpdateTheFollowing</h4>
               <ul>
                 <li data-ng-repeat="record in selectedRecords.metadata">
-                  <a data-ng-href="catalog.search#/metadata/{{record['geonet:info'].uuid}}">{{record.title || record.defaultTitle}}</a>
+                  <a data-ng-href="catalog.search#/metadata/{{record.uuid}}">{{record.resourceTitle}}</a>
                 </li>
               </ul>
             </div>
@@ -417,6 +417,7 @@
               <label for="updateDateStamp" data-translate="">updateDateStamp</label>
             </div>
           </div>
+
           <div class="row gn-margin-bottom">
             <div class="col-md-12">
               <button class="btn btn-primary"

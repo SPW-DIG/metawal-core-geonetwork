@@ -28,7 +28,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.vividsolutions.jts.geom.Envelope;
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.MultiPolygon;
+import com.vividsolutions.jts.geom.Polygon;
 import jeeves.component.ProfileManager;
 import jeeves.server.ServiceConfig;
 import jeeves.server.context.ServiceContext;
@@ -36,6 +39,7 @@ import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -52,9 +56,10 @@ import org.fao.geonet.domain.UiSetting;
 import org.fao.geonet.domain.User;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.SchemaManager;
+import org.fao.geonet.kernel.Thesaurus;
 import org.fao.geonet.kernel.ThesaurusManager;
 import org.fao.geonet.kernel.search.CodeListTranslator;
-import org.fao.geonet.kernel.search.LuceneSearcher;
+import org.fao.geonet.kernel.search.EsSearchManager;
 import org.fao.geonet.kernel.search.Translator;
 import org.fao.geonet.kernel.setting.SettingInfo;
 import org.fao.geonet.kernel.setting.SettingManager;
@@ -82,31 +87,40 @@ import org.opengis.referencing.operation.MathTransform;
 import org.owasp.esapi.errors.EncodingException;
 import org.owasp.esapi.reference.DefaultEncoder;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 import javax.annotation.Nonnull;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.fao.geonet.kernel.search.spatial.SpatialIndexWriter.parseGml;
 import static org.fao.geonet.kernel.setting.Settings.SYSTEM_SITE_ORGANIZATION;
 import static org.fao.geonet.utils.Xml.getXmlFromJSON;
+
+
 
 /**
  * These are all extension methods for calling from xsl docs.  Note:  All params are objects because
@@ -116,6 +130,60 @@ import static org.fao.geonet.utils.Xml.getXmlFromJSON;
  * @author jesse
  */
 public final class XslUtil {
+
+
+    public static MultiPolygon parseGml(Parser parser, String gml) throws IOException, SAXException,
+        ParserConfigurationException {
+        Object value = parser.parse(new StringReader(gml));
+        if (value instanceof HashMap) {
+            @SuppressWarnings("rawtypes")
+            HashMap map = (HashMap) value;
+            List<Polygon> geoms = new ArrayList<Polygon>();
+            for (Object entry : map.values()) {
+                addToList(geoms, entry);
+            }
+            if (geoms.isEmpty()) {
+                return null;
+            } else if (geoms.size() > 1) {
+                GeometryFactory factory = geoms.get(0).getFactory();
+                return factory.createMultiPolygon(geoms.toArray(new Polygon[0]));
+            } else {
+                return toMultiPolygon(geoms.get(0));
+            }
+
+        } else if (value == null) {
+            return null;
+        } else {
+            return toMultiPolygon((Geometry) value);
+        }
+    }
+
+
+    public static void addToList(List<Polygon> geoms, Object entry) {
+        if (entry instanceof Polygon) {
+            geoms.add((Polygon) entry);
+        } else if (entry instanceof Collection) {
+            @SuppressWarnings("rawtypes")
+            Collection collection = (Collection) entry;
+            for (Object object : collection) {
+                geoms.add((Polygon) object);
+            }
+        }
+    }
+
+    public static MultiPolygon toMultiPolygon(Geometry geometry) {
+        if (geometry instanceof Polygon) {
+            Polygon polygon = (Polygon) geometry;
+
+            return geometry.getFactory().createMultiPolygon(
+                new Polygon[]{polygon});
+        } else if (geometry instanceof MultiPolygon) {
+            return (MultiPolygon) geometry;
+        }
+        String message = geometry.getClass() + " cannot be converted to a polygon. Check Metadata";
+        Log.error(Geonet.INDEX_ENGINE, message);
+        throw new IllegalArgumentException(message);
+    }
 
     private static final char TS_DEFAULT = ' ';
     private static final char CS_DEFAULT = ',';
@@ -475,29 +543,33 @@ public final class XslUtil {
         String id = uuid.toString();
         String fieldname = field.toString();
         String language = (lang.toString().equals("") ? null : lang.toString());
+        final ConfigurableApplicationContext applicationContext = ApplicationContextHolder.get();
+        final EsSearchManager searchManager = applicationContext.getBean(EsSearchManager.class);
+
         try {
-            String fieldValue = LuceneSearcher.getMetadataFromIndex(language, id, fieldname);
-            if (fieldValue == null) {
-                return getIndexFieldById(appName, uuid, field, lang);
-            } else {
-                return fieldValue;
-            }
+            Set<String> fields = new HashSet<>();
+            fields.add(fieldname);
+            // TODO: Multilingual fields
+            final Map<String, String> values = searchManager.getFieldsValues(id, fields);
+            return values.get(fieldname);
         } catch (Exception e) {
+            e.printStackTrace();
             Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
-            return "";
         }
+        return "";
     }
 
     public static String getIndexFieldById(Object appName, Object id, Object field, Object lang) {
         String fieldname = field.toString();
         String language = (lang.toString().equals("") ? null : lang.toString());
-        try {
-            String fieldValue = LuceneSearcher.getMetadataFromIndexById(language, id.toString(), fieldname);
-            return fieldValue == null ? "" : fieldValue;
-        } catch (Exception e) {
-            Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
-            return "";
-        }
+        throw new NotImplementedException("getIndexFieldById not implemented in ES");
+//        try {
+//            String fieldValue = LuceneSearcher.getMetadataFromIndexById(language, id.toString(), fieldname);
+//            return fieldValue == null ? "" : fieldValue;
+//        } catch (Exception e) {
+//            Log.error(Geonet.GEONETWORK, "Failed to get index field value caused by " + e.getMessage());
+//            return "";
+//        }
     }
 
     /**
@@ -967,5 +1039,27 @@ public final class XslUtil {
         }
 
         return languageLabel;
+    }
+
+    public static List<String> getKeywordHierarchy(String keyword, String thesaurusId, String langCode) {
+        List<String> res = new ArrayList<String>();
+        if (StringUtils.isEmpty(thesaurusId)) {
+            return res;
+        }
+
+        try {
+            ApplicationContext applicationContext = ApplicationContextHolder.get();
+            ThesaurusManager thesaurusManager = applicationContext.getBean(ThesaurusManager.class);
+
+            thesaurusId = thesaurusId.replaceAll("geonetwork.thesaurus.", "");
+            Thesaurus thesaurus = thesaurusManager.getThesaurusByName(thesaurusId);
+
+            if (thesaurus != null) {
+                res = thesaurus.getKeywordHierarchy(keyword, langCode);
+            }
+            return res;
+        } catch (Exception ex) {
+        }
+        return res;
     }
 }

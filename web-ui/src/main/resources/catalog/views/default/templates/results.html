@@ -7,9 +7,9 @@
     <div data-ng-class="fluidLayout ? 'container-fluid' : 'container'">
       <div class="col-md-3 gn-search-facet">
 
-      <!-- Uncomment to hide the basket -->
+        <!-- Uncomment to hide the basket -->
         <div data-ng-show="searchResults.records.length > 0"
-            data-gn-saved-selections-panel="user"></div>
+             data-gn-saved-selections-panel="user"></div>
 
         <div data-gn-user-searches-panel="user"></div>
 
@@ -19,78 +19,60 @@
              ng-if="isFilterTagsDisplayedInSearch && searchResults.dimension">
         </div>
 
-        <!-- Hierachical facet mode -->
         <div class="panel panel-default"
-            data-ng-show="searchResults.records.length > 0">
-          <div class="panel-heading" data-gn-slide-toggle="">
-            <i class="fa fa-search"/>&nbsp;
-            <span data-translate="">filter</span>
-          </div>
+             data-ng-show="searchResults.records.length > 0">
           <div class="panel-body">
-            <div data-gn-facet-dimension-list="searchResults.dimension"
-                data-params="searchObj.params"
-                data-facet-type="facetsSummaryType"
-                data-facet-list="facetConfig"
-                data-current-facets="currentFacets">
-            </div>
+            <div data-es-facets="searchResults.facets"/>
           </div>
         </div>
       </div>
 
       <div class="col-md-9 container-fluid">
-      <div class="row gn-row-tools">
-        <div class="col-xs-12 col-md-9"
-            data-gn-facet-dimension-list="searchResults.dimension"
-            data-params="searchObj.params"
-            data-facet-type="facetsSummaryType"
-            data-facet-list="facetConfig"
-            data-current-facets="currentFacets"
-            data-tab-field="facetTabField"></div>
+        <div class="row gn-row-tools">
+          <div class="col-xs-12 col-sm-6 col-sm-push-3 text-center"
+               data-ng-show="searchResults.records.length > 0">
+            <div class=""
+                 data-gn-pagination="paginationInfo"
+                 data-hits-values="searchObj.hitsperpageValues"
+                 data-enable-hot-keys=""
+                 data-enable-events=""></div>
+          </div>
 
-        <div class="col-xs-12 col-sm-6 col-sm-push-3 text-center"
-          data-ng-show="searchResults.records.length > 0">
-          <div class=""
-              data-gn-pagination="paginationInfo"
-              data-hits-values="searchObj.hitsperpageValues"
-              data-enable-hot-keys=""
-              data-enable-events=""></div>
+          <div class="col-xs-6 col-sm-3 col-sm-pull-6 col-lg-pull-6"
+               data-ng-show="searchResults.records.length > 0">
+            <div data-gn-selection-widget=""
+                 data-results="searchResults"></div>
+          </div>
+
+          <div class="col-xs-6 col-sm-3"
+               data-ng-show="searchResults.records.length > 0">
+            <div class="pull-right"
+                 data-gn-results-tpl-switcher=""></div>
+            <div class="pull-right"
+                 data-sortby-combo=""
+                 data-params="searchObj.params"
+                 data-gn-sortby-values="searchObj.sortbyValues"></div>
+          </div>
         </div>
 
-        <div class="col-xs-6 col-sm-3 col-sm-pull-6 col-lg-pull-6"
-          data-ng-show="searchResults.records.length > 0">
-          <div data-gn-selection-widget=""
-                data-results="searchResults"></div>
-        </div>
-
-        <div class="col-xs-6 col-sm-3"
-          data-ng-show="searchResults.records.length > 0">
-          <div class="pull-right"
-               data-gn-results-tpl-switcher=""></div>
-          <div class="pull-right"
-              data-sortby-combo=""
-              data-params="searchObj.params"
-              data-gn-sortby-values="searchObj.sortbyValues"></div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">
           <span class="loading fa fa-spinner fa-spin"
                 data-ng-show="searching"></span>
 
-          <div class="alert alert-warning" role="alert"
-              ng-if="!searching && searchResults.count == 0">
-            <i class="fa fa-frown-o"></i>
-            <span data-translate="">zarooResult</span>
-          </div>
+            <div class="alert alert-warning" role="alert"
+                 ng-if="!searching && searchResults.count == 0">
+              <i class="fa fa-frown-o"></i>
+              <span data-translate="">zarooResult</span>
+            </div>
 
-          <div data-ng-show="searchResults.records.length > 0"
-              data-gn-results-container=""
-              data-search-results="searchResults"
-              data-template-url="resultTemplate"
-              data-map="searchObj.searchMap"></div>
+            <div data-ng-show="searchResults.records.length > 0"
+                 data-gn-results-container=""
+                 data-search-results="searchResults"
+                 data-template-url="resultTemplate"
+                 data-map="searchObj.searchMap"></div>
+          </div>
         </div>
-      </div>
 
         <div class="row">
           <div class="col-xs-12 text-center"
@@ -117,12 +99,11 @@
     <button data-ng-click="toggleMap()"
             title="{{'toggleMiniMap' | translate}}"
             class="gn-toggle gn-minimap-toggle btn btn-primary gn-minimap-button hidden-xs">
-      <i class="fa fa-angle-double-right" ></i>
+      <i class="fa fa-angle-double-right"></i>
       <b class="gn-minimap-toggle gn-minimap-text" data-translate="">map</b>
     </button>
+  </div>
 </div>
-
-
 
 <div class="container-fluid container-api-rw "
      data-ng-search-form=""
@@ -133,24 +114,26 @@
         <div class="gn-search-facet facet-api-rw">
           <p class="facet-title-api-rw request-api-rw">
 
-            <div data-ng-show="searchResults.records.length > 0"
-                 data-gn-saved-selections-panel="user"
-                 data-params="searchObj.params.type"></div>
+          <div data-ng-show="searchResults.records.length > 0"
+               data-gn-saved-selections-panel="user"
+               data-params="searchObj.params.type"></div>
           </p>
 
         </div>
         <div class="gn-search-facet facet-api-rw">
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm.html'"></div>
-        <!--div ng-hide="false" data-gn-facet-dimension-list="searchResults.dimension"
-                 data-params="searchObj.params"
-                 data-facet-type="facetsSummaryType"
-                 data-facet-list="facetConfig"
-                 data-current-facets="currentFacets">
-            </div-->
+          <!--div ng-hide="false" data-gn-facet-dimension-list="searchResults.dimension"
+                   data-params="searchObj.params"
+                   data-facet-type="facetsSummaryType"
+                   data-facet-list="facetConfig"
+                   data-current-facets="currentFacets">
+              </div-->
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-themes.html'"></div>
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-owner.html'"></div>
-          <div ng-if="searchObj.params.type[0] ==='dataset or service'" data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-diffusion.html'"></div>
-          <div ng-if="searchObj.params.type[0] ==='application or series'" data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-consultation.html'"></div>
+          <div ng-if="searchObj.params.type[0] ==='dataset or service'"
+               data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-diffusion.html'"></div>
+          <div ng-if="searchObj.params.type[0] ==='application or series'"
+               data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-consultation.html'"></div>
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-resources.html'"></div>
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-date.html'"></div>
           <div data-ng-include="'../../catalog/views/default/templates/rw/rw-searchForm-reset.html'"></div>
@@ -164,62 +147,62 @@
       <div class="col-md-8 container-rightside-api-rw zero-api-rw-pad-right">
         <div class="row">
           <div class="col-md-12 zero-api-rw"
-            data-gn-facet-dimension-list="searchResults.dimension"
-            data-params="searchObj.params"
-            data-facet-type="facetsSummaryType"
-            data-facet-list="facetConfig"
-            data-current-facets="currentFacets"
-            data-tab-field="facetTabField">
+               data-gn-facet-dimension-list="searchResults.dimension"
+               data-params="searchObj.params"
+               data-facet-type="facetsSummaryType"
+               data-facet-list="facetConfig"
+               data-current-facets="currentFacets"
+               data-tab-field="facetTabField">
           </div>
         </div>
         <div class="row container-overview-api-rw">
           <div class="row" style="padding-bottom: 4px">
             <div class="col-md-12 col-lg-6 zero-api-rw ">
-                <div class="col-xs-3 col-md-4 zero-api-rw ">
-                  <p class="sort-api-rw" data-translate="">sortBy</p>
-                </div>
-                <div class="col-xs-9 col-md-8 pull-right zero-api-rw "
-                  data-api-rw-sortby-combo=""
-                  data-params="searchObj.params"
-                  data-gn-sortby-values="searchObj.sortbyValues">
-                </div>
+              <div class="col-xs-3 col-md-4 zero-api-rw ">
+                <p class="sort-api-rw" data-translate="">sortBy</p>
+              </div>
+              <div class="col-xs-9 col-md-8 pull-right zero-api-rw "
+                   data-api-rw-sortby-combo=""
+                   data-params="searchObj.params"
+                   data-gn-sortby-values="searchObj.sortbyValues">
+              </div>
             </div>
           </div>
           <div class="row">
-             <!--div class="col-md-12"-->
-              <div class=""
-                   data-gn-api-rw-pagination="paginationInfo"
-                   data-hits-values="searchObj.hitsperpageValues"
-                   data-enable-hot-keys=""></div>
-              <hr class="hr-top-api-rw">
+            <!--div class="col-md-12"-->
+            <div class=""
+                 data-gn-api-rw-pagination="paginationInfo"
+                 data-hits-values="searchObj.hitsperpageValues"
+                 data-enable-hot-keys=""></div>
+            <hr class="hr-top-api-rw">
             <!--/div-->
           </div>
           <div class="row">
             <span class="loading fa fa-spinner fa-spin"
-              data-ng-show="searching">
+                  data-ng-show="searching">
             </span>
             <div ng-if="!searching && searchResults.count == 0">
               <span data-translate="">noresult</span>
             </div>
           </div>
           <div data-ng-show="searchResults.records.length > 0"
-             data-gn-results-container=""
-             class="row"
-             data-params="searchObj.params"
-             data-search-results="searchResults"
-             data-template-url="resultTemplate"
-             data-map="searchObj.searchMap">
+               data-gn-results-container=""
+               class="row"
+               data-params="searchObj.params"
+               data-search-results="searchResults"
+               data-template-url="resultTemplate"
+               data-map="searchObj.searchMap">
 
           </div>
-          <div class="row"">
-             <hr class="hr-top-api-rw zero-api-rw">
+          <div class="row">
+            <hr class="hr-top-api-rw zero-api-rw">
           </div>
           <div class="row" style="margin-top: 20px">
-              <div class=""
-                   data-gn-api-rw-pagination="paginationInfo"
-                   data-hits-values="searchObj.hitsperpageValues"
-                   data-enable-hot-keys="">
-              </div>
+            <div class=""
+                 data-gn-api-rw-pagination="paginationInfo"
+                 data-hits-values="searchObj.hitsperpageValues"
+                 data-enable-hot-keys="">
+            </div>
           </div>
         </div>
       </div>
@@ -238,27 +221,26 @@
         <div class="row">
           <div class="row ">
             <span class="loading fa fa-spinner fa-spin"
-              data-ng-show="searching">
+                  data-ng-show="searching">
             </span>
             <div ng-if="!searching && searchResults.count == 0">
               <span data-translate="">noresult</span>
             </div>
           </div>
           <div data-ng-show="searchResults.records.length > 0"
-             data-gn-results-container=""
-             class="row"
-             data-params="searchObj.params"
-             data-search-results="searchResults"
-             data-template-url="resultTemplate"
-             data-map="searchObj.searchMap">
+               data-gn-results-container=""
+               class="row"
+               data-params="searchObj.params"
+               data-search-results="searchResults"
+               data-template-url="resultTemplate"
+               data-map="searchObj.searchMap">
 
           </div>
-          <div class="row"">
-             <hr class="hr-top-api-rw zero-api-rw">
+          <div class="row">
+            <hr class="hr-top-api-rw zero-api-rw">
           </div>
-
+        </div>
       </div>
     </div>
   </div>
 </div>
-

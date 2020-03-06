@@ -91,6 +91,28 @@ goog.require('gn_alert');
         'home': {
           'enabled': true,
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/home',
+          'showSocialBarInFooter': true,
+          'fluidLayout': true,
+          'facetConfig': {
+            'resourceType': {
+              'terms': {
+                'field': 'resourceType',
+                'size': 10
+              }
+            },
+            'topic': {
+              'terms': {
+                'field': 'topic',
+                'size': 20
+              }
+            },
+            'inspireThemeUri': {
+              'terms': {
+                'field': 'inspireThemeUri',
+                'size': 34
+              }
+            }
+          },
           'fluidLayout': true
         },
         'search': {
@@ -100,27 +122,123 @@ goog.require('gn_alert');
           'paginationInfo': {
             'hitsPerPage': 20
           },
-          'facetsSummaryType': 'details',
-          'defaultSearchString': '',
-          'facetTabField': '',
-          'facetConfig': [
+          'autocompleteConfig': {
+            'query': {
+              "multi_match": {
+                "query": "",
+                "type": "bool_prefix",
+                "fields": [
+                  "anytext",
+                  "anytext._2gram",
+                  "anytext._3gram"
+                ]
+              }
+            },
+            '_source': ['resourceTitleObject']
+            // Fuzzy autocomplete
             // {
-            // key: 'createDateYear',
-            // labels: {
-            //   eng: 'Published',
-            //   fre: 'Publication'
-            // }}
-          ],
+            //   query: {
+            //     // match_phrase_prefix: match
+            //     "multi_match" : {
+            //       "query" : query,
+            //         // "type":       "phrase_prefix",
+            //         "fields" : [ field + "^3", "tag" ]
+            //     }
+            //   },
+            //   _source: [field]
+            // }
+          },
+          // TODOES
+          'facetTabField': '',
+          'facetConfig': {
+            'thesaurus_geonetworkthesaurusexternalthemegemet_tree': {
+              'terms': {
+                'field': 'thesaurus_geonetworkthesaurusexternalthemegemet_tree',
+                'size': 100,
+                "order" : { "_key" : "asc" }
+                //"include": "[^/]+/?[^/]+"
+                // Limit to 2 levels
+              }
+            },
+            'thesaurus_geonetworkthesaurusexternalplaceregions_tree': {
+              'terms': {
+                'field': 'thesaurus_geonetworkthesaurusexternalplaceregions_tree',
+                'size': 100,
+                "order" : { "_key" : "asc" }
+                //"include": "EEA.*"
+              }
+            },
+            'resourceType': {
+              'terms': {
+                'field': 'resourceType'
+              },
+              'aggs': {
+                'format': {
+                  'terms': {
+                    'field': 'format'
+                  }
+                }
+              }
+            },
+            'availableInServices': {
+              'filters': {
+                //"other_bucket_key": "others",
+                // But does not support to click on it
+                'filters': {
+                  'availableInViewService': {
+                    'query_string': {
+                      'query': '+linkProtocol:/OGC:WMS.*/'
+                    }
+                  },
+                  'availableInDownloadService': {
+                    'query_string': {
+                      'query': '+linkProtocol:/OGC:WFS.*/'
+                    }
+                  }
+                }
+              }
+            },
+            'codelist_spatialRepresentationType': {
+              'terms': {
+                'field': 'codelist_spatialRepresentationType',
+                'size': 10
+              }
+            },
+            'creationYearForResource': {
+              'terms': {
+                'field': 'creationYearForResource',
+                'size': 5
+              }
+            },
+            'tag': {
+              'terms': {
+                'field': 'tag',
+                'size': 15
+              }
+            },
+            "dateStamp" : {
+              "auto_date_histogram" : {
+                "field" : "dateStamp",
+                "buckets": 50
+              }
+            }
+          },
           'filters': {},
           'sortbyValues': [{
             'sortBy': 'relevance',
             'sortOrder': ''
           }, {
-            'sortBy': 'changeDate',
+            'sortBy': 'dateStamp',
+            'sortOrder': 'desc'
+          }, {
+            'sortBy': 'resourceTitle.keyword',
             'sortOrder': ''
           }, {
-            'sortBy': 'title',
-            'sortOrder': 'reverse'
+            'sortBy': 'rating',
+            'sortOrder': 'desc'
+          }, {
+            'sortBy': 'popularity',
+            'sortOrder': 'desc'
           }],
           'sortBy': 'relevance',
           'resultViewTpls': [{
@@ -257,7 +375,81 @@ goog.require('gn_alert');
           'fluidEditorLayout': true,
           'createPageTpl':
               '../../catalog/templates/editor/new-metadata-horizontal.html',
-          'editorIndentType': ''
+          'editorIndentType': '',
+          'facetConfig': {
+            'resourceType': {
+              'terms': {
+                'field': 'resourceType',
+                'size': 20
+              }
+            },
+            'codelist_status_text': {
+              'terms': {
+                'field': 'codelist_status_text',
+                'size': 15
+              }
+            },
+            'sourceCatalog': {
+              'terms': {
+                'field': 'sourceCatalog',
+                'size': 15
+              }
+            },
+            'isValid': {
+              'terms': {
+                'field': 'isValid',
+                'size': 10
+              }
+            },
+            'isValidInspire': {
+              'terms': {
+                'field': 'isValidInspire',
+                'size': 10
+              }
+            },
+            'groupOwner': {
+              'terms': {
+                'field': 'groupOwner',
+                'size': 10
+              }
+            },
+            'recordOwner': {
+              'terms': {
+                'field': 'recordOwner',
+                'size': 10
+              }
+            },
+            'groupPublished': {
+              'terms': {
+                'field': 'groupPublished',
+                'size': 10
+              }
+            },
+            'documentStandard': {
+              'terms': {
+                'field': 'documentStandard',
+                'size': 10
+              }
+            },
+            'isHarvested': {
+              'terms': {
+                'field': 'isHarvested',
+                'size': 2
+              }
+            },
+            'isTemplate': {
+              'terms': {
+                'field': 'isTemplate',
+                'size': 5
+              }
+            },
+            'isPublishedToAll': {
+              'terms': {
+                'field': 'isPublishedToAll',
+                'size': 2
+              }
+            }
+          }
         },
         'admin': {
           'enabled': true,
@@ -309,6 +501,8 @@ goog.require('gn_alert');
               }
             }
           }, config).mods.header.languages;
+
+          this.gnCfg.mods.search.facetConfig = config.mods.search.facetConfig;
         }
 
         this.gnUrl = gnUrl || '../';
@@ -331,6 +525,7 @@ goog.require('gn_alert');
         var copy = angular.copy(defaultConfig);
         copy.mods.header.languages = {};
         copy.mods.search.grid.related = [];
+        copy.mods.search.facetConfig = {};
         return copy;
       },
       getProxyUrl: function() {
@@ -550,7 +745,7 @@ goog.require('gn_alert');
       });
       //If no csrf, ask for one:
       if (!$rootScope.csrf) {
-        $http.post('info?type=me');
+        $http.get('../api/me');
       }
       //Comment the upper lines if you want to remove csrf support
 
@@ -637,6 +832,7 @@ goog.require('gn_alert');
               error(function(data, status, headers, config) {
                 $rootScope.$broadcast('StatusUpdated',
                    {
+                     id: 'catalogueStatus',
                      title: $translate.instant('somethingWrong'),
                      msg: $translate.instant('msgNoCatalogInfo'),
                      type: 'danger'});
@@ -653,27 +849,22 @@ goog.require('gn_alert');
           isConnected: function() {
             return !this.isAnonymous();
           },
+          // The md provide the information about
+          // if the current user can edit records or not
+          // based on record operation allowed. See edit property.
           canEditRecord: function(md) {
             if (!md || this.isAnonymous()) {
               return false;
             }
 
-            // The md provide the information about
-            // if the current user can edit records or not.
-            var editable = angular.isDefined(md) &&
-                angular.isDefined(md['geonet:info']) &&
-                angular.isDefined(md['geonet:info'].edit) &&
-                md['geonet:info'].edit == 'true';
-
-
             // A second filter is for harvested record
             // if the catalogue admin defined that those
             // records could be harvested.
-            if (md.isHarvested === 'y') {
+            if (md.isHarvested == true) {
               return gnConfig['system.harvester.enableEditing'] === true &&
-                  editable;
+                md.edit;
             }
-            return editable;
+            return md.edit;
           }
         };
         // Build is<ProfileName> and is<ProfileName>OrMore functions
@@ -732,15 +923,31 @@ goog.require('gn_alert');
 
         // Retrieve main search information
         var searchInfo = userLogin.then(function(value) {
-          var url = 'qi?_content_type=json&summaryOnly=true';
-          angular.forEach(gnGlobalSettings.gnCfg.mods.search.filters,
-              function(v, k) {
-                url += '&' + k + '=' + v;
+          // Check index status.
+          $http.get('../api/site/index/status').then(function(r) {
+            gnConfig['indexStatus'] = r.data;
+
+            if (r.data.state.id.match(/^(green|yellow)$/) == null) {
+              $rootScope.$broadcast('StatusUpdated', {
+                id: 'indexStatus',
+                title: r.data.state.title,
+                error: {
+                  message: r.data.message
+                },
+                // type: r.data.state.icon,
+                type: 'danger'
               });
-          return gnSearchManagerService.search(url).
-              then(function(data) {
-                $scope.searchInfo = data;
+            } else {
+              return $http.post('../api/search/records/_search',
+                {"size": 0,
+                    "query": {"query_string": {"query": "+isTemplate:n"}},
+                    "aggs": gnGlobalSettings.gnCfg.mods.home.facetConfig}).
+              then(function(r) {
+                $scope.searchInfo = r.data;
+                $scope.browse = $scope.searchInfo.aggregations.inspireThemeUri ? 'inspire' : 'topics';
               });
+            }
+          });
         });
       };
       $scope.userAdminMenu = gnAdminMenu.UserAdmin;

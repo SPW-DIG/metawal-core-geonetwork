@@ -16,6 +16,7 @@
                     class="form-control input-lg"
                     id="gn-any-field"
                     data-ng-model="searchObj.params.any"
+                    autocomplete="off"
                     placeholder="{{'anyPlaceHolder' | translate}}"
                     aria-label="{{'anyPlaceHolder' | translate}}"
                     data-ng-keyup="$event.keyCode == 13 && triggerSearch()"
@@ -23,10 +24,10 @@
                     data-typeahead-loading="anyLoading" class="form-control"
                     data-typeahead-min-length="1"
                     data-typeahead-focus-first="false"
-                    data-typeahead-wait-ms="300">
+                    data-typeahead-wait-ms="600">
 
               <div class="input-group-btn">
-                <button type="button"
+                <!--<button type="button"
                         class="btn btn-default btn-lg"
                         title="{{'advanced' | translate}}"
                         data-ng-model="searchObj.advancedMode"
@@ -35,7 +36,7 @@
                         btn-checkbox-false="0">
                   <i class="fa fa-ellipsis-v"></i>
                   <span class="sr-only" data-translate="">advanced</span>
-                </button>
+                </button>-->
 
                 <button type="button"
                         data-ng-click="triggerSearch()"

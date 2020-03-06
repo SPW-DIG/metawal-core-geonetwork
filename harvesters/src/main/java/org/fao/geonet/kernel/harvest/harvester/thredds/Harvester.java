@@ -585,7 +585,7 @@ class Harvester extends BaseAligner<ThreddsParams> implements IHarvester<Harvest
 
         addPrivileges(id, params.getPrivileges(), localGroups, context);
 
-        mdIndexer.indexMetadata(id, true, null);
+        mdIndexer.indexMetadata(id, true);
 
         mdManager.flush();
     }

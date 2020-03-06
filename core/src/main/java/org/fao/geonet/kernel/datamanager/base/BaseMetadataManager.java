@@ -23,32 +23,20 @@
 
 package org.fao.geonet.kernel.datamanager.base;
 
-import static org.springframework.data.jpa.domain.Specifications.where;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.UUID;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
-
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.SetMultimap;
+import com.google.common.collect.Sets;
+import jeeves.server.UserSession;
+import jeeves.server.context.ServiceContext;
+import jeeves.transaction.TransactionManager;
+import jeeves.transaction.TransactionTask;
+import jeeves.xlink.Processor;
+import org.apache.commons.lang.NotImplementedException;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Edit;
@@ -89,12 +77,8 @@ import org.fao.geonet.kernel.datamanager.IMetadataUtils;
 import org.fao.geonet.kernel.datamanager.IMetadataValidator;
 import org.fao.geonet.kernel.schema.MetadataSchema;
 import org.fao.geonet.kernel.schema.SchemaPlugin;
-import org.fao.geonet.kernel.search.LuceneSearcher;
+import org.fao.geonet.kernel.search.EsSearchManager;
 import org.fao.geonet.kernel.search.MetaSearcher;
-import org.fao.geonet.kernel.search.SearchManager;
-import org.fao.geonet.kernel.search.SearchParameter;
-import org.fao.geonet.kernel.search.SearcherType;
-import org.fao.geonet.kernel.search.index.IndexingList;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.lib.Lib;
@@ -132,22 +116,30 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.TransactionStatus;
 
-import com.google.common.base.Function;
-import com.google.common.base.Optional;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.SetMultimap;
-import com.google.common.collect.Sets;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.UUID;
 
-import jeeves.constants.Jeeves;
-import jeeves.server.ServiceConfig;
-import jeeves.server.UserSession;
-import jeeves.server.context.ServiceContext;
-import jeeves.transaction.TransactionManager;
-import jeeves.transaction.TransactionTask;
-import jeeves.xlink.Processor;
+import static org.springframework.data.jpa.domain.Specifications.where;
 
 public class BaseMetadataManager implements IMetadataManager {
 
@@ -172,7 +164,7 @@ public class BaseMetadataManager implements IMetadataManager {
     @Autowired
     private MetadataRepository metadataRepository;
     @Autowired
-    private SearchManager searchManager;
+    private EsSearchManager searchManager;
 
     private EditLib editLib;
     @Autowired
@@ -231,9 +223,19 @@ public class BaseMetadataManager implements IMetadataManager {
         }
 
         // From DataManager:
+        searchManager.init(false, java.util.Optional.empty());
+    }
+
+    /**
+     * Refresh index if needed. Can also be called after GeoNetwork startup in
+     * order to rebuild the lucene index
+     *t
+     * @param force Force reindexing all from scratch
+     **/
+    public synchronized void synchronizeDbWithIndex(ServiceContext context, Boolean force) throws Exception {
 
         // get lastchangedate of all metadata in index
-        Map<String, String> docs = getSearchManager().getDocsChangeDate();
+        Map<String, String> docs = searchManager.getDocsChangeDate();
 
         // set up results HashMap for post processing of records to be indexed
         ArrayList<String> toIndex = new ArrayList<String>();
@@ -295,12 +297,12 @@ public class BaseMetadataManager implements IMetadataManager {
 
         // remove from index metadata not in DBMS
         for (String id : docs.keySet()) {
-            getSearchManager().delete(id);
+            getSearchManager().delete(String.format("+id:%s", id));
             LOGGER_DATA_MANAGER.debug("- removed record ({}) from index", id);
         }
     }
 
-    protected SearchManager getSearchManager() {
+    protected EsSearchManager getSearchManager() {
         return searchManager;
     }
 
@@ -333,11 +335,14 @@ public class BaseMetadataManager implements IMetadataManager {
         AbstractMetadata metadata = metadataUtils.findOne(Integer.valueOf(id));
         if (!settingManager.getValueAsBool(Settings.SYSTEM_XLINK_ALLOW_REFERENCED_DELETION)
             && metadata.getDataInfo().getType() == MetadataType.SUB_TEMPLATE) {
-            MetaSearcher searcher = searcherForReferencingMetadata(context, metadata);
-            Map<Integer, AbstractMetadata> result = ((LuceneSearcher) searcher).getAllMdInfo(context, 1);
-            if (result.size() > 0) {
-                throw new Exception("this template is referenced.");
-            }
+
+//		    TODOES
+            throw new NotImplementedException("SYSTEM_XLINK_ALLOW_REFERENCED_DELETION not implemented in ES.");
+//            MetaSearcher searcher = searcherForReferencingMetadata(context, metadata);
+//            Map<Integer, AbstractMetadata> result = ((LuceneSearcher) searcher).getAllMdInfo(context, 1);
+//            if (result.size() > 0) {
+//                throw new Exception("this template is referenced.");
+//            }
         }
 
         // --- remove operations
@@ -366,16 +371,18 @@ public class BaseMetadataManager implements IMetadataManager {
 
     private MetaSearcher searcherForReferencingMetadata(ServiceContext context, AbstractMetadata metadata)
         throws Exception {
-        MetaSearcher searcher = context.getBean(SearchManager.class).newSearcher(SearcherType.LUCENE,
-            Geonet.File.SEARCH_LUCENE);
-        Element parameters = new Element(Jeeves.Elem.REQUEST);
-        parameters.addContent(new Element(Geonet.IndexFieldNames.XLINK).addContent("*" + metadata.getUuid() + "*"));
-        parameters.addContent(new Element(Geonet.SearchResult.BUILD_SUMMARY).setText("false"));
-        parameters.addContent(new Element(SearchParameter.ISADMIN).addContent("true"));
-        parameters.addContent(new Element(SearchParameter.ISTEMPLATE).addContent("y or n"));
-        ServiceConfig config = new ServiceConfig();
-        searcher.search(context, parameters, config);
-        return searcher;
+        // TODOES
+        throw new NotImplementedException("searcherForReferencingMetadata not implemented in ES.");
+//        MetaSearcher searcher = context.getBean(SearchManager.class).newSearcher(SearcherType.LUCENE,
+//            Geonet.File.SEARCH_LUCENE);
+//        Element parameters = new Element(Jeeves.Elem.REQUEST);
+//        parameters.addContent(new Element(Geonet.IndexFieldNames.XLINK).addContent("*" + metadata.getUuid() + "*"));
+//        parameters.addContent(new Element(Geonet.SearchResult.BUILD_SUMMARY).setText("false"));
+//        parameters.addContent(new Element(SearchParameter.ISADMIN).addContent("true"));
+//        parameters.addContent(new Element(SearchParameter.ISTEMPLATE).addContent("y or n"));
+//        ServiceConfig config = new ServiceConfig();
+//        searcher.search(context, parameters, config);
+//        return searcher;
     }
 
     // --------------------------------------------------------------------------
@@ -406,7 +413,7 @@ public class BaseMetadataManager implements IMetadataManager {
         }
 
         // --- update search criteria
-        getSearchManager().delete(metadataId + "");
+        getSearchManager().delete(String.format("+id:%s", metadataId));
         // _entityManager.flush();
         // _entityManager.clear();
     }
@@ -419,7 +426,7 @@ public class BaseMetadataManager implements IMetadataManager {
     @Override
     public void deleteMetadataGroup(ServiceContext context, String metadataId) throws Exception {
         deleteMetadataFromDB(context, metadataId);
-        getSearchManager().delete(metadataId);
+        getSearchManager().delete(String.format("+id:%s", metadataId));
     }
 
     /**
@@ -463,8 +470,13 @@ public class BaseMetadataManager implements IMetadataManager {
         }
         final Metadata newMetadata = new Metadata();
         newMetadata.setUuid(uuid);
-        newMetadata.getDataInfo().setChangeDate(new ISODate()).setCreateDate(new ISODate()).setSchemaId(schema)
-            .setType(MetadataType.lookup(isTemplate)).setRoot(xml.getQualifiedName());
+        newMetadata.getDataInfo()
+            .setChangeDate(new ISODate())
+            .setCreateDate(new ISODate())
+            .setSchemaId(schema)
+            .setRoot(templateMetadata.getDataInfo().getRoot())
+            .setType(MetadataType.lookup(isTemplate))
+            .setRoot(xml.getQualifiedName());
         newMetadata.getSourceInfo().setGroupOwner(Integer.valueOf(groupOwner)).setOwner(owner).setSourceId(source);
 
         // If there is a default category for the group, use it:
@@ -624,10 +636,8 @@ public class BaseMetadataManager implements IMetadataManager {
             groupId = String.valueOf(groupIdI);
         }
         metadataOperations.copyDefaultPrivForGroup(context, stringId, groupId, fullRightsForGroup);
+        metadataIndexer.indexMetadata(stringId, forceRefreshReaders);
 
-        if (index) {
-            metadataIndexer.indexMetadata(stringId, forceRefreshReaders, null);
-        }
 
         if (notifyChange) {
             // Notifies the metadata change to metatada notifier service
@@ -796,20 +806,21 @@ public class BaseMetadataManager implements IMetadataManager {
         } finally {
             if (index) {
                 // --- update search criteria
-                metadataIndexer.indexMetadata(metadataId, true, null);
+                metadataIndexer.indexMetadata(metadataId, true);
             }
         }
 
         if (metadata.getDataInfo().getType() == MetadataType.SUB_TEMPLATE) {
             if (!index) {
-                metadataIndexer.indexMetadata(metadataId, true, null);
+                metadataIndexer.indexMetadata(metadataId, true);
             }
-            MetaSearcher searcher = searcherForReferencingMetadata(context, metadata);
-            Map<Integer, AbstractMetadata> result = ((LuceneSearcher) searcher).getAllMdInfo(context, 500);
-            for (Integer id : result.keySet()) {
-                IndexingList list = context.getBean(IndexingList.class);
-                list.add(id);
-            }
+//			TODOES
+//            MetaSearcher searcher = searcherForReferencingMetadata(context, metadata);
+//            Map<Integer, AbstractMetadata> result = ((LuceneSearcher) searcher).getAllMdInfo(context, 500);
+//            for (Integer id : result.keySet()) {
+//                IndexingList list = context.getBean(IndexingList.class);
+//                list.add(id);
+//            }
         }
 
         Log.trace(Geonet.DATA_MANAGER, "Finishing update of record with id " + metadataId);

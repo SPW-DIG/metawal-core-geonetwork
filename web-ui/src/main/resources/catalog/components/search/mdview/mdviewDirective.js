@@ -58,23 +58,74 @@
             if (element.get(0).tagName === hyperlinkTagName) {
               var url = '#/' +
                 (scope.md.draft == 'y' ? 'metadraf' : 'metadata') +
-                '/' + scope.md.getUuid() +
+                '/' + scope.md.uuid +
                 (scope.formatter === undefined || scope.formatter == '' ?
                   '' :
                   formatter);
               element.attr('href', url);
             } else {
               element.on('click', function(e) {
-                gnMdView.setLocationUuid(scope.md.getUuid(), formatter);
+                gnMdView.setLocationUuid(scope.md.uuid, formatter);
               });
             }
-
-            gnMdViewObj.records = scope.records;
+            if (scope.records && scope.records.length) {
+              gnMdViewObj.records = scope.records;
+            } else {
+              gnMdViewObj.records = [];
+            }
           });
         }
       };
     }]
   );
+
+
+  /**
+   * https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
+   */
+  module.directive('gnMoreLikeThis', [
+    '$http', 'gnSearchSettings', function($http, gnSearchSettings) {
+      return {
+        scope: {
+          md: '=gnMoreLikeThis'
+        },
+        templateUrl: function(elem, attrs) {
+          return attrs.template ||
+            '../../catalog/components/search/mdview/partials/' +
+            'morelikethis.html';
+        },
+        link: function(scope, element, attrs, controller) {
+
+          function loadMore() {
+            if (scope.md == null) {
+              return;
+            }
+            $http.post('../api/search/records/_search', {
+              "query": {
+                "bool": {
+                  "must": [
+                    {"more_like_this" : {
+                      "fields" : ["resourceTitle", "resourceAbstract", "tag.raw"],
+                      "like" : scope.md.resourceTitle,
+                      "min_term_freq" : 1,
+                      "max_query_terms" : 12
+                    }},
+                    {"terms": {"isTemplate": ["n"]}}, // TODO: We may want to use it for subtemplate
+                    {"terms": {"draft": ["n", "e"]}}
+                ]}
+              }
+            }).then(function (r) {
+              scope.similarDocuments = r.data.hits;
+            })
+          }
+          scope.$watch('md', function() {
+            loadMore();
+          });
+
+        }
+      };
+    }]);
+
 
   module.directive('gnMetadataDisplay', [
     'gnMdView', 'gnSearchSettings', function(gnMdView, gnSearchSettings) {
@@ -141,7 +192,7 @@
 
 
           scope.rateForRecord = function() {
-            return $http.put('../api/records/' + scope.md['geonet:info'].uuid +
+            return $http.put('../api/records/' + scope.md.uuid +
                              '/rate', scope.rate).success(function(data) {
               scope.rate = data;
             });
@@ -206,9 +257,9 @@
                 return _.groupBy(resources,
                   function(contact) {
                     if (contact.email) {
-                      return contact.org + '#' + contact.email;
+                      return contact.organisation + '#' + contact.email;
                     } else {
-                      return contact.org + '#' + contact.name;
+                      return contact.organisation + '#' + contact.individual;
                     }
                   });
               };
@@ -259,9 +310,9 @@
                 scope.mdContactsByOrgRole = _.groupBy(scope.mdContacts,
                   function(contact) {
                     if (contact.website !== '') {
-                     scope.orgWebsite[contact.org] = contact.website;
+                     scope.orgWebsite[contact.organisation] = contact.website;
                     }
-                    return contact.org;
+                    return contact.organisation;
                   });
 
                 for (var key in scope.mdContactsByOrgRole) {

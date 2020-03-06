@@ -83,6 +83,7 @@ import java.util.SortedSet;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+
 public class Aligner extends BaseAligner<GeonetParams> {
 
     private Logger log;
@@ -551,7 +552,7 @@ public class Aligner extends BaseAligner<GeonetParams> {
         }
         context.getBean(IMetadataManager.class).save(metadata);
 
-        dataMan.indexMetadata(id, Math.random() < 0.01, null);
+        dataMan.indexMetadata(id, Math.random() < 0.01);
         result.addedMetadata++;
 
         return id;
@@ -795,7 +796,6 @@ public class Aligner extends BaseAligner<GeonetParams> {
                 updateDateStamp);
             metadata = metadataRepository.findOne(id);
             result.updatedMetadata++;
-
             if (force) {
                 //change ownership of metadata to new harvester
                 metadata.getHarvestInfo().setUuid(params.getUuid());
@@ -840,7 +840,7 @@ public class Aligner extends BaseAligner<GeonetParams> {
         metadataManager.save(metadata);
 //        dataMan.flush();
 
-        dataMan.indexMetadata(id, Math.random() < 0.01, null);
+        dataMan.indexMetadata(id, Math.random() < 0.01);
     }
 
     private void handleFile(String id, String file, MetadataResourceVisibility visibility, String changeDate,

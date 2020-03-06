@@ -268,6 +268,7 @@ public class MetadataSampleApi {
                             isTemplate = templateName.startsWith(templateOfSubTemplatePrefix) ?
                                 "t" : "s";
                         }
+
                         if (isTemplate.equals("s")) {
                             // subtemplates loaded here can have a specific uuid
                             // attribute
@@ -295,7 +296,7 @@ public class MetadataSampleApi {
                                 setSourceId(siteId).
                                 setOwner(owner).
                                 setGroupOwner(1);
-                            dataManager.insertMetadata(context, metadata, xml, true, true, true, UpdateDatestamp.NO, false, false);
+                            dataManager.insertMetadata(context, metadata, xml, true, true, true, UpdateDatestamp.NO, false, true);
                             report.addMetadataInfos(metadata.getId(), 
                             String.format(
                             "Template for schema '%s' with UUID '%s' added.",

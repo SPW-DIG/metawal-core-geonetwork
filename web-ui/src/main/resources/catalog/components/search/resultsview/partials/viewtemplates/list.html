@@ -22,7 +22,7 @@
       </div>
       <div class="col-md-9">
         <div class="gn-md-title">
-          <input gn-selection-md type="checkbox" ng-model="md['geonet:info'].selected"
+          <input gn-selection-md type="checkbox" ng-model="md.selected"
                  aria-label="{{'clickToSelect' | translate}}"
                  ng-change="change()"/>
           <div class="pull-right gn-md-category"
@@ -61,9 +61,9 @@
                gn-records="searchResults.records"
                gn-formatter="formatter.defaultUrl"
                title="{{md.title || md.defaultTitle}}"
-               aria-label="{{md.title || md.defaultTitle}}">
-              <i class="fa gn-icon-{{md.type[0]}}" title="{{md.type[0] | translate}}"/>
-              {{md.title || md.defaultTitle}}</a>
+               aria-label="{{md.resourceTitle}}">
+              <i class="fa gn-icon-{{md.resourceType[0]}}" title="{{md.resourceType[0] | translate}}"/>
+              {{md.resourceTitle}}</a>
           </h1>
         </div>
 
@@ -73,13 +73,20 @@
              gn-records="searchResults.records"
              gn-formatter="formatter.defaultUrl">
           <p class="text-justify"
-             dd-text-collapse dd-text-collapse-max-length="350"
-             dd-text-collapse-text="{{md.abstract || md.defaultAbstract}}"></p>
-          <address ng-if="md.getContacts().resource">{{::md.getContacts().resource}}</address>
+            dd-text-collapse dd-text-collapse-max-length="350"
+            dd-text-collapse-text="{{md.resourceAbstract}}"></p>
+          <p ng-if="::!md.getAllContacts().resource">&nbsp;</p>
+          <p data-ng-repeat="c in ::md.getAllContacts().resource track by $index">
+            <img data-ng-if="::c.logo"
+                 data-ng-src="{{::c.logo}}"
+                 class="gn-source-logo"
+                 title="{{::c.name}} ({{::c.role}})"/>
+            {{::c.name}}
+          </p>
         </div>
 
         <div gn-grid-related
-             gn-grid-related-uuid="::md.getUuid()"
+             gn-grid-related-uuid="::md.uuid"
              template="../../catalog/views/default/templates/gridRelatedList.html"></div>
 
         <div class="row gn-md-links">
@@ -159,11 +166,11 @@
         <!-- Thumbnail -->
         <div class="gn-md-thumbnail">
           <div class="gn-md-no-thumbnail"
-               data-ng-if="!md.getThumbnails().list[0].url"></div>
+               data-ng-if="!md.overview[0].url"></div>
           <img class="gn-img-thumbnail"
                alt="{{md.title || md.defaultTitle}}"
-               data-ng-src="{{md.getThumbnails().list[0].url}}"
-               data-ng-if="md.getThumbnails().list[0].url"/>
+               data-ng-src="{{md.overview[0].url}}"
+               data-ng-if="md.overview[0].url"/>
 
         </div>
 

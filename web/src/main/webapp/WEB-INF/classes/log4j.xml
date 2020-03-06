@@ -73,7 +73,7 @@
     <level value="ERROR"/>
   </logger>
   <logger name="geonetwork.index">
-    <level value="ERROR"/>
+    <level value="DEBUG"/>
   </logger>
   <logger name="geonetwork.csw">
     <level value="ERROR"/>
@@ -89,13 +89,7 @@
     <appender-ref ref="consoleAppender"/>
     <appender-ref ref="fileAppender"/>
   </logger>
-  <logger name="geonetwork.lucene">
-    <level value="ERROR"/>
-  </logger>
   <logger name="geonetwork.ldap">
-    <level value="ERROR"/>
-  </logger>
-  <logger name="geonetwork.lucene.tracking">
     <level value="ERROR"/>
   </logger>
   <logger name="geonetwork.mef">

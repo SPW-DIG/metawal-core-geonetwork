@@ -308,6 +308,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
+          <excludedGroups>org.fao.geonet.repository.AbstractSpringDataTest</excludedGroups>
           <argLine>-Dfile.encoding=UTF-8 -Xmx1G</argLine>
           <!--<rerunFailingTestsCount>5</rerunFailingTestsCount>-->
           <runOrder>alphabetical</runOrder>
@@ -437,13 +438,13 @@
       <dependency>
         <groupId>org.apache.xmlgraphics</groupId>
         <artifactId>fop</artifactId>
-        <version>2.3</version>
+        <version>${fop.version}</version>
       </dependency>
 
       <dependency>
         <groupId>org.apache.xmlgraphics</groupId>
         <artifactId>fop-pdf-images</artifactId>
-        <version>2.3</version>
+        <version>${fop.version}</version>
       </dependency>
 
       <!-- Jetty stuff -->
@@ -518,27 +519,7 @@
       <dependency>
         <groupId>org.apache.xmlgraphics</groupId>
         <artifactId>xmlgraphics-commons</artifactId>
-        <version>2.3</version>
-      </dependency>
-      <dependency>
-        <groupId>avalon-framework</groupId>
-        <artifactId>avalon-framework-api</artifactId>
-        <version>4.3</version>
-        <exclusions>
-          <exclusion>
-            <groupId>geronimo-spec</groupId>
-            <artifactId>geronimo-spec-javamail</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>geronimo-spec</groupId>
-            <artifactId>geronimo-spec-jms</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.avalon.framework</groupId>
-        <artifactId>avalon-framework-impl</artifactId>
-        <version>4.3.1</version>
+        <version>${fop.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.xmlgraphics</groupId>
@@ -602,36 +583,6 @@
         <groupId>xml-resolver</groupId>
         <artifactId>xml-resolver-patched</artifactId>
         <version>1.2.1</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.lucene</groupId>
-        <artifactId>lucene-core</artifactId>
-        <version>${lucene.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.lucene</groupId>
-        <artifactId>lucene-analyzers-common</artifactId>
-        <version>${lucene.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.lucene</groupId>
-        <artifactId>lucene-misc</artifactId>
-        <version>${lucene.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.lucene</groupId>
-        <artifactId>lucene-queries</artifactId>
-        <version>${lucene.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.lucene</groupId>
-        <artifactId>lucene-queryparser</artifactId>
-        <version>${lucene.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.lucene</groupId>
-        <artifactId>lucene-facet</artifactId>
-        <version>${lucene.version}</version>
       </dependency>
       <dependency>
         <groupId>pcj</groupId>
@@ -1130,20 +1081,10 @@
         <version>2.2.7</version>
       </dependency>
 
-      <!--<dependency>
-        <groupId>org.elasticsearch</groupId>
-        <artifactId>elasticsearch</artifactId>
-        <version>${es.version}</version>
-      </dependency>-->
-      <!--Require Lucene 5 <dependency>
-        <groupId>org.elasticsearch.client</groupId>
-        <artifactId>transport</artifactId>
-        <version>${es.version}</version>
-      </dependency>-->
       <dependency>
-        <groupId>io.searchbox</groupId>
-        <artifactId>jest</artifactId>
-        <version>6.3.1</version>
+        <groupId>org.elasticsearch.client</groupId>
+        <artifactId>elasticsearch-rest-high-level-client</artifactId>
+        <version>${es.version}</version>
       </dependency>
 
       <!-- Apache commons csv -->
@@ -1302,6 +1243,8 @@
     <module>release</module>
     <module>workers</module>
     <module>messaging</module>
+    <module>estest</module>
+    <module>index</module>
   </modules>
 
   <profiles>
@@ -1382,20 +1325,24 @@
     <jetty.port>8080</jetty.port>
     <jetty.stop.port>8090</jetty.stop.port>
 
-    <es.version>7.4.2</es.version>
-    <es.version.sha512>64cc3e77f4271a5477c8c979fa48728d96890cad68b0daac6566f4dda25b4d4a80784eaafeaa874a6b434c034fcacb8a5751fdb445919191bae4aa4958c793b7</es.version.sha512>
+    <es.version>7.6.0</es.version>
+    <es.version.sha512>378322ed2b6782f98e2e22c80e82b1f483bdeb3c28f3f52c897cbd0e8e78848460865c9adedf21e59922aa03ecb28ac44c1fb3dcab4f1904ba58497bc40e1278</es.version.sha512>
     <es.platform>linux-x86_64</es.platform>
     <es.installer.extension>tar.gz</es.installer.extension>
-    <es.port></es.port>
-    <es.host></es.host>
-    <es.url></es.url>
-    <es.index.features></es.index.features>
-    <es.index.features.type></es.index.features.type>
-    <es.index.records></es.index.records>
-    <es.index.records_public></es.index.records_public>
-    <es.index.records.type></es.index.records.type>
-    <es.index.searchlogs></es.index.searchlogs>
-    <es.index.searchlogs.type></es.index.searchlogs.type>
+    <es.protocol>http</es.protocol>
+    <es.port>9200</es.port>
+    <es.host>localhost</es.host>
+    <es.url>${es.protocol}://${es.host}:${es.port}</es.url>
+    <es.index.features>gn-features</es.index.features>
+    <es.index.features.type>features</es.index.features.type>
+    <es.index.records>gn-records</es.index.records>
+    <es.index.records.type>records</es.index.records.type>
+    <es.index.searchlogs>gn-searchlogs</es.index.searchlogs>
+    <es.index.searchlogs.type>searchlogs</es.index.searchlogs.type>
+
+    <!-- Define the default analyzer for full text search. -->
+    <es.index.analyzer.default>standard</es.index.analyzer.default>
+<!--    <es.default.analyzer>french_light</es.default.analyzer>-->
 
     <!-- to load spring configurations related to es and camel,
     you should use maven "es" profile (defined in web).
@@ -1406,11 +1353,11 @@
     <es.username></es.username>
     <es.password></es.password>
 
-    <kb.version.sha512>41c18340c204c82d03d24eda8bd5915e6f762868f39ecea53f4571a2fb7348df383606f30f5d3d56a9cb5953422efcfc5a09e6a0590d4e2ce55990efe298b331</kb.version.sha512>
+    <kb.version.sha512>296416b9697ae66b20aae37ada855d7212fc5151055a35cc81e7c3cfef589758f10f600b382e9f4b419fcd327ff605d8da23a25e867f6a1e4d3bd133e0317b72</kb.version.sha512>
     <kb.platform>linux-x86_64</kb.platform>
     <kb.installer.extension>tar.gz</kb.installer.extension>
-    <kb.port></kb.port>
-    <kb.url></kb.url>
+    <kb.port>5601</kb.port>
+    <kb.url>http://localhost:${kb.port}</kb.url>
 
     <jms.url>tcp://localhost:61616</jms.url>
     <activemq.version>5.6.0</activemq.version>
@@ -1436,8 +1383,6 @@
     <geotools.version>16.0</geotools.version>
     <pg.version>9.4.1211</pg.version>
 
-    <lucene.version>4.9.0</lucene.version>
-
     <spring.version>4.3.0.RELEASE</spring.version>
     <spring.security.version>3.2.0.RELEASE</spring.security.version>
     <metrics.version>2.1.1</metrics.version>
@@ -1446,7 +1391,7 @@
     <rootProjectDir>..</rootProjectDir>
     <wro.version>1.7.9</wro.version>
     <wro.debug>true</wro.debug>
-
+    <fop.version>2.4</fop.version>
     <node.version>v8.11.1</node.version>
     <npm.version>5.8.0</npm.version>
     <xmlunit.version>2.1.1</xmlunit.version>
@@ -1460,5 +1405,6 @@
     <jolokia.version>1.6.0</jolokia.version>
     <httpcomponents.version>4.5.9</httpcomponents.version>
     <gn.schemas.version>3.7</gn.schemas.version>
+    <skipIT>true</skipIT> <!-- disable integration tests by default, use the "it" profile to run them which enables them -->
   </properties>
 </project>

@@ -108,8 +108,8 @@
             // if an external viewer is defined, use it here
             if (gnExternalViewer.isEnabled()) {
               gnExternalViewer.viewService({
-                id: md ? md.getId() : null,
-                uuid: md ? md.getUuid() : null
+                id: md ? md.id : null,
+                uuid: md ? md.uuid : null
               }, {
                 type: 'wfs',
                 url: url,
@@ -165,14 +165,14 @@
 
           var openLink = function(record, link) {
             var url = $filter('gnLocalized')(record.url) || record.url;
-            if (url && 
-                angular.isString(url) && 
+            if (url &&
+                angular.isString(url) &&
                 url.match("^(http|ftp|sftp|\\\\|//)")) {
               return window.open(url, '_blank');
             } else if (url && url.indexOf('www.') == 0) {
               return window.open('http://' + url, '_blank');
-            } else if (record.title && 
-                       angular.isString(record.title) && 
+            } else if (record.title &&
+                       angular.isString(record.title) &&
                        record.title.match("^(http|ftp|sftp|\\\\|//)")) {
               return window.location.assign(record.title);
             } else {
@@ -345,10 +345,9 @@
             resource.locTitle = $filter('gnLocalized')(resource.title);
             resource.locDescription = $filter('gnLocalized')(resource.description);
             resource.locUrl = $filter('gnLocalized')(resource.url);
-            var protocolOrType = resource.protocol + resource.serviceType;
+            var protocolOrType = resource.protocol + (resource.serviceType || '');
             // Cas for links
-            if (angular.isString(protocolOrType) &&
-                angular.isUndefined(resource['geonet:info'])) {
+            if (angular.isString(protocolOrType)) {
               if (protocolOrType.match(/wms/i)) {
                 if (this.isLayerProtocol(resource)) {
                   return 'WMS';

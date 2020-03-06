@@ -57,7 +57,7 @@
       $scope.gnMetadataActions = gnMetadataActions;
       $scope.url = location.href;
       $scope.compileScope = $scope.$new();
-      $scope.recordIdentifierRequested = gnSearchLocation.getUuid();
+      $scope.recordIdentifierRequested = gnSearchLocation.uuid;
       $scope.isUserFeedbackEnabled = false;
       $scope.isRatingEnabled = false;
       $scope.isSocialbarEnabled = gnGlobalSettings.gnCfg.mods.recordview.isSocialbarEnabled;
@@ -84,7 +84,7 @@
         return gnMetadataActions.deleteMd(md).then(function(data) {
           gnAlertService.addAlert({
             msg: $translate.instant('metadataRemoved',
-                {title: md.title || md.defaultTitle}),
+                {title: md.resourceTitle}),
             type: 'success'
           });
           $scope.closeRecord(md);
@@ -136,6 +136,7 @@
         if ($scope.mdView.current.record == null) {
           return;
         }
+
         var showApproved = $scope.mdView.current.record.draft != 'y';
         var gn_metadata_display = $('#gn-metadata-display');
 
@@ -181,20 +182,18 @@
 
       // Reset current formatter to open the next record
       // in default mode.
-      function loadFormatter() {
-        var f = gnSearchLocation.getFormatterPath();
-        $scope.currentFormatter = '';
-        if (f != undefined) {
-          $scope.currentFormatter = f.replace(/.*(\/formatters.*)/, '$1');
-          $scope.loadFormatter(f);
+      function loadFormatter(n, o) {
+        if (n === true) {
+          var f = gnSearchLocation.getFormatterPath();
+          $scope.currentFormatter = '';
+          if (f != undefined) {
+            $scope.currentFormatter = f.replace(/.*(\/formatters.*)/, '$1');
+            $scope.loadFormatter(f);
+          }
         }
       }
-      $scope.$watch('mdView.current.record', loadFormatter);
-      $rootScope.$on('$locationChangeSuccess', loadFormatter);
-      // On page load, we need to wait the feedMd to be completed
-      // Before loading ot not the load formatter
-      // $timeout(loadFormatter, 500);
-      // loadFormatter();
+
+      $scope.$watch('mdView.recordsLoaded', loadFormatter);
 
       // Know from what path we come from
       $scope.gnMdViewObj = gnMdViewObj;

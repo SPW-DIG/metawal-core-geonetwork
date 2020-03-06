@@ -44,6 +44,7 @@
         selectionBucket: 'e101',
         params: {
           sortBy: 'changeDate',
+          sortOrder: 'desc',
           _isTemplate: 'y or n',
           editable: 'true',
           resultType: $scope.facetsSummaryType,
@@ -60,10 +61,10 @@
         callback();
       };
       var setOwner = function() {
-        $scope.searchObj.params['_owner'] = $scope.user.id;
+        $scope.searchObj.params['owner'] = $scope.user.id;
       };
       var unsetOwner = function() {
-        delete $scope.searchObj.params['_owner'];
+        delete $scope.searchObj.params['owner'];
       };
       $scope.$watch('user.id', function(newId) {
         if (angular.isDefined(newId) && $scope.onlyMyRecord.is) {
@@ -206,10 +207,10 @@
         sortOrder: ''
       }, {
         sortBy: 'changeDate',
-        sortOrder: ''
+        sortOrder: 'desc'
       }, {
-        sortBy: 'title',
-        sortOrder: 'reverse'
+        sortBy: 'resourceTitle.keyword',
+        sortOrder: ''
       }];
 
       gnSearchSettings.hitsperpageValues = [20, 50, 100];
@@ -333,7 +334,7 @@
           };
         }
         $scope.xmlContacts[field.name].values.push({
-          title: record.title + (role ? ' - ' + role : ''),
+          title: record.resourceTitle + (role ? ' - ' + role : ''),
           xml: scope.snippet
         });
         $scope.addChange(field, {

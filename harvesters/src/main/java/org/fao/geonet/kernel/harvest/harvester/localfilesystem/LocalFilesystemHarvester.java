@@ -156,7 +156,7 @@ public class LocalFilesystemHarvester extends AbstractHarvester<HarvestResult, L
 
         metadataManager.flush();
 
-        dataMan.indexMetadata(id, true, null);
+        dataMan.indexMetadata(id, true);
     }
 
     String addMetadata(Element xml, String uuid, String schema, GroupMapper localGroups, final CategoryMapper localCateg,
@@ -191,7 +191,7 @@ public class LocalFilesystemHarvester extends AbstractHarvester<HarvestResult, L
         metadataManager.flush();
 
         if (index) {
-            dataMan.indexMetadata(id, true, null);
+            dataMan.indexMetadata(id, true);
         }
         return id;
     }

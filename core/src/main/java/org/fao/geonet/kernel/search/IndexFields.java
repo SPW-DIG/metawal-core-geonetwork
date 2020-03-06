@@ -66,11 +66,14 @@ public class IndexFields {
     public static final String DENOMINATOR_TO = "denominatorTo";
     public static final String DENOMINATOR = "denominator";
     public static final String DIGITAL = "digital";
+    public static final String DOC_TYPE = "docType";
     public static final String DOWNLOAD = "download";
-    public static final String DRAFT = "_draft";
+    public static final String DRAFT = "draft";
     public static final String DUMMY = "_dummy";
     public static final String EAST = "eastBL";
     public static final String GROUP_OWNER = "_groupOwner";
+    public static final String HARVESTER_ID = "harvesterId";
+    public static final String HARVESTER_UUID = "harvesterUuid";
     public static final String ID = "_id";
     public static final String INSPIRE_ANNEX = "inspireannex";
     public static final String INSPIRE_CAT = "inspirecat";
@@ -89,7 +92,9 @@ public class IndexFields {
     public static final String REVISION_DATE = "revisionDate";
     public static final String SCHEMA = "_schema";
     public static final String SERVICE_TYPE = "serviceType";
+    public static final String SCOPE = "scope";
     public static final String SOURCE = "_source";
+    public static final String SOURCE_CATALOGUE = "sourceCatalogue";
     public static final String SOUTH = "southBL";
     public static final String SPATIALREPRESENTATIONTYPE = "spatialRepresentationType";
     public static final String SUBJECT = "subject";
@@ -114,4 +119,5 @@ public class IndexFields {
     public static final String ROOT = "_root";
     public static final String INDEXING_ERROR_MSG = "_indexingErrorMsg";
     public static final String INDEXING_ERROR_FIELD = "_indexingError";
+    public static final String DBID = "id";
 }

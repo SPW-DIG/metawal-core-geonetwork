@@ -32,6 +32,7 @@ import java.nio.file.Path;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import jeeves.server.ServiceConfig;
@@ -41,11 +42,9 @@ import jeeves.server.context.ServiceContext;
  * Base interface for the search (Lucene or Solr).
  */
 public interface ISearchManager {
-    void init(ServiceConfig handlerConfig) throws Exception;
+    void init(boolean dropIndexFirst, Optional<List<String>> indices) throws Exception;
 
     void end() throws Exception;
-
-    MetaSearcher newSearcher(String stylesheetName) throws Exception;
 
     /**
      * Indexes a metadata record.
@@ -53,7 +52,7 @@ public interface ISearchManager {
      * @param forceRefreshReaders if true then block all searches until they can obtain a up-to-date
      *                            reader
      */
-    void index(Path schemaDir, Element metadata, String id, List<Element> moreFields,
+    void index(Path schemaDir, Element metadata, String id, Map<String, Object> moreFields,
                MetadataType metadataType, String root, boolean forceRefreshReaders)
         throws Exception;
 
@@ -91,9 +90,9 @@ public interface ISearchManager {
     /**
      * deletes a list of documents.
      */
-    void delete(List<String> txts) throws Exception;
+    void delete(List<Integer> metadataIds) throws Exception;
 
-    void rescheduleOptimizer(Calendar beginAt, int interval) throws Exception;
+    long getNumDocs() throws Exception;
 
-    void disableOptimizer() throws Exception;
+    Element makeField(String fieldName, String fieldValue);
 }

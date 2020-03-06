@@ -23,27 +23,16 @@
 
 package org.fao.geonet.api.site;
 
-import static org.apache.commons.fileupload.util.Streams.checkFileName;
-import static org.fao.geonet.api.ApiParams.API_CLASS_CATALOG_TAG;
-
-import java.awt.image.BufferedImage;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import javax.imageio.ImageIO;
-import javax.persistence.criteria.Root;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import jeeves.component.ProfileManager;
+import jeeves.config.springutil.ServerBeanPropertyUpdater;
+import jeeves.server.JeevesProxyInfo;
+import jeeves.server.UserSession;
+import jeeves.server.context.ServiceContext;
 import org.apache.commons.lang.StringUtils;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.GeonetContext;
@@ -65,11 +54,12 @@ import org.fao.geonet.domain.Setting;
 import org.fao.geonet.domain.SettingDataType;
 import org.fao.geonet.domain.Source;
 import org.fao.geonet.exceptions.OperationAbortedEx;
+import org.fao.geonet.index.Status;
+import org.fao.geonet.index.es.EsServerStatusChecker;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.GeonetworkDataDirectory;
 import org.fao.geonet.kernel.datamanager.IMetadataManager;
 import org.fao.geonet.kernel.search.EsSearchManager;
-import org.fao.geonet.kernel.search.SearchManager;
 import org.fao.geonet.kernel.setting.SettingInfo;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.setting.Settings;
@@ -80,7 +70,6 @@ import org.fao.geonet.repository.SourceRepository;
 import org.fao.geonet.repository.specification.MetadataSpecs;
 import org.fao.geonet.resources.Resources;
 import org.fao.geonet.utils.FilePathChecker;
-import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.ProxyInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -96,18 +85,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import jeeves.component.ProfileManager;
-import jeeves.config.springutil.ServerBeanPropertyUpdater;
-import jeeves.server.JeevesProxyInfo;
-import jeeves.server.UserSession;
-import jeeves.server.context.ServiceContext;
 import springfox.documentation.annotations.ApiIgnore;
+
+import javax.imageio.ImageIO;
+import javax.persistence.criteria.Root;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Optional;
+
+import static org.apache.commons.fileupload.util.Streams.checkFileName;
+import static org.fao.geonet.api.ApiParams.API_CLASS_CATALOG_TAG;
+
+
 
 /**
  *
@@ -141,18 +143,6 @@ public class SiteApi {
         DataManager dataMan = gc.getBean(DataManager.class);
         SettingManager settingMan = gc.getBean(SettingManager.class);
         SettingInfo si = context.getBean(SettingInfo.class);
-
-        try {
-            if (si.getLuceneIndexOptimizerSchedulerEnabled()) {
-                dataMan.rescheduleOptimizer(si.getLuceneIndexOptimizerSchedulerAt(), si.getLuceneIndexOptimizerSchedulerInterval());
-            } else {
-                dataMan.disableOptimizer();
-            }
-        } catch (Exception e) {
-            context.error("Reload services. Error: " + e.getMessage());
-            context.error(e);
-            throw new OperationAbortedEx("Parameters saved but cannot restart Lucene Index Optimizer: " + e.getMessage());
-        }
 
         LogUtils.refreshLogConfiguration();
 
@@ -269,7 +259,7 @@ public class SiteApi {
         List<String> settingList = new ArrayList<>();
         if (set == null && key == null) {
             final SettingRepository settingRepository = appContext.getBean(SettingRepository.class);
-            final List<org.fao.geonet.domain.Setting> publicSettings =
+            final List<Setting> publicSettings =
                 settingRepository.findAllByInternal(false);
 
             // Add virtual settings based on internal settings.
@@ -296,12 +286,12 @@ public class SiteApi {
             if (key != null && key.length > 0) {
                 Collections.addAll(settingList, key);
             }
-            List<org.fao.geonet.domain.Setting> settings = sm.getSettings(settingList.toArray(new String[0]));
-            ListIterator<org.fao.geonet.domain.Setting> iterator = settings.listIterator();
+            List<Setting> settings = sm.getSettings(settingList.toArray(new String[0]));
+            ListIterator<Setting> iterator = settings.listIterator();
 
             // Cleanup internal settings for not authenticated users.
             while (iterator.hasNext()) {
-                org.fao.geonet.domain.Setting s = iterator.next();
+                Setting s = iterator.next();
                 if (s.isInternal() && profile == null) {
                     settings.remove(s);
                 }
@@ -372,12 +362,12 @@ public class SiteApi {
             if (key != null && key.length > 0) {
                 Collections.addAll(settingList, key);
             }
-            List<org.fao.geonet.domain.Setting> settings = sm.getSettings(settingList.toArray(new String[0]));
-            ListIterator<org.fao.geonet.domain.Setting> iterator = settings.listIterator();
+            List<Setting> settings = sm.getSettings(settingList.toArray(new String[0]));
+            ListIterator<Setting> iterator = settings.listIterator();
 
             // Cleanup internal settings for not authenticated users.
             while (iterator.hasNext()) {
-                org.fao.geonet.domain.Setting s = iterator.next();
+                Setting s = iterator.next();
                 if (s.isInternal() && profile == null) {
                     settings.remove(s);
                 }
@@ -582,11 +572,10 @@ public class SiteApi {
             required = false)
         @RequestParam(required = false, defaultValue = "false")
             boolean havingXlinkOnly,
-//        @ApiParam(value = API_PARAM_RECORD_UUIDS_OR_SELECTION,
-//            required = false,
-//            example = "")
-//        @RequestParam(required = false)
-//        String[] uuids,
+        @ApiParam(value = "Index. By default only remove record index.",
+            required = false)
+        @RequestParam(required = false, defaultValue = "records")
+        String[] indices,
         @ApiParam(
             value = ApiParams.API_PARAM_BUCKET_NAME,
             required = false)
@@ -597,68 +586,30 @@ public class SiteApi {
         HttpServletRequest request
     ) throws Exception {
         ServiceContext context = ApiUtils.createServiceContext(request);
-        SearchManager searchMan = ApplicationContextHolder.get().getBean(SearchManager.class);
+        EsSearchManager searchMan = ApplicationContextHolder.get().getBean(EsSearchManager.class);
 
-        searchMan.rebuildIndex(context, havingXlinkOnly, reset, bucket);
+        if(reset) {
+            searchMan.init(true, Optional.of(Arrays.asList(indices)));
+        }
+        searchMan.rebuildIndex(context, havingXlinkOnly, false, bucket);
 
         return new HttpEntity<>(HttpStatus.CREATED);
     }
 
     @ApiOperation(
-        value = "Index in Elastic",
+        value = "Index status",
         notes = "",
         nickname = "indexes")
     @RequestMapping(
-        path = "/index/es",
+        path = "/index/status",
         produces = MediaType.APPLICATION_JSON_VALUE,
-        method = RequestMethod.PUT)
-    @PreAuthorize("hasRole('Editor')")
+        method = RequestMethod.GET)
     @ResponseBody
-    public HttpEntity indexEs(
-        @ApiParam(value = "Drop and recreate index",
-            required = false)
-        @RequestParam(required = false, defaultValue = "true")
-            boolean reset,
-        @ApiParam(value = "Records having only XLinks",
-            required = false)
-        @RequestParam(required = false, defaultValue = "false")
-            boolean havingXlinkOnly,
-//        @ApiParam(value = API_PARAM_RECORD_UUIDS_OR_SELECTION,
-//            required = false,
-//            example = "")
-//        @RequestParam(required = false)
-//        String[] uuids,
-        @ApiParam(
-            value = ApiParams.API_PARAM_BUCKET_NAME,
-            required = false)
-        @RequestParam(
-            required = false
-        )
-            String bucket,
+    public Status indexStatus(
         HttpServletRequest request
     ) throws Exception {
-        ServiceContext context = ApiUtils.createServiceContext(request);
-        EsSearchManager searchMan = ApplicationContextHolder.get().getBean(EsSearchManager.class);
-
-        searchMan.rebuildIndex(context, havingXlinkOnly, reset, bucket);
-
-        return new HttpEntity<>(HttpStatus.CREATED);
-    }
-
-    @ApiOperation(
-        value = "Delete index in Elastic",
-        notes = "",
-        nickname = "deleteIndexes")
-    @RequestMapping(
-        path = "/index/es",
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        method = RequestMethod.DELETE)
-    @PreAuthorize("hasRole('Editor')")
-    @ResponseBody
-    public HttpEntity deleteIndexEs() throws Exception {
-        EsSearchManager searchMan = ApplicationContextHolder.get().getBean(EsSearchManager.class);
-        searchMan.clearIndex();
-        return new HttpEntity<>(HttpStatus.NO_CONTENT);
+        EsServerStatusChecker serverStatusChecker = ApplicationContextHolder.get().getBean(EsServerStatusChecker.class);
+        return serverStatusChecker.getStatus();
     }
 
     @ApiOperation(

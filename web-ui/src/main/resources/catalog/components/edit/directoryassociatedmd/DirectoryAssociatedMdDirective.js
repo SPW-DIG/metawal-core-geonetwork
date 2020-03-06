@@ -49,22 +49,22 @@
           function($scope, gnGlobalSettings) {
             $scope.searchObj = {
               params: {
-                _isTemplate: 'y or n',
+                isTemplate: ['y', 'n'],
                 any: '',
-                sortBy: 'title',
+                sortBy: 'resourceTitle.keyword',
                 _xlink: '*'
               },
               internal: true,
               sortbyValues: [
                 {
-                  sortBy: 'title'
+                  sortBy: 'resourceTitle.keyword'
                 },
                 {
                   sortBy: 'owner'
                 },
                 {
                   sortBy: 'changeDate',
-                  sortOrder: 'reverse'
+                  sortOrder: 'desc'
                 }
               ]
             };
