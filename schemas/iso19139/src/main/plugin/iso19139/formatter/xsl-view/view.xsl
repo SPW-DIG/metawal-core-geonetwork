@@ -183,17 +183,24 @@
   </xsl:template>
 
   <xsl:template mode="getExtent" match="gmd:MD_Metadata">
-    <section class="gn-md-side-overview">
+    <section class="gn-md-side-extent">
       <h2>
         <i class="fa fa-fw fa-map-marker"><xsl:comment select="'image'"/></i>
         <span><xsl:comment select="name()"/>
-          <xsl:value-of select="$schemaStrings/extent"/>
+          <xsl:value-of select="$schemaStrings/spatialExtent"/>
         </span>
       </h2>
 
-      <xsl:apply-templates mode="render-field"
-                           select=".//gmd:EX_GeographicBoundingBox">
-      </xsl:apply-templates>
+      <xsl:choose>
+        <xsl:when test=".//gmd:EX_BoundingPolygon">
+          <xsl:copy-of select="gn-fn-render:extent($metadataUuid)"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates mode="render-field"
+                               select=".//gmd:EX_GeographicBoundingBox">
+          </xsl:apply-templates>
+        </xsl:otherwise>
+      </xsl:choose>
     </section>
   </xsl:template>
 
@@ -289,18 +296,22 @@
                 <xsl:if test="position() != last()">&#160;,&#160;</xsl:if>
               </xsl:for-each-group>
 
-              <!-- Publication year: use last publication date -->
-              <xsl:variable  name="publicationDate">
-                <xsl:for-each select="gmd:identificationInfo/*/gmd:citation/*/gmd:date/*[
-                                  gmd:dateType/*/@codeListValue = 'publication']/
-                                    gmd:date/gco:*">
-                  <xsl:sort select="." order="descending" />
-
-                  <xsl:if test="position() = 1">
-                    <xsl:value-of select="." />
-                  </xsl:if>
-                </xsl:for-each>
+              <!-- Publication year: use last publication or revision date -->
+              <xsl:variable name="publicationDate">
+                <xsl:perform-sort select="gmd:identificationInfo/*/gmd:citation/*/gmd:date/*[
+                                      gmd:dateType/*/@codeListValue  = ('publication', 'revision')]/
+                                      gmd:date/gco:*[. != '']">
+                  <xsl:sort select="." order="descending"/>
+                </xsl:perform-sort>
               </xsl:variable>
+              <xsl:choose>
+                <xsl:when test="$publicationDate/*[1]">
+                  <xsl:for-each select="$publicationDate/*[1]">
+                    (<xsl:value-of select="substring($publicationDate, 1, 4)"/>).
+                  </xsl:for-each>
+                </xsl:when>
+                <xsl:otherwise>.&#160;</xsl:otherwise>
+              </xsl:choose>
 
 
               <xsl:choose>
@@ -460,6 +471,34 @@
     <br/>
   </xsl:template>
 
+
+  <!-- Display spatial extents containing bounding polygons on a map -->
+
+  <xsl:template mode="render-field"
+                match="gmd:EX_Extent[gmd:geographicElement/*/gmd:polygon]"
+                priority="100">
+    <div class="entry name">
+      <h2>
+        <xsl:value-of select="tr:nodeLabel(tr:create($schema), name(), null)"/>
+        <xsl:apply-templates mode="render-value"
+                             select="@*"/>
+      </h2>
+      <div class="target"><xsl:comment select="name()"/>
+
+        <xsl:apply-templates mode="render-field" select="gmd:description"/>
+
+        <xsl:copy-of select="gn-fn-render:extent($metadataUuid)"/>
+
+        <!-- Display any included geographic descriptions separately after displayed map -->
+
+        <xsl:apply-templates mode="render-field" select="gmd:geographicElement[gmd:EX_GeographicDescription]"/>
+
+        <xsl:apply-templates mode="render-field" select="gmd:temporalElement"/>
+        <xsl:apply-templates mode="render-field" select="gmd:verticalElement"/>
+
+      </div>
+    </div>
+  </xsl:template>
 
   <!-- A contact is displayed with its role as header -->
   <xsl:template mode="render-field"
@@ -896,19 +935,34 @@
      </span>
   </xsl:template>
 
-
   <xsl:template mode="render-value"
                 match="*[gmx:Anchor]">
+    <xsl:apply-templates mode="render-value"
+                         select="gmx:Anchor"/>
+  </xsl:template>
+
+  <xsl:template mode="render-value"
+                match="gmx:Anchor">
+    <xsl:variable name="link"
+                  select="@xlink:href"/>
     <xsl:variable name="txt">
-      <xsl:apply-templates mode="localised" select=".">
+      <xsl:apply-templates mode="localised" select="..">
         <xsl:with-param name="langId" select="$langId"/>
       </xsl:apply-templates>
     </xsl:variable>
 
-    <a href="{gmx:Anchor/@xlink:href}">
-      <xsl:value-of select="$txt"/>
-    </a>
+    <xsl:choose>
+      <xsl:when test="$link != ''">
+        <a href="{$link}">
+          <xsl:value-of select="$txt"/>
+        </a>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$txt"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
+
 
 
   <xsl:template mode="render-value"
