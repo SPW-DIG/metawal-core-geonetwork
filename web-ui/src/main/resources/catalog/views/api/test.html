@@ -1,0 +1,198 @@
+<p>Rechercher des g&eacute;odonn&eacute;es</p>
+<div data-ng-controller="GnCatController" ng-app="gn_search_default">
+  <script type="text/javascript">
+    function loadcss(url) {
+      var head = document.getElementsByTagName('head')[0],
+        link = document.createElement('link');
+      link.type = 'text/css';
+      link.rel = 'stylesheet';
+      link.href = url;
+      head.appendChild(link);
+      return link;
+    }
+    var urltest = "http://metawal4.test.wallonie.be/geonetwork/static/gn_search_default.css";
+    loadcss(urltest)
+  </script>
+  <div class="gn-full" data-ng-include="'../../catalog/views/default/templates/index.html'">&nbsp;</div>
+  <script src="'http://metawal4.test.wallonie.be/geonetwork/static/lib.js"></script>
+  <script src="'http://metawal4.test.wallonie.be/geonetwork/static/gn_search_default.js"></script>
+  <script type="text/javascript">
+    // Parse config from config URL parameter
+    var tokens = /config=([^&]+)/.exec(window.location.search),
+      config = tokens ? tokens[1] : undefined,
+      defaultConfig = {
+        "mods": {
+          "header": {
+            "enabled": false,
+            "languages": {
+              "fre": "fr"
+            }
+          },
+          "home": {
+            "enabled": false,
+          },
+          "search": {
+            "enabled": true,
+            "facetsSummaryType": "apirw",
+            "facetTabField": "type",
+            "filters": {
+              "type": "dataset or service"
+            },
+            "resultViewTpls": [
+              {
+                "tplUrl": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-geoportail.html",
+                "tooltip": "Grid",
+                "icon": "fa-th"
+              }
+            ],
+            "resultTemplate": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-geoportail.html",
+            "formatter": {
+              "list": [
+                {
+                  "label": "full",
+                  "url": "../api/records/{{md.getUuid()}}/formatters/xsl-view?root=div&view=advanced"
+                }
+              ]
+            },
+            "grid": {
+              "related": []
+            },
+            "linkTypes": {
+              "links": [
+                "LINK",
+                "kml"
+              ],
+              "downloads": [
+                "DOWNLOAD"
+              ],
+              "layers": [
+                "OGC"
+              ],
+              "maps": [
+                "ows"
+              ]
+            },
+            "isFilterTagsDisplayedInSearch": false
+          },
+          "map": {
+            "enabled": false,
+            "appUrl": "../../srv/{{lang}}/catalog.search#/map",
+            "is3DModeAllowed": true,
+            "isSaveMapInCatalogAllowed": true,
+            "isExportMapAsImageEnabled": false,
+            "storage": "sessionStorage",
+            "listOfServices": {
+              "wms": [],
+              "wmts": []
+            },
+            "projection": "EPSG:3857",
+            "projectionList": [
+              {
+                "code": "EPSG:4326",
+                "label": "WGS84(EPSG:4326)"
+              },
+              {
+                "code": "EPSG:3857",
+                "label": "Googlemercator(EPSG:3857)"
+              }
+            ],
+            "disabledTools": {
+              "processes": false,
+              "addLayers": false,
+              "layers": false,
+              "filter": false,
+              "contexts": false,
+              "print": false,
+              "mInteraction": false,
+              "graticule": false,
+              "syncAllLayers": false,
+              "drawVector": false
+            },
+            "graticuleOgcService": {},
+            "map-viewer": {
+              "context": "../../map/config-viewer.xml",
+              "extent": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "layers": []
+            },
+            "map-search": {
+              "context": "../../map/config-viewer.xml",
+              "extent": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "layers": []
+            },
+            "map-editor": {
+              "context": "",
+              "extent": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "layers": [
+                {
+                  "type": "osm"
+                }
+              ]
+            },
+            "bingKey": "AnElW2Zqi4fI-9cYx1LHiQfokQ9GrNzcjOh_p_0hkO1yo78ba8zTLARcLBIf8H6D",
+            "map": "../../map/config-viewer.xml",
+            "useOSM": true,
+            "context": "",
+            "layer": {
+              "url": "http://www2.demis.nl/mapserver/wms.asp?",
+              "layers": "Countries",
+              "version": "1.1.1"
+            }
+          },
+          "editor": {
+            "enabled": false
+          },
+          "admin": {
+            "enabled": false,
+            "appUrl": "../../srv/{{lang}}/admin.console"
+          },
+          "signin": {
+            "enabled": false,
+            "appUrl": "../../srv/{{lang}}/catalog.signin"
+          },
+          "signout": {
+            "appUrl": "../../signout"
+          }
+        }
+      };
+    if (config) {
+      try {
+        config = angular.fromJson(decodeURIComponent(config));
+      } catch (e) {
+        console.warn('Invalid configuration: ' + config + '. Using default.');
+        console.warn(e);
+        config = defaultConfig;
+      }
+    } else {
+      config = defaultConfig;
+    }
+    var cfgModule = angular.module('gn_config', []);
+    cfgModule.config(['gnViewerSettings', 'gnSearchSettings', 'gnGlobalSettings',
+      function (gnViewerSettings, gnSearchSettings, gnGlobalSettings) {
+        gnGlobalSettings.init(config, 'http://metawal4.test.wallonie.be/geonetwork/srv/', gnViewerSettings, gnSearchSettings);
+      }]);
+  </script>
+  <script type="text/javascript"
+          src="http://geoportail.test.wallonie.be/modules/geoportail-metawal/javascript/metawal.js">
+  </script>
+  <script type="text/javascript"
+          src="http://geoportail.test.wallonie.be/modules/geoportail-metawal/javascript/js.cookie.js">
+  </script>
+  <script type="text/javascript"
+          src="http://geoportail.test.wallonie.be/modules/bootstrap/javascript/bootstrap-dropdown.js"></script>
+  <p>​</p>
+</div>

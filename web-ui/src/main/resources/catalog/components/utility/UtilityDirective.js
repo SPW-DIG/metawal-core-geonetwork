@@ -543,7 +543,7 @@
               gnUrlUtils.toKeyValue(angular.extend({
                isTemplate: 'n',
                any: '*QUERY*',
-               sortBy: 'resourceTitle.keyword'
+               sortBy: 'resourceTitleObject.default.keyword'
              }, params)
               )
              );
@@ -647,7 +647,7 @@
                 isTemplate: 's',
                 any: '*QUERY*',
                 _root: 'gmd:CI_ResponsibleParty',
-                sortBy: 'resourceTitle.keyword',
+                sortBy: 'resourceTitleObject.default.keyword',
                 sortOrder: '',
                 resultType: 'subtemplates'
               })

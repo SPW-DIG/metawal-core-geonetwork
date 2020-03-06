@@ -1,0 +1,477 @@
+{
+  "jahiaUrl": "https://geoportail.wallonie.be",
+  "langDetector": {
+    "fromHtmlTag": false,
+    "regexp": "^(?:/.+)?/.+/([a-z]{2,3})/.+",
+    "default": "eng"
+  },
+  "nodeDetector": {
+    "regexp": "^(?:/.+)?/(.+)/[a-z]{2,3}/.+",
+    "default": "srv"
+  },
+  "serviceDetector": {
+    "regexp": "^(?:/.+)?/.+/[a-z]{2,3}/(.+)",
+    "default": "catalog.search"
+  },
+  "baseURLDetector": {
+    "regexp": "^((?:/.+)?)+/.+/[a-z]{2,3}/.+",
+    "default": "/geonetwork"
+  },
+  "mods": {
+    "global": {
+      "humanizeDates": true
+    },
+    "footer": {
+      "enabled": true,
+      "showSocialBarInFooter": true
+    },
+    "header": {
+      "enabled": true,
+      "languages": {
+        "eng": "en",
+        "dut": "nl",
+        "fre": "fr",
+        "ger": "de"
+      },
+      "isLogoInHeader": false,
+      "logoInHeaderPosition": "left",
+      "fluidHeaderLayout": true,
+      "showGNName": true
+    },
+    "home": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/catalog.search#/home",
+      "showSocialBarInFooter": true,
+      "fluidLayout": true,
+      "facetConfig": {
+        "resourceType": {
+          "terms": {
+            "field": "resourceType",
+            "size": 10
+          }
+        },
+        "topic": {
+          "terms": {
+            "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
+            "size": 20
+          }
+        },
+        "inspireThemeUri": {
+          "terms": {
+            "field": "inspireThemeUri",
+            "size": 34
+          }
+        }
+      }
+    },
+    "search": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/catalog.search#/search",
+      "hitsperpageValues": [
+        10,
+        50,
+        100
+      ],
+      "paginationInfo": {
+        "hitsPerPage": 20
+      },
+      "autocompleteConfig": {
+        "query": {
+          "multi_match": {
+            "query": "",
+            "type": "bool_prefix",
+            "fields": [
+              "resourceTitle",
+              "anytext",
+              "anytext._2gram",
+              "anytext._3gram"
+            ]
+          }
+        },
+        "_source": [
+          "resourceTitle"
+        ]
+      },
+      "facetTabField": "",
+      "facetConfig": {
+        "resourceType": {
+          "terms": {
+            "field": "resourceType",
+            "size": 10
+          }
+        },
+        "codelist_status": {
+          "terms": {
+            "field": "codelist_status",
+            "size": 20
+          }
+        },
+        "codelist_spatialRepresentationType": {
+          "terms": {
+            "field": "codelist_spatialRepresentationType",
+            "size": 20
+          }
+        },
+        "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+          "terms": {
+            "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
+            "size": 20,
+            "order": {
+              "_key": "asc"
+            }
+          }
+        },
+        "resolutionScaleDenominator": {
+          "terms": {
+            "field": "resolutionScaleDenominator",
+            "size": 20,
+            "order": {
+              "_key": "asc"
+            }
+          }
+        },
+        "serviceType": {
+          "terms": {
+            "field": "serviceType",
+            "size": 10
+          }
+        },
+        "creationYearForResource": {
+          "terms": {
+            "field": "creationYearForResource",
+            "size": 10,
+            "order": {
+              "_key": "desc"
+            }
+          }
+        },
+        "topic": {
+          "terms": {
+            "field": "topic",
+            "size": 20
+          }
+        },
+        "thesaurus_geonetworkthesaurusexternalthemegemet_tree": {
+          "terms": {
+            "field": "thesaurus_geonetworkthesaurusexternalthemegemet_tree",
+            "size": 100,
+            "order": {
+              "_key": "asc"
+            },
+            "include": "[^/]+/?[^/]+"
+          }
+        },
+        "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
+          "terms": {
+            "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
+            "size": 40
+          }
+        },
+        "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+          "terms": {
+            "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
+            "size": 34
+          }
+        }
+      },
+      "filters": {},
+      "sortbyValues": [
+        {
+          "sortBy": "relevance",
+          "sortOrder": "asc"
+        },
+        {
+          "sortBy": "dateStamp",
+          "sortOrder": "desc"
+        },
+        {
+          "sortBy": "resourceTitle.keyword",
+          "sortOrder": "asc"
+        },
+        {
+          "sortBy": "rating",
+          "sortOrder": "desc"
+        },
+        {
+          "sortBy": "popularity",
+          "sortOrder": "desc"
+        }
+      ],
+      "sortBy": "relevance",
+      "resultViewTpls": [
+        {
+          "tplUrl": "../../catalog/components/search/resultsview/partials/viewtemplates/grid.html",
+          "tooltip": "Grid",
+          "icon": "fa-th"
+        },
+        {
+          "tplUrl": "../../catalog/components/search/resultsview/partials/viewtemplates/list.html",
+          "tooltip": "List",
+          "icon": "fa-bars"
+        }
+      ],
+      "resultTemplate": "../../catalog/components/search/resultsview/partials/viewtemplates/grid.html",
+      "formatter": {
+        "list": [
+          {
+            "label": "defaultView",
+            "url": ""
+          },
+          {
+            "label": "full",
+            "url": "/formatters/xsl-view?root=div&view=advanced"
+          }
+        ],
+        "defaultUrl": ""
+      },
+      "downloadFormatter": [
+        {
+          "label": "exportMEF",
+          "url": "/formatters/zip?withRelated=false",
+          "class": "fa-file-zip-o"
+        },
+        {
+          "label": "exportPDF",
+          "url": "/formatters/xsl-view?output=pdf&language=${lang}",
+          "class": "fa-file-pdf-o"
+        },
+        {
+          "label": "exportXML",
+          "url": "/formatters/xml",
+          "class": "fa-file-code-o"
+        }
+      ],
+      "grid": {
+        "related": [
+          "parent",
+          "children",
+          "services",
+          "datasets"
+        ]
+      },
+      "linkTypes": {
+        "links": [
+          "LINK",
+          "kml"
+        ],
+        "downloads": [
+          "DOWNLOAD"
+        ],
+        "layers": [
+          "OGC",
+          "ESRI:REST"
+        ],
+        "maps": [
+          "ows"
+        ]
+      },
+      "isFilterTagsDisplayedInSearch": false,
+      "usersearches": {
+        "enabled": true,
+        "displayFeaturedSearchesPanel": true
+      },
+      "savedSelection": {
+        "enabled": true
+      }
+    },
+    "map": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/catalog.search#/map",
+      "externalViewer": {
+        "enabled": false,
+        "baseUrl": "http://www.example.com/viewer",
+        "urlTemplate": "http://www.example.com/viewer?url=${service.url}&type=${service.type}&layer=${service.name}",
+        "openNewWindow": false,
+        "valuesSeparator": ","
+      },
+      "is3DModeAllowed": true,
+      "isSaveMapInCatalogAllowed": true,
+      "isExportMapAsImageEnabled": false,
+      "storage": "sessionStorage",
+      "bingKey": "",
+      "listOfServices": {
+        "wms": [],
+        "wmts": []
+      },
+      "projection": "EPSG:3857",
+      "projectionList": [
+        {
+          "code": "EPSG:4326",
+          "label": "WGS84 (EPSG:4326)"
+        },
+        {
+          "code": "EPSG:3857",
+          "label": "Google mercator (EPSG:3857)"
+        }
+      ],
+      "switcherProjectionList": [
+        {
+          "code": "EPSG:3857",
+          "label": "Google mercator (EPSG:3857)"
+        }
+      ],
+      "disabledTools": {
+        "processes": false,
+        "addLayers": false,
+        "projectionSwitcher": false,
+        "layers": false,
+        "legend": false,
+        "filter": false,
+        "contexts": false,
+        "print": false,
+        "mInteraction": false,
+        "graticule": false,
+        "syncAllLayers": false,
+        "drawVector": false
+      },
+      "graticuleOgcService": {},
+      "map-viewer": {
+        "context": "../../map/config-viewer.xml",
+        "extent": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "layers": []
+      },
+      "map-search": {
+        "context": "../../map/config-viewer.xml",
+        "extent": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "layers": []
+      },
+      "map-editor": {
+        "context": "",
+        "extent": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "layers": [
+          {
+            "type": "osm"
+          }
+        ]
+      },
+      "autoFitOnLayer": false
+    },
+    "geocoder": {
+      "enabled": true,
+      "appUrl": "https://secure.geonames.org/searchJSON"
+    },
+    "recordview": {
+      "enabled": true,
+      "isSocialbarEnabled": true
+    },
+    "editor": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/catalog.edit",
+      "isUserRecordsOnly": false,
+      "isFilterTagsDisplayed": false,
+      "fluidEditorLayout": true,
+      "createPageTpl": "../../catalog/templates/editor/new-metadata-horizontal.html",
+      "editorIndentType": "",
+      "facetConfig": {
+        "resourceType": {
+          "terms": {
+            "field": "resourceType",
+            "size": 10
+          }
+        },
+        "codelist_status_text": {
+          "terms": {
+            "field": "codelist_status_text",
+            "size": 15
+          }
+        },
+        "sourceCatalog": {
+          "terms": {
+            "field": "sourceCatalog",
+            "size": 15
+          }
+        },
+        "isValid": {
+          "terms": {
+            "field": "isValid",
+            "size": 10
+          }
+        },
+        "isValidInspire": {
+          "terms": {
+            "field": "isValidInspire",
+            "size": 10
+          }
+        },
+        "groupOwner": {
+          "terms": {
+            "field": "groupOwner",
+            "size": 10
+          }
+        },
+        "recordOwner": {
+          "terms": {
+            "field": "recordOwner",
+            "size": 10
+          }
+        },
+        "groupPublished": {
+          "terms": {
+            "field": "groupPublished",
+            "size": 10
+          }
+        },
+        "documentStandard": {
+          "terms": {
+            "field": "documentStandard",
+            "size": 10
+          }
+        },
+        "isHarvested": {
+          "terms": {
+            "field": "isHarvested",
+            "size": 10
+          }
+        },
+        "isTemplate": {
+          "terms": {
+            "field": "isTemplate",
+            "size": 10
+          }
+        },
+        "isPublishedToAll": {
+          "terms": {
+            "field": "isPublishedToAll",
+            "size": 2
+          }
+        },
+        "tag": {
+          "terms": {
+            "field": "tag",
+            "size": 15
+          }
+        }
+      }
+    },
+    "admin": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/admin.console"
+    },
+    "signin": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/catalog.signin"
+    },
+    "signout": {
+      "appUrl": "../../signout"
+    },
+    "page": {
+      "enabled": true,
+      "appUrl": "../../{{node}}/{{lang}}/catalog.search#/page"
+    }
+  }
+}

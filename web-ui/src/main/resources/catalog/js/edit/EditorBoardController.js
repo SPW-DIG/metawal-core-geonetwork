@@ -193,7 +193,7 @@
         sortBy: 'changeDate',
         sortOrder: 'desc'
       }, {
-        sortBy: 'resourceTitle.keyword',
+        sortBy: 'resourceTitleObject.default.keyword',
         sortOrder: ''
       }];
 

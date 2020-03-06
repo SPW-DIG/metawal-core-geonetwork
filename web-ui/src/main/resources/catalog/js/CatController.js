@@ -151,75 +151,83 @@ goog.require('gn_alert');
           // TODOES
           'facetTabField': '',
           'facetConfig': {
-            'thesaurus_geonetworkthesaurusexternalthemegemet_tree': {
-              'terms': {
-                'field': 'thesaurus_geonetworkthesaurusexternalthemegemet_tree',
-                'size': 100,
-                "order" : { "_key" : "asc" }
-                //"include": "[^/]+/?[^/]+"
-                // Limit to 2 levels
+            "resourceType": {
+              "terms": {
+                "field": "resourceType",
+                "size": 10
               }
             },
-            'thesaurus_geonetworkthesaurusexternalplaceregions_tree': {
-              'terms': {
-                'field': 'thesaurus_geonetworkthesaurusexternalplaceregions_tree',
-                'size': 100,
-                "order" : { "_key" : "asc" }
-                //"include": "EEA.*"
+            "codelist_status": {
+              "terms": {
+                "field": "codelist_status",
+                "size": 20
               }
             },
-            'resourceType': {
-              'terms': {
-                'field': 'resourceType'
-              },
-              'aggs': {
-                'format': {
-                  'terms': {
-                    'field': 'format'
-                  }
+            "codelist_spatialRepresentationType": {
+              "terms": {
+                "field": "codelist_spatialRepresentationType",
+                "size": 20
+              }
+            },
+            "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
+                "size": 20,
+                "order": {
+                  "_key": "asc"
                 }
               }
             },
-            'availableInServices': {
-              'filters': {
-                //"other_bucket_key": "others",
-                // But does not support to click on it
-                'filters': {
-                  'availableInViewService': {
-                    'query_string': {
-                      'query': '+linkProtocol:/OGC:WMS.*/'
-                    }
-                  },
-                  'availableInDownloadService': {
-                    'query_string': {
-                      'query': '+linkProtocol:/OGC:WFS.*/'
-                    }
-                  }
+            "resolutionScaleDenominator": {
+              "terms": {
+                "field": "resolutionScaleDenominator",
+                "size": 20,
+                "order": {
+                  "_key": "asc"
                 }
               }
             },
-            'codelist_spatialRepresentationType': {
-              'terms': {
-                'field': 'codelist_spatialRepresentationType',
-                'size': 10
+            "serviceType": {
+              "terms": {
+                "field": "serviceType",
+                "size": 10
               }
             },
-            'creationYearForResource': {
-              'terms': {
-                'field': 'creationYearForResource',
-                'size': 5
+            "creationYearForResource": {
+              "terms": {
+                "field": "creationYearForResource",
+                "size": 10,
+                "order": {
+                  "_key": "desc"
+                }
               }
             },
-            'tag': {
-              'terms': {
-                'field': 'tag',
-                'size': 15
+            "topic": {
+              "terms": {
+                "field": "topic",
+                "size": 20
               }
             },
-            "dateStamp" : {
-              "auto_date_histogram" : {
-                "field" : "dateStamp",
-                "buckets": 50
+            "thesaurus_geonetworkthesaurusexternalthemegemet_tree": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemegemet_tree",
+                "size": 100,
+                "order": {
+                  "_key": "asc"
+                },
+                "include": "[^/]+/?[^/]+"
+              }
+            },
+            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
+                "size": 40
+              }
+            },
+            "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
+                "size": 34
               }
             }
           },
@@ -231,7 +239,7 @@ goog.require('gn_alert');
             'sortBy': 'dateStamp',
             'sortOrder': 'desc'
           }, {
-            'sortBy': 'resourceTitle.keyword',
+            'sortBy': 'resourceTitleObject.default.keyword',
             'sortOrder': ''
           }, {
             'sortBy': 'rating',
