@@ -153,19 +153,19 @@ goog.require('gn_alert');
           'facetConfig': {
             "resourceType": {
               "terms": {
-                "field": "resourceType",
+                "field": "codelist_resourceScope_text",
                 "size": 10
               }
             },
             "codelist_status": {
               "terms": {
-                "field": "codelist_status",
+                "field": "codelist_status_text",
                 "size": 20
               }
             },
             "codelist_spatialRepresentationType": {
               "terms": {
-                "field": "codelist_spatialRepresentationType",
+                "field": "codelist_spatialRepresentationType_text",
                 "size": 20
               }
             },
@@ -204,7 +204,7 @@ goog.require('gn_alert');
             },
             "topic": {
               "terms": {
-                "field": "topic",
+                "field": "topic_text.keyword",
                 "size": 20
               }
             },
