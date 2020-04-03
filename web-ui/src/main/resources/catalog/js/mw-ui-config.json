@@ -185,7 +185,7 @@
           "sortOrder": "desc"
         },
         {
-          "sortBy": "resourceTitle.keyword",
+          "sortBy": "resourceTitleObject.default.keyword",
           "sortOrder": "asc"
         },
         {
