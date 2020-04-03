@@ -1,4 +1,11 @@
 {
+    "mwLinkTo-partOfSeamlessDatabase": "Fait partie de ...",
+    "mwLinkTo-isComposedOf": "Est composé de ...",
+    "mwLinkTo-dataset": "Service diffusant ...",
+    "mwLinkTo-service": "Donnée diffusée par ...",
+    "mwLinkTo-Source": "Donnée issue de ...",
+    "mwLinkTo-crossReference": "Données en lien thématique avec ...",
+    "mwLinkTo-revisionOf": "Donnée révision de ...",
     "all": "Tout sélectionner",
     "allInPage": "Tout sélectionner dans la page",
     "addToSelection": "Ajouter à ...",
