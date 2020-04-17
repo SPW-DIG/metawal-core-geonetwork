@@ -41,7 +41,9 @@
           </li>-->
 
           <!-- Direct sibling mode for mw -->
-          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
+          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018'
+          && !gnCurrentEdit.isService
+          && gnCurrentEdit.metadata.type.indexOf('series') === -1">
             <a href=""
                data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'partOfSeamlessDatabase', initiativeType: 'collection'})">
               <i class="fa gn-icon-sibling"></i>
