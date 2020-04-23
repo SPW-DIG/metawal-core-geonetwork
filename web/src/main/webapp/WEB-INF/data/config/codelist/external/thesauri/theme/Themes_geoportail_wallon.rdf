@@ -16,8 +16,8 @@
   </skos:ConceptScheme>
   <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#10">
     <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <skos:prefLabel xml:lang="fr">Nature et environnement</skos:prefLabel>
-    <skos:prefLabel xml:lang="en">Nature et environnement</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">(10) Nature et environnement</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">(10) Nature et environment</skos:prefLabel>
     <skos:scopeNote xml:lang="fr"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#1010">
