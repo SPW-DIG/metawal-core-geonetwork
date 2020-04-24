@@ -681,6 +681,13 @@
               data-ng-click="mdService.getPermalink(md)"
               title="{{'permalink' | translate}}"
               class="btn btn-default"><i class="fa fa-fw fa-link"></i></a>
+
+            <br/>
+            <br/>
+
+            <a class="btn btn-primary"
+               data-ng-if="mdView.current.record.isPublished()"
+               data-ng-href="http://geoportail.wallonie.be/catalogue/{{mdView.current.record['geonet:info'].uuid}}.html">Fiche dans le Géoportail de la Wallonie</a>
           </section>
 
           <section data-ng-show="isRatingEnabled" class="gn-md-side-rating">

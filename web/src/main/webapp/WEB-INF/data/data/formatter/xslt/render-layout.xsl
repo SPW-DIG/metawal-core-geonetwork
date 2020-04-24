@@ -128,8 +128,14 @@
               <xsl:with-param name="byThesaurus" select="true()"/>
             </xsl:apply-templates>
 
-
             <br/>
+            <br/>
+
+            <a class="btn btn-primary"
+               data-ng-if="mdView.current.record.isPublished()"
+               href="http://geoportail.wallonie.be/catalogue/{$metadataUuid}.html">Fiche dans le Géoportail de la Wallonie</a>
+            <br/>
+
             <section class="gn-md-side-providedby">
               <h2>
                 <i class="fa fa-fw fa-cog"><xsl:comment select="'icon'"/></i>
