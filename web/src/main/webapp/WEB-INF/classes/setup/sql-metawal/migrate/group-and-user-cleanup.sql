@@ -72,7 +72,7 @@ DELETE FROM groups WHERE NAME = 'UCL';
 DELETE FROM groups WHERE NAME = 'ISSEP';
 
 -- Merge DG01 et DG02
-DELETE FROM groupsdes WHERE groupid = 8;
+DELETE FROM groupsdes WHERE iddes = 8;
 DELETE FROM usergroups WHERE groupid = 8;
 DELETE FROM operationallowed WHERE groupid = 8;
 UPDATE metadata SET groupowner = 7 WHERE groupowner = 8;
@@ -100,7 +100,7 @@ UPDATE groupsdes SET label = 'SPW - AWAP' WHERE iddes = 10100;
 
 
 -- Transfer ownership
-UPDATE metadata SET owner = (SELECT id FROM users WHERE name = 'Admin_Metawal');
+UPDATE metadata SET owner = (SELECT id FROM users WHERE username = 'Admin_Metawal');
 
 
 DELETE FROM usergroups WHERE userid NOT IN (SELECT id FROM users WHERE username IN ('Admin_Metawal', 'FMEupdate', 'SPBTIT', 'helpdeskcarto'));
