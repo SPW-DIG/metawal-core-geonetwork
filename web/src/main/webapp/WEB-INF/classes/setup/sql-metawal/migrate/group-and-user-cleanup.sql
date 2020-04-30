@@ -35,13 +35,13 @@ DELETE FROM groupsdes WHERE iddes = (SELECT id FROM groups WHERE name = 'UCL');
 DELETE FROM groupsdes WHERE iddes = (SELECT id FROM groups WHERE name = 'ISSEP');
 
 -- transfert record to SPW group
-UPDATE metadata SET groupowner = 10000 WHERE groupowner IN (SELECT id FROM groups WHERE name IN ('GUEST', 'all', 'VilleLiege', 'A_Rediger', 'Public', 'PROFAM', 'BEP', 'AGDP', 'IMAGE', 'OSM', 'DGO3_Bruit', 'Harvest', 'Ergo_S1', 'IGN-NGI harvest', 'Requasud', 'CPDT', 'ULG', 'test', 'ADN', 'VilleNamur', 'SPGE', 'intranet', 'SRWT', 'IWEPS', 'ADT', 'INSPIRE_expert', 'UCL', 'ISSEP'));
+UPDATE metadata SET groupowner = 10000 WHERE groupowner IN (SELECT id FROM groups WHERE name IN ('GUEST', 'VilleLiege', 'A_Rediger', 'Public', 'PROFAM', 'BEP', 'AGDP', 'IMAGE', 'OSM', 'DGO3_Bruit', 'Harvest', 'Ergo_S1', 'IGN-NGI harvest', 'Requasud', 'CPDT', 'ULG', 'test', 'ADN', 'VilleNamur', 'SPGE', 'intranet', 'SRWT', 'IWEPS', 'ADT', 'INSPIRE_expert', 'UCL', 'ISSEP'));
 
 -- Drop all privileges related to those groups
-DELETE FROM  operationallowed WHERE groupid IN (SELECT id FROM groups WHERE name IN ('GUEST', 'all', 'VilleLiege', 'A_Rediger', 'Public', 'PROFAM', 'BEP', 'AGDP', 'IMAGE', 'OSM', 'DGO3_Bruit', 'Harvest', 'Ergo_S1', 'IGN-NGI harvest', 'Requasud', 'CPDT', 'ULG', 'test', 'ADN', 'VilleNamur', 'SPGE', 'intranet', 'SRWT', 'IWEPS', 'ADT', 'INSPIRE_expert', 'UCL', 'ISSEP'));
+DELETE FROM  operationallowed WHERE groupid IN (SELECT id FROM groups WHERE name IN ('GUEST', 'VilleLiege', 'A_Rediger', 'Public', 'PROFAM', 'BEP', 'AGDP', 'IMAGE', 'OSM', 'DGO3_Bruit', 'Harvest', 'Ergo_S1', 'IGN-NGI harvest', 'Requasud', 'CPDT', 'ULG', 'test', 'ADN', 'VilleNamur', 'SPGE', 'intranet', 'SRWT', 'IWEPS', 'ADT', 'INSPIRE_expert', 'UCL', 'ISSEP'));
 
 -- Detach all users from those groups
-DELETE FROM  usergroups WHERE groupid IN (SELECT id FROM groups WHERE name IN ('GUEST', 'all', 'VilleLiege', 'A_Rediger', 'Public', 'PROFAM', 'BEP', 'AGDP', 'IMAGE', 'OSM', 'DGO3_Bruit', 'Harvest', 'Ergo_S1', 'IGN-NGI harvest', 'Requasud', 'CPDT', 'ULG', 'test', 'ADN', 'VilleNamur', 'SPGE', 'intranet', 'SRWT', 'IWEPS', 'ADT', 'INSPIRE_expert', 'UCL', 'ISSEP'));
+DELETE FROM  usergroups WHERE groupid IN (SELECT id FROM groups WHERE name IN ('GUEST', 'VilleLiege', 'A_Rediger', 'Public', 'PROFAM', 'BEP', 'AGDP', 'IMAGE', 'OSM', 'DGO3_Bruit', 'Harvest', 'Ergo_S1', 'IGN-NGI harvest', 'Requasud', 'CPDT', 'ULG', 'test', 'ADN', 'VilleNamur', 'SPGE', 'intranet', 'SRWT', 'IWEPS', 'ADT', 'INSPIRE_expert', 'UCL', 'ISSEP'));
 
 -- Delete those groups
 DELETE FROM groups WHERE NAME = 'GUEST';
