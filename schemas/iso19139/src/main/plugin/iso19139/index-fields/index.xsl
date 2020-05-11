@@ -28,7 +28,7 @@
                 xmlns:gmi="http://www.isotc211.org/2005/gmi"
                 xmlns:gco="http://www.isotc211.org/2005/gco"
                 xmlns:srv="http://www.isotc211.org/2005/srv"
-                xmlns:gml="http://www.opengis.net/gml"
+                xmlns:gml="http://www.opengis.net/gml/3.2"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
                 xmlns:index="java:org.fao.geonet.kernel.search.EsSearchManager"
@@ -51,13 +51,13 @@
               encoding="utf-8"
               escape-uri-attributes="yes"/>
 
-  <!-- Store date stamp in identifier.
-       One record could have multiple versions and can originate from more than one scope (ie. harvester)
-      A record with same UUID and same dateStamp are considered identical.
-  -->
-  <xsl:variable name="withHistory"
-                select="true()"
-                as="xs:boolean"/>
+
+
+  <!-- If identification creation, publication and revision date
+    should be indexed as a temporal extent information (eg. in INSPIRE
+    metadata implementing rules, those elements are defined as part
+    of the description of the temporal extent). -->
+  <xsl:variable name="useDateAsTemporalExtent" select="true()"/>
 
   <!-- Define if operatesOn type should be defined
   by analysis of protocol in all transfers options.
@@ -69,7 +69,6 @@
    take them in account. -->
   <xsl:variable name="openDataKeywords"
                 select="'opendata|open data|donnees ouvertes'"/>
-
 
   <xsl:template match="/">
     <xsl:apply-templates mode="index"/>
@@ -316,7 +315,21 @@
             <xsl:element name="{$dateType}MonthForResource">
               <xsl:value-of select="substring($date, 0, 8)"/>
             </xsl:element>
+
+
           </xsl:for-each>
+
+          <xsl:if test="$useDateAsTemporalExtent">
+            <xsl:for-each-group select="gmd:date/gmd:CI_Date[gmd:date/*/text() != '' and
+                                    matches(gmd:date/*/text(), '[0-9]{4}.*')]/gmd:date/*/text()"
+                                group-by=".">
+
+                <resourceTemporalDateRange type="object">{
+                  "gte": "<xsl:value-of select="."/>",
+                  "lte": "<xsl:value-of select="."/>"
+                  }</resourceTemporalDateRange>
+            </xsl:for-each-group>
+          </xsl:if>
 
           <!-- TODO: Add support for Anchor, can be a DOI -->
           <xsl:for-each select="gmd:identifier/*/gmd:code/(gco:CharacterString|gmx:Anchor)">
@@ -348,8 +361,9 @@
           <!-- TODO can be multilingual desc and name -->
           <overview type="object">{
             "url": "<xsl:value-of select="."/>"
-            <xsl:if test="normalize-space(../../gmd:fileDescription) != ''">,</xsl:if>
-            "text": <xsl:value-of select="gn-fn-index:add-multilingual-field('name', ../../gmd:fileDescription, $allLanguages, true())"/>
+            <xsl:if test="normalize-space(../../gmd:fileDescription) != ''">,
+              "text": <xsl:value-of select="gn-fn-index:add-multilingual-field('name', ../../gmd:fileDescription, $allLanguages, true())"/>
+            </xsl:if>
           }</overview>
         </xsl:for-each>
 
@@ -360,25 +374,27 @@
           </resourceLanguage>
         </xsl:for-each>
 
+        <xsl:variable name="inspireEnable" select="util:getSettingValue('system/inspire/enable')" />
 
-        <!-- TODO: create specific INSPIRE template or mode -->
-        <!-- INSPIRE themes
+        <xsl:if test="$inspireEnable = 'true'">
+          <!-- TODO: create specific INSPIRE template or mode -->
+          <!-- INSPIRE themes
 
-        Select the first thesaurus title because some records
-        may contains many even if invalid.
+          Select the first thesaurus title because some records
+          may contains many even if invalid.
 
-        Also get the first title at it may happen that a record
-        have more than one.
+          Also get the first title at it may happen that a record
+          have more than one.
 
-        Select any thesaurus having the title containing "INSPIRE themes".
-        Some records have "GEMET-INSPIRE themes" eg. sk:ee041534-b8f3-4683-b9dd-9544111a0712
-        Some other "GEMET - INSPIRE themes"
+          Select any thesaurus having the title containing "INSPIRE themes".
+          Some records have "GEMET-INSPIRE themes" eg. sk:ee041534-b8f3-4683-b9dd-9544111a0712
+          Some other "GEMET - INSPIRE themes"
 
-        Take in account gmd:descriptiveKeywords or srv:keywords
-        -->
-        <!-- TODO: Some MS may be using a translated version of the thesaurus title -->
-        <xsl:variable name="inspireKeywords"
-                      select="*/gmd:MD_Keywords[
+          Take in account gmd:descriptiveKeywords or srv:keywords
+          -->
+          <!-- TODO: Some MS may be using a translated version of the thesaurus title -->
+          <xsl:variable name="inspireKeywords"
+                        select="*/gmd:MD_Keywords[
                       contains(lower-case(
                        gmd:thesaurusName[1]/*/gmd:title[1]/*[1]/text()
                        ), 'gemet') and
@@ -386,66 +402,68 @@
                        gmd:thesaurusName[1]/*/gmd:title[1]/*[1]/text()
                        ), 'inspire')]
                   /gmd:keyword"/>
-        <xsl:for-each
-          select="$inspireKeywords">
-          <xsl:variable name="position" select="position()"/>
-          <xsl:for-each select="gco:CharacterString[. != '']|
+          <xsl:for-each
+            select="$inspireKeywords">
+            <xsl:variable name="position" select="position()"/>
+            <xsl:for-each select="gco:CharacterString[. != '']|
                                 gmx:Anchor[. != '']">
-            <xsl:variable name="inspireTheme" as="xs:string"
-                          select="index:analyzeField('synInspireThemes', text())"/>
+              <xsl:variable name="inspireTheme" as="xs:string"
+                            select="index:analyzeField('synInspireThemes', text())"/>
 
-            <inspireTheme_syn>
-              <xsl:value-of select="text()"/>
-            </inspireTheme_syn>
-            <inspireTheme>
-              <xsl:value-of select="$inspireTheme"/>
-            </inspireTheme>
-            <!-- TODOES: Add Acronym -->
-            <!--
-            WARNING: Here we only index the first keyword in order
-            to properly compute one INSPIRE annex.
-            -->
-            <xsl:if test="$position = 1">
-              <inspireThemeFirst_syn>
+              <inspireTheme_syn>
                 <xsl:value-of select="text()"/>
-              </inspireThemeFirst_syn>
-              <inspireThemeFirst>
+              </inspireTheme_syn>
+              <inspireTheme>
                 <xsl:value-of select="$inspireTheme"/>
-              </inspireThemeFirst>
+              </inspireTheme>
+              <!-- TODOES: Add Acronym -->
+              <!--
+              WARNING: Here we only index the first keyword in order
+              to properly compute one INSPIRE annex.
+              -->
+              <xsl:if test="$position = 1">
+                <inspireThemeFirst_syn>
+                  <xsl:value-of select="text()"/>
+                </inspireThemeFirst_syn>
+                <inspireThemeFirst>
+                  <xsl:value-of select="$inspireTheme"/>
+                </inspireThemeFirst>
 
+                <xsl:if test="$inspireTheme != ''">
+                  <inspireAnnexForFirstTheme>
+                    <xsl:value-of
+                      select="index:analyzeField('synInspireAnnexes', $inspireTheme)"/>
+                  </inspireAnnexForFirstTheme>
+                </xsl:if>
+              </xsl:if>
               <xsl:if test="$inspireTheme != ''">
-                <inspireAnnexForFirstTheme>
+                <inspireAnnex>
                   <xsl:value-of
                     select="index:analyzeField('synInspireAnnexes', $inspireTheme)"/>
-                </inspireAnnexForFirstTheme>
+                </inspireAnnex>
+                <xsl:variable name="inspireThemeUri" as="xs:string"
+                              select="index:analyzeField('synInspireThemeUris', $inspireTheme)"/>
+                <inspireThemeUri>
+                  <xsl:value-of select="$inspireThemeUri"/>
+                </inspireThemeUri>
               </xsl:if>
-            </xsl:if>
-            <xsl:if test="$inspireTheme != ''">
-              <inspireAnnex>
-                <xsl:value-of
-                  select="index:analyzeField('synInspireAnnexes', $inspireTheme)"/>
-              </inspireAnnex>
-              <xsl:variable name="inspireThemeUri" as="xs:string"
-                            select="index:analyzeField('synInspireThemeUris', $inspireTheme)"/>
-              <inspireThemeUri>
-                <xsl:value-of select="$inspireThemeUri"/>
-              </inspireThemeUri>
-            </xsl:if>
+            </xsl:for-each>
           </xsl:for-each>
-        </xsl:for-each>
 
-        <!-- For services, the count does not take into account
-        dataset's INSPIRE themes which are transfered to the service
-        by service-dataset-task. -->
-        <inspireThemeNumber>
-          <xsl:value-of
-            select="count($inspireKeywords)"/>
-        </inspireThemeNumber>
+          <!-- For services, the count does not take into account
+          dataset's INSPIRE themes which are transfered to the service
+          by service-dataset-task. -->
+          <inspireThemeNumber>
+            <xsl:value-of
+              select="count($inspireKeywords)"/>
+          </inspireThemeNumber>
 
-        <hasInspireTheme>
-          <xsl:value-of
-            select="if (count($inspireKeywords) > 0) then 'true' else 'false'"/>
-        </hasInspireTheme>
+          <hasInspireTheme>
+            <xsl:value-of
+              select="if (count($inspireKeywords) > 0) then 'true' else 'false'"/>
+          </hasInspireTheme>
+        </xsl:if>
+
 
         <!-- Index all keywords -->
         <xsl:variable name="keywords"
@@ -614,10 +632,23 @@
 
 
         <xsl:for-each select="gmd:topicCategory/gmd:MD_TopicCategoryCode">
+          <xsl:variable name="value"
+                        select="."/>
           <topic>
             <xsl:value-of select="."/>
           </topic>
-          <!-- TODO: Get translation ? -->
+          <xsl:for-each select="$allLanguages/lang">
+            <xsl:variable name="translation"
+                          select="util:getCodelistTranslation('gmd:MD_TopicCategoryCode', string($value), string(@value))"/>
+            <xsl:if test="@id = 'default'">
+              <xsl:element name="topic_text">
+                <xsl:value-of select="$translation"/>
+              </xsl:element>
+            </xsl:if>
+            <xsl:element name="topic_text_lang{@value}">
+              <xsl:value-of select="$translation"/>
+            </xsl:element>
+          </xsl:for-each>
         </xsl:for-each>
 
 
@@ -726,7 +757,7 @@
                     <location><xsl:value-of select="concat($s, ',', $w)"/></location>
                   </xsl:when>
                   <xsl:otherwise>
-                    <geom>
+                    <geom type="object">
                       <xsl:text>{"type": "Polygon",</xsl:text>
                       <xsl:text>"coordinates": [[</xsl:text>
                       <xsl:value-of select="concat('[', $w, ',', $s, ']')"/>
@@ -750,32 +781,25 @@
               </xsl:when>
               <xsl:otherwise></xsl:otherwise>
             </xsl:choose>
-
-
             <!--<xsl:value-of select="($e + $w) div 2"/>,<xsl:value-of select="($n + $s) div 2"/></field>-->
           </xsl:for-each>
 
-
-          <!--TODO
-          <xsl:for-each select="gmd:temporalElement/
-                                  (gmd:EX_TemporalExtent|gmd:EX_SpatialTemporalExtent)/gmd:extent">
-            <xsl:for-each select="gml:TimePeriod">
-
-              <xsl:variable name="times">
-                <xsl:call-template name="newGmlTime">
-                  <xsl:with-param name="begin"
-                                  select="gml:beginPosition|gml:begin/gml:TimeInstant/gml:timePosition"/>
-                  <xsl:with-param name="end"
-                                  select="gml:endPosition|gml:end/gml:TimeInstant/gml:timePosition"/>
-                </xsl:call-template>
-              </xsl:variable>
-
-              <tempExtentBegin><xsl:value-of select="lower-case(substring-before($times,'|'))"/> </tempExtentBegin>
-              <tempExtentEnd><xsl:value-of select="lower-case(substring-after($times,'|'))"/> </tempExtentEnd>
-            </xsl:for-each>
-
-          </xsl:for-each>-->
+          <xsl:for-each select=".//gmd:temporalElement/*/gmd:extent/gml:TimePeriod">
+            <xsl:variable name="start"
+                          select="gml:beginPosition|gml:begin/gml:TimeInstant/gml:timePosition"/>
+            <xsl:variable name="end"
+                          select="gml:endPosition|gml:end/gml:TimeInstant/gml:timePosition"/>
+            <xsl:if test="normalize-space($start) != ''">
+              <resourceTemporalDateRange type="object">{
+                "gte": "<xsl:value-of select="normalize-space($start)"/>"
+                <xsl:if test="not($end/@indeterminatePosition = 'now')">
+                  ,"lte": "<xsl:value-of select="normalize-space($end)"/>"
+                </xsl:if>
+                }</resourceTemporalDateRange>
+            </xsl:if>
+          </xsl:for-each>
         </xsl:for-each>
+
 
 
         <!-- Service information -->
@@ -783,13 +807,16 @@
           <serviceType>
             <xsl:value-of select="text()"/>
           </serviceType>
-          <xsl:variable name="inspireServiceType" as="xs:string"
-                        select="index:analyzeField(
+          <xsl:if test="$inspireEnable = 'true'">
+            <xsl:variable name="inspireServiceType" as="xs:string"
+                          select="index:analyzeField(
                                   'keepInspireServiceTypes', text())"/>
-          <xsl:if test="$inspireServiceType != ''">
-            <inspireServiceType>
-              <xsl:value-of select="lower-case($inspireServiceType)"/>
-            </inspireServiceType>
+
+            <xsl:if test="$inspireServiceType != ''">
+              <inspireServiceType>
+                <xsl:value-of select="lower-case($inspireServiceType)"/>
+              </inspireServiceType>
+            </xsl:if>
           </xsl:if>
           <xsl:if test="following-sibling::srv:serviceTypeVersion">
             <serviceTypeAndVersion>
@@ -1001,7 +1028,8 @@
 
         <xsl:if test="$datasetId != ''">
           <recordOperateOn><xsl:value-of select="$datasetId"/></recordOperateOn>
-          <!-- TODO: link -->
+          <!--
+            TODOES - Need more work with routing -->
 <!--          <recordLink type="object">{"name": "dataset", "parent": "<xsl:value-of select="gn-fn-index:json-escape(.)"/>"}</recordLink>-->
         </xsl:if>
       </xsl:for-each>
@@ -1013,7 +1041,9 @@
           <xsl:for-each select="$recordLinks">
             <parentUuid><xsl:value-of select="."/></parentUuid>
             <recordGroup><xsl:value-of select="."/></recordGroup>
-            <recordLink type="object">{"name": "children", "parent": "<xsl:value-of select="gn-fn-index:json-escape(.)"/>"}</recordLink>
+            <!--
+            TODOES - Need more work with routing -->
+<!--            <recordLink type="object">{"name": "children", "parent": "<xsl:value-of select="gn-fn-index:json-escape(.)"/>"}</recordLink>-->
           </xsl:for-each>
         </xsl:when>
         <xsl:otherwise>

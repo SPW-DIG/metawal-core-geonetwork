@@ -273,7 +273,7 @@
                       if (!layer) {
                         return;
                       }
-                      bgLayers[idx - 1] = layer;
+                      bgLayers[idx] = layer;
 
                       layer.displayInLayerManager = false;
                       layer.background = true;
@@ -456,7 +456,7 @@
             }];
           } else if (source instanceof ol.source.ImageWMS ||
               source instanceof ol.source.TileWMS) {
-            name = '{type=wms,name=' + layer.get('name') + '}';
+            name = layer.get('name');
             params.server = [{
               onlineResource: [{
                 href: layer.get('url')
@@ -684,10 +684,9 @@
                   olL.set('tree_index', index);
                   olL.setOpacity(layer.opacity);
                   olL.setVisible(!layer.hidden);
-                  if (layer.title) {
-                    olL.set('title', layer.title);
-                    olL.set('label', layer.title);
-                  }
+                  var title =  layer.title ? layer.title : olL.get('label');
+                  olL.set('title', title || '');
+                  olL.set('label', title || '');
                   $rootScope.$broadcast('layerAddedFromContext', olL);
                   return olL;
                 }

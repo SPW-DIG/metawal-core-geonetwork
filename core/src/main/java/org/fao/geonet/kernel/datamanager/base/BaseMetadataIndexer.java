@@ -23,6 +23,9 @@
 
 package org.fao.geonet.kernel.datamanager.base;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ArrayListMultimap;
 import jeeves.server.UserSession;
 import jeeves.server.context.ServiceContext;
 import jeeves.xlink.Processor;
@@ -180,16 +183,37 @@ public class BaseMetadataIndexer implements IMetadataIndexer, ApplicationEventPu
         throws Exception {
         final List<? extends AbstractMetadata> metadataToDelete = metadataUtils.findAll(specification);
 
-        for (AbstractMetadata md : metadataToDelete) {
-            // --- remove metadata directory for each record
-            store.delResources(ServiceContext.get(), md.getUuid(), true);
-        }
-
-        // Remove records from the index
-        searchManager.delete(metadataToDelete.stream().map(record -> record.getId()).collect(Collectors.toList()));
-
         // Remove records from the database
-        metadataManager.deleteAll(specification);
+        // Delete all works on a database created by hibernate
+        // (because some foreign constraints are missing.
+        // See https://github.com/geonetwork/core-geonetwork/issues/1863). FIXME
+        // Delete all does not work on older database
+        // where operationAllowed contains references to the metadata table.
+        //
+//        for (AbstractMetadata md : metadataToDelete) {
+//            // --- remove metadata directory for each record
+//            store.delResources(ServiceContext.get(), md.getUuid(), true);
+//        }
+//
+//        // Remove records from the index
+//        searchManager.delete(metadataToDelete.stream().map(input -> Integer.toString(input.getId())).collect(Collectors.toList()));
+//        metadataManager.deleteAll(specification);
+        // So delete one by one even if slower
+        metadataToDelete.forEach(md -> {
+            try {
+                store.delResources(ServiceContext.get(), md.getUuid());
+                metadataManager.deleteMetadata(ServiceContext.get(), String.valueOf(md.getId()));
+            } catch (Exception e) {
+                Log.warning(Geonet.DATA_MANAGER, String.format(
+
+                    "Error during removal of metadata %s part of batch delete operation. " +
+                    "This error may create a ghost record (ie. not in the index " +
+                    "but still present in the database). " +
+                    "You can reindex the catalogue to see it again. " +
+                    "Error was: %s.", md.getUuid(), e.getMessage()));
+                e.printStackTrace();
+            }
+        });
 
         return metadataToDelete.size();
     }
@@ -362,7 +386,7 @@ public class BaseMetadataIndexer implements IMetadataIndexer, ApplicationEventPu
         AbstractMetadata fullMd;
 
         try {
-            Map<String, Object> fields = new HashMap<String, Object>();
+            Multimap<String, Object> fields = ArrayListMultimap.create();
             int id$ = Integer.parseInt(metadataId);
 
             // get metadata, extracting and indexing any xlinks
@@ -563,15 +587,15 @@ public class BaseMetadataIndexer implements IMetadataIndexer, ApplicationEventPu
     public void indexMetadataPrivileges(String uuid, int id) throws Exception {
         Set<String> operationFields = new HashSet<>();
         Arrays.asList(ReservedOperation.values()).forEach(o ->
-            operationFields.add("_op" + o.getId())
+            operationFields.add("op" + o.getId())
         );
 
         searchManager.updateFields(uuid, buildFieldsForPrivileges(id), operationFields);
     }
 
-    private Map<String, Object> buildFieldsForPrivileges(int recordId) {
+    private Multimap<String, Object> buildFieldsForPrivileges(int recordId) {
         List<OperationAllowed> operationsAllowed = operationAllowedRepository.findAllById_MetadataId(recordId);
-        Map<String, Object> privilegesFields = new HashMap<>();
+        Multimap<String, Object> privilegesFields = ArrayListMultimap.create();
         boolean isPublishedToAll = false;
 
         for (OperationAllowed operationAllowed : operationsAllowed) {
@@ -607,10 +631,10 @@ public class BaseMetadataIndexer implements IMetadataIndexer, ApplicationEventPu
      *
      * @param fullMd
      */
-    protected Map<String, Object> addExtraFields(AbstractMetadata fullMd) {
+    protected Multimap<String, Object> addExtraFields(AbstractMetadata fullMd) {
         // If we are not using draft utils, mark all as "no draft"
         // needed to be compatible with UI searches that check draft existence
-        Map<String, Object> extraFields = new HashMap<>(1);
+        Multimap<String, Object> extraFields = ArrayListMultimap.create();
         if (!DraftMetadataIndexer.class.isInstance(this)) {
             extraFields.put(Geonet.IndexFieldNames.DRAFT, "n");
         }

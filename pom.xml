@@ -29,7 +29,7 @@
   <groupId>org.geonetwork-opensource</groupId>
   <artifactId>geonetwork</artifactId>
   <packaging>pom</packaging>
-  <version>3.11.0-SNAPSHOT</version>
+  <version>4.0.0-alpha.2</version>
   <name>GeoNetwork opensource</name>
   <description>GeoNetwork opensource is a standards based, Free and
     Open Source catalog application to manage spatially referenced
@@ -141,7 +141,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>2.6.1</version>
+          <version>3.1.0</version>
         </plugin>
         <plugin>
           <groupId>net.alchim31.maven</groupId>
@@ -270,6 +270,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
+        <version>3.1.0</version>
         <configuration>
           <encoding>UTF-8</encoding>
         </configuration>
@@ -377,9 +378,9 @@
         <version>9.1.0.8b</version>
       </dependency>
       <dependency>
-        <groupId>com.vividsolutions</groupId>
-        <artifactId>jts</artifactId>
-        <version>1.13</version>
+        <groupId>org.locationtech.jts</groupId>
+        <artifactId>jts-core</artifactId>
+        <version>1.16.1</version>
       </dependency>
       <dependency>
         <groupId>com.github.lookfirst</groupId>
@@ -446,8 +447,6 @@
         <artifactId>fop-pdf-images</artifactId>
         <version>${fop.version}</version>
       </dependency>
-
-      <!-- Jetty stuff -->
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-server</artifactId>
@@ -463,8 +462,6 @@
         <artifactId>jetty-webapp</artifactId>
         <version>${jetty.version}</version>
       </dependency>
-
-      <!-- Apache -->
       <dependency>
         <groupId>commons-lang</groupId>
         <artifactId>commons-lang</artifactId>
@@ -474,7 +471,6 @@
         <groupId>commons-logging</groupId>
         <artifactId>commons-logging</artifactId>
         <version>1.1.1</version>
-        <!-- 1.0.2 in Geonetwork -->
       </dependency>
       <dependency>
         <groupId>commons-net</groupId>
@@ -632,11 +628,6 @@
 
       <!-- Geotools and spatial search stuff -->
       <dependency>
-        <groupId>org.geotools</groupId>
-        <artifactId>gt-api</artifactId>
-        <version>${geotools.version}</version>
-      </dependency>
-      <dependency>
         <groupId>org.geotools.xsd</groupId>
         <artifactId>gt-xsd-gml3</artifactId>
         <version>${geotools.version}</version>
@@ -662,7 +653,7 @@
         <version>${geotools.version}</version>
         <exclusions>
           <exclusion>
-					<!-- org.apache.xml:xml-commons-resolver:jar:1.2 -->
+            <!-- org.apache.xml:xml-commons-resolver:jar:1.2 -->
             <groupId>org.apache.xml</groupId>
             <artifactId>xml-commons-resolver</artifactId>
           </exclusion>
@@ -671,6 +662,16 @@
       <dependency>
         <groupId>org.geotools.xsd</groupId>
         <artifactId>gt-xsd-filter</artifactId>
+        <version>${geotools.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.geotools.xsd</groupId>
+        <artifactId>gt-xsd-wfs</artifactId>
+        <version>${geotools.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.geotools.xsd</groupId>
+        <artifactId>gt-xsd-fes</artifactId>
         <version>${geotools.version}</version>
       </dependency>
       <dependency>
@@ -685,12 +686,17 @@
       </dependency>
       <dependency>
         <groupId>org.geotools</groupId>
+        <artifactId>gt-render</artifactId>
+        <version>${geotools.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.geotools</groupId>
         <artifactId>gt-epsg-hsql</artifactId>
         <version>${geotools.version}</version>
       </dependency>
       <dependency>
         <groupId>org.geotools</groupId>
-        <artifactId>gt-wfs</artifactId>
+        <artifactId>gt-wfs-ng</artifactId>
         <version>${geotools.version}</version>
       </dependency>
       <dependency>
@@ -786,35 +792,26 @@
         <artifactId>cog-jglobus</artifactId>
         <version>1.2-060802</version>
       </dependency>
-
-      <!-- svnkit stuff -->
       <dependency>
         <groupId>org.tmatesoft.svnkit</groupId>
         <artifactId>svnkit</artifactId>
         <version>1.7.8</version>
       </dependency>
-
-      <!-- Databased stuff -->
       <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
         <version>1.3.174</version>
       </dependency>
-      <!-- Other stuff -->
       <dependency>
         <groupId>dlib</groupId>  <!--FIXME Handled by local repository -->
         <artifactId>dlib</artifactId>
         <version>1.0</version> <!-- FIXME totally unknown -->
       </dependency>
-
-      <!-- Lib utils -->
       <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>18.0</version>
       </dependency>
-
-      <!-- Monitoring libraries -->
       <dependency>
         <groupId>com.yammer.metrics</groupId>
         <artifactId>metrics-core</artifactId>
@@ -872,8 +869,6 @@
         <version>${xmlunit.version}</version>
         <scope>test</scope>
       </dependency>
-
-      <!-- db -->
       <dependency>
         <groupId>org.postgis</groupId>
         <artifactId>postgis-jdbc</artifactId>
@@ -907,20 +902,6 @@
         <artifactId>izpack-standalone-compiler</artifactId>
         <version>4.3.1</version>
       </dependency>
-      <!-- language detection -->
-      <dependency>
-        <groupId>com.cybozu.labs</groupId>
-        <artifactId>langdetect</artifactId>
-        <version>1.1-20120112</version>
-      </dependency>
-      <dependency>
-        <groupId>net.arnx.jsonic</groupId>
-        <artifactId>jsonic</artifactId>
-        <version>1.2.0</version>
-      </dependency>
-      <!-- end language detection -->
-
-      <!-- Spring dependencies -->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
@@ -1004,7 +985,6 @@
         <artifactId>springfox-swagger2</artifactId>
         <version>2.8.0</version>
       </dependency>
-      <!-- Persistence dependencies -->
       <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-entitymanager</artifactId>
@@ -1020,13 +1000,11 @@
         <artifactId>spring-data-jpa</artifactId>
         <version>1.4.1.RELEASE</version>
       </dependency>
-
       <dependency>
         <groupId>com.fasterxml.jackson.datatype</groupId>
         <artifactId>jackson-datatype-hibernate4</artifactId>
         <version>2.9.7</version>
       </dependency>
-
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
         <artifactId>jsr305</artifactId>
@@ -1054,21 +1032,20 @@
           </exclusion>
         </exclusions>
       </dependency>
-
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
-        <version>2.9.8</version>
+        <version>${jackson.version}</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-core</artifactId>
-        <version>2.9.8</version>
+        <version>${jackson.version}</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
-        <version>2.9.8</version>
+        <version>${jackson.version}</version>
       </dependency>
       <dependency>
         <groupId>javax.xml.bind</groupId>
@@ -1080,24 +1057,20 @@
         <artifactId>jaxb-impl</artifactId>
         <version>2.2.7</version>
       </dependency>
-
       <dependency>
         <groupId>org.elasticsearch.client</groupId>
         <artifactId>elasticsearch-rest-high-level-client</artifactId>
         <version>${es.version}</version>
       </dependency>
-
-      <!-- Apache commons csv -->
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-csv</artifactId>
         <version>1.2</version>
       </dependency>
-
       <dependency>
         <groupId>org.apache.pdfbox</groupId>
         <artifactId>pdfbox</artifactId>
-        <version>2.0.7</version>
+        <version>2.0.19</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -1134,18 +1107,11 @@
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
-      <id>geotools</id>
-      <name>Geotools repository</name>
-      <url>http://download.osgeo.org/webdav/geotools/</url>
+      <id>osgeo</id>
+      <name>OSGeo repository</name>
+      <url>https://repo.osgeo.org/repository/release/</url>
     </repository>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>boundless</id>
-      <name>Boundless repository</name>
-      <url>http://repo.boundlessgeo.com/main/</url>
-    </repository>
+
     <repository>
       <snapshots>
         <enabled>false</enabled>
@@ -1154,7 +1120,6 @@
       <name>Developer k-int repository</name>
       <url>http://maven.k-int.com/content/repositories/releases/</url>
     </repository>
-
 
     <repository>
       <snapshots>
@@ -1166,23 +1131,6 @@
       <id>core-maven-repo</id>
       <name>GeoNetwork remote repository</name>
       <url>https://raw.githubusercontent.com/geonetwork/core-maven-repo/master</url>
-    </repository>
-
-    <repository>
-      <id>mvnrepository.com</id>
-      <name>Repository that has juniversalchardet</name>
-      <url>http://mvnrepository.com/artifact</url>
-    </repository>
-    <repository>
-      <id>maven.geo-solutions.it</id>
-      <name>geo-solutions</name>
-      <url>http://maven.geo-solutions.it</url>
-    </repository>
-
-    <repository>
-      <id>maven2</id>
-      <name>Repository maven2</name>
-      <url>https://repo.maven.apache.org/maven2</url>
     </repository>
 
     <!-- seasar repo, has jsonic - used by langdetect -->
@@ -1295,15 +1243,16 @@
     <!--<app.properties>file:/${geonetwork.dir}/config.properties</app.properties>-->
 
     <!-- Configure database config file to use. Could be
-     h2, postgres, sqlserver, mysql, oracle, db2, postgres-postgis, jndi-postgres-postgis
+     h2, postgres, sqlserver, mysql, oracle, db2, postgres-postgis, jndi
      -->
-    <db.type>oracle</db.type>
+    <db.type>postgres</db.type>
     <db.config.file>../config-db/${db.type}.xml</db.config.file>
     <db.host>localhost</db.host>
     <db.port>5432</db.port>
     <db.name>metawal</db.name>
     <db.username>www-data</db.username>
     <db.password>www-data</db.password>
+    <db.connectionProperties></db.connectionProperties>
     <db.pool.maxActive>30</db.pool.maxActive>
     <db.pool.maxIdle>10</db.pool.maxIdle>
     <db.pool.initialSize>10</db.pool.initialSize>
@@ -1325,8 +1274,7 @@
     <jetty.port>8080</jetty.port>
     <jetty.stop.port>8090</jetty.stop.port>
 
-    <es.version>7.6.0</es.version>
-    <es.version.sha512>378322ed2b6782f98e2e22c80e82b1f483bdeb3c28f3f52c897cbd0e8e78848460865c9adedf21e59922aa03ecb28ac44c1fb3dcab4f1904ba58497bc40e1278</es.version.sha512>
+    <es.version>7.6.2</es.version>
     <es.platform>linux-x86_64</es.platform>
     <es.installer.extension>tar.gz</es.installer.extension>
     <es.protocol>http</es.protocol>
@@ -1344,16 +1292,9 @@
     <es.index.analyzer.default>standard</es.index.analyzer.default>
 <!--    <es.default.analyzer>french_light</es.default.analyzer>-->
 
-    <!-- to load spring configurations related to es and camel,
-    you should use maven "es" profile (defined in web).
-    Devs may note that normally (not in this case), many spring profiles can
-    be defined at the same time: "active.profiles.spring" is overriden
-    in web.xml. -->
-    <es.spring.profile></es.spring.profile>
     <es.username></es.username>
     <es.password></es.password>
 
-    <kb.version.sha512>296416b9697ae66b20aae37ada855d7212fc5151055a35cc81e7c3cfef589758f10f600b382e9f4b419fcd327ff605d8da23a25e867f6a1e4d3bd133e0317b72</kb.version.sha512>
     <kb.platform>linux-x86_64</kb.platform>
     <kb.installer.extension>tar.gz</kb.installer.extension>
     <kb.port>5601</kb.port>
@@ -1374,14 +1315,14 @@
     <cors.allowedHosts>*</cors.allowedHosts>
 
 
-    <jetty.version>9.4.12.v20180830</jetty.version>
-    <jetty.file>jetty-distribution-9.4.12.v20180830</jetty.file>
-    <jetty.download>https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.4.12.v20180830/${jetty.file}.tar.gz</jetty.download>
+    <jetty.version>9.4.27.v20200227</jetty.version>
+    <jetty.file>jetty-distribution-${jetty.version}</jetty.file>
+    <jetty.download>https://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/${jetty.version}/${jetty.file}.tar.gz</jetty.download>
 
     <!-- NOTE: When updating GeoTools, check which version
     of Postgres is used and update pg.version if needed. -->
-    <geotools.version>16.0</geotools.version>
-    <pg.version>9.4.1211</pg.version>
+    <geotools.version>23.0</geotools.version>
+    <pg.version>42.2.5</pg.version>
 
     <spring.version>4.3.0.RELEASE</spring.version>
     <spring.security.version>3.2.0.RELEASE</spring.security.version>
@@ -1396,6 +1337,7 @@
     <npm.version>5.8.0</npm.version>
     <xmlunit.version>2.1.1</xmlunit.version>
     <print-lib.version>2.1.6</print-lib.version>
+    <jackson.version>2.10.3</jackson.version>
     <flying-saucer>9.0.7</flying-saucer>
     <camel.version>2.14.4</camel.version>
     <log4j.version>1.2.17</log4j.version>
@@ -1404,7 +1346,7 @@
     <xbean.version>3.18</xbean.version>
     <jolokia.version>1.6.0</jolokia.version>
     <httpcomponents.version>4.5.9</httpcomponents.version>
-    <gn.schemas.version>3.7</gn.schemas.version>
+    <gn.schemas.version>4.0</gn.schemas.version>
     <skipIT>true</skipIT> <!-- disable integration tests by default, use the "it" profile to run them which enables them -->
   </properties>
 </project>

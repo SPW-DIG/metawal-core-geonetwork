@@ -82,7 +82,6 @@ import org.fao.geonet.kernel.search.MetaSearcher;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.lib.Lib;
-import org.fao.geonet.notifier.MetadataNotifierManager;
 import org.fao.geonet.repository.GroupRepository;
 import org.fao.geonet.repository.MetadataCategoryRepository;
 import org.fao.geonet.repository.MetadataFileUploadRepository;
@@ -405,11 +404,6 @@ public class BaseMetadataManager implements IMetadataManager {
             boolean isMetadata = findOne.getDataInfo().getType() == MetadataType.METADATA;
 
             deleteMetadataFromDB(context, metadataId);
-
-            // Notifies the metadata change to metatada notifier service
-            if (isMetadata) {
-                context.getBean(MetadataNotifierManager.class).deleteMetadata(metadataId, findOne.getUuid(), context);
-            }
         }
 
         // --- update search criteria
@@ -461,13 +455,17 @@ public class BaseMetadataManager implements IMetadataManager {
 
         String schema = templateMetadata.getDataInfo().getSchemaId();
         String data = templateMetadata.getData();
+        data = updateMetadataUuidReferences(data, templateMetadata.getUuid(), uuid);
+
         Element xml = Xml.loadString(data, false);
+
         boolean isMetadata = templateMetadata.getDataInfo().getType() == MetadataType.METADATA;
         setMetadataTitle(schema, xml, context.getLanguage(), !isMetadata);
         if (isMetadata) {
             xml = updateFixedInfo(schema, Optional.<Integer>absent(), uuid, xml, parentUuid, UpdateDatestamp.NO,
                 context);
         }
+
         final Metadata newMetadata = new Metadata();
         newMetadata.setUuid(uuid);
         newMetadata.getDataInfo()
@@ -494,10 +492,20 @@ public class BaseMetadataManager implements IMetadataManager {
 
         newMetadata.getMetadataCategories().addAll(filteredCategories);
 
-        int finalId = insertMetadata(context, newMetadata, xml, false, true, true, UpdateDatestamp.YES,
+        int finalId = insertMetadata(context, newMetadata, xml, true, true, UpdateDatestamp.YES,
             fullRightsForGroup, true).getId();
 
         return String.valueOf(finalId);
+    }
+
+    /**
+     * Replace oldUuid references by newUuid.
+     * This will update metadata identifier, but also other usages
+     * which may be in graphicOverview URLs, resources identifier,
+     * metadata point of truth URL, ...
+     */
+    private String updateMetadataUuidReferences(String data, String oldUuid, String newUuid) {
+        return data.replace(oldUuid, newUuid);
     }
 
     /**
@@ -557,9 +565,6 @@ public class BaseMetadataManager implements IMetadataManager {
     public String insertMetadata(ServiceContext context, String schema, Element metadataXml, String uuid, int owner,
                                  String groupOwner, String source, String metadataType, String docType, String category, String createDate,
                                  String changeDate, boolean ufo, boolean index) throws Exception {
-
-        boolean notifyChange = true;
-
         if (source == null) {
             source = settingManager.getSiteId();
         }
@@ -593,7 +598,7 @@ public class BaseMetadataManager implements IMetadataManager {
 
         boolean fullRightsForGroup = false;
 
-        int finalId = insertMetadata(context, newMetadata, metadataXml, notifyChange, index, ufo, UpdateDatestamp.NO,
+        int finalId = insertMetadata(context, newMetadata, metadataXml, index, ufo, UpdateDatestamp.NO,
             fullRightsForGroup, false).getId();
 
         return String.valueOf(finalId);
@@ -601,7 +606,7 @@ public class BaseMetadataManager implements IMetadataManager {
 
     @Override
     public AbstractMetadata insertMetadata(ServiceContext context, AbstractMetadata newMetadata, Element metadataXml,
-                                           boolean notifyChange, boolean index, boolean updateFixedInfo, UpdateDatestamp updateDatestamp,
+                                           boolean index, boolean updateFixedInfo, UpdateDatestamp updateDatestamp,
                                            boolean fullRightsForGroup, boolean forceRefreshReaders) throws Exception {
         final String schema = newMetadata.getDataInfo().getSchemaId();
 
@@ -638,11 +643,6 @@ public class BaseMetadataManager implements IMetadataManager {
         metadataOperations.copyDefaultPrivForGroup(context, stringId, groupId, fullRightsForGroup);
         metadataIndexer.indexMetadata(stringId, forceRefreshReaders);
 
-
-        if (notifyChange) {
-            // Notifies the metadata change to metatada notifier service
-            metadataUtils.notifyMetadataChange(metadataXml, stringId);
-        }
         return savedMetadata;
     }
 
@@ -795,8 +795,6 @@ public class BaseMetadataManager implements IMetadataManager {
 
         // --- write metadata to dbms
         getXmlSerializer().update(metadataId, metadataXml, changeDate, updateDateStamp, uuid, context);
-        // Notifies the metadata change to metatada notifier service
-        metadataUtils.notifyMetadataChange(metadataXml, metadataId);
 
         try {
             // --- do the validation last - it throws exceptions
@@ -1108,9 +1106,6 @@ public class BaseMetadataManager implements IMetadataManager {
             Element childForUpdate = Xml.transform(rootEl, styleSheet, params);
 
             getXmlSerializer().update(childId, childForUpdate, new ISODate().toString(), true, null, srvContext);
-
-            // Notifies the metadata change to metatada notifier service
-            metadataUtils.notifyMetadataChange(childForUpdate, childId);
 
             rootEl = null;
         }

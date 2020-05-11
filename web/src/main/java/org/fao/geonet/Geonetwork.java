@@ -26,7 +26,6 @@ package org.fao.geonet;
 import jeeves.config.springutil.ServerBeanPropertyUpdater;
 import jeeves.constants.Jeeves;
 import jeeves.interfaces.ApplicationHandler;
-import jeeves.server.JeevesEngine;
 import jeeves.server.JeevesProxyInfo;
 import jeeves.server.ServiceConfig;
 import jeeves.server.context.ServiceContext;
@@ -53,9 +52,7 @@ import org.fao.geonet.kernel.setting.SettingInfo;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.kernel.thumbnail.ThumbnailMaker;
-import org.fao.geonet.languages.LanguageDetector;
 import org.fao.geonet.lib.DbLib;
-import org.fao.geonet.notifier.MetadataNotifierControl;
 import org.fao.geonet.repository.MetadataRepository;
 import org.fao.geonet.repository.SettingRepository;
 import org.fao.geonet.repository.SourceRepository;
@@ -92,6 +89,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+
 /**
  * This is the main class, it handles http connections and inits the system.
  */
@@ -99,7 +97,6 @@ public class Geonetwork implements ApplicationHandler {
     private Logger logger;
     private Path appPath;
     private EsSearchManager searchMan;
-    private MetadataNotifierControl metadataNotifierControl;
     private ConfigurableApplicationContext _applicationContext;
     private OaiPmhDispatcher oaipmhDis;
 
@@ -252,21 +249,9 @@ public class Geonetwork implements ApplicationHandler {
             svnManager.init();
         }
 
-        /**
-         * Initialize language detector
-         */
-        LanguageDetector.init(appPath.resolve(_applicationContext.getBean(Geonet.Config.LANGUAGE_PROFILES_DIR, String.class)));
-
-        //------------------------------------------------------------------------
-        //--- Initialize thesaurus
-
         logger.info("  - Thesaurus...");
 
         _applicationContext.getBean(ThesaurusManager.class).init(false, context, thesauriDir);
-
-
-        //------------------------------------------------------------------------
-        //--- initialize catalogue services for the web
 
         logger.info("  - Open Archive Initiative (OAI-PMH) server...");
 
@@ -303,13 +288,6 @@ public class Geonetwork implements ApplicationHandler {
         // This can happen if the application has been updated with a new version preserving the database and
         // images/logos folder is not copied from old application
         createSiteLogo(settingMan.getSiteId(), context, context.getAppPath());
-
-
-        // Notify unregistered metadata at startup. Needed, for example, when the user enables the notifier config
-        // to notify the existing metadata in database
-        // TODO: Fix DataManager.getUnregisteredMetadata and uncomment next lines
-        metadataNotifierControl = new MetadataNotifierControl(context);
-        metadataNotifierControl.runOnce();
 
         //--- load proxy information from settings into Jeeves for observers such
         //--- as jeeves.utils.XmlResolver to use
@@ -538,12 +516,6 @@ public class Geonetwork implements ApplicationHandler {
     }
 
 
-    //---------------------------------------------------------------------------
-    //---
-    //--- Stop
-    //---
-    //---------------------------------------------------------------------------
-
     public void stop() {
         logger.info("Stopping geonetwork...");
         AbstractEntityListenerManager.setSystemRunning(false);
@@ -552,17 +524,6 @@ public class Geonetwork implements ApplicationHandler {
         CswHarvesterResponseExecutionService.getExecutionService().shutdownNow();
 
         InspireAtomHarvesterScheduler.shutdown();
-
-        logger.info("  - MetadataNotifier ...");
-        try {
-            metadataNotifierControl.shutDown();
-        } catch (Exception e) {
-            logger.error("Raised exception while stopping metadatanotifier");
-            logger.error("  Exception : " + e);
-            logger.error("  Message   : " + e.getMessage());
-            logger.error("  Stack     : " + Util.getStackTrace(e));
-        }
-
 
         logger.info("  - Harvest Manager...");
         _applicationContext.getBean(HarvestManager.class).shutdown();

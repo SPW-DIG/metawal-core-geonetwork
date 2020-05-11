@@ -27,11 +27,6 @@ package org.fao.geonet.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.vividsolutions.jts.geom.Envelope;
-import com.vividsolutions.jts.geom.Geometry;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.MultiPolygon;
-import com.vividsolutions.jts.geom.Polygon;
 import jeeves.component.ProfileManager;
 import jeeves.server.ServiceConfig;
 import jeeves.server.context.ServiceContext;
@@ -49,11 +44,7 @@ import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.NodeInfo;
 import org.fao.geonet.SystemInfo;
 import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.domain.IsoLanguage;
-import org.fao.geonet.domain.LinkStatus;
-import org.fao.geonet.domain.Source;
-import org.fao.geonet.domain.UiSetting;
-import org.fao.geonet.domain.User;
+import org.fao.geonet.domain.*;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.SchemaManager;
 import org.fao.geonet.kernel.Thesaurus;
@@ -61,6 +52,7 @@ import org.fao.geonet.kernel.ThesaurusManager;
 import org.fao.geonet.kernel.search.CodeListTranslator;
 import org.fao.geonet.kernel.search.EsSearchManager;
 import org.fao.geonet.kernel.search.Translator;
+import org.fao.geonet.kernel.security.shibboleth.ShibbolethUserConfiguration;
 import org.fao.geonet.kernel.setting.SettingInfo;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.url.UrlChecker;
@@ -77,15 +69,17 @@ import org.geotools.geometry.jts.JTS;
 import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.referencing.CRS;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
-import org.geotools.xml.Parser;
+import org.geotools.xsd.Parser;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.output.DOMOutputter;
+import org.locationtech.jts.geom.*;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
 import org.owasp.esapi.errors.EncodingException;
 import org.owasp.esapi.reference.DefaultEncoder;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.w3c.dom.Node;
@@ -101,16 +95,7 @@ import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -261,12 +246,16 @@ public final class XslUtil {
      * @return Return the JSON config as string or an empty object.
      */
     public static String getUiConfiguration(String key) {
-        final String defaultUiConfiguration = NodeInfo.DEFAULT_NODE;
-        NodeInfo nodeInfo = ApplicationContextHolder.get().getBean(NodeInfo.class);
+        String nodeId = org.fao.geonet.NodeInfo.DEFAULT_NODE;
+        try {
+            org.fao.geonet.NodeInfo nodeInfo = ApplicationContextHolder.get().getBean(org.fao.geonet.NodeInfo.class);
+            nodeId = nodeInfo.getId();
+        } catch (BeanCreationException e) {
+        }
         SourceRepository sourceRepository= ApplicationContextHolder.get().getBean(SourceRepository.class);
         UiSettingsRepository uiSettingsRepository = ApplicationContextHolder.get().getBean(UiSettingsRepository.class);
 
-        Source portal = sourceRepository.findOne(nodeInfo.getId());
+        org.fao.geonet.domain.Source portal = sourceRepository.findOne(nodeId);
 
         if (uiSettingsRepository != null) {
             UiSetting one = null;
@@ -277,7 +266,7 @@ public final class XslUtil {
                 one = uiSettingsRepository.findOne(key);
             }
             else if (one == null) {
-                one = uiSettingsRepository.findOne(defaultUiConfiguration);
+                one = uiSettingsRepository.findOne(org.fao.geonet.NodeInfo.DEFAULT_NODE);
             }
 
             if (one != null) {
@@ -420,6 +409,21 @@ public final class XslUtil {
     public static boolean existsBean(String beanId) {
         return ProfileManager.existsBean(beanId);
     }
+
+	/**
+	 * Check if Shibboleth should show login
+	 *
+	 * @param beanId
+	 *            id of the bean to look up
+	 */
+	public static boolean shibbolethHideLogin() {
+		if (existsBean("shibbolethConfiguration")) {
+			ServiceContext serviceContext = ServiceContext.get();
+			ShibbolethUserConfiguration shib = serviceContext.getBean(ShibbolethUserConfiguration.class);
+			return shib.getHideLogin();
+		}
+		return false;
+	}
 
     /**
      * Optimistically check if user can access a given url.  If not possible to determine then the

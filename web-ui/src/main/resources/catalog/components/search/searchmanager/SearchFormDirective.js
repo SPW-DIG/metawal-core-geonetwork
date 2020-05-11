@@ -246,9 +246,7 @@
           paging.from = (paging.currentPage - 1) * paging.hitsPerPage + 1;
         }
       },function(data){
-        //error handler
-        console.warn('An error occured');
-        console.log(esParams);
+        console.warn('An error occurred while searching with params', esParams);
       }).then(function() {
         $scope.searching--;
       });
@@ -315,19 +313,25 @@
         var params = angular.copy($scope.searchObj.params);
         cleanSearchParams(params);
 
+        // Synch query_string and state filter.
         var filters = $scope.searchObj.state.filters;
-        if(Object.keys(filters).length) {
+        if(angular.isObject(filters)) {
           var query_string = JSON.stringify(filters);
-          if(query_string) {
+          if (Object.keys(filters).length) {
             params.query_string = query_string
           } else {
             delete params.query_string
           }
         } else {
-          delete params.query_string
+          if (filters != '') {
+            params.query_string = filters;
+            $scope.searchObj.state.filters = JSON.parse(filters);
+          } else {
+            delete params.query_string
+          }
         }
 
-        if (angular.equals(params, $location.search())) {
+        if (angular.equals(params, gnSearchLocation.getParams())) {
           triggerSearchFn(false);
         } else {
           gnSearchLocation.setSearch(params);
@@ -341,7 +345,7 @@
         // We are getting back to the search, no need to reload it
         if (newUrl == gnSearchLocation.lastSearchUrl) return;
 
-        var params = angular.copy($location.search());
+        var params = gnSearchLocation.getParams();
         if(params.query_string) {
           $scope.searchObj.state.filters = JSON.parse(params.query_string);
         } else {
@@ -410,7 +414,7 @@
      */
     var parse = function(path) {
       var fn =  function(obj) {
-        var paths = path.split('.')
+        var paths = path.split('^^^')
           , current = obj
           , i;
 
@@ -424,7 +428,7 @@
         return current;
       }
       fn.assign = function(obj, value) {
-        var paths = path.split('.')
+        var paths = path.split('^^^')
           , current = obj
           , i;
 
@@ -451,7 +455,7 @@
 
     this.updateState = function(path, value, doNotRemove) {
       var filters = $scope.searchObj.state.filters;
-      var getter = parse(path.join('.'));
+      var getter = parse(path.join('^^^'));
       var existingValue = getter(filters);
       if(angular.isUndefined(existingValue) || doNotRemove) {
         var setter = getter.assign;
@@ -470,7 +474,7 @@
     this.isInSearch = function(path) {
       if(!path) return;
       var filters = $scope.searchObj.state.filters;
-      var getter = parse(path.join('.'));
+      var getter = parse(path.join('^^^'));
       var res = getter(filters);
       return angular.isDefined(res);
     }
@@ -490,7 +494,7 @@
     this.isNegativeSearch = function(path) {
       if(!path) return;
       var filters = $scope.searchObj.state.filters;
-      var getter = parse(path.join('.'));
+      var getter = parse(path.join('^^^'));
       var res = getter(filters);
       if(angular.isString(res)) {
         return res.indexOf('-(') === 0;
@@ -587,11 +591,10 @@
 
             // get permalink params on page load
             if (scope.searchObj.permalink) {
-              angular.extend(scope.searchObj.params,
-                  gnSearchLocation.getParams());
+              scope.searchObj.params = gnSearchLocation.getParams();
 
               if(scope.searchObj.params.query_string) {
-                scope.searchObj.state.filters = JSON.parse(scope.searchObj.params.query_string);
+                scope.searchObj.state.filters = scope.searchObj.params.query_string;
               }
 
             }

@@ -746,13 +746,13 @@ button, .btn, .btn:active, a {
   }
 }
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: gray;
-  border-radius: 4px;
+  background-color: #9e9e9e;
+  border-radius: 0;
 }
 
 .gn-bbox-input {
@@ -968,6 +968,13 @@ gn-md-type-widget, gn-md-type-inspire-validation-widget {
     padding-left: 3px;
     margin: -6px 0px;
     line-height: 1em;
+    .gn-user-name {
+      max-width: 200px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .gn-user-role {
       text-transform: uppercase;
       opacity: 0.9;

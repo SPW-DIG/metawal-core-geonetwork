@@ -30,6 +30,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Multimap;
 import jeeves.server.UserSession;
 import jeeves.server.context.ServiceContext;
 import org.apache.commons.io.IOUtils;
@@ -135,7 +136,10 @@ public class EsSearchManager implements ISearchManager {
             .add(Geonet.IndexFieldNames.ID)
             .add(Geonet.IndexFieldNames.UUID)
             .add(Geonet.IndexFieldNames.RESOURCETITLE)
-            .add(Geonet.IndexFieldNames.RESOURCEABSTRACT).build();
+            .add(Geonet.IndexFieldNames.RESOURCETITLE + "Object")
+            .add(Geonet.IndexFieldNames.RESOURCEABSTRACT)
+            .add(Geonet.IndexFieldNames.RESOURCEABSTRACT + "Object")
+            .build();
     }
 
     @Value("${es.index.records:gn-records}")
@@ -218,8 +222,8 @@ public class EsSearchManager implements ISearchManager {
         }
     }
 
-    private void addMoreFields(Element doc, Map<String, Object> fields) {
-        fields.entrySet().forEach(e -> {
+    private void addMoreFields(Element doc, Multimap<String, Object> fields) {
+        fields.entries().forEach(e -> {
             doc.addContent(new Element(e.getKey())
                 .setText(String.valueOf(e.getValue())));
         });
@@ -253,8 +257,6 @@ public class EsSearchManager implements ISearchManager {
     @Autowired
     private GeonetworkDataDirectory dataDirectory;
 
-    public static final String INDEX_DIRECTORY = "index";
-
 
     private void createIndex(String indexId, String indexName, boolean dropIndexFirst) throws IOException {
         if (dropIndexFirst) {
@@ -283,7 +285,7 @@ public class EsSearchManager implements ISearchManager {
                 // Check version of the index - how ?
 
                 // Create it if not
-                Path indexConfiguration = dataDirectory.getConfigDir().resolve(INDEX_DIRECTORY).resolve(indexId + ".json");
+                Path indexConfiguration = dataDirectory.getIndexConfigDir().resolve(indexId + ".json");
                 if (Files.exists(indexConfiguration)) {
                     String configuration;
                     try (InputStream is = Files.newInputStream(indexConfiguration, StandardOpenOption.READ)) {
@@ -325,7 +327,8 @@ public class EsSearchManager implements ISearchManager {
         UpdateRequest updateRequest = new UpdateRequest(defaultIndex, id).doc(fields);
         return client.getClient().update(updateRequest, RequestOptions.DEFAULT);
     }
-    public BulkResponse updateFields(String id, Map<String, Object> fields, Set<String> fieldsToRemove) throws Exception {
+
+    public BulkResponse updateFields(String id, Multimap<String, Object> fields, Set<String> fieldsToRemove) throws Exception {
         fields.put("indexingDate", new Date());
         BulkRequest bulkrequest = new BulkRequest();
         StringBuffer script = new StringBuffer();
@@ -338,7 +341,10 @@ public class EsSearchManager implements ISearchManager {
                 script.toString(),
                 Collections.emptyMap()));
         bulkrequest.add(deleteFieldRequest);
-        UpdateRequest addFieldRequest = new UpdateRequest(defaultIndex, id).doc(fields);
+        Map<String, Object> fieldMap = new HashMap<>();
+        fields.asMap().forEach((e, v) -> fieldMap.put(e, v.toArray()));
+        UpdateRequest addFieldRequest = new UpdateRequest(defaultIndex, id)
+            .doc(fieldMap);
         bulkrequest.add(addFieldRequest);
         return client.getClient().bulk(bulkrequest, RequestOptions.DEFAULT);
     }
@@ -376,7 +382,7 @@ public class EsSearchManager implements ISearchManager {
 
     @Override
     public void index(Path schemaDir, Element metadata, String id,
-                      Map<String, Object> dbFields,
+                      Multimap<String, Object> dbFields,
                       MetadataType metadataType, String root,
                       boolean forceRefreshReaders) throws Exception {
 
@@ -392,11 +398,6 @@ public class EsSearchManager implements ISearchManager {
         doc.remove("source");
         if (StringUtils.isNotEmpty(catalog)) {
             doc.put("sourceCatalogue", catalog);
-            final Source source = sourceRepository.findOne(catalog);
-            if (source != null) {
-                source.getLabelTranslations()
-                    .forEach((key, value) -> doc.put("sourceCatalogueName_lang" + key, value));
-            }
         }
 //        doc.put("indexingDate", new Date());
 

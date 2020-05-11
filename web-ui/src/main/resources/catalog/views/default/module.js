@@ -372,11 +372,29 @@
         filters: gnSearchSettings.filters,
         defaultParams: {
           isTemplate: 'n',
+          resourceTemporalDateRange: {
+            range: {
+              resourceTemporalDateRange: {
+                gte: null,
+                lte: null,
+                relation: "intersects"
+              }
+            }
+          },
           sortBy: sortConfig[0] || 'relevance',
           sortOrder: sortConfig[1] || ''
         },
         params: {
           isTemplate: 'n',
+          resourceTemporalDateRange: {
+            range: {
+              resourceTemporalDateRange: {
+                gte: null,
+                lte: null,
+                relation: "intersects"
+              }
+            }
+          },
           sortBy: sortConfig[0] || 'relevance',
           sortOrder: sortConfig[1] || ''
         },

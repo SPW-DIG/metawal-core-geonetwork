@@ -57,7 +57,7 @@ public abstract class AbstractGeonetworkDataDirectoryTest extends AbstractCoreIn
         // reinitialize data directory so that it uses the defaults
         dataDirectory.setSystemDataDir(null);
         dataDirectory.setConfigDir(null);
-        dataDirectory.setLuceneDir(null);
+        dataDirectory.setIndexConfigDir(null);
         dataDirectory.setMetadataDataDir(null);
         dataDirectory.setMetadataRevisionDir(null);
         dataDirectory.setResourcesDir(null);
@@ -69,7 +69,6 @@ public abstract class AbstractGeonetworkDataDirectoryTest extends AbstractCoreIn
         final Path webappDir = getWebappDir(getClass());
         dataDirectory.init("geonetwork", webappDir, handlerConfig, null);
 
-        assertEquals(getGeonetworkNodeId(), dataDirectory.getNodeId());
         final Path expectedDataDir = getDataDir();
         assertEquals(expectedDataDir, dataDirectory.getSystemDataDir());
         assertEquals(webappDir.toAbsolutePath().normalize(), dataDirectory.getWebappDir().toAbsolutePath().normalize());
@@ -79,7 +78,6 @@ public abstract class AbstractGeonetworkDataDirectoryTest extends AbstractCoreIn
     private void assertSystemDirSubFolders(Path expectedDataDir) {
         final Path expectedConfigDir = expectedDataDir.resolve("config");
         assertEquals(expectedConfigDir, dataDirectory.getConfigDir());
-        assertEquals(expectedDataDir.resolve("index"), dataDirectory.getLuceneDir());
         assertEquals(expectedDataDir.resolve("data").resolve("metadata_data"), dataDirectory.getMetadataDataDir());
         assertEquals(expectedDataDir.resolve("data").resolve("metadata_subversion"), dataDirectory.getMetadataRevisionDir());
         final Path expectedResourcesDir = expectedDataDir.resolve("data").resolve("resources");

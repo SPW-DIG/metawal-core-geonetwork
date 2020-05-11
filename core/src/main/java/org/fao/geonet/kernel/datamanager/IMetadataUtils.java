@@ -66,15 +66,6 @@ public interface IMetadataUtils {
     public void init(ServiceContext context, Boolean force) throws Exception;
 
     /**
-     * Notify a metadata modification
-     *
-     * @param md
-     * @param metadataId
-     * @throws Exception
-     */
-    void notifyMetadataChange(Element md, String metadataId) throws Exception;
-
-    /**
      * Return the uuid of the record with the defined id
      *
      * @param id
@@ -274,44 +265,10 @@ public interface IMetadataUtils {
     Element getKeywords() throws Exception;
 
     /**
-     * Returns the thumbnails associated to the record with id metadataId
-     *
-     * @param context
-     * @param metadataId
-     * @return
-     * @throws Exception
-     */
-    Element getThumbnails(ServiceContext context, String metadataId) throws Exception;
-
-    /**
-     * Add thumbnail to the record defined with the id
-     *
-     * @param context
-     * @param id
-     * @param small
-     * @param indexAfterChange
-     * @throws Exception
-     */
-    void setThumbnail(ServiceContext context, String id, boolean small, String file, boolean indexAfterChange) throws Exception;
-
-    /**
-     * Remove thumbnail from the record defined with the id
-     *
-     * @param context
-     * @param id
-     * @param small
-     * @param indexAfterChange
-     * @throws Exception
-     */
-    void unsetThumbnail(ServiceContext context, String id, boolean small, boolean indexAfterChange) throws Exception;
-
-    /**
      * Add data commons to the record defined with the id
      *
      * @param context
      * @param id
-     * @param small
-     * @param indexAfterChange
      * @throws Exception
      */
     void setDataCommons(ServiceContext context, String id, String licenseurl, String imageurl, String jurisdiction, String licensename,
@@ -322,8 +279,6 @@ public interface IMetadataUtils {
      *
      * @param context
      * @param id
-     * @param small
-     * @param indexAfterChange
      * @throws Exception
      */
     void setCreativeCommons(ServiceContext context, String id, String licenseurl, String imageurl, String jurisdiction, String licensename,
@@ -388,7 +343,7 @@ public interface IMetadataUtils {
      * Find the record with the UUID uuid
      *
      * @param firstMetadataId
-     * 
+     *
      * @param uuid
      * @return
      */
@@ -397,7 +352,7 @@ public interface IMetadataUtils {
 
     /**
      * Find all records with the UUID uuid
-     * 
+     *
      * @param uuid
      * @return
      */
@@ -439,7 +394,7 @@ public interface IMetadataUtils {
 
     /**
      * Find all the metadata with the identifiers
-     * 
+     *
      * @see org.springframework.data.repository.CrudRepository#findAll(java.lang.Iterable)
      * @param spec
      * @param order

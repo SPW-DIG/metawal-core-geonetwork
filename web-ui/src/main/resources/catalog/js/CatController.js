@@ -86,7 +86,13 @@ goog.require('gn_alert');
           'isLogoInHeader': false,
           'logoInHeaderPosition': 'left',
           'fluidHeaderLayout': true,
-          'showGNName': true
+          'showGNName': true,
+          'isHeaderFixed': false
+        },
+        'cookieWarning': {
+          'enabled': true,
+          'cookieWarningMoreInfoLink': '',
+          'cookieWarningRejectLink': ''
         },
         'home': {
           'enabled': true,
@@ -94,15 +100,15 @@ goog.require('gn_alert');
           'showSocialBarInFooter': true,
           'fluidLayout': true,
           'facetConfig': {
-            'resourceType': {
+            'codelist_hierarchyLevel_text': {
               'terms': {
-                'field': 'resourceType',
+                'field': 'codelist_hierarchyLevel_text',
                 'size': 10
               }
             },
             'topic': {
               'terms': {
-                'field': 'topic',
+                'field': 'topic_text',
                 'size': 20
               }
             },
@@ -110,6 +116,7 @@ goog.require('gn_alert');
               'terms': {
                 'field': 'inspireThemeUri',
                 'size': 34
+                // "order" : { "_key" : "asc" }
               }
             }
           },
@@ -124,14 +131,18 @@ goog.require('gn_alert');
           },
           'autocompleteConfig': {
             'query': {
-              "multi_match": {
-                "query": "",
-                "type": "bool_prefix",
-                "fields": [
-                  "anytext",
-                  "anytext._2gram",
-                  "anytext._3gram"
-                ]
+              'bool': {
+                'must': [{
+                  'multi_match': {
+                    "query": "",
+                    "type": "bool_prefix",
+                    "fields": [
+                      "anytext",
+                      "anytext._2gram",
+                      "anytext._3gram"
+                    ]
+                  }
+                }]
               }
             },
             '_source': ['resourceTitleObject']
@@ -178,6 +189,18 @@ goog.require('gn_alert');
                 }
               }
             },
+            'codelist_hierarchyLevel_text': {
+              'terms': {
+                'field': 'codelist_hierarchyLevel_text'
+              },
+              'aggs': {
+                'format': {
+                  'terms': {
+                    'field': 'format'
+                  }
+                }
+              }
+            },
             "resolutionScaleDenominator": {
               "terms": {
                 "field": "resolutionScaleDenominator",
@@ -216,6 +239,46 @@ goog.require('gn_alert');
                   "_key": "asc"
                 },
                 "include": "[^/]+/?[^/]+"
+                // Limit to 2 levels
+              }
+            },
+            'tag': {
+              'terms': {
+                'field': 'tag',
+                'size': 10
+              }
+            },
+            'thesaurus_geonetworkthesaurusexternalplaceregions_tree': {
+              'terms': {
+                'field': 'thesaurus_geonetworkthesaurusexternalplaceregions_tree',
+                'size': 100,
+                "order" : { "_key" : "asc" }
+                //"include": "EEA.*"
+              }
+            },
+            'codelist_spatialRepresentationType': {
+              'terms': {
+                'field': 'codelist_spatialRepresentationType',
+                'size': 10
+              }
+            },
+            'resolutionScaleDenominator': {
+              'terms': {
+                'field': 'resolutionScaleDenominator',
+                'size': 10,
+                'order': {'_key': "asc"}
+              }
+            },
+            'codelist_maintenanceAndUpdateFrequency_text': {
+              'terms': {
+                'field': 'codelist_maintenanceAndUpdateFrequency_text',
+                'size': 10
+              }
+            },
+            'OrgForResource': {
+              'terms': {
+                'field': 'OrgForResource',
+                'size': 15
               }
             },
             "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
@@ -237,6 +300,9 @@ goog.require('gn_alert');
             'sortOrder': ''
           }, {
             'sortBy': 'dateStamp',
+            'sortOrder': 'desc'
+          }, {
+            'sortBy': 'createDate',
             'sortOrder': 'desc'
           }, {
             'sortBy': 'resourceTitleObject.default.keyword',
@@ -301,7 +367,7 @@ goog.require('gn_alert');
             'displayFeaturedSearchesPanel': false
           },
           'savedSelection': {
-            'enabled': true
+            'enabled': false
           }
         },
         'map': {
@@ -309,8 +375,9 @@ goog.require('gn_alert');
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/map',
           'externalViewer': {
             'enabled': false,
+            'enabledViewAction': false,
             'baseUrl': 'http://www.example.com/viewer',
-            'urlTemplate': 'http://www.example.com/viewer?url=${service.url}&type=${service.type}&layer=${service.name}',
+            'urlTemplate': 'http://www.example.com/viewer?url=${service.url}&type=${service.type}&layer=${service.title}&lang=${iso2lang}&title=${md.defaultTitle}',
             'openNewWindow': false,
             'valuesSeparator': ','
           },
@@ -397,9 +464,9 @@ goog.require('gn_alert');
                 'size': 15
               }
             },
-            'sourceCatalog': {
+            'sourceCatalogue': {
               'terms': {
-                'field': 'sourceCatalog',
+                'field': 'sourceCatalogue',
                 'size': 15
               }
             },
@@ -433,9 +500,9 @@ goog.require('gn_alert');
                 'size': 10
               }
             },
-            'documentStandard': {
+            'schema': {
               'terms': {
-                'field': 'documentStandard',
+                'field': 'schema.keyword',
                 'size': 10
               }
             },
@@ -495,6 +562,7 @@ goog.require('gn_alert');
       },
       current: null,
       shibbolethEnabled: false,
+      shibbolethHideLogin: true,
       init: function(config, gnUrl, gnViewerSettings, gnSearchSettings) {
         // start from the default config to make sure every field is present
         // and override with config arg if required
@@ -666,6 +734,8 @@ goog.require('gn_alert');
       $scope.fluidEditorLayout = gnGlobalSettings.gnCfg.mods.editor.fluidEditorLayout;
       $scope.fluidHeaderLayout = gnGlobalSettings.gnCfg.mods.header.fluidHeaderLayout;
       $scope.showGNName = gnGlobalSettings.gnCfg.mods.header.showGNName;
+      $scope.isHeaderFixed = gnGlobalSettings.gnCfg.mods.header.isHeaderFixed;
+      $scope.isLogoInHeader = gnGlobalSettings.gnCfg.mods.header.isLogoInHeader;
 
       // If gnLangs current already set by config, do not use URL
       $scope.langs = gnGlobalSettings.gnCfg.mods.header.languages;
@@ -717,6 +787,12 @@ goog.require('gn_alert');
       gnConfig.env.node = $scope.nodeId;
       gnConfig.env.baseURL = detectBaseURL(gnGlobalSettings.gnCfg.baseURLDetector);
 
+      $scope.signoutUrl = gnGlobalSettings.gnCfg.mods.signout.appUrl
+        + '?redirectUrl='
+        + window.location.href.slice(
+            0,
+            window.location.href.indexOf(gnConfig.env.node) + gnConfig.env.node.length);
+
       // Lang names to be displayed in language selector
       //$scope.langLabels = {'eng': 'English', 'dut': 'Nederlands',
       //'fre': 'Français', 'ger': 'Deutsch', 'kor': '한국의', 'spa': 'Español'};
@@ -730,6 +806,7 @@ goog.require('gn_alert');
       $scope.isMapViewerEnabled = gnGlobalSettings.isMapViewerEnabled;
       $scope.isDebug = window.location.search.indexOf('debug') !== -1;
       $scope.shibbolethEnabled = gnGlobalSettings.shibbolethEnabled;
+      $scope.shibbolethHideLogin = gnGlobalSettings.shibbolethHideLogin;
       $scope.isExternalViewerEnabled = gnExternalViewer.isEnabled();
       $scope.externalViewerUrl = gnExternalViewer.getBaseUrl();
 
@@ -947,9 +1024,10 @@ goog.require('gn_alert');
               });
             } else {
               return $http.post('../api/search/records/_search',
-                {"size": 0,
-                    "query": {"query_string": {"query": "+isTemplate:n"}},
-                    "aggs": gnGlobalSettings.gnCfg.mods.home.facetConfig}).
+                {size: 0,
+                    track_total_hits: true,
+                    query: {query_string: {query: "+isTemplate:n"}},
+                    aggs: gnGlobalSettings.gnCfg.mods.home.facetConfig}).
               then(function(r) {
                 $scope.searchInfo = r.data;
                 $scope.browse = $scope.searchInfo.aggregations.inspireThemeUri ? 'inspire' : 'topics';
@@ -982,10 +1060,18 @@ goog.require('gn_alert');
 
 
       $scope.healthCheck = {};
+      // Flag to show the health index error panel
+      // By default hidden, only to be displayed if the
+      // health check for the index returns an error.
+      $scope.showHealthIndexError = false;
+
       function healthCheckStatus(data) {
         angular.forEach(data, function(o) {
           $scope.healthCheck[o.name] = (o.status === 'OK');
         });
+
+        $scope.showHealthIndexError = (!$scope.healthCheck) ||
+          ($scope.healthCheck && $scope.healthCheck.IndexHealthCheck == false);
       };
       $http.get('../../warninghealthcheck')
         .success(healthCheckStatus)

@@ -58,7 +58,6 @@ import org.fao.geonet.kernel.harvest.harvester.RecordInfo;
 import org.fao.geonet.kernel.harvest.harvester.UUIDMapper;
 import org.fao.geonet.kernel.schema.MetadataSchema;
 import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.repository.OperationAllowedRepository;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.Namespace;
@@ -209,7 +208,6 @@ public class Aligner extends BaseAligner<CswParams> {
                         case OVERRIDE:
                             updateMetadata(ri, Integer.toString(metadataUtils.findOneByUuid(ri.uuid).getId()), true);
                             log.debug("Overriding record with uuid " + ri.uuid);
-                            result.updatedMetadata++;
 
                             if (params.isIfRecordExistAppendPrivileges()) {
                                 addPrivileges(id, params.getPrivileges(), localGroups, context);
@@ -383,7 +381,7 @@ public class Aligner extends BaseAligner<CswParams> {
 
         addCategories(metadata, params.getCategories(), localCateg, context, null, false);
 
-        metadata = metadataManager.insertMetadata(context, metadata, md, true, false, false, UpdateDatestamp.NO, false, false);
+        metadata = metadataManager.insertMetadata(context, metadata, md, false, false, UpdateDatestamp.NO, false, false);
 
         String id = String.valueOf(metadata.getId());
 
@@ -441,9 +439,6 @@ public class Aligner extends BaseAligner<CswParams> {
 
             metadataManager.save(metadata);
         }
-
-        OperationAllowedRepository repository = context.getBean(OperationAllowedRepository.class);
-        repository.deleteAllByMetadataId(Integer.parseInt(id));
 
         addPrivileges(id, params.getPrivileges(), localGroups, context);
 

@@ -1,15 +1,15 @@
 <div>
   <div class="row gn-row-main">
     <div data-ng-class="fluidLayout ? 'container-fluid' : 'container'">
-      <div class="col-sm-4 col-sm-offset-6"
-           data-ng-hide="healthCheck && healthCheck.IndexHealthCheck">
+      <div class="col-sm-4 col-sm-offset-6 ng-cloak"
+           data-ng-if="showHealthIndexError">
         <div class="alert alert-warning text-center">
           <h3 data-translate="">indexNotAvailable</h3>
           <i class="fa fa-fw fa-cogs fa-3x"/>
         </div>
       </div>
       <div class="col-sm-8 col-sm-offset-2"
-           data-ng-hide="healthCheck && !healthCheck.IndexHealthCheck">
+           data-ng-if="!showHealthIndexError">
 
         <div class="input-group gn-form-any">
           <input type="text"
@@ -26,8 +26,9 @@
                 data-typeahead-min-length="1"/>
           <span class="input-group-btn">
             <a class="btn btn-primary btn-lg"
-              type="button"
-              data-ng-href="#/search?any={{homeAnyField}}">
+               type="button"
+               data-ng-disabled="searchInfo.hits.total.value == 0"
+               data-ng-href="#/search?any={{homeAnyField}}">
               <i class="fa fa-search"></i>
               <span class="sr-only" data-translate="">search</span>
             </a>
@@ -76,13 +77,13 @@
 
 
 
-  <div class="row gn-row-topics" data-ng-show="searchInfo.aggregations">
+  <div class="row gn-row-topics" data-ng-show="searchInfo.hits.total.value > 0 && searchInfo.aggregations">
     <div data-ng-class="fluidLayout ? 'container-fluid' : 'container'">
       <div class="col-sm-12 col-md-9" data-ng-show="browse !== ''">
         <h4>
           <span data-translate="">browseBy</span>
           <span
-            data-ng-show="searchInfo.aggregations.inspireThemeUri">
+            data-ng-show="isInspireEnabled && searchInfo.aggregations.inspireThemeUri">
             <label data-ng-show="searchInfo.aggregations.inspireThemeUri">
               <input type="radio" name="browse" value="inspire" data-ng-model="browse"/>
               <span data-translate="">inspireThemes</span>
@@ -112,6 +113,7 @@
               <span class="badge pull-left">{{facet.doc_count}}</span>
             </div>
           </span>
+          <!-- TODOES Sort alpha -->
           <span data-ng-repeat="(key, facet) in searchInfo.aggregations.inspireThemeUri.buckets"
                 data-ng-show="browse === 'inspire'"
                 data-ng-init="code = facet.key.slice(facet.key.lastIndexOf('/')+1)"
@@ -131,18 +133,18 @@
           </span>
         </div>
       </div>
-      <div class="col-sm-12 col-md-3" data-ng-show="searchInfo.aggregations.resourceType.buckets.length > 0">
+      <div class="col-sm-12 col-md-3" data-ng-show="searchInfo.aggregations.codelist_hierarchyLevel_text.buckets.length > 0">
         <h4>
           <span data-translate="">browseTypes</span>
         </h4>
         <div class="row">
-            <span data-ng-repeat="(key, facet) in searchInfo.aggregations.resourceType.buckets"
+            <span data-ng-repeat="(key, facet) in searchInfo.aggregations.codelist_hierarchyLevel_text.buckets"
                   data-ng-show="facet.key"
                   class="col-xs-12 col-sm-6 col-md-12 chips-card">
               <div class="badge-result badge-result-type pull-left">
                 <a title="{{facet.key}}"
                   class="pull-left clearfix"
-                  data-ng-href='#/search?query_string={"resourceType": {"{{facet.key}}": true} }'>
+                  data-ng-href='#/search?query_string={"codelist_hierarchyLevel_text": {"{{facet.key}}": true} }'>
                   <span class="badge-icon pull-left">
                     <i class="fa fa-3x fa-table gn-icon gn-icon-{{facet.key}}"></i>
                   </span>

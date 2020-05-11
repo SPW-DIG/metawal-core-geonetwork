@@ -174,7 +174,7 @@
 
     <form class="navbar-form navbar-right language-switcher">
       <span class="gn-menuheader-xs visible-xs"
-            data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && !shibbolethEnabled"
+            data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && (!shibbolethEnabled || (shibbolethEnabled && !shibbolethHideLogin))"
             data-translate="">language</span>
       <div class="form-group"
            data-gn-language-switcher="lang"
@@ -194,7 +194,7 @@
             alt="{{'avatar' | translate}}"
             data-ng-src="//gravatar.com/avatar/{{user.email | md5}}?s=18"/>
           <div class="gn-user-info hidden-sm hidden-md">
-            {{user.name}} {{user.surname}}<br>
+            <span class="gn-user-name">{{user.name}} {{user.surname}}</span><br>
             <span class="gn-user-role">{{user.profile | lowercase | translate}}</span>
           </div>
           <span class="alert alert-danger ng-hide"
@@ -222,7 +222,7 @@
           </li>
           <li role="separator" class="divider hidden-xs"></li>
           <li role="menuitem">
-            <a href="{{gnCfg.mods.signout.appUrl}}"
+            <a href="{{signoutUrl}}"
                title="{{'signout' | translate}}">
               <i class="fa fa-sign-out"></i>&nbsp;
               {{'signout' | translate}}
@@ -231,7 +231,7 @@
         </ul>
       </li>
       <li class="dropdown dropdown-hover open signin-dropdown"
-        data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && !shibbolethEnabled">
+        data-ng-if="!authenticated && service !== 'catalog.signin' && service !== 'new.account' && (!shibbolethEnabled || (shibbolethEnabled && !shibbolethHideLogin))">
         <a href="{{gnCfg.mods.signin.appUrl | signInLink}}"
            title="{{'signIn'|translate}}"
            class="dropdown-toggle gn-menuheader-xs"

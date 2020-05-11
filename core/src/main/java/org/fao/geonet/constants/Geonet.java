@@ -41,11 +41,7 @@ public final class Geonet {
     public static final String DEFAULT_LANGUAGE = "eng";
 
     public static final String CC_API_REST_URL = "http://api.creativecommons.org/rest/1.5/simple/chooser";
-    public static final String LUCENE_LOCALE_KEY = "_locale";
-    //
-    //--- logging
-    //
-    public static final String LANGUAGEDETECTOR = "LanguageDetector";
+
     public static final String GEONETWORK = "geonetwork";
     public static final String HARVEST_MAN = GEONETWORK + ".harvest-man";
     public static final String HARVESTER = GEONETWORK + ".harvester";
@@ -58,11 +54,8 @@ public final class Geonet {
     public static final String THESAURUS_MAN = GEONETWORK + ".thesaurus-man";
     public static final String THESAURUS = GEONETWORK + ".thesaurus";
     public static final String SEARCH_ENGINE = GEONETWORK + ".search";
-    public static final String FACET_ENGINE = GEONETWORK + ".facet";
     public static final String CUSTOM_ELEMENTSET = GEONETWORK + ".customelementset";
     public static final String INDEX_ENGINE = GEONETWORK + ".index";
-    public static final String LUCENE = GEONETWORK + ".lucene";
-    public static final String LUCENE_TRACKING = LUCENE + ".tracking";
     public static final String MEF = GEONETWORK + ".mef";
     public static final String CSW = GEONETWORK + ".csw";
     public static final String LDAP = GEONETWORK + ".ldap";
@@ -99,12 +92,6 @@ public final class Geonet {
      */
     public static final class File {
         public static final String SCHEMA = "schema.xsd";
-        public static final String SCHEMATRON = "schematron.xsl";
-        public static final String SCHEMATRON_XML = "schematron_xml.xsl";
-        public static final String SCHEMATRON_VERBID = "schematron_verbid.xsl";
-        public static final String SEARCH_LUCENE = "lucene.xsl";
-        public static final String SEARCH_Z3950_CLIENT = "z3950Client.xsl";
-        public static final String SEARCH_Z3950_SERVER = "z3950Server.xsl";
         public static final String UPDATE_FIXED_INFO = "update-fixed-info.xsl";
         public static final String UPDATE_FIXED_INFO_SUBTEMPLATE = "update-fixed-info-subtemplate.xsl";
         public static final String UPDATE_CHILD_FROM_PARENT_INFO = "update-child-from-parent-info.xsl";
@@ -113,11 +100,8 @@ public final class Geonet {
         public static final String EXTRACT_SKOS_FROM_ISO19135 = "xml_iso19135ToSKOS.xsl";
         public static final String EXTRACT_DATE_MODIFIED = "extract-date-modified.xsl";
         public static final String SET_UUID = "set-uuid.xsl";
-        public static final String EXTRACT_THUMBNAILS = "extract-thumbnails.xsl";
         public static final String SET_CREATIVECOMMONS = "set-creativecommons.xsl";
         public static final String SET_DATACOMMONS = "set-datacommons.xsl";
-        public static final String SET_THUMBNAIL = "set-thumbnail.xsl";
-        public static final String UNSET_THUMBNAIL = "unset-thumbnail.xsl";
         public static final String SCHEMA_SUGGESTIONS = "schema-suggestions.xml";
         public static final String SCHEMA_SUBSTITUTES = "schema-substitutes.xml";
         public static final String SCHEMA_CONVERSIONS = "schema-conversions.xml";
@@ -127,12 +111,6 @@ public final class Geonet {
         public static final String SORT_HARVESTERS = "sort-harvesters.xsl";
         public static final String JZKITAPPLICATIONCONTEXT = "JZkitApplicationContext.xml";
         public static final String INFLATE_METADATA = "inflate-metadata.xsl";
-
-        /**
-         * Stylesheet to convert a CQL parameter to a filter.
-         */
-        public static final String CQL_TO_FILTER = "cql-to-filter.xsl";
-        public static final String FILTER_TO_LUCENE = "filter-to-lucene.xsl";
         public static final String LICENSE_ANNEX = "license-annex.html";
         public static final String LICENSE_ANNEX_XSL = "metadata-license-annex.xsl";
         public static final String METADATA_BRIEF = "metadata-brief.xsl";
@@ -497,10 +475,6 @@ public final class Geonet {
             public static final String RESULTS = "results";
             public static final String HITS = "hits";
             public static final String VALIDATE = "validate";
-            /**
-             * Contains CSW results response with a GeoNetwork summary of the current search.
-             */
-            public static final String RESULTS_WITH_SUMMARY = "results_with_summary";
             public static final String SUGGESTIONS = "suggestions";
         }
 
@@ -552,7 +526,7 @@ public final class Geonet {
      */
     public static final class Config {
         public static final String HTMLCACHE_DIR = "htmlCacheDir";
-        public static final String LUCENE_DIR = "luceneDir";
+        public static final String INDEX_CONFIG_DIR = "indexConfigDir";
         /**
          * Profiles of languages for autodetection using https://code.google.com/p/language-detection/.
          */
@@ -661,10 +635,10 @@ public final class Geonet {
         public static final String DISPLAY_ORDER = "_displayOrder";
         public static final String EXTRA = "_extra";
         public static final String USERINFO = "_userinfo";
-        public static final String GROUP_OWNER = "_groupOwner";
+        public static final String GROUP_OWNER = "groupOwner";
         public static final String GROUP_WEBSITE = "_groupWebsite";
         public static final String LOGO = "_logo";
-        public static final String OP_PREFIX = "_op";
+        public static final String OP_PREFIX = "op";
         public static final String GROUP_PUBLISHED = "_groupPublished";
         public static final String CAT = "_cat";
         public static final String STATUS = "mdStatus";

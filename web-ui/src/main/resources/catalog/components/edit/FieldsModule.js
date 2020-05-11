@@ -40,7 +40,8 @@
   goog.require('gn_organisation_entry_selector');
   goog.require('gn_record_fragment_selector');
   goog.require('gn_template_field_directive');
-  goog.require('gn_anchor_switcher_directive')
+  goog.require('gn_anchor_switcher_directive');
+  goog.require('gn_multientry_combiner');
 
 
 
@@ -61,6 +62,7 @@
     'gn_checkbox_with_nilreason',
     'gn_md_validation_tools_directive',
     'gn_bounding',
-    'gn_anchor_switcher_directive'
+    'gn_anchor_switcher_directive',
+    'gn_multientry_combiner'
   ]);
 })();

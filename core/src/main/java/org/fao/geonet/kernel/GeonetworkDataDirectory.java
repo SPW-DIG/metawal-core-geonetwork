@@ -25,9 +25,7 @@ package org.fao.geonet.kernel;
 
 import jeeves.server.ServiceConfig;
 import jeeves.server.sources.http.JeevesServlet;
-
 import org.fao.geonet.ApplicationContextHolder;
-import org.fao.geonet.NodeInfo;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
@@ -68,7 +66,7 @@ public class GeonetworkDataDirectory {
 
     private Path webappDir;
     private Path systemDataDir;
-    private Path luceneDir;
+    private Path indexConfigDir;
     private Path configDir;
     private Path thesauriDir;
     private Path schemaPluginsDir;
@@ -80,9 +78,6 @@ public class GeonetworkDataDirectory {
     private Path uploadDir;
     private Path formatterDir;
     private Path nodeLessFiles;
-    private String nodeId;
-
-    private boolean isDefaultNode;
 
     /**
      * Check and create if needed GeoNetwork data directory.
@@ -110,14 +105,7 @@ public class GeonetworkDataDirectory {
         }
         this.webappDir = webappDir;
         final ConfigurableApplicationContext applicationContext = ApplicationContextHolder.get();
-        if (applicationContext == null) {
-            this.nodeId = "srv";
-            this.isDefaultNode = true;
-        } else {
-            final NodeInfo nodeInfo = applicationContext.getBean(NodeInfo.class);
-            this.isDefaultNode = nodeInfo.isDefaultNode();
-            this.nodeId = nodeInfo.getId();
-        }
+
         setDataDirectory(jeevesServlet, webappName, handlerConfig);
 
         // might be null during tests
@@ -156,18 +144,15 @@ public class GeonetworkDataDirectory {
         String dataDirStr = null;
 
         if (Log.isDebugEnabled(Geonet.DATA_DIRECTORY)) {
-            Log.debug(Geonet.DATA_DIRECTORY, "lookupProperty " + key + " for node " + nodeId);
+            Log.debug(Geonet.DATA_DIRECTORY, "lookupProperty " + key);
         }
 
-        final String keyWithNode = nodeId + "." + key;
-
-        boolean useKeyWithNode = true;
         // Loop over variable access methods
         for (int j = 0; j < typeStrs.length && dataDirStr == null; j++) {
             String value = null;
             String typeStr = typeStrs[j];
 
-            String keyToUse = useKeyWithNode ? keyWithNode : key;
+            String keyToUse = key;
             // Lookup section
             switch (j) {
                 case 0:
@@ -185,18 +170,10 @@ public class GeonetworkDataDirectory {
 //				Environment variable names used by the utilities in the Shell and Utilities
 //				volume of IEEE Std 1003.1-2001 consist solely of uppercase letters, digits, and the '_'
 //				Instead of looking for geonetwork.dir, get geonetwork_dir
-                    value = System.getenv(keyWithNode.replace('.', '_'));
+                    value = System.getenv(keyToUse.replace('.', '_'));
                     break;
                 default:
                     throw new IllegalArgumentException("Did not expect value: " + j);
-            }
-
-            if (value == null || value.equalsIgnoreCase("")) {
-                if (useKeyWithNode && j == typeStrs.length - 1) {
-                    j = -1;
-                    useKeyWithNode = false;
-                }
-                continue;
             }
 
             if (Log.isDebugEnabled(Geonet.DATA_DIRECTORY)) {
@@ -232,7 +209,6 @@ public class GeonetworkDataDirectory {
                     + " properties.");
             useDefaultDataDir = true;
         } else {
-            updateSystemDataDirWithNodeSuffix();
             try {
                 Files.createDirectories(this.systemDataDir);
             } catch (IOException e) {
@@ -270,7 +246,6 @@ public class GeonetworkDataDirectory {
 
         if (useDefaultDataDir) {
             systemDataDir = getDefaultDataDir(webappDir);
-            updateSystemDataDirWithNodeSuffix();
             Log.warning(Geonet.DATA_DIRECTORY,
                 "    - Data directory provided could not be used. Using default location: "
                     + systemDataDir);
@@ -289,8 +264,8 @@ public class GeonetworkDataDirectory {
             + systemDataDir);
 
         // Set subfolder data directory
-        luceneDir = setDir(jeevesServlet, webappName, handlerConfig, luceneDir, ".lucene" + KEY_SUFFIX,
-            Geonet.Config.LUCENE_DIR, "index");
+        indexConfigDir = setDir(jeevesServlet, webappName, handlerConfig, indexConfigDir, ".indexConfig" + KEY_SUFFIX,
+            Geonet.Config.INDEX_CONFIG_DIR, "config","index");
 
         configDir = setDir(jeevesServlet, webappName, handlerConfig, configDir, ".config" + KEY_SUFFIX,
             Geonet.Config.CONFIG_DIR, "config");
@@ -330,14 +305,6 @@ public class GeonetworkDataDirectory {
         initDataDirectory();
 
         return this.systemDataDir;
-    }
-
-    private void updateSystemDataDirWithNodeSuffix() {
-        if (!isDefaultNode) {
-
-            final String newName = this.systemDataDir.getFileName().toString() + '_' + this.nodeId;
-            this.systemDataDir = this.systemDataDir.getParent().resolve(newName);
-        }
     }
 
     /**
@@ -406,6 +373,21 @@ public class GeonetworkDataDirectory {
                 Log.error(Geonet.DATA_DIRECTORY, "     - Logo copy failed: " + e.getMessage(), e);
             }
         }
+
+
+        if (!Files.exists(this.indexConfigDir) || IO.isEmptyDir(this.indexConfigDir)) {
+            Log.info(Geonet.DATA_DIRECTORY, "     - Copying index configuration in data directory ...");
+            try {
+                final Path srcFile = getDefaultDataDir(webappDir).resolve("config").resolve("index");
+                IO.copyDirectoryOrFile(srcFile, this.indexConfigDir, false);
+            } catch (IOException e) {
+                Log.info(
+                    Geonet.DATA_DIRECTORY,
+                    "      - Error copying index configuration: "
+                        + e.getMessage());
+            }
+        }
+
         Path schemaCatFile = configDir.resolve(Geonet.File.SCHEMA_PLUGINS_CATALOG);
         if (!Files.exists(schemaCatFile)) {
             Log.info(Geonet.DATA_DIRECTORY, "     - Copying schema plugin catalogue ...");
@@ -513,19 +495,19 @@ public class GeonetworkDataDirectory {
     }
 
     /**
-     * Get the directory to store the lucene indices in.
+     * Get the directory to store the index configuration in.
      *
-     * @return The directory to store the lucene indices in.
+     * @return The directory to store the index configuration in.
      */
-    public Path getLuceneDir() {
-        return luceneDir;
+    public Path getIndexConfigDir() {
+        return indexConfigDir;
     }
 
     /**
-     * Set the directory to store the lucene indices in.
+     * Set the directory to store the index configuration in.
      */
-    public void setLuceneDir(Path luceneDir) {
-        this.luceneDir = luceneDir;
+    public void setIndexConfigDir(Path indexConfigDir) {
+        this.indexConfigDir = indexConfigDir;
     }
 
     /**
@@ -667,10 +649,6 @@ public class GeonetworkDataDirectory {
      */
     public void setUploadDir(Path uploadDir) {
         this.uploadDir = uploadDir;
-    }
-
-    public String getNodeId() {
-        return nodeId;
     }
 
     public Path getFormatterDir() {

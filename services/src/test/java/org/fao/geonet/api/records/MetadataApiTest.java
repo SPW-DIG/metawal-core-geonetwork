@@ -63,7 +63,6 @@ import javax.persistence.PersistenceContext;
 
 import org.fao.geonet.NodeInfo;
 import org.fao.geonet.api.ApiParams;
-import org.fao.geonet.api.records.model.related.RelatedItemType;
 import org.fao.geonet.constants.Params;
 import org.fao.geonet.domain.AbstractMetadata;
 import org.fao.geonet.domain.Metadata;
@@ -72,7 +71,6 @@ import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.SchemaManager;
 import org.fao.geonet.kernel.SpringLocalServiceInvoker;
 import org.fao.geonet.kernel.UpdateDatestamp;
-import org.fao.geonet.kernel.mef.MEFLib;
 import org.fao.geonet.kernel.mef.MEFLibIntegrationTest;
 import org.fao.geonet.lib.Lib;
 import org.fao.geonet.repository.MetadataRepository;
@@ -145,7 +143,7 @@ public class MetadataApiTest extends AbstractServiceIntegrationTest {
         metadata.getHarvestInfo().setHarvested(false);
 
 
-        this.id = dataManager.insertMetadata(context, metadata, sampleMetadataXml, false, false, false, UpdateDatestamp.NO,
+        this.id = dataManager.insertMetadata(context, metadata, sampleMetadataXml, false, false, UpdateDatestamp.NO,
             false, false).getId();
 
 
@@ -567,7 +565,6 @@ public class MetadataApiTest extends AbstractServiceIntegrationTest {
     public void getRelated() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
         MockHttpSession mockHttpSession = loginAsAdmin();
-        addThumbnails(this.context);
 
         final MEFLibIntegrationTest.ImportMetadata importMetadata = new MEFLibIntegrationTest.ImportMetadata(this, context);
         importMetadata.getMefFilesToLoad().add("/org/fao/geonet/api/records/samples/mef2-related.zip");
@@ -576,7 +573,7 @@ public class MetadataApiTest extends AbstractServiceIntegrationTest {
         final String DATASET_UUID = "842f9143-fd7d-452c-96b4-425ca1281642";
 
 
-        /* TODOES 
+        /* TODOES
 	 mockMvc.perform(get("/srv/api/records/" + MAIN_UUID + "/related")
             .session(mockHttpSession)
             .accept(MediaType.APPLICATION_JSON))
@@ -658,38 +655,5 @@ public class MetadataApiTest extends AbstractServiceIntegrationTest {
             .andExpect(xpath("/related/" + RelatedItemType.children + "/item").exists())
             .andExpect(xpath("/related/" + RelatedItemType.children + "/item").nodeCount(1));
 */
-    }
-
-    private void addThumbnails(ServiceContext context) throws Exception {
-        Path mdPublicDataDir = Lib.resource.getDir(context, Params.Access.PUBLIC, id);
-        Path mdPrivateDataDir = Lib.resource.getDir(context, Params.Access.PRIVATE, id);
-        final Path smallImage = mdPublicDataDir.resolve("small.gif");
-        final Path largeImage = mdPublicDataDir.resolve("large.gif");
-        createImage("gif", smallImage);
-        createImage("gif", largeImage);
-
-        final Path privateImage = mdPrivateDataDir.resolve("privateFile.gif");
-        createImage("gif", privateImage);
-
-        dataManager.setThumbnail(context, Integer.toString(this.id), true,
-            smallImage.toAbsolutePath().normalize().toString(), false);
-        dataManager.setThumbnail(context, Integer.toString(this.id), false,
-            largeImage.toAbsolutePath().normalize().toString(), false);
-    }
-
-    private String createImage(String format, Path outFile) throws IOException {
-
-        BufferedImage image = new BufferedImage(10, 10, BufferedImage.TYPE_3BYTE_BGR);
-        Graphics2D g2d = image.createGraphics();
-        g2d.drawRect(1, 1, 5, 5);
-        g2d.dispose();
-        Files.createDirectories(outFile.getParent());
-        Files.createFile(outFile);
-        try (OutputStream out = Files.newOutputStream(outFile)) {
-            final boolean writerWasFound = ImageIO.write(image, format, out);
-            assertTrue(writerWasFound);
-        }
-
-        return outFile.toAbsolutePath().normalize().toString();
     }
 }
