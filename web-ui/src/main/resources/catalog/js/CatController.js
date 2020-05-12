@@ -162,19 +162,67 @@ goog.require('gn_alert');
           // TODOES
           'facetTabField': '',
           'facetConfig': {
-            "resourceType": {
+            "codelist_resourceScope_text": {
               "terms": {
                 "field": "codelist_resourceScope_text",
-                "size": 10
+                "size": 10,
+                "order": {
+                  "_key": "asc"
+                }
               }
             },
-            "codelist_status": {
+            'isPublishedToAll': {
+              'terms': {
+                'field': 'isPublishedToAll',
+                'size': 2,
+                "order": {
+                  "_key": "desc"
+                }
+              }
+            },
+            'diffusionMode': {
+              'filters': {
+                'filters': {
+                  'download': {
+                    'query_string': {
+                      'query': '+tag:PanierTelechargementGeoportail'
+                    }
+                  },
+                  'walonmap': {
+                    'query_string': {
+                      'query': '+linkProtocol:"ESRI:REST"'
+                    }
+                  },
+                  'thematicmap': {
+                    'query_string': {
+                      'query': '+codelist_function:browsing'
+                    }
+                  }
+                }
+              }
+            },
+            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
+                "size": 40,
+                "order": {
+                  "_key": "asc"
+                }
+              }
+            },
+            'OrgForResource': {
+              'terms': {
+                'field': 'OrgForResource',
+                'size': 15
+              }
+            },
+            "codelist_status_text": {
               "terms": {
                 "field": "codelist_status_text",
                 "size": 20
               }
             },
-            "codelist_spatialRepresentationType": {
+            "codelist_spatialRepresentationType_text": {
               "terms": {
                 "field": "codelist_spatialRepresentationType_text",
                 "size": 20
@@ -186,18 +234,6 @@ goog.require('gn_alert');
                 "size": 20,
                 "order": {
                   "_key": "asc"
-                }
-              }
-            },
-            'codelist_hierarchyLevel_text': {
-              'terms': {
-                'field': 'codelist_hierarchyLevel_text'
-              },
-              'aggs': {
-                'format': {
-                  'terms': {
-                    'field': 'format'
-                  }
                 }
               }
             },
@@ -225,9 +261,9 @@ goog.require('gn_alert');
                 }
               }
             },
-            "topic": {
+            "topic_text": {
               "terms": {
-                "field": "topic_text.keyword",
+                "field": "topic_text",
                 "size": 20
               }
             },
@@ -240,51 +276,6 @@ goog.require('gn_alert');
                 },
                 "include": "[^/]+/?[^/]+"
                 // Limit to 2 levels
-              }
-            },
-            'tag': {
-              'terms': {
-                'field': 'tag',
-                'size': 10
-              }
-            },
-            'thesaurus_geonetworkthesaurusexternalplaceregions_tree': {
-              'terms': {
-                'field': 'thesaurus_geonetworkthesaurusexternalplaceregions_tree',
-                'size': 100,
-                "order" : { "_key" : "asc" }
-                //"include": "EEA.*"
-              }
-            },
-            'codelist_spatialRepresentationType': {
-              'terms': {
-                'field': 'codelist_spatialRepresentationType',
-                'size': 10
-              }
-            },
-            'resolutionScaleDenominator': {
-              'terms': {
-                'field': 'resolutionScaleDenominator',
-                'size': 10,
-                'order': {'_key': "asc"}
-              }
-            },
-            'codelist_maintenanceAndUpdateFrequency_text': {
-              'terms': {
-                'field': 'codelist_maintenanceAndUpdateFrequency_text',
-                'size': 10
-              }
-            },
-            'OrgForResource': {
-              'terms': {
-                'field': 'OrgForResource',
-                'size': 15
-              }
-            },
-            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
-              "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
-                "size": 40
               }
             },
             "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
@@ -452,33 +443,153 @@ goog.require('gn_alert');
               '../../catalog/templates/editor/new-metadata-horizontal.html',
           'editorIndentType': '',
           'facetConfig': {
-            'resourceType': {
-              'terms': {
-                'field': 'resourceType',
-                'size': 20
+            "codelist_resourceScope_text": {
+              "terms": {
+                "field": "codelist_resourceScope_text",
+                "size": 10,
+                "order": {
+                  "_key": "asc"
+                }
               }
             },
-            'codelist_status_text': {
-              'terms': {
-                'field': 'codelist_status_text',
-                'size': 15
+            'officialData': {
+              'filters': {
+                'filters': {
+                    // 'officialResourceWallone': {
+                    //   'query_string': {
+                    //     'query': '+tag:"Ressource officielle wallonne"'
+                    //   }
+                    // },
+                    'officialResourceINSPIRE': {
+                      'query_string': {
+                        'query': '+tag:"Reporting INSPIRE"'
+                      }
+                  }
+                }
               }
             },
-            'sourceCatalogue': {
+            'isPublishedToAll': {
               'terms': {
-                'field': 'sourceCatalogue',
-                'size': 15
+                'field': 'isPublishedToAll',
+                'size': 2,
+                "order": {
+                  "_key": "desc"
+                }
               }
             },
-            'isValid': {
+            'diffusionMode': {
+              'filters': {
+                'filters': {
+                  'download': {
+                    'query_string': {
+                      'query': '+tag:PanierTelechargementGeoportail'
+                    }
+                  },
+                  'walonmap': {
+                    'query_string': {
+                      'query': '+linkProtocol:"ESRI:REST"'
+                    }
+                  },
+                  'thematicmap': {
+                    'query_string': {
+                      'query': '+codelist_function:browsing'
+                    }
+                  }
+                }
+              }
+            },
+            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
+                "size": 40,
+                "order": {
+                  "_key": "asc"
+                }
+              }
+            },
+            'schema': {
               'terms': {
-                'field': 'isValid',
+                'field': 'schema',
                 'size': 10
               }
             },
-            'isValidInspire': {
+            'OrgForResource': {
               'terms': {
-                'field': 'isValidInspire',
+                'field': 'OrgForResource',
+                'size': 15
+              }
+            },
+            "codelist_status_text": {
+              "terms": {
+                "field": "codelist_status_text",
+                "size": 20
+              }
+            },
+            "codelist_spatialRepresentationType_text": {
+              "terms": {
+                "field": "codelist_spatialRepresentationType_text",
+                "size": 20
+              }
+            },
+            "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
+                "size": 20,
+                "order": {
+                  "_key": "asc"
+                }
+              }
+            },
+            "resolutionScaleDenominator": {
+              "terms": {
+                "field": "resolutionScaleDenominator",
+                "size": 20,
+                "order": {
+                  "_key": "asc"
+                }
+              }
+            },
+            "serviceType": {
+              "terms": {
+                "field": "serviceType",
+                "size": 10
+              }
+            },
+            "creationYearForResource": {
+              "terms": {
+                "field": "creationYearForResource",
+                "size": 10,
+                "order": {
+                  "_key": "desc"
+                }
+              }
+            },
+            "topic_text": {
+              "terms": {
+                "field": "topic_text",
+                "size": 20
+              }
+            },
+            "thesaurus_geonetworkthesaurusexternalthemegemet_tree": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemegemet_tree",
+                "size": 100,
+                "order": {
+                  "_key": "asc"
+                },
+                "include": "[^/]+/?[^/]+"
+                // Limit to 2 levels
+              }
+            },
+            "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+              "terms": {
+                "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
+                "size": 34
+              }
+            },
+            'groupPublished': {
+              'terms': {
+                'field': 'groupPublished',
                 'size': 10
               }
             },
@@ -494,15 +605,15 @@ goog.require('gn_alert');
                 'size': 10
               }
             },
-            'groupPublished': {
+            'isValid': {
               'terms': {
-                'field': 'groupPublished',
+                'field': 'isValid',
                 'size': 10
               }
             },
-            'schema': {
+            'isValidInspire': {
               'terms': {
-                'field': 'schema.keyword',
+                'field': 'isValidInspire',
                 'size': 10
               }
             },
@@ -516,12 +627,6 @@ goog.require('gn_alert');
               'terms': {
                 'field': 'isTemplate',
                 'size': 5
-              }
-            },
-            'isPublishedToAll': {
-              'terms': {
-                'field': 'isPublishedToAll',
-                'size': 2
               }
             }
           }
