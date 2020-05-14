@@ -159,6 +159,14 @@ goog.require('gn_alert');
             //   _source: [field]
             // }
           },
+          'moreLikeThisConfig': {
+            "more_like_this" : {
+              "fields" : ["resourceTitleObject.default", "resourceAbstractObject.default", "tag.raw"],
+              "like" : null,
+              "min_term_freq" : 1,
+              "max_query_terms" : 12
+            }
+          },
           // TODOES
           'facetTabField': '',
           'facetConfig': {
