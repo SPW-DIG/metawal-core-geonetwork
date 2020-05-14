@@ -83,6 +83,16 @@
                 <i class="fa gn-icon-{$type}"><xsl:comment select="'icon'"/></i>
                 <xsl:value-of select="$title"/>
               </h1>
+              <h1 class="hidden">
+                <a href="{concat($nodeUrl, 'api/records/', $metadataUuid)}">
+                  <i class="fa gn-icon-{$type}"><xsl:comment select="'icon'"/></i>
+                  <xsl:value-of select="$title"/>
+                </a>
+              </h1>
+
+              <a class="btn btn-primary hidden"
+                 href="http://geoportail.wallonie.be/catalogue/{$metadataUuid}.html">Fiche dans le Géoportail de la Wallonie</a>
+              <br/>
 
               <xsl:apply-templates mode="getMetadataHeader" select="$metadata"/>
 
