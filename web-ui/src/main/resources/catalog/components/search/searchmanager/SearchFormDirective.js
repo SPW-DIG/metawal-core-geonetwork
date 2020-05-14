@@ -144,8 +144,8 @@
           defaultParams);
 
       // Add hidden filters which may
-      // restrict search
-      /*if ($scope.searchObj.filters) {
+      // restrict search (do not add an existing filter)
+      if ($scope.searchObj.filters) {
         angular.forEach($scope.searchObj.filters,
             function(value, key) {
               var p = $scope.searchObj.params[key];
@@ -159,29 +159,6 @@
               } else {
                 $scope.searchObj.params[key] = value;
               }
-            });
-      }*/
-
-
-      // Add hidden filters which may
-      // restrict search
-      // MW3.4 limit incremetation type in request
-      if ($scope.searchObj.filters) {
-        angular.forEach($scope.searchObj.filters,
-            function(value, key) {
-              var p = $scope.searchObj.params[key];
-              if (key != 'type') {
-                if (p) {
-                    if (!angular.isArray(p)) {
-                      $scope.searchObj.params[key] = [p];
-                    }
-                    $scope.searchObj.params[key].push(value);
-
-                } else {
-                  $scope.searchObj.params[key] = value;
-                }
-              } else if (!$scope.searchObj.params[key]) {
-                $scope.searchObj.params[key] = value}
             });
       }
 
@@ -447,8 +424,9 @@
       var head = keys[0];
       var tail = keys.slice(1);
       for (var prop in obj) {
-        obj.hasOwnProperty(prop) && (head === prop && tail.length === 0 ?
-          delete obj[prop] : 'object' === typeof (obj[prop]) && (removeKey(obj[prop], tail),
+        obj.hasOwnProperty(prop) && (head.toString() === prop && tail.length === 0 ?
+          delete obj[prop] :
+          'object' === typeof (obj[prop]) && (removeKey(obj[prop], tail),
         0 === Object.keys(obj[prop]).length && delete obj[prop]))
       }
     }
@@ -571,16 +549,6 @@
             } else {
               scope.triggerSearch(false);
             }
-            /*if (element.find('[data-gn-api-rw-pagination]').length > 0) {
-              var unregisterFn = scope.$watch('hasPagination', function() {
-                if (scope.hasPagination) {
-                  scope.triggerSearch(true);
-                  unregisterFn();
-                }
-              });
-            } else {
-              scope.triggerSearch(false);
-            }*/
           };
 
           // Run a first search on directive rendering if attr is specified
