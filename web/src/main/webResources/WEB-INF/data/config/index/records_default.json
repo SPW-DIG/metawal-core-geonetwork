@@ -17,22 +17,6 @@
               "reverse"
             ]
           },
-          "french_heavy": {
-            "tokenizer": "icu_tokenizer",
-            "filter": [
-              "french_elision",
-              "icu_folding",
-              "french_synonym",
-              "french_stemmer"
-            ]
-          },
-          "french_light": {
-            "tokenizer": "icu_tokenizer",
-            "filter": [
-              "french_elision",
-              "icu_folding"
-            ]
-          },
           "synInspireAnnexes": {
             "tokenizer": "keyword",
             "filter": [
@@ -83,25 +67,6 @@
             "type": "shingle",
             "min_shingle_size": 2,
             "max_shingle_size": 3
-          },
-          "french_elision": {
-            "type": "elision",
-            "articles_case": true,
-            "articles": ["l", "m", "t", "qu", "n", "s", "j", "d", "c", "jusqu", "quoiqu", "lorsqu", "puisqu"]
-          },
-          "french_synonym": {
-            "type": "synonym",
-            "ignore_case": true,
-            "expand": true,
-            "synonyms": [
-              "sig, systeme d'information geographique, ids, gis, sdi",
-              "shp, shapefile",
-              "raster, image"
-            ]
-          },
-          "french_stemmer": {
-            "type": "stemmer",
-            "language": "light_french"
           },
           "keepInspireServiceTypes": {
             "type": "keep",
@@ -1001,7 +966,7 @@
             "properties": {
               "default": {
                 "type": "text",
-                "analyzer": "french_light",
+                "analyzer": "${es.index.analyzer.default}",
                 "copy_to": [
                   "any",
                   "anytext"
@@ -1186,13 +1151,7 @@
     "properties": {
       "any": {
         "type": "text",
-        "analyzer": "french_light",
-        "fields": {
-          "stemmed": {
-            "type": "text",
-            "analyzer": "french_heavy"
-          }
-        }
+        "analyzer": "${es.index.analyzer.default}"
       },
       "anytext": {
         "type": "search_as_you_type"
@@ -1396,6 +1355,9 @@
         "type": "keyword"
       },
       "standardName": {
+        "type": "keyword"
+      },
+      "schema": {
         "type": "keyword"
       },
       "tagNumber": {
