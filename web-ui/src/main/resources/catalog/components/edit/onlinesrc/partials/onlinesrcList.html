@@ -31,20 +31,41 @@
           <li class="dropdown-header"
               data-translate>linkMetadata
           </li>
-          <li data-ng-show="::isCategoryEnable('parent')">
+          <!--<li data-ng-show="::isCategoryEnable('parent')">
             <a href=""
               data-ng-click="onlinesrcService.onOpenPopup('parent')">
               <i class="fa gn-icon-parent"></i>
               <i class="icon-external-link"></i>&nbsp;
               <span data-translate="">linkToParent</span>
             </a>
+          </li>-->
+
+          <!-- Direct sibling mode for mw -->
+          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018'
+          && !gnCurrentEdit.isService
+          && gnCurrentEdit.metadata.type.indexOf('series') === -1">
+            <a href=""
+               data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'partOfSeamlessDatabase', initiativeType: 'collection'})">
+              <i class="fa gn-icon-sibling"></i>
+              <i class="icon-external-link"></i>&nbsp;
+              <span data-translate="">mwLinkTo-partOfSeamlessDatabase</span>
+            </a>
           </li>
+          <!--<li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
+            <a href=""
+               data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'isComposedOf', initiativeType: ''})">
+              <i class="fa gn-icon-sibling"></i>
+              <i class="icon-external-link"></i>&nbsp;
+              <span data-translate="">mwLinkTo-isComposedOf</span>
+            </a>
+          </li>-->
+
           <li data-ng-show="::isCategoryEnable('service') && !gnCurrentEdit.isService">
             <a href=""
               data-ng-click="onlinesrcService.onOpenPopup('service')">
               <i class="fa gn-icon-service"></i>
               <i class="icon-external-link"></i>&nbsp;
-              <span data-translate="">linkToService</span>
+              <span data-translate="">mwLinkTo-service</span>
             </a>
           </li>
           <li data-ng-show="::isCategoryEnable('dataset') && gnCurrentEdit.isService">
@@ -52,33 +73,55 @@
               data-ng-click="onlinesrcService.onOpenPopup('dataset')">
               <i class="fa gn-icon-dataset"></i>
               <i class="icon-external-link"></i>&nbsp;
-              <span data-translate="">linkToDataset</span>
+              <span data-translate="">mwLinkTo-dataset</span>
             </a>
           </li>
-          <li data-ng-show="::isCategoryEnable('source')">
+          <li data-ng-show="::isCategoryEnable('source') && !gnCurrentEdit.isService">
             <a href=""
               data-ng-click="onlinesrcService.onOpenPopup('source')">
               <i class="fa gn-icon-source"></i>
               <i class="icon-external-link"></i>&nbsp;
-              <span data-translate="">linkToSource</span>
+              <span data-translate="">mwLinkTo-Source</span>
             </a>
           </li>
-          <li data-ng-show="::isCategoryEnable('fcats')">
+
+          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
+            <a href=""
+               data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'revisionOf', initiativeType: ''})">
+              <i class="fa gn-icon-sibling"></i>
+              <i class="icon-external-link"></i>&nbsp;
+              <span data-translate="">mwLinkTo-revisionOf</span>
+            </a>
+          </li>
+
+          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018'">
+            <a href=""
+               data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'crossReference', initiativeType: ''})">
+              <i class="fa gn-icon-sibling"></i>
+              <i class="icon-external-link"></i>&nbsp;
+              <span data-translate="">mwLinkTo-crossReference</span>
+            </a>
+          </li>
+
+
+
+          <!--<li data-ng-show="::isCategoryEnable('fcats')">
             <a href=""
               data-ng-click="onlinesrcService.onOpenPopup('fcats')">
               <i class="fa gn-icon-fcats"></i>
               <i class="icon-external-link"></i>&nbsp;
               <span data-translate="">linkToFeatureCatalog</span>
             </a>
-          </li>
-          <li data-ng-show="::isCategoryEnable('sibling')">
+          </li>-->
+
+          <!--<li data-ng-show="::isCategoryEnable('sibling')">
             <a href=""
               data-ng-click="onlinesrcService.onOpenPopup('sibling')">
               <i class="fa gn-icon-sibling"></i>
               <i class="icon-external-link"></i>&nbsp;
               <span data-translate="">linkToSibling</span>
             </a>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>
@@ -200,6 +243,69 @@
         </li>
       </ul>
 
+
+      <!-- ******* List of siblings ******* -->
+      <h2 class="onlinesrc-title"
+          data-ng-show="::isCategoryEnable('sibling') && relations.siblings">
+        <i class="fa fa-sign-out"
+           data-ng-class="onlinesrcService.reload ? 'fa-spin' : ''"></i>
+        <i class="icon-external-link"></i>&nbsp;
+        <span data-translate="">siblings</span>&nbsp;
+        <a href=""
+           class="btn btn-default btn-xs pull-right"
+           data-ng-click="onlinesrcService.onOpenPopup('sibling')">
+          <i class="fa fa-fw fa-plus"></i>
+          <span data-translate="">add</span>
+        </a>
+      </h2>
+      <ul class="list-group"
+          data-ng-show="::isCategoryEnable('sibling') && relations.siblings">
+        <li class="list-group-item"
+            data-ng-repeat="resource in relations.siblings | orderBy:'title'">
+          <div class="row">
+            <div class="col-md-11"
+                 title="{{resource.description | gnLocalized: lang}}">
+              <a target="_blank"
+                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
+                {{resource.title | gnLocalized: lang}}
+                <span>{{'(' + resource.associationType.toUpperCase() + ')'}}</span>
+              </a>
+            </div>
+            <div class="col-md-1 text-right">
+              <a href="" class="onlinesrc-remove"
+                 data-ng-if="readonly !== true"
+                 title="{{'remove' | translate}} {{resource.title | gnLocalized: lang}}"
+                 aria-label="{{'remove' | translate}} {{resource.title | gnLocalized: lang}}"
+                 data-ng-click="onlinesrcService.removeSibling(resource)">
+                <i class="fa fa-times text-danger"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- ******* List of associated records (reverse direction of siblings) ******* -->
+      <h2 class="onlinesrc-title"
+          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
+        <i class="fa fa-sign-out"></i>
+        <i class="icon-external-link"></i>&nbsp;
+        <span data-translate="">siblings</span>&nbsp;
+      </h2>
+      <ul class="list-group"
+          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
+        <li class="list-group-item"
+            data-ng-repeat="resource in relations.associated | orderBy:'title'">
+          <div class="row">
+            <div class="col-md-11"
+                 title="{{resource.description | gnLocalized: lang}}">
+              <a target="_blank"
+                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
+                {{resource.title | gnLocalized: lang}}
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
 
       <!-- ******* List of datasets ******* -->
       <h2 class="onlinesrc-title"
@@ -403,70 +509,6 @@
           data-ng-show="::isCategoryEnable('fcats') && relations.hasfeaturecats">
         <li class="list-group-item"
             data-ng-repeat="resource in relations.hasfeaturecats | orderBy:'title'">
-          <div class="row">
-            <div class="col-md-11"
-                 title="{{resource.description | gnLocalized: lang}}">
-              <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
-                {{resource.title | gnLocalized: lang}}
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
-
-
-      <!-- ******* List of siblings ******* -->
-      <h2 class="onlinesrc-title"
-          data-ng-show="::isCategoryEnable('sibling') && relations.siblings">
-        <i class="fa fa-sign-out"
-           data-ng-class="onlinesrcService.reload ? 'fa-spin' : ''"></i>
-        <i class="icon-external-link"></i>&nbsp;
-        <span data-translate="">siblings</span>&nbsp;
-        <a href=""
-           class="btn btn-default btn-xs pull-right"
-           data-ng-click="onlinesrcService.onOpenPopup('sibling')">
-          <i class="fa fa-fw fa-plus"></i>
-          <span data-translate="">add</span>
-        </a>
-      </h2>
-      <ul class="list-group"
-          data-ng-show="::isCategoryEnable('sibling') && relations.siblings">
-        <li class="list-group-item"
-            data-ng-repeat="resource in relations.siblings | orderBy:'title'">
-          <div class="row">
-            <div class="col-md-11"
-                 title="{{resource.description | gnLocalized: lang}}">
-              <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
-                {{resource.title | gnLocalized: lang}}
-                <span>{{'(' + resource.associationType.toUpperCase() + ')'}}</span>
-              </a>
-            </div>
-            <div class="col-md-1 text-right">
-              <a href="" class="onlinesrc-remove"
-                 data-ng-if="readonly !== true"
-                 title="{{'remove' | translate}} {{resource.title | gnLocalized: lang}}"
-                 aria-label="{{'remove' | translate}} {{resource.title | gnLocalized: lang}}"
-                 data-ng-click="onlinesrcService.removeSibling(resource)">
-                <i class="fa fa-times text-danger"></i>
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
-
-      <!-- ******* List of associated records (reverse direction of siblings) ******* -->
-      <h2 class="onlinesrc-title"
-          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
-        <i class="fa fa-sign-out"></i>
-        <i class="icon-external-link"></i>&nbsp;
-        <span data-translate="">siblings</span>&nbsp;
-      </h2>
-      <ul class="list-group"
-          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
-        <li class="list-group-item"
-            data-ng-repeat="resource in relations.associated | orderBy:'title'">
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">

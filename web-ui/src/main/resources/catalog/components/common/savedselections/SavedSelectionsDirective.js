@@ -553,13 +553,15 @@
               scope.selections = selections;
 
 
-              /// Add
+              //GP - to be Uncomment to work with GP - START
+              /*
               for (var i = 0; i < scope.listGeoportailBasketList.length ; i++) {
                 var GNBasketName = scope.listGeoportailBasketList[i].GNBasketName;
                 var GPBasketName = scope.listGeoportailBasketList[i].GPBasketName;
                 var url = gnGlobalSettings.gnCfg.jahiaUrl + "/fr/sites/geoportail.manage" + scope.listGeoportailBasketList[i].GPBasketName + ".do?action=list";
                 scope.requestGPbasket(url, GNBasketName);
-              }
+              }*/
+              //GP - to be Uncomment to work with GP - END
             });
           }
         });
