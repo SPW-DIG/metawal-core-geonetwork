@@ -230,9 +230,9 @@
       </xsl:otherwise>
     </xsl:choose>
 
+    <script src="{$uiResourcesPath}lib/d3_timeseries/d3.min.js?v={$buildNumber}"></script>
     <script src="{$uiResourcesPath}lib/timeline/timeline-zoomable.js?v={$buildNumber}"></script>
     <link rel="stylesheet" href="{$uiResourcesPath}lib/timeline/timeline.css"/>
-    <script src="{$uiResourcesPath}lib/d3_timeseries/d3.min.js?v={$buildNumber}"></script>
     <link rel="stylesheet" href="{$uiResourcesPath}lib/d3_timeseries/nv.d3.min.css"/>
 
     <xsl:variable name="appConfig"
