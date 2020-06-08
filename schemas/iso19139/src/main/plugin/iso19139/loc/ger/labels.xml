@@ -3803,4 +3803,8 @@
     <label>Upper cardinality</label>
     <description>Upper cardinality</description>
   </element>
+  <element name="xlink:type">
+    <label>Link</label>
+    <description>Link type</description>
+  </element>
 </labels>
