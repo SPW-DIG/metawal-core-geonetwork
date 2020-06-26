@@ -23,7 +23,6 @@
 
 package org.fao.geonet.api.records;
 
-import com.sun.istack.NotNull;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -451,7 +450,6 @@ public class MetadataWorkflowApi {
      * Build a list of status with additional information about users
      * (author and owner of the status change).
      */
-    @NotNull
     private List<MetadataStatusResponse> buildMetadataStatusResponses(List<MetadataStatus> listOfStatus,
             boolean details, String language) {
         List<MetadataStatusResponse> response = new ArrayList<>();
