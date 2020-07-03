@@ -250,7 +250,7 @@ public class HarvestHistory extends GeonetEntity {
      * @return the harvester info.
      */
     @Lob
-    @Type(type = "org.hibernate.type.StringClobType")
+    @Type(type = "org.hibernate.type.TextType")
     // this is a work around for postgres so postgres can correctly load clobs
     public String getInfo() {
         return _info;
@@ -309,7 +309,7 @@ public class HarvestHistory extends GeonetEntity {
         // check logfiles present to ensure path exists
         if (logfileElements.size() > 0) {
             if (logfileElements.size() != 1) {
-                Log.warning(Constants.DOMAIN_LOG_MODULE, "Harvest history unexpectedly lists multiple logfiles: " + logfileElements.size());
+                Log.debug(Constants.DOMAIN_LOG_MODULE, "Harvest history unexpectedly lists multiple logfiles: " + logfileElements.size());
             }
             boolean isLogFileFound = false;
             for (Iterator iter = logfileElements.iterator(); iter.hasNext();) {
@@ -319,13 +319,13 @@ public class HarvestHistory extends GeonetEntity {
                 if (file.exists() && file.canRead()) {
                     if (isLogFileFound) {
                         // we already have one logfile
-                        Log.warning(Constants.DOMAIN_LOG_MODULE, "Ignoring add unexpected logfile: `" + path + "`");
+                        Log.debug(Constants.DOMAIN_LOG_MODULE, "Ignoring add unexpected logfile: `" + path + "`");
                         iter.remove();
                     } else {
                         isLogFileFound = true;
                     }
                 } else {
-                    Log.warning(Constants.DOMAIN_LOG_MODULE, "Harvest history logfile `" + path + "` ignored, no longer available");
+                    Log.debug(Constants.DOMAIN_LOG_MODULE, "Harvest history logfile `" + path + "` ignored, no longer available");
                     iter.remove();
                 }
             }
@@ -352,7 +352,7 @@ public class HarvestHistory extends GeonetEntity {
      * @return the parameters used for performing the harvesting.
      */
     @Lob
-    @Type(type = "org.hibernate.type.StringClobType")
+    @Type(type = "org.hibernate.type.TextType")
     // this is a work around for postgres so postgres can correctly load clobs
     public String getParams() {
         return _params;
