@@ -253,9 +253,9 @@ goog.require('gn_alert');
                 }
               }
             },
-            'OrgForResource': {
+            'custodianOrgForResource': {
               'terms': {
-                'field': 'OrgForResource',
+                'field': 'custodianOrgForResource',
                 'size': 15
               }
             },
