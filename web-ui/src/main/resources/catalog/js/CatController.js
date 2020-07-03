@@ -289,14 +289,14 @@ goog.require('gn_alert');
             //     }
             //   }
             // },
-            "resolutionScaleDenominator": {
+            /*"resolutionScaleDenominator": {
               "histogram": {
                 "field": "resolutionScaleDenominator",
                 "interval": 10000,
                 "keyed" : true,
                 'min_doc_count': 1
               }
-            },
+            },*/
             "serviceType": {
               "terms": {
                 "field": "serviceType",
