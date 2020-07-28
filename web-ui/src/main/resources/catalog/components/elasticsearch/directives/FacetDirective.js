@@ -44,6 +44,14 @@
       }.bind(this),
       function (newValue) {
         if (!newValue) return
+
+        for (var i = 0; i < this.list.length; i++) {
+          this.fLvlCollapse[this.list[i].key] =
+            angular.isDefined(this.fLvlCollapse[this.list[i].key]) ?
+              this.fLvlCollapse[this.list[i].key] :
+              this.list[i].collapsed === true;
+        }
+
         var lastFacet = this.lastUpdatedFacet
 
         if (this._isFlatTermsFacet(lastFacet) && this.searchCtrl.hasFiltersForKey(lastFacet.key)) {
@@ -66,14 +74,32 @@
       this.fLvlCollapse[this.list[i].key] = true;
     }
   }
+
   FacetsController.prototype.expandAll = function () {
     for (var i = 0; i < this.list.length; i++) {
       this.fLvlCollapse[this.list[i].key] = false;
     }
   }
+
+  FacetsController.prototype.isVisibleForUser = function (facet) {
+    var user = this.$scope.$parent.user;
+    if (user && facet.userHasRole && user[facet.userHasRole]) {
+      return user[facet.userHasRole]();
+    } else {
+      return facet.userHasRole ? false : true;
+    }
+  }
+
   FacetsController.prototype.loadMoreTerms = function (facet) {
     this.searchCtrl.loadMoreTerms(facet).then(function (terms) {
       angular.merge(facet, terms);
+    });
+  }
+
+  FacetsController.prototype.filterTerms = function (facet) {
+    this.searchCtrl.filterTerms(facet).then(function (terms) {
+      angular.merge(facet, terms);
+      facet.items = terms.items;
     });
   }
 
@@ -151,13 +177,14 @@
       this.item.path = [this.facet.key, this.item.key];
       this.item.collapsed = !this.searchCtrl.hasChildInSearch(this.item.path);
     } else if (this.facet.type === 'filters'|| this.facet.type === 'histogram') {
-      this.item.inverted= this.searchCtrl.isNegativeSearch(this.item.path);
+      this.item.inverted = this.searchCtrl.isNegativeSearch(this.item.path);
     }
   }
 
   FacetController.prototype.filter = function (facet, item) {
     var value = !item.inverted;
     if (facet.type === 'terms') {
+      facet.include = '';
       if (!item.isNested) {
         this.facetsCtrl.lastUpdatedFacet = facet;
       }

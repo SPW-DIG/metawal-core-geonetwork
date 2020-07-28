@@ -180,7 +180,8 @@
       $scope.finalParams = finalParams;
 
       var esParams = gnESService.generateEsRequest(finalParams, $scope.searchObj.state, $scope.searchObj.configId);
-      gnESClient.search(esParams, $scope.searchResults.selectionBucket || 'metadata').then(function(data) {
+      gnESClient.search(esParams, $scope.searchResults.selectionBucket || 'metadata', $scope.searchObj.configId)
+        .then(function(data) {
         // data is not an object: this is an error
         if (typeof data !== 'object') {
           gnAlertService.addAlert({
@@ -432,18 +433,22 @@
     }
 
     this.updateState = function(path, value, doNotRemove) {
-      var filters = $scope.searchObj.state.filters;
-      var getter = parse(path.join('^^^'));
-      var existingValue = getter(filters);
-      if(angular.isUndefined(existingValue) || doNotRemove) {
-        var setter = getter.assign;
-        setter(filters, value)
+      if(path[0] === 'any') {
+        delete $scope.searchObj.params.any;
       } else {
-        if(existingValue !== value) {
+        var filters = $scope.searchObj.state.filters;
+        var getter = parse(path.join('^^^'));
+        var existingValue = getter(filters);
+        if(angular.isUndefined(existingValue) || doNotRemove) {
           var setter = getter.assign;
           setter(filters, value)
         } else {
-          removeKey(filters, path)
+          if(existingValue !== value) {
+            var setter = getter.assign;
+            setter(filters, value)
+          } else {
+            removeKey(filters, path)
+          }
         }
       }
       this.triggerSearch();
@@ -492,12 +497,32 @@
         var key = facet.path[i];
         facetConfigs[key] = $scope.facetConfig[key];
       }
-      return gnESClient.loadMoreTerms(
-        $scope.searchObj.params.query,
+      var request = gnESService.generateEsRequest($scope.finalParams, $scope.searchObj.state, $scope.searchObj.configId);
+      return gnESClient.getTermsParamsWithNewSizeOrFilter(
+        request.query,
         facet.path,
         facet.items.length + (moreItemsNumber || 20),
+        undefined, undefined,
         facetConfigs
         );
+    }
+
+    this.filterTerms = function(facet) {
+      var facetConfigs = {};
+      for (var i = 0; i < facet.path.length; i++) {
+        if ((i + 1) % 2 === 0) continue;
+        var key = facet.path[i];
+        facetConfigs[key] = $scope.facetConfig[key];
+      }
+      var request = gnESService.generateEsRequest($scope.finalParams, $scope.searchObj.state, $scope.searchObj.configId)
+      return gnESClient.getTermsParamsWithNewSizeOrFilter(
+        request.query,
+        facet.path,
+        undefined,
+        facet.include,
+        facet.exclude,
+        facetConfigs
+      );
     }
   };
 

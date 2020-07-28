@@ -455,6 +455,7 @@
       return {
         restrict: 'A',
         link: function(scope, element, attrs) {
+          scope.prefix = attrs['prefix'] || '';
           element.attr('placeholder', '...');
           element.on('focus', function() {
             $http.get('../api/isolanguages', {}, {
@@ -465,6 +466,7 @@
               angular.forEach(data, function(lang) {
                 var defaultName = lang.label['eng'];
                 lang.name = lang.label[scope.lang] || defaultName;
+                lang.code = scope.prefix + lang.code;
                 lang.tokens = [lang.name, lang.code, defaultName];
               });
               var source = new Bloodhound({
@@ -750,8 +752,8 @@
    * the element to indicate the status
    * collapsed or expanded.
    */
-  module.directive('gnSlideToggle', [
-    function() {
+  module.directive('gnSlideToggle', ["$timeout",
+    function($timeout) {
       return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -778,7 +780,9 @@
             });
           });
           if (attrs['gnSlideToggle'] == 'true') {
-            element.click();
+            $timeout(function() {
+                 element.click();
+            },0); //this needs to be done after the DOM is updated
           }
         }
       };

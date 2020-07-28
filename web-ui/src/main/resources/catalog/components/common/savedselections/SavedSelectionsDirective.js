@@ -50,7 +50,7 @@
       var viewerMap = gnSearchSettings.viewerMap;
       var searchRecordsInSelection = function(uuid, records) {
         // TODO: Redirect to search app if not in a search page
-        $location.path('/search').search('_uuid', uuid.join(' or '));
+        $location.path('/search').search('uuid', uuid);
       };
       return {
         // Actions defined for each type of list to
@@ -214,9 +214,9 @@
    */
   module.directive('gnSavedSelections', [
     'gnSearchManagerService', 'gnSavedSelectionConfig',
-    '$http', '$q', '$rootScope', '$translate',
+    '$http', '$q', '$rootScope', '$translate', 'Metadata',
     function(gnSearchManagerService, gnSavedSelectionConfig,
-             $http, $q, $rootScope, $translate) {
+             $http, $q, $rootScope, $translate, Metadata) {
 
       // List of persistent selections
       // and user records in each selections
@@ -251,18 +251,24 @@
 
           // TODO: Handle case when there is
           // too many items in the saved selections
-          gnSearchManagerService.search(
-            'q?_content_type=json&buildSummary=false&from=1&to=200&' +
-            'fast=index&_uuid=' +
-            allRecords.join(' or ')).then(
+          $http.post('../api/search/records/_search', {
+            "_source": {"includes": [
+                "uuid", "root", "resourceTitle*", "isTemplate"]},
+            "from": 0,
+            "size": 2000,
+            "query": {
+              "bool" : {
+                "must": [
+                  {"terms": {"uuid": allRecords}}
+                ]
+              }
+            }}, {cache: true}).then(
             function(r) {
               var foundRecords = [];
-              angular.forEach(r.metadata, function(md) {
-                if (md) {
-                  var uuid = md.uuid;
-                  selections.records[uuid] = md;
-                  foundRecords.push(uuid);
-                }
+              angular.forEach(r.data.hits.hits, function(md) {
+                var uuid = md._source.uuid;
+                selections.records[uuid] = new Metadata(md);
+                foundRecords.push(uuid);
               });
 
               // Identify records which have been deleted
@@ -483,7 +489,14 @@
         scope.lang = gnLangs.current;
         scope.selections = null;
         scope.actions = gnSavedSelectionConfig.actions;
-        scope.test='toto';
+
+        scope.isSavedSelectionEnabled =
+          gnGlobalSettings.gnCfg.mods.search.savedSelection.enabled;
+
+        if (!scope.isSavedSelectionEnabled) {
+          return;
+        }
+
         /* Start action */
         scope.basketAction = function(sel){
           if (window && window.geoportail) {
@@ -543,8 +556,6 @@
           controller.add(selection, scope.user, scope.uuid);
         };
 
-        scope.isSavedSelectionEnabled =
-          gnGlobalSettings.gnCfg.mods.search.savedSelection.enabled;
 
         scope.$watch('user', function(n, o) {
           if (n !== o || scope.selections === null) {
@@ -609,6 +620,14 @@
       function(gnSavedSelectionConfig, $rootScope, Metadata, $http, gpBasketService,
                $q, gnGlobalSettings) {
         function link(scope, element, attrs, controller) {
+          scope.isSavedSelectionEnabled =
+            gnGlobalSettings.gnCfg.mods.search.savedSelection.enabled;
+
+
+          if (!scope.isSavedSelectionEnabled) {
+            return;
+          }
+
           // API JS Metawal/Geoportail
           // Detect auth (GP or MW)
           // Add specific class to trigger GP auth if undefined user in MW and GP
@@ -669,7 +688,7 @@
 
           scope.selectionsWithRecord = [];
           scope.selections = {};
-          scope.uuid = scope.record['geonet:info'].uuid;
+          scope.uuid = scope.record.uuid;
 
           scope.actions = gnSavedSelectionConfig.actions;
 

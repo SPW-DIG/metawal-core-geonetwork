@@ -129,6 +129,10 @@ goog.require('gn_alert');
           'paginationInfo': {
             'hitsPerPage': 20
           },
+          // Full text on all fields
+          // 'queryBase': '${any}',
+          // Full text but more boost on title match
+          'queryBase': '${any} resourceTitleObject.default:(${any})^2',
           // Score query may depend on where we are in the app?
           'scoreConfig': {
             // Score experiments:
@@ -157,30 +161,62 @@ goog.require('gn_alert');
             // "score_mode": "max",
             // "boost_mode": "multiply",
             // "min_score" : 42
-            "script_score" : {
-              "script" : {
-                "source": "_score"
-                // "source": "Math.log(2 + doc['rating'].value)"
+            // "script_score" : {
+            //   "script" : {
+            //     "source": "_score"
+            //     // "source": "Math.log(2 + doc['rating'].value)"
+            //   }
+            // }
+            "boost": "5",
+            "functions": [
+              // Boost down member of a series
+              {
+                "filter": { "exists": { "field": "parentUuid" } },
+                "weight": 0.3
+              },
+              // Boost down obsolete records
+              {
+                "filter": { "match": { "codelist_status": "obsolete" } },
+                "weight": 0.3
+              },
+              // {
+              //   "filter": { "match": { "codelist_resourceScope": "service" } },
+              //   "weight": 0.8
+              // },
+              // Start boosting down records more than 3 months old
+              {
+                "gauss": {
+                  "dateStamp": {
+                    "scale":  "365d",
+                    "offset": "90d",
+                    "decay": 0.5
+                  }
+                }
               }
-            }
+            ],
+            "score_mode": "multiply"
           },
           'autocompleteConfig': {
             'query': {
               'bool': {
-                'must': [{
+                'must': [{
                   'multi_match': {
                     "query": "",
                     "type": "bool_prefix",
                     "fields": [
-                      "anytext",
-                      "anytext._2gram",
-                      "anytext._3gram"
+                      "resourceTitleObject.*",
+                      "resourceAbstractObject.*",
+                      "tag",
+                      "resourceIdentifier"
+                      // "anytext",
+                      // "anytext._2gram",
+                      // "anytext._3gram"
                     ]
                   }
                 }]
               }
             },
-            '_source': ['resourceTitleObject']
+            '_source': ['resourceTitleObject'],
             // Fuzzy autocomplete
             // {
             //   query: {
@@ -193,6 +229,8 @@ goog.require('gn_alert');
             //   },
             //   _source: [field]
             // }
+            "from": 0,
+            "size": 20
           },
           'moreLikeThisConfig': {
             "more_like_this" : {
@@ -256,6 +294,7 @@ goog.require('gn_alert');
             'OrgForResource': {
               'terms': {
                 'field': 'OrgForResource',
+                'include': '.*',
                 'size': 15
               }
             },
@@ -272,6 +311,7 @@ goog.require('gn_alert');
               }
             },
             "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+              'userHasRole': 'isEditorOrMore',
               "terms": {
                 "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
                 "size": 20,
@@ -290,6 +330,7 @@ goog.require('gn_alert');
             //   }
             // },
             "resolutionScaleDenominator": {
+              'collapsed': true,
               "histogram": {
                 "field": "resolutionScaleDenominator",
                 "interval": 10000,
@@ -298,12 +339,14 @@ goog.require('gn_alert');
               }
             },
             "serviceType": {
+              'collapsed': true,
               "terms": {
                 "field": "serviceType",
                 "size": 10
               }
             },
             "creationYearForResource": {
+              'collapsed': true,
               "histogram": {
                 "field": "creationYearForResource",
                 "interval": 5,
@@ -321,6 +364,7 @@ goog.require('gn_alert');
             //   }
             // },
             "topic_text": {
+              'collapsed': true,
               "terms": {
                 "field": "topic_text",
                 "size": 20
@@ -338,9 +382,16 @@ goog.require('gn_alert');
               }
             },
             "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+              'collapsed': true,
               "terms": {
                 "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
                 "size": 34
+              }
+            }, 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
+              'terms': {
+                'field': 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree',
+                'size': 100,
+                "order" : { "_key" : "asc" }
               }
             }
           },

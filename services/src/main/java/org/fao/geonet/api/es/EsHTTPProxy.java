@@ -337,6 +337,7 @@ public class EsHTTPProxy {
         } else if (type.equalsIgnoreCase("subtemplate")) {
             query.append(" AND (isTemplate:s)");
         }
+        query.append(" AND (draft:n OR draft:e)");
 
         final String portalFilter = buildPortalFilter();
         if (!"".equals(portalFilter)) {
@@ -350,18 +351,18 @@ public class EsHTTPProxy {
         // If the requested portal define a filter
         // Add it to the request.
         if (node != null && !NodeInfo.DEFAULT_NODE.equals(node.getId())) {
-            final Source portal = sourceRepository.findOne(node.getId());
-            if (portal == null) {
+            final Optional<Source> portal = sourceRepository.findById(node.getId());
+            if (!portal.isPresent()) {
                 LOGGER.warn("Null portal " + node);
-            } else if (StringUtils.isNotEmpty(portal.getFilter())) {
-                LOGGER.debug("Applying portal filter: {}", portal.getFilter());
-                return portal.getFilter();
+            } else if (StringUtils.isNotEmpty(portal.get().getFilter())) {
+                LOGGER.debug("Applying portal filter: {}", portal.get().getFilter());
+                return portal.get().getFilter();
             }
         }
         return "";
     }
 
-    private String buildPermissionsFilter(ServiceContext context) throws Exception {
+    public String buildPermissionsFilter(ServiceContext context) throws Exception {
         final UserSession userSession = context.getUserSession();
 
         // If admin you can see all
@@ -382,7 +383,7 @@ public class EsHTTPProxy {
                 // OR member of groupOwner
                 // TODOES
             }
-            return String.format("%s %s", operationFilter, ownerFilter).trim();
+            return String.format("(%s %s)", operationFilter, ownerFilter).trim();
         }
     }
 
@@ -609,7 +610,8 @@ public class EsHTTPProxy {
 
             // copy every header except host
             if (!"host".equalsIgnoreCase(headerName) &&
-                !"X-XSRF-TOKEN".equalsIgnoreCase(headerName)) {
+                !"X-XSRF-TOKEN".equalsIgnoreCase(headerName) &&
+                !"Cookie".equalsIgnoreCase(headerName)) {
                 uc.setRequestProperty(headerName, headerValue);
             }
         }

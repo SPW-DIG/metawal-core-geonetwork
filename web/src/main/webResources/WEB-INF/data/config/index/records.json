@@ -1360,7 +1360,7 @@
       "recordGroup": {
         "type": "keyword"
       },
-      "recordLink": {
+      "recordJoin": {
         "type": "join",
         "relations": {
           "record": [
@@ -1369,6 +1369,20 @@
             "sibling",
             "feature"
           ]
+        }
+      },
+      "recordLink": {
+        "type": "nested",
+        "properties": {
+          "type": {
+            "type": "keyword"
+          },
+          "subtype": {
+            "type": "keyword"
+          },
+          "to": {
+            "type": "keyword"
+          }
         }
       },
       "resolutionDistance": {
@@ -1381,7 +1395,8 @@
         "type": "keyword"
       },
       "resourceIdentifier": {
-        "type": "keyword"
+        "type": "keyword",
+        "copy_to": "any"
       },
       "geoTag": {
         "type": "keyword"

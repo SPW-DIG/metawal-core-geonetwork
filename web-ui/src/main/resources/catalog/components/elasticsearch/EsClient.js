@@ -40,10 +40,10 @@
       return ES_API_URL + service;
     };
 
-    this.search = function(params, selectionBucket) {
+    this.search = function(params, selectionBucket, configId) {
       return callApi('_search', params, selectionBucket).then(
         function(response) {
-          return gnESFacet.getUIModel(response, params);
+          return gnESFacet.getUIModel(response, params, configId);
         }
       );
     };
@@ -79,8 +79,10 @@
       );
     };
 
-    this.loadMoreTerms = function(query, facetPath, newSize, facetConfig) {
-      var params = gnESService.getMoreTermsParams(query, facetPath, newSize, facetConfig);
+    this.getTermsParamsWithNewSizeOrFilter = function(
+      query, facetPath, newSize, include, exclude, facetConfig) {
+      var params = gnESService.getTermsParamsWithNewSizeOrFilter(
+        query, facetPath, newSize, include, exclude, facetConfig);
       return callApi('_search', params).then(
         function(response) {
           var model = gnESFacet.getUIModel(response, params);
