@@ -291,9 +291,9 @@ goog.require('gn_alert');
                 }
               }
             },
-            'OrgForResource': {
+            'custodianOrgForResource': {
               'terms': {
-                'field': 'OrgForResource',
+                'field': 'custodianOrgForResource',
                 'include': '.*',
                 'size': 15
               }
@@ -338,13 +338,13 @@ goog.require('gn_alert');
                 'min_doc_count': 1
               }
             },
-            "serviceType": {
-              'collapsed': true,
-              "terms": {
-                "field": "serviceType",
-                "size": 10
-              }
-            },
+            // "serviceType": {
+            //   'collapsed': true,
+            //   "terms": {
+            //     "field": "serviceType",
+            //     "size": 10
+            //   }
+            // },
             "creationYearForResource": {
               'collapsed': true,
               "histogram": {

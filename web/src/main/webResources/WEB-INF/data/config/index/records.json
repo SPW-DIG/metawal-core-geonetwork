@@ -96,6 +96,8 @@
             "synonyms": [
               "sig, systeme d'information geographique, ids, gis, sdi",
               "shp, shapefile",
+              "PICC, Projet Informatique de Cartographie Continue",
+              "ESRS, Epiceries Sociales et les Restaurants Sociaux, Epiceries et Restaurants Sociaux",
               "raster, image"
             ]
           },
