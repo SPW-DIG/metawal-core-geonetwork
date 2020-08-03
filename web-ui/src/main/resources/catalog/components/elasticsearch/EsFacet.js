@@ -58,7 +58,8 @@
       'valid',
       'isHarvested',
       'dateStamp',
-      'documentStandard'
+      'documentStandard',
+      'codelist_status*'
     ]};
     this.configs = {
       search: {

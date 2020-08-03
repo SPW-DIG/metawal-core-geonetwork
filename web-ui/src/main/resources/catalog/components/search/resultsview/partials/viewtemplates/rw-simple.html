@@ -8,7 +8,7 @@
       <!--start top row-->
       <div class="row">
         <input data-gn-selection-md type="checkbox"
-               data-ng-model="md['geonet:info'].selected"
+               data-ng-model="md.selected"
                data-ng-change="change()"/>
 
         <!--Source catalog Logo-->
@@ -54,18 +54,21 @@
 
 
       <!--start middle row-->
-      <div title="{{(md.abstract || md.defaultAbstract) | striptags}}">
+      <div title="{{md.resourceAbstract | striptags}}">
         <!-- Thumbnail -->
-        <div class="gn-md-thumbnail"
-             data-ng-class="{'gn-md-no-thumbnail': !md.getThumbnails().list[0].url}">
+        <div class="gn-md-thumbnail">
+          <div class="gn-md-thumbnail"
+               data-ng-class="{'gn-md-no-thumbnail': !md.overview[0]}"></div>
           <img class="gn-img-thumbnail"
-               data-ng-src="{{md.getThumbnails().list[0].url}}"
-               data-ng-if="md.getThumbnails().list[0].url"/>
+               alt="{{md.resourceTitle}}"
+               data-ng-src="{{md.overview[0].url}}?size=140"
+               data-ng-if="md.overview[0]"/>
 
-          <!-- Display the first metadata status (apply to ISO19139 record) -->
-          <div data-ng-if="md.status_text.length > 0"
-               title="{{md.status_text[0]}}"
-               class="gn-status gn-status-{{md.status[0]}}">{{md.status_text[0]}}
+          <div data-ng-if="md.codelist_status_text.length > 0"
+               data-ng-repeat="c in md.codelist_status_text track by $index"
+               title="{{c}}"
+               class="gn-status gn-status-mdview gn-status-{{md.codelist_status[$index]}}">
+            {{c}}
           </div>
         </div>
 
@@ -76,10 +79,10 @@
               <a gn-metadata-open="md"
                  gn-records="searchResults.records"
                  gn-formatter="formatter.defaultUrl"
-                 title="{{md.title || md.defaultTitle}}">
+                 title="{{md.resourceTitle}}">
 
-                <i class="fa gn-icon-{{md.type[0]}}" title="{{md.type[0] | translate}}"/>
-                {{md.title || md.defaultTitle}}</a>
+                <i class="fa gn-icon-{{md.resourceType[0]}}" title="{{md.resourceType[0] | translate}}"/>
+                {{md.resourceTitle}}</a>
             </h3>
           </div>
 
@@ -88,12 +91,12 @@
                gn-formatter="formatter.defaultUrl"
                class="text-justify gn-md-abstract-rw ellipsis">
             <div>
-              <p>{{(md.abstract || md.defaultAbstract) | regexOneSentence | striptags}}</p>
+              <p>{{md.resourceAbstract | regexOneSentence | striptags}}</p>
             </div>
           </div>
 
           <div>
-            <div gn-grid-related gn-grid-related-uuid="::md.getUuid()"
+            <div gn-grid-related gn-grid-related-uuid="::md.uuid"
                  template="../../catalog/views/default/templates/gridRelatedList.html"></div>
             <gn-links-btn></gn-links-btn>
           </div>

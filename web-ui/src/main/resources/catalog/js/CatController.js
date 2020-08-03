@@ -423,12 +423,11 @@ goog.require('gn_alert');
             'icon': 'fa-th'
           },{
             'tplUrl': '../../catalog/components/' +
-              'search/resultsview/partials/viewtemplates/list.html',
+              'search/resultsview/partials/viewtemplates/rw-simple.html',
             'tooltip': 'List',
             'icon': 'fa-bars'
           }],
-          'resultTemplate': '../../catalog/components/' +
-              'search/resultsview/partials/viewtemplates/grid.html',
+          'resultTemplate': '../../catalog/components/search/resultsview/partials/viewtemplates/rw-simple.html',
           'formatter': {
             'list': [{
               'label': 'defaultView',
