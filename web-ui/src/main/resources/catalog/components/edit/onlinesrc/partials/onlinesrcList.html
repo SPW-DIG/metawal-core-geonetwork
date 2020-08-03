@@ -326,6 +326,9 @@
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
               <a target="_blank"
                  data-ng-href="{{buildMetadataLink(resource)}}">
                 {{resource.title | gnLocalized: lang}}
@@ -364,8 +367,11 @@
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
               <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
+                 data-ng-href="{{buildMetadataLink(resource)}}">
                 {{resource.title | gnLocalized: lang}}
               </a>
             </div>
@@ -402,8 +408,11 @@
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
               <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
+                 data-ng-href="{{buildMetadataLink(resource)}}">
                 {{resource.title | gnLocalized: lang}}
               </a>
             </div>
@@ -441,8 +450,11 @@
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
               <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
+                 data-ng-href="{{buildMetadataLink(resource)}}">
                 {{resource.title | gnLocalized: lang}}
               </a>
             </div>
@@ -480,8 +492,11 @@
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
               <a target="_blank"
-                 data-ng-href="{{resource['@subtype'] ? resource.url : ('catalog.search#/metadata/' + resource.id)}}">
+                 data-ng-href="{{buildMetadataLink(resource)}}">
                 {{resource.title | gnLocalized: lang}}
               </a>
             </div>
@@ -512,8 +527,11 @@
           <div class="row">
             <div class="col-md-11"
                  title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
               <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
+                 data-ng-href="{{buildMetadataLink(resource)}}">
                 {{resource.title | gnLocalized: lang}}
               </a>
             </div>
@@ -521,6 +539,76 @@
         </li>
       </ul>
 
+
+      <!-- ******* List of siblings ******* -->
+      <h2 class="onlinesrc-title"
+          data-ng-show="::isCategoryEnable('sibling') && relations.siblings">
+        <i class="fa fa-sign-out"
+           data-ng-class="onlinesrcService.reload ? 'fa-spin' : ''"></i>
+        <i class="icon-external-link"></i>&nbsp;
+        <span data-translate="">siblings</span>&nbsp;
+        <a href=""
+           class="btn btn-default btn-xs pull-right"
+           data-ng-click="onlinesrcService.onOpenPopup('sibling')">
+          <i class="fa fa-fw fa-plus"></i>
+          <span data-translate="">add</span>
+        </a>
+      </h2>
+      <ul class="list-group"
+          data-ng-show="::isCategoryEnable('sibling') && relations.siblings">
+        <li class="list-group-item"
+            data-ng-repeat="resource in relations.siblings | orderBy:'title'">
+          <div class="row">
+            <div class="col-md-11"
+                 title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
+              <a target="_blank"
+                 data-ng-href="{{buildMetadataLink(resource)}}">
+                {{resource.title | gnLocalized: lang}}
+                <span>{{'(' + resource.associationType + ')'}}</span>
+              </a>
+            </div>
+            <div class="col-md-1 text-right">
+              <a href="" class="onlinesrc-remove"
+                 data-ng-if="readonly !== true"
+                 title="{{'remove' | translate}} {{resource.title | gnLocalized: lang}}"
+                 aria-label="{{'remove' | translate}} {{resource.title | gnLocalized: lang}}"
+                 data-ng-click="onlinesrcService.removeSibling(resource)">
+                <i class="fa fa-times text-danger"></i>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- ******* List of associated records (reverse direction of siblings) ******* -->
+      <h2 class="onlinesrc-title"
+          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
+        <i class="fa fa-sign-out"></i>
+        <i class="icon-external-link"></i>&nbsp;
+        <span data-translate="">siblings</span>&nbsp;
+      </h2>
+      <ul class="list-group"
+          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
+        <li class="list-group-item"
+            data-ng-repeat="resource in relations.associated | orderBy:'title'">
+          <div class="row">
+            <div class="col-md-11"
+                 title="{{resource.description | gnLocalized: lang}}">
+              <i class="fa fa-fw"
+                 title="{{resource.origin === 'remote' ? ('remoteRecord' | translate) : ''}}"
+                 data-ng-class="{'fa-external-link': resource.origin === 'remote'}"></i>
+              <a target="_blank"
+                 data-ng-href="{{buildMetadataLink(resource)}}">
+>>>>>>> origin/4.0.x
+                {{resource.title | gnLocalized: lang}}
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
