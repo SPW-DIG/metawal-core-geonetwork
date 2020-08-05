@@ -471,7 +471,7 @@ goog.require('gn_alert');
           }
         },
         'map': {
-          'enabled': true,
+          'enabled': false,
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/map',
           'externalViewer': {
             'enabled': false,
