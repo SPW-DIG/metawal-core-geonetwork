@@ -41,7 +41,7 @@
           </li>-->
 
           <!-- Direct sibling mode for mw -->
-          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018'
+          <li data-ng-show="gnCurrentEdit.metadata.schema == 'iso19115-3.2018'
           && !gnCurrentEdit.isService
           && gnCurrentEdit.metadata.type.indexOf('series') === -1">
             <a href=""
@@ -51,7 +51,7 @@
               <span data-translate="">mwLinkTo-partOfSeamlessDatabase</span>
             </a>
           </li>
-          <!--<li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
+          <!--<li data-ng-show="gnCurrentEdit.metadata.schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
             <a href=""
                data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'isComposedOf', initiativeType: ''})">
               <i class="fa gn-icon-sibling"></i>
@@ -85,7 +85,7 @@
             </a>
           </li>
 
-          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
+          <li data-ng-show="gnCurrentEdit.metadata.schema == 'iso19115-3.2018' && !gnCurrentEdit.isService">
             <a href=""
                data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'revisionOf', initiativeType: ''})">
               <i class="fa gn-icon-sibling"></i>
@@ -94,7 +94,7 @@
             </a>
           </li>
 
-          <li data-ng-show="gnCurrentEdit.metadata['geonet:info'].schema == 'iso19115-3.2018'">
+          <li data-ng-show="gnCurrentEdit.metadata.schema == 'iso19115-3.2018'">
             <a href=""
                data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'crossReference', initiativeType: ''})">
               <i class="fa gn-icon-sibling"></i>
