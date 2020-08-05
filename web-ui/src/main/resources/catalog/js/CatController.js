@@ -276,7 +276,7 @@ goog.require('gn_alert');
                   },
                   'thematicmap': {
                     'query_string': {
-                      'query': '+codelist_function:browsing'
+                      'query': '+linkProtocol:"OGC:WMS"'
                     }
                   }
                 }
