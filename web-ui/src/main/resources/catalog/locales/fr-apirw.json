@@ -1,6 +1,7 @@
 {
   "facet-diffusionMode": "Mode de diffusion",
   "facet-thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": "Thèmes du Géoportail",
+  "facet-thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree": "Thèmes du Géoportail",
   "facet-thesaurus_geonetworkthesauruslocalthemeinfraSIG": "InfraSIG",
   "diffusionMode-download": "Télécharger",
   "diffusionMode-thematicmap": "Carte thématique",

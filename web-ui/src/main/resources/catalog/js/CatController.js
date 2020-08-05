@@ -282,9 +282,9 @@ goog.require('gn_alert');
                 }
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
+            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree": {
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
+                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree",
                 "size": 40,
                 "order": {
                   "_key": "asc"
