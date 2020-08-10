@@ -59,7 +59,8 @@
       'isHarvested',
       'dateStamp',
       'documentStandard',
-      'codelist_status*'
+      'codelist_status*',
+      'recordLink'
     ]};
     this.configs = {
       search: {
