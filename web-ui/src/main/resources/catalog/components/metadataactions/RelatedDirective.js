@@ -90,7 +90,7 @@
         }
       });
     };
-    this.getMdsRelatedWithElastic = function(mds, types) {
+    this.getMdsRelatedWithMultipleSearch = function(mds, types) {
       var uuids = mds.map(function(md) {
         return md.uuid;
       });
