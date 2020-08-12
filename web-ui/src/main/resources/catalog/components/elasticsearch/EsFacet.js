@@ -153,6 +153,7 @@
           includes: [
             'id',
             'uuid',
+            'resource*',
             'index*'
           ]
         },

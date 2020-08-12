@@ -78,7 +78,7 @@
   -->
   <xsl:variable name="operatesOnSetByProtocol" select="false()"/>
 
-  <xsl:variable name="processRemoteDocs" select="true()" />
+  <xsl:variable name="processRemoteDocs" select="false()" />
 
   <!-- Define if search for regulation title should be strict or light. -->
   <xsl:variable name="inspireRegulationLaxCheck" select="false()"/>
