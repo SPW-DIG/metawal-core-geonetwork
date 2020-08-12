@@ -134,7 +134,7 @@
         </xsl:for-each>
       </xsl:variable>
 
-      
+
       <xsl:choose>
         <xsl:when test="$byThesaurus">
           <xsl:for-each-group select="$tags/tag" group-by="@thesaurus">
@@ -437,7 +437,7 @@
 
 
 
-  <!-- Some major sections are boxed but 
+  <!-- Some major sections are boxed but
   * if part of fieldsWithFieldset exception
   * has content
   * only if more than one child to be displayed (non flat mode only) bypass container elements

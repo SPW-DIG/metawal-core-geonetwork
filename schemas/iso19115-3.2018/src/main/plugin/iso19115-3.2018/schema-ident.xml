@@ -132,7 +132,7 @@ Ce schéma est également composé des normes :
     the information. When filtered the element is
     preserved but with no content in.
     -->
-    <filter xpath="*//*[@gco:nilReason='withheld']"
+    <filter xpath="*//*[@gco:nilReason='withheld' and local-name(.) != 'online']"
             ifNotOperation="editing">
       <keepMarkedElement gco:nilReason="withheld"/>
     </filter>
@@ -140,12 +140,11 @@ Ce schéma est également composé des normes :
     <!--
     All online source having the following protocols
     are filtered when user does not have download
-    privilege.
-    -->
-    <filter xpath="*//mrd:onLine[contains(*/cit:protocol/gco:CharacterString, 'DOWNLOAD') or
-                                  */cit:protocol/gco:CharacterString = 'FILE' or
-                                  */cit:protocol/gco:CharacterString = 'DB' or
-                                  */cit:protocol/gco:CharacterString = 'COPYFILE']"
+    privilege.-->
+    <filter xpath="*//mrd:onLine[*/cit:protocol/gco:CharacterString = 'FILE:RASTER' or
+                                 */cit:protocol/gco:CharacterString = 'FILE:GEO' or
+                                 */cit:protocol/gco:CharacterString = 'DB:POSTGIS' or
+                                 */cit:protocol/gco:CharacterString = 'DB:ORACLE']"
             ifNotOperation="download"/>
 
     <!--

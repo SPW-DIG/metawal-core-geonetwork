@@ -450,6 +450,7 @@
   </xsl:template>
 
 
+
   <!-- For XLinked subtemplates, the lang parameter MUST be in the same order as in the record.
   Main language first, then other locales. If not, then the default CharacterString does not contain
   the main language. It user change the language order in the record, the lang parameter needs to
@@ -563,7 +564,7 @@
   </xsl:template>
 
   <!-- Sextant / Template adding nilReason attribut with withheld value
-  for some protocols. -->
+  for some protocols.
   <xsl:template match="cit:linkage" priority="10">
     <xsl:choose>
       <xsl:when test="
@@ -583,6 +584,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  -->
 
 
   <!-- Remove empty DQ elements, empty transfer options. -->

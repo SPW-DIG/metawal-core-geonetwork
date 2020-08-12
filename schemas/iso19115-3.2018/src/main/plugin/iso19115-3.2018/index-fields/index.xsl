@@ -908,6 +908,7 @@
                                   then daobs:search-in-contains($eu9762009/*, $title)
                                   else daobs:search-in($eu9762009/*, $title)"/>
             <xsl:if test="count($matchingEUText) = 1">
+
               <xsl:variable name="pass"
                             select="*/mdq:result/*/mdq:pass/gco:Boolean"/>
               <inspireConformResource>

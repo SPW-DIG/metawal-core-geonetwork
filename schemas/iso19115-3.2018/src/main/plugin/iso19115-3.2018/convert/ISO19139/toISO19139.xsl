@@ -87,7 +87,7 @@
       <xsl:variable name="nameSpacePrefix">
         <xsl:call-template name="getNamespacePrefix"/>
       </xsl:variable>
-      
+
       <xsl:element name="{concat($nameSpacePrefix,':',local-name(.))}">
         <xsl:call-template name="add-namespaces"/>
 
@@ -224,10 +224,10 @@
         <xsl:variable name="nameSpacePrefix">
           <xsl:call-template name="getNamespacePrefix"/>
         </xsl:variable>
-        
+
         <xsl:variable name="isService"
                       select="local-name(.) = 'SV_ServiceIdentification'"/>
-      
+
         <xsl:element name="{concat($nameSpacePrefix,':',local-name(.))}">
           <xsl:apply-templates select="@*"/>
           <xsl:apply-templates select="mri:citation"/>
@@ -307,7 +307,7 @@
             <xsl:with-param name="codeListValue" select="srv2:couplingType/srv2:SV_CouplingType/@codeListValue"/>
           </xsl:call-template>
           <xsl:apply-templates select="srv2:containsOperations"/>
-          
+
           <!-- Add mandatory contains operation -->
           <xsl:if test="$isService and not(srv2:containsOperations)">
             <srv:containsOperations/>
@@ -409,7 +409,7 @@
       <!-- TODO -->
     </gmd:contentInfo>
   </xsl:template>
-  
+
   <!-- Add mandatory includedWithDataset if not present. -->
   <xsl:template match="mrc:MD_FeatureCatalogueDescription[not(mrc:includedWithDataset)]">
     <gmd:MD_FeatureCatalogueDescription>
@@ -420,7 +420,7 @@
       <xsl:apply-templates select="mrc:featureTypes|mrc:featureCatalogueCitation"/>
     </gmd:MD_FeatureCatalogueDescription>
   </xsl:template>
-  
+
   <xsl:template match="mri:associatedResource">
     <gmd:aggregationInfo>
       <gmd:MD_AggregateInformation>
@@ -462,7 +462,7 @@
   <xsl:template match="mdq:pass[gco2:Boolean = '']" priority="2">
     <gmd:pass gco:nilReason="missing"/>
   </xsl:template>
-  
+
   <xsl:template match="mdb:dataQualityInfo">
     <gmd:dataQualityInfo>
       <gmd:DQ_DataQuality>
@@ -617,7 +617,7 @@
                                     cit:ISBN|
                                     cit:ISSN|
                                     cit:onlineResource"/>
-      
+
       <!-- Special attention is required for CI_ResponsibleParties that are included in the CI_Citation only for a URL. These are currently identified as those
         with no name elements (individualName, organisationName, or positionName)
       -->
@@ -627,7 +627,7 @@
         count(cit:party/cit:CI_Organisation/cit:organisationName/gco2:CharacterString) = 0]">
         <xsl:call-template name="CI_ResponsiblePartyToOnlineResource"/>
       </xsl:for-each>
-      
+
       <xsl:apply-templates select="cit:graphic"/>
     </xsl:element>
   </xsl:template>
@@ -746,7 +746,7 @@
       <xsl:apply-templates select="*"/>
     </gmd:contactInfo>
   </xsl:template>
-  
+
   <xsl:template match="cit:contactInfo/cit:CI_Contact/cit:phone[1]">
     <!-- Only phone number and facsimile are allowed in ISO19139 -->
     <gmd:phone>

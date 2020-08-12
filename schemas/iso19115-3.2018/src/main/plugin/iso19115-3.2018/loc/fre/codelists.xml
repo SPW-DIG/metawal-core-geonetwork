@@ -1586,15 +1586,13 @@
       </description>
     </entry>
     <entry>
-      <code>dataset</code>
-      <label>Jeu de données</label>
-      <description>Les informations appliquées aux caractéristiques de jeu de
-        données
-      </description>
+      <code>dataset</code>cd
+      <label>Couche de données</label>
+      <description>Les informations appliquées aux caractéristiques de jeu de données</description>
     </entry>
     <entry>
       <code>series</code>
-      <label>Collection de données</label>
+      <label>Série de couches de données</label>
       <description>Les informations appliquées aux caractéristiques de la
         collection de données
       </description>

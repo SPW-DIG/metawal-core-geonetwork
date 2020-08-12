@@ -47,6 +47,39 @@
   <xsl:variable name="thesaurusTitle"
                 select="$thesaurus//(skos:ConceptScheme|rdf:Description)/dc:title/text()"/>
 
+  <xsl:variable name="isFormat"
+                select="$thesaurusFileName = 'httpregistrymetawalcodelistmediatypes-media-types'"/>
+
+  <xsl:variable name="formats">
+    <entry old="GeoTIFF (.tif)" new="TIFF (.tif, .tiff)"/>
+    <entry old="TIFF (.tif ou .tiff)" new="TIFF (.tif, .tiff)"/>
+    <entry old="png" new="PNG (.png)"/>
+    <entry old="ECW" new="ECW (.ecw)"/>
+    <entry old="GML INSPIRE (.gml)" new="GML (.gml)"/>
+    <entry old="KML (.kml ou .kmz)" new="KML (.kml)"/>
+    <entry old="OGC:GeoPackage (.gpkg)" new="OGC GeoPackage (.gpkg)"/>
+    <entry old="ESRI Personal Geodatabase (.mdb ou .accdb)" new="ESRI File Geodatabase (.fgdb)"/>
+    <entry old="FGDBR (ESRI File Geodatabase Raster Dataset)" new="ESRI File Geodatabase (.fgdb)"/>
+    <entry old="Ascii Grid" new="Ascii Grid (.asc ou .grd)"/>
+    <entry old="DIMAP - JPEG2000 avec compression (.jp2)" new="JPEG2000 (.jp2, .jpg2, .j2k)"/>
+    <entry old="Microsoft Excel (.xls ou .xlsx)" new="Microsoft Excel (.xlsx)"/>
+    <entry old="ESRI Grid" new="Ascii Grid (.asc ou .grd)"/>
+    <entry old="TXT (.txt)" new="Comma Separated Value (.csv)"/>
+    <entry old="CSV (.csv)" new="Comma Separated Value (.csv)"/>
+    <entry old="JPEG (.jpg ou .jpeg)" new=""/>
+    <entry old="Application requérant une identification" new=""/>
+    <entry old="S-57 (ENC) Hydrographic Data format" new=""/>
+    <entry old="GPX (.gpx)" new=""/>
+    <entry old="VHF" new=""/>
+    <entry old="BSQ (band sequential image file)" new=""/>
+    <entry old="-" new=""/>
+    <entry old="Distribution en ligne uniquement" new=""/>
+    <entry old="shp (ESRI shapefile)" new="ESRI Shapefile (.shp)"/>
+    <entry old="RIS (Extensible Markup Language XML-RIS selon Directive 2005/44/CE)" new=""/>
+    <entry old="*Autre format de distribution, cfr wiki*" new=""/>
+    <entry old="JSON" new="JSON (.json)"/>
+  </xsl:variable>
+
   <xsl:template match="mri:keyword[gco:CharacterString and ../mri:thesaurusName/*/cit:title/* = $thesaurusTitle]">
     <xsl:variable name="keywordValue"
                   select="gco:CharacterString"/>
@@ -61,10 +94,35 @@
         </xsl:copy>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:message><xsl:value-of select="$keywordValue"/> not found in thesaurus <xsl:value-of select="$thesaurusTitle"/>. Skipping</xsl:message>
         <xsl:copy-of select="."/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+
+  <xsl:template match="mdb:distributionInfo/*/mrd:distributionFormat/*/mrd:formatSpecificationCitation/*/cit:title[gco:CharacterString and $isFormat]">
+    <xsl:variable name="keywordValue"
+                  select="gco:CharacterString"/>
+    <xsl:variable name="keywordInMap"
+                  select="$formats//*[@old = $keywordValue]/@new"/>
+    <xsl:variable name="keywordInThesaurus"
+                  select="if ($keywordInMap != '') then $thesaurus//*[skos:prefLabel = $keywordInMap] else $thesaurus//*[skos:prefLabel = $keywordValue]"/>
+    <xsl:choose>
+      <xsl:when test="$keywordValue != '' and
+                      $keywordInThesaurus != ''">
+        <xsl:copy>
+          <gcx:Anchor xlink:href="{$keywordInThesaurus/@rdf:about}"><xsl:value-of select="if ($keywordInMap != '') then $keywordInMap else $keywordValue"/> </gcx:Anchor>
+          <xsl:copy-of select="lan:PT_FreeText"/>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message><xsl:value-of select="$keywordValue"/> not found in thesaurus <xsl:value-of select="$thesaurusTitle"/>. Skipping</xsl:message>
+        <xsl:copy-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
 
   <xsl:template match="gn:*" priority="2"/>
 

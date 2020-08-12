@@ -44,7 +44,8 @@
     <for name="mco:userNote" use="textarea"/>
     <for name="mco:handlingDescription" use="textarea"/>
     <for name="mrl:description" use="textarea"/>
-    <for name="mri:abstract" use="textarea"/>
+    <!--    <for name="mri:abstract" use="textarea"/>-->
+    <for name="mri:abstract" use="data-gn-textarea-abstract-builder"/>
     <for name="mri:credit" use="textarea"/>
     <for name="mrd:description" use="textarea"/>
     <for name="gmd:evaluationMethodDescription" use="textarea"/>
@@ -53,7 +54,11 @@
     <for name="mdq:measureDescription" use="textarea"/>
     <for name="mri:purpose" use="textarea"/>
     <for name="mrd:orderingInstructions" use="textarea"/>
-    <for name="mco:otherConstraints" use="textarea"/>
+    <!--    <for name="mco:otherConstraints" use="textarea"/>-->
+    <for name="mco:otherConstraints" use="data-gn-keyword-picker">
+      <directiveAttributes data-thesaurus-key="external.theme.access_use_conditions"
+                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+    </for>
     <for name="mri:statement" use="textarea"/>
     <for name="mri:supplementalInformation" use="textarea"/>
     <for name="gmd:specificUsage" use="textarea"/>
@@ -83,6 +88,7 @@
     <for name="gco:Date" use="data-gn-date-picker"/>
     <for name="gco:DateTime" use="data-gn-date-picker"/>
 
+
     <for name="gml:duration" use="data-gn-field-duration-div"/>
     <for name="gco:TM_PeriodDuration" use="data-gn-field-duration-div"/>
     <for name="gml:duration" use="data-gn-field-duration-div"/>
@@ -98,6 +104,21 @@
     <for name="cit:country" use="data-gn-country-picker"/>
 
     <for name="mrs:referenceSystemIdentifier" addDirective="data-gn-crs-selector"/>
+
+    <for name="cit:title"
+         xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributionFormat/mrd:MD_Format/mrd:formatSpecificationCitation/cit:CI_Citation/cit:title"
+         use="data-gn-keyword-picker">
+      <directiveAttributes data-thesaurus-key="external.theme.httpregistrymetawalcodelistmediatypes-media-types"
+                           data-number-of-suggestions="200"
+                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+    </for>
+
+    <for name="cit:title"
+         xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_DomainConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title"
+         use="data-gn-keyword-picker">
+      <directiveAttributes data-thesaurus-key="external.theme.inspire-technical-guidelines"
+                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+    </for>
 
     <for name="mdb:contact" addDirective="data-gn-directory-entry-selector">
       <directiveAttributes
@@ -117,6 +138,7 @@
       <!-- To use an ISO19139 contact directory in an ISO19115-3 record
       use the following configuration: -->
       <directiveAttributes
+
               data-template-add-action="true"
               data-search-action="false"
               data-popup-action="true"
@@ -186,7 +208,7 @@
 
     <for name="mri:descriptiveKeywords" addDirective="data-gn-thesaurus-selector">
       <directiveAttributes
-              data-transformation="to-iso19115-3.2018-keyword"/>
+        data-transformation="to-iso19115-3.2018-keyword"/>
     </for>
   </fields>
 
@@ -409,7 +431,7 @@
         <section xpath="/mdb:MD_Metadata/mdb:metadataConstraints"/>
         <section xpath="/mdb:MD_Metadata/mdb:metadataMaintenance"/>
         <section xpath="/mdb:MD_Metadata/mdb:applicationSchemaInfo"/>
-        <section name="mdb:MD_Metadata">
+        <section name="metadata">
           <field xpath="/mdb:MD_Metadata/mdb:metadataIdentifier"/>
           <field xpath="/mdb:MD_Metadata/mdb:defaultLocale" or="defaultLocale"
                  in="/mdb:MD_Metadata"/>
@@ -441,14 +463,1129 @@
         <for name="cit:CI_Individual"/>
         <for name="cit:CI_Organisation"/>
       </flatModeExceptions>
+
       <thesaurusList>
-        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3-keyword"/>
+        <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3-keyword"/>
+        <thesaurus key="external.theme.Themes_geoportail_wallon" transformations="to-iso19115-3-keyword"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
       </thesaurusList>
     </view>
 
+    <view name="metawalbasicform" upAndDownControlHidden="true" class="gn-indent-colored gn-label-above-input">
+      <sidePanel>
+        <directive data-gn-overview-manager=""/>
+        <directive data-gn-onlinesrc-list="" data-types="onlinesrc"/>
+        <text ref="mwbf-sidepanelhelp"/>
+      </sidePanel>
+      <tab id="main" default="true" mode="flat">
+
+        <section name="mwbf-mainInfo">
+          <field name="mwbf-title"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:title"/>
+          <field name="mwbf-representationType"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialRepresentationType"/>
+          <field name="mwbf-abstract"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:abstract"
+                 or="abstract"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*"/>
+          <text ref="mwbf-abstracthelp"/>
+
+          <field  name="mwbf-lineage"
+                  xpath="/mdb:MD_Metadata/mdb:resourceLineage/*/mrl:statement"/>
+          <text ref="mwbf-lineagehelp"/>
+        </section>
+
+        <section name="mwbf-keywords">
+          <!-- TODO: From thesaurus ? -->
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/*/mri:keyword"/>
+          <action type="add"
+                  btnLabel="addOtherKeyword"
+                  or="keyword"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/mri:MD_Keywords"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]) > 0">
+            <template>
+              <snippet>
+                <mri:keyword gco:nilReason="missing">
+                  <gco:CharacterString/>
+                </mri:keyword>
+              </snippet>
+            </template>
+          </action>
+          <text ref="mwbf-keywordhelp"/>
+        </section>
+
+        <section name="mwbf-dateinfo">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:date"
+                 or="date"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*"/>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance/*/mmi:maintenanceAndUpdateFrequency"/>
+        </section>
+
+        <section name="mwbf-constraints">
+          <!-- TODO: Action with CGU/...-->
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints"/>
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"/>
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:otherConstraints"/>
+        </section>
+
+        <section name="mwbf-access-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributor"
+                 or="distributor"
+                 in="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution"/>
+        </section>
+
+        <section name="mwbf-data-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact"
+                 in="pointOfContact"
+                 or="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+        </section>
+
+        <section name="mwbf-metadata-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:contact"
+                 or="contact"
+                 in="/mdb:MD_Metadata"/>
+
+          <!-- TODO: Add a suggestion for this !!-->
+          <action type="add"
+                  btnLabel="iamthecontact"/>
+        </section>
+      </tab>
+    </view>
+
+    <view name="metawal" upAndDownControlHidden="true">
+
+      <sidePanel>
+        <directive data-gn-onlinesrc-list=""/>
+        <directive gn-geo-publisher=""
+                   data-ng-if="gnCurrentEdit.geoPublisherConfig"
+                   data-config="{{gnCurrentEdit.geoPublisherConfig}}"
+                   data-lang="lang"/>
+        <directive data-gn-validation-report=""/>
+        <directive data-gn-suggestion-list=""/>
+        <directive data-gn-need-help="user-guide/describing-information/creating-metadata.html"/>
+      </sidePanel>
+
+      <tab id="mw-metadata" default="true" mode="flat">
+        <section name="metadataDefinition">
+          <field name="metadataTitle"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:title"/>
+
+
+          <!-- One field and a collection of 3 actions to define
+          the current record as a dataset, a serie or a service. -->
+          <section name="metadataScopetitle">
+            <field name="metadataScopetitle"
+                   xpath="/mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope"/>
+
+            <!-- If resource scope is not define, propose to choose a type.
+            This depends on the type of records. Actions for services are
+            apps or service. For dataset, geodata, maps, ...
+            -->
+            <text ref="noMetadataScopeFound"
+                  if="count(mdb:MD_Metadata/mdb:metadataScope) = 0"/>
+
+            <action type="add"
+                    btnLabel="thisIsADataset"
+                    btnClass="fa gn-icon-dataset"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="dataset"/>
+                      </mdb:resourceScope>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+            <action type="add"
+                    btnLabel="thisIsASerie"
+                    btnClass="fa gn-icon-series"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="series"/>
+                      </mdb:resourceScope>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+            <action type="add"
+                    btnLabel="thisIsAMap"
+                    btnClass="fa gn-icon-map"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="document"/>
+                      </mdb:resourceScope>
+                      <mdb:name>
+                        <gco:CharacterString>Carte statique</gco:CharacterString>
+                      </mdb:name>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+
+            <action type="add"
+                    btnLabel="thisIsADynMap"
+                    btnClass="fa gn-icon-map"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="document"/>
+                      </mdb:resourceScope>
+                      <mdb:name>
+                        <gco:CharacterString>Carte dynamique</gco:CharacterString>
+                      </mdb:name>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+
+            <action type="add"
+                    btnLabel="thisIsANonGeographicDataset"
+                    btnClass="fa gn-icon-nonGeographicDataset"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="nonGeographicDataset"/>
+                      </mdb:resourceScope>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+
+            <!-- This actions are only available for service metadata records. -->
+            <action type="add"
+                    btnLabel="thisIsAService"
+                    btnClass="fa gn-icon-service"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/SV_ServiceIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="service"/>
+                      </mdb:resourceScope>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+            <action type="add"
+                    btnLabel="thisIsAnApplication"
+                    btnClass="fa gn-icon-application"
+                    or="metadataScope"
+                    in="/mdb:MD_Metadata"
+                    if="(count(mdb:MD_Metadata/mdb:identificationInfo/SV_ServiceIdentification) = 1 and
+                         count(mdb:MD_Metadata/mdb:metadataScope) = 0)">
+              <template>
+                <snippet>
+                  <mdb:metadataScope>
+                    <mdb:MD_MetadataScope>
+                      <mdb:resourceScope>
+                        <mcc:MD_ScopeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                          codeListValue="application"/>
+                      </mdb:resourceScope>
+                    </mdb:MD_MetadataScope>
+                  </mdb:metadataScope>
+                </snippet>
+              </template>
+            </action>
+
+            <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:identifier"
+                   or="identifier"
+                   in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*"/>
+            <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialRepresentationType"/>
+
+          </section>
+
+        </section>
+
+
+        <section name="metadataIdentification">
+          <field name="resourceIdentifier"
+                 xpath="/mdb:MD_Metadata/mdb:metadataIdentifier/*/mcc:code"/>
+
+          <field name="metadataLanguage"
+                 xpath="/mdb:MD_Metadata/mdb:defaultLocale/*/lan:language"/>
+
+          <!-- If not defined, add action will add French -->
+          <action type="add"
+                  name="metadataLanguage"
+                  or="defaultLocale"
+                  in="/mdb:MD_Metadata">
+            <template>
+              <snippet>
+                <mdb:defaultLocale>
+                  <lan:PT_Locale>
+                    <lan:language>
+                      <lan:LanguageCode codeList="codeListLocation#LanguageCode" codeListValue="fre"/>
+                    </lan:language>
+                    <lan:characterEncoding>
+                      <lan:MD_CharacterSetCode codeList="codeListLocation#MD_CharacterSetCode"
+                                               codeListValue="utf8"/>
+                    </lan:characterEncoding>
+                  </lan:PT_Locale>
+                </mdb:defaultLocale>
+              </snippet>
+            </template>
+          </action>
+
+          <text ref="metadataDate-help"/>
+
+          <field name="metadataDate"
+                 xpath="/mdb:MD_Metadata/mdb:dateInfo"
+                 or="dateInfo"
+                 in="/mdb:MD_Metadata"
+                 editInfo="no"/>
+        </section>
+
+        <section name="metadataLinks">
+          <!-- TODO: here we should provide a list of services, ...
+          with delete action. For this a new directive should
+          be used based on the onlinesrclist one probably. -->
+
+          <action type="associatedResource"
+                  name="linkToSibling"
+                  process="sibling"/>
+
+          <action type="associatedResource"
+                  name="linkToService"
+                  if="count(mdb:MD_Metadata/mdb:metadataScope/mdb:MD_MetadataScope/mdb:resourceScope/mcc:MD_ScopeCode[@codeListValue = 'dataset' or @codeListValue = 'series']) > 0"
+                  process="service"/>
+
+          <action type="associatedResource"
+                  name="linkToDataset"
+                  if="count(descendant::srv:SV_ServiceIdentification) > 0"
+                  process="dataset"/>
+        </section>
+      </tab>
+      <tab id="mw-data" mode="flat">
+        <section name="resourceDescription">
+          <field name="metadataTitle"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:title"/>
+
+
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:alternateTitle"
+                 or="alternateTitle"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*"/>
+
+          <field name="metadataAbstract"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:abstract"
+                 or="abstract"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*"/>
+
+          <!-- TODO: add logo in Citation/graphics
+          -->
+
+          <action type="associatedResource"
+                  name="addThumbnail"
+                  process="onlinesrc"/>
+        </section>
+
+
+        <section name="resourceTags">
+
+          <field name="infraSIGCat"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                          contains(*/mri:thesaurusName/*/cit:title/gco:CharacterString,
+                                       'Mots-clés InfraSIG')]"/>
+          <section name="thematicsKeywords">
+            <action type="add"
+                    name="mw-ed-walloniaTheme"
+                    forceLabel="yes"
+                    or="descriptiveKeywords"
+                    in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"
+                    if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                            contains(*/mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString,
+                                     'Thèmes du géoportail wallon')]) = 0">
+              <template>
+                <snippet>
+                  <mri:descriptiveKeywords>
+                    <mri:MD_Keywords>
+                      <mri:type>
+                        <mri:MD_KeywordTypeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
+                          codeListValue="theme"/>
+                      </mri:type>
+                      <mri:thesaurusName>
+                        <cit:CI_Citation>
+                          <cit:title>
+                            <gco:CharacterString>Thèmes du géoportail wallon</gco:CharacterString>
+                          </cit:title>
+                          <cit:date>
+                            <cit:CI_Date>
+                              <cit:date>
+                                <gco:Date>2012-06-19</gco:Date>
+                              </cit:date>
+                              <cit:dateType>
+                                <cit:CI_DateTypeCode
+                                  codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                  codeListValue="publication"/>
+                              </cit:dateType>
+                            </cit:CI_Date>
+                          </cit:date>
+                          <cit:identifier>
+                            <mcc:MD_Identifier>
+                              <mcc:code>
+                                <gcx:Anchor
+                                  xlink:href="http://metawal.wallonie.be/geonetwork/srv/fre/thesaurus.download?ref=external.theme.Themes_geoportail_wallon">
+                                  geonetwork.thesaurus.external.theme.themes_geoportail_wallon
+                                </gcx:Anchor>
+                              </mcc:code>
+                            </mcc:MD_Identifier>
+                          </cit:identifier>
+                        </cit:CI_Citation>
+                      </mri:thesaurusName>
+                    </mri:MD_Keywords>
+                  </mri:descriptiveKeywords>
+                </snippet>
+              </template>
+            </action>
+
+            <!-- Wallonia theme selector
+            No need for a name, the thesaurus title will be used.
+            -->
+            <field name="keywordGeoportail"
+                   xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                            contains(*/mri:thesaurusName/*/cit:title/gco:CharacterString,
+                                     'Thèmes du géoportail wallon')]"
+                   if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                            contains(*/mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString,
+                                     'Thèmes du géoportail wallon')]) > 0"/>
+
+
+            <!-- All other keywords -->
+            <action type="add"
+                    name="mw-ed-inspireTheme"
+                    forceLabel="yes"
+                    or="descriptiveKeywords"
+                    in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"
+                    if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                            */mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString[text()=
+                                     'GEMET - INSPIRE themes, version 1.0']]) = 0">
+              <template>
+                <snippet>
+                  <mri:descriptiveKeywords>
+                    <mri:MD_Keywords>
+                      <mri:type>
+                        <mri:MD_KeywordTypeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
+                          codeListValue="theme"/>
+                      </mri:type>
+                      <mri:thesaurusName>
+                        <cit:CI_Citation>
+                          <cit:title>
+                            <gco:CharacterString>GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+                          </cit:title>
+                          <cit:date>
+                            <cit:CI_Date>
+                              <cit:date>
+                                <gco:Date>2008-06-01</gco:Date>
+                              </cit:date>
+                              <cit:dateType>
+                                <cit:CI_DateTypeCode
+                                  codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                  codeListValue="publication"/>
+                              </cit:dateType>
+                            </cit:CI_Date>
+                          </cit:date>
+                          <cit:identifier>
+                            <mcc:MD_Identifier>
+                              <mcc:code>
+                                <gcx:Anchor
+                                  xlink:href="http://metawal.wallonie.be/geonetwork/srv/eng/thesaurus.download?ref=external.theme.inspire-theme">
+                                  geonetwork.thesaurus.external.theme.inspire-theme
+                                </gcx:Anchor>
+                              </mcc:code>
+                            </mcc:MD_Identifier>
+                          </cit:identifier>
+                        </cit:CI_Citation>
+                      </mri:thesaurusName>
+                    </mri:MD_Keywords>
+                  </mri:descriptiveKeywords>
+                </snippet>
+              </template>
+            </action>
+
+            <field name="keywordINSPIREtheme"
+                   xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                          */mri:thesaurusName/*/cit:title/gco:CharacterString[text()=
+                                       'GEMET - INSPIRE themes, version 1.0']]"
+                   if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                            */mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString[text()=
+                                     'GEMET - INSPIRE themes, version 1.0']]) > 0"/>
+            <action type="add"
+                    name="mw-ed-gemetTheme"
+                    forceLabel="yes"
+                    or="descriptiveKeywords"
+                    in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"
+                    if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords/
+                      */mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString
+                     [text()='GEMET']) = 0">
+              <template>
+                <snippet>
+                  <mri:descriptiveKeywords>
+                    <mri:MD_Keywords>
+                      <mri:type>
+                        <mri:MD_KeywordTypeCode
+                          codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_KeywordTypeCode"
+                          codeListValue="theme"/>
+                      </mri:type>
+                      <mri:thesaurusName>
+                        <cit:CI_Citation>
+                          <cit:title>
+                            <gco:CharacterString>GEMET</gco:CharacterString>
+                          </cit:title>
+                          <cit:date>
+                            <cit:CI_Date>
+                              <cit:date>
+                                <gco:Date>2012-07-20</gco:Date>
+                              </cit:date>
+                              <cit:dateType>
+                                <cit:CI_DateTypeCode
+                                  codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                  codeListValue="publication"/>
+                              </cit:dateType>
+                            </cit:CI_Date>
+                          </cit:date>
+                          <cit:identifier>
+                            <mcc:MD_Identifier>
+                              <mcc:code>
+                                <gcx:Anchor
+                                  xlink:href="http://metawal.wallonie.be/geonetwork/srv/fre/thesaurus.download?ref=external.theme.gemet">
+                                  geonetwork.thesaurus.external.theme.gemet
+                                </gcx:Anchor>
+                              </mcc:code>
+                            </mcc:MD_Identifier>
+                          </cit:identifier>
+                        </cit:CI_Citation>
+                      </mri:thesaurusName>
+                    </mri:MD_Keywords>
+                  </mri:descriptiveKeywords>
+                </snippet>
+              </template>
+            </action>
+
+            <field name="keywordGEMET"
+                   xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[
+                            */mri:thesaurusName/*/cit:title/gco:CharacterString[text()='GEMET']]"
+                   if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords/
+                            */mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString[text()='GEMET']) > 0"/>
+          </section>
+
+          <section name="otherKeywords">
+            <field
+              xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/*/mri:keyword"/>
+
+            <action type="add"
+                    btnLabel="addOtherKeyword"
+                    or="keyword"
+                    in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/mri:MD_Keywords"
+                    if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]) > 0">
+              <template>
+                <snippet>
+                  <mri:keyword gco:nilReason="missing">
+                    <gco:CharacterString/>
+                  </mri:keyword>
+                </snippet>
+              </template>
+            </action>
+          </section>
+          <section name="categories">
+            <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:topicCategory"
+                   del="."/>
+            <action type="add"
+                    btnLabel="mwAddIsoTopic"
+                    in="/mdb:MD_Metadata/mdb:identificationInfo/*"
+                    or="topicCategory">
+              <template>
+                <snippet>
+                  <mri:topicCategory>
+                    <mri:MD_TopicCategoryCode></mri:MD_TopicCategoryCode>
+                  </mri:topicCategory>
+                </snippet>
+              </template>
+            </action>
+          </section>
+        </section>
+
+        <section>
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:extent/*/gex:geographicElement/gex:EX_GeographicBoundingBox"/>
+        </section>
+
+        <section name="metawalTemporalCoverage">
+          <!-- TODO: When removing the element, the element itself is not removed.
+          It's just emptied.
+          -->
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:extent/*/gex:temporalElement"/>
+
+          <action type="add"
+                  btnLabel="addTemporalElement"
+                  or="temporalElement"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:extent/*"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:extent/*/gex:temporalElement) = 0">
+            <template>
+              <snippet>
+                <gex:temporalElement>
+                  <gex:EX_TemporalExtent>
+                    <gex:extent>
+                      <gml:TimePeriod gml:id="">
+                        <gml:beginPosition/>
+                        <gml:endPosition/>
+                      </gml:TimePeriod>
+                    </gex:extent>
+                  </gex:EX_TemporalExtent>
+                </gex:temporalElement>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="resourceDate">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:date"
+                 or="date"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*"/>
+        </section>
+      </tab>
+      <tab id="mw-quality" mode="flat">
+        <!-- DQ / scope = hierarchylevel -->
+        <!-- DQ / Add action Précision planimétrique / altimétrique, Absence -->
+        <!-- DQ / Template for DQ planimétrique -->
+
+        <section name="metawalScaleAndResolution">
+          <!-- TODO: Support uom-->
+          <field name="scale"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialResolution"/>
+
+          <action type="add"
+                  btnLabel="addAScale"
+                  or="spatialResolution"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialResolution//*/mri:equivalentScale) = 0">
+            <template>
+              <snippet>
+                <mri:spatialResolution>
+                  <mri:MD_Resolution>
+                    <mri:equivalentScale>
+                      <mri:MD_RepresentativeFraction>
+                        <mri:denominator>
+                          <gco:Integer></gco:Integer>
+                        </mri:denominator>
+                      </mri:MD_RepresentativeFraction>
+                    </mri:equivalentScale>
+                  </mri:MD_Resolution>
+                </mri:spatialResolution>
+              </snippet>
+            </template>
+          </action>
+
+          <action type="add"
+                  btnLabel="addAnotherScale"
+                  or="spatialResolution"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialResolution//*/mri:equivalentScale) &gt; 0">
+            <template>
+              <snippet>
+                <mri:spatialResolution>
+                  <mri:MD_Resolution>
+                    <mri:equivalentScale>
+                      <mri:MD_RepresentativeFraction>
+                        <mri:denominator>
+                          <gco:Integer></gco:Integer>
+                        </mri:denominator>
+                      </mri:MD_RepresentativeFraction>
+                    </mri:equivalentScale>
+                  </mri:MD_Resolution>
+                </mri:spatialResolution>
+              </snippet>
+            </template>
+          </action>
+
+
+          <action type="add"
+                  btnLabel="addAHResolution"
+                  or="spatialResolution"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialResolution//*/mri:distance) = 0">
+            <template>
+              <snippet>
+                <mri:spatialResolution>
+                  <mri:MD_Resolution>
+                    <mri:distance>
+                      <gco:Distance uom=""/>
+                    </mri:distance>
+                  </mri:MD_Resolution>
+                </mri:spatialResolution>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report[mdq:DQ_AbsoluteExternalPositionalAccuracy]"/>
+
+          <action type="add"
+                  name="addDQReportOnAbsoluteExternalPositionalAccuracy"
+                  or="report"
+                  in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                  if="count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_AbsoluteExternalPositionalAccuracy) = 0">
+            <template>
+              <snippet>
+                <mdq:report>
+                  <mdq:DQ_AbsoluteExternalPositionalAccuracy>
+                    <mdq:measure>
+                      <mdq:DQ_MeasureReference>
+                        <mdq:nameOfMeasure>
+                          <gco:CharacterString>CE95</gco:CharacterString>
+                        </mdq:nameOfMeasure>
+                      </mdq:DQ_MeasureReference>
+                    </mdq:measure>
+                    <mdq:result>
+                      <mdq:DQ_QuantitativeResult>
+                        <mdq:value>
+                          <gco:Record>X m en planimétrie et Z m en altimétrie pour les éléments bien identifiables
+                          </gco:Record>
+                        </mdq:value>
+                        <mdq:valueUnit>
+                          <gml:BaseUnit xmlns="http://www.opengis.net/gml/3.2" gml:id="meters">
+                            <identifier codeSpace="SI">mètre</identifier>
+                            <unitsSystem/>
+                          </gml:BaseUnit>
+                        </mdq:valueUnit>
+                      </mdq:DQ_QuantitativeResult>
+                    </mdq:result>
+                  </mdq:DQ_AbsoluteExternalPositionalAccuracy>
+                </mdq:report>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+
+        <section name="metawalUpdate">
+          <!-- TODO: del does not remove the parent element -->
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance/mmi:MD_MaintenanceInformation/mmi:maintenanceAndUpdateFrequency"
+            or="maintenanceAndUpdateFrequency"
+            in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance/*"/>
+
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance/*/mmi:maintenanceNote"/>
+
+          <action type="add"
+                  btnLabel="addUpdateFrequency"
+                  or="resourceMaintenance"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance) = 0">
+            <template>
+              <snippet>
+                <mri:resourceMaintenance>
+                  <mmi:MD_MaintenanceInformation>
+                    <mmi:maintenanceAndUpdateFrequency>
+                      <mmi:MD_MaintenanceFrequencyCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_MaintenanceFrequencyCode"
+                        codeListValue=""/>
+                    </mmi:maintenanceAndUpdateFrequency>
+                    <mmi:maintenanceNote gco:nilReason="missing">
+                      <gco:CharacterString/>
+                    </mmi:maintenanceNote>
+                  </mmi:MD_MaintenanceInformation>
+                </mri:resourceMaintenance>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
+        <section name="metawalLineage">
+          <field xpath="/mdb:MD_Metadata/mdb:resourceLineage/*/mrl:statement"/>
+
+          <action type="associatedResource"
+                  name="linkToSource"
+                  process="source"/>
+
+          <field xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report[mdq:DQ_CompletenessOmission]"/>
+
+          <action type="add"
+                  name="addDQReportOnDQ_CompletenessOmission"
+                  or="report"
+                  in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                  if="count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_CompletenessOmission) = 0">
+            <template>
+              <snippet>
+                <mdq:report>
+                  <mdq:DQ_CompletenessOmission>
+                    <mdq:result>
+                      <mdq:DQ_QuantitativeResult>
+                        <mdq:value>
+                          <gco:Record></gco:Record>
+                        </mdq:value>
+                        <mdq:valueUnit>
+                          <gml:BaseUnit xmlns="http://www.opengis.net/gml/3.2" gml:id="d445811e712a1053982">
+                            <identifier codeSpace="SI">pourcents</identifier>
+                            <unitsSystem>%</unitsSystem>
+                          </gml:BaseUnit>
+                        </mdq:valueUnit>
+                        <mdq:valueRecordType>
+                          <gco:RecordType/>
+                        </mdq:valueRecordType>
+                      </mdq:DQ_QuantitativeResult>
+                    </mdq:result>
+                  </mdq:DQ_CompletenessOmission>
+                </mdq:report>
+              </snippet>
+            </template>
+          </action>
+        </section>
+      </tab>
+      <tab id="mw-access" mode="flat">
+        <section name="mw-data-access">
+          <text ref="mw-data-access-help"/>
+
+          <!-- TODO: Format may be associated with a distributor or not ? -->
+          <field name="format"
+                 xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributionFormat/mrd:MD_Format/mrd:formatSpecificationCitation"
+                 use="data-gn-keyword-picker">
+            <directiveAttributes data-thesaurus-key="external.theme.httpregistrymetawalcodelistmediatypes-media-types"
+                                 data-number-of-suggestions="200"
+                                 data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+          </field>
+
+          <action type="add"
+                  btnLabel="addAnotherFormat"
+                  or="distributionFormat"
+                  in="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution">
+            <template>
+              <snippet>
+                <mrd:distributionFormat>
+                  <mrd:MD_Format>
+                    <mrd:formatSpecificationCitation>
+                      <cit:CI_Citation>
+                        <cit:title>
+                          <gco:CharacterString></gco:CharacterString>
+                        </cit:title>
+                      </cit:CI_Citation>
+                    </mrd:formatSpecificationCitation>
+                  </mrd:MD_Format>
+                </mrd:distributionFormat>
+              </snippet>
+            </template>
+          </action>
+
+
+          <field xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo"
+                 or="referenceSystemInfo"
+                 in="/mdb:MD_Metadata"/>
+        </section>
+
+        <section name="mw-feature-catalogue">
+          <text ref="mw-feature-catalogue-help"
+                if="count(mdb:MD_Metadata/mdb:contentInfo) = 0"/>
+
+          <!--
+           TODO: Add a tab for editing the feature catalogue
+           TODO: do not display actions if a feature catalog is already set by an onlineSource
+          -->
+          <action type="associatedResource"
+                  name="addALinkToFeatureCatalogue"
+                  process="fcats"
+                  if="count(mdb:MD_Metadata/mdb:contentInfo) = 0"/>
+
+
+          <action type="add"
+                  btnLabel="addAFeatureCatalogue"
+                  or="contentInfo"
+                  in="/mdb:MD_Metadata"
+                  if="count(mdb:MD_Metadata/mdb:contentInfo) = 0">
+            <template>
+              <snippet>
+                <mdb:contentInfo>
+                  <mrc:MD_FeatureCatalogue>
+                    <mrc:featureCatalogue>
+                      <gfc:FC_FeatureCatalogue>
+                        <gfc:name gco:nilReason="missing">
+                          <gco:CharacterString/>
+                        </gfc:name>
+                        <gfc:scope gco:nilReason="missing">
+                          <gco:CharacterString/>
+                        </gfc:scope>
+                        <gfc:versionNumber gco:nilReason="missing">
+                          <gco:CharacterString/>
+                        </gfc:versionNumber>
+                        <gfc:featureType>
+                          <gfc:FC_FeatureType>
+                            <gfc:typeName>Nom de la table</gfc:typeName>
+                            <gfc:code>
+                              <gco:CharacterString>Nom de la table dans la base de données</gco:CharacterString>
+                            </gfc:code>
+                            <gfc:isAbstract>
+                              <gco:Boolean/>
+                            </gfc:isAbstract>
+                            <gfc:carrierOfCharacteristics>
+                              <gfc:FC_FeatureAttribute>
+                                <gfc:memberName>Nom de l'attribut</gfc:memberName>
+                                <gfc:definition gco:nilReason="missing">
+                                  <gco:CharacterString/>
+                                </gfc:definition>
+                                <gfc:cardinality>
+                                  <gco:CharacterString>0..1</gco:CharacterString>
+                                </gfc:cardinality>
+                                <gfc:valueType>
+                                  <gco:TypeName>
+                                    <gco:aName>
+                                      <gco:CharacterString>CHARACTER</gco:CharacterString>
+                                    </gco:aName>
+                                  </gco:TypeName>
+                                </gfc:valueType>
+                              </gfc:FC_FeatureAttribute>
+                            </gfc:carrierOfCharacteristics>
+                            <gfc:featureCatalogue/>
+                          </gfc:FC_FeatureType>
+                        </gfc:featureType>
+                      </gfc:FC_FeatureCatalogue>
+                    </mrc:featureCatalogue>
+                  </mrc:MD_FeatureCatalogue>
+                </mdb:contentInfo>
+              </snippet>
+            </template>
+          </action>
+
+        </section>
+
+        <section name="constraints">
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints"/>
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"/>
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:otherConstraints"/>
+
+
+          <!-- TODO: Probably provide a add action to add a default value if none defined. -->
+        </section>
+
+        <section name="mw-data-online-access">
+          <text ref="mw-data-online-access-help"/>
+
+          <field
+            xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributionFormat/mrd:MD_Format/mrd:formatDistributor/mrd:MD_Distributor/mrd:distributionOrderProcess"
+            or="distributionOrderProcess"
+            in="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributionFormat/mrd:MD_Format/mrd:formatDistributor/mrd:MD_Distributor"/>
+
+          <action type="associatedResource"
+                  name="linkToService"
+                  process="service"/>
+
+          <action type="associatedResource"
+                  process="onlinesrc"/>
+        </section>
+      </tab>
+      <tab id="mw-content" mode="flat">
+        <!-- TODO: Do not display tab if a service -->
+        <section xpath="/mdb:MD_Metadata/mdb:contentInfo"/>
+      </tab>
+      <tab id="mw-contact" mode="flat">
+        <!-- View all type of contacts and
+        allows to add one if not present with or and in attribute and
+        allows adding more than one by adding flatModeException.
+        -->
+        <section name="mw-access-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributor"
+                 or="distributor"
+                 in="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution"/>
+        </section>
+
+        <section name="mw-data-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact"
+                 in="pointOfContact"
+                 or="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
+        </section>
+
+        <section name="mw-metadata-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:contact"
+                 or="contact"
+                 in="/mdb:MD_Metadata"/>
+
+          <!-- TODO: Add a suggestion for this !!-->
+          <action type="add"
+                  btnLabel="iamthecontact"/>
+        </section>
+
+      </tab>
+      <tab id="mw-inspire" mode="flat"
+           displayIfRecord="count(//mri:keyword/*[. = 'Reporting INSPIRE']) = 1">
+        <section name="inspiremainsection">
+          <field name="keywordsInpire"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[contains(*/mri:thesaurusName/cit:CI_Citation/cit:title/gco:CharacterString,'INSPIRE themes')]"/>
+
+          <section name="conformityInpire">
+            <!-- TODO: That is not enough, a add action needs to be added to provide a default report. -->
+            <field xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report[
+                              .//mdq:specification/*/cit:title/gco:CharacterString[contains(text(), '1089/2010')]
+                              ]"/>
+
+            <action type="add"
+                    btnLabel="isINSPIREConform"
+                    btnClass="fa fa-thumbs-o-up text-success"
+                    or="report"
+                    in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                    if="count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
+                              .//mdq:specification/*/cit:title/gco:CharacterString[contains(text(), '1089/2010')]
+                              ]) = 0">
+              <template>
+                <snippet>
+                  <mdq:report>
+                    <mdq:DQ_DomainConsistency>
+                      <mdq:result>
+                        <mdq:DQ_ConformanceResult>
+                          <mdq:specification>
+                            <cit:CI_Citation>
+                              <cit:title>
+                                <gco:CharacterString>RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques
+                                </gco:CharacterString>
+                              </cit:title>
+                            </cit:CI_Citation>
+                          </mdq:specification>
+                          <mdq:explanation gco:nilReason="missing">
+                            <gco:CharacterString/>
+                          </mdq:explanation>
+                          <mdq:pass>
+                            <gco:Boolean>true</gco:Boolean>
+                          </mdq:pass>
+                        </mdq:DQ_ConformanceResult>
+                      </mdq:result>
+                    </mdq:DQ_DomainConsistency>
+                  </mdq:report>
+                </snippet>
+              </template>
+            </action>
+
+            <action type="add"
+                    btnLabel="isNotINSPIREConform"
+                    btnClass="fa fa-thumbs-o-down text-danger"
+                    or="report"
+                    in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                    if="count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
+                              .//mdq:specification/*/cit:title/gco:CharacterString[contains(text(), '1089/2010')]
+                              ]) = 0">
+              <template>
+                <snippet>
+                  <mdq:report>
+                    <mdq:DQ_DomainConsistency>
+                      <mdq:result>
+                        <mdq:DQ_ConformanceResult>
+                          <mdq:specification>
+                            <cit:CI_Citation>
+                              <cit:title>
+                                <gco:CharacterString>RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</gco:CharacterString>
+                              </cit:title>
+                            </cit:CI_Citation>
+                          </mdq:specification>
+                          <mdq:explanation gco:nilReason="missing">
+                            <gco:CharacterString/>
+                          </mdq:explanation>
+                          <mdq:pass>
+                            <gco:Boolean>false</gco:Boolean>
+                          </mdq:pass>
+                        </mdq:DQ_ConformanceResult>
+                      </mdq:result>
+                    </mdq:DQ_DomainConsistency>
+                  </mdq:report>
+                </snippet>
+              </template>
+            </action>
+          </section>
+        </section>
+      </tab>
+      <flatModeExceptions>
+        <for name="mri:descriptiveKeywords"/>
+        <for name="mri:topicCategory"/>
+        <for name="mrd:distributor"/>
+        <for name="gfc:carrierOfCharacteristics"/>
+        <for name="gfc:listedValue"/>
+        <for name="mri:pointOfContact"/>
+        <for name="mdb:contact"/>
+        <for name="mrd:distributorContact"/>
+        <for name="mcc:processor"/>
+      </flatModeExceptions>
+      <thesaurusList>
+        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.themes_geoportail_wallon" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.Themes_geoportail_wallon" transformations="to-iso19115-3.2018-keyword"/>
+      </thesaurusList>
+    </view>
 
     <view name="advanced">
       <sidePanel>
@@ -477,6 +1614,1369 @@
       mdb:distributionInfo/mrd:MD_Distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions
       -->
       <tab id="dataQualityInfo">
+        <section>
+          <action type="add"
+                  btnLabel="inspireConformity"
+                  or="report"
+                  in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                  if="count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
+                                .//mdq:specification/*/cit:title/*[contains(text(), '1089/2010')]
+                                ]) = 0">
+            <template>
+              <snippet label="notEvaluated">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2010/1089/2014-12-31">RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</gcx:Anchor>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2010-12-08</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass gco:nilReason="unknown"/>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+
+              <snippet label="conformant">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2010/1089/2014-12-31">RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</gcx:Anchor>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2010-12-08</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+
+              <snippet label="notConformant">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2010/1089/2014-12-31">RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</gcx:Anchor>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2010-12-08</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>false</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+            </template>
+          </action>
+
+
+          <action type="add"
+                  btnLabel="inspireNetworkService"
+                  or="report"
+                  in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                  if="count(mdb:MD_Metadata/*/srv:SV_ServiceIdentification) > 0 and count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
+                                .//mdq:specification/*/cit:title/*[contains(text(), '976/2009')]
+                                ]) = 0">
+            <template>
+              <snippet label="notEvaluated">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification xlink:href="http://inspire.ec.europa.eu/id/citation/ir/reg-976-2009">
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2009/976">Règlement (CE) n o 976/2009 de la Commission du 19 octobre 2009 portant modalités d’application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne les services en réseau</gcx:Anchor>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2009-10-19</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass gco:nilReason="unknown"/>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+
+              <snippet label="conformant">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification xlink:href="http://inspire.ec.europa.eu/id/citation/ir/reg-976-2009">
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2009/976">Règlement (CE) n o 976/2009 de la Commission du 19 octobre 2009 portant modalités d’application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne les services en réseau</gcx:Anchor>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2009-10-19</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+
+              <snippet label="notConformant">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification xlink:href="http://inspire.ec.europa.eu/id/citation/ir/reg-976-2009">
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2009/976">Règlement (CE) n o 976/2009 de la Commission du 19 octobre 2009 portant modalités d’application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne les services en réseau</gcx:Anchor>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2009-10-19</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                       codeListValue="publication"/>
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>false</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+            </template>
+          </action>
+
+
+          <action type="add"
+                  btnLabel="inspireDataSpecConformity"
+                  or="report"
+                  in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
+                  if="count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
+                                .//mdq:specification/*/cit:title/*[contains(text(), 'INSPIRE Data Specification')]
+                                ]) = 0">
+            <template>
+              <snippet label="dataSpecAD">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Addresses - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecAU">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Administrative units - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecCP">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Cadastral parcels - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecRS">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Coordinate reference systems - Guidelines v 3.2.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecGG">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Geographical grid systems - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecAU">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Administrative units - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecGN">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Geographical names - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecHY">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Hydrography - Guidelines v 3.1.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecPS">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Protected Sites - Guidelines v 3.2.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecTN">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Transport Networks - Guidelines v 3.2.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2014-04-17</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecEL">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Elevation - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecGE">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Geology - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecLC">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Land Cover - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecOI">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Orthoimagery - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecAF">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Agricultural and Aquaculture Facilities - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecAM">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecAC">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecBR">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Bio-geographical Regions - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecBU">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Buildings - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecER">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Energy Resources - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecEF">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Environmental Monitoring Facilities - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecHB">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Habitats and Biotopes - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecHH">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Human Health and Safety - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecLU">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Land Use - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecMR">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Mineral Resources - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecNZ">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Natural Risk Zones - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecOF">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Oceanographic geographical features - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecPF">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Production and Industrial Facilities - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecPD">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Population Distribution - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecSR">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Sea Regions - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecSO">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Soil - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecSD">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Species Distribution - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecSU">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Statistical Units - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+              <snippet label="dataSpecUS">
+                <mdq:report>
+                  <mdq:DQ_DomainConsistency>
+                    <mdq:result>
+                      <mdq:DQ_ConformanceResult>
+                        <mdq:specification>
+                          <cit:CI_Citation>
+                            <cit:title>
+                              <gco:CharacterString>INSPIRE Data Specification on Utility and Government Services - Guidelines v 3.0.0</gco:CharacterString>
+                            </cit:title>
+                            <cit:date>
+                              <cit:CI_Date>
+                                <cit:date>
+                                  <gco:Date>2013-12-10</gco:Date>
+                                </cit:date>
+                                <cit:dateType>
+                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
+                                </cit:dateType>
+                              </cit:CI_Date>
+                            </cit:date>
+                          </cit:CI_Citation>
+                        </mdq:specification>
+                        <mdq:explanation>
+                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
+                        </mdq:explanation>
+                        <mdq:pass>
+                          <gco:Boolean>true</gco:Boolean>
+                        </mdq:pass>
+                      </mdq:DQ_ConformanceResult>
+                    </mdq:result>
+                  </mdq:DQ_DomainConsistency>
+                </mdq:report>
+              </snippet>
+            </template>
+          </action>
+        </section>
+
         <section xpath="/mdb:MD_Metadata/mdb:dataQualityInfo" or="dataQualityInfo"
                  in="/mdb:MD_Metadata"/>
       </tab>
@@ -498,6 +2998,196 @@
                  or="spatialRepresentationInfo" in="/mdb:MD_Metadata"/>
       </tab>
       <tab id="referenceSystemInfo">
+        <section>
+          <action type="add"
+                  btnLabel="addCrs"
+                  name="referenceSystemInfo" or="referenceSystemInfo"
+                  in="/mdb:MD_Metadata">
+            <template>
+              <snippet label="addCrs31370">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/31370">EPSG:31370</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>Belge 1972 / Belgian Lambert 72 (EPSG:31370)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs21500">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/21500">EPSG:21500</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>Belge 1950 (Brussels) / Belge Lambert 50 (EPSG:21500)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs4258">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/4258">EPSG:4258</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>ETRS89 (EPSG:4258)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs3035">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/3035">EPSG:3035</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>ETRS89 / LAEA Europe (EPSG:3035)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs3812">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/3812">EPSG:3812</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>ETRS89 / Belgian Lambert 2008 (EPSG:3812)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs5710">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/5710">EPSG:5710</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>Ostend height (EPSG:5710)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="vertical"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs4326">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/4326">EPSG:4326</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>WGS 84 (EPSG:4326)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="geodeticGeographic2D"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs3857">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/3857">EPSG:3857</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>WGS 84 / Pseudo-Mercator (EPSG:3857)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+              <snippet label="addCrs2154">
+                <mdb:referenceSystemInfo>
+                  <mrs:MD_ReferenceSystem>
+                    <mrs:referenceSystemIdentifier>
+                      <mcc:MD_Identifier>
+                        <mcc:code>
+                          <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/2154">EPSG:2154</gcx:Anchor>
+                        </mcc:code>
+                        <mcc:description>
+                          <gco:CharacterString>RGF93 / Lambert-93 (EPSG:2154)</gco:CharacterString>
+                        </mcc:description>
+                      </mcc:MD_Identifier>
+                    </mrs:referenceSystemIdentifier>
+                    <mrs:referenceSystemType>
+                      <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_ReferenceSystemTypeCode"
+                                                      codeListValue="projected"/>
+                    </mrs:referenceSystemType>
+                  </mrs:MD_ReferenceSystem>
+                </mdb:referenceSystemInfo>
+              </snippet>
+            </template>
+          </action>
+
+        </section>
         <section xpath="/mdb:MD_Metadata/mdb:referenceSystemInfo" or="referenceSystemInfo"
                  in="/mdb:MD_Metadata"/>
       </tab>
@@ -544,10 +3234,20 @@
         <section xpath="/mdb:MD_Metadata/mdb:applicationSchemaInfo" or="applicationSchemaInfo"
                  in="/mdb:MD_Metadata"/>
       </tab>
+
       <thesaurusList>
-        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
+                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.Themes_geoportail_wallon" transformations="to-iso19115-3.2018-keyword"/>
       </thesaurusList>
     </view>
     <view name="xml">
@@ -573,7 +3273,8 @@
              xpath="mdb:identificationInfo/*/
                       mri:citation/*/cit:title"
              indexField="title">
-        <template><![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
+        <template>
+          <![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
       </field>
 
       <!-- Insert a new keyword in the first gmd:descriptiveKeywords found.
@@ -586,7 +3287,8 @@
                       mri:descriptiveKeywords/*/mri:keyword"
              indexField="keyword"
              insertMode="gn_create">
-        <template><![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
+        <template>
+          <![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
       </field>
 
       <!-- Insert a new topic category
@@ -599,7 +3301,8 @@
              codelist="mri:MD_TopicCategoryCode"
              indexField="topicCat"
              insertMode="gn_create">
-        <template><![CDATA[<mri:MD_TopicCategoryCode xmlns:mri='http://standards.iso.org/iso/19115/-3/mri/1.0'>{{value}}</mri:MD_TopicCategoryCode>]]></template>
+        <template>
+          <![CDATA[<mri:MD_TopicCategoryCode xmlns:mri='http://standards.iso.org/iso/19115/-3/mri/1.0'>{{value}}</mri:MD_TopicCategoryCode>]]></template>
       </field>
 
       <!-- Insert a new extent
@@ -618,7 +3321,8 @@
              use="data-gn-language-picker"
              insertMode="gn_replace"
              removable="true">
-        <template><![CDATA[<lan:LanguageCode xmlns:lan='http://standards.iso.org/iso/19115/-3/lan/1.0' codeListValue='{{value}}'/>]]></template>
+        <template>
+          <![CDATA[<lan:LanguageCode xmlns:lan='http://standards.iso.org/iso/19115/-3/lan/1.0' codeListValue='{{value}}'/>]]></template>
       </field>
 
 
@@ -629,7 +3333,8 @@
              codelist="mcc:MD_ProgressCode"
              insertMode="gn_replace"
              removable="true">
-        <template><![CDATA[<mcc:MD_ProgressCode xmlns:mcc='http://standards.iso.org/iso/19115/-3/mcc/1.0' codeListValue='{{value}}'/>]]></template>
+        <template>
+          <![CDATA[<mcc:MD_ProgressCode xmlns:mcc='http://standards.iso.org/iso/19115/-3/mcc/1.0' codeListValue='{{value}}'/>]]></template>
       </field>
     </section>
 
@@ -645,7 +3350,8 @@
              codelist="mco:MD_RestrictionCode"
              insertMode="gn_create"
              removable="true">
-        <template><![CDATA[<mco:MD_RestrictionCode xmlns:mco='http://standards.iso.org/iso/19115/-3/mco/1.0' codeListValue='{{value}}'/>]]></template>
+        <template>
+          <![CDATA[<mco:MD_RestrictionCode xmlns:mco='http://standards.iso.org/iso/19115/-3/mco/1.0' codeListValue='{{value}}'/>]]></template>
       </field>
 
       <!-- Insert a new other contraints
@@ -658,7 +3364,8 @@
              use="textarea"
              insertMode="gn_create"
              removable="true">
-        <template><![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
+        <template>
+          <![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
       </field>
     </section>
 
@@ -672,7 +3379,8 @@
              use="textarea"
              insertMode="gn_replace"
              removable="true">
-        <template><![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
+        <template>
+          <![CDATA[<gco:CharacterString xmlns:gco='http://standards.iso.org/iso/19115/-3/gco/1.0'>{{value}}</gco:CharacterString>]]></template>
       </field>
     </section>
 
@@ -696,7 +3404,8 @@
              xpath="mdb:defaultLocale/lan:PT_Locale/lan:language"
              use="data-gn-language-picker"
              removable="true">
-        <template><![CDATA[<lan:LanguageCode xmlns:lan='http://standards.iso.org/iso/19115/-3/lan/1.0' codeListValue='{{value}}'/>]]></template>
+        <template>
+          <![CDATA[<lan:LanguageCode xmlns:lan='http://standards.iso.org/iso/19115/-3/lan/1.0' codeListValue='{{value}}'/>]]></template>
       </field>
     </section>
   </batchEditing>
