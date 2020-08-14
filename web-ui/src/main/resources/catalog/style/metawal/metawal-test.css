@@ -36,13 +36,17 @@ h3 {
 }
 
 #top-spw-global a.portail-walloniebe {
-    color: #a2a2a2;
+  color: #EE233A;
     padding: 0 20px 2px 0;
     margin: 11px 20px 0 0;
-    border-right: #424242 1px solid;
+    #border-right: #424242 1px solid;
     float: left;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+#top-spw-global a.portail-walloniebe a:hover {
+  cursor: default;
 }
 
 #top-spw-global a {
@@ -61,8 +65,8 @@ a {
 #header_spw {
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: #2D5E6F;
-    background-image: url('images/bg_header_repeat.png');
+    #background-color: #2D5E6F;
+    #background-image: url('images/bg_header_repeat.png');
     background-origin: padding-box;
     background-position: center top;
     background-repeat: repeat-x;
@@ -77,8 +81,9 @@ a {
 #header_spw .container_16 {
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: transparent;
-    background-image: url('images/bg_header.png');
+    #background-color: transparent;
+    background-color: #f1f1f1;
+    #background-image: url('images/bg_header.png');
     background-origin: padding-box;
     background-position: center top;
     background-repeat: no-repeat;
@@ -89,14 +94,14 @@ a {
 .container_16 {
     margin-left: auto;
     margin-right: auto;
-    width: 960px;
+    width: 1170px;
     display: block;
 }
 
 #header_spw .container_16 .header_spw {
     width: 960px;
     margin: 0 auto;
-    height: 107px;
+    height: 130px;
 }
 
 .container_16 .grid_10 {
@@ -123,9 +128,25 @@ a {
     padding-top: 22px;
 }
 
-#header_spw #header_spw-col1 .geoLink {
-    text-decoration: none;
-    font-size: 20px;
+.sprite-rooster-red-big{
+  height: 83px;
+  width: 80px;
+  background: url("images/rw-sprite-icons.png") repeat scroll -413px -218px;
+  float: left;
+}
+
+#header_spw #header_spw-col1 .title {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 26px;
+  padding-left: 15px;
+}
+#header_spw #header_spw-col1 .subTitle {
+  text-decoration: none;
+  font-size: 20px;
+  color: #3e8ba6;
+  font-weight: normal;
+  padding-left: 15px;
 }
 
 .header_spw-col1noprint p a span {
@@ -145,7 +166,7 @@ a {
     text-decoration-color: -moz-use-text-color;
     text-decoration: none;
     text-decoration-style: solid;
-    color: #FFFFFF;
+    color: #2b2b2b;
     line-height: 160%;
 }
 
@@ -172,7 +193,7 @@ a {
     text-transform: uppercase;
     padding: 0 20px 2px 0;
     margin: 11px 20px 0 0;
-    border-right: #424242 1px solid;
+    #border-right: #424242 1px solid;
 }
 
 #top-spw-global a.geoportail-de-la-wallonie {
