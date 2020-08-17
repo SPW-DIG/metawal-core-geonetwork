@@ -269,12 +269,12 @@ goog.require('gn_alert');
                       'query': '+tag:PanierTelechargementGeoportail'
                     }
                   },
-                  'walonmap': {
+                  'Webservice REST': {
                     'query_string': {
                       'query': '+linkProtocol:"ESRI:REST"'
                     }
                   },
-                  'thematicmap': {
+                  'WMS': {
                     'query_string': {
                       'query': '+linkProtocol:"OGC:WMS"'
                     }
