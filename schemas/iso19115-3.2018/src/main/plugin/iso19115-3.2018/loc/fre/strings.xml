@@ -68,7 +68,7 @@
   </add-extent-from-geokeywordsHelp>
 
   <!-- METAWAL basic form-->
-  <metawalbasicform>MW formulaire basique</metawalbasicform>
+  <metawalbasicform>Informations générales</metawalbasicform>
   <mwbf-mainInfo>Information</mwbf-mainInfo>
   <mwbf-title>Titre</mwbf-title>
   <mwbf-representationType>Type de représentation spatiale</mwbf-representationType>
@@ -76,26 +76,51 @@
   <mwbf-lineage>Généalogie</mwbf-lineage>
   <mwbf-keywords>Mots clés</mwbf-keywords>
   <mwbf-dateinfo>Mise à jour et maintenance</mwbf-dateinfo>
-  <mwbf-constraints>Contraintes</mwbf-constraints>
+  <mwbf-otherConstraints>Description</mwbf-otherConstraints>
+  <mwbf-constraints>Conditions d’accès et d’utilisation</mwbf-constraints>
   <mwbf-access-contact>Contact relatif à la distribution</mwbf-access-contact>
   <mwbf-data-contact>Contact relatif à la ressource</mwbf-data-contact>
   <mwbf-metadata-contact>Contact relatif à la métadonnée</mwbf-metadata-contact>
+  <mwbf-add-contact>Ajouter un contact</mwbf-add-contact>
   <mwbf-sidepanelhelp>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
         <div class="alert alert-info">
-          Introduire les bonnes pratiques pour remplir le champs de la métadonnée lié aux ressources en ligne associées
+          La ressource associée correspond à un lien mis en avant sur la fiche de métadonnée. Cela peut, par exemple, être un site internet apportant des informations complémentaires sur la ressource.
         </div>
       </div>
     </div>
   </mwbf-sidepanelhelp>
+  <mwbf-contactResourceHelp>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        <div class="alert alert-info">
+          Le point de contact correspond à l’organisme que l’utilisateur peut contacter pour des questions générales sur la ressource diffusée. Le gestionnaire est l’organisme qui s’est chargé de la création de la donnée et qui peut donc répondre aux éventuelles questions concernant la ressource en elle-même. Le propriétaire est l’organisme à qui appartient la ressource, par défaut le Service Public de Wallonie. Dans des cas particuliers, il est possible, à la demande de rajouter un propriétaire. La forme à privilégier pour les organisations est de type SPW – DG – Direction. Les adresses mails doivent être si possible générique et pas nominative.
+        </div>
+      </div>
+    </div>
+  </mwbf-contactResourceHelp>
+  <mwbf-contactMetadataHelp>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        <div class="alert alert-info">
+          Le point de contact des métadonnées correspond à l’organisme en charge de la documentation. Il s’agit donc du rédacteur de la documentation.
+        </div>
+      </div>
+    </div>
+  </mwbf-contactMetadataHelp>
   <mwbf-abstracthelp>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
         <div class="alert alert-info">
-          Introduire les bonnes pratiques pour remplir le champs de la métadonnée liéessourc à l'accroche et au résumé
+          L’accroche est le texte qui apparaitra en premier et qui sera mis en évidence avant même l’ouverture de la fiche. Elle doit permettre à l’utilisateur de comprendre très rapidement quelle ressource est documentée par cette fiche. Elle se limite à une phrase et 160 caractères.
+          <br/>
+          <br/>
+          Le résumé détaillé est le texte le plus important de la fiche. Il décrit la ressource plus en détail. L'objectif est de définir l’élément documenté et le contexte dans lequel il est diffusé.
         </div>
       </div>
     </div>
@@ -105,17 +130,27 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
         <div class="alert alert-info">
-          Introduire les bonnes pratiques pour remplir le champs de la métadonnée lié à la généalogie
+          Cette partie est dédiée à la méthodologie. En quelque phrases, de quelle manière vous avez produit l’élément documenté en insistant sur les aspects liés à la cartographie (géoréférencement, traitement GIS, méthode d’enregistrements des données, etc.).
         </div>
       </div>
     </div>
   </mwbf-lineagehelp>
+  <mwbf-creationDateHelp>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        <div class="alert alert-info">
+          La date de création correspond à la date à laquelle vous avez finalisé la ressource telle que vous souhaitez la diffuser. Si la ressource est mise à jour dans un second temps, une autre section de la fiche permettra d’encoder cette “date de révision” afin d’en informer l’utilisateur.
+        </div>
+      </div>
+    </div>
+  </mwbf-creationDateHelp>
   <mwbf-keywordhelp>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
         <div class="alert alert-info">
-          Introduire les bonnes pratiques pour remplir le champs de la métadonnée lié aux mots clés
+          Cette section est liée aux mots-clés “libres”. Ils permettront aux utilisateurs de trouver plus facilement votre ressource et serviront au référencement de la fiche de métadonnées. Vous pouvez favoriser les expressions en un seul mot, au singulier et en évitant un jargon technique. N’hésitez pas à utiliser des synonymes ou des termes qui ne sont pas déjà présents par ailleurs. Le nombre de mots-clés libres peut être étendu à la demande.
         </div>
       </div>
     </div>

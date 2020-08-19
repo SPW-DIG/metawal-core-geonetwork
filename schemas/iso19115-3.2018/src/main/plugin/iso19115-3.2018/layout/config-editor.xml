@@ -405,8 +405,176 @@
 
   <!-- View configuration -->
   <views>
-    <view name="default">
 
+    <view name="metawalbasicform" upAndDownControlHidden="true" class="gn-indent-colored gn-label-above-input">
+      <sidePanel>
+        <directive data-gn-overview-manager=""/>
+        <directive data-gn-onlinesrc-list=""
+                   data-config-id="simple"
+                   data-types="onlinesrc"/>
+        <text ref="mwbf-sidepanelhelp"/>
+      </sidePanel>
+      <tab id="main" default="true" mode="flat">
+
+        <section name="mwbf-mainInfo">
+          <field name="mwbf-title"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:title"/>
+          <field name="mwbf-representationType"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialRepresentationType"/>
+          <field name="mwbf-abstract"
+                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:abstract"
+                 or="abstract"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*"/>
+          <text ref="mwbf-abstracthelp"/>
+
+          <field  name="mwbf-lineage"
+                  xpath="/mdb:MD_Metadata/mdb:resourceLineage/*/mrl:statement"/>
+          <text ref="mwbf-lineagehelp"/>
+        </section>
+
+        <section name="mwbf-keywords">
+          <!-- TODO: From thesaurus ? -->
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/*/mri:keyword"/>
+          <action type="add"
+                  btnLabel="addOtherKeyword"
+                  or="keyword"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/mri:MD_Keywords"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]) > 0">
+            <template>
+              <snippet>
+                <mri:keyword gco:nilReason="missing">
+                  <gco:CharacterString/>
+                </mri:keyword>
+              </snippet>
+            </template>
+          </action>
+          <text ref="mwbf-keywordhelp"/>
+        </section>
+
+        <section name="mwbf-dateinfo">
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:date[*/cit:dateType/*/@codeListValue = 'creation']"
+                 or="date"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*"/>
+
+          <text ref="mwbf-creationDateHelp"/>
+
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance/*/mmi:maintenanceAndUpdateFrequency"/>
+        </section>
+
+        <section name="mwbf-constraints">
+          <!-- TODO: Action with CGU/...-->
+          <!--<field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints"/>
+          <field
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"/>-->
+          <field
+            name="mwbf-otherConstraints"
+            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:otherConstraints"/>
+        </section>
+
+        <!--<section name="mwbf-access-contact">
+          <field xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributor"
+                 or="distributor"
+                 in="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution"/>
+        </section>-->
+
+        <section>
+          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact"
+                 or="pointOfContact"
+                 in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"
+                 />
+
+          <action type="add"
+                  btnLabel="mwbf-add-contact"
+                  btnClass="fa fa-plus"
+                  or="pointOfContact"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification">
+            <template>
+              <snippet>
+                <mri:pointOfContact>
+                  <cit:CI_Responsibility>
+                    <cit:role>
+                      <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                                       codeListValue="pointOfContact"/>
+                    </cit:role>
+                    <cit:party>
+                      <cit:CI_Organisation>
+                        <cit:name>
+                          <gco:CharacterString></gco:CharacterString>
+                        </cit:name>
+                        <cit:contactInfo>
+                          <cit:CI_Contact>
+                            <cit:address>
+                              <cit:CI_Address>
+                                <cit:electronicMailAddress>
+                                  <gco:CharacterString></gco:CharacterString>
+                                </cit:electronicMailAddress>
+                              </cit:CI_Address>
+                            </cit:address>
+                          </cit:CI_Contact>
+                        </cit:contactInfo>
+                      </cit:CI_Organisation>
+                    </cit:party>
+                  </cit:CI_Responsibility>
+                </mri:pointOfContact>
+              </snippet>
+            </template>
+          </action>
+          <text ref="mwbf-contactResourceHelp"/>
+        </section>
+
+        <section>
+          <field xpath="/mdb:MD_Metadata/mdb:contact"
+                 or="contact"
+                 in="/mdb:MD_Metadata"/>
+
+          <action type="add"
+                  btnLabel="mwbf-add-contact"
+                  btnClass="fa fa-plus"
+                  or="contact"
+                  in="/mdb:MD_Metadata">
+            <template>
+              <snippet>
+                <mdb:contact>
+                  <cit:CI_Responsibility>
+                    <cit:role>
+                      <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                                       codeListValue="pointOfContact"/>
+                    </cit:role>
+                    <cit:party>
+                      <cit:CI_Organisation>
+                        <cit:name>
+                          <gco:CharacterString></gco:CharacterString>
+                        </cit:name>
+                        <cit:contactInfo>
+                          <cit:CI_Contact>
+                            <cit:address>
+                              <cit:CI_Address>
+                                <cit:electronicMailAddress>
+                                  <gco:CharacterString></gco:CharacterString>
+                                </cit:electronicMailAddress>
+                              </cit:CI_Address>
+                            </cit:address>
+                          </cit:CI_Contact>
+                        </cit:contactInfo>
+                      </cit:CI_Organisation>
+                    </cit:party>
+                  </cit:CI_Responsibility>
+                </mdb:contact>
+              </snippet>
+            </template>
+          </action>
+
+          <text ref="mwbf-contactMetadataHelp"/>
+        </section>
+      </tab>
+      <flatModeExceptions>
+      </flatModeExceptions>
+    </view>
+
+
+    <view name="default">
       <sidePanel>
         <directive data-gn-validation-report=""/>
         <directive data-gn-onlinesrc-list=""/>
@@ -478,91 +646,6 @@
         <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
                    transformations="to-iso19115-3.2018-keyword-with-anchor"/>
       </thesaurusList>
-    </view>
-
-    <view name="metawalbasicform" upAndDownControlHidden="true" class="gn-indent-colored gn-label-above-input">
-      <sidePanel>
-        <directive data-gn-overview-manager=""/>
-        <directive data-gn-onlinesrc-list="" data-types="onlinesrc"/>
-        <text ref="mwbf-sidepanelhelp"/>
-      </sidePanel>
-      <tab id="main" default="true" mode="flat">
-
-        <section name="mwbf-mainInfo">
-          <field name="mwbf-title"
-                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:title"/>
-          <field name="mwbf-representationType"
-                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialRepresentationType"/>
-          <field name="mwbf-abstract"
-                 xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:abstract"
-                 or="abstract"
-                 in="/mdb:MD_Metadata/mdb:identificationInfo/*"/>
-          <text ref="mwbf-abstracthelp"/>
-
-          <field  name="mwbf-lineage"
-                  xpath="/mdb:MD_Metadata/mdb:resourceLineage/*/mrl:statement"/>
-          <text ref="mwbf-lineagehelp"/>
-        </section>
-
-        <section name="mwbf-keywords">
-          <!-- TODO: From thesaurus ? -->
-          <field
-            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/*/mri:keyword"/>
-          <action type="add"
-                  btnLabel="addOtherKeyword"
-                  or="keyword"
-                  in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]/mri:MD_Keywords"
-                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[not(*/mri:thesaurusName)]) > 0">
-            <template>
-              <snippet>
-                <mri:keyword gco:nilReason="missing">
-                  <gco:CharacterString/>
-                </mri:keyword>
-              </snippet>
-            </template>
-          </action>
-          <text ref="mwbf-keywordhelp"/>
-        </section>
-
-        <section name="mwbf-dateinfo">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:date"
-                 or="date"
-                 in="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*"/>
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceMaintenance/*/mmi:maintenanceAndUpdateFrequency"/>
-        </section>
-
-        <section name="mwbf-constraints">
-          <!-- TODO: Action with CGU/...-->
-          <field
-            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:accessConstraints"/>
-          <field
-            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:useConstraints"/>
-          <field
-            xpath="/mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:otherConstraints"/>
-        </section>
-
-        <section name="mwbf-access-contact">
-          <field xpath="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution/mrd:distributor"
-                 or="distributor"
-                 in="/mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution"/>
-        </section>
-
-        <section name="mwbf-data-contact">
-          <field xpath="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:pointOfContact"
-                 in="pointOfContact"
-                 or="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification"/>
-        </section>
-
-        <section name="mwbf-metadata-contact">
-          <field xpath="/mdb:MD_Metadata/mdb:contact"
-                 or="contact"
-                 in="/mdb:MD_Metadata"/>
-
-          <!-- TODO: Add a suggestion for this !!-->
-          <action type="add"
-                  btnLabel="iamthecontact"/>
-        </section>
-      </tab>
     </view>
 
     <view name="metawal" upAndDownControlHidden="true">

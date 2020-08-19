@@ -1,0 +1,51 @@
+{
+  "config": {
+    "display": "select",
+    "types": [
+      {
+        "group": "onlineDiscover",
+        "label": "onlineDiscoverThumbnail",
+        "sources": {
+          "filestore": true,
+          "thumbnailMaker": true
+        },
+        "icon": "fa gn-icon-thumbnail",
+        "fileStoreFilter": "*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF}",
+        "process": "thumbnail-add",
+        "fields": {
+          "url": {
+            "isMultilingual": false,
+            "param": "thumbnail_url"
+          },
+          "name": {
+            "param": "thumbnail_desc"
+          }
+        }
+      },
+      {
+        "group": "onlineMore",
+        "label": "onlineMoreWWW",
+        "copyLabel": "name",
+        "icon": "fa gn-icon-onlinesrc",
+        "process": "onlinesrc-add",
+        "fields": {
+          "url": {
+            "isMultilingual": false
+          },
+          "protocol": {
+            "value": "WWW:LINK",
+            "hidden": true,
+            "isMultilingual": false
+          },
+          "name": {},
+          "desc": {},
+          "function": {
+            "value": "information",
+            "hidden": true,
+            "isMultilingual": false
+          }
+        }
+      }
+    ]
+  }
+}
