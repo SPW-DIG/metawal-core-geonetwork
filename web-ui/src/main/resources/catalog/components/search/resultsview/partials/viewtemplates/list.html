@@ -51,7 +51,7 @@
         </div>
         <div class="col-lg-4 col-md-3 col-sm-3">
           <div class="gn-md-contact">
-            <p data-ng-repeat="c in ::md.getAllContacts().resource | limitTo: 4 track by $index">
+            <p data-ng-repeat="c in ::md.getAllContacts().resource | limitTo: 3 track by $index">
               <img data-ng-if="::c.logo"
                     data-ng-src="{{::c.logo}}"
                     class="gn-source-logo"

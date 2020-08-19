@@ -24,7 +24,7 @@
            href="{{location.origin}}{{location.pathname}}#/metadata/{{r.id}}"
            title="{{('link-' + type) | translate}} > -{{r.title | gnLocalized: lang}}">
           <i class="fa fa-fw gn-icon-{{type}}"></i>
-          {{r.title | gnLocalized: lang | characters:80}}
+          {{r.title | gnLocalized: lang | characters:60}}
         </a>
       </li>
       <li ng-if="relations[type].length > max && !display">
