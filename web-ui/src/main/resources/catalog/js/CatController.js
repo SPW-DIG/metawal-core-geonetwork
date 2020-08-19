@@ -269,12 +269,12 @@ goog.require('gn_alert');
                       'query': '+tag:PanierTelechargementGeoportail'
                     }
                   },
-                  'walonmap': {
+                  'Webservice REST': {
                     'query_string': {
                       'query': '+linkProtocol:"ESRI:REST"'
                     }
                   },
-                  'thematicmap': {
+                  'WMS': {
                     'query_string': {
                       'query': '+linkProtocol:"OGC:WMS"'
                     }
@@ -289,13 +289,6 @@ goog.require('gn_alert');
                 "order": {
                   "_key": "asc"
                 }
-              }
-            },
-            'custodianOrgForResource': {
-              'terms': {
-                'field': 'custodianOrgForResource',
-                'include': '.*',
-                'size': 15
               }
             },
             "codelist_status_text": {
@@ -387,13 +380,21 @@ goog.require('gn_alert');
                 "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
                 "size": 34
               }
-            }, 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
+            },
+            'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
               'terms': {
                 'field': 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree',
                 'size': 100,
                 "order" : { "_key" : "asc" }
               }
-            }
+            },
+            'custodianOrgForResource': {
+              'terms': {
+                'field': 'custodianOrgForResource',
+                'include': '.*',
+                'size': 15
+              }
+            },
           },
           'filters': {},
           'sortbyValues': [{

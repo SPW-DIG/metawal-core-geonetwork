@@ -1349,8 +1349,8 @@
 
   <properties>
     <data.dir>WEB-INF/config-db</data.dir>
-    <db.properties>WEB-INF/config-db/jdbc.properties</db.properties>
-    <!--<db.properties>file:/${geonetwork.dir}/jdbc.properties</db.properties>-->
+    <!--db.properties>WEB-INF/config-db/jdbc.properties</db.properties-->
+    <db.properties>file:${geonetwork.dir}/jdbc.properties</db.properties>
 
     <application.name>geonetwork</application.name>
     <app.properties>WEB-INF/config.properties</app.properties>
@@ -1367,15 +1367,15 @@
         GEONETWORK_DB_PASSWORD=www-data
         GEONETWORK_DB_CONNECTION_PROPERTIES=
     -->
-    <db.type>${geonetwork.db.type:postgres}</db.type>
+    <db.type>postgres</db.type>
     <!-- Instead of using db_type a specific config file can be specified -->
     <db.config.file>../config-db/${db.type}.xml</db.config.file>
-    <db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:'localhost'}</db.host>
+    <!--db.host>#{systemEnvironment['GEONETWORK_DB_HOST']?:'localhost'}</db.host>
     <db.port>#{systemEnvironment['GEONETWORK_DB_PORT']?:'5432'}</db.port>
     <db.name>#{systemEnvironment['GEONETWORK_DB_NAME']?:'~/gn'}</db.name>
     <db.username>#{systemEnvironment['GEONETWORK_DB_USERNAME']?:'www-data'}</db.username>
     <db.password>#{systemEnvironment['GEONETWORK_DB_PASSWORD']?:'www-data'}</db.password>
-    <db.connectionProperties>#{systemEnvironment['GEONETWORK_DB_CONNECTION_PROPERTIES']}</db.connectionProperties>
+    <db.connectionProperties>#{systemEnvironment['GEONETWORK_DB_CONNECTION_PROPERTIES']}</db.connectionProperties-->
 
     <db.pool.maxActive>30</db.pool.maxActive>
     <db.pool.maxIdle>10</db.pool.maxIdle>

@@ -28,7 +28,7 @@
 
   <xsl:template mode="content" match="/">
     <div class="container-fluid" data-ng-controller="GnAdminController" data-ng-show="authenticated"
-         data-ng-view="">
+         data-ng-view="" style="padding-top: 25px;">
     </div>
   </xsl:template>
 
