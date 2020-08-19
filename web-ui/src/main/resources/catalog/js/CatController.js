@@ -394,7 +394,7 @@ goog.require('gn_alert');
                 'include': '.*',
                 'size': 15
               }
-            },
+            }
           },
           'filters': {},
           'sortbyValues': [{
