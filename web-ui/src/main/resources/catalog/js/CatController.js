@@ -378,7 +378,8 @@ goog.require('gn_alert');
               'collapsed': true,
               "terms": {
                 "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
-                "size": 34
+                "size": 34,
+                "exclude": "http.*"
               }
             },
             'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
