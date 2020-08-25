@@ -534,6 +534,35 @@
           </action>
 
 
+          <action type="add"
+                  btnLabel="mwbf-add-otherconstraints"
+                  btnClass="fa fa-plus"
+                  if="count(mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:otherConstraints) = 0"
+                  or="resourceConstraints"
+                  in="/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification">
+            <template>
+              <snippet>
+                <mri:resourceConstraints>
+                  <mco:MD_LegalConstraints>
+                    <mco:useLimitation>
+                      <gco:CharacterString>Conditions d'accès et d'utilisation spécifiques</gco:CharacterString>
+                    </mco:useLimitation>
+                    <mco:useConstraints>
+                      <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode"
+                                              codeListValue="otherRestrictions"/>
+                    </mco:useConstraints>
+                    <mco:otherConstraints>
+                      <gco:CharacterString></gco:CharacterString>
+                    </mco:otherConstraints>
+                    <mco:otherConstraints/>
+                  </mco:MD_LegalConstraints>
+                </mri:resourceConstraints>
+              </snippet>
+            </template>
+          </action>
+
+
+
         </section>
 
         <!--<section name="mwbf-access-contact">
