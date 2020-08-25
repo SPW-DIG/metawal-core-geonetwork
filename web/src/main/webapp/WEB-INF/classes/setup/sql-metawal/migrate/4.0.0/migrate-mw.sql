@@ -96,3 +96,10 @@ UPDATE metadata
     SET data = REGEXP_REPLACE(data, '[a-z]{3}\/thesaurus\.download\?ref=', 'api/registries/vocabularies/', 'g')
     WHERE data LIKE '%thesaurus.download?ref=%';
 
+DELETE FROM address WHERE id NOT IN (SELECT addressid FROM useraddress);
+
+UPDATE Settings SET value='4.0.0' WHERE name='system/platform/version';
+UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
+
+--- TO be applied in test
+--UPDATE metadata SET data = replace(data, 'http://metawal.wallonie.be/geonetwork/srv/fre/csw', 'http://metawal4.test.wallonie.be/geonetwork/srv/fre/csw') WHERE data LIKE '%http://metawal.wallonie.be/geonetwork/srv/fre/csw%';
