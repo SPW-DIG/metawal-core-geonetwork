@@ -90,6 +90,8 @@
   <mwbf-access-contact>Distribution contact</mwbf-access-contact>
   <mwbf-data-contact>Data contact</mwbf-data-contact>
   <mwbf-metadata-contact>Metadata contact</mwbf-metadata-contact>
+  <mwbf-add-CGACGU>CGA/CGU</mwbf-add-CGACGU>
+  <mwbf-add-CGACGU-C>CGA/CGU + CPU de type C</mwbf-add-CGACGU-C>
   <mwbf-sidepanelhelp>
     <div class="row">
       <div class="col-sm-2"></div>

@@ -82,6 +82,8 @@
   <mwbf-data-contact>Contact relatif à la ressource</mwbf-data-contact>
   <mwbf-metadata-contact>Contact relatif à la métadonnée</mwbf-metadata-contact>
   <mwbf-add-contact>Ajouter un contact</mwbf-add-contact>
+  <mwbf-add-CGACGU>CGA/CGU</mwbf-add-CGACGU>
+  <mwbf-add-CGACGU-C>CGA/CGU + CPU de type C</mwbf-add-CGACGU-C>
   <mwbf-sidepanelhelp>
     <div class="row">
       <div class="col-sm-2"></div>
