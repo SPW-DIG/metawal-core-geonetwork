@@ -618,6 +618,7 @@
 
 
   <!-- Remove empty DQ elements, empty transfer options. -->
+  <xsl:template match="mri:associatedResource[count(*) = 0 and count(@*) = 0]"/>
   <xsl:template match="mdb:dataQualityInfo[count(*) = 0]"/>
   <xsl:template match="mrd:transferOptions[mrd:MD_DigitalTransferOptions/count(*) = 0]"/>
 
