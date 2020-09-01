@@ -564,22 +564,6 @@ goog.require('gn_alert');
                 }
               }
             },
-            'officialData': {
-              'filters': {
-                'filters': {
-                    // 'officialResourceWallone': {
-                    //   'query_string': {
-                    //     'query': '+tag:"Ressource officielle wallonne"'
-                    //   }
-                    // },
-                    'officialResourceINSPIRE': {
-                      'query_string': {
-                        'query': '+tag:"Reporting INSPIRE"'
-                      }
-                  }
-                }
-              }
-            },
             'isPublishedToAll': {
               'terms': {
                 'field': 'isPublishedToAll',
@@ -597,38 +581,26 @@ goog.require('gn_alert');
                       'query': '+tag:PanierTelechargementGeoportail'
                     }
                   },
-                  'walonmap': {
+                  'Webservice REST': {
                     'query_string': {
                       'query': '+linkProtocol:"ESRI:REST"'
                     }
                   },
-                  'thematicmap': {
+                  'WMS': {
                     'query_string': {
-                      'query': '+codelist_function:browsing'
+                      'query': '+linkProtocol:"OGC:WMS"'
                     }
                   }
                 }
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": {
+            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree": {
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon",
+                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree",
                 "size": 40,
                 "order": {
                   "_key": "asc"
                 }
-              }
-            },
-            'schema': {
-              'terms': {
-                'field': 'schema',
-                'size': 10
-              }
-            },
-            'OrgForResource': {
-              'terms': {
-                'field': 'OrgForResource',
-                'size': 15
               }
             },
             "codelist_status_text": {
@@ -644,6 +616,7 @@ goog.require('gn_alert');
               }
             },
             "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+              'userHasRole': 'isEditorOrMore',
               "terms": {
                 "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
                 "size": 20,
@@ -652,31 +625,51 @@ goog.require('gn_alert');
                 }
               }
             },
+            // "resolutionScaleDenominator": {
+            //   "terms": {
+            //     "field": "resolutionScaleDenominator",
+            //     "size": 20,
+            //     "order": {
+            //       "_key": "asc"
+            //     }
+            //   }
+            // },
             "resolutionScaleDenominator": {
-              "terms": {
+              'collapsed': true,
+              "histogram": {
                 "field": "resolutionScaleDenominator",
-                "size": 20,
-                "order": {
-                  "_key": "asc"
-                }
+                "interval": 10000,
+                "keyed" : true,
+                'min_doc_count': 1
               }
             },
-            "serviceType": {
-              "terms": {
-                "field": "serviceType",
-                "size": 10
-              }
-            },
+            // "serviceType": {
+            //   'collapsed': true,
+            //   "terms": {
+            //     "field": "serviceType",
+            //     "size": 10
+            //   }
+            // },
             "creationYearForResource": {
-              "terms": {
+              'collapsed': true,
+              "histogram": {
                 "field": "creationYearForResource",
-                "size": 10,
-                "order": {
-                  "_key": "desc"
-                }
+                "interval": 5,
+                "keyed" : true,
+                'min_doc_count': 1
               }
             },
+            // "creationYearForResource": {
+            //   "terms": {
+            //     "field": "creationYearForResource",
+            //     "size": 10,
+            //     "order": {
+            //       "_key": "desc"
+            //     }
+            //   }
+            // },
             "topic_text": {
+              'collapsed': true,
               "terms": {
                 "field": "topic_text",
                 "size": 20
@@ -694,9 +687,37 @@ goog.require('gn_alert');
               }
             },
             "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+              'collapsed': true,
               "terms": {
                 "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
-                "size": 34
+                "size": 34,
+                "exclude": "http.*"
+              }
+            },
+            'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
+              'terms': {
+                'field': 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree',
+                'size': 100,
+                "order" : { "_key" : "asc" }
+              }
+            },
+            'custodianOrgForResource': {
+              'terms': {
+                'field': 'custodianOrgForResource',
+                'include': '.*',
+                'size': 15
+              }
+            },
+            'schema': {
+              'terms': {
+                'field': 'schema',
+                'size': 10
+              }
+            },
+            "codelist_status_text": {
+              "terms": {
+                "field": "codelist_status_text",
+                "size": 20
               }
             },
             'groupPublished': {
