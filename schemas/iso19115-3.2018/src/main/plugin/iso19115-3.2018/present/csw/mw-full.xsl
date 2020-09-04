@@ -4,6 +4,7 @@
   xmlns:gco115-3="http://standards.iso.org/iso/19115/-3/gco/1.0"
   xmlns:gco="http://www.isotc211.org/2005/gco"
   xmlns:gmd="http://www.isotc211.org/2005/gmd"
+  xmlns:gmx="http://www.isotc211.org/2005/gmx"
   xmlns:srv="http://www.isotc211.org/2005/srv"
   xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
   xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
@@ -281,7 +282,41 @@
           </gco:CharacterString>
         </gmd:keyword>
       </xsl:for-each>
-      <xsl:apply-templates select="mri:type|mri:thesaurusName"/>
+
+      <gmd:type>
+        <gmd:MD_KeywordTypeCode
+          codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_KeywordTypeCode"
+          codeListValue="theme"/>
+      </gmd:type>
+      <gmd:thesaurusName>
+        <gmd:CI_Citation>
+          <gmd:title>
+            <gco:CharacterString>Thèmes du géoportail wallon, version 1.0</gco:CharacterString>
+          </gmd:title>
+          <gmd:date>
+            <gmd:CI_Date>
+              <gmd:date>
+                <gco:Date>2012-02-03</gco:Date>
+              </gmd:date>
+              <gmd:dateType>
+                <gmd:CI_DateTypeCode
+                  codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                  codeListValue="publication"/>
+              </gmd:dateType>
+            </gmd:CI_Date>
+          </gmd:date>
+          <gmd:identifier>
+            <gmd:MD_Identifier>
+              <gmd:code>
+                <gmx:Anchor
+                  xlink:href="http://metawal.wallonie.be/geonetwork/srv/eng/thesaurus.download?ref=external.theme.Themes_geoportail_wallon">
+                  geonetwork.thesaurus.external.theme.Themes_geoportail_wallon
+                </gmx:Anchor>
+              </gmd:code>
+            </gmd:MD_Identifier>
+          </gmd:identifier>
+        </gmd:CI_Citation>
+      </gmd:thesaurusName>
     </gmd:MD_Keywords>
   </xsl:template>
 
