@@ -28,7 +28,10 @@ UPDATE metadata SET data = replace(data,
     '<gcx:Anchor xlink:href="http://metawal.wallonie.be/geonetwork/srv/api/registries/vocabularies/external.theme.Themes_geoportail_wallon_hierarchy">geonetwork.thesaurus.external.theme.Themes_geoportail_wallon_hierarchy</gcx:Anchor>')
     WHERE data LIKE '%<gcx:Anchor xlink:href="http://metawal.wallonie.be/geonetwork/srv/api/registries/vocabularies/external.theme.Themes_geoportail_wallon">geonetwork.thesaurus.external.theme.Themes_geoportail_wallon</gcx:Anchor>%';
 
-
+ UPDATE metadata SET data = replace(data,
+    '<gcx:Anchor xlink:href="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#">Thèmes du géoportail wallon, version 1.0</gcx:Anchor>',
+    '<gcx:Anchor xlink:href="http://metawal.wallonie.be/thesaurus/Themes_geoportail_wallon_hierarchy">Thèmes du géoportail wallon</gcx:Anchor>')
+    WHERE data LIKE '%<gcx:Anchor xlink:href="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#">Thèmes du géoportail wallon, version 1.0</gcx:Anchor>%';
 
 
 UPDATE metadata SET data = replace(data, '>(1010) Faune et flore<', '>Faune et flore<') WHERE data LIKE '%>(1010) Faune et flore<%';
