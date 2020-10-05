@@ -27,7 +27,7 @@
   <parent>
     <artifactId>geonetwork</artifactId>
     <groupId>org.geonetwork-opensource</groupId>
-    <version>4.0.0-alpha.2</version>
+    <version>4.0.0-alpha.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -230,6 +230,10 @@
     <dependency>
       <groupId>org.geotools</groupId>
       <artifactId>gt-brewer</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.geotools</groupId>
+      <artifactId>gt-geojson</artifactId>
     </dependency>
     <dependency>
       <groupId>org.locationtech.jts</groupId>

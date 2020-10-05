@@ -1,4 +1,5 @@
 {
+    "Administrator": "Ylläpitäjä",
     "all": "kaikki",
     "allInPage": "kaikki sivulla",
     "addToSelection": "Lisää...",
@@ -395,6 +396,7 @@
     "link-hassources": "On lähde aineistolle",
     "link-sources": "Lähdeaineistot",
     "link-siblings": "Rinnakkaiset",
+    "link-fcats": "Kohdeluettelo",
     "indexAccessError": "Virhe otettaessa yhteyttä indeksiin",
     "applyFilter": "Käytä suodinta",
     "confirm": "OK",

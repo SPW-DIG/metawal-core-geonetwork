@@ -29,7 +29,7 @@
   <groupId>org.geonetwork-opensource</groupId>
   <artifactId>geonetwork</artifactId>
   <packaging>pom</packaging>
-  <version>4.0.0-alpha.2</version>
+  <version>4.0.0-alpha.3</version>
   <name>GeoNetwork opensource</name>
   <description>GeoNetwork opensource is a standards based, Free and
     Open Source catalog application to manage spatially referenced
@@ -270,18 +270,6 @@
         </configuration>
       </plugin>
 
-      <!-- artifact assembly -->
-      <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-          <descriptors>
-            <descriptor>release/zip-war.xml</descriptor>
-            <descriptor>release/bin.xml</descriptor>
-          </descriptors>
-          <finalName>geonetwork-${project.version}</finalName>
-          <outputDirectory>${project.build.directory}/release</outputDirectory>
-        </configuration>
-      </plugin>
       <!-- run integration tests after unit tests -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -1405,7 +1393,7 @@
     <jetty.port>8080</jetty.port>
     <jetty.stop.port>8090</jetty.stop.port>
 
-    <es.version>7.8.0</es.version>
+    <es.version>7.9.2</es.version>
     <es.platform>linux-x86_64</es.platform>
     <es.installer.extension>tar.gz</es.installer.extension>
     <es.protocol>http</es.protocol>
@@ -1422,6 +1410,7 @@
     <!-- Define the default analyzer for full text search. -->
     <es.index.analyzer.default>standard</es.index.analyzer.default>
 <!--    <es.default.analyzer>french_light</es.default.analyzer>-->
+    <es.index.mapping.total_fields.limit>4000</es.index.mapping.total_fields.limit>
 
     <es.username></es.username>
     <es.password></es.password>

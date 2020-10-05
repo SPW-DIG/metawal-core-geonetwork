@@ -213,6 +213,7 @@
 
       <xsl:for-each select="$otherLanguages">
         <xsl:copy-of select="gn-fn-index:add-field('otherLanguage', .)"/>
+        <xsl:copy-of select="gn-fn-index:add-field('otherLanguageId', ../../../@id)"/>
       </xsl:for-each>
 
 
@@ -307,6 +308,18 @@
               <xsl:value-of select="substring($date, 0, 8)"/>
             </xsl:element>
           </xsl:for-each>
+
+          <xsl:for-each select="cit:date/cit:CI_Date[gn-fn-index:is-isoDate(cit:date/*/text())]">
+              <xsl:variable name="dateType"
+                            select="cit:dateType/cit:CI_DateTypeCode/@codeListValue"
+                            as="xs:string?"/>
+              <xsl:variable name="date"
+                            select="string(cit:date/gco:Date|cit:date/gco:DateTime)"/>
+            <resourceDate type="object">
+              {"type": "<xsl:value-of select="$dateType"/>", "date": "<xsl:value-of select="$date"/>"}
+            </resourceDate>
+          </xsl:for-each>
+
 
           <xsl:if test="$useDateAsTemporalExtent">
             <xsl:for-each-group select="cit:date/cit:CI_Date[gn-fn-index:is-isoDate(cit:date/*/text())]/cit:date/*/text()"
@@ -459,11 +472,11 @@
 
         <!-- Index all keywords -->
         <xsl:variable name="keywords"
-                      select="*/mri:MD_Keywords/
-                          mri:keyword/gco:CharacterString|
-                        */mri:MD_Keywords/
-                          mri:keyword/lan:PT_FreeText/lan:textGroup/
-                            lan:LocalisedCharacterString"/>
+                      select="*/mri:MD_Keywords/mri:keyword/(
+                                gco:CharacterString|
+                                gcx:Anchor|
+                                lan:PT_FreeText/lan:textGroup/
+                            lan:LocalisedCharacterString)"/>
 
         <tagNumber>
           <xsl:value-of select="count($keywords)"/>
@@ -726,6 +739,24 @@
           <hasBoundingPolygon>true</hasBoundingPolygon>
         </xsl:if>
 
+        <xsl:for-each select="*/gex:EX_Extent/*/gex:EX_BoundingPolygon/gex:polygon">
+          <xsl:variable name="geojson"
+                        select="util:gmlToGeoJson(
+                                  saxon:serialize(gml:*, 'default-serialize-mode'),
+                                  true(), 5)"/>
+          <xsl:choose>
+            <xsl:when test="$geojson = ''"></xsl:when>
+            <xsl:when test="matches($geojson, '(Error|Warning):.*')">
+              <shapeParsingError><xsl:value-of select="$geojson"/></shapeParsingError>
+            </xsl:when>
+            <xsl:otherwise>
+              <shape type="object">
+                <xsl:value-of select="$geojson"/>
+              </shape>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+
         <xsl:for-each select="*/gex:EX_Extent">
 
           <xsl:for-each select="gex:geographicElement/gex:EX_GeographicDescription/
@@ -841,6 +872,20 @@
                   Date range not indexed.</indexingErrorMsg>
               </xsl:if>
             </xsl:if>
+          </xsl:for-each>
+
+          <xsl:for-each select=".//gex:verticalElement/*">
+            <xsl:variable name="min"
+                          select="gex:minimumValue/*/text()"/>
+            <xsl:variable name="max"
+                          select="gex:maximumValue/*/text()"/>
+
+            <resourceVerticalRange type="object">{
+              "gte": "<xsl:value-of select="normalize-space($min)"/>"
+              <xsl:if test="$min &lt; $max">
+                ,"lte": "<xsl:value-of select="normalize-space($max)"/>"
+              </xsl:if>
+              }</resourceVerticalRange>
           </xsl:for-each>
         </xsl:for-each>
 
@@ -961,7 +1006,7 @@
           "definition" :"<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:definition/*/text())"/>",
           "code" :"<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:code/*/text())"/>",
           "isAbstract" :"<xsl:value-of select="gfc:FC_FeatureType/gfc:isAbstract/*/text()"/>",
-          "aliases" : "<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:aliases/*/text())"/>",
+          "aliases" : "<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:aliases/*/text())"/>"
           <!--"inheritsFrom" : "<xsl:value-of select="gfc:FC_FeatureType/gfc:inheritsFrom/*/text()"/>",
           "inheritsTo" : "<xsl:value-of select="gfc:FC_FeatureType/gfc:inheritsTo/*/text()"/>",
           "constrainedBy" : "<xsl:value-of select="gfc:FC_FeatureType/gfc:constrainedBy/*/text()"/>",
@@ -970,7 +1015,7 @@
           <xsl:variable name="attributes"
                         select="*/gfc:carrierOfCharacteristics"/>
           <xsl:if test="count($attributes) > 0">
-            "attributeTable" : [
+            ,"attributeTable" : [
             <xsl:for-each select="$attributes">
               {"name": "<xsl:value-of select="gn-fn-index:json-escape(*/gfc:memberName/*/text())"/>",
               "definition": "<xsl:value-of select="gn-fn-index:json-escape(*/gfc:definition/*/text())"/>",

@@ -38,8 +38,8 @@
   "loadMoreResults": "load more results...",
   "rating": "rating",
   "popularity": "popularity",
-  "isHarvested-1": "Harvested",
-  "isHarvested-0": "Local",
+  "isHarvested-true": "Harvested",
+  "isHarvested-false": "Local",
   "sortBy-popularity": "popularity",
   "sortBy-denominatorDesc": "low scale first",
   "sortBy-denominatorAsc": "high scale first",
@@ -96,5 +96,11 @@
   "ui-autocompleteConfig": "Autocompletion configuration",
   "ui-autocompleteConfig-help": "Configuration must have a query.multi_match.query which will be set on autocompletion.",
   "ui-facetConfig": "Facets configuration",
-  "ui-facetConfig-help": "This configuration is used to display facets, using either terms aggregations or filters. See <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html\">the documentation</a> for more information."
+  "ui-facetConfig-help": "This configuration is used to display facets, using either terms aggregations or filters. See <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html\">the documentation</a> for more information.",
+  "resourceEvents": "Resource events",
+  "resourceVerticalRange": "Vertical extent",
+  "searchBadRequest": "Query returned an error. Check the console for details.",
+  "searchInvalidResponse": "Query returned an invalid response. Check the console for details.",
+  "exactMatch": "Exact match",
+  "exactMatch-help": "Exact match means that '\"' are added to the search terms."
 }

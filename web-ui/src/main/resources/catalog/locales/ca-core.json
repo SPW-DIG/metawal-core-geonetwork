@@ -1,4 +1,5 @@
 {
+    "Administrator": "Administrador",
     "all": "tots",
     "allInPage": "tots en una pàgina",
     "addToSelection": "Afegir a...",
@@ -395,6 +396,7 @@
     "link-hassources": "És un conjunt de dades font de",
     "link-sources": "Conjuts de dades font",
     "link-siblings": "Germans",
+    "link-fcats": "Catàleg d'Objectes Geogràfics",
     "indexAccessError": "Error during index access.",
     "applyFilter": "Apply Filter",
     "confirm": "OK",

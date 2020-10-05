@@ -32,6 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.collect.Sets;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -54,7 +55,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -216,11 +219,46 @@ public class EsHTTPProxy {
         return false;
     }
 
-    @io.swagger.v3.oas.annotations.Operation(summary = "Search proxy for ElasticSearch",
-        description = "See https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html")
-    @RequestMapping(value = "/search/records/{endPoint}",
-        method = RequestMethod.POST)
+
+    @io.swagger.v3.oas.annotations.Operation(
+        summary = "Search endpoint",
+        description = "See https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html for search parameters details.")
+    @RequestMapping(value = "/search/records/_search",
+        method = {
+            RequestMethod.POST
+        })
     @ResponseStatus(value = HttpStatus.OK)
+    @ResponseBody
+    public void search(
+        @RequestParam(defaultValue = SelectionManager.SELECTION_METADATA)
+            String bucket,
+        @Parameter(hidden = true)
+            HttpSession httpSession,
+        @Parameter(hidden = true)
+            HttpServletRequest request,
+        @Parameter(hidden = true)
+            HttpServletResponse response,
+        @RequestBody(description = "JSON request based on Elasticsearch API.")
+            String body,
+        @Parameter(hidden = true)
+        HttpEntity<String> httpEntity) throws Exception {
+        ServiceContext context = ApiUtils.createServiceContext(request);
+        call(context, httpSession, request, response, "_search", httpEntity.getBody(), bucket);
+    }
+
+
+    @Hidden
+    @io.swagger.v3.oas.annotations.Operation(
+        summary = "Elasticsearch proxy endpoint",
+        description = "Endpoint to allow access to more ES API" +
+            " only allowed to Administrator. Currently not" +
+            " used by the user interface. Needs improvements in the proxy call.")
+    @RequestMapping(value = "/search/records/{endPoint}",
+        method = {
+            RequestMethod.POST, RequestMethod.GET
+    })
+    @ResponseStatus(value = HttpStatus.OK)
+    @PreAuthorize("hasAuthority('Administrator')")
     @ResponseBody
     public void call(
         @RequestParam(defaultValue = SelectionManager.SELECTION_METADATA)
@@ -234,13 +272,12 @@ public class EsHTTPProxy {
         @Parameter(hidden = true)
             HttpServletResponse response,
         @RequestBody(description = "JSON request based on Elasticsearch API.")
-        String body) throws Exception {
+            String body,
+        @Parameter(hidden = true)
+            HttpEntity<String> httpEntity) throws Exception {
 
         ServiceContext context = ApiUtils.createServiceContext(request);
-
-        // Retrieve request body with ElasticSearch query and parse JSON
-        body = IOUtils.toString(request.getReader());
-        call(context, httpSession, request, response, endPoint, body, bucket);
+        call(context, httpSession, request, response, endPoint, httpEntity.getBody(), bucket);
     }
 
     public void call(ServiceContext context, HttpSession httpSession, HttpServletRequest request,
@@ -249,41 +286,45 @@ public class EsHTTPProxy {
         final String url = client.getServerUrl() + "/" + defaultIndex + "/" + endPoint + "?";
         // Make query on multiple indices
 //        final String url = client.getServerUrl() + "/" + defaultIndex + ",gn-features/" + endPoint + "?";
-        UserSession session = context.getUserSession();
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode nodeQuery = objectMapper.readTree(body);
+        if ("_search".equals(endPoint)) {
+            UserSession session = context.getUserSession();
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode nodeQuery = objectMapper.readTree(body);
 
-        // multisearch support
-        final MappingIterator<Object> mappingIterator = objectMapper.readerFor(JsonNode.class).readValues(body);
-        StringBuffer requestBody = new StringBuffer();
-        while (mappingIterator.hasNextValue()) {
-            JsonNode node = (JsonNode) mappingIterator.nextValue();
-            final JsonNode indexNode = node.get("index");
-            if (indexNode != null) {
-                ((ObjectNode) node).put("index", defaultIndex);
-            } else {
-                final JsonNode queryNode = node.get("query");
-                if (queryNode != null) {
-                    addFilterToQuery(context, objectMapper, node);
-                    if (selectionBucket != null) {
-                        // Multisearch are not supposed to work with a bucket.
-                        // Only one request is store in session
-                        session.setProperty(Geonet.Session.SEARCH_REQUEST + selectionBucket, node);
+            // multisearch support
+            final MappingIterator<Object> mappingIterator = objectMapper.readerFor(JsonNode.class).readValues(body);
+            StringBuffer requestBody = new StringBuffer();
+            while (mappingIterator.hasNextValue()) {
+                JsonNode node = (JsonNode) mappingIterator.nextValue();
+                final JsonNode indexNode = node.get("index");
+                if (indexNode != null) {
+                    ((ObjectNode) node).put("index", defaultIndex);
+                } else {
+                    final JsonNode queryNode = node.get("query");
+                    if (queryNode != null) {
+                        addFilterToQuery(context, objectMapper, node);
+                        if (selectionBucket != null) {
+                            // Multisearch are not supposed to work with a bucket.
+                            // Only one request is store in session
+                            session.setProperty(Geonet.Session.SEARCH_REQUEST + selectionBucket, node);
+                        }
+                    }
+                    final JsonNode sourceNode = node.get("_source");
+                    if (sourceNode != null) {
+                        final JsonNode sourceIncludes = sourceNode.get("includes");
+                        if (sourceIncludes != null && sourceIncludes.isArray()) {
+                            ((ArrayNode) sourceIncludes).add("op*");
+                        }
                     }
                 }
-                final JsonNode sourceNode = node.get("_source");
-                if (sourceNode != null) {
-                    final JsonNode sourceIncludes = sourceNode.get("includes");
-                    if (sourceIncludes != null && sourceIncludes.isArray()) {
-                        ((ArrayNode) sourceIncludes).add("op*");
-                    }
-                }
+                requestBody.append(node.toString()).append(System.lineSeparator());
             }
-            requestBody.append(node.toString()).append(System.lineSeparator());
+            handleRequest(context, httpSession, request, response, url,
+                requestBody.toString(), true, selectionBucket);
+        } else {
+            handleRequest(context, httpSession, request, response, url,
+                body, true, selectionBucket);
         }
-
-        handleRequest(context, httpSession, request, response, url,
-            requestBody.toString(), true, selectionBucket);
     }
 
     private void addFilterToQuery(ServiceContext context,
@@ -305,11 +346,11 @@ public class EsHTTPProxy {
         if (queryNode.get("function_score") != null) {
             // Add filter node to the bool element of the query if provided
             ObjectNode objectNode = (ObjectNode) queryNode.get("function_score").get("query").get("bool");
-            objectNode.set("filter", nodeFilter);
+            insertFilter(objectNode, nodeFilter);
         } else if (queryNode.get("bool") != null) {
             // Add filter node to the bool element of the query if provided
             ObjectNode objectNode = (ObjectNode) queryNode.get("bool");
-            objectNode.set("filter", nodeFilter);
+            insertFilter(objectNode, nodeFilter);
         } else {
             // If no bool node in the query, create the bool node and add the query and filter nodes to it
             ObjectNode copy = esQuery.get("query").deepCopy();
@@ -320,6 +361,15 @@ public class EsHTTPProxy {
 
             ((ObjectNode) queryNode).removeAll();
             ((ObjectNode) queryNode).set("bool", objectNodeBool);
+        }
+    }
+
+    private void insertFilter(ObjectNode objectNode, JsonNode nodeFilter) {
+        JsonNode filter = objectNode.get("filter");
+        if (filter != null && filter.isArray()) {
+            ((ArrayNode) filter).add(nodeFilter);
+        } else {
+            objectNode.set("filter", nodeFilter);
         }
     }
 
@@ -391,9 +441,14 @@ public class EsHTTPProxy {
         return "documentType:" + type;
     }
 
-    private void handleRequest(ServiceContext context, HttpSession httpSession, HttpServletRequest request,
-                               HttpServletResponse response, String sUrl,
-                               String requestBody, boolean addPermissions, String selectionBucket) throws Exception {
+    private void handleRequest(ServiceContext context,
+                               HttpSession httpSession,
+                               HttpServletRequest request,
+                               HttpServletResponse response,
+                               String sUrl,
+                               String requestBody,
+                               boolean addPermissions,
+                               String selectionBucket) throws Exception {
         try {
             URL url = new URL(sUrl);
 
@@ -401,7 +456,7 @@ public class EsHTTPProxy {
             // all actions before the connection can be taken now
             HttpURLConnection connectionWithFinalHost = (HttpURLConnection) url.openConnection();
             try {
-                connectionWithFinalHost.setRequestMethod("POST");
+                connectionWithFinalHost.setRequestMethod(request.getMethod());
 
                 // copy headers from client's request to request that will be send to the final host
                 copyHeadersToConnection(request, connectionWithFinalHost);
@@ -413,13 +468,22 @@ public class EsHTTPProxy {
                 // interactions with the resource are enabled now
                 connectionWithFinalHost.connect();
 
+                // send remote host's response to client
+                String contentEncoding = getContentEncoding(connectionWithFinalHost.getHeaderFields());
+
                 int code = connectionWithFinalHost.getResponseCode();
                 if (code != 200) {
+                    InputStream errorDetails = "gzip".equalsIgnoreCase(contentEncoding) ?
+                        new GZIPInputStream(connectionWithFinalHost.getErrorStream()) :
+                        connectionWithFinalHost.getErrorStream();
+
                     response.sendError(code,
                         String.format(
-                            "Error is: %s. Request body: %s",
+                            "Error is: %s.\nRequest:\n%s.\nError:\n%s.",
                             connectionWithFinalHost.getResponseMessage(),
-                            requestBody));
+                            requestBody,
+                            IOUtils.toString(errorDetails)
+                        ));
                     return;
                 }
 
@@ -446,9 +510,6 @@ public class EsHTTPProxy {
                             + "\" is not allowed by the proxy rules");
                     return;
                 }
-
-                // send remote host's response to client
-                String contentEncoding = getContentEncoding(connectionWithFinalHost.getHeaderFields());
 
                 // copy headers from the remote server's response to the response to send to the client
                 copyHeadersFromConnectionToResponse(response, connectionWithFinalHost, "Content-Length");

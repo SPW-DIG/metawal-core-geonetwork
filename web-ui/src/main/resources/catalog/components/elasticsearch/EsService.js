@@ -57,7 +57,7 @@
        * @param queryHook
        * @param p
        */
-      this.buildQueryClauses = function(queryHook, p, luceneQueryString) {
+      this.buildQueryClauses = function(queryHook, p, luceneQueryString, exactMatch) {
         var excludeFields = ['_content_type', 'fast', 'from', 'to', 'bucket',
           'sortBy', 'sortOrder', 'resultType', 'facet.q', 'any', 'geometry', 'query_string',
           'creationDateFrom', 'creationDateTo', 'dateFrom', 'dateTo', 'geom', 'relation',
@@ -69,7 +69,7 @@
             var queryExpression = p.any.match(/^q\((.*)\)$/);
             if (queryExpression == null) {
               // var queryBase = '${any} resourceTitleObject.default:(${any})^2',
-              var queryBase = gnGlobalSettings.gnCfg.mods.search.queryBase,
+              var queryBase = '(' + gnGlobalSettings.gnCfg.mods.search.queryBase + ')',
                   defaultQuery = '${any}';
               if (queryBase.indexOf(defaultQuery) === -1) {
                 console.warn('Check your configuration. Query base \'' +
@@ -79,8 +79,11 @@
                   'Using default value \'${any}\'.');
                 queryBase = defaultQuery;
               }
-              var q = queryBase.replace(/\$\{any\}/g,
-                                        escapeSpecialCharacters(p.any));
+              var searchString = escapeSpecialCharacters(p.any),
+                q = queryBase.replace(
+                      /\$\{any\}/g,
+                      exactMatch === true ? '\"' + searchString + '\"' : searchString);
+              console.log(q);
               queryStringParams.push(q);
             } else {
               queryStringParams.push(queryExpression[1]);
@@ -214,7 +217,7 @@
         }
       };
 
-      this.generateEsRequest = function(p, searchState, searchConfigId) {
+      this.generateEsRequest = function(p, searchState, searchConfigId, filters) {
         var params = {};
         var luceneQueryString = gnEsLuceneQueryParser.facetsToLuceneQuery(searchState.filters);
 
@@ -242,8 +245,12 @@
           }
         };
 
+        if (angular.isArray(filters)) {
+          query.function_score['query'].bool.filter = filters;
+        }
+
         var queryHook = query.function_score.query.bool;
-        this.buildQueryClauses(queryHook, p, luceneQueryString);
+        this.buildQueryClauses(queryHook, p, luceneQueryString, searchState.exactMatch);
 
         if(p.from) {
           params.from = p.from - 1;

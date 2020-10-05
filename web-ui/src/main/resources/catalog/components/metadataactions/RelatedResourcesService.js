@@ -160,7 +160,7 @@
             gnOwsContextService.loadContextFromUrl(url,
                 gnSearchSettings.viewerMap);
 
-            gnSearchLocation.setMap();
+            gnSearchLocation.setMap('legend');
           };
 
           var openMd = function(r, md, siteUrl) {
@@ -366,6 +366,12 @@
 
             var f = this.getAction(type);
             f(parameters, md, siteUrlPrefix);
+          };
+
+          this.showMore = function(parameters, md) {
+            var siteUrlPrefix = this.gnConfigService.getServiceURL();
+
+            openMd(parameters, md, siteUrlPrefix);
           };
 
           this.getType = function(resource, type) {

@@ -49,7 +49,7 @@
    * Controller to create new metadata record.
    */
   var searchFormController =
-      function($scope, $location, $parse, gnSearchManagerService,
+      function($scope, $location, $parse, $translate, gnSearchManagerService,
                Metadata, gnSearchLocation, gnESClient,
                gnESService, gnAlertService) {
     var defaultParams = {};
@@ -143,25 +143,6 @@
           $scope.searchObj.params,
           defaultParams);
 
-      // Add hidden filters which may
-      // restrict search (do not add an existing filter)
-      if ($scope.searchObj.filters) {
-        angular.forEach($scope.searchObj.filters,
-            function(value, key) {
-              var p = $scope.searchObj.params[key];
-              if (p) {
-                if (p !== value && (!p.indexOf || p.indexOf(value) === -1)) {
-                  if (!angular.isArray(p)) {
-                    $scope.searchObj.params[key] = [p];
-                  }
-                  $scope.searchObj.params[key].push(value);
-                }
-              } else {
-                $scope.searchObj.params[key] = value;
-              }
-            });
-      }
-
       // Set default pagination if not set
       if ((!keepPagination &&
           !$scope.searchObj.permalink) ||
@@ -178,15 +159,16 @@
       var params = angular.copy($scope.searchObj.params);
       var finalParams = angular.extend(params, hiddenParams);
       $scope.finalParams = finalParams;
-
-      var esParams = gnESService.generateEsRequest(finalParams, $scope.searchObj.state, $scope.searchObj.configId);
+      var esParams = gnESService.generateEsRequest(finalParams, $scope.searchObj.state,
+        $scope.searchObj.configId, $scope.searchObj.filters);
       gnESClient.search(esParams, $scope.searchResults.selectionBucket || 'metadata', $scope.searchObj.configId)
         .then(function(data) {
         // data is not an object: this is an error
         if (typeof data !== 'object') {
+          console.warn('An error occurred while searching. Response is not an object.', esParams, data.data);
           gnAlertService.addAlert({
             id: 'searchError',
-            msg: data || ('Error running search: ' + angular.toJson(esParams)),
+            msg: $translate.instant('searchInvalidResponse'),
             type: 'danger'
           });
           return;
@@ -224,7 +206,12 @@
           paging.from = (paging.currentPage - 1) * paging.hitsPerPage + 1;
         }
       },function(data){
-        console.warn('An error occurred while searching with params', esParams);
+        console.warn('An error occurred while searching. Bad request.', esParams, data.data);
+        gnAlertService.addAlert({
+          id: 'searchError',
+          msg: $translate.instant('searchBadRequest'),
+          type: 'danger'
+        });
       }).then(function() {
         $scope.searching--;
       });
@@ -350,6 +337,7 @@
 
       $scope.$broadcast('beforeSearchReset', preserveGeometrySearch);
 
+      $scope.searchObj.state.exactMatch = false;
       if (searchParams) {
         $scope.searchObj.params = searchParams;
       } else {
@@ -497,7 +485,8 @@
         var key = facet.path[i];
         facetConfigs[key] = $scope.facetConfig[key];
       }
-      var request = gnESService.generateEsRequest($scope.finalParams, $scope.searchObj.state, $scope.searchObj.configId);
+      var request = gnESService.generateEsRequest($scope.finalParams, $scope.searchObj.state,
+        $scope.searchObj.configId, $scope.searchObj.filters);
       return gnESClient.getTermsParamsWithNewSizeOrFilter(
         request.query,
         facet.path,
@@ -514,7 +503,8 @@
         var key = facet.path[i];
         facetConfigs[key] = $scope.facetConfig[key];
       }
-      var request = gnESService.generateEsRequest($scope.finalParams, $scope.searchObj.state, $scope.searchObj.configId)
+      var request = gnESService.generateEsRequest($scope.finalParams, $scope.searchObj.state,
+        $scope.searchObj.configId, $scope.searchObj.filters)
       return gnESClient.getTermsParamsWithNewSizeOrFilter(
         request.query,
         facet.path,
@@ -530,6 +520,7 @@
     '$scope',
     '$location',
     '$parse',
+    '$translate',
     'gnSearchManagerService',
     'Metadata',
     'gnSearchLocation',

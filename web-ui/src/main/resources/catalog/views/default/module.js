@@ -78,16 +78,18 @@
 
 
   module.controller('gnsSearchTopEntriesController', [
-    '$scope', 'gnGlobalSettings',
-    function($scope, gnGlobalSettings) {
+    '$scope', 'gnRelatedResources',
+    function($scope, gnRelatedResources) {
       $scope.resultTemplate = '../../catalog/components/' +
         'search/resultsview/partials/viewtemplates/grid4maps.html';
       $scope.searchObj = {
         permalink: false,
         internal: true,
-        filters: {
-          'type': 'interactiveMap'
-        },
+        filters: [{
+          "query_string": {
+            "query": "+resourceType:\"map/interactive\""
+          }
+        }],
         params: {
           isTemplate: 'n',
           sortBy: 'changeDate',
@@ -95,6 +97,10 @@
           from: 1,
           to: 30
         }
+      };
+
+      $scope.loadMap = function(map, md) {
+        gnRelatedResources.getAction('MAP')(map, md);
       };
     }]);
 
@@ -136,6 +142,7 @@
       $scope.modelOptions = angular.copy(gnGlobalSettings.modelOptions);
       $scope.modelOptionsForm = angular.copy(gnGlobalSettings.modelOptions);
       $scope.isFilterTagsDisplayedInSearch = gnGlobalSettings.gnCfg.mods.search.isFilterTagsDisplayedInSearch;
+      $scope.exactMatchToggle = gnGlobalSettings.gnCfg.mods.search.exactMatchToggle;
       $scope.gnWmsQueue = gnWmsQueue;
       $scope.$location = $location;
       $scope.activeTab = '/home';

@@ -69,7 +69,8 @@ goog.require('gn_alert');
       },
       'mods': {
         'global': {
-          'humanizeDates': true
+          'humanizeDates': true,
+          'dateFormat': 'YYYY-MM-DD'
         },
         'footer':{
           'enabled': true,
@@ -132,7 +133,8 @@ goog.require('gn_alert');
           // Full text on all fields
           // 'queryBase': '${any}',
           // Full text but more boost on title match
-          'queryBase': '${any} resourceTitleObject.default:(${any})^2',
+          'queryBase': 'any:(${any}) resourceTitleObject.default:(${any})^2',
+          'exactMatchToggle': true,
           // Score query may depend on where we are in the app?
           'scoreConfig': {
             // Score experiments:
@@ -397,7 +399,12 @@ goog.require('gn_alert');
               }
             }
           },
-          'filters': {},
+          'filters': null,
+          // 'filters': [{
+          //     "query_string": {
+          //       "query": "-resourceType:service"
+          //     }
+          //   }],
           'sortbyValues': [{
             'sortBy': 'relevance',
             'sortOrder': ''
@@ -515,6 +522,7 @@ goog.require('gn_alert');
             'print': false,
             'mInteraction': false,
             'graticule': false,
+            'mousePosition': true,
             'syncAllLayers': false,
             'drawVector': false
           },
@@ -548,6 +556,7 @@ goog.require('gn_alert');
           'enabled': true,
           'appUrl': '../../{{node}}/{{lang}}/catalog.edit',
           'isUserRecordsOnly': false,
+          'minUserProfileToCreateTemplate': '',
           'isFilterTagsDisplayed': false,
           'fluidEditorLayout': true,
           'createPageTpl':
@@ -1183,6 +1192,14 @@ goog.require('gn_alert');
           },
           isConnected: function() {
             return !this.isAnonymous();
+          },
+          canCreateTemplate: function() {
+            var profile = gnGlobalSettings.gnCfg.mods.editor.minUserProfileToCreateTemplate
+              || '',
+              fnName = (profile !== '' ?
+                ('is' + profile[0].toUpperCase() + profile.substring(1) + 'OrMore') :
+                '');
+            return angular.isFunction(this[fnName]) ? this[fnName]() : this.isConnected();
           },
           // The md provide the information about
           // if the current user can edit records or not
