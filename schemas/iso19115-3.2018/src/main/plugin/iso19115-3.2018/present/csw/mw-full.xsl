@@ -15,6 +15,7 @@
   xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
   xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
   xmlns:srv2="http://standards.iso.org/iso/19115/-3/srv/2.1"
+  xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:util="java:org.fao.geonet.util.XslUtil"
   exclude-result-prefixes="#all">
@@ -320,6 +321,9 @@
     </gmd:MD_Keywords>
   </xsl:template>
 
+  <xsl:template match="mdb:referenceSystemInfo/*/mrs:referenceSystemType">
+    <xsl:apply-templates/>
+  </xsl:template>
 
   <xsl:template match="/">
     <xsl:for-each select="/*">
