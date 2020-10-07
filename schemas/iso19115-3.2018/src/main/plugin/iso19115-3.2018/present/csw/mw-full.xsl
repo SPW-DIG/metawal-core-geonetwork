@@ -322,7 +322,9 @@
   </xsl:template>
 
   <xsl:template match="mdb:referenceSystemInfo/*/mrs:referenceSystemType">
-    <xsl:apply-templates/>
+    <gmd:referenceSystemType>
+      <xsl:apply-templates/>
+    </gmd:referenceSystemType>
   </xsl:template>
 
   <xsl:template match="/">
