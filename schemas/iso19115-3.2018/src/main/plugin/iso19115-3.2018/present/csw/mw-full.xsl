@@ -270,9 +270,9 @@
   </xsl:variable>
 
 
-  <xsl:template match="mri:descriptiveKeywords/*[mri:thesaurusName/*/cit:identifier/*/mcc:code/*/text() = 'geonetwork.thesaurus.external.theme.Themes_geoportail_wallon_hierarchy']">
+  <xsl:template match="mri:descriptiveKeywords/*[mri:thesaurusName/*/cit:identifier/*/mcc:code/*/text() = 'geonetwork.thesaurus.external.theme.Themes_geoportail_wallon_hierarchy' or contains(mri:thesaurusName/*/cit:title/*/text(), 'Thèmes du géoportail wallon')]">
     <gmd:MD_Keywords>
-      <xsl:for-each select="mri:keyword/gco115-3:CharacterString">
+      <xsl:for-each select="mri:keyword/(gco115-3:CharacterString|gcx:Anchor)">
         <gmd:keyword>
           <gco:CharacterString>
             <xsl:variable name="keyword"
