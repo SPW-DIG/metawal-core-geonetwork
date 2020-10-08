@@ -217,9 +217,6 @@ public class MetadataInsertDeleteApi {
                 report.addMetadataId(metadata.getId());
             }
         }
-
-        dataManager.forceIndexChanges();
-
         report.close();
         return report;
     }
