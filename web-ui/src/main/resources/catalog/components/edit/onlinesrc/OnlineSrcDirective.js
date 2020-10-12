@@ -77,7 +77,7 @@
               uuid: ''
             };
           });
-          
+
           function clearSelection() {
             if (scope.selectionList) {
               scope.selectionList.length = 0;
@@ -402,7 +402,8 @@
                   resource.url['eng'];
 
                 if (resourceUrl.indexOf(baseUrl) == 0) {
-                  return '../api/records/' + resource.id;
+                  return 'catalog.search#/metadata/' + resource.id;
+                  // return '../api/records/' + resource.id;
                 } else {
                   return resource.url[scope.lang];
                 }
