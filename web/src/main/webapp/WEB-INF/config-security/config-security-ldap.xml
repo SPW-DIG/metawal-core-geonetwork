@@ -154,7 +154,7 @@
 
       <property name="contextSource" ref="contextSource" />
   </bean>-->
-
+<!--
   <bean name="ldapSynchronizer" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
     <property name="jobClass" value="org.fao.geonet.kernel.security.ldap.LDAPSynchronizerJob"/>
     <property name="jobDataAsMap">
@@ -190,7 +190,7 @@
         <ref bean="cronTrigger"/>
       </list>
     </property>
-  </bean>
+  </bean>-->
 
   <bean id="ldapUserDetailsService"
         class="org.fao.geonet.kernel.security.ldap.LdapUserDetailsManager">
