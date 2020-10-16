@@ -280,6 +280,16 @@
         }
       });
 
+      $scope.exactMatchDisabled = function(elem) {
+        var disabledExactMatch;
+        if (elem.startsWith('"') && elem.startsWith('"')) {
+          disabledExactMatch = true
+        } else {
+          disabledExactMatch = false
+        }
+        return disabledExactMatch
+      }
+
       $scope.resultviewFns = {
         addMdLayerToMap: function (link, md) {
           // Redirect to WALONMAP

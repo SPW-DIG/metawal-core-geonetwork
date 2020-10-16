@@ -54,7 +54,7 @@
         function(response) {
           var d = response.data.hits.hits.flatMap(function(md) {
             if (field) {
-              return new Metadata(md)[field];
+              return '"'+new Metadata(md)[field]+'"';
             } else {
               var values = [];
               for (p in new Metadata(md)) {

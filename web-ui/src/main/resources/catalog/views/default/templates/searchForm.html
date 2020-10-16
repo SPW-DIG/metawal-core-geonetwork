@@ -61,7 +61,8 @@
                     type="button">
                 <input aria-label="{{'exactMatch' | translate}}"
                        data-ng-model="searchObj.state.exactMatch"
-                       type="checkbox">
+                       data-ng-disabled="exactMatchDisabled(searchObj.params.any)"
+                        type="checkbox">
                 <span data-translate="">exactMatch</span>
             </button>
           </div>
