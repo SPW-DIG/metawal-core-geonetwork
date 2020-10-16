@@ -177,7 +177,7 @@
 
         link: function(scope, element, attrs, controller) {
           scope.isRatingEnabled = false;
-          
+
           gnConfigService.load().then(function(c) {
             var statusSystemRating =
               gnConfig[gnConfig.key.isRatingUserFeedbackEnabled];
@@ -204,6 +204,26 @@
       };
     }]
   );
+
+  /**
+   * Filter to translate data provided by the groupBy filter:
+   *
+   *
+   */
+
+  module.filter('groupByTranslated',['$translate', function($translate) {
+    return function(array) {
+      var translated = [];
+      if (array.split(',').length >1){
+        angular.forEach(array.split(','), function(value) {
+          translated.push($translate.instant(value));
+        });
+      } else {
+        translated = $translate.instant(array);
+      }
+      return translated.toString();
+    };
+  }]);
 
   /**
    * Directive to provide 3 visualization modes for metadata contacts

@@ -91,7 +91,7 @@
              data-ng-src="{{::c.logo}}"/>
       </div>
     </div>
-   </div>
+  </div>
 
 
   <!-- Group by organisation/role -->
@@ -113,7 +113,7 @@
         </span>
         <ul>
           <li ng-repeat="(roles, contactGroupByRole) in contactGroupByAddress | groupBy:'roles'">
-            {{roles | translate}}:<br/>
+            {{roles | groupByTranslated}}:<br/>
             <span data-ng-repeat="c in contactGroupByRole track by $index">
               <span data-ng-if="c.email != ''">
                 <i class="fa fa-fw fa-envelope"></i>
@@ -134,7 +134,7 @@
               </a>
               <span data-ng-if="!$last">,</span>
             </span>
-          </li>
+            </span>
         </ul>
       </div>
     </address>
