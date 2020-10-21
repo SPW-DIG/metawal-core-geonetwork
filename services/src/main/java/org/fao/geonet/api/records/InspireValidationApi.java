@@ -150,7 +150,7 @@ public class InspireValidationApi {
     })
     public
     @ResponseBody
-    String validateRecord(
+    String validateRecordForInspire(
         @Parameter(
             description = API_PARAM_RECORD_UUID,
             required = true)
