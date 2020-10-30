@@ -9,5 +9,7 @@ UPDATE settings SET internal = 'n' WHERE name = 'system/server/port';
 UPDATE metadata SET data = regexp_replace(data,'géographique</gcx:Anchor>[[:space:]]*</cit:title>[[:space:]]*<cit:date>[[:space:]]*<cit:CI_Date>[[:space:]]*<cit:date>[[:space:]]*<gco:Date>2019-07-02','géographique</gcx:Anchor></cit:title><cit:date><cit:CI_Date><cit:date><gco:Date>2019-05-22','g');
 UPDATE metadata SET data = regexp_replace(data,'géographique</gcx:Anchor>[[:space:]]*</cit:title>[[:space:]]*<cit:date>[[:space:]]*<cit:CI_Date>[[:space:]]*<cit:date>[[:space:]]*<gco:Date>2019-08-01','géographique</gcx:Anchor></cit:title><cit:date><cit:CI_Date><cit:date><gco:Date>2019-05-22','g');
 
+UPDATE metadata SET data = replace(data, '<gcx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope#">', '<gcx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope">') WHERE data LIKE '%<gcx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope#">%';
+
 UPDATE Settings SET value='4.0.1' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
