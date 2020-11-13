@@ -19,6 +19,10 @@
                          and count(gmd:CI_OnlineResource/gmd:linkage/gmd:URL[not(starts-with(text(), 'http'))]) > 0]"
                 priority="2"/>
 
+  <xsl:template match="gmd:date[
+      gmd:CI_Date/gmd:dateType/*/@codeListValue != 'creation'
+      and */gmd:dateType/*/@codeListValue != 'publication'
+      and */gmd:dateType/*/@codeListValue != 'revision']" priority="2"/>
 
   <xsl:template match="@xlink:href[contains(., 'srv/api/records/') and not(contains(., '/formatters/'))]">
     <xsl:attribute name="xlink:href"
