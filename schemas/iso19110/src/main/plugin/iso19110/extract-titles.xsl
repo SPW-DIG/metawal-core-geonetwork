@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
   ~ Copyright (C) 2001-2016 Food and Agriculture Organization of the
@@ -23,26 +23,20 @@
   ~ Rome - Italy. email: geonetwork@osgeo.org
   -->
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:gfc="http://www.isotc211.org/2005/gfc"
+                xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                xmlns:gco="http://www.isotc211.org/2005/gco"
+                version="1.0"
+>
 
-  <!-- This file defines what parts of the metadata are indexed by Lucene
-         Searches can be conducted on indexes defined here.
-         The Field@name attribute defines the name of the search variable.
-         If a variable has to be maintained in the user session, it needs to be
-         added to the GeoNetwork constants in the Java source code.
-         Please keep indexes consistent among metadata standards if they should
-         work accross different metadata resources -->
-  <!-- ========================================================================================= -->
-
-  <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-
-  <!-- ========================================================================================= -->
-
-  <xsl:template match="/">
-    <Documents>
-      <!-- TODO dc:Records should use xml:lang attributes -->
-    </Documents>
+  <xsl:template match="gfc:FC_FeatureCatalogue|gfc:FC_FeatureType">
+    <titles>
+      <title>
+        <!-- Not sure what field contains the language setting-->
+        <xsl:attribute name="lang"><xsl:value-of select="''"/></xsl:attribute>
+        <xsl:value-of select="gmx:name/gco:CharacterString|gfc:name/gco:CharacterString"/>
+      </title>
+    </titles>
   </xsl:template>
 
 </xsl:stylesheet>

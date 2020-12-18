@@ -80,10 +80,7 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The Class KeywordsApi.
@@ -323,14 +320,15 @@ public class KeywordsApi {
         path = "/keyword",
         method = RequestMethod.GET,
         produces = {
-            MediaType.APPLICATION_XML_VALUE
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE
         })
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "XML snippet with requested keywords."),
     })
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public Element getKeywordById(
+    public Object getKeywordById(
         @Parameter(
             description = "Keyword identifier or list of keyword identifiers comma separated.",
             required = true)
@@ -364,11 +362,32 @@ public class KeywordsApi {
         @Parameter(hidden = true)
         @RequestParam
             Map<String, String> allRequestParams,
+        @RequestHeader(
+            value = "Accept",
+            defaultValue = MediaType.APPLICATION_XML_VALUE
+        )
+        String accept,
+        @Parameter(hidden = true)
         HttpServletRequest request
-
-    ) throws Exception {
+        ) throws Exception {
         final String SEPARATOR = ",";
         ServiceContext context = ApiUtils.createServiceContext(request);
+        boolean isJson = MediaType.APPLICATION_JSON_VALUE.equals(accept);
+
+        // Search thesaurus by name (as facet key only contains the name of the thesaurus)
+        Thesaurus thesaurus = thesaurusManager.getThesaurusByName(sThesaurusName);
+        if (thesaurus == null) {
+            String finalSThesaurusName = sThesaurusName;
+            Optional<Thesaurus> thesaurusEntry = thesaurusManager.getThesauriMap().values().stream().filter(t -> t.getKey().endsWith(finalSThesaurusName)).findFirst();
+            if (!thesaurusEntry.isPresent()) {
+                throw new IllegalArgumentException(String.format(
+                    "Thesaurus '%s' not found.", sThesaurusName));
+            } else {
+                thesaurus = thesaurusEntry.get();
+                sThesaurusName = thesaurusEntry.get().getKey();
+            }
+        }
+
 
         if (langs == null) {
             langs = context.getLanguage().split(",");
@@ -381,6 +400,7 @@ public class KeywordsApi {
         }
 
         Element descKeys;
+        Map<String, String> jsonResponse = new HashMap<>();
 
         uri = URLDecoder.decode(uri, "UTF-8");
 
@@ -415,7 +435,15 @@ public class KeywordsApi {
             }
             descKeys = new Element("descKeys");
             for (KeywordBean keywordBean : kbList) {
-                KeywordsSearcher.toRawElement(descKeys, keywordBean);
+                if (isJson) {
+                    jsonResponse.put(
+                        keywordBean.getUriCode(),
+                        // Requested lang or the first non empty value
+                        keywordBean.getDefaultValue()
+                    );
+                } else {
+                    KeywordsSearcher.toRawElement(descKeys, keywordBean);
+                }
             }
         }
 
@@ -434,39 +462,42 @@ public class KeywordsApi {
 
         }
 
+        if (isJson) {
+            return jsonResponse;
+        } else {
+            Path convertXsl = dataDirectory.getWebappDir().resolve("xslt/services/thesaurus/convert.xsl");
 
-        Path convertXsl = dataDirectory.getWebappDir().resolve("xslt/services/thesaurus/convert.xsl");
+            Element gui = new Element("gui");
+            Element nodeUrl = new Element("nodeUrl").setText(settingManager.getNodeURL());
+            Element nodeId = new Element("nodeId").setText(context.getNodeId());
+            Element thesaurusEl = new Element("thesaurus");
+            final Element root = new Element("root");
 
-        Element gui = new Element("gui");
-        Element nodeUrl = new Element("nodeUrl").setText(settingManager.getNodeURL());
-        Element nodeId = new Element("nodeId").setText(context.getNodeId());
-        Element thesaurusEl = new Element("thesaurus");
-        final Element root = new Element("root");
+            gui.addContent(thesaurusEl);
+            thesaurusEl.addContent(thesaurusManager.buildResultfromThTable(context));
 
-        gui.addContent(thesaurusEl);
-        thesaurusEl.addContent(thesaurusManager.buildResultfromThTable(context));
-
-        Element requestParams = new Element("request");
-        for (Map.Entry<String, String> e : allRequestParams.entrySet()) {
-            if (e.getKey().equals("lang")) {
-                requestParams.addContent(new Element(e.getKey())
-                    .setText(String.join(",", iso3langCodes)));
-            } else {
-                requestParams.addContent(new Element(e.getKey()).setText(e.getValue()));
+            Element requestParams = new Element("request");
+            for (Map.Entry<String, String> e : allRequestParams.entrySet()) {
+                if (e.getKey().equals("lang")) {
+                    requestParams.addContent(new Element(e.getKey())
+                        .setText(String.join(",", iso3langCodes)));
+                } else {
+                    requestParams.addContent(new Element(e.getKey()).setText(e.getValue()));
+                }
             }
-        }
-        if (langConversion != null) {
-            requestParams.addContent(langConversion);
-        }
+            if (langConversion != null) {
+                requestParams.addContent(langConversion);
+            }
 
-        root.addContent(requestParams);
-        root.addContent(descKeys);
-        root.addContent(gui);
-        root.addContent(nodeUrl);
-        root.addContent(nodeId);
-        final Element transform = Xml.transform(root, convertXsl);
+            root.addContent(requestParams);
+            root.addContent(descKeys);
+            root.addContent(gui);
+            root.addContent(nodeUrl);
+            root.addContent(nodeId);
+            final Element transform = Xml.transform(root, convertXsl);
 
-        return transform;
+            return transform;
+        }
     }
 
 
@@ -702,6 +733,11 @@ public class KeywordsApi {
     }
 
 
+    public enum REGISTRY_TYPE {
+        re3gistry,
+        ldRegistry
+    }
+
     /**
      * Upload thesaurus.
      *
@@ -739,6 +775,11 @@ public class KeywordsApi {
             description = "If set, try to download from a registry.")
         @RequestParam(value = "registryUrl", required = false)
             String registryUrl,
+        @Parameter(
+            description = "If using registryUrl, then define the type of registry." +
+                " If not set, default mode is re3gistry.")
+        @RequestParam(value = "registryType", required = false)
+            REGISTRY_TYPE registryType,
         @Parameter(
             description = "Languages to download from a registry.")
         @RequestParam(value = "registryLanguage", required = false)
@@ -791,7 +832,7 @@ public class KeywordsApi {
 
             String itemName = registryUrl.substring((registryUrl.lastIndexOf("/") + 1));
 
-            rdfFile = extractSKOSFromRegistry(registryUrl, itemName, registryLanguage, context);
+            rdfFile = extractSKOSFromRegistry(registryUrl, registryType, itemName, registryLanguage, context);
             fname = registryUrl.replaceAll("[^A-Za-z]+", "") +
                 "-" +
                 itemName + ".rdf";
@@ -847,30 +888,39 @@ public class KeywordsApi {
      * them into one XML document which is then XSLT processed for SKOS conversion.
      *
      * @param registryUrl the registry url
+     * @param registryType
      * @param itemName    the item name
      * @param lang        the selected languages
      * @param context     the context
      * @return the path
      * @throws Exception the exception
      */
-    private Path extractSKOSFromRegistry(String registryUrl, String itemName, String[] lang, ServiceContext context)
+    private Path extractSKOSFromRegistry(String registryUrl, REGISTRY_TYPE registryType, String itemName, String[] lang, ServiceContext context)
         throws Exception {
         if (lang != null) {
             Element documents = new Element("documents");
-            for (String language : lang) {
-                try {
-                    String languageFileUrl = registryUrl + "/" + itemName + "." + language + ".xml";
-                    Path localRdf = getXMLContentFromUrl(languageFileUrl, context);
-                    Element codeList = Xml.loadFile(localRdf);
-                    documents.addContent(codeList);
-                } catch (Exception e) {
-                    Log.debug(Geonet.THESAURUS, "Thesaurus not found for the requested translation: " + itemName + " " + language);
-                    throw new ResourceNotFoundException("Thesaurus not found for the requested translation: " + itemName + " " + language);
+            if (registryType == REGISTRY_TYPE.ldRegistry) {
+                Path localRdf = getXMLContentFromUrl(registryUrl + "?_view=with_metadata&_format=rdf", context);
+                Element ldRegistryCodelistAsRdf = Xml.loadFile(localRdf);
+                documents.addContent(ldRegistryCodelistAsRdf);
+            } else {
+                for (String language : lang) {
+                    try {
+                        String languageFileUrl = registryUrl + "/" + itemName + "." + language + ".xml";
+                        Path localRdf = getXMLContentFromUrl(languageFileUrl, context);
+                        Element codeList = Xml.loadFile(localRdf);
+                        documents.addContent(codeList);
+                    } catch (Exception e) {
+                        Log.debug(Geonet.THESAURUS, "Thesaurus not found for the requested translation: " + itemName + " " + language);
+                        throw new ResourceNotFoundException("Thesaurus not found for the requested translation: " + itemName + " " + language);
+                    }
                 }
             }
 
             // Convert to SKOS
-            Path skosTransform = dataDirectory.getWebappDir().resolve("xslt/services/thesaurus/registry-to-skos.xsl");
+            Path skosTransform = dataDirectory.getWebappDir().resolve(String.format(
+                "xslt/services/thesaurus/%s-to-skos.xsl",
+                registryType == REGISTRY_TYPE.ldRegistry ? "ldregistry" : "registry"));
             Element transform = Xml.transform(documents, skosTransform);
             // Convert to file and return
             Path rdfFile = Files.createTempFile("thesaurus", ".rdf");

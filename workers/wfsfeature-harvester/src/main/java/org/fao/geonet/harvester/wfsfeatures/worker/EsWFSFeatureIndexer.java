@@ -39,6 +39,7 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.elasticsearch.rest.RestStatus;
 import org.fao.geonet.harvester.wfsfeatures.model.WFSHarvesterParameter;
 import org.fao.geonet.index.es.EsRestClient;
 import org.geotools.data.Query;
@@ -49,9 +50,6 @@ import org.geotools.feature.FeatureIterator;
 import org.geotools.geojson.geom.GeometryJSON;
 import org.geotools.referencing.CRS;
 import org.geotools.util.logging.Logging;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.ISODateTimeFormat;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Point;
@@ -59,7 +57,6 @@ import org.locationtech.jts.geom.PrecisionModel;
 import org.locationtech.jts.precision.GeometryPrecisionReducer;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.geometry.BoundingBox;
-import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +65,10 @@ import org.springframework.beans.factory.annotation.Value;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -75,8 +76,6 @@ import java.util.Map;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-import static org.fao.geonet.index.es.EsRestClient.ROUTING_KEY;
 
 
 // TODO: GeoServer WFS 1.0.0 in some case return
@@ -171,7 +170,8 @@ public class EsWFSFeatureIndexer {
             throw new InvalidArgumentException("Missing WFS harvester configuration.");
         }
 
-        LOGGER.info("Initializing harvester configuration for uuid '{}', url '{}', feature type '{}'. Exchange id is '{}'.", new Object[] {
+        LOGGER.info("Initializing harvester configuration for uuid '{}', url '{}'," +
+            "feature type '{}'. treefields are {}, tokenizedFields are {} Exchange id is '{}'.", new Object[] {
             configuration.getMetadataUuid(),
             configuration.getUrl(),
             configuration.getTypeName(),
@@ -208,11 +208,11 @@ public class EsWFSFeatureIndexer {
             new Object[]{url, typeName, index, indexType});
         try {
             long begin = System.currentTimeMillis();
-            client.deleteByQuery(index, String.format("+featureTypeId:\\\"%s\\\"", getIdentifier(url, typeName)));
+            client.deleteByQuery(index, String.format("+featureTypeId:\"%s\"", getIdentifier(url, typeName)));
             LOGGER.info("  Features deleted in {} ms.", System.currentTimeMillis() - begin);
 
             begin = System.currentTimeMillis();
-            client.deleteByQuery(index, String.format("+id:\\\"%s\\\"",
+            client.deleteByQuery(index, String.format("+id:\"%s\"",
                 getIdentifier(url, typeName)));
             LOGGER.info("  Report deleted in {} ms.", System.currentTimeMillis() - begin);
 
@@ -231,6 +231,7 @@ public class EsWFSFeatureIndexer {
 
         String url                              = state.getParameters().getUrl();
         String typeName                         = state.getParameters().getTypeName();
+        String resolvedTypeName                 = state.getResolvedTypeName();
         Map<String, String> tokenizedFields     = state.getParameters().getTokenizedFields();
         WFSDataStore wfs                        = state.getWfsDatastore();
         Map<String, String> featureAttributes   = state.getFields();
@@ -254,16 +255,6 @@ public class EsWFSFeatureIndexer {
             throw new RuntimeException("couldn't initialize es report, don't even try to go further querying wfs.");
         }
 
-        Query query = new Query();
-//        CoordinateReferenceSystem wgs84;
-//        if (wfs.getInfo().getVersion().equals("1.0.0")) {
-//            wgs84 = CRS.getAuthorityFactory(true).createCoordinateReferenceSystem("EPSG:4326");
-//        } else {
-//            wgs84 = CRS.getAuthorityFactory(true).createCoordinateReferenceSystem("urn:x-ogc:def:crs:EPSG::4326");
-//        }
-//
-//        query.setCoordinateSystemReproject(wgs84);
-
         try {
             nbOfFeatures = 0;
 
@@ -273,7 +264,7 @@ public class EsWFSFeatureIndexer {
             long begin = System.currentTimeMillis();
 //            FeatureIterator<SimpleFeature> features = wfs.getFeatureSource(typeName).getFeatures(query).features();
 
-            SimpleFeatureCollection fc = wfs.getFeatureSource(typeName).getFeatures();
+            SimpleFeatureCollection fc = wfs.getFeatureSource(resolvedTypeName).getFeatures();
             ReprojectingFeatureCollection rfc = new ReprojectingFeatureCollection(fc, CRS.decode("urn:ogc:def:crs:OGC:1.3:CRS84"));
             FeatureIterator<SimpleFeature> features = rfc.features();
 
@@ -464,10 +455,8 @@ public class EsWFSFeatureIndexer {
         public void success(int nbOfFeatures) {
             report.put("status_s","success");
             report.put("totalRecords_i", nbOfFeatures);
-            DateTime dateTime = new DateTime(DateTimeZone.UTC);
-            report.put("endDate_dt", String.format("%sT%s",
-                ISODateTimeFormat.yearMonthDay().print(dateTime),
-                ISODateTimeFormat.timeNoMillis().print(dateTime).replace("Z","")));
+            OffsetDateTime dateTime = OffsetDateTime.now(ZoneOffset.UTC).truncatedTo(ChronoUnit.SECONDS);
+            report.put("endDate_dt", dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
             report.put("isPointOnly", pointOnlyForGeoms);
 
         }
@@ -478,13 +467,13 @@ public class EsWFSFeatureIndexer {
             request.source(report);
             try {
                 IndexResponse response = client.getClient().index(request, RequestOptions.DEFAULT);
-                if (response.status().getStatus() != 201) {
+                if (response.status() == RestStatus.CREATED || response.status() == RestStatus.OK) {
+                    LOGGER.info("Report saved for service {} and typename {}. Report id is {}",
+                        url, typeName, report.get("id"));
+                } else {
                     LOGGER.info("Failed to save report for {}. Error message when saving report was '{}'.",
                         typeName,
                         response.getResult());
-                } else {
-                    LOGGER.info("Report saved for service {} and typename {}. Report id is {}",
-                        url, typeName, report.get("id"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

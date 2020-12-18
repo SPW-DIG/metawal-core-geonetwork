@@ -56,12 +56,13 @@
 
             var hyperlinkTagName = 'A';
             if (element.get(0).tagName === hyperlinkTagName) {
-              var url = '#/' +
+              var url = window.location.pathname + '#/' +
                 (scope.md.draft == 'y' ? 'metadraf' : 'metadata') +
                 '/' + scope.md.uuid +
                 (scope.formatter === undefined || scope.formatter == '' ?
                   '' :
                   formatter);
+
               element.attr('href', url);
             } else {
               element.on('click', function(e) {
@@ -99,6 +100,14 @@
           var moreLikeThisQuery = {};
           angular.copy(gnGlobalSettings.gnCfg.mods.search.moreLikeThisConfig, moreLikeThisQuery);
           var query = {
+            "_source": {
+              "include": ['id',
+                'uuid',
+                'overview.*',
+                'resource*',
+                'cl_status*'
+              ]
+            },
             "query": {
               "bool": {
                 "must": [

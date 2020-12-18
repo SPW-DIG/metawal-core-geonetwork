@@ -55,7 +55,7 @@
             return c.label[scope.lang];
           };
         }
-        
+
       };
     }]);
 
@@ -71,26 +71,55 @@
             'batchcategory.html',
         link: function(scope, element, attrs) {
           scope.report = null;
+          scope.categoryIsSelected = false;
+
+          scope.selectCategory = function() {
+            scope.categoryIsSelected = true;
+          };
 
           $http.get('../api/tags', {cache: true}).
               success(function(data) {
                 scope.categories = data;
               });
 
+          scope.reset = function() {
+            element.find('input.ng-dirty').each(function(idx, el) {
+              el.checked = false;
+            });
+            scope.catsForm.$setPristine();
+            scope.catsForm.$setUntouched();
+            scope.categoryIsSelected = false;
+          };
+
           scope.save = function(replace) {
             scope.report = null;
-            var defer = $q.defer();
-            var params = [];
-            var url = '../api/records/tags?' +
+            var defer = $q.defer(),
+              tagsToAdd = [],
+              tagsToRemove = [],
+              url = '../api/records/tags?' +
                         '&bucket=' +
                 (attrs.selectionBucket || 'metadata') + '&' +
-                        (replace ? 'clear=true&id=' : 'id=');
+                        (replace ? 'clear=true&' : '');
             angular.forEach(scope.categories, function(c) {
               if (c.checked === true) {
-                params.push(c.id);
+                tagsToAdd.push(c.id);
               }
             });
-            $http.put(url + params.join('&id='))
+            if (tagsToAdd.length > 0) {
+              url = url + '&id=' + tagsToAdd.join('&id=');
+            }
+
+            element.find('input.ng-dirty').each(function(c, el) {
+              if (el.checked === false) {
+                tagsToRemove.push($(el).attr('name'));
+              }
+            });
+            if (tagsToRemove.length > 0) {
+              url = url + '&removeId=' + tagsToRemove.join('&removeId=');
+            }
+
+
+            $http.put(url)
                 .success(function(data) {
                   scope.processReport = data;
 

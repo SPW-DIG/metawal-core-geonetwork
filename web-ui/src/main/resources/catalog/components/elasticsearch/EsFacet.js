@@ -59,7 +59,8 @@
       'isHarvested',
       'dateStamp',
       'documentStandard',
-      'codelist_status*',
+      'cl_status*',
+      'mdStatus*',
       'recordLink'
     ]};
     this.configs = {
@@ -103,6 +104,7 @@
             'isHarvested',
             'dateStamp',
             'documentStandard',
+            'mdStatus*',
             '*inspire*'
           ]
         },
@@ -162,14 +164,19 @@
     };
 
     this.addFacets = function(esParams, type) {
-      var aggs = typeof type === 'string' ?
+      var esFacet = this, aggs = typeof type === 'string' ?
         angular.copy(this.configs[type].facets, {}) :
         type;
       angular.forEach(aggs, function(facet) {
-        delete facet.userHasRole;
-        delete facet.collapsed;
+        esFacet.removeInternalFacetConfig(facet);
       });
       esParams.aggregations = aggs;
+    };
+
+    this.removeInternalFacetConfig = function (facet) {
+      delete facet.userHasRole;
+      delete facet.collapsed;
+      return facet;
     };
 
     this.addSourceConfiguration = function(esParams, type) {
@@ -223,10 +230,12 @@
 
         if (reqAgg.hasOwnProperty('terms')) {
 
-          if(fieldId.endsWith('_tree')) {
+          if(fieldId.contains('_tree')) {
             facetModel.type = 'tree';
-            var tree = gnFacetTree.getTree(respAgg.buckets);
-            facetModel.items = tree.items;
+            facetModel.items = [];
+            gnFacetTree.getTree(respAgg.buckets, fieldId, respAgg.meta).then(function (tree) {
+              this.items = tree.items;
+            }.bind(facetModel));
           } else {
             facetModel.type = 'terms';
             facetModel.size = reqAgg.terms.size;

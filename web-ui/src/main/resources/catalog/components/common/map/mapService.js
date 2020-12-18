@@ -347,8 +347,7 @@
               return extent;
             }
             else {
-              return ol.proj.transformExtent(extent,
-                  src, dest);
+              return ol.proj.transformExtent(extent, src, dest, 8);
             }
           },
 
@@ -966,10 +965,22 @@
                       units: dimension.units,
                       values: dimension.values.split(',')
                     });
+
+                    if (dimension.default) {
+                      layer.getSource().updateParams({ ELEVATION: dimension.default });
+                    }
                   }
                   if (dimension.name == 'time') {
-                    layer.set('time',
-                        dimension.values.split(','));
+                    layer.set('time', {
+                      units: dimension.units,
+                      values: dimension.values
+                        .split(',')
+                        .map(function(e){return e.trim()})
+                    });
+
+                    if (dimension.default) {
+                        layer.getSource().updateParams({ TIME: dimension.default });
+                    }
                   }
                 }
               }
@@ -1238,8 +1249,8 @@
            * @param {Object} getCapLayer object to convert
            * @param {string} style of the style to use
            */
-          addWmsToMapFromCap: function(map, getCapLayer, style) {
-            var layer = this.createOlWMSFromCap(map, getCapLayer, null, style);
+          addWmsToMapFromCap: function(map, getCapLayer, url, style) {
+            var layer = this.createOlWMSFromCap(map, getCapLayer, url, style);
             map.addLayer(layer);
             return layer;
           },
@@ -1320,7 +1331,7 @@
             var defer = $q.defer();
             var $this = this;
 
-            if (!isLayerInMap(map, name, url, style)) {
+            if (!isLayerInMap(map, name, url, style || '')) { // if style is not specified, use empty string
               gnWmsQueue.add(url, name, style ? style.Name : '');
               gnOwsCapabilities.getWMSCapabilities(url).then(function(capObj) {
                 var capL = gnOwsCapabilities.getLayerInfoFromCap(
@@ -1724,9 +1735,11 @@
 
               //Asking WMTS service about capabilities
               var cap = {
-                  Contents: capabilities,
-                  OperationsMetadata: capabilities.operationsMetadata
+                  Contents: capabilities
               };
+              if (capabilities.operationsMetadata) {
+                cap.OperationsMetadata = capabilities.operationsMetadata;
+              }
 
               //OpenLayers expects an array of style objects having isDefault property
               angular.forEach(cap.Contents.Layer,function(l){
@@ -1751,25 +1764,35 @@
               }
 
               //Configuring url for service
-              var url = capabilities.operationsMetadata.GetCapabilities.DCP.HTTP.Get[0].href;
+              var url = capabilities.operationsMetadata ?
+                capabilities.operationsMetadata.GetCapabilities.DCP.HTTP.Get[0].href :
+                options.urls[0];
 
               //Configuring url for capabilities
-              var urlCap = capabilities.operationsMetadata.GetCapabilities.DCP.HTTP.Get[0].href;
-              var urlCapType = capabilities.operationsMetadata.GetCapabilities.
-              DCP.HTTP.Get[0].Constraint[0].AllowedValues.Value[0].toLowerCase();
+              var urlCap = ''
 
-              if (urlCapType == 'restful') {
-                if (urlCap.indexOf('/1.0.0/WMTSCapabilities.xml') == -1) {
-                  urlCap = urlCap + '/1.0.0/WMTSCapabilities.xml';
-                }
-              } else {
-                var parts = urlCap.split('?');
+              if (capabilities.serviceMetadataURL) {
+                urlCap = capabilities.serviceMetadataURL;
+              } else if(capabilities.operationsMetadata) {
+                urlCap = capabilities.operationsMetadata
+                  .GetCapabilities.DCP.HTTP.Get[0].href;
+                var urlCapType = capabilities.operationsMetadata
+                  .GetCapabilities.DCP.HTTP.Get[0].Constraint[0].AllowedValues.Value[0].toLowerCase();
 
-                urlCap = gnUrlUtils.append(parts[0],
+                if (urlCapType === 'restful') {
+                  if (urlCap.indexOf('/1.0.0/WMTSCapabilities.xml') === -1) {
+                    urlCap = urlCap + '/1.0.0/WMTSCapabilities.xml';
+                  }
+                } else {
+                  var parts = urlCap.split('?');
+
+                  urlCap = gnUrlUtils.append(parts[0],
                     gnUrlUtils.toKeyValue({
                       service: 'WMTS',
                       request: 'GetCapabilities',
-                      version: '1.0.0'}));
+                      version: '1.0.0'
+                    }));
+                }
               }
 
               //Create layer

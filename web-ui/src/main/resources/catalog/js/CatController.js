@@ -70,7 +70,8 @@ goog.require('gn_alert');
       'mods': {
         'global': {
           'humanizeDates': true,
-          'dateFormat': 'YYYY-MM-DD'
+          'dateFormat': 'YYYY-MM-DD',
+          'timezone': 'Europe/Brussels'
         },
         'footer':{
           'enabled': true,
@@ -108,15 +109,15 @@ goog.require('gn_alert');
                 // "order" : { "_key" : "asc" }
               }
             },
-            'topic_text': {
+            'cl_topic.key': {
               'terms': {
-                'field': 'topic_text',
+                'field': 'cl_topic.key',
                 'size': 20
               }
             },
-            'codelist_hierarchyLevel_text': {
+            'cl_hierarchyLevel.key': {
               'terms': {
-                'field': 'codelist_hierarchyLevel_text',
+                'field': 'cl_hierarchyLevel.key',
                 'size': 10
               }
             }
@@ -150,12 +151,12 @@ goog.require('gn_alert');
             // "boost": "5",
             // "functions": [
             //   {
-            //     "filter": { "match": { "codelist_spatialRepresentationType": "vector" } },
+            //     "filter": { "match": { "cl_spatialRepresentationType.key": "vector" } },
             //     "random_score": {},
             //     "weight": 23
             //   },
             //   {
-            //     "filter": { "match": { "codelist_spatialRepresentationType": "grid" } },
+            //     "filter": { "match": { "cl_spatialRepresentationType.key": "grid" } },
             //     "weight": 42
             //   }
             // ],
@@ -178,11 +179,11 @@ goog.require('gn_alert');
               },
               // Boost down obsolete records
               {
-                "filter": { "match": { "codelist_status": "obsolete" } },
+                "filter": { "match": { "cl_status.key": "obsolete" } },
                 "weight": 0.3
               },
               // {
-              //   "filter": { "match": { "codelist_resourceScope": "service" } },
+              //   "filter": { "match": { "cl_resourceScope": "service" } },
               //   "weight": 0.8
               // },
               // Start boosting down records more than 3 months old
@@ -245,9 +246,9 @@ goog.require('gn_alert');
           // TODOES
           'facetTabField': '',
           'facetConfig': {
-            "codelist_resourceScope_text": {
+            "cl_resourceScope.key": {
               "terms": {
-                "field": "codelist_resourceScope_text",
+                "field": "cl_resourceScope.key",
                 "size": 10,
                 "order": {
                   "_key": "asc"
@@ -268,7 +269,7 @@ goog.require('gn_alert');
                 'filters': {
                   'download': {
                     'query_string': {
-                      'query': '+tag:PanierTelechargementGeoportail'
+                      'query': '+tag.default:PanierTelechargementGeoportail'
                     }
                   },
                   'Webservice REST': {
@@ -284,31 +285,31 @@ goog.require('gn_alert');
                 }
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree": {
+            "th_Themesgeoportailwallonhierarchy_tree": {
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree",
+                "field": "th_Themesgeoportailwallonhierarchy_tree",
                 "size": 40,
                 "order": {
                   "_key": "asc"
                 }
               }
             },
-            "codelist_status_text": {
+            "cl_status.key": {
               "terms": {
-                "field": "codelist_status_text",
+                "field": "cl_status.key",
                 "size": 20
               }
             },
-            "codelist_spatialRepresentationType_text": {
+            "cl_spatialRepresentationType.key": {
               "terms": {
-                "field": "codelist_spatialRepresentationType_text",
+                "field": "cl_spatialRepresentationType.key",
                 "size": 20
               }
             },
-            "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+            "th_infraSIG": {
               'userHasRole': 'isEditorOrMore',
               "terms": {
-                "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
+                "field": "th_infraSIG",
                 "size": 20,
                 "order": {
                   "_key": "asc"
@@ -358,16 +359,16 @@ goog.require('gn_alert');
             //     }
             //   }
             // },
-            "topic_text": {
+            "cl_topic.key": {
               'collapsed': true,
               "terms": {
-                "field": "topic_text",
+                "field": "cl_topic.key",
                 "size": 20
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemegemet_tree": {
+            "th_gemet_tree": {
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemegemet_tree",
+                "field": "th_gemet_tree",
                 "size": 100,
                 "order": {
                   "_key": "asc"
@@ -376,17 +377,17 @@ goog.require('gn_alert');
                 // Limit to 2 levels
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+            "th_httpinspireeceuropaeutheme-theme": {
               'collapsed': true,
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
+                "field": "th_httpinspireeceuropaeutheme-theme",
                 "size": 34,
                 "exclude": "http.*"
               }
             },
-            'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
+            'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree': {
               'terms': {
-                'field': 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree',
+                'field': 'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree',
                 'size': 100,
                 "order" : { "_key" : "asc" }
               }
@@ -473,6 +474,7 @@ goog.require('gn_alert');
           'isFilterTagsDisplayedInSearch': true,
           'usersearches': {
             'enabled': true,
+            'includePortals': true,
             'displayFeaturedSearchesPanel': false
           },
           'savedSelection': {
@@ -564,9 +566,9 @@ goog.require('gn_alert');
           'editorIndentType': '',
           'allowRemoteRecordLink': true,
           'facetConfig': {
-            "codelist_resourceScope_text": {
+            "cl_resourceScope.key": {
               "terms": {
-                "field": "codelist_resourceScope_text",
+                "field": "cl_resourceScope.key",
                 "size": 10,
                 "order": {
                   "_key": "asc"
@@ -587,7 +589,7 @@ goog.require('gn_alert');
                 'filters': {
                   'download': {
                     'query_string': {
-                      'query': '+tag:PanierTelechargementGeoportail'
+                      'query': '+tag.default:PanierTelechargementGeoportail'
                     }
                   },
                   'Webservice REST': {
@@ -603,31 +605,31 @@ goog.require('gn_alert');
                 }
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree": {
+            "th_Themesgeoportailwallonhierarchy_tree": {
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree",
+                "field": "th_Themesgeoportailwallonhierarchy_tree",
                 "size": 40,
                 "order": {
                   "_key": "asc"
                 }
               }
             },
-            "codelist_status_text": {
+            "cl_status.key": {
               "terms": {
-                "field": "codelist_status_text",
+                "field": "cl_status.key",
                 "size": 20
               }
             },
-            "codelist_spatialRepresentationType_text": {
+            "cl_spatialRepresentationType.key": {
               "terms": {
-                "field": "codelist_spatialRepresentationType_text",
+                "field": "cl_spatialRepresentationType.key",
                 "size": 20
               }
             },
-            "thesaurus_geonetworkthesauruslocalthemeinfraSIG": {
+            "th_infraSIG": {
               'userHasRole': 'isEditorOrMore',
               "terms": {
-                "field": "thesaurus_geonetworkthesauruslocalthemeinfraSIG",
+                "field": "th_infraSIG",
                 "size": 20,
                 "order": {
                   "_key": "asc"
@@ -677,16 +679,16 @@ goog.require('gn_alert');
             //     }
             //   }
             // },
-            "topic_text": {
+            "cl_topic.key": {
               'collapsed': true,
               "terms": {
-                "field": "topic_text",
+                "field": "cl_topic.key",
                 "size": 20
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemegemet_tree": {
+            "th_gemet_tree": {
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemegemet_tree",
+                "field": "th_gemet_tree",
                 "size": 100,
                 "order": {
                   "_key": "asc"
@@ -695,17 +697,17 @@ goog.require('gn_alert');
                 // Limit to 2 levels
               }
             },
-            "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme": {
+            "th_httpinspireeceuropaeutheme-theme": {
               'collapsed': true,
               "terms": {
-                "field": "thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeuthemetheme",
+                "field": "th_httpinspireeceuropaeutheme-theme",
                 "size": 34,
                 "exclude": "http.*"
               }
             },
-            'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree': {
+            'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree': {
               'terms': {
-                'field': 'thesaurus_geonetworkthesaurusexternalthemehttpinspireeceuropaeumetadatacodelistPriorityDatasetPriorityDataset_tree',
+                'field': 'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree',
                 'size': 100,
                 "order" : { "_key" : "asc" }
               }
@@ -721,12 +723,6 @@ goog.require('gn_alert');
               'terms': {
                 'field': 'schema',
                 'size': 10
-              }
-            },
-            "codelist_status_text": {
-              "terms": {
-                "field": "codelist_status_text",
-                "size": 20
               }
             },
             'groupPublished': {
@@ -814,8 +810,8 @@ goog.require('gn_alert');
         }
       },
       current: null,
-      shibbolethEnabled: false,
-      shibbolethHideLogin: true,
+      isDisableLoginForm: false,
+      isShowLoginAsLink: false,
       init: function(config, gnUrl, gnViewerSettings, gnSearchSettings) {
         // start from the default config to make sure every field is present
         // and override with config arg if required
@@ -1064,8 +1060,8 @@ goog.require('gn_alert');
       $scope.logoPath = gnGlobalSettings.gnUrl + '../images/harvesting/';
       $scope.isMapViewerEnabled = gnGlobalSettings.isMapViewerEnabled;
       $scope.isDebug = window.location.search.indexOf('debug') !== -1;
-      $scope.shibbolethEnabled = gnGlobalSettings.shibbolethEnabled;
-      $scope.shibbolethHideLogin = gnGlobalSettings.shibbolethHideLogin;
+      $scope.isDisableLoginForm = gnGlobalSettings.isDisableLoginForm;
+      $scope.isShowLoginAsLink = gnGlobalSettings.isShowLoginAsLink;
       $scope.isExternalViewerEnabled = gnExternalViewer.isEnabled();
       $scope.externalViewerUrl = gnExternalViewer.getBaseUrl();
 
@@ -1212,7 +1208,7 @@ goog.require('gn_alert');
             // A second filter is for harvested record
             // if the catalogue admin defined that those
             // records could be harvested.
-            if (md.isHarvested == true) {
+            if (JSON.parse(md.isHarvested) == true) {
               return gnConfig['system.harvester.enableEditing'] === true &&
                 md.edit;
             }
@@ -1344,17 +1340,23 @@ goog.require('gn_alert');
       // health check for the index returns an error.
       $scope.showHealthIndexError = false;
 
-      function healthCheckStatus(data) {
+      function healthCheckStatus(r) {
+        var data = r.data, isCritical = r.config.url.indexOf('critical') !== -1;
         angular.forEach(data, function(o) {
           $scope.healthCheck[o.name] = (o.status === 'OK');
         });
 
-        $scope.showHealthIndexError = (!$scope.healthCheck) ||
-          ($scope.healthCheck && $scope.healthCheck.IndexHealthCheck == false);
+        if(isCritical) {
+          $scope.showHealthIndexError =
+            (!$scope.healthCheck) ||
+            ($scope.healthCheck
+              && $scope.healthCheck.IndexHealthCheck == false);
+        }
       };
+      $http.get('../../criticalhealthcheck')
+        .then(healthCheckStatus, healthCheckStatus);
       $http.get('../../warninghealthcheck')
-        .success(healthCheckStatus)
-        .error(healthCheckStatus);
+        .then(healthCheckStatus, healthCheckStatus);
     }]);
 
 })();

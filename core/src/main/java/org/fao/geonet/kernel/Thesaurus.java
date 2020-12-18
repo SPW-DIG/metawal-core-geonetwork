@@ -32,6 +32,7 @@ import org.fao.geonet.kernel.rdf.Wheres;
 import org.fao.geonet.kernel.search.keyword.KeywordRelation;
 import org.fao.geonet.languages.IsoLanguagesMapper;
 import org.fao.geonet.util.LangUtils;
+import org.fao.geonet.utils.DateUtil;
 import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
@@ -70,6 +71,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
@@ -849,8 +851,8 @@ public class Thesaurus {
             FileTime lastModifiedTime = null;
             if (this.date != null) {
                 try {
-                    lastModifiedTime = FileTime.fromMillis(ISODate.parseBasicOrFullDateTime(this.date).toDate().getTime());
-                } catch (IOException e) {
+                    lastModifiedTime = FileTime.fromMillis(DateUtil.parseBasicOrFullDateTime(this.date).toInstant().toEpochMilli());
+                } catch (Exception e) {
                     Log.warning(Geonet.THESAURUS, "Unable to parse " + this.date + " into an actual java.util.Date object", e);
                 }
             }
@@ -1196,41 +1198,46 @@ public class Thesaurus {
     }
 
     public List <String> getKeywordHierarchy(String keywordLabel, String langCode) {
-        KeywordBean term = this.getKeywordWithLabel(keywordLabel, langCode);
+        boolean isUri = keywordLabel.startsWith("http");
+        KeywordBean term =
+            isUri
+            ? this.getKeyword(keywordLabel, langCode)
+            : this.getKeywordWithLabel(keywordLabel, langCode);
 
-        List<ArrayList <String>> result = new ArrayList<ArrayList<String>>();
+        List<ArrayList <KeywordBean>> result = this.classify(term, langCode);
 
-        result = this.classify(term, langCode);
-
-        List <String> hierarchies = new ArrayList <String>();
-        for ( List <String> hierachy : result) {
-            hierarchies.add(String.join("^", hierachy));
+        List <String> hierarchies = new ArrayList<>();
+        for ( List <KeywordBean> hierachy : result) {
+            String path = hierachy.stream()
+                .map(k -> isUri ? k.getUriCode() : k.getPreferredLabel(langCode))
+                .collect(Collectors.joining("^"));
+            hierarchies.add(path);
         }
         return hierarchies;
     }
 
-    public List<ArrayList <String>> classify(KeywordBean term, String langCode) {
+    public List<ArrayList <KeywordBean>> classify(KeywordBean term, String langCode) {
 
-        List<ArrayList <String>> result = new ArrayList<ArrayList <String>>();
+        List<ArrayList <KeywordBean>> result = new ArrayList<>();
         if (this.hasBroader(term.getUriCode())) {
             result.addAll(classifyTermWithBroaderTerms(term, langCode));
         } else {
-            result.add(classifyTermWithNoBroaderTerms(term, langCode));
+            result.add(classifyTermWithNoBroaderTerms(term));
         }
         return result;
     }
 
-    private List<ArrayList <String>> classifyTermWithBroaderTerms(KeywordBean term, String langCode) {
-        List<ArrayList <String>> result = new ArrayList<ArrayList <String>>();
-        for (ArrayList <String> stringToBroaderTerm : classifyBroaderTerms(term, langCode)) {
-            stringToBroaderTerm.add(term.getPreferredLabel(langCode));
+    private List<ArrayList <KeywordBean>> classifyTermWithBroaderTerms(KeywordBean term, String langCode) {
+        List<ArrayList <KeywordBean>> result = new ArrayList<>();
+        for (ArrayList <KeywordBean> stringToBroaderTerm : classifyBroaderTerms(term, langCode)) {
+            stringToBroaderTerm.add(term);
             result.add(stringToBroaderTerm);
         }
         return result;
     }
 
-    private List<ArrayList <String>> classifyBroaderTerms(KeywordBean term, String langCode) {
-        List<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
+    private List<ArrayList <KeywordBean>> classifyBroaderTerms(KeywordBean term, String langCode) {
+        List<ArrayList<KeywordBean>> result = new ArrayList<>();
 
         for (KeywordBean broaderTerm : this.getBroader(term.getUriCode(), langCode)) {
             result.addAll(this.classify(broaderTerm, langCode));
@@ -1238,10 +1245,9 @@ public class Thesaurus {
         return result;
     }
 
-    private ArrayList <String> classifyTermWithNoBroaderTerms(KeywordBean term, String langCode) {
-        ArrayList <String> list = new ArrayList <String>();
-        list.add(term.getPreferredLabel(langCode));
+    private ArrayList <KeywordBean> classifyTermWithNoBroaderTerms(KeywordBean term) {
+        ArrayList <KeywordBean> list = new ArrayList <KeywordBean>();
+        list.add(term);
         return list;
     }
-
 }

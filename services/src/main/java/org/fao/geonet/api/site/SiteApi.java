@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2016 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2020 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -48,7 +48,13 @@ import org.fao.geonet.api.site.model.SettingsListResponse;
 import org.fao.geonet.api.tools.i18n.LanguageUtils;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.doi.client.DoiManager;
-import org.fao.geonet.domain.*;
+import org.fao.geonet.domain.Metadata;
+import org.fao.geonet.domain.MetadataSourceInfo_;
+import org.fao.geonet.domain.Metadata_;
+import org.fao.geonet.domain.Profile;
+import org.fao.geonet.domain.Setting;
+import org.fao.geonet.domain.SettingDataType;
+import org.fao.geonet.domain.Source;
 import org.fao.geonet.exceptions.OperationAbortedEx;
 import org.fao.geonet.index.Status;
 import org.fao.geonet.index.es.EsRestClient;
@@ -59,7 +65,6 @@ import org.fao.geonet.kernel.datamanager.IMetadataManager;
 import org.fao.geonet.kernel.datamanager.base.BaseMetadataManager;
 import org.fao.geonet.kernel.harvest.HarvestManager;
 import org.fao.geonet.kernel.search.EsSearchManager;
-import org.fao.geonet.kernel.search.index.BatchOpsMetadataReindexer;
 import org.fao.geonet.kernel.setting.SettingInfo;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.kernel.setting.Settings;
@@ -80,7 +85,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.imageio.ImageIO;
 import javax.persistence.criteria.Root;
@@ -93,7 +104,15 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TimeZone;
 
 import static org.apache.commons.fileupload.util.Streams.checkFileName;
 import static org.fao.geonet.api.ApiParams.API_CLASS_CATALOG_TAG;
@@ -407,6 +426,13 @@ public class SiteApi {
             }
         }
 
+        // Update the system default timezone. If the setting is blank use the timezone user.timezone property from command line or
+        // TZ environment variable
+        String zoneId = StringUtils.defaultIfBlank(sm.getValue(Settings.SYSTEM_SERVER_TIMEZONE, true),
+                SettingManager.DEFAULT_SERVER_TIMEZONE.getId());
+        TimeZone.setDefault(TimeZone.getTimeZone(zoneId));
+
+
         // And reload services
         String newUuid = allRequestParams.get(Settings.SYSTEM_SITE_SITE_ID_PATH);
 
@@ -583,6 +609,21 @@ public class SiteApi {
         return new HttpEntity<>(HttpStatus.CREATED);
     }
 
+    @io.swagger.v3.oas.annotations.Operation(
+        summary = "Index commit",
+        description = "")
+    @RequestMapping(
+        path = "/index/commit",
+        produces = MediaType.APPLICATION_JSON_VALUE,
+        method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('Administrator')")
+    public void indexCommit(
+        HttpServletRequest request
+    ) throws Exception {
+        EsSearchManager searchMan = ApplicationContextHolder.get().getBean(EsSearchManager.class);
+        searchMan.forceIndexChanges();
+    }
 
 
     @io.swagger.v3.oas.annotations.Operation(
@@ -622,6 +663,24 @@ public class SiteApi {
         info.put("index.count", countResponse.getCount());
         return info;
     }
+
+
+    @io.swagger.v3.oas.annotations.Operation(
+        summary = "Force to commit pending documents in index.",
+        description = "May be used when indexing task is hanging.")
+    @PutMapping(
+        path = "/index/commit")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Changes committed.")
+    })
+    @ResponseStatus(HttpStatus.CREATED)
+    public void commitIndexChanges(
+    ) throws Exception {
+        ApplicationContextHolder.get()
+            .getBean(EsSearchManager.class)
+            .forceIndexChanges();
+    }
+
 
     @io.swagger.v3.oas.annotations.Operation(
         summary = "Get build details",

@@ -129,6 +129,9 @@
                                               gnGlobalSettings
                                             );
                   var result = [currentUILang_3char];
+                  if (angular.isUndefined(gnCurrentEdit.allLanguages)) {
+                      return result;
+                  }
 
                   var currentUILang2_3char = gnCurrentEdit.allLanguages.iso2code[currentUILang_3char];
                   if (currentUILang2_3char) {
@@ -310,7 +313,10 @@
                 '../api/registries/vocabularies/keyword',
                     gnUrlUtils.toKeyValue(params)
                     );
-                $http.get(url, { cache: true }).
+                $http.get(url, { cache: true,
+                  headers: {
+                    'Accept': 'application/xml'
+                  } }).
                     success(function(data, status) {
                       // TODO: could be a global constant ?
                       var xmlDeclaration =

@@ -30,16 +30,7 @@ import org.apache.commons.lang.NotImplementedException;
 import org.fao.geonet.NodeInfo;
 import org.fao.geonet.constants.Edit;
 import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.domain.AbstractMetadata;
-import org.fao.geonet.domain.ISODate;
-import org.fao.geonet.domain.Metadata;
-import org.fao.geonet.domain.MetadataDataInfo;
-import org.fao.geonet.domain.MetadataHarvestInfo;
-import org.fao.geonet.domain.MetadataRatingByIp;
-import org.fao.geonet.domain.MetadataRatingByIpId;
-import org.fao.geonet.domain.MetadataSourceInfo;
-import org.fao.geonet.domain.MetadataType;
-import org.fao.geonet.domain.Pair;
+import org.fao.geonet.domain.*;
 import org.fao.geonet.kernel.GeonetworkDataDirectory;
 import org.fao.geonet.kernel.SchemaManager;
 import org.fao.geonet.kernel.XmlSerializer;
@@ -73,11 +64,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.PostConstruct;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.fao.geonet.repository.specification.MetadataSpecs.hasMetadataUuid;
 
@@ -276,6 +263,49 @@ public class BaseMetadataUtils implements IMetadataUtils {
         return defaultLanguage;
     }
 
+    /**
+     * Extract metadata default language from the metadata record using the schema XSL for default language extraction)
+     */
+    @Override
+    public LinkedHashMap<String, String> extractTitles(String schema, Element md) throws Exception {
+        Path styleSheet = metadataSchemaUtils.getSchemaDir(schema).resolve(Geonet.File.EXTRACT_TITLES);
+        Element root = Xml.transform(md, styleSheet);
+
+        LinkedHashMap<String, String> titles = new LinkedHashMap<>();
+        root.getChildren("title").forEach(o -> {
+            if (o instanceof Element) {
+                Element e = (Element) o;
+                String lang = e.getAttributeValue("lang");
+                if (lang != null) {
+                    titles.put(lang, e.getTextNormalize());
+                }
+            }
+        });
+
+        if (Log.isDebugEnabled(Geonet.DATA_MANAGER))
+            Log.debug(Geonet.DATA_MANAGER, "Extracted title '" + titles + "' for schema '" + schema + "'");
+
+        // --- needed to detach md from the document
+        md.detach();
+
+        return titles;
+    }
+
+
+    /**
+     * Extract metadata default language from the metadata record using the schema XSL for default language extraction)
+     */
+    @Override
+    public LinkedHashMap<String, String> extractTitles(@Nonnull String id) throws Exception {
+        AbstractMetadata metadata = findOne(id);
+
+        if (metadata == null)
+            return null;
+
+        Element md = Xml.loadString(metadata.getData(), false);
+
+        return extractTitles(metadata.getDataInfo().getSchemaId(), md);
+    }
 
     /**
      * @param schema
@@ -473,7 +503,14 @@ public class BaseMetadataUtils implements IMetadataUtils {
         // READONLYMODE
         if (!srvContext.getBean(NodeInfo.class).isReadOnly()) {
             int iId = Integer.parseInt(id);
-            metadataRepository.incrementPopularity(iId);
+            metadataRepository.update(iId, new Updater<Metadata>() {
+                @Override
+                public void apply(Metadata entity) {
+                    entity.getDataInfo().setPopularity(
+                        entity.getDataInfo().getPopularity() + 1
+                    );
+                }
+            });
             final java.util.Optional<Metadata> metadata = metadataRepository.findById(iId);
 
             if (metadata.isPresent()) {
@@ -483,9 +520,6 @@ public class BaseMetadataUtils implements IMetadataUtils {
                     metadata.get().getDataInfo().getPopularity());
 
             }
-//            // And register the metadata to be indexed in the near future
-//            final IndexingList list = srvContext.getBean(IndexingList.class);
-//            list.add(iId);
         } else {
             if (Log.isDebugEnabled(Geonet.DATA_MANAGER)) {
                 Log.debug(Geonet.DATA_MANAGER,
@@ -535,6 +569,15 @@ public class BaseMetadataUtils implements IMetadataUtils {
     @Override
     public Element getMetadataNoInfo(ServiceContext srvContext, String id) throws Exception {
         Element md = metadataManager.getMetadata(srvContext, id, false, true, false, false);
+        return removeMetadataInfo(md);
+    }
+
+    /**
+     *  remove the geonet:info element from the supplied metadata.
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public Element removeMetadataInfo(Element md) throws Exception {
         md.removeChild(Edit.RootChild.INFO, Edit.NAMESPACE);
 
         // Drop Geonet namespace declaration. It may be contained

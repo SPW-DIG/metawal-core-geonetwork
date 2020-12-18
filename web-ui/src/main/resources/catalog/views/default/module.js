@@ -68,7 +68,7 @@
         filters: gnSearchSettings.filters,
         params: {
           isTemplate: 'n',
-          sortBy: 'changeDate',
+          sortBy: 'createDate',
           sortOrder: 'desc',
           from: 1,
           to: 12
@@ -386,7 +386,8 @@
         viewerMap: viewerMap,
         searchMap: searchMap,
         mapfieldOption: {
-          relations: ['within']
+          relations: ['within'],
+          autoTriggerSearch: true
         },
         hitsperpageValues: gnSearchSettings.hitsperpageValues,
         filters: gnSearchSettings.filters,
