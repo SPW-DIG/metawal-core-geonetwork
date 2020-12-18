@@ -488,6 +488,7 @@
               pre: function preLink(scope) {
                 scope.searchObj = {
                   internal: true,
+                  state: {filters: ''},
                   params: {}
                 };
                 scope.modelOptions =
@@ -509,6 +510,7 @@
 
                 scope.searchObj = {
                   internal: true,
+                  state: {filters: ''},
                   params: {
                     sortBy: 'resourceTitleObject.default.keyword'
                   }
