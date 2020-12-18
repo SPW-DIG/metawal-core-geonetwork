@@ -285,9 +285,9 @@ goog.require('gn_alert');
                 }
               }
             },
-            "th_Themesgeoportailwallonhierarchy_tree": {
+            "th_Themes_geoportail_wallon_hierarchy_tree.default": {
               "terms": {
-                "field": "th_Themesgeoportailwallonhierarchy_tree",
+                "field": "th_Themes_geoportail_wallon_hierarchy_tree.default",
                 "size": 40,
                 "order": {
                   "_key": "asc"
@@ -306,10 +306,10 @@ goog.require('gn_alert');
                 "size": 20
               }
             },
-            "th_infraSIG": {
+            "th_infraSIG.default": {
               'userHasRole': 'isEditorOrMore',
               "terms": {
-                "field": "th_infraSIG",
+                "field": "th_infraSIG.default",
                 "size": 20,
                 "order": {
                   "_key": "asc"
@@ -366,9 +366,9 @@ goog.require('gn_alert');
                 "size": 20
               }
             },
-            "th_gemet_tree": {
+            "th_gemet_tree.default": {
               "terms": {
-                "field": "th_gemet_tree",
+                "field": "th_gemet_tree.default",
                 "size": 100,
                 "order": {
                   "_key": "asc"
@@ -377,17 +377,17 @@ goog.require('gn_alert');
                 // Limit to 2 levels
               }
             },
-            "th_httpinspireeceuropaeutheme-theme": {
+            "th_httpinspireeceuropaeutheme-theme.default": {
               'collapsed': true,
               "terms": {
-                "field": "th_httpinspireeceuropaeutheme-theme",
+                "field": "th_httpinspireeceuropaeutheme-theme.default",
                 "size": 34,
                 "exclude": "http.*"
               }
             },
-            'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree': {
+            'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default': {
               'terms': {
-                'field': 'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree',
+                'field': 'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default',
                 'size': 100,
                 "order" : { "_key" : "asc" }
               }
@@ -605,9 +605,9 @@ goog.require('gn_alert');
                 }
               }
             },
-            "th_Themesgeoportailwallonhierarchy_tree": {
+            "th_Themes_geoportail_wallon_hierarchy_tree.default": {
               "terms": {
-                "field": "th_Themesgeoportailwallonhierarchy_tree",
+                "field": "th_Themes_geoportail_wallon_hierarchy_tree.default",
                 "size": 40,
                 "order": {
                   "_key": "asc"
@@ -626,10 +626,10 @@ goog.require('gn_alert');
                 "size": 20
               }
             },
-            "th_infraSIG": {
+            "th_infraSIG.default": {
               'userHasRole': 'isEditorOrMore',
               "terms": {
-                "field": "th_infraSIG",
+                "field": "th_infraSIG.default",
                 "size": 20,
                 "order": {
                   "_key": "asc"
@@ -686,9 +686,9 @@ goog.require('gn_alert');
                 "size": 20
               }
             },
-            "th_gemet_tree": {
+            "th_gemet_tree.default": {
               "terms": {
-                "field": "th_gemet_tree",
+                "field": "th_gemet_tree.default",
                 "size": 100,
                 "order": {
                   "_key": "asc"
@@ -697,17 +697,17 @@ goog.require('gn_alert');
                 // Limit to 2 levels
               }
             },
-            "th_httpinspireeceuropaeutheme-theme": {
+            "th_httpinspireeceuropaeutheme-theme.default": {
               'collapsed': true,
               "terms": {
-                "field": "th_httpinspireeceuropaeutheme-theme",
+                "field": "th_httpinspireeceuropaeutheme-theme.default",
                 "size": 34,
                 "exclude": "http.*"
               }
             },
-            'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree': {
+            'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default': {
               'terms': {
-                'field': 'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree',
+                'field': 'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default',
                 'size': 100,
                 "order" : { "_key" : "asc" }
               }

@@ -95,7 +95,7 @@
         };
         var allPromises = [];
 
-        options.locales.push('custom');
+        options.locales.push('apirw');
         options.locales.push('v4');
         options.locales.push('../api/tools/i18n/db/translations');
 

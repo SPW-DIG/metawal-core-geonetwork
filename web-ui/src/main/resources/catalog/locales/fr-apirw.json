@@ -1,8 +1,9 @@
 {
   "facet-diffusionMode": "Mode de diffusion",
-  "facet-thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallon": "Thèmes du Géoportail",
-  "facet-thesaurus_geonetworkthesaurusexternalthemeThemesgeoportailwallonhierarchy_tree": "Thèmes du Géoportail",
-  "facet-thesaurus_geonetworkthesauruslocalthemeinfraSIG": "InfraSIG",
+  "facet-th_Themes_geoportail_wallon": "Thèmes du Géoportail",
+  "facet-th_Themes_geoportail_wallon_hierarchy": "Thèmes du Géoportail",
+  "facet-th_Themes_geoportail_wallon_hierarchy_tree": "Thèmes du Géoportail",
+  "facet-th_infraSIG": "InfraSIG",
   "diffusionMode-download": "Télécharger",
   "diffusionMode-thematicmap": "Carte thématique",
   "diffusionMode-walonmap": "WalOnMap",
