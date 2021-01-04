@@ -282,7 +282,7 @@
 
       $scope.exactMatchDisabled = function(elem) {
         var disabledExactMatch;
-        if (elem.startsWith('"') && elem.startsWith('"')) {
+        if (elem && elem.startsWith('"')) {
           disabledExactMatch = true
         } else {
           disabledExactMatch = false
@@ -292,14 +292,6 @@
 
       $scope.resultviewFns = {
         addMdLayerToMap: function (link, md) {
-          // Redirect to WALONMAP
-          // If no layer, GetCapabilities and get all layers and make a list all |0,1,2,3
-          // If layer, |id de la layer
-          $window.open('https://geoportail.wallonie.be/walonmap/#' +
-            (link.protocol == 'ESRI:REST' ? 'ADU' : 'WMS') +
-            '=' + link.id.split('?request=GetCapabilities&service=WMS')[0] +
-            (link.protocol == 'ESRI:REST' ? '' : '|0') ,'_blank');
-          return;
           var config = {
             uuid: md ? md.uuid : null,
             type:
@@ -317,7 +309,9 @@
             name = $filter('gnLocalized')(link.name);
           }
 
-          if (name && name !== '') {
+          if (title && title.indexOf('Service de visualisation') === 0) {
+            config.name = '0'; // see https://github.com/SPW-DIG/metawal-core-geonetwork/issues/573
+          } else if (name && name !== '') {
             config.name = name;
             config.group = link.group;
             // Related service return a property title for the name
@@ -327,15 +321,25 @@
 
           // if an external viewer is defined, use it here
           if (gnExternalViewer.isEnabled()) {
-            gnExternalViewer.viewService({
-              id: md ? md.getId() : null,
-              uuid: config.uuid
-            }, {
-              type: config.type,
-              url: config.url,
-              name: config.name,
-              title: title
-            });
+            if (gnExternalViewer.getBaseUrl().indexOf('https://geoportail.wallonie.be/walonmap') === 0) {
+              // Redirect to WALONMAP
+              // If no layer, GetCapabilities and get all layers and make a list all |0,1,2,3
+              // If layer, |id de la layer
+              $window.open('https://geoportail.wallonie.be/walonmap/#' +
+                (link.protocol == 'ESRI:REST' ? 'ADU' : 'WMS') +
+                '=' + link.id.split('?request=GetCapabilities&service=WMS')[0] +
+                (link.protocol == 'ESRI:REST' ? '' : '|0') ,'_blank');
+            } else {
+              gnExternalViewer.viewService({
+                id: md ? md.getId() : null,
+                uuid: config.uuid
+              }, {
+                type: config.type,
+                url: config.url,
+                name: config.name,
+                title: title
+              });
+            }
             return;
           }
 

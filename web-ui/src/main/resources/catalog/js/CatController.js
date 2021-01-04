@@ -485,11 +485,11 @@ goog.require('gn_alert');
           'enabled': false,
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/map',
           'externalViewer': {
-            'enabled': false,
+            'enabled': true,
             'enabledViewAction': false,
-            'baseUrl': 'http://www.example.com/viewer',
-            'urlTemplate': 'http://www.example.com/viewer?url=${service.url}&type=${service.type}&layer=${service.title}&lang=${iso2lang}&title=${md.defaultTitle}',
-            'openNewWindow': false,
+            'baseUrl': 'https://geoportail.wallonie.be/walonmap',
+            'urlTemplate': 'https://geoportail.wallonie.be/walonmap',
+            'openNewWindow': true,
             'valuesSeparator': ','
           },
           'is3DModeAllowed': false,
