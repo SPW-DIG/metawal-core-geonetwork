@@ -6331,7 +6331,7 @@ la non-évaluation</b>, dans le cadre de métadonnées INSPIRE
       <option value="ESRI:REST-TILED">ESRI Service REST Tuilé</option>
       <option value="FILE:GEO">Fichier SIG</option>
       <option value="FILE:RASTER">Fichier SIG RASTER</option>
-      <option value="WWW:LINK-1.0-http--link" default="">Adresse Internet
+      <option value="WWW:LINK" default="">Adresse Internet
         (URL)
       </option>
       <option value="WWW:LINK-1.0-http--rss">Fil RSS (URL)</option>
