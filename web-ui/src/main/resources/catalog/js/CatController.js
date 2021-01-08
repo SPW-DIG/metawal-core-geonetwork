@@ -1179,8 +1179,6 @@ goog.require('gn_alert');
               });
         });
 
-
-
         // Utility functions for user
         var userFn = {
           isAnonymous: function() {

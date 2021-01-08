@@ -64,7 +64,7 @@
   module.directive('gnGridRelated', [
     'gnGlobalSettings', 'gnRelatedResources', 'gnGridRelatedList',
     'gnConfigService', 'gnConfig',
-    function(gnGlobalSettings, gnRelatedResources , gnGridRelatedList,
+    function(gnGlobalSettings, gnRelatedResources, gnGridRelatedList,
              gnConfigService, gnConfig) {
       return {
         restrict: 'A',
