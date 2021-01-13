@@ -143,6 +143,7 @@
       // log activity
       $scope.openLogActivity = function(leaveOpen) {
         var logActivityEl = $('#logActivity');
+        $scope.visibleLogView = logActivityEl.is( ":visible" );
         if (!leaveOpen) {
           logActivityEl.collapse('toggle');
         }
@@ -150,7 +151,7 @@
         $http.get('../api/site/logging/activity').success(function(data) {
           $scope.logInfoLoading = false;
           $scope.logActivity = data;
-
+          $scope.visibleLogView = logActivityEl.is( ":visible" );
           if (!leaveOpen) {
             $('html, body').animate({
               scrollTop: $('#logActivityHeading').offset().top
