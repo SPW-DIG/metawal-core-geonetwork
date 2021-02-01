@@ -219,7 +219,7 @@
 
 
   <xsl:template mode="toDatacite"
-                match="gmd:EX_GeographicBoundingBox[1]">
+                match="gmd:MD_Metadata/gmd:identificationInfo/*/gmd:extent[1]">
     <datacite:geoLocations>
       <xsl:for-each select="$metadata//gmd:EX_GeographicBoundingBox">
         <datacite:geoLocation>
@@ -262,7 +262,7 @@
                                select="normalize-space($thesaurusTitle/(gco:CharacterString|gmx:Anchor)/text()[. != ''])"/>
               </xsl:if>
               <xsl:if test="gmx:Anchor/@xlink:href">
-                <xsl:attribute name="valueUri"
+                <xsl:attribute name="valueURI"
                                select="gmx:Anchor/@xlink:href"/>
               </xsl:if>
             </datacite:subject>

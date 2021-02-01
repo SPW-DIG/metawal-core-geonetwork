@@ -307,13 +307,15 @@ goog.require('gn_alert');
               }
             },
             "th_infraSIG.default": {
-              'userHasRole': 'isEditorOrMore',
               "terms": {
                 "field": "th_infraSIG.default",
                 "size": 20,
                 "order": {
                   "_key": "asc"
                 }
+              },
+              "meta": {
+                'userHasRole': 'isEditorOrMore'
               }
             },
             // "resolutionScaleDenominator": {
@@ -326,12 +328,14 @@ goog.require('gn_alert');
             //   }
             // },
             "resolutionScaleDenominator": {
-              'collapsed': true,
               "histogram": {
                 "field": "resolutionScaleDenominator",
                 "interval": 10000,
                 "keyed" : true,
                 'min_doc_count': 1
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             // "serviceType": {
@@ -342,12 +346,14 @@ goog.require('gn_alert');
             //   }
             // },
             "creationYearForResource": {
-              'collapsed': true,
               "histogram": {
                 "field": "creationYearForResource",
                 "interval": 5,
                 "keyed" : true,
                 'min_doc_count': 1
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             // "creationYearForResource": {
@@ -360,10 +366,12 @@ goog.require('gn_alert');
             //   }
             // },
             "cl_topic.key": {
-              'collapsed': true,
               "terms": {
                 "field": "cl_topic.key",
                 "size": 20
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             "th_gemet_tree.default": {
@@ -378,11 +386,13 @@ goog.require('gn_alert');
               }
             },
             "th_httpinspireeceuropaeutheme-theme.default": {
-              'collapsed': true,
               "terms": {
                 "field": "th_httpinspireeceuropaeutheme-theme.default",
                 "size": 34,
                 "exclude": "http.*"
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default': {
@@ -627,7 +637,6 @@ goog.require('gn_alert');
               }
             },
             "th_infraSIG.default": {
-              'userHasRole': 'isEditorOrMore',
               "terms": {
                 "field": "th_infraSIG.default",
                 "size": 20,
@@ -646,12 +655,14 @@ goog.require('gn_alert');
             //   }
             // },
             "resolutionScaleDenominator": {
-              'collapsed': true,
               "histogram": {
                 "field": "resolutionScaleDenominator",
                 "interval": 10000,
                 "keyed" : true,
                 'min_doc_count': 1
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             // "serviceType": {
@@ -662,12 +673,14 @@ goog.require('gn_alert');
             //   }
             // },
             "creationYearForResource": {
-              'collapsed': true,
               "histogram": {
                 "field": "creationYearForResource",
                 "interval": 5,
                 "keyed" : true,
                 'min_doc_count': 1
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             // "creationYearForResource": {
@@ -680,10 +693,12 @@ goog.require('gn_alert');
             //   }
             // },
             "cl_topic.key": {
-              'collapsed': true,
               "terms": {
                 "field": "cl_topic.key",
                 "size": 20
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             "th_gemet_tree.default": {
@@ -698,11 +713,13 @@ goog.require('gn_alert');
               }
             },
             "th_httpinspireeceuropaeutheme-theme.default": {
-              'collapsed': true,
               "terms": {
                 "field": "th_httpinspireeceuropaeutheme-theme.default",
                 "size": 34,
                 "exclude": "http.*"
+              },
+              "meta": {
+                'collapsed': true
               }
             },
             'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default': {

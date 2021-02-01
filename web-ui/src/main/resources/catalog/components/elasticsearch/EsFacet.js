@@ -167,17 +167,9 @@
       var esFacet = this, aggs = typeof type === 'string' ?
         angular.copy(this.configs[type].facets, {}) :
         type;
-      angular.forEach(aggs, function(facet) {
-        esFacet.removeInternalFacetConfig(facet);
-      });
       esParams.aggregations = aggs;
     };
 
-    this.removeInternalFacetConfig = function (facet) {
-      delete facet.userHasRole;
-      delete facet.collapsed;
-      return facet;
-    };
 
     this.addSourceConfiguration = function(esParams, type) {
       if (type === undefined) {
@@ -220,10 +212,13 @@
           key: fieldId,
           userHasRole: configId && this.configs[configId].facets
             && this.configs[configId].facets[fieldId]
-            && this.configs[configId].facets[fieldId].userHasRole,
+            && this.configs[configId].facets[fieldId].meta
+            && this.configs[configId].facets[fieldId].meta.userHasRole,
           collapsed: configId && this.configs[configId].facets
             && this.configs[configId].facets[fieldId]
-            && this.configs[configId].facets[fieldId].collapsed,
+            && this.configs[configId].facets[fieldId].meta
+            && this.configs[configId].facets[fieldId].meta.collapsed,
+          meta: respAgg.meta,
           items: [],
           path: (path || []).concat([fieldId])
         };
@@ -249,7 +244,6 @@
                     itemPath = facetModel.path.concat([key + '']);
                 var facet = {
                   value: key,
-                  meta: bucket.meta,
                   count: bucket.doc_count,
                   path: itemPath
                 };
