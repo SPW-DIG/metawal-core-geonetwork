@@ -356,9 +356,15 @@
         <i class="fa fa-sitemap" data-ng-class="onlinesrcService.reload ? 'fa-spin' : ''"></i>
         <i class="icon-external-link"></i>&nbsp;
         <span data-translate="">parentMd</span>
-        <a href=""
+        <!--<a href=""
            class="btn btn-default btn-xs pull-right"
            data-ng-click="onlinesrcService.onOpenPopup('parent')">
+          <i class="fa fa-fw fa-plus"></i>
+          <span data-translate="">add</span>
+        </a>-->
+        <a href=""
+           class="btn btn-default btn-xs pull-right"
+           data-ng-click="onlinesrcService.onOpenPopup('sibling', {associationType: 'partOfSeamlessDatabase', initiativeType: 'collection'})">
           <i class="fa fa-fw fa-plus"></i>
           <span data-translate="">add</span>
         </a>
