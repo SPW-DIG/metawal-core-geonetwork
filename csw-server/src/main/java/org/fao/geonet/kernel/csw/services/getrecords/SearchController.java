@@ -497,11 +497,9 @@ public class SearchController {
 
                 AbstractMetadata metadata = metadataUtils.findOne(mdId);
 
-                final String schema = metadata.getDataInfo().getSchemaId();
                 String displayLanguage = context.getLanguage();
-                Element resultMD = applyElementSetName(context, schemaManager, schema,
-                    metadata.getXmlData(false), outSchema, setName, resultType, Integer.toString(mdId), displayLanguage);
-                resultMD = applyElementNames(context, elemNames, typeName, schemaManager, schema, resultMD, resultType, null, strategy);
+                Element resultMD = retrieveMetadata(context, metadata.getId() + "",
+                    setName, outSchema, elemNames, typeName, resultType, strategy, displayLanguage);
 
                 if (resultMD != null) {
                     if (resultType == ResultType.RESULTS) {
