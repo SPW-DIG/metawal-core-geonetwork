@@ -143,7 +143,13 @@
       // log activity
       $scope.openLogActivity = function(leaveOpen) {
         var logActivityEl = $('#logActivity');
-        $scope.visibleLogView = logActivityEl.is( ":visible" );
+
+        var collapseIn = logActivityEl.hasClass('in');
+        if (!leaveOpen && collapseIn === false) {
+          $scope.visibleLogView = true;
+        } else if (leaveOpen === true && collapseIn === true) {
+          $scope.visibleLogView = true;
+        } else {$scope.visibleLogView = false;}
         if (!leaveOpen) {
           logActivityEl.collapse('toggle');
         }
