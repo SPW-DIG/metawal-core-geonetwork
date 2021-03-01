@@ -12,7 +12,7 @@ DROP TABLE metadatastatus;
 UPDATE metadata SET data = replace(data, 'WWW:LINK-1.0-http--link', 'WWW:LINK') WHERE data LIKE '%WWW:LINK-1.0-http--link%';
 
 
-UPDATE Settings SET value='4.0.2' WHERE name='system/platform/version';
+UPDATE Settings SET value='4.0.3' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
 
 
