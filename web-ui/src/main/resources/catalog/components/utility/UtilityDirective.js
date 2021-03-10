@@ -943,6 +943,7 @@
         scope: {
           date: '=gnBootstrapDatepicker',
           dates: '=dateAvailable',
+          config: '=config',
           onChangeFn: '&?'
         },
         link: function(scope, element, attrs) {
@@ -999,7 +1000,7 @@
               $(element).datepicker('destroy');
             }
 
-            var datepickConfig = {
+            var datepickConfig = angular.extend({
               container: typeof sxtSettings != 'undefined' ?
                   '.g' : 'body',
               autoclose: true,
@@ -1007,7 +1008,7 @@
               clearBtn: true,
               todayHighlight: false,
               language: gnLangs.getIso2Lang(gnLangs.getCurrent())
-            };
+            }, scope.config);
 
             if (angular.isDefined(scope.dates)) {
               angular.extend(datepickConfig, {
@@ -1089,6 +1090,9 @@
             });
           }
           else {
+            scope.$watch('config', function(n, o) {
+              init();
+            });
             scope.$watchCollection('date', function(newValue, oldValue) {
               if (!scope.date) {
                 scope.date = {};
@@ -1380,7 +1384,7 @@
    */
   module.filter('thumbnailUrlSize', function() {
       return function(href, size) {
-        if(href.indexOf('api/records/') !== -1) {
+        if(href && href.indexOf('api/records/') !== -1) {
           var suffix = 'size=' + (size || 140);
           return href.indexOf('?') !== -1 ?
             href + '&' + suffix :
