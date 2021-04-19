@@ -24,7 +24,7 @@
       and */gmd:dateType/*/@codeListValue != 'publication'
       and */gmd:dateType/*/@codeListValue != 'revision']" priority="2"/>
 
-  <xsl:template match="@xlink:href[contains(., 'srv/api/records/') and not(contains(., '/formatters/'))]">
+  <xsl:template match="@xlink:href[contains(., '/api/records/') and not(contains(., '/formatters/'))]">
     <xsl:attribute name="xlink:href"
                    select="concat(., '/formatters/iso19139?output=xml')"/>
   </xsl:template>
