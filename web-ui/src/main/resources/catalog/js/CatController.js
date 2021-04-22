@@ -1356,7 +1356,7 @@ goog.require('gn_alert');
               return $http.post('../api/search/records/_search',
                 {size: 0,
                     track_total_hits: true,
-                    query: q,
+                    query: query,
                     aggs: gnGlobalSettings.gnCfg.mods.home.facetConfig}).
               then(function(r) {
                 $scope.searchInfo = r.data;
