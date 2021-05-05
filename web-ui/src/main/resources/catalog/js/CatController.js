@@ -412,10 +412,22 @@ goog.require('gn_alert');
                 "order" : { "_key" : "asc" }
               }
             },
+            'custodianOrgForResource_tree': {
+              'terms': {
+                'field': 'custodianOrgForResource_tree',
+                'include': 'SPW.*',
+                'size': 100,
+                "order" : { "_key" : "asc" }
+              },
+              "meta": {
+                "treeKeySeparator": " - "
+              }
+            },
             'custodianOrgForResource': {
               'terms': {
                 'field': 'custodianOrgForResource',
                 'include': '.*',
+                'exclude': '.*SPW.*',
                 'size': 15
               }
             // },

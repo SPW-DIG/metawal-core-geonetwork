@@ -75,6 +75,7 @@
   "facet-cl_topic": "Thématique",
   "facet-valid": "Valide",
   "facet-OrgForResource": "Organisations",
+  "facet-custodianOrgForResource_tree": "Gestionnaire de données SPW",
   "facet-custodianOrgForResource": "Gestionnaire de données",
   "facet-sourceCatalogue": "Catalogues",
   "facet-groupOwner": "Groupes des fiches",
