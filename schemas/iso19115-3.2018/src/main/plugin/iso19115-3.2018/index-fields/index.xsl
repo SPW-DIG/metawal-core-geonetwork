@@ -1045,7 +1045,7 @@
 
 
       <xsl:for-each select="mdb:resourceLineage/*">
-        <xsl:copy-of select="gn-fn-index:add-multilingual-field('lineage', 
+        <xsl:copy-of select="gn-fn-index:add-multilingual-field('lineage',
                                 mrl:statement, $allLanguages)"/>
 
         <xsl:for-each select=".//mrl:source[@uuidref != '']">
@@ -1233,6 +1233,26 @@
         <xsl:element name="{replace($role, '[^a-zA-Z0-9-]', '')}Org{$fieldSuffix}">
           <xsl:value-of select="$organisationName"/>
         </xsl:element>
+
+        <xsl:analyze-string regex=".*\((.*)\)"
+                            select="$organisationName">
+          <xsl:matching-substring>
+            <xsl:variable name="tokens"
+                          select="tokenize(regex-group(1), ' - ')"/>
+            <xsl:for-each select="$tokens">
+              <xsl:variable name="pos" select="position() + 1"/>
+              <xsl:variable name="path"
+                            select="string-join($tokens[
+                                        position() &lt; $pos], ' - ')"/>
+              <xsl:if test="$path != ''">
+                <xsl:element name="{replace($role, '[^a-zA-Z0-9-]', '')}Org{$fieldSuffix}_tree">
+                  <xsl:value-of select="string-join($tokens[
+                                          position() &lt; $pos], ' - ')"/>
+                </xsl:element>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:matching-substring>
+        </xsl:analyze-string>
       </xsl:if>
     </xsl:if>
     <xsl:element name="contact{$fieldSuffix}">
