@@ -214,6 +214,8 @@
            transclude: true,
            scope: {
              elementRef: '@',
+             elementXpath: '@',
+             wrapper: '@',
              thesaurusKey: '@',
              keywords: '@',
              transformations: '@',
@@ -238,8 +240,20 @@
              scope.results = null;
              scope.snippet = null;
              scope.isInitialized = false;
+
+             var id = '#tagsinput_' + scope.elementRef;
+
+             // If XPath mode, then 2 parameters are sent
+             // _Pref_elementName for the path
+             // _Pref_elementName_xml for the snippet
+             if (scope.elementXpath != '') {
+               scope.elementRefXpath = scope.elementRef;
+             }
+
              scope.elementRefBackup = scope.elementRef;
              scope.invalidKeywordMatch = false;
+             scope.invalidKeywords = [];
+             scope.foundKeywords = [];
              scope.selected = [];
              scope.initialKeywords = [];
              if (scope.keywords) {
@@ -297,7 +311,20 @@
                scope.selected = [];
                scope.elementRef = scope.elementRefBackup;
                scope.invalidKeywordMatch = false;
+               scope.invalidKeywords = [];
+               scope.foundKeywords = [];
                checkState();
+             };
+             scope.resetInvalidKeywords = function() {
+               for (i = 0; i < scope.invalidKeywords.length; i++) {
+                 var index = scope.initialKeywords.indexOf(scope.invalidKeywords[i]);
+                 if (index !== -1) {
+                   scope.initialKeywords.splice(index, 1);
+                 }
+               }
+               scope.isInitialized = false;
+               scope.resetKeywords();
+               init();
              };
 
 
@@ -328,8 +355,13 @@
                    .then(function(listOfKeywords) {
                      counter++;
 
-                     listOfKeywords[0] &&
-                     scope.selected.push(listOfKeywords[0]);
+                     if (listOfKeywords[0]) {
+                       scope.selected.push(listOfKeywords[0]);
+                       scope.foundKeywords.push(keyword);
+                     } else {
+                       scope.invalidKeywords.push(keyword);
+                     }
+
                      // Init done when all keywords are selected
                      if (counter === scope.initialKeywords.length) {
                        scope.isInitialized = true;
@@ -375,7 +407,6 @@
 
              // Init typeahead and tag input
              var initTagsInput = function() {
-               var id = '#tagsinput_' + scope.elementRef;
                $timeout(function() {
                  try {
                    $(id).tagsinput({
@@ -534,7 +565,7 @@
                gnThesaurusService
                 .getXML(scope.thesaurusKey,
                getKeywordIds(), scope.currentTransformation, scope.langs,
-                   scope.textgroupOnly,scope.langConversion).then(
+                   scope.textgroupOnly, scope.langConversion, scope.wrapper).then(
                function(data) {
                  scope.snippet = data;
                });
