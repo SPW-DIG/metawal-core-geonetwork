@@ -247,7 +247,7 @@ goog.require('gn_alert');
           'facetTabField': '',
           // Enable vega only if using vega facet type
           // See https://github.com/geonetwork/core-geonetwork/pull/5349
-          'isVegaEnabled': false,
+          'isVegaEnabled': true,
           'facetConfig': {
             "cl_resourceScope.key": {
               "terms": {
@@ -854,7 +854,44 @@ goog.require('gn_alert');
         },
         'admin': {
           'enabled': true,
-          'appUrl': '../../{{node}}/{{lang}}/admin.console'
+          'appUrl': '../../{{node}}/{{lang}}/admin.console',
+          'facetConfig': {
+            'availableInServices': {
+              'filters': {
+                //"other_bucket_key": "others",
+                // But does not support to click on it
+                'filters': {
+                  'availableInViewService': {
+                    'query_string': {
+                      'query': '+linkProtocol:/OGC:WMS.*/'
+                    }
+                  },
+                  'availableInDownloadService': {
+                    'query_string': {
+                      'query': '+linkProtocol:/OGC:WFS.*/'
+                    }
+                  }
+                }
+              }
+            },
+            'cl_hierarchyLevel.key': {
+              'terms': {
+                'field': 'cl_hierarchyLevel.key'
+              },
+              'meta': {
+                'vega': 'arc'
+              }
+            },
+            'tag.default': {
+              'terms': {
+                'field': 'tag.default',
+                'size': 10
+              },
+              'meta': {
+                'vega': 'arc'
+              }
+            }
+          }
         },
         'signin': {
           'enabled': true,
@@ -907,6 +944,7 @@ goog.require('gn_alert');
           this.gnCfg.mods.search.scoreConfig = config.mods.search.scoreConfig;
           this.gnCfg.mods.search.facetConfig = config.mods.search.facetConfig;
           this.gnCfg.mods.home.facetConfig = config.mods.home.facetConfig;
+          this.gnCfg.mods.admin.facetConfig = config.mods.admin.facetConfig;
         }
 
         this.gnUrl = gnUrl || '../';
@@ -932,6 +970,7 @@ goog.require('gn_alert');
         copy.mods.home.facetConfig = {};
         copy.mods.search.facetConfig = {};
         copy.mods.search.scoreConfig = {};
+        copy.mods.admin.facetConfig = {};
         copy.mods.map["map-editor"].layers = [];
         return copy;
       },
@@ -1067,6 +1106,7 @@ goog.require('gn_alert');
       $scope.showGNName = gnGlobalSettings.gnCfg.mods.header.showGNName;
       $scope.isHeaderFixed = gnGlobalSettings.gnCfg.mods.header.isHeaderFixed;
       $scope.isLogoInHeader = gnGlobalSettings.gnCfg.mods.header.isLogoInHeader;
+      $scope.isFooterEnabled = gnGlobalSettings.gnCfg.mods.footer.enabled;
 
       // If gnLangs current already set by config, do not use URL
       $scope.langs = gnGlobalSettings.gnCfg.mods.header.languages;
