@@ -582,6 +582,23 @@ goog.require('gn_alert');
           'switcherProjectionList': [{
             'code': 'EPSG:3857',
             'label': 'Google mercator (EPSG:3857)'
+          }, {
+            "label": "Belge 1972 / Belgian Lambert 72",
+            "code": "EPSG:31370",
+            "extent": [
+              14667.272987478907,
+              20924.160496186465,
+              297163.13913138985,
+              246440.2762416741
+            ],
+            "worldExtent": [
+              2.5,
+              49.5,
+              6.4,
+              51.51
+            ],
+            "resolutions": [],
+            "def": "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs"
           }],
           'disabledTools': {
             'processes': false,
