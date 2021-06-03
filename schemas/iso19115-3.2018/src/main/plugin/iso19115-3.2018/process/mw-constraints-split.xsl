@@ -83,120 +83,113 @@ ORDER BY isInspire, title;
 
      -->
     <xsl:choose>
-      <xsl:when test="$isInspireRecord">
-        <xsl:choose>
-          <xsl:when test="$isService">
-            <mri:resourceConstraints>
-              <mco:MD_LegalConstraints>
-                <mco:accessConstraints>
-                  <mco:MD_RestrictionCode
-                    codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
-                    codeListValue="otherRestrictions"/>
-                </mco:accessConstraints>
-                <mco:otherConstraints>
-                  <gcx:Anchor
-                    xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
-                    No limitations to public access
-                  </gcx:Anchor>
-                </mco:otherConstraints>
-              </mco:MD_LegalConstraints>
-            </mri:resourceConstraints>
-            <mri:resourceConstraints>
-              <mco:MD_LegalConstraints>
-                <mco:useConstraints>
-                  <mco:MD_RestrictionCode
-                    codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
-                    codeListValue="otherRestrictions"/>
-                </mco:useConstraints>
-                <mco:useLimitation>
-                  <gco:CharacterString>Conditions d'utilisation spécifiques</gco:CharacterString>
-                </mco:useLimitation>
-                <mco:otherConstraints>
-                  <gcx:Anchor
-                    xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf">Les conditions d'utilisation du service sont régies par les Conditions d’accès et d’utilisation des services web géographiques de visualisation du Service public de Wallonie.
-                  </gcx:Anchor>
-                </mco:otherConstraints>
-              </mco:MD_LegalConstraints>
-            </mri:resourceConstraints>
-          </xsl:when>
-          <xsl:otherwise>
-            <mri:resourceConstraints>
-              <mco:MD_LegalConstraints>
-                <mco:accessConstraints>
-                  <mco:MD_RestrictionCode
-                    codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
-                    codeListValue="otherRestrictions"/>
-                </mco:accessConstraints>
-                <mco:otherConstraints>
-                  <gcx:Anchor
-                    xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
-                    No limitations to public access
-                  </gcx:Anchor>
-                </mco:otherConstraints>
-              </mco:MD_LegalConstraints>
-            </mri:resourceConstraints>
-
-            <mri:resourceConstraints>
-              <mco:MD_LegalConstraints>
-                <mco:useLimitation>
-                  <gco:CharacterString>Conditions d'accès et d'utilisation spécifiques</gco:CharacterString>
-                </mco:useLimitation>
-
-                <mco:useConstraints>
-                  <mco:MD_RestrictionCode
-                    codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
-                    codeListValue="otherRestrictions"/>
-                </mco:useConstraints>
-
-                <mco:otherConstraints>
-                  <gcx:Anchor xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf">
-                    Les conditions générales d'utilisation s'appliquent.
-                  </gcx:Anchor>
-                </mco:otherConstraints>
-
-                <mco:otherConstraints>
-                  <gcx:Anchor xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGA.pdf">
-                    Les conditions générales d'accès s’appliquent.
-                  </gcx:Anchor>
-                </mco:otherConstraints>
-
-                <mco:otherConstraints>
-                  <xsl:choose>
-                    <xsl:when test="$isRestrictedD1">
-                      <gcx:Anchor
-                        xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeD1.pdf">
-                        Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les
-                        conditions particulières de type D1.
-                      </gcx:Anchor>
-                    </xsl:when>
-                    <xsl:when test="$isRestrictedA1">
-                      <gcx:Anchor
-                        xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeA1.pdf">
-                        Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les
-                        conditions particulières de type A1.
-                      </gcx:Anchor>
-                    </xsl:when>
-                    <xsl:when test="$isRestrictedCPUA">
-                      <gcx:Anchor
-                        xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeA.pdf">
-                        Les conditions générales d'utilisation s'appliquent mais sont restreintes par les conditions particulières de type A.
-                      </gcx:Anchor>
-                    </xsl:when>
-                    <xsl:when test="$isRestrictedCPUC">
-                      <gcx:Anchor
-                        xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeC.pdf">
-                        Les conditions générales d'utilisation s'appliquent et sont étendues par les conditions particulières de type C.
-                      </gcx:Anchor>
-                    </xsl:when>
-                  </xsl:choose>
-                </mco:otherConstraints>
-              </mco:MD_LegalConstraints>
-            </mri:resourceConstraints>
-          </xsl:otherwise>
-        </xsl:choose>
+      <xsl:when test="$isService">
+        <mri:resourceConstraints>
+          <mco:MD_LegalConstraints>
+            <mco:accessConstraints>
+              <mco:MD_RestrictionCode
+                codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
+                codeListValue="otherRestrictions"/>
+            </mco:accessConstraints>
+            <mco:otherConstraints>
+              <gcx:Anchor
+                xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
+                No limitations to public access
+              </gcx:Anchor>
+            </mco:otherConstraints>
+          </mco:MD_LegalConstraints>
+        </mri:resourceConstraints>
+        <mri:resourceConstraints>
+          <mco:MD_LegalConstraints>
+            <mco:useConstraints>
+              <mco:MD_RestrictionCode
+                codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
+                codeListValue="otherRestrictions"/>
+            </mco:useConstraints>
+            <mco:useLimitation>
+              <gco:CharacterString>Conditions d'utilisation spécifiques</gco:CharacterString>
+            </mco:useLimitation>
+            <mco:otherConstraints>
+              <gcx:Anchor
+                xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf">Les conditions d'utilisation du service sont régies par les Conditions d’accès et d’utilisation des services web géographiques de visualisation du Service public de Wallonie.
+              </gcx:Anchor>
+            </mco:otherConstraints>
+          </mco:MD_LegalConstraints>
+        </mri:resourceConstraints>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:copy-of select="../mri:resourceConstraints"/>
+        <mri:resourceConstraints>
+          <mco:MD_LegalConstraints>
+            <mco:accessConstraints>
+              <mco:MD_RestrictionCode
+                codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
+                codeListValue="otherRestrictions"/>
+            </mco:accessConstraints>
+            <mco:otherConstraints>
+              <gcx:Anchor
+                xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
+                No limitations to public access
+              </gcx:Anchor>
+            </mco:otherConstraints>
+          </mco:MD_LegalConstraints>
+        </mri:resourceConstraints>
+
+        <mri:resourceConstraints>
+          <mco:MD_LegalConstraints>
+            <mco:useLimitation>
+              <gco:CharacterString>Conditions d'accès et d'utilisation spécifiques</gco:CharacterString>
+            </mco:useLimitation>
+
+            <mco:useConstraints>
+              <mco:MD_RestrictionCode
+                codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode"
+                codeListValue="otherRestrictions"/>
+            </mco:useConstraints>
+
+            <mco:otherConstraints>
+              <gcx:Anchor xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf">
+                Les conditions générales d'utilisation s'appliquent.
+              </gcx:Anchor>
+            </mco:otherConstraints>
+
+            <mco:otherConstraints>
+              <gcx:Anchor xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGA.pdf">
+                Les conditions générales d'accès s’appliquent.
+              </gcx:Anchor>
+            </mco:otherConstraints>
+
+            <mco:otherConstraints>
+              <xsl:choose>
+                <xsl:when test="$isRestrictedD1">
+                  <gcx:Anchor
+                    xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeD1.pdf">
+                    Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les
+                    conditions particulières de type D1.
+                  </gcx:Anchor>
+                </xsl:when>
+                <xsl:when test="$isRestrictedA1">
+                  <gcx:Anchor
+                    xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeA1.pdf">
+                    Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les
+                    conditions particulières de type A1.
+                  </gcx:Anchor>
+                </xsl:when>
+                <xsl:when test="$isRestrictedCPUA">
+                  <gcx:Anchor
+                    xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeA.pdf">
+                    Les conditions générales d'utilisation s'appliquent mais sont restreintes par les conditions particulières de type A.
+                  </gcx:Anchor>
+                </xsl:when>
+                <xsl:when test="$isRestrictedCPUC">
+                  <gcx:Anchor
+                    xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeC.pdf">
+                    Les conditions générales d'utilisation s'appliquent et sont étendues par les conditions particulières de type C.
+                  </gcx:Anchor>
+                </xsl:when>
+              </xsl:choose>
+            </mco:otherConstraints>
+          </mco:MD_LegalConstraints>
+        </mri:resourceConstraints>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
