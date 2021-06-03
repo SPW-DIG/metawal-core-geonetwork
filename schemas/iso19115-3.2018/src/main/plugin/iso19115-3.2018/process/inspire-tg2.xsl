@@ -273,7 +273,7 @@ SQL query to get list value
   <xsl:template match="mdq:DQ_ConformanceResult/
                         mdq:specification/*/cit:title/gco:CharacterString[
                           contains(., '1089/2010')]">
-    <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2010/1089/2014-12-31">Commission RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</gcx:Anchor>
+    <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg/2010/1089">Commission RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</gcx:Anchor>
   </xsl:template>
 
 
