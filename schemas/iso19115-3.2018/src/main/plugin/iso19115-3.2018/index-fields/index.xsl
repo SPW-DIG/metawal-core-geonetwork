@@ -1082,6 +1082,14 @@
           </format>
         </xsl:for-each>
 
+        <xsl:for-each select="mrd:distributor/mrd:MD_Distributor[mrd:distributorContact]">
+          <!-- Indexing resource contact -->
+          <xsl:apply-templates mode="index-contact"
+                               select="mrd:distributorContact">
+            <xsl:with-param name="fieldSuffix" select="'ForDistribution'"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+
         <xsl:for-each select="mrd:transferOptions/*/
                                 mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
           <xsl:variable name="transferGroup"
