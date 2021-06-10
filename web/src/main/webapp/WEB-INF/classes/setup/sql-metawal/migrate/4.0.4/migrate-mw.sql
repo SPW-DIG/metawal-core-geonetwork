@@ -22,3 +22,168 @@ UPDATE Settings SET encrypted='y' WHERE name='system/publication/doi/doipassword
 
 UPDATE Settings SET value='4.0.4' WHERE name='system/platform/version';
 UPDATE Settings SET value='0' WHERE name='system/platform/subVersion';
+
+
+
+-- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/577
+UPDATE metadata
+SET data = replace(data, 'Conditions d''utilisation et d''accès, version 1.0', 'Conditions d''utilisation et d''accès, version 2.0')
+WHERE data LIKE '%Conditions d''utilisation et d''accès, version 1.0%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CGA',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGA.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CGA%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions générales d’accès<',
+                   '>Les conditions générales d''accès s’appliquent.<')
+WHERE data LIKE '%>Conditions générales d’accès<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeA1',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeA1.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeA1%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type A1 <',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type A1.<')
+WHERE data LIKE '%Conditions particulières d’accès  – Type A1 %';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeB1',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeB1.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeB1%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type B1<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type B1.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type B1<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeB2',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeB2.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeB2%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type B2<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type B2.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type B2<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC1',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeC1.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC1%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type C1<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type C1.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type C1<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC2',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeC2.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC2%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type C2<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type C2.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type C2<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC3',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeC3.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeC3%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type C3<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type C3.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type C3<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeD1',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeD1.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeD1%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type D1<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type D1.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type D1<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeD2',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeD2.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPA-TypeD2%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’accès  – Type D2<',
+                   '>Les conditions générales d''accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type D2.<')
+WHERE data LIKE '%>Conditions particulières d’accès  – Type D2<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CGU',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CGU%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions générales d’utilisation <',
+                   '>Les conditions générales d''utilisation s''appliquent.<')
+WHERE data LIKE '%>Conditions générales d’utilisation <%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeA',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeA.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeA%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’utilisation - Type A<',
+                   '>Les conditions générales d''utilisation s''appliquent mais sont restreintes par les conditions particulières de type A.<')
+WHERE data LIKE '%>Conditions particulières d’utilisation - Type A<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeB',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeB.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeB%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’utilisation - Type B<',
+                   '>Les conditions générales d''utilisation s''appliquent mais sont restreintes par les conditions particulières de type B.<')
+WHERE data LIKE '%>Conditions particulières d’utilisation - Type B<%';
+
+UPDATE metadata
+SET data = replace(data,
+                   'http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeC',
+                   'https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeC.pdf')
+WHERE data LIKE '%http://metawal.wallonie.be/thesaurus/conditions#CPU-TypeC%';
+
+UPDATE metadata
+SET data = replace(data,
+                   '>Conditions particulières d’utilisation - Type C<',
+                   '>Les conditions générales d''utilisation s''appliquent mais sont restreintes par les conditions particulières de type C.<')
+WHERE data LIKE '%>Conditions particulières d’utilisation - Type C<%';
+
+
