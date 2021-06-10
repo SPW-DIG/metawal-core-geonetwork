@@ -19,6 +19,17 @@ UPDATE Settings SET encrypted='y' WHERE name='system/proxy/password';
 UPDATE Settings SET encrypted='y' WHERE name='system/feedback/mailServer/password';
 UPDATE Settings SET encrypted='y' WHERE name='system/publication/doi/doipassword';
 
+UPDATE metadata 
+ SET data = replace(data, 
+ '<gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>', 
+ '<gcx:Anchor xlink:href="http://metawal.wallonie.be/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>') 
+WHERE data LIKE '%<gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>%';
+
+UPDATE metadata SET data = replace(data, 
+  '<gco:CharacterString>Tourisme et loisirs</gco:CharacterString>',
+  '<gcx:Anchor xlink:href="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/40">Tourisme et loisir</gcx:Anchor>') 
+  WHERE data like '%<gco:CharacterString>Tourisme et loisirs</gco:CharacterString>%' and uuid like '6e181550-e32c-40b0-b82f-c9771932a1b0';
+-- TODO: Others ...
 
 UPDATE Settings SET value='4.0.4' WHERE name='system/platform/version';
 UPDATE Settings SET value='0' WHERE name='system/platform/subVersion';
