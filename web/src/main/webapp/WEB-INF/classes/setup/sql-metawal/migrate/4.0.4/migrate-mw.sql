@@ -25,7 +25,7 @@ UPDATE metadata
  '<gcx:Anchor xlink:href="http://metawal.wallonie.be/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>') 
 WHERE data LIKE '%<gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>%';
 
-UPDATE metawal4.metadata SET data = replace(data, 
+UPDATE metadata SET data = replace(data, 
   '<gco:CharacterString>Tourisme et loisirs</gco:CharacterString>',
   '<gcx:Anchor xlink:href="http://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/40">Tourisme et loisir</gcx:Anchor>') 
   WHERE data like '%<gco:CharacterString>Tourisme et loisirs</gco:CharacterString>%' and uuid like '6e181550-e32c-40b0-b82f-c9771932a1b0';
