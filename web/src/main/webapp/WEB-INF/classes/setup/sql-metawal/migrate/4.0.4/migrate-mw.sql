@@ -14,6 +14,14 @@ UPDATE Metadata SET data = replace(data, ' xsi:schemaLocation="http://standards.
 -- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/581
 UPDATE Metadata SET data = replace(data, 'http://data.europa.eu/eli/reg/2010/1089/2014-12-31', 'http://data.europa.eu/eli/reg/2010/1089') WHERE data LIKE '%http://data.europa.eu/eli/reg/2010/1089/2014-12-31%';
 
+-- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/590
+UPDATE metadata
+SET data = replace(data,
+                   '<gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>',
+                   '<gcx:Anchor xlink:href="http://metawal.wallonie.be/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>')
+WHERE data LIKE '%<gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>%';
+
+
 -- ALTER TABLE Settings ADD COLUMN encrypted VARCHAR(1) DEFAULT 'n';
 UPDATE Settings SET encrypted='y' WHERE name='system/proxy/password';
 UPDATE Settings SET encrypted='y' WHERE name='system/feedback/mailServer/password';
