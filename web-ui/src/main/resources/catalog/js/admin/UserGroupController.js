@@ -488,8 +488,8 @@
        * Save a user.
        */
       $scope.saveUser = function(formId) {
-        /*if ($scope.authtypeisLDAP.checked === true) {
-          return;
+        /*console.log($scope.authtypeisLDAP.checked)
+        if ($scope.authtypeisLDAP.checked === true) {
         } else {
           $scope.authtypeisLDAP.checked = false;
         }*/
@@ -498,7 +498,6 @@
         //        '&enabled=' + $scope.userIsEnabled+
         //        '&ldap=' + $scope.authtypeisLDAP.checked)
         //    .success(function(data) {
-
         var selectedRegisteredUserGroups = [],
             selectedEditorGroups = [],
             selectedReviewerGroups = [],
@@ -538,6 +537,7 @@
         });
 
         data.enabled = $scope.userIsEnabled;
+        data.userLDAP = $scope.authtypeisLDAP.checked;
 
         delete data.lastLoginDate;
         delete data.security;

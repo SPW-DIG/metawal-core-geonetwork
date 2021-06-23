@@ -421,11 +421,13 @@ public class UsersApi {
         }
 
         // Validate userDto data
-        UserDtoValidator userValidator = new UserDtoValidator();
-        userValidator.validate(userDto, bindingResult);
-        String errorMessage = ApiUtils.processRequestValidation(bindingResult, messages);
-        if (StringUtils.isNotEmpty(errorMessage)) {
-            throw new IllegalArgumentException(errorMessage);
+        if (!userDto.isUserLDAP()) {
+            UserDtoValidator userValidator = new UserDtoValidator();
+            userValidator.validate(userDto, bindingResult);
+            String errorMessage = ApiUtils.processRequestValidation(bindingResult, messages);
+            if (StringUtils.isNotEmpty(errorMessage)) {
+                throw new IllegalArgumentException(errorMessage);
+            }
         }
 
         List<User> existingUsers = userRepository.findByUsernameIgnoreCase(userDto.getUsername());

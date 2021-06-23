@@ -48,6 +48,7 @@ public class UserDto {
     private List<String> groupsReviewer;
     private List<String> groupsUserAdmin;
     private boolean enabled;
+    private boolean userLDAP;
 
     public UserDto() {
         this.emailAddresses = new ArrayList<>();
@@ -149,6 +150,15 @@ public class UserDto {
         return this;
     }
 
+    public boolean isUserLDAP() {
+        return userLDAP;
+    }
+
+    public UserDto setUserLDAP(boolean userLDAP) {
+        this.userLDAP = userLDAP;
+        return this;
+    }
+
 
     public boolean isEnabled() {
         return enabled;
@@ -203,6 +213,7 @@ public class UserDto {
         UserDto userDto = (UserDto) o;
 
         if (enabled != userDto.enabled) return false;
+        if (userLDAP != userDto.userLDAP) return false;
         if (id != null ? !id.equals(userDto.id) : userDto.id != null) return false;
         if (profile != null ? !profile.equals(userDto.profile) : userDto.profile != null) return false;
         if (username != null ? !username.equals(userDto.username) : userDto.username != null) return false;
@@ -241,6 +252,7 @@ public class UserDto {
         result = 31 * result + (groupsReviewer != null ? groupsReviewer.hashCode() : 0);
         result = 31 * result + (groupsUserAdmin != null ? groupsUserAdmin.hashCode() : 0);
         result = 31 * result + (enabled ? 1 : 0);
+        result = 31 * result + (userLDAP ? 1 : 0);
         return result;
     }
 }
