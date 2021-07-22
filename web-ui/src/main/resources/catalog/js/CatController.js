@@ -90,7 +90,7 @@ goog.require('gn_alert');
           'fluidHeaderLayout': true,
           'showGNName': true,
           'isHeaderFixed': false,
-          'isMenubarAccessible': true
+          'isMenubarAccessible': false
         },
         'cookieWarning': {
           'enabled': true,

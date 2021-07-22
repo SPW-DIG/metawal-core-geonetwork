@@ -20,26 +20,6 @@
               "reverse"
             ]
           },
-          "french_heavy": {
-            "tokenizer": "icu_tokenizer",
-            "filter": [
-              "lowercase",
-              "french_synonym",
-              "french_elision",
-              "french_stop",
-              "icu_folding",
-              "french_stemmer"
-            ]
-          },
-          "french_light": {
-            "tokenizer": "icu_tokenizer",
-            "filter": [
-              "lowercase",
-              "french_elision",
-              "french_stop",
-              "icu_folding"
-            ]
-          },
           "synInspireAnnexes": {
             "tokenizer": "keyword",
             "filter": [
@@ -90,30 +70,6 @@
             "type": "shingle",
             "min_shingle_size": 2,
             "max_shingle_size": 3
-          },
-          "french_stop": {
-            "type":       "stop",
-            "stopwords":  "_french_"
-          },
-          "french_elision": {
-            "type": "elision",
-            "articles_case": true,
-            "articles": ["l", "m", "t", "qu", "n", "s", "j", "d", "c", "jusqu", "quoiqu", "lorsqu", "puisqu"]
-          },
-          "french_synonym": {
-            "type": "synonym",
-            "expand": true,
-            "synonyms": [
-              "sig, systeme d'information geographique, ids, gis, sdi",
-              "shp, shapefile",
-              "PICC, Projet Informatique de Cartographie Continue",
-              "ESRS, Epiceries Sociales et les Restaurants Sociaux, Epiceries et Restaurants Sociaux",
-              "raster, image"
-            ]
-          },
-          "french_stemmer": {
-            "type": "stemmer",
-            "language": "light_french"
           },
           "keepInspireServiceTypes": {
             "type": "keep",
@@ -1021,7 +977,7 @@
             "properties": {
               "default": {
                 "type": "text",
-                "analyzer": "french_light",
+                "analyzer": "french",
                 "copy_to": [
                   "any",
                   "anytext"
@@ -1262,11 +1218,11 @@
     "properties": {
       "any": {
         "type": "text",
-        "analyzer": "french_light",
+        "analyzer": "french",
         "fields": {
           "stemmed": {
             "type": "text",
-            "analyzer": "french_heavy"
+            "analyzer": "french"
           }
         }
       },
