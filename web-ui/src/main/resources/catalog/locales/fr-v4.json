@@ -112,6 +112,8 @@
   "searchInvalidResponse": "La réponse du service de recherche est invalide. Vérifier la console.",
   "exactMatch": "Correspondance exacte",
   "exactMatch-help": "Correspondance exacte signifie que des \\\"' sont ajoutés autour des termes recherchés.",
+  "titleOnly": "Rechercher uniquement dans le titre",
+  "titleOnly-help": "Rechercher uniquement dans le titre.",
   "wfsIndexingEndDate": "Dernière exécution",
   "wfsIndexingScheduled": "Planifié ?",
   "wfsIndexingNewSchedule": "Ajouter un moissoneur",
@@ -159,5 +161,8 @@
   "commonProtocols": "Protocoles :",
   "indexStatusSynchronized": "Fiches dans l'index/db = <strong>{{indexStatus['index.count']}}/{{indexStatus['db.count']}}</strong>",
   "indexStatusSynchronized-error": "Quand le nombre de fiches dans l'index n'est pas le même que dans la base de données, vérifier tout d'abord que le catalogue pointe vers le bon index. Si oui, essayer de réindexer le catalogue. S'il y a encore des différences, vérifier les logs lors de l'indexation et corriger les problèmes en vue XML.",
-  "IndexReadOnlyHealthCheck": "L'index est en lecture seule"
+  "IndexReadOnlyHealthCheck": "L'index est en lecture seule",
+  "summary": "Sommaire",
+  "metadataRecords": "Fiches",
+  "results": "Résultats"
 }

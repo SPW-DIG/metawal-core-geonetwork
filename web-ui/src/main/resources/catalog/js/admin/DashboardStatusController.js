@@ -47,8 +47,8 @@
    *
    */
   module.controller('GnDashboardStatusController', [
-    '$scope', '$routeParams', '$http', '$rootScope', '$translate',
-    function($scope, $routeParams, $http, $rootScope, $translate) {
+    '$scope', '$routeParams', '$http', '$rootScope', '$translate', 'gnESFacet',
+    function($scope, $routeParams, $http, $rootScope, $translate, gnESFacet) {
       $scope.healthy = undefined;
       $scope.nowarnings = undefined;
       $scope.threadSortField = undefined;
@@ -279,12 +279,16 @@
       };
       $scope.searchObj = {
         configId: 'recordsWithErrors',
-        params: {
+        defaultParams: {
           'indexingError': true,
           sortBy: 'changeDate',
           sortOrder: 'desc'
         }
       };
+
+      $scope.searchObj.params = angular.extend({},
+        $scope.searchObj.defaultParams);
+      $scope.facetConfig = gnESFacet.configs.recordsWithErrors.facets;
     }]);
 
 })();

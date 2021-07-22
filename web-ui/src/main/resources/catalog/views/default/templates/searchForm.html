@@ -48,6 +48,19 @@
               <span class="sr-only" data-translate="">ClearTitle</span>
             </button>
             <button type="button"
+                    class="btn btn-default btn-lg dropdown-toggle"
+                    data-ng-if="::searchOptions"
+                    data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-auto"
+                data-ng-if="::searchOptions">
+              <li>
+                <gn-search-options></gn-search-options>
+              </li>
+            </ul>
+            <button type="button"
                     class="btn btn-default btn-lg"
                     title="{{'advanced' | translate}}"
                     data-ng-model="searchObj.advancedMode"

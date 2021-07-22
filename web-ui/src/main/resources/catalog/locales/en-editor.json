@@ -96,8 +96,6 @@
     "chooseAProj": "Select the projection to use to display coordinates (note: coordinates are always saved in the metadata record in WGS84).",
     "chooseAType": "Choose a type",
     "chooseOnlinesrc": "Choose or drop resource here",
-    "chooseRegion": "Choose a region",
-    "clickToDrawABox": "Click once to enable control and draw a box. Click again to stop drawing.",
     "closeEditor": "Save & close",
     "conceptBroader": " is more general than ",
     "conceptNarrower": " is more specific than ",
@@ -124,7 +122,6 @@
     "description": "Description",
     "directory": "Folder path",
     "directoryEntries": "Entries",
-    "drawRectangle": "Draw extent",
     "error": "Error",
     "errors": "Error(s)",
     "serviceDetachedToCurrentRecord": "Service detached from current record",
@@ -421,5 +418,6 @@
     "badGmlProjectionCode": "  The geometry projection <b>{{srsName}}</b> defined in the XML is not valid. Please edit the xml to fix the srs name or enter a new geometry.\n",
     "draft": "Working copy",
     "link": "Link",
-    "link-text": "Link text"
+    "link-text": "Link text",
+    "confirmCancelEdit": "Do you want to cancel all changes and close the editor?"
 }

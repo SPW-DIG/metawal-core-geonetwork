@@ -60,7 +60,7 @@
   goog.require('gn_search_manager');
   goog.require('gn_utility');
   goog.require('gn_openlayers');
-
+  goog.require('gn_searchoptions');
 
 
   /**
@@ -90,7 +90,8 @@
     'gn_cors_interceptor',
     'gn_openlayers',
     'gn_indexingtask',
-    'gn_batchtask'
+    'gn_batchtask',
+    'gn_searchoptions'
   ]);
 
 })();

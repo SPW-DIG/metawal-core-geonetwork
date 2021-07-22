@@ -828,25 +828,31 @@
             <xsl:variable name="zuluEndDate"
                           select="date-util:convertToISOZuluDateTime($end)"/>
 
-            <xsl:if test="$zuluStartDate != '' and $zuluEndDate != ''">
-              <resourceTemporalDateRange type="object">{
-                "gte": "<xsl:value-of select="$zuluStartDate"/>"
-                <xsl:if test="$start &lt; $end and not($end/@indeterminatePosition = 'now')">
-                  ,"lte": "<xsl:value-of select="$zuluEndDate"/>"
-                </xsl:if>
-                }</resourceTemporalDateRange>
-              <resourceTemporalExtentDateRange type="object">{
-                "gte": "<xsl:value-of select="$zuluStartDate"/>"
-                <xsl:if test="$start &lt; $end and not($end/@indeterminatePosition = 'now')">
-                  ,"lte": "<xsl:value-of select="$zuluEndDate"/>"
-                </xsl:if>
-                }</resourceTemporalExtentDateRange>
-            </xsl:if>
-            <xsl:if test="$start &gt; $end">
-              <indexingErrorMsg>Warning / Field resourceTemporalDateRange /
-                Lower range bound '<xsl:value-of select="."/>' can not be
-                greater than upper bound '<xsl:value-of select="$end"/>'.
-                Date range not indexed.</indexingErrorMsg>
+            <xsl:choose>
+              <xsl:when test="$zuluStartDate != ''
+                              and ($zuluEndDate != '' or $end/@indeterminatePosition = 'now')">
+                <resourceTemporalDateRange type="object">{
+                  "gte": "<xsl:value-of select="$zuluStartDate"/>"
+                  <xsl:if test="$start &lt; $end and not($end/@indeterminatePosition = 'now')">
+                    ,"lte": "<xsl:value-of select="$zuluEndDate"/>"
+                  </xsl:if>
+                  }</resourceTemporalDateRange>
+                <resourceTemporalExtentDateRange type="object">{
+                  "gte": "<xsl:value-of select="$zuluStartDate"/>"
+                  <xsl:if test="$start &lt; $end and not($end/@indeterminatePosition = 'now')">
+                    ,"lte": "<xsl:value-of select="$zuluEndDate"/>"
+                  </xsl:if>
+                  }</resourceTemporalExtentDateRange>
+              </xsl:when>
+              <xsl:otherwise>
+                <indexingErrorMsg>Warning / Field resourceTemporalDateRange / Lower and upper bounds empty. Date range not indexed.</indexingErrorMsg>
+              </xsl:otherwise>
+            </xsl:choose>
+
+            <xsl:if test="$zuluStartDate != ''
+                          and $zuluEndDate != ''
+                          and $start &gt; $end">
+              <indexingErrorMsg>Warning / Field resourceTemporalDateRange / Lower range bound '<xsl:value-of select="$start"/>' can not be greater than upper bound '<xsl:value-of select="$end"/>'.</indexingErrorMsg>
             </xsl:if>
           </xsl:for-each>
 
@@ -921,7 +927,7 @@
 
       <xsl:for-each-group select="gmd:dataQualityInfo/*/gmd:report/*/gmd:result"
                           group-by="*/gmd:specification/gmd:CI_Citation/
-    gmd:title/gco:CharacterString">
+    gmd:title/(gco:CharacterString|gmx:Anchor)">
         <xsl:variable name="title" select="current-grouping-key()"/>
         <xsl:variable name="matchingEUText"
                       select="if ($inspireRegulationLaxCheck)
@@ -943,8 +949,8 @@
             <xsl:if test="string(*/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date)">
               "date": "<xsl:value-of select="*/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date" />",
             </xsl:if>
-            <xsl:if test="*/gmd:specification/*/gmd:title/@xlink:href">
-              "link": "<xsl:value-of select="*/gmd:specification/*/gmd:title/@xlink:href"/>",
+            <xsl:if test="*/gmd:specification/*/gmd:title/*/@xlink:href">
+              "link": "<xsl:value-of select="*/gmd:specification/*/gmd:title/*/@xlink:href"/>",
             </xsl:if>
             <xsl:if test="*/gmd:explanation/*/text() != ''">
               "explanation": "<xsl:value-of select="gn-fn-index:json-escape((*/gmd:explanation/*/text())[1])" />",
