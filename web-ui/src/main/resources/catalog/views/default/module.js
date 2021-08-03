@@ -195,21 +195,6 @@
               }
             }
           }).add({
-            combo: 'enter',
-            description: $translate.instant('hotkeySearchTheCatalog'),
-            allowIn: ['INPUT'],
-            callback: function() {
-              angular.element($('#gn-any-field')).scope().
-                $parent.triggerSearch()
-            }
-            //}).add({
-            //  combo: 'r',
-            //  description: $translate.instant('hotkeyResetSearch'),
-            //  allowIn: 'INPUT',
-            //  callback: function () {
-            //    $scope.resetSearch();
-            //  }
-          }).add({
             combo: 'm',
             description: $translate.instant('hotkeyMap'),
             callback: function(event) {
