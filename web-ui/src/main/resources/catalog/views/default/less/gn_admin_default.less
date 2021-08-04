@@ -1,5 +1,7 @@
 @import "gn_search_default.less";
 @import "../../../style/gn_admin";
+@import "../../../style/mw.less";
+@import "gn_variables_default.less";
 
 @gn-sidebar-width: 300px;
 @gn-col-main-width: 65px;
@@ -33,7 +35,7 @@ ul.gn-resultview li.list-group-item {
 
 [ng-app="gn_admin"] {
   body {
-    padding-top: calc(~"26px + 1px");
+    padding-top: calc(~" @{mw-top-header-height} + @{mw-main-header-height} +  @{gn-menubar-height}");
     background-color: #f7f7f7;
   }
   .container-fluid {
