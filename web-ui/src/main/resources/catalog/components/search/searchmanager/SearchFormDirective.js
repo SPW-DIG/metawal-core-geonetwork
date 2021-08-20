@@ -263,7 +263,7 @@
     };
 
     /**
-     * If we use permalink, the triggerSerach call will in fact just update
+     * If we use permalink, the triggerSearch call will in fact just update
      * the url with the params, then the event $locationChangeSuccess will call
      * the geonetwork search from url params.
      */
@@ -354,7 +354,11 @@
       $scope.searchObj.state = {
         filters: {},
         exactMatch: false,
-        titleOnly: false
+        titleOnly: false,
+        languageStrategy: 'searchInAllLanguages',
+        forcedLanguage: undefined,
+        languageWhiteList: undefined,
+        detectedLanguage: undefined
       };
       $scope.triggerSearch();
       $scope.$broadcast('resetSelection');
@@ -532,6 +536,7 @@
      * @param {boolean} value
      */
     this.setExactMatch = function(value) {
+      this.updateSearchParams({'exactMatch': value});
       $scope.searchObj.state.exactMatch = value;
     };
 
@@ -546,6 +551,7 @@
      * @param {boolean} value
      */
     this.setTitleOnly = function(value) {
+      this.updateSearchParams({'titleOnly': value});
       $scope.searchObj.state.titleOnly = value;
     };
 
@@ -554,6 +560,55 @@
      */
     this.getTitleOnly = function() {
       return $scope.searchObj.state.titleOnly;
+    };
+
+
+    /**
+     * @param {string} value
+     */
+    this.setLanguageStrategy = function(value) {
+      this.updateSearchParams({'languageStrategy': value});
+      $scope.searchObj.state.languageStrategy = value;
+    };
+
+    /**
+     * @return {string}
+     */
+    this.getLanguageStrategy = function() {
+      return $scope.searchObj.state.languageStrategy;
+    };
+
+    /**
+     * @param {string} value
+     */
+    this.setForcedLanguage = function(value) {
+      this.updateSearchParams({'forcedLanguage': value});
+      $scope.searchObj.state.forcedLanguage = value;
+    };
+
+    /**
+     * @return {string}
+     */
+    this.getForcedLanguage = function() {
+      return $scope.searchObj.state.forcedLanguage;
+    };
+
+    /**
+     * @param {array<string>} value
+     */
+    this.setLanguageWhiteList = function(value) {
+      $scope.searchObj.state.languageWhiteList = value;
+    };
+
+    /**
+     * @return {array<string>}
+     */
+    this.getLanguageWhiteList = function() {
+      return $scope.searchObj.state.languageWhiteList;
+    };
+
+    this.getDetectedLanguage = function() {
+      return $scope.searchObj.state.detectedLanguage;
     };
 
     /**
