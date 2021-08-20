@@ -2,5 +2,11 @@ UPDATE metadata SET data = replace(data, 'WWW:DOWNLOAD-OGC:OWS-C', 'OGC:OWS-C') 
 
 UPDATE Settings SET internal = 'n' WHERE name = 'system/metadata/prefergrouplogo';
 
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/inspire/remotevalidation/nodeid', 'inspire', 0, 7212, 'n');
+
+-- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/629
+UPDATE Metadata SET data = replace(data,' xsi:schemaLocation="http://standards.iso.org/iso/19115/-3/mds/1.0 http://standards.iso.org/iso/19115/-3/mds/1.0/mds.xsd"', '') WHERE data LIKE '%xsi:schemaLocation="http://standards.iso.org/iso/19115/-3/mds/1.0 http://standards.iso.org/iso/19115/-3/mds/1.0/mds.xsd"%';
+
+
 UPDATE Settings SET value='4.0.6' WHERE name='system/platform/version';
 UPDATE Settings SET value='0' WHERE name='system/platform/subVersion';
