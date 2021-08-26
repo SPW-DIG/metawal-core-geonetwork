@@ -682,7 +682,8 @@ goog.require('gn_alert');
         'recordview': {
           'isSocialbarEnabled': true,
           'showStatusWatermarkFor': 'historicalArchive,obsolete,superseded',
-          'showStatusTopBarFor': ''
+          'showStatusTopBarFor': '',
+          'sortKeywordsAlphabetically': true
         },
         'editor': {
           'enabled': true,

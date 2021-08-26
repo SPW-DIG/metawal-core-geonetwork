@@ -47,11 +47,11 @@
     '$scope', '$http', '$compile', 'gnSearchSettings', 'gnSearchLocation',
     'gnMetadataActions', 'gnAlertService', '$translate', '$location',
     'gnMdView', 'gnMdViewObj', 'gnMdFormatter', 'gnConfig',
-    'gnGlobalSettings', 'gnConfigService', '$rootScope', '$timeout',
+    'gnGlobalSettings', 'gnConfigService', '$rootScope', '$timeout', '$filter',
     function($scope, $http, $compile, gnSearchSettings, gnSearchLocation,
              gnMetadataActions, gnAlertService, $translate, $location,
              gnMdView, gnMdViewObj, gnMdFormatter, gnConfig,
-             gnGlobalSettings, gnConfigService, $rootScope, $timeout) {
+             gnGlobalSettings, gnConfigService, $rootScope, $timeout, $filter) {
 
       $scope.formatter = gnSearchSettings.formatter;
       $scope.gnMetadataActions = gnMetadataActions;
@@ -63,6 +63,7 @@
       $scope.isSocialbarEnabled = gnGlobalSettings.gnCfg.mods.recordview.isSocialbarEnabled;
       $scope.showStatusWatermarkFor = gnGlobalSettings.gnCfg.mods.recordview.showStatusWatermarkFor;
       $scope.showStatusTopBarFor = gnGlobalSettings.gnCfg.mods.recordview.showStatusTopBarFor;
+      $scope.sortKeywordsAlphabetically = gnGlobalSettings.gnCfg.mods.recordview.sortKeywordsAlphabetically;
 
       gnConfigService.load().then(function(c) {
         $scope.isRecordHistoryEnabled = gnConfig['system.metadata.history.enabled'];
@@ -263,6 +264,10 @@
       }
 
       $scope.$watch('mdView.recordsLoaded', loadFormatter);
+
+      $scope.sortByCategory = function(cat) {
+        return $filter('translate')('cat-' + cat);
+      };
 
       // Know from what path we come from
       $scope.gnMdViewObj = gnMdViewObj;
