@@ -189,6 +189,8 @@ public class Aligner extends BaseAligner<CswParams> {
         return result;
     }
 
+    List<String> inserted = new ArrayList<>();
+    List<String> updated = new ArrayList<>();
     private void insertOrUpdate(Collection<RecordInfo> records, Collection<HarvestError> errors) {
         for (RecordInfo ri : records) {
 
@@ -201,6 +203,9 @@ public class Aligner extends BaseAligner<CswParams> {
                 if (id == null) {
                     //record doesn't exist (so it doesn't belong to this harvester)
                     log.debug("Adding record with uuid " + ri.uuid);
+                    System.out.println("Insert " + ri.uuid);
+                    inserted.add(ri.uuid);
+
                     addMetadata(ri, ri.uuid);
                 } else if (localUuids.getID(ri.uuid) == null) {
                     //Record does not belong to this harvester
@@ -227,6 +232,8 @@ public class Aligner extends BaseAligner<CswParams> {
                             break;
                     }
                 } else {
+                    System.out.println("Update " + ri.uuid + " is in inserted " + inserted.contains(ri.uuid));
+                    updated.add(ri.uuid);
                     //record exists and belongs to this harvester
                     updateMetadata(ri, id, false);
 

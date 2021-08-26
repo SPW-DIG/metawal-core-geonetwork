@@ -135,6 +135,18 @@
 
       <p class="help-block" data-translate="">applyXSLToRecordHelp</p>
     </div>
+
+    <div id="gn-harvest-settings-csw-advanced-sortBy-row">
+      <label id="gn-harvest-settings-csw-advanced-sortBy-label"
+             class="control-label"
+             data-translate="">sortBy</label>
+      <input id="gn-harvest-settings-csw-advanced-sortBy-input"
+             type="text"
+             class="form-control gn-csw-criteria"
+             data-ng-model="harvesterSelected.site.sortBy"/>
+      <p class="help-block" data-translate="">csw-sortByHelp</p>
+    </div>
+
     <div id="gn-harvest-settings-csw-advanced-scheme-row">
       <div class="row">
         <div id="gn-harvest-settings-csw-advanced-scheme-output-row"
@@ -143,7 +155,7 @@
           <input id="gn-harvest-settings-csw-advanced-scheme-output-input" type="text" class="form-control gn-csw-criteria" id="csw-outputSchemaInput"
                  data-ng-model="harvesterSelected.site.outputSchema"/>
         </div>
-       <div id="gn-harvest-settings-csw-advanced-scheme-recommended-row"
+        <div id="gn-harvest-settings-csw-advanced-scheme-recommended-row"
              class="col-lg-4 col-md-4 col-sm-4 hidden-xs gn-nopadding-right">
           <label id="gn-harvest-settings-csw-advanced-scheme-recommended-label" class="control-label" data-translate="">csw-outputSchemaOptions</label>
           <select id="gn-harvest-settings-csw-advanced-scheme-recommended-list"
@@ -154,6 +166,7 @@
             <option value="" disabled="" data-translate="">csw-recommendedValues</option>
             <option value="http://www.opengis.net/cat/csw/2.0.2" data-translate="">csw-dublinCore</option>
             <option value="http://www.isotc211.org/2005/gmd" data-translate="">csw-iso19139</option>
+            <option value="http://standards.iso.org/iso/19115/-3/mdb/2.0">ISO19115-3</option>
           </select>
         </div>
       </div>
