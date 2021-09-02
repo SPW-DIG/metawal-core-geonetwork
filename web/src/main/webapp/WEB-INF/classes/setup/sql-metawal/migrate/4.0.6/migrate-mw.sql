@@ -16,7 +16,7 @@ INSERT INTO Address (id, address, city, country, state, zip) VALUES  (0, '', '',
 INSERT INTO UserAddress (userid, addressid) VALUES  (0, 0);
 
 -- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/633
-UPDATE metadata SET data = replace(data, 'local.theme.infraSIG', 'external.theme.infraSIG') WHERE data LIKE '%local.theme.infraSIG%';
+--UPDATE metadata SET data = replace(data, 'local.theme.infraSIG', 'external.theme.infraSIG') WHERE data LIKE '%local.theme.infraSIG%';
 
 UPDATE Settings SET value='4.0.6' WHERE name='system/platform/version';
 UPDATE Settings SET value='0' WHERE name='system/platform/subVersion';
