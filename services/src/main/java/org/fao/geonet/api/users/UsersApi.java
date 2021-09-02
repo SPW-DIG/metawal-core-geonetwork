@@ -45,6 +45,7 @@ import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.datamanager.IMetadataUtils;
 import org.fao.geonet.kernel.datamanager.base.BaseMetadataStatus;
 import org.fao.geonet.kernel.security.SecurityProviderConfiguration;
+import org.fao.geonet.kernel.security.ldap.LDAPConstants;
 import org.fao.geonet.kernel.setting.SettingManager;
 import org.fao.geonet.repository.*;
 import org.fao.geonet.repository.specification.MetadataSpecs;
@@ -843,6 +844,9 @@ public class UsersApi {
         user.setName(userDto.getName());
         user.setKind(userDto.getKind());
 
+        if (userDto.isUserLDAP()) {
+            user.getSecurity().setAuthType(LDAPConstants.LDAP_FLAG);
+        }
         if (!userDto.getAddresses().isEmpty()) {
 //            Trigger constraint exception.
 //            Updating only the first (as only one supported on client side)
