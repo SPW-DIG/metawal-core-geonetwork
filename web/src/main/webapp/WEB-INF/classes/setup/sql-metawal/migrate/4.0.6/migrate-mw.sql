@@ -4,6 +4,9 @@ UPDATE Settings SET internal = 'n' WHERE name = 'system/metadata/prefergrouplogo
 
 INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/inspire/remotevalidation/nodeid', 'inspire', 0, 7212, 'n');
 
+
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system/harvester/disabledHarvesterTypes', '', 0, 9011, 'n');
+
 -- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/629
 UPDATE Metadata SET data = replace(data,' xsi:schemaLocation="http://standards.iso.org/iso/19115/-3/mds/1.0 http://standards.iso.org/iso/19115/-3/mds/1.0/mds.xsd"', '') WHERE data LIKE '%xsi:schemaLocation="http://standards.iso.org/iso/19115/-3/mds/1.0 http://standards.iso.org/iso/19115/-3/mds/1.0/mds.xsd"%';
 
