@@ -46,7 +46,7 @@ public class MessageProducerFactory {
     @Autowired
     protected QuartzComponent quartzComponent;
     @Autowired
-    protected SettingManager settingManager;
+    SettingManager settingManager;
 
     private static Logger LOGGER = LoggerFactory.getLogger(WFSHarvesterRouteBuilder.LOGGER_NAME);
 
