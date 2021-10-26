@@ -402,12 +402,8 @@ public class InspireValidatorUtils {
             } else {
                 Log.warning(Log.SERVICE,
                     "WARNING: INSPIRE service HTTP response: " + response.getStatusCode().value() + " for " + TestRuns_URL);
-                throw new IOException(String.format("Error while creating test on validator side. Status is: %d (%s). Error: %s",
-                    response.getStatusCode().value(),
-                    response.getStatusText(),
-                    response.getBody() != null
-                        ? CharStreams.toString(new InputStreamReader(response.getBody())) : ""
-                    ));
+
+                return null;
             }
 
         } catch (Exception e) {

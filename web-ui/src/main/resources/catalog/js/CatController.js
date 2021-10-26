@@ -539,7 +539,7 @@ goog.require('gn_alert');
               'label': 'defaultView',
               // Conditional views can be used to configure custom
               // formatter to use depending on metadata properties.
-              // 'views': [ {
+              // 'views': [{
               //   'if': {'standardName': 'ISO 19115-3 - Emodnet Checkpoint - Targeted Data Product'},
               //   'url' : '/formatters/xsl-view?root=div&view=advanced'
               // }, {
@@ -683,6 +683,10 @@ goog.require('gn_alert');
           'isSocialbarEnabled': true,
           'showStatusWatermarkFor': 'historicalArchive,obsolete,superseded',
           'showStatusTopBarFor': '',
+          'showCitation': {
+            'enabled': false,
+            'if': null // {'documentStandard': ['iso19115-3.2018']}
+          },
           'sortKeywordsAlphabetically': true
         },
         'editor': {
@@ -976,6 +980,21 @@ goog.require('gn_alert');
         'serviceDetector',
         'baseURLDetector',
         'languages',
+        'languageWhitelist',
+        'hitsperpageValues',
+        'sortbyValues',
+        'resultViewTpls',
+        'formatter',
+        'downloadFormatter',
+        'related',
+        'linkTypes',
+        'listOfServices',
+        'showCitation',
+        'map-viewer',
+        'map-search',
+        'map-editor',
+        'projectionList',
+        'switcherProjectionList',
         'cookieWarning',
         'facetConfig',
         'filters',
@@ -1432,7 +1451,7 @@ goog.require('gn_alert');
             // A second filter is for harvested record
             // if the catalogue admin defined that those
             // records could be harvested.
-            if (JSON.parse(md.isHarvested) == true) {
+            if (md.isHarvested && JSON.parse(md.isHarvested) == true) {
               return gnConfig['system.harvester.enableEditing'] === true &&
                 md.edit;
             }

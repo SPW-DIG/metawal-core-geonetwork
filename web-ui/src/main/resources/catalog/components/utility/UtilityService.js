@@ -353,6 +353,26 @@
             return obj;
           };
 
+          var checkConfigurationPropertyCondition = function (record, prop, cb) {
+            if (prop.if) {
+              for (var key in prop.if) {
+                if (prop.if.hasOwnProperty(key)) {
+                  var values = angular.isArray(prop.if[key])
+                    ? prop.if[key]
+                    : [prop.if[key]]
+
+                  var recordValue = this.getObjectValueByPath(record, key);
+                  if (values.includes(recordValue)) {
+                    cb();
+                  }
+                }
+              }
+            } else {
+              console.warn('A conditional config property MUST have a if property. ' +
+                'eg. {"if": {"documentStandard": "iso19115-3.2018"}, "url": "..."}')
+            }
+          };
+
         return {
           scrollTo: scrollTo,
           isInView: isInView,
@@ -361,6 +381,7 @@
           traverse: traverse,
           formatObjectPropertyAsArray: formatObjectPropertyAsArray,
           getObjectValueByPath: getObjectValueByPath,
+          checkConfigurationPropertyCondition: checkConfigurationPropertyCondition,
           toCsv: toCsv,
           CSVToArray: CSVToArray,
           getUrlParameter: getUrlParameter,
@@ -580,7 +601,7 @@
       }
     };
 
-    function loadTranslation(fieldId) {
+    function loadTranslation(fieldId, thesaurus) {
       var keys = Object.keys(translationsToLoad[fieldId]);
       var deferred = $q.defer();
       if (keys.length > 0) {
@@ -588,7 +609,7 @@
         angular.copy(keys, uris);
         translationsToLoad[fieldId] = {};
         $http.post('../api/registries/vocabularies/keyword', gnUrlUtils.toKeyValue({
-          thesaurus: fieldId.replace(/th_(.*)_tree.key/, '$1'),
+          thesaurus: thesaurus || fieldId.replace(/th_(.*)_tree.key/, '$1'),
           id: encodeURIComponent(uris.join(',')),
           lang: gnLangs.getCurrent() + ',' + Object.keys(gnLangs.langs).join(',')
         }), {
@@ -605,7 +626,7 @@
       }
       return deferred.promise;
     };
-
+      
     function buildTree(list, fieldId, tree, meta) {
       var translateOnLoad = meta && meta.translateOnLoad;
       list.forEach(function(e) {
@@ -670,7 +691,7 @@
       buildTree(list, fieldId, tree, meta);
 
       if(Object.keys(translationsToLoad[fieldId]).length > 0) {
-        loadTranslation(fieldId, tree).then(function(translations) {
+        loadTranslation(fieldId, meta && meta.thesaurus).then(function(translations) {
           if (angular.isObject(translations)) {
             var t = {};
             t[gnLangs.current] = {};

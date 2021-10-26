@@ -328,7 +328,7 @@
                 (link.protocol == 'ESRI:REST' ? '' : '|0') ,'_blank');
             } else {
               gnExternalViewer.viewService({
-                id: md ? md.getId() : null,
+                id: md ? md.id : null,
                 uuid: config.uuid
               }, {
                 type: config.type,
