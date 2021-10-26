@@ -146,7 +146,7 @@ goog.require('gn_alert');
           'searchOptions': {
             titleOnly: true,
             exactMatch: true,
-            language: true
+            language: false
           },
           // Language strategy can be:
           // * searchInUILanguage: search in UI languages
@@ -157,11 +157,11 @@ goog.require('gn_alert');
           // based on user search. If language detection fails, search in all languages.
           // * searchInThatLanguage: Force a language using searchInThatLanguage:fre
           // 'languageStrategy': 'searchInThatLanguage:fre',
-          'languageStrategy': 'searchInAllLanguages',
+          'languageStrategy': 'searchInThatLanguage:fre',
           // Limit language detection to some languages only.
           // If empty, the list of languages in catalogue records is used
           // and if none found, mods.header.languages is used.
-          'languageWhitelist': [],
+          'languageWhitelist': ['fre'],
           // Score query may depend on where we are in the app?
           'scoreConfig': {
             // Score experiments:
