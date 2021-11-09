@@ -112,6 +112,43 @@
               scope.tasks = data;
               scope.getVisibleTasks();
             });
+          }
+
+          function checkSelection(md) {
+            scope.isSelected = false;
+            return $http.get('../api/selections/' + scope.searchObj.selectionBucket, {}).
+            success(function(data) {
+              scope.selectedCount = data.length
+              if (md && data.includes(md._id)) {
+                scope.isSelected = true
+              } else {}
+            });
+          }
+
+          scope.addToSelection = function(md, bucket) {
+            return $http.put('../api/selections/'+ bucket , null, {
+              params: {
+                uuid: md.uuid
+              }
+            }).then(function(response) {
+              checkSelection();
+              scope.isSelected = true;
+              var res = response.data;
+            }, function(response) {
+            });
+          };
+
+          scope.removeToSelection = function(md, bucket) {
+            return $http.delete('../api/selections/'+ bucket , {
+              params: {
+                uuid: md.uuid
+              }
+            }).then(function(response) {
+              checkSelection();
+              scope.isSelected = false;
+              var res = response.data;
+            }, function(response) {
+            });
           };
 
           scope.getVisibleTasks = function() {
@@ -141,6 +178,7 @@
 
           scope.$watch(attrs.gnMdActionsMenu, function(a) {
             scope.md = a;
+            checkSelection(scope.md)
           });
 
           scope.getScope = function() {
