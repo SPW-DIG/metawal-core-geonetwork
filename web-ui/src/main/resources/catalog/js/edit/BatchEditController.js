@@ -181,14 +181,19 @@
     'gnGlobalSettings',
     'gnCurrentEdit',
     'gnSchemaManagerService',
+    'gnPopup', '$translate',
     function($scope, $location, $http, $compile, $httpParamSerializer,
         gnSearchSettings, gnGlobalSettings,
-        gnCurrentEdit, gnSchemaManagerService) {
+        gnCurrentEdit, gnSchemaManagerService, gnPopup, $translate) {
+
+      $scope.editTypes = ['searchAndReplace', 'xpathEdits', 'batchEdits'];
 
       // Simple tab handling.
       $scope.selectedStep = 1;
       $scope.setStep = function(step) {
         $scope.selectedStep = step;
+        $scope.preview = undefined;
+        $scope.previewError = undefined;
       };
       $scope.extraParams = {};
       $scope.$watch('selectedStep', function(newValue) {
@@ -207,6 +212,13 @@
               });
             }
           });
+        } else if (newValue === 3) {
+          $scope.canPreview =
+            ($scope.editType === 'searchAndReplace'
+             && $scope.searchAndReplaceChanges[0]
+             && $scope.searchAndReplaceChanges[0].search != '')
+          || ($scope.editType !== 'searchAndReplace'
+              && $scope.changes.length > 0)
         }
       });
 
@@ -228,9 +240,27 @@
         schema: 'iso19139'
       };
 
+      $scope.searchAndReplaceField = {
+        search: '',
+        replacement: '',
+        useRegexp: false,
+        regexpFlags: ''
+      };
+      $scope.searchAndReplaceChanges = [];
+      $scope.searchAndReplaceChanges.push($scope.searchAndReplaceField);
+      $scope.regexpFlags = ['i', 'c', 'n', 'm'];
+
+      $scope.setType = function(type) {
+        $scope.editType = type;
+        if (type === 'searchAndReplace') {
+          $scope.searchAndReplaceChanges.push($scope.searchAndReplaceField);
+        } else {
+          $scope.searchAndReplaceChanges.length = 0;
+        }
+      };
 
       $scope.fieldConfig = null;  // Configuration per standard
-      $scope.changes = [];  // List of changes
+      $scope.changes = [];
       // TODO: Add a mode gn_update_only_if_match ?
       $scope.insertModes = ['gn_add', 'gn_replace', 'gn_delete'];
 
@@ -394,15 +424,15 @@
 
       $scope.processReport = null;
 
-      $scope.applyChanges = function() {
+      function buildChanges() {
         var params = [], i = 0;
         angular.forEach($scope.changes, function(field) {
           if (field.value != null) {
             var value = field.value, xpath = field.xpath;
             if (field.insertMode != null) {
               value = '<' + field.insertMode + '>' +
-                  field.value +
-                  '</' + field.insertMode + '>';
+                field.value +
+                '</' + field.insertMode + '>';
             } else {
               value = value;
             }
@@ -410,30 +440,99 @@
             i++;
           }
         });
+        return params;
+      }
 
-        // TODO: Apply changes to a mix of records is maybe not the best
-        // XPath will be applied whatever the standard is.
-        var url = '../api/records/batchediting?'
-          + $httpParamSerializer({
-            'bucket': 'e101',
-            'updateDateStamp': $scope.extraParams.updateDateStamp
-          });
-        return $http.put(url,
-            params
-        ).success(function(data) {
-          $scope.processReport = data;
-        }).error(function(response) {
-          $scope.processReport = response.data;
+      $scope.diffType = undefined;
+      function formatDiff(diff, diffType) {
+        var formattedDiff =
+          diff.replace('<?xml version="1.0" encoding="UTF-8"?>\n', '')
+              .replace(/<preview>(.*)<\/preview>/g, '$1');
+        if (diffType === 'diffhtml') {
+          return formattedDiff
+              .replaceAll('&lt;span&gt;', '<span>')
+              .replaceAll('&lt;/span&gt;', '</span>')
+              .replaceAll('&lt;ins style="background:#e6ffe6;"&gt;', '<ins class="text-success">')
+              .replaceAll('&lt;/ins&gt;', '</ins>')
+              .replaceAll('&lt;del style="background:#ffe6e6;"&gt;', '<del class="text-danger">')
+              .replaceAll('&lt;/del&gt;', '</del>')
+              .replaceAll('&lt;br&gt;','<br/>')
+              .replaceAll('&amp;', '&');
+        } else if (diffType === 'diff') {
+          return formattedDiff.replaceAll('Diff(', '\r\n\r\nDiff(');
+        } else if (diffType === 'patch') {
+          return decodeURIComponent(formattedDiff);
+        } else {
+          return formattedDiff;
+        }
+      }
+
+      function buildRequest(isPreview, uuid, bucket) {
+        var isSearchAndReplace = $scope.editType === 'searchAndReplace';
+
+        var params =
+          isSearchAndReplace ? {
+            search: $scope.searchAndReplaceChanges[0].search,
+            replace: $scope.searchAndReplaceChanges[0].replacement,
+            useRegexp: $scope.searchAndReplaceChanges[0].regexpFlags !== '',
+            regexpFlags: $scope.searchAndReplaceChanges[0].regexpFlags,
+            updateDateStamp: $scope.extraParams.updateDateStamp,
+            diffType: $scope.diffType || ''
+          } : {
+            updateDateStamp: $scope.extraParams.updateDateStamp,
+            diffType: $scope.diffType || ''
+          };
+
+        if (uuid) {
+          params.uuids = uuid;
+        } else if (bucket) {
+          params.bucket = bucket;
+        }
+
+        var url =
+          (isSearchAndReplace
+            ? '../api/processes/db/search-and-replace?'
+            : '../api/records/batchediting' + (isPreview ? '/preview' : '') + '?')
+          + $httpParamSerializer(params);
+
+        if (isSearchAndReplace) {
+          return $http[isPreview ? 'get' : 'post'](url, {
+            headers: {
+              'accept': 'application/xml'
+            }
+          })
+        } else {
+          return $http[isPreview ? 'post' : 'put'](url, buildChanges())
+        }
+      }
+
+      $scope.previewChanges = function(uuid, diffType) {
+        $scope.diffType = diffType;
+        $scope.preview = undefined;
+        $scope.previewError = undefined;
+        return buildRequest(true, uuid, null).then(function(r) {
+          $scope.preview = formatDiff(r.data, diffType);
+        }, function(r) {
+          $scope.previewError = r.data;
         });
       };
 
-
+      $scope.applyChanges = function() {
+        $scope.preview = undefined;
+        $scope.previewError = undefined;
+        return buildRequest(false, null, 'e101').then(function(r) {
+          $scope.processReport = r.data;
+        }, function(r) {
+          $scope.processReport = r.data;
+        });
+      };
 
       function init() {
         $http.get('../api/standards/batchconfiguration').
             success(function(data) {
               $scope.fieldConfig = data;
               gnSchemaManagerService.getNamespaces();
+              $scope.setType($scope.editTypes[0]);
             }).error(function(response) {
               console.warn(response);
             });

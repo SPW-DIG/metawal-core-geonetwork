@@ -103,9 +103,9 @@ goog.require('gn_alert');
           'showSocialBarInFooter': true,
           'fluidLayout': true,
           'facetConfig': {
-            'inspireThemeUri': {
+            'th_httpinspireeceuropaeutheme-theme_tree.key': {
               'terms': {
-                'field': 'inspireThemeUri',
+                'field': 'th_httpinspireeceuropaeutheme-theme_tree.key',
                 'size': 34
                 // "order" : { "_key" : "asc" }
               }
@@ -591,6 +591,9 @@ goog.require('gn_alert');
           },
           'savedSelection': {
             'enabled': false
+          },
+          "addWMSLayersToMap": {
+            "urlLayerParam": ""
           }
         },
         'map': {
