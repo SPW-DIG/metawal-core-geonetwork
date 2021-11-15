@@ -14,7 +14,7 @@
     </button>
     <ul class="dropdown-menu" role="menu">
       <li role="menuitem">
-        <a data-ng-click="addToSelection(md, searchObj.selectionBucket)"
+        <a data-ng-click="addToSelection(md)"
            data-ng-if="user.isEditorOrMore() && md.draft != 'y' && isSelected === false">
           <input aria-label="Click to select or unselect" class="ng-pristine ng-valid ng-empty ng-touched" gn-selection-md="" ng-model="isSelected" type="checkbox">
           <span data-translate="">addRecordToSelection</span>
@@ -22,10 +22,10 @@
         </a>
       </li>
       <li role="menuitem">
-        <a data-ng-click="removeToSelection(md, searchObj.selectionBucket)"
+        <a data-ng-click="removeFromSelection(md)"
            data-ng-if="user.isEditorOrMore() && md.draft != 'y' && isSelected === true">
           <input aria-label="Click to select or unselect" class="ng-pristine ng-valid ng-empty ng-touched" gn-selection-md="" ng-model="isSelected" type="checkbox">
-          <span data-translate="">removeRecordToSelection</span>
+          <span data-translate="">removeRecordFromSelection</span>
           <span class="badge ng-binding" data-ng-show="selectedCount > 0">{{selectedCount}}</span>
         </a>
       </li>

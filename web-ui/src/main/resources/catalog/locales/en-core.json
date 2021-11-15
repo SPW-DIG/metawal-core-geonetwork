@@ -48,7 +48,7 @@
     "indexingError": "Indexing error",
     "source": "Catalog",
     "addRecordToSelection": "Add to the selection",
-    "removeRecordToSelection": "Remove from the selection",
+    "removeRecordFromSelection": "Remove from the selection",
     "indexRecord": "Index record",
     "indexRecords": "Index records",
     "previousKeywords": "Previous",

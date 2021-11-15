@@ -125,8 +125,8 @@
             });
           }
 
-          scope.addToSelection = function(md, bucket) {
-            return $http.put('../api/selections/'+ bucket , null, {
+          scope.addToSelection = function(md) {
+            return $http.put('../api/selections/'+  scope.searchObj.selectionBucket , null, {
               params: {
                 uuid: md.uuid
               }
@@ -138,8 +138,8 @@
             });
           };
 
-          scope.removeToSelection = function(md, bucket) {
-            return $http.delete('../api/selections/'+ bucket , {
+          scope.removeFromSelection = function(md) {
+            return $http.delete('../api/selections/'+  scope.searchObj.selectionBucket , {
               params: {
                 uuid: md.uuid
               }
