@@ -260,31 +260,6 @@
       </ul>
 
 
-
-
-      <!-- ******* List of associated records (reverse direction of siblings) ******* -->
-      <h2 class="onlinesrc-title"
-          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
-        <i class="fa fa-sign-out"></i>
-        <i class="icon-external-link"></i>&nbsp;
-        <span data-translate="">siblings</span>&nbsp;
-      </h2>
-      <ul class="list-group"
-          data-ng-show="::isCategoryEnable('sibling') && relations.associated">
-        <li class="list-group-item"
-            data-ng-repeat="resource in relations.associated | orderBy:'title'">
-          <div class="row">
-            <div class="col-md-11"
-                 title="{{resource.description | gnLocalized: lang}}">
-              <a target="_blank"
-                 data-ng-href="{{'catalog.search#/metadata/' + resource.id}}">
-                {{resource.title | gnLocalized: lang}}
-              </a>
-            </div>
-          </div>
-        </li>
-      </ul>
-
       <!-- ******* List of datasets ******* -->
       <h2 class="onlinesrc-title"
           data-ng-show="::isCategoryEnable('dataset') && relations.datasets">
@@ -572,7 +547,7 @@
           data-ng-show="::isCategoryEnable('sibling') && relations.associated">
         <i class="fa fa-sign-out"></i>
         <i class="icon-external-link"></i>&nbsp;
-        <span data-translate="">siblings</span>&nbsp;
+        <span data-translate="">siblingsReverseLinks</span>&nbsp;
       </h2>
       <ul class="list-group"
           data-ng-show="::isCategoryEnable('sibling') && relations.associated">

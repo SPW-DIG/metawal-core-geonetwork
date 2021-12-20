@@ -268,5 +268,6 @@
   "regexpFlags-n": "allows the period to match the newline character",
   "regexpFlags-i": "enables case insensitive matching",
   "regexpFlags-c": "disables case insensitive matching",
-  "supplementalInformation": "Supplemental Information"
+  "supplementalInformation": "Supplemental Information",
+  "siblingsReverseLinks": "Other resources (other record links)"
 }
