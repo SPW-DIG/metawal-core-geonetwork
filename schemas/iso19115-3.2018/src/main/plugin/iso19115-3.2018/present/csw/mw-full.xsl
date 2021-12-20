@@ -213,12 +213,13 @@
     -->
     <xsl:variable name="apiUrlRelated"
                   select="concat($nodeUrl, 'api/records/', //mdb:metadataIdentifier/*/mcc:code/*/text(), '/related?type=associated&amp;type=brothersAndSisters')"/>
+
     <xsl:variable name="associatedRecords"
                   select="document($apiUrlRelated)"/>
     <xsl:variable name="existingAssociations"
                   select="../mri:associatedResource/*/mri:metadataReference/@uuidref"/>
-    <xsl:for-each select="$associatedRecords/related/*/item">
-      <xsl:variable name="uuid" select="id"/>
+    <xsl:for-each-group select="$associatedRecords/related/*/item" group-by="id">
+      <xsl:variable name="uuid" select="current-grouping-key()"/>
       <xsl:if test="count($existingAssociations[. = $uuid]) = 0">
         <xsl:comment>Added from <xsl:value-of select="$apiUrlRelated"/> </xsl:comment>
         <gmd:aggregationInfo>
@@ -236,7 +237,7 @@
           </gmd:MD_AggregateInformation>
         </gmd:aggregationInfo>
       </xsl:if>
-    </xsl:for-each>
+    </xsl:for-each-group>
   </xsl:template>
 
 
