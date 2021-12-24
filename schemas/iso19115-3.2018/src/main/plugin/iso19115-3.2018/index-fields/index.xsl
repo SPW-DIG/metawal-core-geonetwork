@@ -192,6 +192,19 @@
         </xsl:for-each>
       </xsl:for-each>
 
+      <!-- Geoportail specific index  START -->
+      <!-- SecurityConstraints -->
+      <xsl:for-each select="mdb:metadataConstraints/*">
+        <xsl:variable name="fieldPrefix" select="local-name()"/>
+        <xsl:for-each
+          select="mco:classification/mco:MD_ClassificationCode/@codeListValue[. != '']">
+          <xsl:element name="{concat($fieldPrefix, 'Classification')}">
+            <xsl:value-of select="."/>
+          </xsl:element>
+        </xsl:for-each>
+      </xsl:for-each>
+      <!-- Geoportail specific index  END -->
+
 
       <!-- Since GN sets the timezone in system/server/timeZone setting as Java system default
         timezone we can rely on XSLT functions to get current date in the right timezone -->
@@ -368,6 +381,16 @@
         </xsl:for-each>
 
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', mri:abstract, $allLanguages)"/>
+
+        <!--  Geoportail specific index  START -->
+        <!-- hookPhrase -->
+        <xsl:variable name="hookAbstract">
+          <mri:abstract>
+            <gco:CharacterString><xsl:value-of select="tokenize(mri:abstract/gco:CharacterString, '[\.?!]')[1]"/></gco:CharacterString>
+          </mri:abstract>
+        </xsl:variable>
+        <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceHookAbstract', $hookAbstract, $allLanguages)"/>
+        <!-- Geoportail specific index  END -->
 
 
 
@@ -671,6 +694,30 @@
           <xsl:copy-of select="gn-fn-index:add-multilingual-field(concat($fieldPrefix, 'OtherConstraints'), mco:otherConstraints , $allLanguages)"/>
 
           <xsl:copy-of select="gn-fn-index:add-multilingual-field(concat($fieldPrefix, 'UseLimitation'), mco:useLimitation, $allLanguages)"/>
+
+          <!-- Geoportail specific index  END -->
+          <!-- LegalConstraints -->
+          <xsl:for-each
+            select="mco:accessConstraints/mco:MD_RestrictionCode/@codeListValue[. != '']">
+            <xsl:element name="{concat($fieldPrefix, 'accessConstraints')}">
+              <xsl:value-of select="."/>
+            </xsl:element>
+          </xsl:for-each>
+          <xsl:for-each
+            select="mco:useConstraints/mco:MD_RestrictionCode/@codeListValue[. != '']">
+            <xsl:element name="{concat($fieldPrefix, 'useConstraints')}">
+              <xsl:value-of select="."/>
+            </xsl:element>
+          </xsl:for-each>
+          <!-- SecurityConstraints -->
+          <xsl:for-each
+            select="mco:classification/mco:MD_ClassificationCode/@codeListValue[. != '']">
+            <xsl:element name="{concat($fieldPrefix, 'classification')}">
+              <xsl:value-of select="."/>
+            </xsl:element>
+          </xsl:for-each>
+          <!-- Geoportail specific index  END -->
+
         </xsl:for-each>
 
         <xsl:for-each select="mri:resourceConstraints/mco:MD_LegalConstraints/mco:otherConstraints">
@@ -1044,6 +1091,15 @@
           </xsl:apply-templates>
         </xsl:for-each>
 
+        <!-- Geoportail specific index  START -->
+        <!-- orderingInstructions -->
+        <xsl:for-each select="mrd:distributor/mrd:MD_Distributor[mrd:distributionOrderProcess]">
+          <resourceOrderingInstructions>
+            <xsl:value-of select="mrd:distributionOrderProcess/mrd:MD_StandardOrderProcess/mrd:orderingInstructions/gco:CharacterString" />
+          </resourceOrderingInstructions>
+        </xsl:for-each>
+        <!-- Geoportail specific index  END -->
+
         <xsl:for-each select="mrd:transferOptions/*/
                                 mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
           <xsl:variable name="transferGroup"
@@ -1081,6 +1137,73 @@
               <recordOperatedByType>download</recordOperatedByType>
             </xsl:if>
           </xsl:if>
+
+          <!-- Geoportail specific index  START -->
+          <xsl:variable name="onLineFunctionCode" select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>
+          <xsl:variable name="applicationProfile" select="cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString"/>
+          <!-- thematicMap -->
+          <xsl:if test="normalize-space($protocol) = 'WWW:LINK' and normalize-space($onLineFunctionCode) = 'browsing'">
+            <xsl:if test="$applicationProfile ='' or not($applicationProfile)">
+              <linkThematicMap type="object">{
+                "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+                "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+                "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+                "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+                "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+                "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
+                }
+              </linkThematicMap>
+            </xsl:if>
+          </xsl:if>
+          <!-- wom -->
+          <xsl:if test="normalize-space($protocol) = 'ESRI:REST' and normalize-space($onLineFunctionCode) = 'browsing'">
+            <linkWOM type="object">{
+              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
+              }
+            </linkWOM>
+          </xsl:if>
+          <!-- diffGE -->
+          <xsl:if test="normalize-space($protocol) = 'WWW:LINK' and normalize-space($onLineFunctionCode) = 'browsing' and $applicationProfile='application/vnd.google-earth.kml+xml'">
+            <linkGE type="object">{
+              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
+              }
+            </linkGE>
+          </xsl:if>
+          <!-- webService1 -->
+          <xsl:if test="(normalize-space($protocol) = 'ESRI:REST' or normalize-space($protocol) = 'OGC:*') and normalize-space($onLineFunctionCode) = 'browsing'">
+            <linkWebService type="object">{
+              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
+              }
+            </linkWebService>
+          </xsl:if>
+          <!-- download -->
+          <xsl:if test="normalize-space($protocol) = 'WWW:LINK' and normalize-space($onLineFunctionCode) = 'download'">
+            <linkDownload type="object">{
+              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              }
+            </linkDownload>
+          </xsl:if>
+          <!-- Geoportail specific index  END -->
+
         </xsl:for-each>
       </xsl:for-each>
 
