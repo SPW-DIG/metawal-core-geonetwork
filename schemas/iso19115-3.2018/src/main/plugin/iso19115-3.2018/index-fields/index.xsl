@@ -192,7 +192,7 @@
         </xsl:for-each>
       </xsl:for-each>
 
-      <!-- Geoportail specific index  START -->
+      <!-- MW - Geoportail specific index  START -->
       <!-- SecurityConstraints -->
       <xsl:for-each select="mdb:metadataConstraints/*">
         <xsl:variable name="fieldPrefix" select="local-name()"/>
@@ -203,7 +203,7 @@
           </xsl:element>
         </xsl:for-each>
       </xsl:for-each>
-      <!-- Geoportail specific index  END -->
+      <!-- MW - Geoportail specific index  END -->
 
 
       <!-- Since GN sets the timezone in system/server/timeZone setting as Java system default
@@ -366,6 +366,12 @@
               "codeSpace": "<xsl:value-of select="mcc:codeSpace/(gco:CharacterString|gcx:Anchor)"/>",
               "link": "<xsl:value-of select="mcc:code/gcx:Anchor/@xlink:href"/>"
               }</resourceIdentifier>
+            <!--  MW - Geoportail specific index  START -->
+            <!-- localIdentifierRW -->
+            <xsl:if test="contains(mcc:code/(gco:CharacterString|gcx:Anchor), '_')">
+              <localIdentifierRW><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></localIdentifierRW>
+            </xsl:if>
+            <!--  MW - Geoportail specific index  START -->
           </xsl:for-each>
 
           <xsl:for-each
@@ -382,15 +388,51 @@
 
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', mri:abstract, $allLanguages)"/>
 
-        <!--  Geoportail specific index  START -->
+        <!--  MW - Geoportail specific index  START -->
+        <!-- infrasig boolean -->
+        <xsl:if test="*/mri:MD_Keywords[
+                        contains(lower-case(
+                         (mri:thesaurusName/*/cit:title/*/text())[1]
+                         ), 'infrasig')]
+                    /mri:keyword/gco:CharacterString = 'Reporting INSPIRE'" >
+          <inspireRW>true</inspireRW>
+        </xsl:if>
+        <xsl:if test="*/mri:MD_Keywords[
+                        contains(lower-case(
+                         (mri:thesaurusName/*/cit:title/*/text())[1]
+                         ), 'infrasig')]
+                    /mri:keyword/gco:CharacterString = 'Reporting INSPIRENO'">
+          <inspireRW>false</inspireRW>
+        </xsl:if>
+        <xsl:if test="*/mri:MD_Keywords[
+                        contains(lower-case(
+                         (mri:thesaurusName/*/cit:title/*/text())[1]
+                         ), 'infrasig')]
+                    /mri:keyword/gco:CharacterString = 'Ressource officielle wallonne'" >
+          <officialRW>true</officialRW>
+        </xsl:if>
+        <xsl:if test="*/mri:MD_Keywords[
+                        contains(lower-case(
+                         (mri:thesaurusName/*/cit:title/*/text())[1]
+                         ), 'infrasig')]
+                    /mri:keyword/gco:CharacterString = 'Ressource officielle wallonneNO'">
+          <officialRW>false</officialRW>
+        </xsl:if>
         <!-- hookPhrase -->
+
+
         <xsl:variable name="hookAbstract">
-          <mri:abstract>
-            <gco:CharacterString><xsl:value-of select="tokenize(mri:abstract/gco:CharacterString, '[\.?!]')[1]"/></gco:CharacterString>
-          </mri:abstract>
+          <xsl:analyze-string select="mri:abstract/gco:CharacterString"
+                              regex="^.*?[\.!\?]">
+            <xsl:matching-substring>
+              <mri:abstract>
+                <gco:CharacterString><xsl:value-of select="regex-group(0)"/></gco:CharacterString>
+              </mri:abstract>
+            </xsl:matching-substring>
+          </xsl:analyze-string>
         </xsl:variable>
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceHookAbstract', $hookAbstract, $allLanguages)"/>
-        <!-- Geoportail specific index  END -->
+        <!-- MW - Geoportail specific index  END -->
 
 
 
@@ -695,7 +737,7 @@
 
           <xsl:copy-of select="gn-fn-index:add-multilingual-field(concat($fieldPrefix, 'UseLimitation'), mco:useLimitation, $allLanguages)"/>
 
-          <!-- Geoportail specific index  END -->
+          <!-- MW - Geoportail specific index  END -->
           <!-- LegalConstraints -->
           <xsl:for-each
             select="mco:accessConstraints/mco:MD_RestrictionCode/@codeListValue[. != '']">
@@ -716,7 +758,7 @@
               <xsl:value-of select="."/>
             </xsl:element>
           </xsl:for-each>
-          <!-- Geoportail specific index  END -->
+          <!-- MW - Geoportail specific index  END -->
 
         </xsl:for-each>
 
@@ -1091,14 +1133,14 @@
           </xsl:apply-templates>
         </xsl:for-each>
 
-        <!-- Geoportail specific index  START -->
+        <!-- MW - Geoportail specific index  START -->
         <!-- orderingInstructions -->
         <xsl:for-each select="mrd:distributor/mrd:MD_Distributor[mrd:distributionOrderProcess]">
           <resourceOrderingInstructions>
             <xsl:value-of select="mrd:distributionOrderProcess/mrd:MD_StandardOrderProcess/mrd:orderingInstructions/gco:CharacterString" />
           </resourceOrderingInstructions>
         </xsl:for-each>
-        <!-- Geoportail specific index  END -->
+        <!-- MW - Geoportail specific index  END -->
 
         <xsl:for-each select="mrd:transferOptions/*/
                                 mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
@@ -1138,7 +1180,7 @@
             </xsl:if>
           </xsl:if>
 
-          <!-- Geoportail specific index  START -->
+          <!-- MW - Geoportail specific index  START -->
           <xsl:variable name="onLineFunctionCode" select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>
           <xsl:variable name="applicationProfile" select="cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString"/>
           <!-- thematicMap -->
@@ -1179,8 +1221,8 @@
               }
             </linkGE>
           </xsl:if>
-          <!-- webService1 -->
-          <xsl:if test="(normalize-space($protocol) = 'ESRI:REST' or normalize-space($protocol) = 'OGC:*') and normalize-space($onLineFunctionCode) = 'browsing'">
+          <!-- webService -->
+          <xsl:if test="(normalize-space($protocol) = 'ESRI:REST' or starts-with($protocol, 'OGC:W')) and normalize-space($onLineFunctionCode) = 'browsing'">
             <linkWebService type="object">{
               "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
               "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
@@ -1202,7 +1244,7 @@
               }
             </linkDownload>
           </xsl:if>
-          <!-- Geoportail specific index  END -->
+          <!-- MW - Geoportail specific index  END -->
 
         </xsl:for-each>
       </xsl:for-each>
