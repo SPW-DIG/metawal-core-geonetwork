@@ -695,9 +695,9 @@ goog.require('gn_alert');
             'if': null // {'documentStandard': ['iso19115-3.2018']}
           },
           'sortKeywordsAlphabetically': true,
-          'mainThesaurus': ['th_gemet'],
+          'mainThesaurus': ['th_Themes_geoportail_wallon_hierarchy', 'th_gemet'],
           'locationThesaurus': ['th_regions', 'th_httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope'],
-          'internalThesaurus': [],
+          'internalThesaurus': ['th_infraSIG'],
           'collectionTableConfig': {
             'labels': 'title,cl_status,format,Esri,view,download,file,atom',
             'columns': 'resourceTitle,cl_status[0].key,format,link/ESRI:REST,link/OGC:WMS,link/OGC:WFS,link/WWW:DOWNLOAD,link/atom:feed'
