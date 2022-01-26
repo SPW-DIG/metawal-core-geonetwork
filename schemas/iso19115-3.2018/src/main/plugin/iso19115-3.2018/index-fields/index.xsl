@@ -1185,7 +1185,6 @@
         <xsl:for-each select="$linkConfig/link">
           <xsl:variable name="gpLink"
                         select="current()"/>
-          <xsl:message>links element for classification: <xsl:value-of select="$linkElement/cit:linkage/gco:CharacterString"/></xsl:message>
           <xsl:for-each select="$linkElement[cit:linkage/gco:CharacterString != ''
                                 and matches(cit:protocol/gco:CharacterString, $gpLink/@protocol)
                                 and cit:function/cit:CI_OnLineFunctionCode/@codeListValue = $gpLink/@function
@@ -1197,8 +1196,7 @@
                                   or
                                   ($gpLink/@appProfile = 1 and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = $gpLink/@appProfileValue)
                                 )]">
-            <xsl:message>element: <xsl:value-of select="$gpLink/@field"></xsl:value-of></xsl:message>
-            <xsl:message>link: <xsl:value-of select="cit:linkage/gco:CharacterString"/></xsl:message>
+
             <xsl:element name="{$gpLink/@field}">
               {
               "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
