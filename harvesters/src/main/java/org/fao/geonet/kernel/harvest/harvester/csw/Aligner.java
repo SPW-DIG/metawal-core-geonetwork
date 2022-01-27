@@ -309,6 +309,7 @@ public class Aligner extends BaseAligner<CswParams> {
         String mdUuid = ri.uuid;
         if (!params.xslfilter.equals("")) {
             md = processMetadata(context, md, processName, processParams);
+            schema = dataMan.autodetectSchema(md);
             // Get new uuid if modified by XSLT process
             mdUuid = metadataUtils.extractUUID(schema, md);
             if (mdUuid == null) {
@@ -440,8 +441,12 @@ public class Aligner extends BaseAligner<CswParams> {
             }
         }
 
+        boolean updateSchema = false;
         if (!params.xslfilter.equals("")) {
             md = processMetadata(context, md, processName, processParams);
+            String newSchema = dataMan.autodetectSchema(md);
+            updateSchema = !newSchema.equals(schema);
+            schema = newSchema;
         }
 
         applyBatchEdits(ri, md, schema);
@@ -456,11 +461,15 @@ public class Aligner extends BaseAligner<CswParams> {
 
         final AbstractMetadata metadata = metadataManager.updateMetadata(context, id, md, validate, ufo, index, language, ri.changeDate, true);
 
-        if (force) {
-            //change ownership of metadata to new harvester
-            metadata.getHarvestInfo().setUuid(params.getUuid());
-            metadata.getSourceInfo().setSourceId(params.getUuid());
-
+        if (force || updateSchema) {
+            if (force) {
+                //change ownership of metadata to new harvester
+                metadata.getHarvestInfo().setUuid(params.getUuid());
+                metadata.getSourceInfo().setSourceId(params.getUuid());
+            }
+            if (updateSchema) {
+                metadata.getDataInfo().setSchemaId(schema);
+            }
             metadataManager.save(metadata);
         }
 
