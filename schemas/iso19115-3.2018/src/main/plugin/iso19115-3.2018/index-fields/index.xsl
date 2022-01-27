@@ -369,7 +369,11 @@
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
             <xsl:if test="contains(mcc:code/(gco:CharacterString|gcx:Anchor), '_')">
-              <localIdentifierRW><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></localIdentifierRW>
+              <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
+            </xsl:if>
+            <!-- globalIdentifierRW -->
+            <xsl:if test="contains(mcc:codeSpace/(gco:CharacterString|gcx:Anchor), 'geodata.wallonie.be')">
+              <mw-gp-globalIdentifier><xsl:value-of select="concat(mcc:codeSpace/(gco:CharacterString|gcx:Anchor),mcc:code/(gco:CharacterString|gcx:Anchor))"></xsl:value-of></mw-gp-globalIdentifier>
             </xsl:if>
             <!--  MW - Geoportail specific index  START -->
           </xsl:for-each>
@@ -389,49 +393,34 @@
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', mri:abstract, $allLanguages)"/>
 
         <!--  MW - Geoportail specific index  START -->
-        <!-- infrasig boolean -->
-        <xsl:if test="*/mri:MD_Keywords[
-                        contains(lower-case(
-                         (mri:thesaurusName/*/cit:title/*/text())[1]
-                         ), 'infrasig')]
-                    /mri:keyword/gco:CharacterString = 'Reporting INSPIRE'" >
-          <inspireRW>true</inspireRW>
+
+        <xsl:variable name="infrasigKeywords"
+                      select="*/mri:MD_Keywords[
+        contains(lower-case(
+        (mri:thesaurusName/*/cit:title/*/text())[1]
+        ), 'infrasig')]
+        /mri:keyword/gco:CharacterString"/>
+        <xsl:if test="$infrasigKeywords != ''">
+          <xsl:call-template name="build-infrasig-keyword">
+            <xsl:with-param name="infrasigKeywords" select="$infrasigKeywords"/>
+          </xsl:call-template>
         </xsl:if>
-        <xsl:if test="*/mri:MD_Keywords[
-                        contains(lower-case(
-                         (mri:thesaurusName/*/cit:title/*/text())[1]
-                         ), 'infrasig')]
-                    /mri:keyword/gco:CharacterString = 'Reporting INSPIRENO'">
-          <inspireRW>false</inspireRW>
-        </xsl:if>
-        <xsl:if test="*/mri:MD_Keywords[
-                        contains(lower-case(
-                         (mri:thesaurusName/*/cit:title/*/text())[1]
-                         ), 'infrasig')]
-                    /mri:keyword/gco:CharacterString = 'Ressource officielle wallonne'" >
-          <officialRW>true</officialRW>
-        </xsl:if>
-        <xsl:if test="*/mri:MD_Keywords[
-                        contains(lower-case(
-                         (mri:thesaurusName/*/cit:title/*/text())[1]
-                         ), 'infrasig')]
-                    /mri:keyword/gco:CharacterString = 'Ressource officielle wallonneNO'">
-          <officialRW>false</officialRW>
-        </xsl:if>
+
         <!-- hookPhrase -->
 
-
-        <xsl:variable name="hookAbstract">
-          <xsl:analyze-string select="mri:abstract/gco:CharacterString"
-                              regex="^.*?[\.!\?]">
-            <xsl:matching-substring>
-              <mri:abstract>
-                <gco:CharacterString><xsl:value-of select="regex-group(0)"/></gco:CharacterString>
-              </mri:abstract>
-            </xsl:matching-substring>
-          </xsl:analyze-string>
-        </xsl:variable>
-        <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceHookAbstract', $hookAbstract, $allLanguages)"/>
+        <xsl:if test="mri:abstract/gco:CharacterString">
+          <xsl:variable name="hookAbstract">
+            <xsl:analyze-string select="mri:abstract/gco:CharacterString"
+                                regex="^.*?[\.!\?]">
+              <xsl:matching-substring>
+                <mri:abstract>
+                  <gco:CharacterString><xsl:value-of select="regex-group(0)"/></gco:CharacterString>
+                </mri:abstract>
+              </xsl:matching-substring>
+            </xsl:analyze-string>
+          </xsl:variable>
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceHookAbstract', $hookAbstract, $allLanguages)"/>
+        </xsl:if>
         <!-- MW - Geoportail specific index  END -->
 
 
@@ -1142,6 +1131,89 @@
         </xsl:for-each>
         <!-- MW - Geoportail specific index  END -->
 
+      <xsl:for-each select="mrd:transferOptions/*/
+                                mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
+        <xsl:variable name="linkElement"
+                      select="."/>
+        <xsl:variable name="transferGroup"
+                      select="count(ancestor::mrd:transferOptions/preceding-sibling::mrd:transferOptions)"/>
+
+        <xsl:variable name="protocol" select="cit:protocol/*/text()"/>
+
+        <linkUrl>
+          <xsl:value-of select="cit:linkage/gco:CharacterString"/>
+        </linkUrl>
+        <linkProtocol>
+          <xsl:value-of select="$protocol"/>
+        </linkProtocol>
+        <xsl:element name="linkUrlProtocol{replace($protocol, '[^a-zA-Z0-9]', '')}">
+          <xsl:value-of select="cit:linkage/*/text()"/>
+        </xsl:element>
+        <link type="object">{
+          "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+          "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+          "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+          "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+          "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+          "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>",
+          "group": <xsl:value-of select="$transferGroup"/>
+          }
+        </link>
+
+        <xsl:if test="$operatesOnSetByProtocol and normalize-space($protocol) != ''">
+          <xsl:if test="daobs:contains($protocol, 'wms')">
+            <recordOperatedByType>view</recordOperatedByType>
+          </xsl:if>
+          <xsl:if test="daobs:contains($protocol, 'wfs') or
+                          daobs:contains($protocol, 'wcs') or
+                          daobs:contains($protocol, 'download')">
+            <recordOperatedByType>download</recordOperatedByType>
+          </xsl:if>
+        </xsl:if>
+
+
+
+        <!-- MW - Geoportail specific index  START -->
+        <xsl:variable name="linkConfig">
+          <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="" field="mw-gp-thematicMap"></link>
+          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link>
+          <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
+          <!--link protocol="OGC:W.*" function="browsing" appProfile="0"field="mw-gp-allWebServices"></link-->
+          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
+          <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
+          <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
+        </xsl:variable>
+
+        <xsl:for-each select="$linkConfig/link">
+          <xsl:variable name="gpLink"
+                        select="current()"/>
+          <xsl:for-each select="$linkElement[cit:linkage/gco:CharacterString != ''
+                                and matches(cit:protocol/gco:CharacterString, $gpLink/@protocol)
+                                and cit:function/cit:CI_OnLineFunctionCode/@codeListValue = $gpLink/@function
+                                and (
+                                  ($gpLink/@appProfile = 0 and (
+                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) = 0
+                                    or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
+                                  )
+                                  or
+                                  ($gpLink/@appProfile = 1 and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = $gpLink/@appProfileValue)
+                                )]">
+
+            <xsl:element name="{$gpLink/@field}">
+              {
+              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
+              }
+            </xsl:element>
+          </xsl:for-each>
+        </xsl:for-each>
+
         <xsl:for-each select="mrd:transferOptions/*/
                                 mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
           <xsl:variable name="transferGroup"
@@ -1178,7 +1250,7 @@
                           daobs:contains($protocol, 'download')">
               <recordOperatedByType>download</recordOperatedByType>
             </xsl:if>
-          </xsl:if>
+          </xsl:if-->
 
           <!-- MW - Geoportail specific index  START -->
           <xsl:variable name="onLineFunctionCode" select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>
@@ -1240,7 +1312,7 @@
               "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
               "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
               "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
-              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>"
               }
             </linkDownload>
           </xsl:if>

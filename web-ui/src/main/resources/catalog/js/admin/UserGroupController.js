@@ -314,8 +314,7 @@
         var params = {
           passwordOld: $scope.resetPasswordOld,
           password: $scope.resetPassword1,
-          password2: $scope.resetPassword2,
-          ldap: false
+          password2: $scope.resetPassword2
         };
 
         $http.post('../api/users/' + $scope.userSelected.id +
