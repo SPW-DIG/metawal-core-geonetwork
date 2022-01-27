@@ -369,7 +369,11 @@
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
             <xsl:if test="contains(mcc:code/(gco:CharacterString|gcx:Anchor), '_')">
-              <localIdentifierRW><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></localIdentifierRW>
+              <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
+            </xsl:if>
+            <!-- globalIdentifierRW -->
+            <xsl:if test="contains(mcc:codeSpace/(gco:CharacterString|gcx:Anchor), 'geodata.wallonie.be')">
+              <mw-gp-globalIdentifier><xsl:value-of select="concat(mcc:codeSpace/(gco:CharacterString|gcx:Anchor),mcc:code/(gco:CharacterString|gcx:Anchor))"></xsl:value-of></mw-gp-globalIdentifier>
             </xsl:if>
             <!--  MW - Geoportail specific index  START -->
           </xsl:for-each>
