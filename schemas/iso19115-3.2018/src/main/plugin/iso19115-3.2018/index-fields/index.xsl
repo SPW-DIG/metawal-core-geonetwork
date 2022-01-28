@@ -1122,100 +1122,15 @@
           </xsl:apply-templates>
         </xsl:for-each>
 
-        <!-- MW - Geoportail specific index  START -->
-        <!-- orderingInstructions -->
-        <xsl:for-each select="mrd:distributor/mrd:MD_Distributor[mrd:distributionOrderProcess]">
-          <resourceOrderingInstructions>
-            <xsl:value-of select="mrd:distributionOrderProcess/mrd:MD_StandardOrderProcess/mrd:orderingInstructions/gco:CharacterString" />
-          </resourceOrderingInstructions>
-        </xsl:for-each>
-        <!-- MW - Geoportail specific index  END -->
-
-      <xsl:for-each select="mrd:transferOptions/*/
-                                mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
-        <xsl:variable name="linkElement"
-                      select="."/>
-        <xsl:variable name="transferGroup"
-                      select="count(ancestor::mrd:transferOptions/preceding-sibling::mrd:transferOptions)"/>
-
-        <xsl:variable name="protocol" select="cit:protocol/*/text()"/>
-
-        <linkUrl>
-          <xsl:value-of select="cit:linkage/gco:CharacterString"/>
-        </linkUrl>
-        <linkProtocol>
-          <xsl:value-of select="$protocol"/>
-        </linkProtocol>
-        <xsl:element name="linkUrlProtocol{replace($protocol, '[^a-zA-Z0-9]', '')}">
-          <xsl:value-of select="cit:linkage/*/text()"/>
-        </xsl:element>
-        <link type="object">{
-          "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
-          "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
-          "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
-          "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
-          "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
-          "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>",
-          "group": <xsl:value-of select="$transferGroup"/>
-          }
-        </link>
-
-        <xsl:if test="$operatesOnSetByProtocol and normalize-space($protocol) != ''">
-          <xsl:if test="daobs:contains($protocol, 'wms')">
-            <recordOperatedByType>view</recordOperatedByType>
-          </xsl:if>
-          <xsl:if test="daobs:contains($protocol, 'wfs') or
-                          daobs:contains($protocol, 'wcs') or
-                          daobs:contains($protocol, 'download')">
-            <recordOperatedByType>download</recordOperatedByType>
-          </xsl:if>
-        </xsl:if>
-
-
-
-        <!-- MW - Geoportail specific index  START -->
-        <xsl:variable name="linkConfig">
-          <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="" field="mw-gp-thematicMap"></link>
-          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link>
-          <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
-          <!--link protocol="OGC:W.*" function="browsing" appProfile="0"field="mw-gp-allWebServices"></link-->
-          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
-          <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
-          <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
-        </xsl:variable>
-
-        <xsl:for-each select="$linkConfig/link">
-          <xsl:variable name="gpLink"
-                        select="current()"/>
-          <xsl:for-each select="$linkElement[cit:linkage/gco:CharacterString != ''
-                                and matches(cit:protocol/gco:CharacterString, $gpLink/@protocol)
-                                and cit:function/cit:CI_OnLineFunctionCode/@codeListValue = $gpLink/@function
-                                and (
-                                  ($gpLink/@appProfile = 0 and (
-                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) = 0
-                                    or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
-                                  )
-                                  or
-                                  ($gpLink/@appProfile = 1 and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = $gpLink/@appProfileValue)
-                                )]">
-
-            <xsl:element name="{$gpLink/@field}">
-              {
-              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
-              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
-              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
-              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
-              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
-              "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
-              }
-            </xsl:element>
-          </xsl:for-each>
+        <xsl:for-each select="mrd:distributor/mrd:MD_Distributor
+                                  /mrd:distributionOrderProcess/*/mrd:orderingInstructions">
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field('orderingInstructions', ., $allLanguages)"/>
         </xsl:for-each>
 
         <xsl:for-each select="mrd:transferOptions/*/
-                                mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
+                                  mrd:onLine/*[cit:linkage/gco:CharacterString != '']">
+          <xsl:variable name="linkElement"
+                        select="."/>
           <xsl:variable name="transferGroup"
                         select="count(ancestor::mrd:transferOptions/preceding-sibling::mrd:transferOptions)"/>
 
@@ -1246,14 +1161,61 @@
               <recordOperatedByType>view</recordOperatedByType>
             </xsl:if>
             <xsl:if test="daobs:contains($protocol, 'wfs') or
-                          daobs:contains($protocol, 'wcs') or
-                          daobs:contains($protocol, 'download')">
+                            daobs:contains($protocol, 'wcs') or
+                            daobs:contains($protocol, 'download')">
               <recordOperatedByType>download</recordOperatedByType>
             </xsl:if>
-          </xsl:if-->
-
-
+          </xsl:if>
         </xsl:for-each>
+
+
+
+        <!-- MW - Geoportail specific index  START -->
+        <xsl:variable name="linkConfig">
+          <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="" field="mw-gp-thematicMap"></link>
+          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link>
+          <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
+          <!--link protocol="OGC:W.*" function="browsing" appProfile="0"field="mw-gp-allWebServices"></link-->
+          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
+          <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
+          <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
+        </xsl:variable>
+
+        <xsl:variable name="allLinks"
+                      select="mrd:transferOptions/*/
+                                  mrd:onLine/*[cit:linkage/gco:CharacterString != '']"/>
+
+        <xsl:for-each select="$linkConfig/link">
+          <xsl:variable name="gpLink"
+                        select="current()"/>
+          <xsl:for-each select="$allLinks[cit:linkage/gco:CharacterString != ''
+                                and matches(cit:protocol/gco:CharacterString, $gpLink/@protocol)
+                                and cit:function/cit:CI_OnLineFunctionCode/@codeListValue = $gpLink/@function
+                                and (
+                                  ($gpLink/@appProfile = 0 and (
+                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) = 0
+                                    or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
+                                  )
+                                  or
+                                  ($gpLink/@appProfile = 1 and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = $gpLink/@appProfileValue)
+                                )]">
+
+            <xsl:element name="{$gpLink/@field}">
+              <xsl:attribute name="type" select="'object'"/>
+              {
+              "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
+              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
+              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+              "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
+              }
+            </xsl:element>
+          </xsl:for-each>
+        </xsl:for-each>
+
       </xsl:for-each>
 
       <xsl:call-template name="index-operatesOn"/>
