@@ -368,12 +368,16 @@
               }</resourceIdentifier>
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
-            <xsl:if test="contains(mcc:code/(gco:CharacterString|gcx:Anchor), '_')">
+            <xsl:if test="notcontains(mcc:code/(gco:CharacterString|gcx:Anchor), '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/')">
               <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
             </xsl:if>
             <!-- globalIdentifierRW -->
             <xsl:if test="contains(mcc:codeSpace/(gco:CharacterString|gcx:Anchor), 'geodata.wallonie.be')">
               <mw-gp-globalIdentifier><xsl:value-of select="concat(mcc:codeSpace/(gco:CharacterString|gcx:Anchor),mcc:code/(gco:CharacterString|gcx:Anchor))"></xsl:value-of></mw-gp-globalIdentifier>
+            </xsl:if>
+            <!-- localIdentifierCodespace -->
+            <xsl:if test="contains(mcc:codeSpace/(gco:CharacterString|gcx:Anchor), 'SPW.INFRASIG.')">
+              <mw-gp-localIdentifierCodespace><xsl:value-of select="mcc:codeSpace/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifierCodespace>
             </xsl:if>
             <!--  MW - Geoportail specific index  START -->
           </xsl:for-each>
@@ -393,6 +397,13 @@
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', mri:abstract, $allLanguages)"/>
 
         <!--  MW - Geoportail specific index  START -->
+
+        <!-- supplementalInformation -->
+
+        <xsl:variable name="supplementalInformation"
+                      select="mri:supplementalInformation/gco:CharacterString[. != '']"/>
+
+        <!-- infrasigKeywords -->
 
         <xsl:variable name="infrasigKeywords"
                       select="*/mri:MD_Keywords[
