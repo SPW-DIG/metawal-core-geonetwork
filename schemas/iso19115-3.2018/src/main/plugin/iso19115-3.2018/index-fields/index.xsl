@@ -368,12 +368,16 @@
               }</resourceIdentifier>
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
-            <xsl:if test="contains(mcc:code/(gco:CharacterString|gcx:Anchor), '_')">
+            <xsl:if test="notcontains(mcc:code/(gco:CharacterString|gcx:Anchor), '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/')">
               <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
             </xsl:if>
             <!-- globalIdentifierRW -->
             <xsl:if test="contains(mcc:codeSpace/(gco:CharacterString|gcx:Anchor), 'geodata.wallonie.be')">
               <mw-gp-globalIdentifier><xsl:value-of select="concat(mcc:codeSpace/(gco:CharacterString|gcx:Anchor),mcc:code/(gco:CharacterString|gcx:Anchor))"></xsl:value-of></mw-gp-globalIdentifier>
+            </xsl:if>
+            <!-- localIdentifierCodespace -->
+            <xsl:if test="contains(mcc:codeSpace/(gco:CharacterString|gcx:Anchor), 'SPW.INFRASIG.')">
+              <mw-gp-localIdentifierCodespace><xsl:value-of select="mcc:codeSpace/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifierCodespace>
             </xsl:if>
             <!--  MW - Geoportail specific index  START -->
           </xsl:for-each>
@@ -393,6 +397,13 @@
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', mri:abstract, $allLanguages)"/>
 
         <!--  MW - Geoportail specific index  START -->
+
+        <!-- supplementalInformation -->
+
+        <xsl:variable name="supplementalInformation"
+                      select="mri:supplementalInformation/gco:CharacterString[. != '']"/>
+
+        <!-- infrasigKeywords -->
 
         <xsl:variable name="infrasigKeywords"
                       select="*/mri:MD_Keywords[
@@ -1173,14 +1184,16 @@
         <!-- MW - Geoportail specific index  START -->
         <xsl:variable name="linkConfig">
           <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="" field="mw-gp-thematicMap"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-thematicMap"></link>
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link>
+          <!--link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link-->
           <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
           <!--link protocol="OGC:W.*" function="browsing" appProfile="0"field="mw-gp-allWebServices"></link-->
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
           <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
           <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
+          <link protocol="WWW:LINK" function="information" appProfile="0" field="mw-gp-informationWebsite"></link>
+          <link protocol="WWW:LINK" function="information" appProfile="1" field="mw-gp-informationDoc"></link>
         </xsl:variable>
 
         <xsl:variable name="allLinks"
@@ -1199,7 +1212,10 @@
                                     or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
                                   )
                                   or
-                                  ($gpLink/@appProfile = 1 and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = $gpLink/@appProfileValue)
+                                  ($gpLink/@appProfile = 1 and (
+                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) > 0
+                                    and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString != '')
+                                  )
                                 )]">
 
             <xsl:element name="{$gpLink/@field}">
