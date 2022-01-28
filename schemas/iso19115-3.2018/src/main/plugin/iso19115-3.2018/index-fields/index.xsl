@@ -737,7 +737,15 @@
 
           <xsl:copy-of select="gn-fn-index:add-multilingual-field(concat($fieldPrefix, 'UseLimitation'), mco:useLimitation, $allLanguages)"/>
 
+
           <!-- MW - Geoportail specific index  END -->
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field(
+                                'mw-gp-constraints', mco:otherConstraints , $allLanguages)"/>
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field(
+                                'mw-gp-constraints', mco:useLimitation, $allLanguages)"/>
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field(
+                                'mw-gp-constraints', mco:userNote, $allLanguages)"/>
+
           <!-- LegalConstraints -->
           <xsl:for-each
             select="mco:accessConstraints/mco:MD_RestrictionCode/@codeListValue[. != '']">
