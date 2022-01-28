@@ -1187,14 +1187,16 @@
         <!-- MW - Geoportail specific index  START -->
         <xsl:variable name="linkConfig">
           <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="" field="mw-gp-thematicMap"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-thematicMap"></link>
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link>
+          <!--link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link-->
           <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
           <!--link protocol="OGC:W.*" function="browsing" appProfile="0"field="mw-gp-allWebServices"></link-->
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
           <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
           <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
+          <link protocol="WWW:LINK" function="information" appProfile="0" field="mw-gp-informationWebsite"></link>
+          <link protocol="WWW:LINK" function="information" appProfile="1" field="mw-gp-informationDoc"></link>
         </xsl:variable>
 
         <xsl:for-each select="$linkConfig/link">
@@ -1209,7 +1211,10 @@
                                     or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
                                   )
                                   or
-                                  ($gpLink/@appProfile = 1 and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = $gpLink/@appProfileValue)
+                                  ($gpLink/@appProfile = 1 and (
+                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) > 0
+                                    and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString != '')
+                                  )
                                 )]">
 
             <xsl:element name="{$gpLink/@field}">
