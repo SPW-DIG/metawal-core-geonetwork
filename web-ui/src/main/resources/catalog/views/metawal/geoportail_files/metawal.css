@@ -471,17 +471,11 @@ div.ui-dialog-titlebar span.ui-dialog-title {
     padding: 0 0 0 20px;
 }
 
-.ui-widget-content {
-	color: #636363 !important;
-}
 .ui-widget-content.popup-content {
 	height: 300px;
 	overflow: auto;
 }
 
-.ui-widget-header {
-	color: #636363 !important;
-}
 
 /*- POPUP -*/
   body .ui-dialog {
