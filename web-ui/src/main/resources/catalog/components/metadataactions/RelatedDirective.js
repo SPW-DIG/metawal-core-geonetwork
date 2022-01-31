@@ -77,6 +77,38 @@
       return (promise);
     };
 
+    this.parseFilters = function(filters) {
+      var separator = ':';
+      return filters
+        .split(' AND ')
+        .map(function(clause) {
+          var filter = clause.split(separator),
+            field = filter.shift(),
+            not = field && field.startsWith('-');
+          return {
+            field: not ? field.substr(1) : field,
+            regex: new RegExp(filter.join(separator)),
+            not: not
+          }
+        });
+    };
+
+    this.testFilters = function(filters, object) {
+      var results = [];
+      filters.forEach(function(filter, j) {
+        var prop = object[filter.field];
+        if (prop
+          && ((!filter.not && prop.match(filter.regex) != null)
+            || (filter.not && prop.match(filter.regex) == null))) {
+          results[j] = true;
+        } else {
+          results[j] = false;
+        }
+      });
+      return results.reduce(function(prev, curr) {
+        return prev && curr;
+      })
+    };
 
     this.getMdsRelated = function(mds, types) {
       var uuids = mds.map(function (md) {
@@ -186,8 +218,9 @@
    * </div>
    */
   module
-    .directive('gnRelatedContainer', ['gnRelatedResources',
-      function (gnRelatedResources) {
+    .directive('gnRelatedContainer', [
+        'gnRelatedResources', 'gnRelatedService',
+      function (gnRelatedResources, gnRelatedService) {
         return {
           restrict: 'A',
           templateUrl: function(elem, attrs) {
@@ -220,20 +253,12 @@
                 if (scope.mode === 'tabset'
                   && config.filter
                   && angular.isArray(value)) {
-                  var separator = ':',
-                    tokens = config.filter.split(separator),
-                    field = tokens.shift(),
-                    not = field && field.startsWith('-'),
-                    filter = tokens.join(separator);
+                  var filters = gnRelatedService.parseFilters(config.filter)
 
                   config.relations[type] = [];
                   for (var i = 0; i < value.length; i++) {
-                    var prop = value[i][not ? field.substr(1) : field];
-                    if (prop
-                      && ((!not && prop.match(new RegExp(filter)) != null)
-                        || (not && prop.match(new RegExp(filter)) == null))) {
-                      config.relations[type].push(value[i]);
-                    }
+                    gnRelatedService.testFilters(filters, value[i])
+                    && config.relations[type].push(value[i]);
                   }
                   config.relationFound = config.relations[type].length > 0;
                 } else {
@@ -321,20 +346,12 @@
                     scope.sizeConfig[idx] = scope.size;
                   }
                   if (scope.filter && angular.isArray(value)) {
-                    var separator = ':',
-                      tokens = scope.filter.split(separator),
-                      field = tokens.shift(),
-                      not = field && field.startsWith('-'),
-                      filter = tokens.join(separator);
+                    var filters = gnRelatedService.parseFilters(scope.filter)
 
                     scope.relations[idx] = [];
                     for (var i = 0; i < value.length; i++) {
-                      var prop = value[i][not ? field.substr(1) : field];
-                      if (prop
-                        && ((!not && prop.match(new RegExp(filter)) != null)
-                          || (not && prop.match(new RegExp(filter)) == null))) {
-                        scope.relations[idx].push(value[i]);
-                      }
+                      gnRelatedService.testFilters(filters, value[i])
+                        && scope.relations[idx].push(value[i]);
                     }
                     scope.relationFound = scope.relations[idx].length > 0;
                   } else {
@@ -351,7 +368,7 @@
                         scope.relations.siblings.push(scope.relations.associated[i])
                       }
                     }
-                    scope.relations.associated = {};
+                    scope.relations.associated = [];
                   }
                 });
               };
@@ -384,6 +401,12 @@
 
               scope.getTitle = function(link) {
                 return link.title['#text'] || link.title;
+              };
+
+              scope.getOrderBy = function(link) {
+                return link.record && link.record.resourceTitle
+                        ? link.record.resourceTitle
+                        : link.locTitle
               };
 
               scope.externalViewerAction = function(mainType, link, md) {
