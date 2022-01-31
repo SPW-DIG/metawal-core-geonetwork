@@ -368,7 +368,7 @@
               }</resourceIdentifier>
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
-            <xsl:if test="notcontains(mcc:code/(gco:CharacterString|gcx:Anchor), '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/')">
+            <xsl:if test="not(contains(mcc:code/(gco:CharacterString|gcx:Anchor), '/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/'))">
               <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
             </xsl:if>
             <!-- globalIdentifierRW -->
