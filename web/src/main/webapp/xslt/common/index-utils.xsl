@@ -331,6 +331,54 @@
   </xsl:template>
 
 
+  <xsl:template name="build-mw-gp-keyword-field" as="node()*">
+    <xsl:param name="allKeywords" as="node()?"/>
+    <xsl:variable name="geoportailThesaurus"
+                  select="(
+                          'th_httpinspireeceuropaeumetadatacodelistIACSData-IACSData',
+                          'th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset',
+                          'th_INSPIREprioritydataset',
+                          'th_httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory',
+                          'th_httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope',
+                          'th_SpatialScope',
+                          'th_themes_ODWB',
+                          'th_federalthesaurus',
+                          'th_gemet-theme',
+                          'th_gemet',
+                          'th_INSPIRE-feature-concept-dictionary',
+                          'th_otherKeywords-',
+                          'th_otherKeywords-theme',
+                          'th_otherKeywords-place',
+                          'th_Themes_geoportail_wallon_hierarchy'
+                          )"/>
+
+    <mw-gp-keywords type="object">{
+      <xsl:for-each select="$allKeywords/thesaurus[info/@field = $geoportailThesaurus]">
+        "<xsl:value-of select="if (info/@field != '') then info/@field else 'otherKeywords'"/>": {
+        <xsl:if test="info/@id != ''">
+          "id": "<xsl:value-of select="gn-fn-index:json-escape(info/@id)"/>",
+        </xsl:if>
+        "title": "<xsl:value-of select="gn-fn-index:json-escape(info/@title)"/>",
+        "theme": "<xsl:value-of select="gn-fn-index:json-escape(info/@type)"/>",
+        <xsl:if test="info/@uri != ''">
+          "link": "<xsl:value-of select="gn-fn-index:json-escape(info/@uri)"/>",
+        </xsl:if>
+        "keywords": [
+        <xsl:for-each select="keywords/keyword">
+          {
+          <xsl:value-of select="string-join(values/value, ', ')"/>
+          <xsl:if test="@uri != ''">, "link": "<xsl:value-of select="@uri"/>"</xsl:if>
+          }
+          <xsl:if test="position() != last()">,</xsl:if>
+        </xsl:for-each>
+        ]}
+        <xsl:if test="position() != last()">,</xsl:if>
+      </xsl:for-each>
+      }
+    </mw-gp-keywords>
+
+  </xsl:template>
+
   <xsl:template name="build-all-keyword-fields" as="node()*">
     <xsl:param name="allKeywords" as="node()?"/>
 
@@ -609,6 +657,8 @@
       <!-- INSPIRE themes are loaded from INSPIRE registry. The thesaurus key changed. -->
       <thesaurus old="th_inspire-theme"
                  new="th_httpinspireeceuropaeutheme-theme"/>
+      <thesaurus old="th_INSPIREprioritydataset"
+                 new="th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"/>
       <thesaurus old="th_SpatialScope"
                  new="th_httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"/>
     </xsl:variable>

@@ -694,6 +694,9 @@
         <xsl:call-template name="build-all-keyword-fields">
           <xsl:with-param name="allKeywords" select="$allKeywords"/>
         </xsl:call-template>
+        <xsl:call-template name="build-mw-gp-keyword-field">
+          <xsl:with-param name="allKeywords" select="$allKeywords"/>
+        </xsl:call-template>
 
 
         <xsl:for-each select="mri:topicCategory/mri:MD_TopicCategoryCode">
