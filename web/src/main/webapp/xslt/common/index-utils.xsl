@@ -657,8 +657,6 @@
       <!-- INSPIRE themes are loaded from INSPIRE registry. The thesaurus key changed. -->
       <thesaurus old="th_inspire-theme"
                  new="th_httpinspireeceuropaeutheme-theme"/>
-      <thesaurus old="th_INSPIREprioritydataset"
-                 new="th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"/>
       <thesaurus old="th_SpatialScope"
                  new="th_httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"/>
     </xsl:variable>
