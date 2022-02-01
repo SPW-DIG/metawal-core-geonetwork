@@ -301,6 +301,7 @@
     </xsl:for-each>
   </xsl:function>
 
+
   <!-- Convert to ASCII,
        Replace . by -,
        Keep only letters, numbers and _ and -. -->
