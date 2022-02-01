@@ -56,7 +56,7 @@
   <xsl:import href="../../iso19139/index-fields/fn.xsl"/>
   <xsl:import href="common/inspire-constant.xsl"/>
   <xsl:import href="common/index-utils.xsl"/>
-
+  <xsl:import href="link-utility.xsl"/>
 
   <xsl:output method="xml" indent="yes"/>
 
@@ -65,7 +65,6 @@
               omit-xml-declaration="yes"
               encoding="utf-8"
               escape-uri-attributes="yes"/>
-
 
   <!-- If identification creation, publication and revision date
     should be indexed as a temporal extent information (eg. in INSPIRE
@@ -1095,6 +1094,30 @@
         <xsl:variable name="xlink"
                       select="@xlink:href"/>
         <xsl:copy-of select="gn-fn-index:build-record-link(@uuidref, $xlink, @xlink:title, 'fcats')"/>
+      </xsl:for-each>
+
+
+      <xsl:variable name="additionalDocuments" as="node()*">
+        <xsl:call-template name="collect-documents"/>
+      </xsl:variable>
+
+      <xsl:for-each select="$additionalDocuments">
+        <link type="object">{
+          "protocol": "<xsl:value-of select="gn-fn-index:json-escape(
+                                        protocol/text())"/>",
+          "function": "<xsl:value-of select="gn-fn-index:json-escape(
+                                        function/text())"/>",
+          "applicationProfile": "<xsl:value-of select="gn-fn-index:json-escape(
+                                        applicationProfile/text())"/>",
+          <!-- TODO: Multilingual support -->
+          "url":"<xsl:value-of select="gn-fn-index:json-escape(
+                                        (url/value/text())[1])"/>",
+          "name":"<xsl:value-of select="gn-fn-index:json-escape(
+                                        (title/value/text())[1])"/>",
+          "description":"<xsl:value-of select="gn-fn-index:json-escape(
+                                        (description/value/text())[1])"/>"
+          }
+        </link>
       </xsl:for-each>
 
 
