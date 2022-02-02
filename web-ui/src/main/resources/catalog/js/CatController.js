@@ -703,8 +703,8 @@ goog.require('gn_alert');
             'columns': 'resourceTitle,cl_status[0].key,format,link/ESRI:REST,link/OGC:WMS,link/OGC:WFS,link/WWW:DOWNLOAD,link/atom:feed'
           },
           'distributionConfig': {
-            'layout': 'tabset',
-            // 'layout': '',
+            //'layout': 'tabset',
+            'layout': '',
             'sections': [
               // {'types': 'services', 'title': 'Services', 'layout': 'card'},
               {'types': 'onlines', 'filter': 'protocol:OGC:.*|ESRI:.*|atom.*', 'title': 'API'},
