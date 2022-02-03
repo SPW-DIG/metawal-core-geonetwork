@@ -1241,7 +1241,7 @@
         <!-- MW - Geoportail specific index  START -->
         <xsl:variable name="linkConfig">
           <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-thematicMap"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-staticMap"></link>
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
           <!--link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link-->
           <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
@@ -1249,6 +1249,8 @@
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
           <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
           <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
+          <link protocol="OGC:WCS|OGC:WFS|atom:feed" function="download" appProfile="0" field="mw-gp-downloadService"></link>
+          <link protocol="OGC:WCS|OGC:WFS|atom:feed" function="download" appProfile="1" field="mw-gp-downloadService"></link>
           <link protocol="WWW:LINK" function="information" appProfile="0" field="mw-gp-informationWebsite"></link>
           <link protocol="WWW:LINK" function="information" appProfile="1" field="mw-gp-informationDoc"></link>
         </xsl:variable>
