@@ -368,7 +368,7 @@
               }</resourceIdentifier>
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
-            <xsl:if test="not(contains(mcc:code/(gco:CharacterString|gcx:Anchor), '\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'))">
+            <xsl:if test="not(matches(mcc:code/(gco:CharacterString|gcx:Anchor), '\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'))">
               <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
             </xsl:if>
             <!-- globalIdentifierRW -->
@@ -1267,13 +1267,13 @@
                                 and cit:function/cit:CI_OnLineFunctionCode/@codeListValue = $gpLink/@function
                                 and (
                                   ($gpLink/@appProfile = 0 and (
-                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) = 0
-                                    or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
+                                    count(cit:applicationProfile/gco:CharacterString) = 0
+                                    or cit:applicationProfile/gco:CharacterString = '')
                                   )
                                   or
                                   ($gpLink/@appProfile = 1 and (
-                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) > 0
-                                    and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString != '')
+                                    count(cit:applicationProfile/gco:CharacterString) > 0
+                                    and cit:applicationProfile/gco:CharacterString != '')
                                   )
                                 )]">
 
