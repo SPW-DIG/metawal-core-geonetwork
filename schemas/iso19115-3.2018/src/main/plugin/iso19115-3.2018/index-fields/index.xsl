@@ -368,7 +368,7 @@
               }</resourceIdentifier>
             <!--  MW - Geoportail specific index  START -->
             <!-- localIdentifierRW -->
-            <xsl:if test="not(contains(mcc:code/(gco:CharacterString|gcx:Anchor), '\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'))">
+            <xsl:if test="not(matches(mcc:code/(gco:CharacterString|gcx:Anchor), '\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'))">
               <mw-gp-localIdentifier><xsl:value-of select="mcc:code/(gco:CharacterString|gcx:Anchor)"></xsl:value-of></mw-gp-localIdentifier>
             </xsl:if>
             <!-- globalIdentifierRW -->
@@ -1243,7 +1243,7 @@
         <!-- MW - Geoportail specific index  START -->
         <xsl:variable name="linkConfig">
           <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
-          <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-thematicMap"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-staticMap"></link>
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
           <!--link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link-->
           <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
@@ -1251,6 +1251,8 @@
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
           <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
           <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
+          <link protocol="OGC:WCS|OGC:WFS|atom:feed" function="download" appProfile="0" field="mw-gp-downloadService"></link>
+          <link protocol="OGC:WCS|OGC:WFS|atom:feed" function="download" appProfile="1" field="mw-gp-downloadService"></link>
           <link protocol="WWW:LINK" function="information" appProfile="0" field="mw-gp-informationWebsite"></link>
           <link protocol="WWW:LINK" function="information" appProfile="1" field="mw-gp-informationDoc"></link>
         </xsl:variable>
@@ -1267,13 +1269,13 @@
                                 and cit:function/cit:CI_OnLineFunctionCode/@codeListValue = $gpLink/@function
                                 and (
                                   ($gpLink/@appProfile = 0 and (
-                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) = 0
-                                    or cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString = '')
+                                    count(cit:applicationProfile/gco:CharacterString) = 0
+                                    or cit:applicationProfile/gco:CharacterString = '')
                                   )
                                   or
                                   ($gpLink/@appProfile = 1 and (
-                                    count(cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString) > 0
-                                    and cit:CI_OnlineResource/cit:applicationProfile/gco:CharacterString != '')
+                                    count(cit:applicationProfile/gco:CharacterString) > 0
+                                    and cit:applicationProfile/gco:CharacterString != '')
                                   )
                                 )]">
 
