@@ -47,6 +47,9 @@
     "groupPublished": "Published in that group",
     "indexingError": "Indexing error",
     "source": "Catalog",
+    "addRecordToSelection": "Add to the selection",
+    "removeRecordFromSelection": "Remove from the selection",
+    "indexRecord": "Index record",
     "indexRecords": "Index records",
     "previousKeywords": "Previous",
     "previousPage": "Previous page",
@@ -577,5 +580,9 @@
     "unselectChoiceNotAllowedTitle": "Unselect choices",
     "unselectChoiceNotAllowed": "Some choices can't be removed: {{notAllowedChoices}}",
     "searchOptions": "Search options",
-    "options": "Options"
+    "options": "Options",
+    "metadataInfoReport": "Metadata information",
+    "metadataErrorReport": "Metadata errors",
+    "copyToClipboard": "Copy the text to the clipboard",
+    "textCopied": "Text has been copied to the clipboard."
 }

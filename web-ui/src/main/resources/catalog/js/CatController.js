@@ -537,6 +537,7 @@ goog.require('gn_alert');
             'icon': 'fa-bars'
           }],
           'resultTemplate': '../../catalog/components/search/resultsview/partials/viewtemplates/list.html',
+          'searchResultContact': 'OrgForResource',
           'formatter': {
             'list': [{
               'label': 'defaultView',
@@ -688,14 +689,14 @@ goog.require('gn_alert');
         },
         'recordview': {
           'isSocialbarEnabled': true,
-          'showStatusWatermarkFor': 'historicalArchive,obsolete,superseded',
+          'showStatusWatermarkFor': '',
           'showStatusTopBarFor': '',
           'showCitation': {
             'enabled': false,
             'if': null // {'documentStandard': ['iso19115-3.2018']}
           },
           'sortKeywordsAlphabetically': true,
-          'mainThesaurus': ['th_Themes_geoportail_wallon_hierarchy', 'th_gemet'],
+          'mainThesaurus': ['th_Themes_geoportail_wallon_hierarchy', 'th_gemet', 'th_gemet-theme'],
           'locationThesaurus': ['th_regions', 'th_httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope'],
           'internalThesaurus': ['th_infraSIG'],
           'collectionTableConfig': {
@@ -1538,7 +1539,7 @@ goog.require('gn_alert');
           },
           // Privileges management may be allowed for harvested records.
           canManagePrivileges: function(md) {
-            if (md.isHarvested
+            if (md && md.isHarvested
                 && JSON.parse(md.isHarvested) == true
                 && gnConfig['system.harvester.enablePrivilegesManagement'] === true
                 && md.edit) {

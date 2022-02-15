@@ -173,6 +173,7 @@
               <xsl:if test="$related != ''">
                 <div gn-related="md"
                      data-user="user"
+                     data-layout="card"
                      data-types="{$related}"><xsl:comment select="'icon'"/></div>
               </xsl:if>
             </header>
@@ -315,6 +316,7 @@
                 </h2>
                 <div gn-related="md"
                      data-user="user"
+                     data-layout="card"
                      data-types="{$sideRelated}">
                   Not available
                 </div>
