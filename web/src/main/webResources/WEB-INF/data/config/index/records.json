@@ -1652,6 +1652,12 @@
       "metadataIdentifier": {
         "type": "keyword"
       },
+      "mw-gp-localIdentifier": {
+        "type": "keyword"
+      },
+      "mw-gp-localIdentifierCodespace": {
+      "type": "keyword"
+      },
       "otherConstraints": {
         "type": "text",
         "fields": {
