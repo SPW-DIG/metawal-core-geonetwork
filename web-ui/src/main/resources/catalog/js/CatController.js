@@ -656,7 +656,7 @@ goog.require('gn_alert');
             'projectionSwitcher': false,
             'layers': false,
             'legend': false,
-            'filter': false,
+            'filter': true,
             'contexts': false,
             'print': false,
             'mInteraction': false,
