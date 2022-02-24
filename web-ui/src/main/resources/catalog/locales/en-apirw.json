@@ -1,4 +1,6 @@
 {
+  "Abstract-descriptive": "Detailed abstract",
+  "Abstract-hook": "Main description",
   "AnonymousUserServicelist_add": "Add to my services",
   "AnonymousUserServicelist_basket_button": "Manage",
   "AnonymousUserServicelist_basket_title": "My services",
@@ -39,8 +41,21 @@
   "basket": "My baskets",
   "diffusionmodes": "Diffusion modes",
   "elementsPerPage": "Elements per page",
+  "entitesAdministratives": "Administrative entities",
   "factSheet": "Descriptive sheet",
+  "geoportailThemes": "Geoportal themes",
   "isPublishedToAll": "Published to all",
+  "metadataInfo": "Metadata information",
+  "metawalMenuAdmin": "Administration",
+  "metawalMenuCSW": "CSW service",
+  "metawalMenuEncoding": "Encoding",
+  "metawalMenuHarvesting": "Harvesting",
+  "metawalMenuImportMetadata": "Import metadata",
+  "metawalMenuMyMetadata": "My metadata",
+  "metawalMenuNewMetadata": "New metadata",
+  "metawalMenuSearch": "Search",
+  "metawalSubTitle": "All Wallonia in metadata",
+  "metawalTitle": "Metawal",
   "noAddToMap": "No selection",
   "noDownloadData": "No selection",
   "noresult": "No results found...",
@@ -55,5 +70,8 @@
   "seeMap": "See the map",
   "sortBy": "Sort by :",
   "textNotificationData": "Reveive email when data or service is updated.",
-  "textSearchSelectedRecord": "Quick acces to your prefered services."
+  "textSearchSelectedRecord": "Quick acces to your prefered services.",
+  "thematicmap": "Carte thématique",
+  "walonmap": "WalOnMap",
+  "welcomeMoreInfo": "For more metadata information ..."
 }
