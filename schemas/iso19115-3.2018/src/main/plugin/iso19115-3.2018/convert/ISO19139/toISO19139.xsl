@@ -434,18 +434,34 @@
     <gmd:aggregateDataSetIdentifier>
       <gmd:MD_Identifier>
         <gmd:code>
-          <gco:CharacterString><xsl:value-of select="@uuidref"/></gco:CharacterString>
+          <xsl:choose>
+            <xsl:when test="@xlink:href">
+              <gmx:Anchor>
+                <xsl:copy-of select="@xlink:*"/>
+                <xsl:value-of select="@uuidref"/>
+              </gmx:Anchor>
+            </xsl:when>
+            <xsl:otherwise>
+              <gco:CharacterString><xsl:value-of select="@uuidref"/></gco:CharacterString>
+            </xsl:otherwise>
+          </xsl:choose>
         </gmd:code>
       </gmd:MD_Identifier>
     </gmd:aggregateDataSetIdentifier>
   </xsl:template>
 
   <xsl:template match="mri:MD_AssociatedResource/mri:name" priority="2">
-    <gmd:aggregateDataSetIdentifier>
-      <gmd:MD_Identifier>
-        <xsl:apply-templates select="cit:CI_Citation/*/mcc:MD_Identifier/*"/>
-      </gmd:MD_Identifier>
-    </gmd:aggregateDataSetIdentifier>
+    <gmd:aggregateDataSetName>
+      <xsl:apply-templates select="*"/>
+    </gmd:aggregateDataSetName>
+
+    <xsl:for-each select="cit:CI_Citation/*/mcc:MD_Identifier/*">
+      <gmd:aggregateDataSetIdentifier>
+        <gmd:MD_Identifier>
+          <xsl:apply-templates select="."/>
+        </gmd:MD_Identifier>
+      </gmd:aggregateDataSetIdentifier>
+    </xsl:for-each>
 
     <!--<gmd:aggregateDataSetName>
       <xsl:apply-templates select="*"/>
@@ -666,7 +682,7 @@
     <xsl:variable name="nameSpacePrefix">
       <xsl:call-template name="getNamespacePrefix"/>
     </xsl:variable>
-    
+
     <xsl:variable name="parentName"
                   select="local-name()"/>
 
@@ -677,7 +693,7 @@
       </xsl:element>
     </xsl:for-each>
   </xsl:template>
-  
+
   <xsl:template match="cit:CI_Responsibility" priority="5">
     <xsl:choose>
       <xsl:when test="count(cit:party/cit:CI_Organisation/cit:individual/cit:CI_Individual/cit:name/gco2:CharacterString) +
