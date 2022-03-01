@@ -4,6 +4,7 @@
   "IndexReadOnlyHealthCheck": "Index is in readonly mode",
   "NoTimezone": "No timezone",
   "YourTimezone": "Your timezone",
+  "accessAndUseConstraints": "Access and use constraints",
   "accessManager": "Access rights",
   "addHarvesterFromClipboard": "Copy harvester config from clipboard",
   "addSearchAndReplace-help": "",

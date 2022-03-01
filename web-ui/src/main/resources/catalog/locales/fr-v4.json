@@ -5,6 +5,7 @@
   "NoTimezone": "Pas de fuseau horaire",
   "YourTimezone": "Votre fuseau horaire",
   "accessManager": "Droits d'accès",
+  "accessAndUseConstraints": "Contraintes d'accès et d'utilisation",
   "addHarvesterFromClipboard": "Copier la configuration du moissonneur depuis le presse-papiers",
   "addSearchAndReplace-help": "",
   "addThoseCategories-help": "Ajouter (avec +) ou supprimer (avec -) les catégories.",
