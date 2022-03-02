@@ -216,8 +216,7 @@
                 </lan:LocalisedCharacterString>
               </lan:textGroup>
               <lan:textGroup>
-                <lan:LocalisedCharacterString locale="#AR">نموذج البيانات الموجهة (متعددة اللغات)
-                </lan:LocalisedCharacterString>
+                <lan:LocalisedCharacterString locale="#AR"></lan:LocalisedCharacterString>
               </lan:textGroup>
               <lan:textGroup>
                 <lan:LocalisedCharacterString locale="#RU">Шаблон для векторных данных (многоязычное)

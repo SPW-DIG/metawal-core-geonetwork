@@ -24,6 +24,9 @@
 
   <xsl:param name="characterSet" select="'utf8'" as="xs:string?"/>
 
+  <xsl:param name="copyPreviousDefaultIfEmpty" select="'false'" as="xs:string?"/>
+
+
   <!-- eg. eng
   Here is a hack to also handle ISO19139 records
   See ISO19139-to-ISO19115-3-2018-with-languages-refactor.xsl
@@ -44,6 +47,14 @@
 
   <xsl:variable name="defaultLanguageIdRef"
                 select="concat('#', $defaultLanguageId)"
+                as="xs:string?"/>
+
+  <xsl:variable name="previousDefaultLanguageId"
+                select="upper-case(java:twoCharLangCode($previousDefaultLanguage))"
+                as="xs:string?"/>
+
+  <xsl:variable name="previousDefaultLanguageIdRef"
+                select="concat('#', $previousDefaultLanguageId)"
                 as="xs:string?"/>
 
   <!-- eg. eng,spa,ger -->
@@ -159,11 +170,19 @@
                     select="lan:PT_FreeText/*/lan:LocalisedCharacterString[
                               @locale = $defaultLanguageIdRef]/text()"/>
 
+      <xsl:variable name="valueForPreviousDefaultLanguageInPtFreeText"
+                    select="lan:PT_FreeText/*/lan:LocalisedCharacterString[
+                              @locale = $previousDefaultLanguageIdRef]/text()"/>
+
       <xsl:element name="{if (gcx:Anchor)
                           then 'gcx:Anchor' else 'gco:CharacterString'}">
         <xsl:apply-templates select="gco:CharacterString/@*|gcx:Anchor/@*" mode="language-add"/>
-        <xsl:value-of select="if ($hasPtFreeText)
+        <xsl:value-of select="if ($hasPtFreeText
+                                  and $valueInPtFreeTextForDefault != '')
                               then $valueInPtFreeTextForDefault
+                              else if (xs:boolean($copyPreviousDefaultIfEmpty) = true()
+                                       and $valueForPreviousDefaultLanguageInPtFreeText != '')
+                              then $valueForPreviousDefaultLanguageInPtFreeText
                               else (gco:CharacterString/text()|gcx:Anchor/text())"/>
       </xsl:element>
 

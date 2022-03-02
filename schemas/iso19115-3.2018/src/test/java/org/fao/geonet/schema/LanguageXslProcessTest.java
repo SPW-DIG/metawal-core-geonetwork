@@ -115,6 +115,24 @@ public class LanguageXslProcessTest extends XslProcessTest {
         );
     }
 
+    @Test
+    public void testChangeDefaultAndRemovingOtherLanguagesMovingPreviousDefaultTranslations() throws Exception {
+        Element inputElement = Xml.loadFile(testClass.getClassLoader().getResource("metadata-multilingual.xml"));
+
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("defaultLanguage", "ara");
+        params.put("others", "none");
+        params.put("copyPreviousDefaultIfEmpty", "true");
+        Element resultElement = Xml.transform(inputElement, xslFile, params);
+        String resultString = Xml.getString(resultElement);
+
+        check(resultString, "ara", new String[]{}, 167, 0);
+        assertThat(
+            resultString,
+            hasXPath(XPATH_MAIN_TITLE, equalTo("Template for Vector data (multilingual)"))
+                .withNamespaceContext(ns)
+        );
+    }
 
     @Test
     public void testChangeDefaultAndRemovingSomeOtherLanguages() throws Exception {
