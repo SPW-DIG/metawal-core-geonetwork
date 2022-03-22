@@ -137,13 +137,20 @@ goog.require('gn_alert');
           // 'queryBase': '${any}',
           // Full text but more boost on title match
           // * Search in languages depending on the strategy selected
-          'queryBase': 'any.${searchLang}:(${any}) any.common:(${any}) resourceTitleObject.${searchLang}:(${any})^2',
+          'queryBase': 'any.${searchLang}:(${any}) OR any.common:(${any}) OR resourceTitleObject.${searchLang}:(${any})^2 OR resourceTitleObject.${searchLang}:\"${any}\"^6',
+          'queryBaseOptions': {
+            'default_operator': 'AND'
+          },
+          // TODO: Exact match should not even analyze
+          // so we could create an exact field not analyzed in the index maybe?
+          'queryExactMatch': 'any.${searchLang}:\"${any})\" OR any.common:\"${any}\" OR resourceTitleObject.${searchLang}:\"${any}\"^2',
           // * Force UI language - in this case set languageStrategy to searchInUILanguage
           // and disable language options in searchOptions
           // 'queryBase': 'any.${uiLang}:(${any}) any.common:(${any}) resourceTitleObject.${uiLang}:(${any})^2',
           // * Search in French fields (with french analysis)
           // 'queryBase': 'any.langfre:(${any}) any.common:(${any}) resourceTitleObject.langfre:(${any})^2',
           'queryTitle': 'resourceTitleObject.${searchLang}:(${any})',
+          'queryTitleExactMatch': 'resourceTitleObject.${searchLang}:"${any}"',
           'searchOptions': {
             titleOnly: true,
             exactMatch: true,
@@ -204,9 +211,13 @@ goog.require('gn_alert');
                 "filter": { "exists": { "field": "parentUuid" } },
                 "weight": 0.3
               },
-              // Boost down obsolete records
+              // Boost down obsolete and superseded records
               {
                 "filter": { "match": { "cl_status.key": "obsolete" } },
+                "weight": 0.2
+              },
+              {
+                "filter": { "match": { "cl_status.key": "superseded" } },
                 "weight": 0.3
               },
               // {
@@ -234,8 +245,8 @@ goog.require('gn_alert');
                     "query": "",
                     "type": "bool_prefix",
                     "fields": [
-                      "resourceTitleObject.${searchLang}",
-                      "resourceAbstractObject.${searchLang}",
+                      "resourceTitleObject.${searchLang}^6",
+                      "resourceAbstractObject.${searchLang}^.5",
                       "tag",
                       "resourceIdentifier"
                       // "anytext",
@@ -1101,7 +1112,8 @@ goog.require('gn_alert');
         'internalThesaurus',
         'locationThesaurus',
         'distributionConfig',
-        'collectionTableConfig'
+        'collectionTableConfig',
+        'queryBaseOptions'
       ],
       current: null,
       isDisableLoginForm: false,
