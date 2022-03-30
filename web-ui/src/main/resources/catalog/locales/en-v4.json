@@ -210,6 +210,7 @@
   "system/localrating/notificationLevel-help": "Define which users to alert in case of rating.",
   "titleOnly": "Search in title only",
   "titleOnly-help": "Search in title only.",
+  "toggleOptions": "Toggle filter options (open or close filter tree)",
   "top10IndexingErrors": "Top 10 indexing errors:",
   "translation.add": "Add",
   "translation.addFor": "Add a new translation for",

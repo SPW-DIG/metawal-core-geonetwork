@@ -137,20 +137,20 @@ goog.require('gn_alert');
           // 'queryBase': '${any}',
           // Full text but more boost on title match
           // * Search in languages depending on the strategy selected
-          'queryBase': 'any.${searchLang}:(${any}) OR any.common:(${any}) OR resourceTitleObject.${searchLang}:(${any})^2 OR resourceTitleObject.${searchLang}:\"${any}\"^6',
+          'queryBase': 'any.${searchLang}:(${any}) OR any.common:(${any}) OR resourceTitleObject.${searchLang}:(${any})^2 OR resourceTitleObject.\\*:\"${any}\"^6',
           'queryBaseOptions': {
             'default_operator': 'AND'
           },
           // TODO: Exact match should not even analyze
           // so we could create an exact field not analyzed in the index maybe?
-          'queryExactMatch': 'any.${searchLang}:\"${any})\" OR any.common:\"${any}\" OR resourceTitleObject.${searchLang}:\"${any}\"^2',
+          'queryExactMatch': 'any.${searchLang}:\"${any})\" OR any.common:\"${any}\" OR resourceTitleObject.\\*:\"${any}\"^2',
           // * Force UI language - in this case set languageStrategy to searchInUILanguage
           // and disable language options in searchOptions
           // 'queryBase': 'any.${uiLang}:(${any}) any.common:(${any}) resourceTitleObject.${uiLang}:(${any})^2',
           // * Search in French fields (with french analysis)
           // 'queryBase': 'any.langfre:(${any}) any.common:(${any}) resourceTitleObject.langfre:(${any})^2',
-          'queryTitle': 'resourceTitleObject.${searchLang}:(${any})',
-          'queryTitleExactMatch': 'resourceTitleObject.${searchLang}:"${any}"',
+          'queryTitle': 'resourceTitleObject.\\*:(${any})',
+          'queryTitleExactMatch': 'resourceTitleObject.\\*:"${any}"',
           'searchOptions': {
             titleOnly: true,
             exactMatch: true,
@@ -814,6 +814,15 @@ goog.require('gn_alert');
                 }
               }
             },
+            'mdStatus': {
+              'terms': {
+                'field': 'statusWorkflow',
+                'size': 20
+              },
+              'meta': {
+                'field': 'statusWorkflow'
+              }
+            },
             "cl_status.key": {
               "terms": {
                 "field": "cl_status.key",
@@ -936,36 +945,82 @@ goog.require('gn_alert');
               'terms': {
                 'field': 'valid_inspire',
                 'size': 10
+              },
+              'meta': {
+                'collapsed': true
+              }
+            },
+            'sourceCatalogue': {
+              'terms': {
+                'field': 'sourceCatalogue',
+                'size': 100,
+                'include': '.*'
+              },
+              'meta': {
+                'orderByTranslation': true,
+                'filterByTranslation': true,
+                'displayFilter': true,
+                'collapsed': true
               }
             },
             'groupOwner': {
               'terms': {
                 'field': 'groupOwner',
-                'size': 10
+                'size': 200,
+                'include': '.*'
+              },
+              'meta': {
+                'orderByTranslation': true,
+                'filterByTranslation': true,
+                'displayFilter': true,
+                'collapsed': true
               }
             },
             'recordOwner': {
               'terms': {
                 'field': 'recordOwner',
-                'size': 10
+                'size': 5,
+                'include': '.*'
+              },
+              'meta': {
+                'collapsed': true
+              }
+            },
+            'isPublishedToAll': {
+              'terms': {
+                'field': 'isPublishedToAll',
+                'size': 2
               }
             },
             'groupPublishedId': {
               'terms': {
                 'field': 'groupPublishedId',
-                'size': 10
+                'size': 200,
+                'include': '.*'
+              },
+              'meta': {
+                'orderByTranslation': true,
+                'filterByTranslation': true,
+                'displayFilter': true,
+                'collapsed': true
               }
             },
             'documentStandard': {
               'terms': {
                 'field': 'documentStandard',
                 'size': 10
+              },
+              'meta': {
+                'collapsed': true
               }
             },
             'isHarvested': {
               'terms': {
                 'field': 'isHarvested',
                 'size': 2
+              },
+              'meta': {
+                'collapsed': true
               }
             },
             'isTemplate': {
@@ -1053,6 +1108,12 @@ goog.require('gn_alert');
         'page': {
           'enabled': true,
           'appUrl': '../../{{node}}/{{lang}}/catalog.search#/page'
+        },
+        'workflowHelper': {
+          'enabled': false,
+          'workflowAssistApps': [
+            {'appUrl': '', 'appLabelKey': ''}
+          ]
         }
       }
     };
@@ -1113,7 +1174,8 @@ goog.require('gn_alert');
         'locationThesaurus',
         'distributionConfig',
         'collectionTableConfig',
-        'queryBaseOptions'
+        'queryBaseOptions',
+        'workflowAssistApps'
       ],
       current: null,
       isDisableLoginForm: false,

@@ -176,6 +176,8 @@
 
       $scope.addToMapLayerNameUrlParam = gnGlobalSettings.gnCfg.mods.search.addWMSLayersToMap.urlLayerParam;
 
+      $scope.sortKeywordsAlphabetically = gnGlobalSettings.gnCfg.mods.recordview.sortKeywordsAlphabetically;
+
       $scope.toggleMap = function () {
         $(searchMap.getTargetElement()).toggle();
         searchMap.updateSize();
