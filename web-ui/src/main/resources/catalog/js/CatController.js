@@ -588,6 +588,23 @@ goog.require('gn_alert');
             'url' : '/formatters/xml',
             'class': 'fa-file-code-o'
           }],
+          'ogcapiFormatter': [{
+            'label': 'exportDCAT',
+            'format': 'dcat',
+            'class': 'fa-file-code-o'
+          }/*, {
+            'label': 'exportJSON',
+            'format': 'json',
+            'class': 'fa-file-code-o'
+          }, {
+            'label': 'exportSCHEMAORG',
+            'format': 'schema.org',
+            'class': 'fa-file-code-o'
+          },{
+            'label': 'exportTURTLE',
+            'format': 'turtle',
+            'class': 'fa-file-code-o'
+          }*/],
           'grid': {
             'related': ['parent', 'children', 'services', 'datasets']
           },

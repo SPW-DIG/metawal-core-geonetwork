@@ -98,6 +98,10 @@
           scope.mdService = gnMetadataActions;
           scope.md = scope.$eval(attrs.gnMdActionsMenu);
           scope.formatterList = gnGlobalSettings.gnCfg.mods.search.downloadFormatter;
+          //if (gnGlobalSettings.gnCfg.mods.search.ogcapiFormatter){
+            scope.ogcapiList = gnGlobalSettings.gnCfg.mods.search.ogcapiFormatter;
+          //}
+
 
           scope.tasks = [];
           scope.hasVisibletasks = false;

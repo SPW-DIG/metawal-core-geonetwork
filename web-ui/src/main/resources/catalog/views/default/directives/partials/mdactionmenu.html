@@ -254,6 +254,13 @@
           <span data-translate="">{{f.label | translate}}</span>
         </a>
       </li>
+      <li data-ng-repeat="f in ogcapiList" role="menuitem">
+        <a data-ng-href="../../api/collections/main/items/{{md.uuid}}?f={{f.format}}"
+           target="_blank">
+          <span class="fa fa-fw {{f.class}}"></span>&nbsp;
+          <span data-translate="">{{f.label | translate}}</span>
+        </a>
+      </li>
 
       <!-- TODO: RDF export should be replaced by a formatter.
       A DCAT formatter would be better.
