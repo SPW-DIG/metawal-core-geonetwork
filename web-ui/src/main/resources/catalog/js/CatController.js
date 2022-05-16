@@ -90,7 +90,9 @@ goog.require('gn_alert');
           'fluidHeaderLayout': true,
           'showGNName': true,
           'isHeaderFixed': false,
-          'isMenubarAccessible': false
+          'isMenubarAccessible': false,
+          'isMenubarAccessible': true,
+          'showPortalSwitcher': false
         },
         'cookieWarning': {
           'enabled': true,
@@ -546,6 +548,11 @@ goog.require('gn_alert');
               'search/resultsview/partials/viewtemplates/list.html',
             'tooltip': 'List',
             'icon': 'fa-bars'
+          },{
+            'tplUrl': '../../catalog/components/' +
+              'search/resultsview/partials/viewtemplates/table.html',
+            'tooltip': 'Table',
+            'icon': 'fa-table'
           }],
           'resultTemplate': '../../catalog/components/search/resultsview/partials/viewtemplates/list.html',
           'searchResultContact': 'OrgForResource',
@@ -1448,6 +1455,7 @@ goog.require('gn_alert');
       $scope.redirectUrlAfterSign = window.location.href;
 
       gnGlobalSettings.nodeId = $scope.nodeId;
+      gnGlobalSettings.isDefaultNode = $scope.isDefaultNode;
       gnConfig.env = gnConfig.env ||  {};
       gnConfig.env.node = $scope.nodeId;
       gnConfig.env.defaultNode = defaultNode;
