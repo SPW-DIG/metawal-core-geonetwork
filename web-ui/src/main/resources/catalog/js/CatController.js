@@ -90,7 +90,6 @@ goog.require('gn_alert');
           'fluidHeaderLayout': true,
           'showGNName': true,
           'isHeaderFixed': false,
-          'isMenubarAccessible': false,
           'isMenubarAccessible': true,
           'showPortalSwitcher': false
         },
