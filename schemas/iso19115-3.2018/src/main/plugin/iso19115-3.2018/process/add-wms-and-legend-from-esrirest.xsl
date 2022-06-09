@@ -23,6 +23,12 @@
                                 [cit:protocol/*/text() = 'OGC:WMS'
                                 and cit:linkage/*/text() = $wmsUrl]) > 0"/>
 
+  <xsl:variable name="aduUrl"
+                select="concat('https://geoportail.wallonie.be/walonmap/#ADU=', $esriRestServiceUrl)"/>
+  <xsl:variable name="isAduDefined"
+                select="count(//mrd:onLine/*
+                                [cit:protocol/*/text() = 'WWW:LINK'
+                                and cit:linkage/*/text() = $aduUrl]) > 0"/>
 
   <xsl:variable name="legendUrl"
                 select="concat($esriRestServiceUrl, '/legend')"/>
@@ -61,6 +67,12 @@
                                 [cit:protocol/*/text() = 'OGC:WMS'
                                 and cit:linkage/*/text() = $wmsUrl]) > 0"/>
 
+      <xsl:variable name="aduUrl"
+                    select="concat('https://geoportail.wallonie.be/walonmap/#ADU=', .)"/>
+      <xsl:variable name="isAduDefined"
+                    select="count($root//mrd:onLine/*
+                                [cit:protocol/*/text() = 'WWW:LINK'
+                                and cit:linkage/*/text() = $aduUrl]) > 0"/>
 
       <xsl:variable name="legendUrl"
                     select="concat(., '/legend')"/>
@@ -69,7 +81,7 @@
                                 mpc:portrayalCatalogueCitation/*/cit:onlineResource/*
                                   [cit:linkage/*/text() = $legendUrl]) > 0"/>
 
-      <xsl:if test="not($isWmsDefined) or not($isLegendDefined)">
+      <xsl:if test="not($isWmsDefined) or not($isAduDefined) or not($isLegendDefined)">
         <suggestion process="add-wms-and-legend-from-esrirest"
                     id="{generate-id()}"
                     category="online" target="onLine">
@@ -97,35 +109,60 @@
   <xsl:template match="geonet:*" priority="2">
   </xsl:template>
 
-  <xsl:template match="mrd:onLine[not($isWmsDefined)
+  <xsl:template match="mrd:onLine[(not($isWmsDefined) or not($isAduDefined))
                                   and */cit:linkage/*/text() = $esriRestServiceUrl]"
                 priority="99">
     <xsl:copy-of select="."/>
-    <mrd:onLine>
-      <cit:CI_OnlineResource>
-        <cit:linkage>
-          <gco:CharacterString><xsl:value-of select="$wmsUrl"/></gco:CharacterString>
-        </cit:linkage>
-        <cit:protocol>
-          <gco:CharacterString>OGC:WMS</gco:CharacterString>
-        </cit:protocol>
-        <cit:name>
-          <gco:CharacterString>
-            <xsl:value-of select="replace(*/cit:name/gco:CharacterString, 'ESRI-REST', 'WMS')"/>
-          </gco:CharacterString>
-        </cit:name>
-        <cit:description>
-          <gco:CharacterString>
-            <xsl:value-of select="replace(*/cit:description/gco:CharacterString, 'ESRI-REST', 'WMS')"/>
-          </gco:CharacterString>
-        </cit:description>
-        <cit:function>
-          <cit:CI_OnLineFunctionCode
-            codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
-            codeListValue="browsing"/>
-        </cit:function>
-      </cit:CI_OnlineResource>
-    </mrd:onLine>
+    <xsl:if test="not($isWmsDefined)">
+      <mrd:onLine>
+        <cit:CI_OnlineResource>
+          <cit:linkage>
+            <gco:CharacterString><xsl:value-of select="$wmsUrl"/></gco:CharacterString>
+          </cit:linkage>
+          <cit:protocol>
+            <gco:CharacterString>OGC:WMS</gco:CharacterString>
+          </cit:protocol>
+          <cit:name>
+            <gco:CharacterString>
+              <xsl:value-of select="replace(*/cit:name/gco:CharacterString, 'ESRI-REST', 'WMS')"/>
+            </gco:CharacterString>
+          </cit:name>
+          <cit:description>
+            <gco:CharacterString>
+              <xsl:value-of select="replace(*/cit:description/gco:CharacterString, 'ESRI-REST', 'WMS')"/>
+            </gco:CharacterString>
+          </cit:description>
+          <cit:function>
+            <cit:CI_OnLineFunctionCode
+              codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+              codeListValue="browsing"/>
+          </cit:function>
+        </cit:CI_OnlineResource>
+      </mrd:onLine>
+    </xsl:if>
+
+
+    <xsl:if test="not($isAduDefined)">
+      <mrd:onLine>
+        <cit:CI_OnlineResource>
+          <cit:linkage>
+            <gco:CharacterString><xsl:value-of select="$aduUrl"/></gco:CharacterString>
+          </cit:linkage>
+          <cit:protocol>
+            <gco:CharacterString>WWW:LINK</gco:CharacterString>
+          </cit:protocol>
+          <cit:name>
+            <gco:CharacterString>Application WalOnMap - Toute la Wallonie à la carte</gco:CharacterString>
+          </cit:name>
+          <cit:description>
+            <gco:CharacterString>Application cartographique du Geoportail (WalOnMap) qui permet de découvrir les données géographiques de la Wallonie.</gco:CharacterString>
+          </cit:description>
+          <cit:function>
+            <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="information"/>
+          </cit:function>
+        </cit:CI_OnlineResource>
+      </mrd:onLine>
+    </xsl:if>
   </xsl:template>
 
 
