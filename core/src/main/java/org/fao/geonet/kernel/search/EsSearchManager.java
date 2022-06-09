@@ -144,6 +144,7 @@ public class EsSearchManager implements ISearchManager {
             .add(Geonet.IndexFieldNames.OP_PREFIX + "*")
             .add(Geonet.IndexFieldNames.GROUP_OWNER)
             .add(Geonet.IndexFieldNames.RESOURCEABSTRACT)
+            .add("resourceHookAbstractObject")
             .add(Geonet.IndexFieldNames.RESOURCEABSTRACT + "Object")
             .add("operatesOn")
             .build();
