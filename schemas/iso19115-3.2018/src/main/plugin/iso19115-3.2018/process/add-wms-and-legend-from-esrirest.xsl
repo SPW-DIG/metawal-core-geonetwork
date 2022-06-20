@@ -42,7 +42,7 @@
   <!-- i18n information -->
   <xsl:variable name="add-wms-and-legend-from-esrirest-loc">
     <msg id="a" xml:lang="eng">Add WMS and legend links for ESRI REST service:</msg>
-    <msg id="a" xml:lang="fre">Ajouter les liens vers le WMS et la légende pour le service ESRI REST :</msg>
+    <msg id="a" xml:lang="fre">Ajouter les liens vers le WMS, la légende et l'ADU pour le service ESRI REST :</msg>
     <msg id="legendLabel" xml:lang="eng">Layer legend</msg>
     <msg id="legendLabel" xml:lang="fre">Légende des couches de données</msg>
   </xsl:variable>
