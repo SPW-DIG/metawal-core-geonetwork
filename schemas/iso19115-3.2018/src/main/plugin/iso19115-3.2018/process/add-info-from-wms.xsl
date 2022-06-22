@@ -81,6 +81,7 @@
   <xsl:param name="setAndReplaceExtent" select="'0'"/>
   <xsl:param name="setCRS" select="'0'"/>
   <xsl:param name="setDynamicGraphicOverview" select="'0'"/>
+  <xsl:param name="setServiceConnectPoint" select="'0'"/>
   <xsl:param name="wmsServiceUrl"/>
 
   <xsl:variable name="maxSrs" select="21"/>
@@ -125,6 +126,8 @@
       select="geonet:get-wms-capabilities(gmd:linkage/gmd:URL, '1.1.1')"/>
 -->
     <xsl:for-each select="$onlineResources">
+      <xsl:variable name="url"
+                    select="normalize-space(cit:linkage/gco:CharacterString)"/>
       <suggestion process="add-info-from-wms" id="{generate-id()}" category="onlineSrc"
                   target="gex:extent">
         <name>
@@ -134,16 +137,23 @@
           select="./cit:name/gco:CharacterString"/>.
         </name>
         <operational>true</operational>
-        <params>{"setExtent":{"type":"boolean", "defaultValue":"<xsl:value-of select="$setExtent"/>"},
+        <params>{
+          "setExtent":{"type":"boolean", "defaultValue":"<xsl:value-of select="$setExtent"/>"},
           "setAndReplaceExtent":{"type":"boolean", "defaultValue":"<xsl:value-of
-            select="$setAndReplaceExtent"/>"}, "setCRS":{"type":"boolean", "defaultValue":"<xsl:value-of
+            select="$setAndReplaceExtent"/>"},
+          "setCRS":{"type":"boolean", "defaultValue":"<xsl:value-of
             select="$setCRS"/>"},
           <xsl:if test="not($srv)">
             "setDynamicGraphicOverview":{"type":"boolean",
             "defaultValue":"<xsl:value-of select="$setDynamicGraphicOverview"/>"},
           </xsl:if>
+          <xsl:if test="$srv and count($root//srv:containsOperations[
+                      */srv:connectPoint/*/cit:linkage/*/text() = $url]) = 0">
+            "setServiceConnectPoint":{"type":"boolean",
+            "defaultValue":"<xsl:value-of select="$setServiceConnectPoint"/>"},
+          </xsl:if>
           "wmsServiceUrl":{"type":"string", "defaultValue":"<xsl:value-of
-            select="normalize-space(cit:linkage/gco:CharacterString)"/>"}
+            select="$url"/>"}
           }
         </params>
       </suggestion>
@@ -272,7 +282,54 @@
       <xsl:apply-templates select="mri:environmentDescription"/>
       <xsl:apply-templates select="mri:supplementalInformation"/>
 
-      <xsl:apply-templates select="srv:*"/>
+      <xsl:apply-templates select="srv:serviceType
+                                  |srv:serviceTypeVersion
+                                  |srv:accessProperties
+                                  |srv:couplingType
+                                  |srv:coupledResource
+                                  |srv:operatedDataset
+                                  |srv:profile
+                                  |srv:serviceStandard
+                                  |srv:containsOperations
+      "/>
+
+      <xsl:if test="$setServiceConnectPoint
+                    and count(srv:containsOperations[
+                      */srv:connectPoint/*/cit:linkage/*/text() = $wmsServiceUrl]) = 0">
+        <srv:containsOperations>
+          <srv:SV_OperationMetadata>
+            <srv:operationName>
+              <gco:CharacterString>GetCapabilities</gco:CharacterString>
+            </srv:operationName>
+            <srv:distributedComputingPlatform>
+              <srv:DCPList codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#DCPList" codeListValue="WebServices"/>
+            </srv:distributedComputingPlatform>
+            <srv:connectPoint>
+              <cit:CI_OnlineResource>
+                <cit:linkage>
+                  <gco:CharacterString><xsl:value-of select="$wmsServiceUrl"/></gco:CharacterString>
+                </cit:linkage>
+                <cit:protocol>
+                  <gco:CharacterString>OGC:WMS</gco:CharacterString>
+                </cit:protocol>
+                <cit:name>
+                  <gco:CharacterString>Service de visualisation WMS</gco:CharacterString>
+                </cit:name>
+                <cit:description>
+                  <gco:CharacterString>Adresse de connexion au service de visualisation WMS</gco:CharacterString>
+                </cit:description>
+                <cit:function>
+                  <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue=""/>
+                </cit:function>
+              </cit:CI_OnlineResource>
+            </srv:connectPoint>
+          </srv:SV_OperationMetadata>
+        </srv:containsOperations>
+      </xsl:if>
+
+      <xsl:apply-templates select="srv:operatesOn
+                                  |srv:containsChain
+      "/>
     </xsl:copy>
   </xsl:template>
 

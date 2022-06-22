@@ -325,5 +325,6 @@
   "metadata/link/excludedUrlPattern": "Exclure des URLs de l'analyse des liens",
   "metadata/link/excludedUrlPattern-help": "eg. (https://resources.domain.org/datasets/.*|https://uri.domain.org/.*)",
   "portals": "Changer de portail",
+  "setServiceConnectPoint": "Ajouter l'adresse de connexion au service",
   "switchPortals": "Basculer dans un autre portail"
 }
