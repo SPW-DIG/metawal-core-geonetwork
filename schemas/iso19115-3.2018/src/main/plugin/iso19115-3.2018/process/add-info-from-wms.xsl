@@ -73,6 +73,10 @@
     </msg>
     <msg id="a" xml:lang="dut">Er is een verwijzing gevonden naar de WMS service </msg>
     <msg id="b" xml:lang="dut">. Gebruik deze functie om de dekking, de projectie of thumbnail af te leiden of bij te werken vanuit deze WMS-service voor de laag met de naam: </msg>
+    <msg id="connectPoint" xml:lang="eng">WMS view service</msg>
+    <msg id="connectPoint" xml:lang="fre">Service de visualisation WMS</msg>
+    <msg id="connectPointDesc" xml:lang="eng">Service connect point URL</msg>
+    <msg id="connectPointDesc" xml:lang="fre">Adresse de connexion au service de visualisation WMS</msg>
   </xsl:variable>
 
   <!-- Process parameters and variables-->
@@ -119,7 +123,7 @@
                                   contains(cit:protocol/gco:CharacterString, 'OGC:WMS')
                                   and normalize-space(cit:linkage/gco:CharacterString) != '']"/>
     <xsl:variable name="srv"
-                  select="$root//*[local-name(.)='SV_ServiceIdentification' or contains(@gco:isoType, 'SV_ServiceIdentification')]"/>
+                  select="count($root//*[local-name(.)='SV_ServiceIdentification' or contains(@gco:isoType, 'SV_ServiceIdentification')]) > 0"/>
 
     <!-- Check if server is up and new value are available
      <xsl:variable name="capabilities"
@@ -313,10 +317,10 @@
                   <gco:CharacterString>OGC:WMS</gco:CharacterString>
                 </cit:protocol>
                 <cit:name>
-                  <gco:CharacterString>Service de visualisation WMS</gco:CharacterString>
+                  <gco:CharacterString><xsl:value-of select="geonet:i18n($wms-info-loc, 'connectPoint', $guiLang)"/></gco:CharacterString>
                 </cit:name>
                 <cit:description>
-                  <gco:CharacterString>Adresse de connexion au service de visualisation WMS</gco:CharacterString>
+                  <gco:CharacterString><xsl:value-of select="geonet:i18n($wms-info-loc, 'connectPointDesc', $guiLang)"/></gco:CharacterString>
                 </cit:description>
                 <cit:function>
                   <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue=""/>
