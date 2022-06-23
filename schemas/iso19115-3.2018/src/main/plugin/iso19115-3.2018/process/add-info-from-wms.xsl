@@ -62,13 +62,13 @@
   <!-- i18n information -->
   <xsl:variable name="wms-info-loc">
     <msg id="a" xml:lang="eng">WMS service </msg>
-    <msg id="b" xml:lang="eng"> is described in online resource section. Run to update extent, CRS or
+    <msg id="b" xml:lang="eng"> is described in online resource section. Run to update extent, CRS, connect point or
       graphic overview
       for this WMS service for the layer named:
     </msg>
     <msg id="a" xml:lang="fre">Le service de visualisation </msg>
     <msg id="b" xml:lang="fre"> est décrit dans la section resource en ligne. Exécuter cette action
-      pour mettre à jour l'étendue, les systèmes de projection
+      pour mettre à jour l'étendue, les systèmes de projection, l'adresse de connexion
       ou les aperçus pour ce service et la couche nommée :
     </msg>
     <msg id="a" xml:lang="dut">Er is een verwijzing gevonden naar de WMS service </msg>
