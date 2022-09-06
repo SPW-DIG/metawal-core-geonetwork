@@ -1,7 +1,6 @@
 <ul class="row list-group gn-info-list gn-resultview-sumup">
   <li class="list-group-item panel panel-default gn-card"
       data-ng-repeat="md in searchResults.records"
-      data-gn-fix-mdlinks=""
       title="{{(md.resourceAbstract) | striptags}}"
       ng-click="loadMap(maps[0], md)">
 
@@ -18,7 +17,7 @@
         <div class="gn-md-thumbnail"
              data-ng-class="{'gn-md-no-thumbnail': !md.overview[0]}">
           <div class="gn-img-thumbnail"
-               style="background-image: url('{{md.overview[0].data || (md.overview[0].url | thumbnailUrlSize)}}')">
+               style="background-image: url('{{md.overview[0].data || (md.overview[0].url | thumbnailUrlSize)}}') !important">
           </div>
         </div>
       </div>

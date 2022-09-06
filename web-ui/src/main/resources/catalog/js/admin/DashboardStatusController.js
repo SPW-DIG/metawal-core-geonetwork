@@ -54,6 +54,7 @@
       $scope.threadSortField = undefined;
       $scope.threadSortReverse = false;
       $scope.threadInfoLoading = false;
+      $scope.hasIndexingError = false;
 
       $scope.indexStatus = null;
       function getIndexStatus() {
@@ -63,6 +64,18 @@
         });
       }
       getIndexStatus();
+
+
+      function getRecordsWithIndexingErrors() {
+        return $http.post('../api/search/records/_search?bucket=ie', {"query": {
+            "bool" : {
+              "must": {"terms": {"indexingError": [true]}}
+            }
+          }, "from": 0, "size": 0});
+      }
+      getRecordsWithIndexingErrors().then(function(r) {
+        $scope.hasIndexingError = r.data.hits.total.value > 0;
+      });
 
       $scope.setThreadSortField = function(field) {
         if (field === $scope.threadSortField) {
@@ -189,12 +202,7 @@
       };
 
       $scope.indexRecordsWithErrors = function() {
-
-        $http.post('../api/search/records/_search?bucket=ie', {"query": {
-          "bool" : {
-            "must": {"terms": {"indexingError": ["true"]}}
-          }
-        }, "from": 0, "size": 0}).then(
+        getRecordsWithIndexingErrors().then(
             function() {
               // Select
               $http.put('../api/selections/ie').then(
@@ -280,7 +288,7 @@
       $scope.searchObj = {
         configId: 'recordsWithErrors',
         defaultParams: {
-          'indexingError': true,
+          'indexingErrorMsg': '*',
           sortBy: 'changeDate',
           sortOrder: 'desc'
         }

@@ -82,6 +82,10 @@
               stroke: new ol.style.Stroke({
                 color: 'orange',
                 width: 2
+              }),
+              image: new ol.style.Circle({
+                radius: 5,
+                stroke: new ol.style.Stroke({color: 'orange', width: 2})
               })
             }),
             mdExtentHighlight: new ol.style.Style({
@@ -91,9 +95,13 @@
               }),
               fill: new ol.style.Fill({
                 color: 'rgba(255,255,0,0.3)'
+              }),
+              image: new ol.style.Circle({
+                radius: 10,
+                fill: new ol.style.Fill({color: 'orange'}),
+                stroke: new ol.style.Stroke({color: 'rgba(255,0,0,1)', width: 3})
               })
             })
-
           };
 
           gnMapsManager.initProjections(viewerSettings.mapConfig.switcherProjectionList);
@@ -103,23 +111,6 @@
           // To configure a gazetteer provider
           viewerSettings.gazetteerProvider = gnDefaultGazetteer;
 
-          // Map protocols used to load layers/services in the map viewer
-          searchSettings.mapProtocols = {
-            layers: [
-              'OGC:WMS',
-              'OGC:WMTS',
-              'OGC:WMS-1.1.1-http-get-map',
-              'OGC:WMS-1.3.0-http-get-map',
-              'OGC:WFS',
-              'ESRI:REST'
-              ],
-            services: [
-              'OGC:WMS-1.3.0-http-get-capabilities',
-              'OGC:WMS-1.1.1-http-get-capabilities',
-              'OGC:WMTS-1.0.0-http-get-capabilities',
-              'OGC:WFS-1.0.0-http-get-capabilities'
-              ]
-          };
 
           // Set custom config in gnSearchSettings
           angular.extend(searchSettings, {

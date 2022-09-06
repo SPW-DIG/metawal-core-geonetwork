@@ -23,6 +23,25 @@ div[gn-transfer-ownership] * .list-group {
   }
 }
 
+/* skiplink */
+.gn-skiplink {
+  margin: 10px;
+  top: 0;
+  left: 0;
+  padding: 8px;
+  position: absolute;
+  transform: translateX(-200%);
+  transition: transform 0.3s;
+  z-index: 10000;
+  &:focus {
+    transform: translateX(0%);
+    outline: 2px auto @brand-warning !important;
+  }
+}
+.gn-skiplink-nav {
+  top: @gn-header-height;
+}
+
 .gn-copy-to-clipboard-button-floatright {
   position: relative;
   right: 4px;
@@ -444,12 +463,25 @@ div.thumb-small {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.gn-list-file {
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px !important;
+  padding-right: 25px !important;
+}
 .gn-list-thumb {
   position: relative;
   margin: 5px;
   width: 32%;
   padding: 0;
   border-radius: 2px;
+  text-align: center;
+}
+.gn-list-file, .gn-list-thumb {
   a.onlinesrc-remove {
     position: absolute;
     z-index: 99;
@@ -685,7 +717,7 @@ i.fa-times.delete:hover {
     position: absolute;
     bottom: 9px;
     margin-left: -8px;
-    z-index: 99;
+    z-index: 98;
   }
   .gn-status, .gn-workflow-status {
     border: 2px solid @brand-primary;
@@ -867,6 +899,7 @@ i.fa-times.delete:hover {
     font-size: 1.6em;
   }
 }
+
 
 // Language specific layout
 html {
@@ -1436,6 +1469,7 @@ gn-indexing-task-status {
 .text-ellipsis { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
 .width-100 { width: 100%; } .width-75 { width: 75%; } .width-50 { width: 50%; }
 .width-25 { width: 25%; } .width-33 { width: 33%; } .width-66 { width: 66%; }
+.max-width-none { max-width: none; }
 .height-auto { height: auto !important; max-height: none !important; }
 .col-2 {
   column-count: 2;
@@ -1449,6 +1483,8 @@ gn-indexing-task-status {
     break-inside: avoid;
   }
 }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
 
 html {
   // As a side-effect of setting the @viewport in bootstrap,

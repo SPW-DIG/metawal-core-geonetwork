@@ -128,11 +128,16 @@
             </xsl:for-each>
           </xsl:variable>
           <xsl:for-each select="mri:keyword">
-            <tag thesaurus="{$thesaurusTitle}">
+            <xsl:variable name="keyword">
               <xsl:call-template name="get-iso19115-3.2018-localised">
                 <xsl:with-param name="langId" select="$langId"/>
               </xsl:call-template>
-            </tag>
+            </xsl:variable>
+            <xsl:if test="$keyword != ''">
+              <tag thesaurus="{$thesaurusTitle}">
+                <xsl:value-of select="$keyword"/>
+              </tag>
+            </xsl:if>
           </xsl:for-each>
         </xsl:for-each>
       </xsl:variable>
@@ -203,12 +208,12 @@
       </h2>
 
       <xsl:choose>
-        <xsl:when test=".//gex:EX_BoundingPolygon">
+        <xsl:when test=".//mdb:identificationInfo/*/mri:extent//gex:EX_BoundingPolygon">
           <xsl:copy-of select="gn-fn-render:extent($metadataUuid)"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates mode="render-field"
-                               select=".//gex:EX_GeographicBoundingBox">
+                               select=".//mdb:identificationInfo/*/mri:extent//gex:EX_GeographicBoundingBox">
           </xsl:apply-templates>
         </xsl:otherwise>
       </xsl:choose>
@@ -825,7 +830,7 @@
                 match="mri:descriptiveKeywords[
                         */mri:thesaurusName/cit:CI_Citation/cit:title]"
                 priority="100">
-    <xsl:param name="fieldName"/>
+    <xsl:param name="fieldName" select="''" as="xs:string"/>
 
     <dl class="gn-keyword">
       <dt>
@@ -861,16 +866,26 @@
   <xsl:template mode="render-field"
                 match="mri:descriptiveKeywords[not(*/mri:thesaurusName/cit:CI_Citation/cit:title)]"
                 priority="100">
+    <xsl:param name="fieldName" select="''" as="xs:string"/>
+
     <dl class="gn-keyword">
       <dt>
-        <xsl:value-of select="$schemaStrings/noThesaurusName"/>
-        <xsl:if test="*/mri:type/*[@codeListValue != '']">
-          <xsl:variable name="thesaurusType">
-            <xsl:apply-templates mode="render-value"
-                                 select="*/mri:type/*/@codeListValue"/>
-          </xsl:variable>
-          (<xsl:value-of select="normalize-space($thesaurusType)"/>)
-        </xsl:if>
+        <xsl:variable name="thesaurusType">
+          <xsl:apply-templates mode="render-value"
+                               select="*/mri:type/*/@codeListValue[. != '']"/>
+        </xsl:variable>
+
+        <xsl:choose>
+          <xsl:when test="$fieldName != ''">
+            <xsl:value-of select="$fieldName"/>
+          </xsl:when>
+          <xsl:when test="$thesaurusType != ''">
+            <xsl:copy-of select="$thesaurusType"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="$schemaStrings/noThesaurusName"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </dt>
       <dd>
         <div>

@@ -40,6 +40,23 @@
        'gn_search_default_directive', 'gn_related_directive',
        'cookie_warning', 'gn_mdactions_directive']);
 
+  module.controller('gnsScrollController', ['$scope', '$location', '$anchorScroll',
+    function($scope, $location, $anchorScroll) {
+
+      /***
+       * Scroll to an anchor on the page and focus on the first focusable element
+       *
+       * @param anchor The ID of the anchor to scroll to
+       */
+      $scope.gotoAnchor = function (anchor) {
+        // the element you wish to scroll to.
+        $location.hash(anchor);
+        // call $anchorScroll()
+        $anchorScroll();
+        // set the focus on the first focusable element, with a small delay otherwise a search can start
+        setTimeout(function(){ $('#' + anchor).find(':focusable').first().focus(); }, 500); };
+
+    }]);
 
   module.controller('gnsSearchPopularController', [
     '$scope', 'gnSearchSettings',
@@ -151,6 +168,7 @@
       $scope.isFilterTagsDisplayedInSearch = gnGlobalSettings.gnCfg.mods.search.isFilterTagsDisplayedInSearch;
       $scope.showMapInFacet = gnGlobalSettings.gnCfg.mods.search.showMapInFacet;
       $scope.showStatusFooterFor = gnGlobalSettings.gnCfg.mods.search.showStatusFooterFor;
+      $scope.showBatchDropdown = gnGlobalSettings.gnCfg.mods.search.showBatchDropdown;
       $scope.exactMatchToggle = gnGlobalSettings.gnCfg.mods.search.exactMatchToggle;
       $scope.exactTitleToggle = gnGlobalSettings.gnCfg.mods.search.exactTitleToggle;
       $scope.searchOptions = gnGlobalSettings.gnCfg.mods.search.searchOptions;

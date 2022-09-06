@@ -61,6 +61,19 @@
     }
   ]);
 
+  module.directive('gnIndexErrorPanel', [
+    function() {
+      return {
+        restrict: 'A',
+        replace: true,
+        templateUrl: '../../catalog/components/utility/' +
+          'partials/indexerrorpanel.html',
+        link: function(scope, element, attrs) {
+
+        }
+      };
+    }
+  ]);
 
   module.directive('gnBatchEditExamplesSelector', [
     '$http', 'gnGlobalSettings', 'gnLangs',
@@ -333,6 +346,7 @@
               highlight: true
             }, {
               displayKey: 'username',
+              limit: 100,
               templates: {
                 suggestion: function(datum) {
                   return '<p>' + datum.name + ' ' + datum.surname +
@@ -737,6 +751,7 @@
         replace: true,
         template: '<a class="{{::btnClass || \'btn btn-default btn-xs\'}}" ' +
           '           ng-click="copy()" ' +
+          '           href=""' +
           '           title="{{::title | translate}}">' +
           '  <i class="fa fa-fw" ' +
           '   ng-class="{\'fa-copy\': !copied, \'fa-check\': copied}"/>' +
@@ -852,7 +867,7 @@
             '</button>',
         link: function linkFn(scope, element, attr) {
           var selector = attr['gnSectionToggle'] ||
-              'form > fieldset > legend[data-gn-slide-toggle]',
+              'form > div > fieldset > legend[data-gn-slide-toggle]',
               event = attr['event'] || 'click';
           element.on('click', function() {
             $(selector).each(function(idx, elem) {
@@ -920,6 +935,47 @@
     }
   ]);
 
+  module.directive('gnLinkLabel', ['gnOnlinesrc',
+    function(gnOnlinesrc) {
+      return {
+        restrict: 'A',
+        templateUrl: '../../catalog/components/utility/' +
+          'partials/linklabel.html',
+        scope: {
+          link: '=gnLinkLabel'
+        },
+        link: function(scope, element, attrs) {
+          scope.onlinesrcService = gnOnlinesrc;
+        }
+      };
+    }
+  ]);
+
+  module.directive('gnLinkIcon', ['gnRelatedResources',
+    function(gnRelatedResources) {
+      return {
+        restrict: 'A',
+        templateUrl: '../../catalog/components/utility/' +
+          'partials/linkicon.html',
+        scope: {
+          link: '=gnLinkIcon',
+          mode: '@'
+        },
+        link: function(scope, element, attrs) {
+          scope.mainType = gnRelatedResources.getType(scope.link, null);
+          scope.badge = gnRelatedResources.getBadgeLabel(scope.mainType, scope.link);
+
+          scope.mimeTypeIconClass = scope.link.mimeType
+            ? ('gn-icon-' + scope.link.mimeType) : '';
+          scope.protocolIconClass = scope.link.protocol
+            ? ('gn-icon-' + scope.link.protocol.replace(':','-').replace(' ','-').toLowerCase()) : '';
+          scope.typeIconClass = gnRelatedResources.getClassIcon(scope.mainType);
+
+          scope.typeClass = 'gn-icontype-' + scope.mainType.replace(':','-').replace(' ','-').toLowerCase();
+        }
+      };
+    }
+  ]);
 
   module.directive('gnCircleLetterIcon', ['$http',
     function($http) {

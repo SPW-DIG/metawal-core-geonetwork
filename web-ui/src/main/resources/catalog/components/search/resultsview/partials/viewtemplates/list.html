@@ -2,11 +2,10 @@
   <li class="list-group-item gn-list panel panel-default gn-card"
       data-ng-repeat="md in searchResults.records"
       gn-displayextent-onhover=""
-      gn-zoomto-onclick=""
-      gn-fix-mdlinks="">
+      gn-zoomto-onclick="">
     <div class="panel-heading gn-card-heading"
          data-ng-class="{'gn-record-selected': md.selected}">
-      <div class="gn-md-select">
+      <div class="gn-md-select" data-ng-if="showBatchDropdown">
         <input data-gn-selection-md="md"
                data-bucket="searchResults.selectionBucket"
                data-results="searchResults"
