@@ -361,7 +361,7 @@
             // If layer, |id de la layer
             $window.open('https://geoportail.wallonie.be/walonmap/#' +
               (link.protocol == 'ESRI:REST' ? 'ADU' : 'WMS') +
-              '=' + link.id.split('?request=GetCapabilities&service=WMS')[0] +
+              '=' + link.locUrl.split('?request=GetCapabilities&service=WMS')[0] +
               (link.protocol == 'ESRI:REST' ? '' : '|0') ,'_blank');
           } else {
             gnExternalViewer.viewService({
@@ -406,9 +406,12 @@
         addMdLayerToMap: function (link, md) {
           // This is probably only a service
           // Open the add service layer tab
-          $location.path('map').search({
-            add: encodeURIComponent(angular.toJson(
-              [buildAddToMapConfig(link, md)]))});
+          var config = buildAddToMapConfig(link, md);
+          if (angular.isObject(config)) {
+            $location.path('map').search({
+              add: encodeURIComponent(angular.toJson(
+                [config]))});
+          }
           return;
         },
         addAllMdLayersToMap: function (layers, md) {
