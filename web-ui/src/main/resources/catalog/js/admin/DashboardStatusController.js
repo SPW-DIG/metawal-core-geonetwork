@@ -206,7 +206,7 @@
           .success(function (data) {
             $scope.logInfoLoading = false;
             $scope.logActivity = data;
-            $scope.visibleLogView = logActivityEl.is(":visible");
+
             if (!leaveOpen) {
               $("html, body").animate(
                 {

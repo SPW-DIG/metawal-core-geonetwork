@@ -59,6 +59,7 @@
     "$rootScope",
     "$timeout",
     "$filter",
+    "gnUtilityService",
     function (
       $scope,
       $http,
@@ -77,7 +78,8 @@
       gnConfigService,
       $rootScope,
       $timeout,
-      $filter
+      $filter,
+      gnUtilityService
     ) {
       $scope.formatter = gnSearchSettings.formatter;
       $scope.gnMetadataActions = gnMetadataActions;
@@ -202,17 +204,6 @@
           }
         );
       };
-      $scope.detectSchema15_3 = function (md) {
-        var detectedIso15_3;
-        if (md) {
-          if (md.getSchema() == "iso19115-3") {
-            detectedIso15_3 = true;
-          } else {
-            detectedIso15_3 = false;
-          }
-        }
-        return detectedIso15_3;
-      };
 
       // activate the tabs in the advanded metadata view
       $scope.activateTabs = function () {
@@ -326,7 +317,6 @@
           }
         }
       }
-
       $scope.$watch("mdView.recordsLoaded", loadFormatter);
 
       $scope.sortByCategory = function (cat) {

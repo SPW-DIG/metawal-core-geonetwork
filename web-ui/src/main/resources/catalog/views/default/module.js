@@ -232,7 +232,6 @@
 
       $scope.toggleMap = function () {
         $(searchMap.getTargetElement()).toggle();
-        searchMap.updateSize();
         $("button.gn-minimap-toggle > i").toggleClass(
           "fa-angle-double-left fa-angle-double-right"
         );
@@ -470,12 +469,9 @@
         addMdLayerToMap: function (link, md) {
           // This is probably only a service
           // Open the add service layer tab
-          var config = buildAddToMapConfig(link, md);
-          if (angular.isObject(config)) {
-            $location.path("map").search({
-              add: encodeURIComponent(angular.toJson([config]))
-            });
-          }
+          $location.path("map").search({
+            add: encodeURIComponent(angular.toJson([buildAddToMapConfig(link, md)]))
+          });
           return;
         },
         addAllMdLayersToMap: function (layers, md) {

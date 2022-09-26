@@ -181,21 +181,4 @@
       };
     }
   ]);
-
-  module.directive("gnSearchField", [
-    function () {
-      return {
-        restrict: "A",
-        replace: true,
-        scope: {
-          gnSearchField: "=",
-          value: "=",
-          fn: "="
-        },
-        link: function (scope, element, attrs) {
-          console.log(attrs);
-        }
-      };
-    }
-  ]);
 })();

@@ -525,16 +525,7 @@
        * Save a user.
        */
       $scope.saveUser = function (formId) {
-        /*console.log($scope.authtypeisLDAP.checked)
-        if ($scope.authtypeisLDAP.checked === true) {
-        } else {
-          $scope.authtypeisLDAP.checked = false;
-        }*/
-        // TODO: Check if the ldap param is still required
-        //$http.get('admin.user.update?' + $(formId).serialize() +
-        //        '&enabled=' + $scope.userIsEnabled+
-        //        '&ldap=' + $scope.authtypeisLDAP.checked)
-        //    .success(function(data) {
+
         var selectedRegisteredUserGroups = [],
           selectedEditorGroups = [],
           selectedReviewerGroups = [],

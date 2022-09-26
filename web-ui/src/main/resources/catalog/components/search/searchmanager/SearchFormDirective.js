@@ -764,10 +764,7 @@
 
           var waitForPagination = function () {
             // wait for pagination to be set before triggering search
-            if (
-              element.find("[data-gn-pagination]").length > 0 ||
-              element.find("[data-gn-api-rw-pagination]").length > 0
-            ) {
+            if (element.find("[data-gn-pagination]").length > 0) {
               var unregisterFn = scope.$watch("hasPagination", function () {
                 if (scope.hasPagination) {
                   scope.triggerSearch(true);

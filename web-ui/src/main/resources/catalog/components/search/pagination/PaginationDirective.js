@@ -49,6 +49,7 @@
           };
           angular.extend(defaultConfig, scope.config);
           scope.config = defaultConfig;
+
           /**
            * If an object {paginationInfo} is defined inside the
            * SearchFormController, then add from and to  params

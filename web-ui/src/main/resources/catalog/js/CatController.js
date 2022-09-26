@@ -110,12 +110,25 @@
                   field: "th_httpinspireeceuropaeutheme-theme_tree.key",
                   size: 34
                   // "order" : { "_key" : "asc" }
+                },
+                meta: {
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-2x pull-left gn-icon iti-",
+                    expression: "http://inspire.ec.europa.eu/theme/(.*)"
+                  }
                 }
               },
               "cl_topic.key": {
                 terms: {
                   field: "cl_topic.key",
                   size: 20
+                },
+                meta: {
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-2x pull-left gn-icon-"
+                  }
                 }
               },
               // 'OrgForResource': {
@@ -130,6 +143,12 @@
                 terms: {
                   field: "resourceType",
                   size: 10
+                },
+                meta: {
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-2x pull-left gn-icon-"
+                  }
                 }
               }
             },
@@ -317,6 +336,12 @@
                       field: "format"
                     }
                   }
+                },
+                meta: {
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-fw gn-icon-"
+                  }
                 }
               },
               isPublishedToAll: {
@@ -345,6 +370,17 @@
                       query_string: {
                         query: '+linkProtocol:"OGC:WMS"'
                       }
+                    }
+                  }
+                },
+                meta: {
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-fw ",
+                    map: {
+                      "Webservice REST": "fa-globe",
+                      WMS: "fa-globe",
+                      download: "fa-download"
                     }
                   }
                 }
@@ -442,7 +478,11 @@
                   size: 20
                 },
                 meta: {
-                  collapsed: true
+                  collapsed: true,
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-fw gn-icon-"
+                  }
                 }
               },
               "th_gemet_tree.default": {
@@ -456,14 +496,18 @@
                   // Limit to 2 levels
                 }
               },
-              "th_httpinspireeceuropaeutheme-theme.default": {
+              "th_httpinspireeceuropaeutheme-theme_tree.key": {
                 terms: {
-                  field: "th_httpinspireeceuropaeutheme-theme.default",
-                  size: 34,
-                  exclude: "http.*"
+                  field: "th_httpinspireeceuropaeutheme-theme_tree.key",
+                  size: 34
                 },
                 meta: {
-                  collapsed: true
+                  collapsed: true,
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-fw gn-icon iti-",
+                    expression: "http://inspire.ec.europa.eu/theme/(.*)"
+                  }
                 }
               },
               "th_httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset_tree.default":
@@ -1291,7 +1335,7 @@
         isUserProfileUpdateEnabled: true,
         isUserGroupUpdateEnabled: true,
         init: function (configOverlay, gnUrl, gnViewerSettings, gnSearchSettings) {
-          this.applyConfig(configOverlay);
+          this.applyConfig(configOverlay !== null ? configOverlay : {});
           this.setLegacyOption(gnViewerSettings, gnSearchSettings);
           this.gnUrl = gnUrl || "../";
           this.proxyUrl = this.gnUrl + "../proxy?url=";

@@ -72,39 +72,29 @@
               'xmlns:gco="http://www.isotc211.org/2005/gco">' +
               "<gmd:geographicElement>" +
               "<gmd:EX_GeographicBoundingBox>" +
-              "<gmd:westBoundLongitude><gco:Decimal>{{west}}" +
-              "</gco:Decimal>" +
+              "<gmd:westBoundLongitude><gco:Decimal>{{west}}</gco:Decimal>" +
               "</gmd:westBoundLongitude>" +
-              "<gmd:eastBoundLongitude><gco:Decimal>{{east}}" +
-              "</gco:Decimal>" +
+              "<gmd:eastBoundLongitude><gco:Decimal>{{east}}</gco:Decimal>" +
               "</gmd:eastBoundLongitude>" +
-              "<gmd:southBoundLatitude><gco:Decimal>{{south}}" +
-              "</gco:Decimal>" +
+              "<gmd:southBoundLatitude><gco:Decimal>{{south}}</gco:Decimal>" +
               "</gmd:southBoundLatitude>" +
-              "<gmd:northBoundLatitude><gco:Decimal>{{north}}" +
-              "</gco:Decimal>" +
+              "<gmd:northBoundLatitude><gco:Decimal>{{north}}</gco:Decimal>" +
               "</gmd:northBoundLatitude>" +
               "</gmd:EX_GeographicBoundingBox></gmd:geographicElement>" +
               "</gmd:EX_Extent>",
             "iso19115-3":
               "<gex:EX_Extent " +
-              "xmlns:gex=" +
-              '"http://standards.iso.org/iso/19115/-3/gex/1.0" ' +
-              "xmlns:gco=" +
-              '"http://standards.iso.org/iso/19115/-3/gco/1.0">' +
+              'xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0" ' +
+              'xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0">' +
               "<gex:geographicElement>" +
               "<gex:EX_GeographicBoundingBox>" +
-              "<gex:westBoundLongitude><gco:Decimal>{{west}}" +
-              "</gco:Decimal>" +
+              "<gex:westBoundLongitude><gco:Decimal>{{west}}</gco:Decimal>" +
               "</gex:westBoundLongitude>" +
-              "<gex:eastBoundLongitude><gco:Decimal>{{east}}" +
-              "</gco:Decimal>" +
+              "<gex:eastBoundLongitude><gco:Decimal>{{east}}</gco:Decimal>" +
               "</gex:eastBoundLongitude>" +
-              "<gex:southBoundLatitude><gco:Decimal>{{south}}" +
-              "</gco:Decimal>" +
+              "<gex:southBoundLatitude><gco:Decimal>{{south}}</gco:Decimal>" +
               "</gex:southBoundLatitude>" +
-              "<gex:northBoundLatitude><gco:Decimal>{{north}}" +
-              "</gco:Decimal>" +
+              "<gex:northBoundLatitude><gco:Decimal>{{north}}</gco:Decimal>" +
               "</gex:northBoundLatitude>" +
               "</gex:EX_GeographicBoundingBox></gex:geographicElement>" +
               "</gex:EX_Extent>"

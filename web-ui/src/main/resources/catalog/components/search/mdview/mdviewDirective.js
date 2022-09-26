@@ -375,29 +375,6 @@
   ]);
 
   /**
-   * Filter to translate data provided by the groupBy filter:
-   *
-   *
-   */
-
-  module.filter("groupByTranslated", [
-    "$translate",
-    function ($translate) {
-      return function (array) {
-        var translated = [];
-        if (array.split(",").length > 1) {
-          angular.forEach(array.split(","), function (value) {
-            translated.push($translate.instant(value));
-          });
-        } else {
-          translated = $translate.instant(array);
-        }
-        return translated.toString();
-      };
-    }
-  ]);
-
-  /**
    * Directive to provide 3 visualization modes for metadata contacts
    * in metadata detail page:
    *
