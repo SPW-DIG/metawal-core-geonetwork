@@ -1,49 +1,61 @@
-
 <div class="container col-sm-12 zero-api-rw">
   <div class="row overview-api-rw" data-ng-repeat="md in searchResults.records">
-  <div class="">
-    <div class="col-sm-3 zero-api-rw">
-      <a data-ng-href="#/metadata/{{md.getUuid()}}"
-           title="{{md.title || md.defaultTitle}}" >
-      <img data-ng-src="{{md.getThumbnails().list[0].url}}"
-             data-ng-if="md.getThumbnails().list[0].url" alt="Logo" class="thumbnail-api-rw"/>
-        <img class="icon-api-rw-nothumbnail" data-ng-if="!md.getThumbnails().list[0].url"
-             src="../../../catalog/style/metawal/images/rw_no_preview.gif" alt="No preview">
-      </a>
-    </div>
-    <div class="col-sm-9">
-      <div class="row pull-right views-api-rw row-api-rw ">
-         {{md.popularity}} vues
+    <div class="">
+      <div class="col-sm-3 zero-api-rw">
+        <a
+          data-ng-href="#/metadata/{{md.getUuid()}}"
+          title="{{md.title || md.defaultTitle}}"
+        >
+          <img
+            data-ng-src="{{md.getThumbnails().list[0].url}}"
+            data-ng-if="md.getThumbnails().list[0].url"
+            alt="Logo"
+            class="thumbnail-api-rw"
+          />
+          <img
+            class="icon-api-rw-nothumbnail"
+            data-ng-if="!md.getThumbnails().list[0].url"
+            src="../../../catalog/style/metawal/images/rw_no_preview.gif"
+            alt="No preview"
+          />
+        </a>
       </div>
-      <div class="row row-api-rw ">
-        <h4 class="title-api-rw">
-         <a data-ng-href="#/metadata/{{md.getUuid()}}"
-             title="{{md.title || md.defaultTitle}}">
-             {{(md.title || md.defaultTitle) | characters:80}}
-         </a>
-        </h4>
-      </div>
-      <div class="row owner-api-rw row-api-rw ">
-        <div class="col-md-12 col-lg-7 col-p-api-rw-0">
-          <strong>Propriétaire:</strong> {{(md.getAllContacts().resource | filter:{role:'Propriétaire'})[0].org }}
+      <div class="col-sm-9">
+        <div class="row pull-right views-api-rw row-api-rw">{{md.popularity}} vues</div>
+        <div class="row row-api-rw">
+          <h4 class="title-api-rw">
+            <a
+              data-ng-href="#/metadata/{{md.getUuid()}}"
+              title="{{md.title || md.defaultTitle}}"
+            >
+              {{(md.title || md.defaultTitle) | characters:80}}
+            </a>
+          </h4>
         </div>
-        <div class="col-md-12 col-lg-5 col-p-api-rw-0" >
-          <strong>Mise à jour:</strong> {{md.revisionDate | date:'dd MMMM yyyy'}}
+        <div class="row owner-api-rw row-api-rw">
+          <div class="col-md-12 col-lg-7 col-p-api-rw-0">
+            <strong>Propriétaire:</strong> {{(md.getAllContacts().resource |
+            filter:{role:'Propriétaire'})[0].org }}
+          </div>
+          <div class="col-md-12 col-lg-5 col-p-api-rw-0">
+            <strong>Mise à jour:</strong> {{md.revisionDate | date:'dd MMMM yyyy'}}
+          </div>
+        </div>
+        <div class="row">
+          <p class="description-api-rw row-api-rw">
+            <a
+              data-ng-href="#/metadata/{{md.getUuid()}}"
+              title="{{md.title || md.defaultTitle}}"
+              >{{(md.abstract || md.defaultAbstract | regexOneSentence)}}
+            </a>
+          </p>
         </div>
       </div>
-      <div class="row">
-        <p class="description-api-rw row-api-rw ">
-          <a data-ng-href="#/metadata/{{md.getUuid()}}"
-           title="{{md.title || md.defaultTitle}}">{{(md.abstract  || md.defaultAbstract | regexOneSentence)}}
-          </a>
-        </p>
-      </div>
     </div>
-  </div>
 
-<!-- TO BE ADAPT - START -->
+    <!-- TO BE ADAPT - START -->
 
-<!--
+    <!--
 
   <div class="row">
     <div data-ng-class="{'col-sm-4 ' : md.type[0] == 'application' || md.type[0] == 'series' ,'col-sm-3': md.type[0] == 'service' || md.type[0] == 'dataset'}" class="col-p-api-rw-2">
@@ -80,11 +92,9 @@
 
 -->
 
-<!-- TO BE ADAPT - END -->
+    <!-- TO BE ADAPT - END -->
 
-
-
-  <!--div class="row">
+    <!--div class="row">
     <div class="col-sm-4 col-p-api-rw-2">
       <a data-ng-href="#/metadata/{{md.getUuid()}}"
         title="{{md.title || md.defaultTitle}}" type="button" class="btn btn-primary btn-block btn-api-rw">
@@ -105,16 +115,15 @@
       </button>
     </div>
   </div-->
-    <div class="row"
-       data-gn-saved-selections-action="MyFrequentlyUsedRecords"
-       data-record="md"
-       data-user="user"
-       data-lang="lang"/>
+    <div
+      class="row"
+      data-gn-saved-selections-action="MyFrequentlyUsedRecords"
+      data-record="md"
+      data-user="user"
+      data-lang="lang"
+    />
+  </div>
 </div>
-</div>
-
-
-
 
 <!--div class="container">
 <div class="result-item-is-map" data-ng-repeat="md in searchResults.records">
@@ -171,6 +180,3 @@
   </ul> 
 </div>
 </div-->
-
-
-

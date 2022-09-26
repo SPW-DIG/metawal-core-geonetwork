@@ -1,1490 +1,2030 @@
-<!DOCTYPE html>
 <!-- saved from url=(0046)http://geoportail.wallonie.be/catalogue-cartes -->
-<html class=" js rgba hsla opacity svg" lang="en"><!--<![endif]-->
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html class="js rgba hsla opacity svg" lang="en">
+  <!--<![endif]-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <meta name="viewport" content="width=device-width">
-  <title>Catalogue des cartes | Géoportail de la Wallonie</title>
-  <link rel="shortcut icon" href="http://geoportail.wallonie.be/modules/templates-geoportail/icons/favicon.ico"
-        type="image/x-icons">
-  <link rel="apple-touch-icon"
-        href="http://geoportail.wallonie.be/modules/templates-geoportail/img/icons/rooster-red.png">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width" />
+    <title>Catalogue des cartes | Géoportail de la Wallonie</title>
+    <link
+      rel="shortcut icon"
+      href="http://geoportail.wallonie.be/modules/templates-geoportail/icons/favicon.ico"
+      type="image/x-icons"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="http://geoportail.wallonie.be/modules/templates-geoportail/img/icons/rooster-red.png"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
+    <meta
+      name="description"
+      content="Géoportail de la Wallonie, le site de l&#39;information géographique wallonne !"
+    />
 
-  <meta name="description" content="Géoportail de la Wallonie, le site de l&#39;information géographique wallonne !">
+    <!-- Hotjar Tracking Code for http://geoportail.wallonie.be/home.html -->
+    <script async="" src="./../../templates/jahiatemplate_files/analytics.js"></script>
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 708181, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+    <script
+      async=""
+      src="./../../templates/jahiatemplate_files/hotjar-708181.js"
+    ></script>
 
-  <!-- Hotjar Tracking Code for http://geoportail.wallonie.be/home.html -->
-  <script async="" src="./../../templates/jahiatemplate_files/analytics.js"></script>
-  <script>
-    (function (h, o, t, j, a, r) {
-      h.hj = h.hj || function () {
-        (h.hj.q = h.hj.q || []).push(arguments)
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", "UA-27551735-2", { cookieExpires: 31536000 });
+      ga(
+        "send",
+        "pageview",
+        "/cms/render/live/fr/sites/geoportail/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html"
+      );
+    </script>
+
+    <script type="text/javascript">
+      var contextJsParameters = {
+        contextPath: "",
+        lang: "fr",
+        uilang: "fr",
+        siteUuid: "d3836a94-846a-4970-9132-93d979fff1f8",
+        wcag: true,
+        ckeCfg: ""
       };
-      h._hjSettings =
-        {hjid: 708181, hjsv: 6};
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script');
-      r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-  </script>
-  <script async="" src="./../../templates/jahiatemplate_files/hotjar-708181.js"></script>
+      var CKEDITOR_BASEPATH = "/modules/ckeditor/javascript/";
+      var scayt_custom_params = new Array();
+      scayt_custom_params["sLang"] = "fr_FR";
+    </script>
+    <link
+      id="staticAssetCSS0"
+      rel="stylesheet"
+      href="./../../templates/jahiatemplate_files/e832553ff5e71b41332f1dfe2cd5db9d.min.css"
+      media="screen"
+      type="text/css"
+    />
+    <link
+      id="staticAssetCSS1"
+      rel="stylesheet"
+      href="./../../templates/jahiatemplate_files/main.tablet.css"
+      media="(min-width: 768px)"
+      type="text/css"
+    />
+    <link
+      id="staticAssetCSS2"
+      rel="stylesheet"
+      href="./../../templates/jahiatemplate_files/main.desktop.css"
+      media="(min-width: 980px)"
+      type="text/css"
+    />
+    <link
+      id="staticAssetCSS3"
+      rel="stylesheet"
+      href="./../../templates/jahiatemplate_files/6bc6679d96b5f89a9b950f016326a67.min.css"
+      media="screen"
+      type="text/css"
+    />
+    <script
+      id="staticAssetJavascript0"
+      type="text/javascript"
+      src="./../../templates/jahiatemplate_files/e92ebba6cae7bb18b9d143b877fb0a7.min.js"
+    ></script>
 
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary" />
 
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date();
-      a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    <meta name="twitter:title" content="Catalogue des cartes" />
+    <meta property="og:title" content="Catalogue des cartes" />
+    <meta name="title" content="Catalogue des cartes" />
 
-    ga('create', 'UA-27551735-2', {'cookieExpires': 31536000});
-    ga('send', 'pageview', '/cms/render/live/fr/sites/geoportail/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html');
+    <meta name="url" content="http://geoportail.wallonie.be/catalogue-cartes" />
+    <meta property="og:url" content="http://geoportail.wallonie.be/catalogue-cartes" />
 
+    <meta
+      name="twitter:description"
+      content="Le catalogue des cartes interactives et statiques de la Wallonie."
+    />
+    <meta
+      property="og:description"
+      content="Le catalogue des cartes interactives et statiques de la Wallonie."
+    />
+    <meta
+      name="description"
+      content="Le catalogue des cartes interactives et statiques de la Wallonie."
+    />
 
-  </script>
-
-
-  <script type="text/javascript">
-    var contextJsParameters = {
-      contextPath: "",
-      lang: "fr",
-      uilang: "fr",
-      siteUuid: "d3836a94-846a-4970-9132-93d979fff1f8",
-      wcag: true,
-      ckeCfg: ""
-    };
-    var CKEDITOR_BASEPATH = "/modules/ckeditor/javascript/";
-    var scayt_custom_params = new Array();
-    scayt_custom_params['sLang'] = 'fr_FR';
-  </script>
-  <link id="staticAssetCSS0" rel="stylesheet" href="./../../templates/jahiatemplate_files/e832553ff5e71b41332f1dfe2cd5db9d.min.css"
-        media="screen" type="text/css">
-  <link id="staticAssetCSS1" rel="stylesheet" href="./../../templates/jahiatemplate_files/main.tablet.css" media="(min-width: 768px)"
-        type="text/css">
-  <link id="staticAssetCSS2" rel="stylesheet" href="./../../templates/jahiatemplate_files/main.desktop.css" media="(min-width: 980px)"
-        type="text/css">
-  <link id="staticAssetCSS3" rel="stylesheet" href="./../../templates/jahiatemplate_files/6bc6679d96b5f89a9b950f016326a67.min.css"
-        media="screen" type="text/css">
-  <script id="staticAssetJavascript0" type="text/javascript"
-          src="./../../templates/jahiatemplate_files/e92ebba6cae7bb18b9d143b877fb0a7.min.js"></script>
-
-
-  <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary">
-
-
-  <meta name="twitter:title" content="Catalogue des cartes">
-  <meta property="og:title" content="Catalogue des cartes">
-  <meta name="title" content="Catalogue des cartes">
-
-  <meta name="url" content="http://geoportail.wallonie.be/catalogue-cartes">
-  <meta property="og:url" content="http://geoportail.wallonie.be/catalogue-cartes">
-
-
-  <meta name="twitter:description" content="Le catalogue des cartes interactives et statiques de la Wallonie.">
-  <meta property="og:description" content="Le catalogue des cartes interactives et statiques de la Wallonie.">
-  <meta name="description" content="Le catalogue des cartes interactives et statiques de la Wallonie.">
-
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      /*Remplacement de toutes les Ã©toiles par rien... Utilisation d'une expression rÃ©guliÃ¨re pour remplacer toutes les occurences*/
-      if ($('#searchTerm').val()) {
-        $('#searchTerm').val($('#searchTerm').val().replace(/\*/g, ''));
-      }
-      $('#searchTerm').attr('placeholder', 'Recherche');
-
-      $("#simplesearchform").submit(function () {
-        if ($('#searchTerm').val().length <= 4) {
-          $('#searchTerm').val('*' + $('#searchTerm').val() + '*');
+    <script type="text/javascript">
+      $(document).ready(function () {
+        /*Remplacement de toutes les Ã©toiles par rien... Utilisation d'une expression rÃ©guliÃ¨re pour remplacer toutes les occurences*/
+        if ($("#searchTerm").val()) {
+          $("#searchTerm").val($("#searchTerm").val().replace(/\*/g, ""));
         }
+        $("#searchTerm").attr("placeholder", "Recherche");
+
+        $("#simplesearchform").submit(function () {
+          if ($("#searchTerm").val().length <= 4) {
+            $("#searchTerm").val("*" + $("#searchTerm").val() + "*");
+          }
+        });
       });
-    });
 
-    function submitSimpleSearchForm() {
-      document.getElementById('searchTerm').value = "*" + document.getElementById('searchTerm').value + "*";
-      document.getElementById('simplesearchform').submit();
-    }
+      function submitSimpleSearchForm() {
+        document.getElementById("searchTerm").value =
+          "*" + document.getElementById("searchTerm").value + "*";
+        document.getElementById("simplesearchform").submit();
+      }
+    </script>
 
-  </script>
+    <script>
+      setLimitSettings(
+        999,
+        "Vous avez atteint la limite du panier. Veuillez retirer des données avant de pouvoir en rajouter",
+        "Votre panier de téléchargement est plein, veuillez retirer des données avant de pouvoir en rajouter"
+      );
+    </script>
 
+    <script>
+      var okLabel = "Oui";
+      var noLabel = "Non";
+      var dialogLabel = "Confirmation";
+      var explainLabel = "Confirmez-vous la suppression ?";
+    </script>
 
-  <script>
-    setLimitSettings(999, "Vous avez atteint la limite du panier. Veuillez retirer des données avant de pouvoir en rajouter", "Votre panier de téléchargement est plein, veuillez retirer des données avant de pouvoir en rajouter");
-  </script>
-
-
-  <script>
-    var okLabel = "Oui";
-    var noLabel = "Non";
-    var dialogLabel = "Confirmation";
-    var explainLabel = "Confirmez-vous la suppression ?";
-  </script>
-
-
-  <script>
-    function navigateToManage() {
-
-      window.location = "/sites/geoportail/home/cartes-et-donnees/mes-services-favoris.html";
-    }
-
-    function navigateToDL() {
-
-      window.location = ".html";
-    }
-  </script>
-
-
-  <script type="text/javascript">
-    $(document).ready(function ($) {
-      var form = $("#subscribeForm-8b8b7076-1027-49db-856b-87ebb513e3b9"), msg, message = $("#information-message");
-
-      function displayNewsletterPopup() {
-        $("#popupNewsletter .nl-popin").show();
+    <script>
+      function navigateToManage() {
+        window.location =
+          "/sites/geoportail/home/cartes-et-donnees/mes-services-favoris.html";
       }
 
-      function hideNewsletterPopup() {
-        $("#popupNewsletter .nl-popin").hide();
+      function navigateToDL() {
+        window.location = ".html";
       }
+    </script>
 
-      $('#popupNewsletter .nl-popin__close').click(hideNewsletterPopup);
+    <script type="text/javascript">
+      $(document).ready(function ($) {
+        var form = $("#subscribeForm-8b8b7076-1027-49db-856b-87ebb513e3b9"),
+          msg,
+          message = $("#information-message");
 
-      form.validate({
-        rules: {
-          email: {
-            required: true,
-            email: true
-          }
-        },
-        messages: {
-          email: {
-            required: 'Veuillez préciser un email',
-            email: 'Veuillez préciser un email au bon format'
-          }
-        },
-        submitHandler: function () {
-          $.ajax({
-            type: form.attr('method'),
-            url: form.attr('action'),
-            cache: false,
-            data: form.serialize(),
-            success: function (data) {
-              if (data.status === "ok") {
-                msg = "Vous êtes maintenant inscrit à cette newsletter.";
-              } else if (data.status === "already-subscribed") {
-                msg = "You are already subscribed to this newsletter.";
-              } else if (data.status === "invalid-email") {
-                msg = "Veuillez entrer une adresse e-mail valide.";
-              } else if (data.status === 'mail-sent') {
-                msg = "Un email a été envoyé pour confirmation";
-              } else if (data.status === 'no-valid-email') {
-                msg = "Vous n'avez pas fourni d'adresse email.";
-              } else {
-                msg = data.status;
-              }
-              message.text(msg);
-              $("#newsletterEmail").val("");
-              displayNewsletterPopup();
-            },
-            error: function (xhr) {
-              if (xhr.status == 401) {
-
-                message.text(data.status);
-              } else {
-                message.text(xhr.status + ": " + xhr.statusText);
-              }
-              displayNewsletterPopup();
-            },
-            dataType: "json"
-          });
+        function displayNewsletterPopup() {
+          $("#popupNewsletter .nl-popin").show();
         }
+
+        function hideNewsletterPopup() {
+          $("#popupNewsletter .nl-popin").hide();
+        }
+
+        $("#popupNewsletter .nl-popin__close").click(hideNewsletterPopup);
+
+        form.validate({
+          rules: {
+            email: {
+              required: true,
+              email: true
+            }
+          },
+          messages: {
+            email: {
+              required: "Veuillez préciser un email",
+              email: "Veuillez préciser un email au bon format"
+            }
+          },
+          submitHandler: function () {
+            $.ajax({
+              type: form.attr("method"),
+              url: form.attr("action"),
+              cache: false,
+              data: form.serialize(),
+              success: function (data) {
+                if (data.status === "ok") {
+                  msg = "Vous êtes maintenant inscrit à cette newsletter.";
+                } else if (data.status === "already-subscribed") {
+                  msg = "You are already subscribed to this newsletter.";
+                } else if (data.status === "invalid-email") {
+                  msg = "Veuillez entrer une adresse e-mail valide.";
+                } else if (data.status === "mail-sent") {
+                  msg = "Un email a été envoyé pour confirmation";
+                } else if (data.status === "no-valid-email") {
+                  msg = "Vous n'avez pas fourni d'adresse email.";
+                } else {
+                  msg = data.status;
+                }
+                message.text(msg);
+                $("#newsletterEmail").val("");
+                displayNewsletterPopup();
+              },
+              error: function (xhr) {
+                if (xhr.status == 401) {
+                  message.text(data.status);
+                } else {
+                  message.text(xhr.status + ": " + xhr.statusText);
+                }
+                displayNewsletterPopup();
+              },
+              dataType: "json"
+            });
+          }
+        });
       });
-    });
-  </script>
+    </script>
 
+    <script type="text/javascript">
+      window.geoportail = {
+        siteKey: "geoportail",
+        homePath: "/home",
+        logged: false,
+        username: "guest",
+        mainResource: {
+          name: "cartes-dynamiques-et-cartes-stat",
+          title: "Catalogue des cartes",
+          nodeType: "jnt:page",
+          path: "/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat"
+        }
+      };
+    </script>
 
-  <script type="text/javascript">
-    window.geoportail = {
-      siteKey: 'geoportail',
-      homePath: '/home',
-      logged: false,
-      username: 'guest',
-      mainResource: {
-        name: 'cartes-dynamiques-et-cartes-stat',
-        title: 'Catalogue des cartes',
-        nodeType: 'jnt:page',
-        path: '/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat'
+    <script id="staticAssetAggregatedJavascriptList0" type="text/javascript">
+      var jASAJ = jASAJ || new Array();
+      jASAJ.push("/modules/jquery/javascript/jquery.min.js");
+      jASAJ.push("/modules/assets/javascript/jquery.jahia.min.js");
+      jASAJ.push("/modules/geoportail-core/javascript/dropit.js");
+      jASAJ.push("/modules/bootstrap/javascript/bootstrap-collapse.js");
+      jASAJ.push("/modules/bootstrap/javascript/bootstrap-dropdown.js");
+      jASAJ.push(
+        "/modules/bootstrap-components/javascript/twitter-bootstrap-hover-dropdown.js"
+      );
+      jASAJ.push("/modules/geoportail-metawal/javascript/js.cookie.js");
+      jASAJ.push("/modules/geoportail-metawal/javascript/metawal.js");
+      jASAJ.push("/modules/geoportail-metawal/javascript/paginator-metawal.js");
+      jASAJ.push("/modules/assets/javascript/jquery-ui.min.js");
+      jASAJ.push("/modules/templates-geoportail/javascript/jquery.form.js");
+      jASAJ.push("/modules/assets/javascript/jquery.validate.js");
+      jASAJ.push("/modules/templates-geoportail/javascript/popups.js");
+      jASAJ.push("/modules/templates-geoportail/javascript/vendor.js");
+      jASAJ.push("/modules/templates-geoportail/javascript/main.js");
+      jASAJ.push("/modules/templates-geoportail/javascript/vendor/modernizr.js");
+    </script>
+
+    <style type="text/css">
+      .help-block-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-    };
-  </script>
 
-  <script id="staticAssetAggregatedJavascriptList0" type="text/javascript">
-    var jASAJ = jASAJ || new Array();
-    jASAJ.push('/modules/jquery/javascript/jquery.min.js');
-    jASAJ.push('/modules/assets/javascript/jquery.jahia.min.js');
-    jASAJ.push('/modules/geoportail-core/javascript/dropit.js');
-    jASAJ.push('/modules/bootstrap/javascript/bootstrap-collapse.js');
-    jASAJ.push('/modules/bootstrap/javascript/bootstrap-dropdown.js');
-    jASAJ.push('/modules/bootstrap-components/javascript/twitter-bootstrap-hover-dropdown.js');
-    jASAJ.push('/modules/geoportail-metawal/javascript/js.cookie.js');
-    jASAJ.push('/modules/geoportail-metawal/javascript/metawal.js');
-    jASAJ.push('/modules/geoportail-metawal/javascript/paginator-metawal.js');
-    jASAJ.push('/modules/assets/javascript/jquery-ui.min.js');
-    jASAJ.push('/modules/templates-geoportail/javascript/jquery.form.js');
-    jASAJ.push('/modules/assets/javascript/jquery.validate.js');
-    jASAJ.push('/modules/templates-geoportail/javascript/popups.js');
-    jASAJ.push('/modules/templates-geoportail/javascript/vendor.js');
-    jASAJ.push('/modules/templates-geoportail/javascript/main.js');
-    jASAJ.push('/modules/templates-geoportail/javascript/vendor/modernizr.js');
-  </script>
-
-
-  <style type="text/css">
-    .help-block-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .help-block-container .help-block {
-      margin: 15px 10px;
-      padding: 10px;
-      width: calc(33% - 20px);
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    }
-
-    .help-block-container .help-block:hover {
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-
-    .help-block-container .help-block h4 {
-      margin-bottom: 0;
-    }
-
-    .help-block-container .help-block img {
-      border-width: 0px;
-      border-style: solid;
-      margin: 5px;
-      width: 150px;
-      height: 150px;
-      float: left;
-    }
-
-    .help-block-container .help-block a.btn {
-      display: block;
-    }
-
-    @media (max-width: 767px) {
       .help-block-container .help-block {
-        width: 100%;
+        margin: 15px 10px;
+        padding: 10px;
+        width: calc(33% - 20px);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       }
-    }
 
-    @media (min-width: 768px) and (max-width: 979px) {
-      .help-block-container .help-block {
-        width: calc(50% - 20px);
+      .help-block-container .help-block:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
       }
-    }
 
-    .sprite.sprite-freelance:before {
-      background: url(http://geoportail.wallonie.be/files/live/sites/geoportail/files/images/temp/sprite-freelance.png) no-repeat center;
-      background-size: cover;
-      width: 20px;
-      height: 21px;
-    }
+      .help-block-container .help-block h4 {
+        margin-bottom: 0;
+      }
 
-    footer .footer-links a {
-      display: block;
-    }
+      .help-block-container .help-block img {
+        border-width: 0px;
+        border-style: solid;
+        margin: 5px;
+        width: 150px;
+        height: 150px;
+        float: left;
+      }
 
-    .descriptive-sheet .sheet-header .sheet-header__image {
-      display: flex;
-    }
+      .help-block-container .help-block a.btn {
+        display: block;
+      }
 
-    .descriptive-sheet .sheet-section--preview .sheet-section__content .slider img {
-      position: static;
-    }
+      @media (max-width: 767px) {
+        .help-block-container .help-block {
+          width: 100%;
+        }
+      }
 
+      @media (min-width: 768px) and (max-width: 979px) {
+        .help-block-container .help-block {
+          width: calc(50% - 20px);
+        }
+      }
 
-  </style>
-  <style type="text/css" media="print">
+      .sprite.sprite-freelance:before {
+        background: url(http://geoportail.wallonie.be/files/live/sites/geoportail/files/images/temp/sprite-freelance.png)
+          no-repeat center;
+        background-size: cover;
+        width: 20px;
+        height: 21px;
+      }
 
+      footer .footer-links a {
+        display: block;
+      }
 
-  </style>
+      .descriptive-sheet .sheet-header .sheet-header__image {
+        display: flex;
+      }
 
-  <script async="" src="./../../templates/jahiatemplate_files/modules.0443fdcdb9597eb5e9d1.js"></script>
-  <style type="text/css">iframe#_hjRemoteVarsFrame {
-    display: none !important;
-    width: 1px !important;
-    height: 1px !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }</style>
-</head>
-<body style="">
-<!--[if lt IE 11]><p class="browsehappy">Votre navigateur n'est pas <strong>optimisé</strong> pour ce site. Veuillez le
-  <a href="http://browsehappy.com/">mettre à jour</a> pour améliorer votre navigation.</p><![endif]-->
+      .descriptive-sheet .sheet-section--preview .sheet-section__content .slider img {
+        position: static;
+      }
+    </style>
+    <style type="text/css" media="print"></style>
 
-<div class="bodywrapper typejnt:page pagecartes-dynamiques-et-cartes-stat">
-  <div class="bc-fluid-nopadding">
-    <div class="nsi container-fluid">
-      <section class="topbar">
-        <div class="navbar navbar-invert navbar-static-top">
-          <div class="navbar-inner">
+    <script
+      async=""
+      src="./../../templates/jahiatemplate_files/modules.0443fdcdb9597eb5e9d1.js"
+    ></script>
+    <style type="text/css">
+      iframe#_hjRemoteVarsFrame {
+        display: none !important;
+        width: 1px !important;
+        height: 1px !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    </style>
+  </head>
+  <body style="">
+    <!--[if lt IE 11
+      ]><p class="browsehappy">
+        Votre navigateur n'est pas <strong>optimisé</strong> pour ce site. Veuillez le
+        <a href="http://browsehappy.com/">mettre à jour</a> pour améliorer votre
+        navigation.
+      </p><!
+    [endif]-->
+
+    <div class="bodywrapper typejnt:page pagecartes-dynamiques-et-cartes-stat">
+      <div class="bc-fluid-nopadding">
+        <div class="nsi container-fluid">
+          <section class="topbar">
+            <div class="navbar navbar-invert navbar-static-top">
+              <div class="navbar-inner">
+                <div class="container">
+                  <div class="pull-right">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="active">
+                        <a href="http://geoportail.wallonie.be/catalogue-cartes">FR</a>
+                      </li>
+
+                      <li>
+                        <a
+                          title="Changer de langue"
+                          href="http://geoportail.wallonie.be/de/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html"
+                          >DE</a
+                        >
+                      </li>
+
+                      <li>
+                        <a
+                          title="Changer de langue"
+                          href="http://geoportail.wallonie.be/nl/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html"
+                          >NL</a
+                        >
+                      </li>
+
+                      <li>
+                        <a
+                          title="Changer de langue"
+                          href="http://geoportail.wallonie.be/en/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html"
+                          >EN</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="clear"></div>
+                  </div>
+                  <a
+                    class="btn btn-navbar"
+                    data-toggle="collapse"
+                    data-target="#topbar-collapse"
+                  >
+                    <span class="sprite sprite-cross-red"></span>
+                  </a>
+                  <div class="nav-collapse collapse" id="topbar-collapse">
+                    <ul class="nav">
+                      <li class="active">
+                        <a href="http://www.wallonie.be/">Portail Wallonie</a>
+                      </li>
+
+                      <li>
+                        <a href="http://www.federation-wallonie-bruxelles.be/"
+                          >Fédération Wallonie-Bruxelles</a
+                        >
+                      </li>
+
+                      <!-- Affichage des 'autres liens' -->
+
+                      <li>
+                        <a href="http://www.wallonie.be/fr/guide/guide-services/15955"
+                          >Guide des institutions</a
+                        >
+                        <div class="clear"></div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="bc-fluid-nopadding">
+        <div class="nsi container-fluid">
+          <header class="header">
             <div class="container">
-              <div class="pull-right">
+              <div class="header-titles">
+                <a href="http://geoportail.wallonie.be/home.html" class="header-logo">
+                  <span class="sprite sprite-rooster-red-big"></span>
+                </a>
+                <span class="title"
+                  ><a class="no-decoration" href="http://geoportail.wallonie.be/home.html"
+                    >Géoportail de la Wallonie</a
+                  ></span
+                >
 
-
-                <ul class="nav navbar-nav navbar-right">
-
-                  <li class="active">
-                    <a href="http://geoportail.wallonie.be/catalogue-cartes">FR</a>
-                  </li>
-
-                  <li>
-                    <a title="Changer de langue"
-                       href="http://geoportail.wallonie.be/de/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html">DE</a>
-                  </li>
-
-                  <li>
-                    <a title="Changer de langue"
-                       href="http://geoportail.wallonie.be/nl/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html">NL</a>
-                  </li>
-
-                  <li>
-                    <a title="Changer de langue"
-                       href="http://geoportail.wallonie.be/en/home/cartes-et-donnees/cartes-dynamiques-et-cartes-stat.html">EN</a>
-                  </li>
-
-                </ul>
+                <span class="subTitle"
+                  ><a class="no-decoration" href="http://geoportail.wallonie.be/home.html"
+                    >Le site de l'information géographique wallonne</a
+                  ></span
+                >
                 <div class="clear"></div>
               </div>
-              <a class="btn btn-navbar" data-toggle="collapse" data-target="#topbar-collapse">
-                <span class="sprite sprite-cross-red"></span>
-              </a>
-              <div class="nav-collapse collapse" id="topbar-collapse">
-                <ul class="nav">
 
-                  <li class="active"><a href="http://www.wallonie.be/">Portail Wallonie</a></li>
+              <div class="header-actions">
+                <div class="header-actions-buttons">
+                  <span
+                    id="connect"
+                    class="header-actions-login btn btn-none js-login-popin"
+                    >Se connecter</span
+                  >
 
-                  <li><a href="http://www.federation-wallonie-bruxelles.be/">Fédération Wallonie-Bruxelles</a></li>
+                  <a
+                    href="http://geoportail.wallonie.be/contact"
+                    class="header-actions-contact btn btn-none"
+                    >Contact</a
+                  >
+                  <span class="header-actions-toggle btn btn-none">
+                    <span class="sprite sprite-magnifier-large-hue-3"></span>
+                  </span>
+                </div>
 
+                <div class="header-actions-search">
+                  <form
+                    method="post"
+                    name="simplesearchform"
+                    action="http://geoportail.wallonie.be/search-results-1.html"
+                    id="simplesearchform"
+                    class="form-search"
+                  >
+                    <input type="hidden" name="jcrMethodToCall" value="get" />
+                    <input type="hidden" name="src_originSiteKey" value="geoportail" />
 
-                  <!-- Affichage des 'autres liens' -->
+                    <input
+                      name="src_terms[0].term"
+                      id="searchTerm"
+                      type="text"
+                      class="text-input-search-header"
+                      value=""
+                      placeholder="Recherche"
+                    />
+                    <input type="hidden" name="src_terms[0].applyFilter" value="true" />
 
-                  <li><a href="http://www.wallonie.be/fr/guide/guide-services/15955">Guide des institutions</a>
-                    <div class="clear"></div>
-                  </li>
+                    <input
+                      type="hidden"
+                      name="src_terms[0].fields.siteContent"
+                      value="true"
+                    />
 
-                </ul>
+                    <input type="hidden" name="src_terms[0].fields.tags" value="true" />
+                    <input type="hidden" name="src_sites.values" value="geoportail" />
+                    <input
+                      type="hidden"
+                      name="src_sitesForReferences.values"
+                      value="systemsite"
+                    />
+                    <input type="hidden" name="src_languages.values" value="fr" />
+                    <button type="submit" title="Chercher" value="">
+                      <span class="sprite sprite-magnifier-hue-3"></span>
+                    </button>
+                  </form>
+                  <br class="clear" />
+                </div>
+                <div class="clear"></div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <div class="clear"></div>
-  <div class="bc-fluid-nopadding">
-    <div class="nsi container-fluid">
+          </header>
+          <script>
+            function signup() {
+              $.ajax({
+                type: "POST",
+                url: "/cms/logout",
+                success: function () {
+                  var url = "/cms/render/live/fr/sites/geoportail";
+                  window.location.href = url + "/home.html";
+                }
+              });
+            }
+          </script>
+          <div class="login-popin">
+            <div class="login-popin__inner">
+              <form
+                method="post"
+                name="loginForm"
+                action="http://geoportail.wallonie.be/cms/login"
+              >
+                <input type="hidden" name="site" value="geoportail" />
 
+                <input type="hidden" name="redirect" value="/catalogue-cartes" />
+                <input type="hidden" name="failureRedirect" value="/catalogue-cartes" />
 
-      <header class="header">
-        <div class="container">
-          <div class="header-titles">
-            <a href="http://geoportail.wallonie.be/home.html" class="header-logo">
-              <span class="sprite sprite-rooster-red-big"></span>
-            </a>
-            <span class="title"><a class="no-decoration" href="http://geoportail.wallonie.be/home.html">Géoportail de la Wallonie</a></span>
-
-            <span class="subTitle"><a class="no-decoration" href="http://geoportail.wallonie.be/home.html">Le site de l'information géographique wallonne</a></span>
-            <div class="clear"></div>
-          </div>
-
-          <div class="header-actions">
-            <div class="header-actions-buttons">
-
-              <span id="connect" class="header-actions-login btn btn-none js-login-popin">Se connecter</span>
-
-              <a href="http://geoportail.wallonie.be/contact" class="header-actions-contact btn btn-none">Contact</a>
-              <span class="header-actions-toggle btn btn-none">
-	          <span class="sprite sprite-magnifier-large-hue-3"></span>
-	        </span>
-            </div>
-
-
-            <div class="header-actions-search">
-
-              <form method="post" name="simplesearchform" action="http://geoportail.wallonie.be/search-results-1.html"
-                    id="simplesearchform" class="form-search">
-                <input type="hidden" name="jcrMethodToCall" value="get">
-                <input type="hidden" name="src_originSiteKey" value="geoportail">
-
-                <input name="src_terms[0].term" id="searchTerm" type="text" class="text-input-search-header" value=""
-                       placeholder="Recherche">
-                <input type="hidden" name="src_terms[0].applyFilter" value="true">
-
-                <input type="hidden" name="src_terms[0].fields.siteContent" value="true">
-
-                <input type="hidden" name="src_terms[0].fields.tags" value="true">
-                <input type="hidden" name="src_sites.values" value="geoportail">
-                <input type="hidden" name="src_sitesForReferences.values" value="systemsite">
-                <input type="hidden" name="src_languages.values" value="fr">
-                <button type="submit" title="Chercher" value="">
-                  <span class="sprite sprite-magnifier-hue-3"></span>
+                <button class="btn btn-none login-popin__close" type="button">
+                  <span class="sprite sprite-close"></span>
                 </button>
 
+                <div class="login-popin__warning">
+                  <span class="sprite sprite-warning" aria-label="Erreur"></span>
 
-              </form>
-              <br class="clear">
-            </div>
-            <div class="clear"></div>
+                  Nom d'utilisateur/mot de passe non valide
+                </div>
 
-          </div>
+                <h3 class="login-popin__title">Connexion</h3>
 
-        </div>
-      </header>
-      <script>
-        function signup() {
-          $.ajax({
-            type: "POST",
-            url: "/cms/logout",
-            success: (function () {
-              var url = "/cms/render/live/fr/sites/geoportail";
-              window.location.href = url + "/home.html";
-            })
-          });
-        }
-      </script>
-      <div class="login-popin ">
-        <div class="login-popin__inner">
+                <div class="control-group">
+                  <label class="control-label" for="username">Nom d'utilisateur</label>
 
-          <form method="post" name="loginForm" action="http://geoportail.wallonie.be/cms/login">
-            <input type="hidden" name="site" value="geoportail">
+                  <div class="controls">
+                    <input
+                      class="input-block-level"
+                      type="text"
+                      value=""
+                      tabindex="1"
+                      maxlength="250"
+                      name="username"
+                      id="username"
+                    />
+                  </div>
+                </div>
 
-            <input type="hidden" name="redirect" value="/catalogue-cartes">
-            <input type="hidden" name="failureRedirect" value="/catalogue-cartes">
+                <div class="control-group">
+                  <label class="control-label" for="password">Mot de passe</label>
 
-            <button class="btn btn-none login-popin__close" type="button">
-              <span class="sprite sprite-close"></span>
-            </button>
+                  <div class="controls">
+                    <input
+                      class="input-block-level"
+                      type="password"
+                      tabindex="2"
+                      maxlength="250"
+                      name="password"
+                      id="password"
+                    />
+                  </div>
+                </div>
 
-            <div class="login-popin__warning">
+                <div class="control-group">
+                  <div class="controls">
+                    <label class="checkbox">
+                      <input type="checkbox" id="rememberme" name="useCookie" />
+                      <span>Se souvenir de moi</span>
+                    </label>
+                  </div>
+                </div>
 
+                <button
+                  type="submit"
+                  name="search"
+                  class="btn btn-primary btn-block btn-large"
+                >
+                  Se connecter
+                </button>
 
-              <span class="sprite sprite-warning" aria-label="Erreur"></span>
-
-              Nom d'utilisateur/mot de passe non valide
-            </div>
-
-            <h3 class="login-popin__title">Connexion</h3>
-
-            <div class="control-group">
-              <label class="control-label" for="username">Nom d'utilisateur</label>
-
-              <div class="controls">
-                <input class="input-block-level" type="text" value="" tabindex="1" maxlength="250" name="username"
-                       id="username">
-              </div>
-            </div>
-
-            <div class="control-group">
-              <label class="control-label" for="password">Mot de passe</label>
-
-              <div class="controls">
-                <input class="input-block-level" type="password" tabindex="2" maxlength="250" name="password"
-                       id="password">
-              </div>
-            </div>
-
-            <div class="control-group">
-              <div class="controls">
-                <label class="checkbox">
-                  <input type="checkbox" id="rememberme" name="useCookie">
-                  <span>Se souvenir de moi</span>
-                </label>
-              </div>
-            </div>
-
-            <button type="submit" name="search" class="btn btn-primary btn-block btn-large">
-              Se connecter
-            </button>
-
-            <div class="login-popin__help">
-
-
-              <!--
+                <div class="login-popin__help">
+                  <!--
                       <a href="/home/aide-et-support/faq.html#anchor-identification-agent-SPW">Attention, si vous êtes un agent du SPW connectez-vous avec votre code ULIS et votre mot de passe SPW !
                       <a href="/home/aide-et-support/faq.html#anchor-probleme-identification">Problème de connexion à votre compte ?
                       -->
 
-              <p>
-                Pas de compte ?
-                <a href="http://geoportail.wallonie.be/inscription.html">Inscrivez-vous !</a>
-              </p>
+                  <p>
+                    Pas de compte ?
+                    <a href="http://geoportail.wallonie.be/inscription.html"
+                      >Inscrivez-vous !</a
+                    >
+                  </p>
 
-              <p>
-                Mot de passe oublié ?
-                <a href="http://geoportail.wallonie.be/mdprecup.html">Demandez un nouveau !</a>
-              </p>
+                  <p>
+                    Mot de passe oublié ?
+                    <a href="http://geoportail.wallonie.be/mdprecup.html"
+                      >Demandez un nouveau !</a
+                    >
+                  </p>
+                </div>
+              </form>
             </div>
-
-          </form>
-
+          </div>
+          <div class="clear"></div>
         </div>
       </div>
       <div class="clear"></div>
-    </div>
-  </div>
-  <div class="clear"></div>
-  <div class="navbar-container">
+      <div class="navbar-container">
+        <div class="navbar navbar-static-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a
+                class="btn btn-navbar"
+                data-toggle="collapse"
+                data-target=".nav-collapse"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
 
+              <a class="brand" href="http://geoportail.wallonie.be/home.html"></a>
 
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
-
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-
-
-          <a class="brand" href="http://geoportail.wallonie.be/home.html"></a>
-
-
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="dropdown"><a href="http://geoportail.wallonie.be/home.html">Accueil</a></li>
-              <li class="dropdown active"><a href="http://geoportail.wallonie.be/cartes-et-donnees"
-                                             data-hover="dropdown" data-delay="100" class="dropdown-toggle">Cartes et
-                données <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="http://geoportail.wallonie.be/walonmap"
-                         title="Toute la Wallonie à la carte dans un seul viewer">WalOnMap</a></li>
-                  <li class="active"><a href="http://geoportail.wallonie.be/catalogue-cartes">Catalogue des cartes</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li class="dropdown">
+                    <a href="http://geoportail.wallonie.be/home.html">Accueil</a>
                   </li>
-                  <li><a href="http://geoportail.wallonie.be/catalogue-donnees-et-services">Catalogue des données et
-                    services</a></li>
-                  <li><a href="http://geoportail.wallonie.be/telecharger">Télécharger des données</a></li>
-                  <li><a href="http://geoportail.wallonie.be/mes-notifications-et-services">Mes services favoris</a>
-                  </li>
-                  <li><a href="http://geoportail.wallonie.be/home/cartes-et-donnees/au-dela-de-la-wallonie.html">Au-delà
-                    de la Wallonie</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="http://geoportail.wallonie.be/communaute-geomatique" data-hover="dropdown"
-                                      data-delay="100" class="dropdown-toggle">Communauté géomatique <b
-                class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="http://geoportail.wallonie.be/qui-sommes-nous">Qui sommes-nous ?</a></li>
-                  <li><a href="http://geoportail.wallonie.be/annuaire">Annuaire des acteurs de la géomatique</a></li>
-                  <li><a href="http://geoportail.wallonie.be/CSG">Comité stratégique de la géomatique</a></li>
-                  <li><a href="http://geoportail.wallonie.be/news">Actualités</a></li>
-                  <li><a href="http://geoportail.wallonie.be/agenda">Agenda</a></li>
-                  <li><a href="http://geoportail.wallonie.be/newsletter">Lettre d'information</a></li>
-                  <li class="dropdown-submenu"><a href="http://geoportail.wallonie.be/pouvoirslocaux">Pouvoirs
-                    locaux</a>
+                  <li class="dropdown active">
+                    <a
+                      href="http://geoportail.wallonie.be/cartes-et-donnees"
+                      data-hover="dropdown"
+                      data-delay="100"
+                      class="dropdown-toggle"
+                      >Cartes et données <b class="caret"></b
+                    ></a>
                     <ul class="dropdown-menu">
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/communaute-geomatique/pouvoirslocaux/travailler-avec-les-outils-du-service-public-de-wallonie.html">Travailler
-                        avec les outils du Service public de Wallonie</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/communaute-geomatique/pouvoirslocaux/travailler-avec-des-outils-specifiques.html">Travailler
-                        avec des outils spécifiques</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/communaute-geomatique/pouvoirslocaux/contribution-des-pouvoirs-locaux-a-linformation-geographique.html">Contribution
-                        des Pouvoirs locaux à l'information géographique</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="http://geoportail.wallonie.be/INSPIRE" data-hover="dropdown"
-                                      data-delay="100" class="dropdown-toggle">INSPIRE <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-objecif">Objectif : protéger l’environnement</a>
-                  </li>
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-attentes">Des attentes concrètes</a></li>
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-legal">Du point de vue légal</a></li>
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-acteurs">Les acteurs de la directive</a></li>
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-mise-en-oeuvre-Wallonie">INSPIRE en Wallonie : mise
-                    en œuvre</a></li>
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-resultats-Wallonie">INSPIRE en Wallonie : où en
-                    est-on aujourd’hui</a></li>
-                  <li><a href="http://geoportail.wallonie.be/INSPIRE-themes">Thèmes des données</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="http://geoportail.wallonie.be/ressources" data-hover="dropdown"
-                                      data-delay="100" class="dropdown-toggle" title="Ressources ">Ressources <b
-                class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="http://geoportail.wallonie.be/decret-geomatique-wallon">Décret géomatique wallon</a></li>
-                  <li><a href="http://geoportail.wallonie.be/PSGW">Plan stratégique géomatique pour la Wallonie</a></li>
-                  <li><a href="http://geoportail.wallonie.be/POGW">Plan opérationnel géomatique pour la Wallonie</a>
-                  </li>
-                  <li class="dropdown-submenu"><a href="http://geoportail.wallonie.be/georeferentiel">Géoréférentiel de
-                    la Wallonie</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="http://geoportail.wallonie.be/georeferentiel/PICC">PICC : la référence cartographique
-                        de la Wallonie</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/ressources/georeferentiel-de-la-wallonie/unites-administratives.html">Unités
-                        administratives</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/ressources/georeferentiel-de-la-wallonie/parcellaire-cadastral.html">Parcellaire
-                        cadastral</a></li>
-                      <li><a href="http://geoportail.wallonie.be/georeferentiel/orthophotos">Orthophotos : la Wallonie
-                        vue du ciel</a></li>
-                      <li><a href="http://geoportail.wallonie.be/georeferentiel/relief">Relief</a></li>
-                      <li><a href="http://geoportail.wallonie.be/georeferentiel/icar">ICAR</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="http://geoportail.wallonie.be/walcors">Walcors, le réseau de positionnement par
-                    satellites</a></li>
-                  <li><a href="http://geoportail.wallonie.be/waltopo">Waltopo, le dictionnaire topographique</a></li>
-                  <li class="dropdown-submenu"><a href="http://geoportail.wallonie.be/outils">Outils</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="http://geoportail.wallonie.be/API-geoviewer">API Geoviewer du SPW</a></li>
-                      <li><a href="http://geoportail.wallonie.be/extensionsQGIS">Extensions pour QGIS</a></li>
-                      <li><a href="http://geoportail.wallonie.be/servicesweb-traitement">Services web de traitement de
-                        données</a></li>
-                      <li><a href="http://geoportail.wallonie.be/metawal">Metawal, le catalogue des métadonnées
-                        wallonnes</a></li>
-                      <li><a href="http://geoportail.wallonie.be/CSW">Services web de catalogage (CSW) de Metawal</a>
+                      <li>
+                        <a
+                          href="http://geoportail.wallonie.be/walonmap"
+                          title="Toute la Wallonie à la carte dans un seul viewer"
+                          >WalOnMap</a
+                        >
                       </li>
-                      <li><a href="http://geoportail.wallonie.be/home/ressources/outils/Lambert-belge-2008-LB08.html">Passage
-                        vers le Lambert belge 2008</a></li>
+                      <li class="active">
+                        <a href="http://geoportail.wallonie.be/catalogue-cartes"
+                          >Catalogue des cartes</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://geoportail.wallonie.be/catalogue-donnees-et-services"
+                          >Catalogue des données et services</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/telecharger"
+                          >Télécharger des données</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://geoportail.wallonie.be/mes-notifications-et-services"
+                          >Mes services favoris</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://geoportail.wallonie.be/home/cartes-et-donnees/au-dela-de-la-wallonie.html"
+                          >Au-delà de la Wallonie</a
+                        >
+                      </li>
                     </ul>
                   </li>
-                  <li><a href="http://geoportail.wallonie.be/normes">Normes internationales</a></li>
-                  <li class="dropdown-submenu"><a href="http://geoportail.wallonie.be/definitions-et-concepts">Définitions
-                    et concepts</a>
+                  <li class="dropdown">
+                    <a
+                      href="http://geoportail.wallonie.be/communaute-geomatique"
+                      data-hover="dropdown"
+                      data-delay="100"
+                      class="dropdown-toggle"
+                      >Communauté géomatique <b class="caret"></b
+                    ></a>
                     <ul class="dropdown-menu">
-                      <li><a href="http://geoportail.wallonie.be/lexique-geomatique-wallonie">Lexique de la géomatique
-                        en Wallonie</a></li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/qui-sommes-nous"
+                          >Qui sommes-nous ?</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/annuaire"
+                          >Annuaire des acteurs de la géomatique</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/CSG"
+                          >Comité stratégique de la géomatique</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/news">Actualités</a>
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/agenda">Agenda</a>
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/newsletter"
+                          >Lettre d'information</a
+                        >
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a href="http://geoportail.wallonie.be/pouvoirslocaux"
+                          >Pouvoirs locaux</a
+                        >
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/communaute-geomatique/pouvoirslocaux/travailler-avec-les-outils-du-service-public-de-wallonie.html"
+                              >Travailler avec les outils du Service public de Wallonie</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/communaute-geomatique/pouvoirslocaux/travailler-avec-des-outils-specifiques.html"
+                              >Travailler avec des outils spécifiques</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/communaute-geomatique/pouvoirslocaux/contribution-des-pouvoirs-locaux-a-linformation-geographique.html"
+                              >Contribution des Pouvoirs locaux à l'information
+                              géographique</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
                     </ul>
                   </li>
-                  <li class="dropdown-submenu"><a
-                    href="http://geoportail.wallonie.be/home/ressources/autour-du-geoportail.html"
-                    title="Informations, anecdotes et portraits autour des acteurs et du contenu du Géoportail de Wallonie">Autour
-                    du Géoportail</a></li>
-                  <li><a href="http://geoportail.wallonie.be/LiensUtiles">Liens utiles</a></li>
+                  <li class="dropdown">
+                    <a
+                      href="http://geoportail.wallonie.be/INSPIRE"
+                      data-hover="dropdown"
+                      data-delay="100"
+                      class="dropdown-toggle"
+                      >INSPIRE <b class="caret"></b
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="http://geoportail.wallonie.be/INSPIRE-objecif"
+                          >Objectif : protéger l’environnement</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/INSPIRE-attentes"
+                          >Des attentes concrètes</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/INSPIRE-legal"
+                          >Du point de vue légal</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/INSPIRE-acteurs"
+                          >Les acteurs de la directive</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://geoportail.wallonie.be/INSPIRE-mise-en-oeuvre-Wallonie"
+                          >INSPIRE en Wallonie : mise en œuvre</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/INSPIRE-resultats-Wallonie"
+                          >INSPIRE en Wallonie : où en est-on aujourd’hui</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/INSPIRE-themes"
+                          >Thèmes des données</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a
+                      href="http://geoportail.wallonie.be/ressources"
+                      data-hover="dropdown"
+                      data-delay="100"
+                      class="dropdown-toggle"
+                      title="Ressources "
+                      >Ressources <b class="caret"></b
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="http://geoportail.wallonie.be/decret-geomatique-wallon"
+                          >Décret géomatique wallon</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/PSGW"
+                          >Plan stratégique géomatique pour la Wallonie</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/POGW"
+                          >Plan opérationnel géomatique pour la Wallonie</a
+                        >
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a href="http://geoportail.wallonie.be/georeferentiel"
+                          >Géoréférentiel de la Wallonie</a
+                        >
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="http://geoportail.wallonie.be/georeferentiel/PICC"
+                              >PICC : la référence cartographique de la Wallonie</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/ressources/georeferentiel-de-la-wallonie/unites-administratives.html"
+                              >Unités administratives</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/ressources/georeferentiel-de-la-wallonie/parcellaire-cadastral.html"
+                              >Parcellaire cadastral</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/georeferentiel/orthophotos"
+                              >Orthophotos : la Wallonie vue du ciel</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/georeferentiel/relief"
+                              >Relief</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/georeferentiel/icar"
+                              >ICAR</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/walcors"
+                          >Walcors, le réseau de positionnement par satellites</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/waltopo"
+                          >Waltopo, le dictionnaire topographique</a
+                        >
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a href="http://geoportail.wallonie.be/outils">Outils</a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="http://geoportail.wallonie.be/API-geoviewer"
+                              >API Geoviewer du SPW</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/extensionsQGIS"
+                              >Extensions pour QGIS</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/servicesweb-traitement"
+                              >Services web de traitement de données</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/metawal"
+                              >Metawal, le catalogue des métadonnées wallonnes</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/CSW"
+                              >Services web de catalogage (CSW) de Metawal</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/ressources/outils/Lambert-belge-2008-LB08.html"
+                              >Passage vers le Lambert belge 2008</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/normes"
+                          >Normes internationales</a
+                        >
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a href="http://geoportail.wallonie.be/definitions-et-concepts"
+                          >Définitions et concepts</a
+                        >
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/lexique-geomatique-wallonie"
+                              >Lexique de la géomatique en Wallonie</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a
+                          href="http://geoportail.wallonie.be/home/ressources/autour-du-geoportail.html"
+                          title="Informations, anecdotes et portraits autour des acteurs et du contenu du Géoportail de Wallonie"
+                          >Autour du Géoportail</a
+                        >
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/LiensUtiles"
+                          >Liens utiles</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a
+                      href="http://geoportail.wallonie.be/home/aide-et-support.html"
+                      data-hover="dropdown"
+                      data-delay="100"
+                      class="dropdown-toggle"
+                      >Aide et support <b class="caret"></b
+                    ></a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-submenu">
+                        <a href="http://geoportail.wallonie.be/tour-horizon"
+                          >Tour d'horizon</a
+                        >
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="http://geoportail.wallonie.be/tour-horizon-WalOnMap"
+                              >WalOnMap : toute la Wallonie à la carte</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/tour-horizon-donnees"
+                              >Au cœur du Géoportail : les données géographiques</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/tour-horizon-personnaliser"
+                              >Le Géoportail de la Wallonie : un outil à prendre en
+                              main</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/tour-horizon-experts"
+                              >Le Géoportail pour les experts</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/FAQ"
+                          >Foire aux questions</a
+                        >
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a
+                          href="http://geoportail.wallonie.be/home/aide-et-support/aide.html"
+                          >Aide</a
+                        >
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="http://geoportail.wallonie.be/aideWalOnMap"
+                              >Aide WalOnMap</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/aide-et-support/aide/aide-catalogue-des-cartes.html"
+                              >Aide Catalogue des cartes</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/aide-et-support/aide/aide-catalogue-des-donnees-et-se.html"
+                              >Aide Catalogue des données et services</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="http://geoportail.wallonie.be/home/aide-et-support/aide/aide-mes-notifications-et-servic.html"
+                              >Aide Mes notifications et services</a
+                            >
+                          </li>
+                          <li>
+                            <a href="http://geoportail.wallonie.be/aide-annuaire"
+                              >Aide Annuaire des acteurs de la géomatique</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/contact">Nous contacter</a>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a
+                          href="http://geoportail.wallonie.be/home/aide-et-support/RMWalOnMap.html"
+                          title="Découvrez la richesse de WalOnMap, l&#39;outil cartographique du Géoportail de la Wallonie à travers 8 scénarios imagés qui vous permettront de vous familiariser avec l&#39;outil : se localiser, dessiner, mesurer, partager une carte ... "
+                          >Raconte moi WalOnMap</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="http://geoportail.wallonie.be/home/aide-et-support/notes-de-version.html"
+                          >Notes de version</a
+                        >
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <section class="main-content">
+        <div class="breadcrumb-container">
+          <div class="nsi container">
+            <ul class="breadcrumb">
+              <li>
+                <a href="http://geoportail.wallonie.be/home.html"> Accueil </a>
               </li>
-              <li class="dropdown"><a href="http://geoportail.wallonie.be/home/aide-et-support.html"
-                                      data-hover="dropdown" data-delay="100" class="dropdown-toggle">Aide et support <b
-                class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-submenu"><a href="http://geoportail.wallonie.be/tour-horizon">Tour d'horizon</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="http://geoportail.wallonie.be/tour-horizon-WalOnMap">WalOnMap : toute la Wallonie à
-                        la carte</a></li>
-                      <li><a href="http://geoportail.wallonie.be/tour-horizon-donnees">Au cœur du Géoportail : les
-                        données géographiques</a></li>
-                      <li><a href="http://geoportail.wallonie.be/tour-horizon-personnaliser">Le Géoportail de la
-                        Wallonie : un outil à prendre en main</a></li>
-                      <li><a href="http://geoportail.wallonie.be/tour-horizon-experts">Le Géoportail pour les
-                        experts</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="http://geoportail.wallonie.be/FAQ">Foire aux questions</a></li>
-                  <li class="dropdown-submenu"><a href="http://geoportail.wallonie.be/home/aide-et-support/aide.html">Aide</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="http://geoportail.wallonie.be/aideWalOnMap">Aide WalOnMap</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/aide-et-support/aide/aide-catalogue-des-cartes.html">Aide
-                        Catalogue des cartes</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/aide-et-support/aide/aide-catalogue-des-donnees-et-se.html">Aide
-                        Catalogue des données et services</a></li>
-                      <li><a
-                        href="http://geoportail.wallonie.be/home/aide-et-support/aide/aide-mes-notifications-et-servic.html">Aide
-                        Mes notifications et services</a></li>
-                      <li><a href="http://geoportail.wallonie.be/aide-annuaire">Aide Annuaire des acteurs de la
-                        géomatique</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="http://geoportail.wallonie.be/contact">Nous contacter</a></li>
-                  <li class="dropdown-submenu"><a
-                    href="http://geoportail.wallonie.be/home/aide-et-support/RMWalOnMap.html"
-                    title="Découvrez la richesse de WalOnMap, l&#39;outil cartographique du Géoportail de la Wallonie à travers 8 scénarios imagés qui vous permettront de vous familiariser avec l&#39;outil : se localiser, dessiner, mesurer, partager une carte ... ">Raconte
-                    moi WalOnMap</a></li>
-                  <li><a href="http://geoportail.wallonie.be/home/aide-et-support/notes-de-version.html">Notes de
-                    version</a></li>
-                </ul>
+
+              <li>
+                <a href="http://geoportail.wallonie.be/cartes-et-donnees">
+                  Cartes et données
+                </a>
               </li>
+
+              <li>Catalogue des cartes</li>
             </ul>
-
-
+            <div class="clear"></div>
           </div>
         </div>
-
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <section class="main-content">
-    <div class="breadcrumb-container">
-      <div class="nsi container">
-        <ul class="breadcrumb">
-
-          <li>
-
-            <a href="http://geoportail.wallonie.be/home.html">
-              Accueil
-            </a>
-
-          </li>
-
-          <li>
-
-            <a href="http://geoportail.wallonie.be/cartes-et-donnees">
-              Cartes et données
-            </a>
-
-          </li>
-
-          <li>
-            Catalogue des cartes
-          </li>
-
-        </ul>
+        <div class="bc-fluid-nopadding">
+          <div class="nsi container-fluid">
+            <div class="page-intro">
+              <div class="container">
+                <div class="page-intro-text">
+                  <h1 class="pageTitle">Catalogue des cartes</h1>
+                  <p>Le catalogue des cartes interactives et statiques de la Wallonie.</p>
+                  <div class="clear"></div>
+                  <div class="clear"></div>
+                </div>
+                <div class="page-intro-links">
+                  <a
+                    href="http://geoportail.wallonie.be/sites/geoportail/home/aide-et-support/aide/aide-catalogue-des-cartes.html"
+                    title="Aide"
+                    class="page-intro-help icon-questionmark"
+                    style=""
+                  ></a>
+                  <a
+                    href="http://geoportail.wallonie.be/sites/geoportail/home/event-news/recuperation-de-contenu-geoporta.rss"
+                    title="RSS"
+                    class="page-intro-rss icon-rss"
+                  ></a>
+                </div>
+                <div class="page-intro-reduce">
+                  <p style="text-align: center">
+                    <img
+                      src="./../../templates/jahiatemplate_files/arrow.png"
+                      class="page-intro-reduce-img"
+                    />
+                  </p>
+                  <p style="text-align: center">
+                    <img
+                      src="./../../templates/jahiatemplate_files/arrow_down.png"
+                      class="page-intro-expand-img"
+                    />
+                    <span class="page-intro-expand-label">Réduire la carte</span>
+                  </p>
+                  <p class="page-intro-reduce-label">Étendre la carte</p>
+                </div>
+              </div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="faq-reminder">
+          <div class="nsi container-fluid"></div>
+        </div>
         <div class="clear"></div>
-      </div>
-    </div>
-    <div class="bc-fluid-nopadding">
-      <div class="nsi container-fluid">
-        <div class="page-intro">
+
+        <section class="" id="bootstrap-layer-container-rows-a">
           <div class="container">
-            <div class="page-intro-text">
-              <h1 class="pageTitle">Catalogue des cartes</h1>
-              <p>Le catalogue des cartes interactives et statiques de la Wallonie.</p>
-              <div class="clear"></div>
-              <div class="clear"></div>
-            </div>
-            <div class="page-intro-links">
-
-              <a
-                href="http://geoportail.wallonie.be/sites/geoportail/home/aide-et-support/aide/aide-catalogue-des-cartes.html"
-                title="Aide" class="page-intro-help icon-questionmark" style=""></a>
-              <a
-                href="http://geoportail.wallonie.be/sites/geoportail/home/event-news/recuperation-de-contenu-geoporta.rss"
-                title="RSS" class="page-intro-rss icon-rss"></a>
-            </div>
-            <div class="page-intro-reduce">
-
-              <p style="text-align: center"><img src="./../../templates/jahiatemplate_files/arrow.png" class="page-intro-reduce-img">
-              </p>
-              <p style="text-align: center"><img src="./../../templates/jahiatemplate_files/arrow_down.png"
-                                                 class="page-intro-expand-img">
-                <span class="page-intro-expand-label">Réduire la carte</span>
-              </p>
-              <p class="page-intro-reduce-label">Étendre la carte</p>
-            </div>
-          </div>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div>
-    <div class="faq-reminder">
-      <div class="nsi container-fluid">
-
-      </div>
-    </div>
-    <div class="clear"></div>
-
-
-    <section class="" id="bootstrap-layer-container-rows-a">
-      <div class="container">
-
-
-        <div class="row-fluid">
-
-              <link href="/geonetwork/static/gn_search_default.css" rel="stylesheet" media="screen">
+            <div class="row-fluid">
+              <link
+                href="/geonetwork/static/gn_search_default.css"
+                rel="stylesheet"
+                media="screen"
+              />
 
               <div ng-app="gn_search_default" data-ng-controller="GnCatController">
-              <div data-ng-include="'../../catalog/views/default/templates/index.html'" class="gn-full"></div>
-              <script src="/geonetwork/static/lib.js"></script>
-              <script src="/geonetwork/static/gn_search_default.js"></script>
-              <script type="text/javascript">
-                // Parse config from config URL parameter
-                var config = {
-                  "langDetector": {
-                    "default": "fre"
-                  },
-                  "nodeDetector": {
-                    "default": "srv"
-                  },
-                  "mods": {
-                    "header": {
-                      "enabled": false,
-                      "languages": {
-                        // "eng": "en",
-                        // "dut": "du",
-                        "fre": "fr"
-                        // "ger": "ge"
+                <div
+                  data-ng-include="'../../catalog/views/default/templates/index.html'"
+                  class="gn-full"
+                ></div>
+                <script src="/geonetwork/static/lib.js"></script>
+                <script src="/geonetwork/static/gn_search_default.js"></script>
+                <script type="text/javascript">
+                  // Parse config from config URL parameter
+                  var config = {
+                    langDetector: {
+                      default: "fre"
+                    },
+                    nodeDetector: {
+                      default: "srv"
+                    },
+                    mods: {
+                      header: {
+                        enabled: false,
+                        languages: {
+                          // "eng": "en",
+                          // "dut": "du",
+                          fre: "fr"
+                          // "ger": "ge"
+                        }
+                      },
+                      home: {
+                        enabled: true,
+                        appUrl: "#/home"
+                      },
+                      search: {
+                        enabled: true,
+                        appUrl: "#/search",
+                        hitsperpageValues: [10, 50, 100],
+                        filters: {
+                          type: "service or dataset"
+                        },
+                        facetTabField: "type",
+                        paginationInfo: {
+                          hitsPerPage: 20
+                        },
+                        facetsSummaryType: "apirw",
+                        sortbyValues: [
+                          {
+                            sortBy: "relevance",
+                            sortOrder: ""
+                          },
+                          {
+                            sortBy: "changeDate",
+                            sortOrder: ""
+                          },
+                          {
+                            sortBy: "title",
+                            sortOrder: "reverse"
+                          },
+                          {
+                            sortBy: "rating",
+                            sortOrder: ""
+                          },
+                          {
+                            sortBy: "popularity",
+                            sortOrder: ""
+                          },
+                          {
+                            sortBy: "denominatorDesc",
+                            sortOrder: ""
+                          },
+                          {
+                            sortBy: "denominatorAsc",
+                            sortOrder: "reverse"
+                          }
+                        ],
+                        sortBy: "relevance",
+                        resultViewTpls: [
+                          {
+                            // "tplUrl": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-simple.html",
+                            tplUrl:
+                              "../../catalog/components/search/resultsview/partials/viewtemplates/rw-geoportail.html",
+                            tooltip: "Grid",
+                            icon: "fa-th"
+                          }
+                        ],
+                        // "resultTemplate": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-simple.html",
+                        resultTemplate:
+                          "../../catalog/components/search/resultsview/partials/viewtemplates/rw-geoportail.html",
+                        formatter: {
+                          list: [
+                            {
+                              label: "full",
+                              url: "../api/records/{{md.getUuid()}}/formatters/xsl-view?root=div&view=advanced"
+                            }
+                          ]
+                        },
+                        linkTypes: {
+                          links: ["LINK", "kml"],
+                          downloads: ["DOWNLOAD"],
+                          layers: ["OGC"],
+                          maps: ["ows"]
+                        }
+                      },
+                      map: {
+                        enabled: true,
+                        appUrl: "#/map",
+                        is3DModeAllowed: true,
+                        storage: "sessionStorage",
+                        map: "../../map/config-viewer.xml",
+                        listOfServices: {
+                          wms: [
+                            {
+                              name: "BRGM",
+                              url: "http://geoservices.brgm.fr/geologie"
+                            }
+                          ],
+                          wmts: []
+                        },
+                        useOSM: true,
+                        context: "",
+                        layer: {
+                          url: "http://www2.demis.nl/mapserver/wms.asp?",
+                          layers: "Countries",
+                          version: "1.1.1"
+                        },
+                        projection: "EPSG:3857",
+                        projectionList: [
+                          {
+                            code: "EPSG:4326",
+                            label: "WGS84 (EPSG:4326)"
+                          },
+                          {
+                            code: "EPSG:3857",
+                            label: "Google mercator (EPSG:3857)"
+                          }
+                        ]
+                      },
+                      editor: {
+                        enabled: false,
+                        appUrl: "../../srv/eng/catalog.edit"
+                      },
+                      admin: {
+                        enabled: false,
+                        appUrl: "../../srv/eng/admin.console"
+                      },
+                      signin: {
+                        enabled: false,
+                        appUrl: "../../srv/eng/catalog.signin"
+                      },
+                      signout: {
+                        appUrl: "../../signout"
                       }
-                    },
-                    "home": {
-                      "enabled": true,
-                      "appUrl": "#/home"
-                    },
-                    "search": {
-                      "enabled": true,
-                      "appUrl": "#/search",
-                      "hitsperpageValues": [10, 50, 100],
-                      "filters": {
-                        "type": "service or dataset"
-                      },
-                      "facetTabField": "type",
-                      "paginationInfo": {
-                        "hitsPerPage": 20
-                      },
-                      "facetsSummaryType": "apirw",
-                      "sortbyValues": [{
-                        "sortBy": "relevance",
-                        "sortOrder": ""
-                      }, {
-                        "sortBy": "changeDate",
-                        "sortOrder": ""
-                      }, {
-                        "sortBy": "title",
-                        "sortOrder": "reverse"
-                      }, {
-                        "sortBy": "rating",
-                        "sortOrder": ""
-                      }, {
-                        "sortBy": "popularity",
-                        "sortOrder": ""
-                      }, {
-                        "sortBy": "denominatorDesc",
-                        "sortOrder": ""
-                      }, {
-                        "sortBy": "denominatorAsc",
-                        "sortOrder": "reverse"
-                      }],
-                      "sortBy": "relevance",
-                      "resultViewTpls": [{
-                        // "tplUrl": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-simple.html",
-                        "tplUrl": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-geoportail.html",
-                        "tooltip": "Grid",
-                        "icon": "fa-th"
-                      }],
-                      // "resultTemplate": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-simple.html",
-                      "resultTemplate": "../../catalog/components/search/resultsview/partials/viewtemplates/rw-geoportail.html",
-                      "formatter": {
-                        "list": [{
-                          "label": "full",
-                          "url" : "../api/records/{{md.getUuid()}}/formatters/xsl-view?root=div&view=advanced"
-                        }]
-                      },
-                      "linkTypes": {
-                        "links": ["LINK", "kml"],
-                        "downloads": ["DOWNLOAD"],
-                        "layers":["OGC"],
-                        "maps": ["ows"]
-                      }
-                    },
-                    "map": {
-                      "enabled": true,
-                      "appUrl": "#/map",
-                      "is3DModeAllowed": true,
-                      "storage": "sessionStorage",
-                      "map": "../../map/config-viewer.xml",
-                      "listOfServices": {
-                        "wms": [{"name": "BRGM", "url": "http://geoservices.brgm.fr/geologie"}],
-                        "wmts": []},
-                      "useOSM": true,
-                      "context": "",
-                      "layer": {
-                        "url": "http://www2.demis.nl/mapserver/wms.asp?",
-                        "layers": "Countries",
-                        "version": "1.1.1"
-                      },
-                      "projection": "EPSG:3857",
-                      "projectionList": [{
-                        "code": "EPSG:4326",
-                        "label": "WGS84 (EPSG:4326)"
-                      }, {
-                        "code": "EPSG:3857",
-                        "label": "Google mercator (EPSG:3857)"
-                      }]
-                    },
-                    "editor": {
-                      "enabled": false,
-                      "appUrl": "../../srv/eng/catalog.edit"
-                    },
-                    "admin": {
-                      "enabled": false,
-                      "appUrl": "../../srv/eng/admin.console"
-                    },
-                    "signin": {
-                      "enabled": false,
-                      "appUrl": "../../srv/eng/catalog.signin"
-                    },
-                    "signout": {
-                      "appUrl": "../../signout"
                     }
-                  }
-                };
-                var cfgModule = angular.module('gn_config', []);
-                cfgModule.config(['gnViewerSettings', 'gnSearchSettings', 'gnGlobalSettings',
-                  function (gnViewerSettings, gnSearchSettings, gnGlobalSettings) {
-                    gnGlobalSettings.init(config, 'http://localhost:8080/geonetwork/srv/', gnViewerSettings, gnSearchSettings);
-                  }]);
-              </script>
+                  };
+                  var cfgModule = angular.module("gn_config", []);
+                  cfgModule.config([
+                    "gnViewerSettings",
+                    "gnSearchSettings",
+                    "gnGlobalSettings",
+                    function (gnViewerSettings, gnSearchSettings, gnGlobalSettings) {
+                      gnGlobalSettings.init(
+                        config,
+                        "http://localhost:8080/geonetwork/srv/",
+                        gnViewerSettings,
+                        gnSearchSettings
+                      );
+                    }
+                  ]);
+                </script>
               </div>
 
+              <section>
+                <div class="clear"></div>
+                <div class="clear"></div>
+              </section>
+              <div class="bc-fluid-nopadding">
+                <div class="nsi container-fluid">
+                  <div class="top-jumper">
+                    <button type="button" class="btn btn-none">
+                      <span class="sprite sprite-arrow-circle-black-top"></span>
+                    </button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <footer class="footer">
+                <div class="container">
+                  <div class="footer-links">
+                    <span>SITES à DéCOUVRIR</span>
+                    <a href="http://inspire-geoportal.ec.europa.eu/" target="_blank"
+                      >INSPIRE Geoportal</a
+                    ><a href="http://www.ngi.be/FR/FR0.shtm" target="_blank"
+                      >Institut géographique national</a
+                    ><a href="http://geobru.irisnet.be/" target="_blank"
+                      >Géoportail de la Région bruxelloise</a
+                    ><a href="http://www.geopunt.be/" target="_blank"
+                      >GeoPunt Vlaanderen</a
+                    >
+                    <div class="clear"></div>
+                  </div>
+                  <div class="footer-newsletter">
+                    <span>Inscription à la newsletter</span>
+                    <div id="popupNewsletter">
+                      <div
+                        class="nl-popin nl-popin--open nl-popin--warning"
+                        style="display: none"
+                      >
+                        <div class="nl-popin__inner">
+                          <button class="btn btn-none nl-popin__close" type="button">
+                            <span class="sprite sprite-close"></span>
+                          </button>
+                          <p id="information-message"></p>
+                        </div>
+                      </div>
+                    </div>
 
-    </section>
-    <div class="clear"></div>
-    <div class="clear"></div>
-  </section>
-  <div class="bc-fluid-nopadding">
-    <div class="nsi container-fluid">
-      <div class="top-jumper">
-        <button type="button" class="btn btn-none">
-          <span class="sprite sprite-arrow-circle-black-top"></span>
-        </button>
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <div class="clear"></div>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-links">
+                    <form
+                      class="newsletter-form"
+                      id="subscribeForm-8b8b7076-1027-49db-856b-87ebb513e3b9"
+                      method="post"
+                      action="http://geoportail.wallonie.be/newsletters/du-geoportail-de-la-wallonie.geoportailSubscribe.do"
+                    >
+                      <div class="control-group">
+                        <input
+                          type="text"
+                          placeholder="Email"
+                          class="input-block-level"
+                          name="email"
+                          id="newsletterEmail"
+                        />
+                      </div>
+                      <button id="subscribeButton" type="submit" class="btn btn-default">
+                        S'abonner
+                      </button>
+                    </form>
 
-        <span>SITES à DéCOUVRIR</span>
-        <a href="http://inspire-geoportal.ec.europa.eu/" target="_blank">INSPIRE Geoportal</a><a
-        href="http://www.ngi.be/FR/FR0.shtm" target="_blank">Institut géographique national</a><a
-        href="http://geobru.irisnet.be/" target="_blank">Géoportail de la Région bruxelloise</a><a
-        href="http://www.geopunt.be/" target="_blank">GeoPunt Vlaanderen</a>
-        <div class="clear"></div>
-      </div>
-      <div class="footer-newsletter">
-        <span>Inscription à la newsletter</span>
-        <div id="popupNewsletter">
-          <div class="nl-popin nl-popin--open nl-popin--warning" style="display: none;">
-            <div class="nl-popin__inner">
-              <button class="btn btn-none nl-popin__close" type="button">
-                <span class="sprite sprite-close"></span>
-              </button>
-              <p id="information-message"></p>
+                    <div class="clear"></div>
+                  </div>
+                  <div class="footer-socials"></div>
+
+                  <div class="footer-follow">
+                    <span>Suivez-nous</span>
+                    <div class="texte-riche">
+                      <ul>
+                        <li>
+                          <a
+                            class="sprite sprite-linkedin"
+                            href="https://www.linkedin.com/company/g%C3%A9oportailwal/"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          ></a>
+                        </li>
+
+                        <li>
+                          <a
+                            class="sprite sprite-facebook"
+                            href="https://www.facebook.com/GeoportailWal/"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          ></a>
+                        </li>
+
+                        <li>
+                          <a
+                            class="sprite sprite-twitter"
+                            href="https://twitter.com/GeoportailWal"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </footer>
+              <div class="clear"></div>
+              <nav class="botbar">
+                <div class="container">
+                  <div class="botbar__primary">
+                    <span class="botbar-logo sprite sprite-rooster-red"></span>
+                    <ul>
+                      <li>
+                        <a href="http://geoportail.wallonie.be/sitemap.html"
+                          >Plan du site</a
+                        >
+                      </li>
+
+                      <li>
+                        <a href="http://geoportail.wallonie.be/mentions-legales.html"
+                          >Mentions légales</a
+                        >
+                      </li>
+
+                      <li>
+                        <a href="http://geoportail.wallonie.be/vie-privee.html"
+                          >Vie privée</a
+                        >
+                      </li>
+
+                      <li>
+                        <a href="http://geoportail.wallonie.be/mediateur.html"
+                          >Médiateur</a
+                        >
+                      </li>
+
+                      <li>
+                        <a href="http://geoportail.wallonie.be/accessibilite.html"
+                          >Accessibilité</a
+                        >
+                      </li>
+
+                      <li>
+                        <a href="http://geoportail.wallonie.be/contact">Contactez-nous</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="botbar__secondary">
+                    <a href="https://www.digitalwallonia.be/" target="_blank">
+                      Avec le soutien de Digital Wallonia
+                      <img
+                        src="./../../templates/jahiatemplate_files/digital-wallonia-small.png"
+                        alt="Digital Wallonia"
+                      />
+                    </a>
+                  </div>
+                </div>
+              </nav>
+              <div class="clear"></div>
+              <div class="clear"></div>
             </div>
+
+            <div id="limit-popup" class="limit-popup">
+              <div class="limit-popup__inner">
+                <button
+                  class="btn btn-none limit-popup__close"
+                  type="button"
+                  onclick="$(&#39;#limit-popup&#39;).hide()"
+                >
+                  <span class="sprite sprite-close"></span>
+                </button>
+                <p id="limit-popup-message"></p>
+                <button
+                  type="button"
+                  class="btn btn-default btn-full"
+                  onclick="$(&#39;#limit-popup&#39;).hide()"
+                >
+                  Fermer
+                </button>
+              </div>
+            </div>
+
+            <div
+              id="geoportail-modal-alert"
+              class="modal hide fade"
+              tabindex="-1"
+              role="dialog"
+            >
+              <div class="modal-body">
+                <h3 class="alert-title text-center"></h3>
+                <p class="alert-message text-center"></p>
+                <div style="text-align: center">
+                  <button
+                    class="btn btn-primary alert-popup-close-btn"
+                    type="button"
+                    onclick="hideModalAlert()"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div id="geoportail-modal-backdrop"></div>
+
+            <script type="text/javascript">
+              $(function () {
+                $(".paginator-navigation").each(function (index, item) {
+                  var item$ = $(item);
+                  var url = item$.data("url");
+                  if (url) {
+                    item$.data("url", decodeURIComponent(url));
+                  }
+                });
+              });
+            </script>
+
+            <div
+              class="datetimepicker datetimepicker-dropdown-bottom-right dropdown-menu"
+              style="left: 157.021px; z-index: 1060"
+            >
+              <div class="datetimepicker-minutes" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">3 Juillet 2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="minute">10:00</span
+                        ><span class="minute active">10:05</span
+                        ><span class="minute">10:10</span><span class="minute">10:15</span
+                        ><span class="minute">10:20</span><span class="minute">10:25</span
+                        ><span class="minute">10:30</span><span class="minute">10:35</span
+                        ><span class="minute">10:40</span><span class="minute">10:45</span
+                        ><span class="minute">10:50</span
+                        ><span class="minute">10:55</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-hours" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">3 Juillet 2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="hour">0:00</span><span class="hour">1:00</span
+                        ><span class="hour">2:00</span><span class="hour">3:00</span
+                        ><span class="hour">4:00</span><span class="hour">5:00</span
+                        ><span class="hour">6:00</span><span class="hour">7:00</span
+                        ><span class="hour">8:00</span><span class="hour">9:00</span
+                        ><span class="hour active">10:00</span
+                        ><span class="hour">11:00</span><span class="hour">12:00</span
+                        ><span class="hour">13:00</span><span class="hour">14:00</span
+                        ><span class="hour">15:00</span><span class="hour">16:00</span
+                        ><span class="hour">17:00</span><span class="hour">18:00</span
+                        ><span class="hour">19:00</span><span class="hour">20:00</span
+                        ><span class="hour">21:00</span><span class="hour">22:00</span
+                        ><span class="hour">23:00</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-days" style="display: block">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">Juillet 2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th class="dow">L</th>
+                      <th class="dow">Ma</th>
+                      <th class="dow">Me</th>
+                      <th class="dow">J</th>
+                      <th class="dow">V</th>
+                      <th class="dow">S</th>
+                      <th class="dow">D</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="day old">24</td>
+                      <td class="day old">25</td>
+                      <td class="day old">26</td>
+                      <td class="day old">27</td>
+                      <td class="day old">28</td>
+                      <td class="day old">29</td>
+                      <td class="day old">30</td>
+                    </tr>
+                    <tr>
+                      <td class="day">1</td>
+                      <td class="day">2</td>
+                      <td class="day active">3</td>
+                      <td class="day">4</td>
+                      <td class="day">5</td>
+                      <td class="day">6</td>
+                      <td class="day">7</td>
+                    </tr>
+                    <tr>
+                      <td class="day">8</td>
+                      <td class="day">9</td>
+                      <td class="day">10</td>
+                      <td class="day">11</td>
+                      <td class="day">12</td>
+                      <td class="day">13</td>
+                      <td class="day">14</td>
+                    </tr>
+                    <tr>
+                      <td class="day">15</td>
+                      <td class="day">16</td>
+                      <td class="day">17</td>
+                      <td class="day">18</td>
+                      <td class="day">19</td>
+                      <td class="day">20</td>
+                      <td class="day">21</td>
+                    </tr>
+                    <tr>
+                      <td class="day">22</td>
+                      <td class="day">23</td>
+                      <td class="day">24</td>
+                      <td class="day">25</td>
+                      <td class="day">26</td>
+                      <td class="day">27</td>
+                      <td class="day">28</td>
+                    </tr>
+                    <tr>
+                      <td class="day">29</td>
+                      <td class="day">30</td>
+                      <td class="day">31</td>
+                      <td class="day new">1</td>
+                      <td class="day new">2</td>
+                      <td class="day new">3</td>
+                      <td class="day new">4</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-months" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="month">Jan</span><span class="month">Fev</span
+                        ><span class="month">Mar</span><span class="month">Avr</span
+                        ><span class="month">Mai</span><span class="month">Jui</span
+                        ><span class="month active">Jul</span
+                        ><span class="month">Aou</span><span class="month">Sep</span
+                        ><span class="month">Oct</span><span class="month">Nov</span
+                        ><span class="month">Dec</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-years" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">2010-2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="year old">2009</span><span class="year">2010</span
+                        ><span class="year">2011</span><span class="year">2012</span
+                        ><span class="year">2013</span><span class="year">2014</span
+                        ><span class="year">2015</span><span class="year">2016</span
+                        ><span class="year">2017</span><span class="year">2018</span
+                        ><span class="year active">2019</span
+                        ><span class="year old">2020</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <div
+              class="datetimepicker datetimepicker-dropdown-bottom-right dropdown-menu"
+              style="left: 157.021px; z-index: 1070"
+            >
+              <div class="datetimepicker-minutes" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">3 Juillet 2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="minute">10:00</span
+                        ><span class="minute active">10:05</span
+                        ><span class="minute">10:10</span><span class="minute">10:15</span
+                        ><span class="minute">10:20</span><span class="minute">10:25</span
+                        ><span class="minute">10:30</span><span class="minute">10:35</span
+                        ><span class="minute">10:40</span><span class="minute">10:45</span
+                        ><span class="minute">10:50</span
+                        ><span class="minute">10:55</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-hours" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">3 Juillet 2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="hour">0:00</span><span class="hour">1:00</span
+                        ><span class="hour">2:00</span><span class="hour">3:00</span
+                        ><span class="hour">4:00</span><span class="hour">5:00</span
+                        ><span class="hour">6:00</span><span class="hour">7:00</span
+                        ><span class="hour">8:00</span><span class="hour">9:00</span
+                        ><span class="hour active">10:00</span
+                        ><span class="hour">11:00</span><span class="hour">12:00</span
+                        ><span class="hour">13:00</span><span class="hour">14:00</span
+                        ><span class="hour">15:00</span><span class="hour">16:00</span
+                        ><span class="hour">17:00</span><span class="hour">18:00</span
+                        ><span class="hour">19:00</span><span class="hour">20:00</span
+                        ><span class="hour">21:00</span><span class="hour">22:00</span
+                        ><span class="hour">23:00</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-days" style="display: block">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">Juillet 2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th class="dow">L</th>
+                      <th class="dow">Ma</th>
+                      <th class="dow">Me</th>
+                      <th class="dow">J</th>
+                      <th class="dow">V</th>
+                      <th class="dow">S</th>
+                      <th class="dow">D</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="day old">24</td>
+                      <td class="day old">25</td>
+                      <td class="day old">26</td>
+                      <td class="day old">27</td>
+                      <td class="day old">28</td>
+                      <td class="day old">29</td>
+                      <td class="day old">30</td>
+                    </tr>
+                    <tr>
+                      <td class="day">1</td>
+                      <td class="day">2</td>
+                      <td class="day active">3</td>
+                      <td class="day">4</td>
+                      <td class="day">5</td>
+                      <td class="day">6</td>
+                      <td class="day">7</td>
+                    </tr>
+                    <tr>
+                      <td class="day">8</td>
+                      <td class="day">9</td>
+                      <td class="day">10</td>
+                      <td class="day">11</td>
+                      <td class="day">12</td>
+                      <td class="day">13</td>
+                      <td class="day">14</td>
+                    </tr>
+                    <tr>
+                      <td class="day">15</td>
+                      <td class="day">16</td>
+                      <td class="day">17</td>
+                      <td class="day">18</td>
+                      <td class="day">19</td>
+                      <td class="day">20</td>
+                      <td class="day">21</td>
+                    </tr>
+                    <tr>
+                      <td class="day">22</td>
+                      <td class="day">23</td>
+                      <td class="day">24</td>
+                      <td class="day">25</td>
+                      <td class="day">26</td>
+                      <td class="day">27</td>
+                      <td class="day">28</td>
+                    </tr>
+                    <tr>
+                      <td class="day">29</td>
+                      <td class="day">30</td>
+                      <td class="day">31</td>
+                      <td class="day new">1</td>
+                      <td class="day new">2</td>
+                      <td class="day new">3</td>
+                      <td class="day new">4</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-months" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="month">Jan</span><span class="month">Fev</span
+                        ><span class="month">Mar</span><span class="month">Avr</span
+                        ><span class="month">Mai</span><span class="month">Jui</span
+                        ><span class="month active">Jul</span
+                        ><span class="month">Aou</span><span class="month">Sep</span
+                        ><span class="month">Oct</span><span class="month">Nov</span
+                        ><span class="month">Dec</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="datetimepicker-years" style="display: none">
+                <table class="table-condensed">
+                  <thead>
+                    <tr>
+                      <th class="prev" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-left"></i>
+                      </th>
+                      <th colspan="5" class="switch">2010-2019</th>
+                      <th class="next" style="visibility: visible">
+                        <i class="glyphicon icon-arrow-right"></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="7">
+                        <span class="year old">2009</span><span class="year">2010</span
+                        ><span class="year">2011</span><span class="year">2012</span
+                        ><span class="year">2013</span><span class="year">2014</span
+                        ><span class="year">2015</span><span class="year">2016</span
+                        ><span class="year">2017</span><span class="year">2018</span
+                        ><span class="year active">2019</span
+                        ><span class="year old">2020</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="7" class="today" style="display: none">Aujourd'hui</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <iframe
+              name="_hjRemoteVarsFrame"
+              title="_hjRemoteVarsFrame"
+              id="_hjRemoteVarsFrame"
+              src="./../../templates/jahiatemplate_files/box-90f3a29ef7448451db5af955688970d7.html"
+              style="
+                display: none !important;
+                width: 1px !important;
+                height: 1px !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+              "
+            ></iframe>
+            <div id="ads"></div>
           </div>
-        </div>
-
-        <form class="newsletter-form" id="subscribeForm-8b8b7076-1027-49db-856b-87ebb513e3b9" method="post"
-              action="http://geoportail.wallonie.be/newsletters/du-geoportail-de-la-wallonie.geoportailSubscribe.do">
-          <div class="control-group">
-
-            <input type="text" placeholder="Email" class="input-block-level" name="email" id="newsletterEmail">
-          </div>
-          <button id="subscribeButton" type="submit" class="btn btn-default">S'abonner</button>
-        </form>
-
-
-        <div class="clear"></div>
-      </div>
-      <div class="footer-socials">
-
-      </div>
-
-      <div class="footer-follow">
-
-        <span>Suivez-nous</span>
-        <div class="texte-riche">
-          <ul>
-
-            <li><a class="sprite sprite-linkedin" href="https://www.linkedin.com/company/g%C3%A9oportailwal/"
-                   target="_blank" rel="noreferrer noopener"></a></li>
-
-            <li><a class="sprite sprite-facebook" href="https://www.facebook.com/GeoportailWal/" target="_blank"
-                   rel="noreferrer noopener"></a></li>
-
-            <li><a class="sprite sprite-twitter" href="https://twitter.com/GeoportailWal" target="_blank"
-                   rel="noreferrer noopener"></a></li>
-
-          </ul>
-        </div>
-
-      </div>
+        </section>
+      </section>
     </div>
-  </footer>
-  <div class="clear"></div>
-  <nav class="botbar">
-    <div class="container">
-      <div class="botbar__primary">
-        <span class="botbar-logo sprite sprite-rooster-red"></span>
-        <ul>
-
-          <li>
-            <a href="http://geoportail.wallonie.be/sitemap.html">Plan du site</a>
-          </li>
-
-          <li>
-            <a href="http://geoportail.wallonie.be/mentions-legales.html">Mentions légales</a>
-          </li>
-
-          <li>
-            <a href="http://geoportail.wallonie.be/vie-privee.html">Vie privée</a>
-          </li>
-
-          <li>
-            <a href="http://geoportail.wallonie.be/mediateur.html">Médiateur</a>
-          </li>
-
-          <li>
-            <a href="http://geoportail.wallonie.be/accessibilite.html">Accessibilité</a>
-          </li>
-
-          <li>
-            <a href="http://geoportail.wallonie.be/contact">Contactez-nous</a>
-          </li>
-
-        </ul>
-      </div>
-      <div class="botbar__secondary">
-
-        <a href="https://www.digitalwallonia.be/" target="_blank">
-          Avec le soutien de Digital Wallonia
-          <img src="./../../templates/jahiatemplate_files/digital-wallonia-small.png" alt="Digital Wallonia">
-        </a>
-
-      </div>
-    </div>
-  </nav>
-  <div class="clear"></div>
-  <div class="clear"></div>
-</div>
-
-
-<div id="limit-popup" class="limit-popup">
-  <div class="limit-popup__inner">
-    <button class="btn btn-none limit-popup__close" type="button" onclick="$(&#39;#limit-popup&#39;).hide()">
-      <span class="sprite sprite-close"></span>
-    </button>
-    <p id="limit-popup-message"></p>
-    <button type="button" class="btn btn-default btn-full" onclick="$(&#39;#limit-popup&#39;).hide()">Fermer</button>
-  </div>
-</div>
-
-<div id="geoportail-modal-alert" class="modal hide fade" tabindex="-1" role="dialog">
-  <div class="modal-body">
-    <h3 class="alert-title text-center"></h3>
-    <p class="alert-message text-center"></p>
-    <div style="text-align: center">
-      <button class="btn btn-primary alert-popup-close-btn" type="button" onclick="hideModalAlert()">OK</button>
-    </div>
-  </div>
-</div>
-
-<div id="geoportail-modal-backdrop"></div>
-
-
-<script type="text/javascript">
-  $(function () {
-    $('.paginator-navigation').each(function (index, item) {
-      var item$ = $(item);
-      var url = item$.data('url');
-      if (url) {
-        item$.data('url', decodeURIComponent(url));
-      }
-    });
-  });
-
-</script>
-
-
-<div class="datetimepicker datetimepicker-dropdown-bottom-right dropdown-menu" style="left: 157.021px; z-index: 1060;">
-  <div class="datetimepicker-minutes" style="display: none;">
-    <table class=" table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">3 Juillet 2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="minute">10:00</span><span class="minute active">10:05</span><span class="minute">10:10</span><span
-          class="minute">10:15</span><span class="minute">10:20</span><span class="minute">10:25</span><span
-          class="minute">10:30</span><span class="minute">10:35</span><span class="minute">10:40</span><span
-          class="minute">10:45</span><span class="minute">10:50</span><span class="minute">10:55</span></td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-hours" style="display: none;">
-    <table class=" table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">3 Juillet 2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="hour">0:00</span><span class="hour">1:00</span><span class="hour">2:00</span><span
-          class="hour">3:00</span><span class="hour">4:00</span><span class="hour">5:00</span><span
-          class="hour">6:00</span><span class="hour">7:00</span><span class="hour">8:00</span><span
-          class="hour">9:00</span><span class="hour active">10:00</span><span class="hour">11:00</span><span
-          class="hour">12:00</span><span class="hour">13:00</span><span class="hour">14:00</span><span class="hour">15:00</span><span
-          class="hour">16:00</span><span class="hour">17:00</span><span class="hour">18:00</span><span class="hour">19:00</span><span
-          class="hour">20:00</span><span class="hour">21:00</span><span class="hour">22:00</span><span class="hour">23:00</span>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-days" style="display: block;">
-    <table class=" table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">Juillet 2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      <tr>
-        <th class="dow">L</th>
-        <th class="dow">Ma</th>
-        <th class="dow">Me</th>
-        <th class="dow">J</th>
-        <th class="dow">V</th>
-        <th class="dow">S</th>
-        <th class="dow">D</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="day old">24</td>
-        <td class="day old">25</td>
-        <td class="day old">26</td>
-        <td class="day old">27</td>
-        <td class="day old">28</td>
-        <td class="day old">29</td>
-        <td class="day old">30</td>
-      </tr>
-      <tr>
-        <td class="day">1</td>
-        <td class="day">2</td>
-        <td class="day active">3</td>
-        <td class="day">4</td>
-        <td class="day">5</td>
-        <td class="day">6</td>
-        <td class="day">7</td>
-      </tr>
-      <tr>
-        <td class="day">8</td>
-        <td class="day">9</td>
-        <td class="day">10</td>
-        <td class="day">11</td>
-        <td class="day">12</td>
-        <td class="day">13</td>
-        <td class="day">14</td>
-      </tr>
-      <tr>
-        <td class="day">15</td>
-        <td class="day">16</td>
-        <td class="day">17</td>
-        <td class="day">18</td>
-        <td class="day">19</td>
-        <td class="day">20</td>
-        <td class="day">21</td>
-      </tr>
-      <tr>
-        <td class="day">22</td>
-        <td class="day">23</td>
-        <td class="day">24</td>
-        <td class="day">25</td>
-        <td class="day">26</td>
-        <td class="day">27</td>
-        <td class="day">28</td>
-      </tr>
-      <tr>
-        <td class="day">29</td>
-        <td class="day">30</td>
-        <td class="day">31</td>
-        <td class="day new">1</td>
-        <td class="day new">2</td>
-        <td class="day new">3</td>
-        <td class="day new">4</td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-months" style="display: none;">
-    <table class="table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="month">Jan</span><span class="month">Fev</span><span class="month">Mar</span><span
-          class="month">Avr</span><span class="month">Mai</span><span class="month">Jui</span><span
-          class="month active">Jul</span><span class="month">Aou</span><span class="month">Sep</span><span
-          class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-years" style="display: none;">
-    <table class="table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">2010-2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span
-          class="year">2011</span><span class="year">2012</span><span class="year">2013</span><span
-          class="year">2014</span><span class="year">2015</span><span class="year">2016</span><span
-          class="year">2017</span><span class="year">2018</span><span class="year active">2019</span><span
-          class="year old">2020</span></td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-</div>
-<div class="datetimepicker datetimepicker-dropdown-bottom-right dropdown-menu" style="left: 157.021px; z-index: 1070;">
-  <div class="datetimepicker-minutes" style="display: none;">
-    <table class=" table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">3 Juillet 2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="minute">10:00</span><span class="minute active">10:05</span><span class="minute">10:10</span><span
-          class="minute">10:15</span><span class="minute">10:20</span><span class="minute">10:25</span><span
-          class="minute">10:30</span><span class="minute">10:35</span><span class="minute">10:40</span><span
-          class="minute">10:45</span><span class="minute">10:50</span><span class="minute">10:55</span></td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-hours" style="display: none;">
-    <table class=" table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">3 Juillet 2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="hour">0:00</span><span class="hour">1:00</span><span class="hour">2:00</span><span
-          class="hour">3:00</span><span class="hour">4:00</span><span class="hour">5:00</span><span
-          class="hour">6:00</span><span class="hour">7:00</span><span class="hour">8:00</span><span
-          class="hour">9:00</span><span class="hour active">10:00</span><span class="hour">11:00</span><span
-          class="hour">12:00</span><span class="hour">13:00</span><span class="hour">14:00</span><span class="hour">15:00</span><span
-          class="hour">16:00</span><span class="hour">17:00</span><span class="hour">18:00</span><span class="hour">19:00</span><span
-          class="hour">20:00</span><span class="hour">21:00</span><span class="hour">22:00</span><span class="hour">23:00</span>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-days" style="display: block;">
-    <table class=" table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">Juillet 2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      <tr>
-        <th class="dow">L</th>
-        <th class="dow">Ma</th>
-        <th class="dow">Me</th>
-        <th class="dow">J</th>
-        <th class="dow">V</th>
-        <th class="dow">S</th>
-        <th class="dow">D</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="day old">24</td>
-        <td class="day old">25</td>
-        <td class="day old">26</td>
-        <td class="day old">27</td>
-        <td class="day old">28</td>
-        <td class="day old">29</td>
-        <td class="day old">30</td>
-      </tr>
-      <tr>
-        <td class="day">1</td>
-        <td class="day">2</td>
-        <td class="day active">3</td>
-        <td class="day">4</td>
-        <td class="day">5</td>
-        <td class="day">6</td>
-        <td class="day">7</td>
-      </tr>
-      <tr>
-        <td class="day">8</td>
-        <td class="day">9</td>
-        <td class="day">10</td>
-        <td class="day">11</td>
-        <td class="day">12</td>
-        <td class="day">13</td>
-        <td class="day">14</td>
-      </tr>
-      <tr>
-        <td class="day">15</td>
-        <td class="day">16</td>
-        <td class="day">17</td>
-        <td class="day">18</td>
-        <td class="day">19</td>
-        <td class="day">20</td>
-        <td class="day">21</td>
-      </tr>
-      <tr>
-        <td class="day">22</td>
-        <td class="day">23</td>
-        <td class="day">24</td>
-        <td class="day">25</td>
-        <td class="day">26</td>
-        <td class="day">27</td>
-        <td class="day">28</td>
-      </tr>
-      <tr>
-        <td class="day">29</td>
-        <td class="day">30</td>
-        <td class="day">31</td>
-        <td class="day new">1</td>
-        <td class="day new">2</td>
-        <td class="day new">3</td>
-        <td class="day new">4</td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-months" style="display: none;">
-    <table class="table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="month">Jan</span><span class="month">Fev</span><span class="month">Mar</span><span
-          class="month">Avr</span><span class="month">Mai</span><span class="month">Jui</span><span
-          class="month active">Jul</span><span class="month">Aou</span><span class="month">Sep</span><span
-          class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-  <div class="datetimepicker-years" style="display: none;">
-    <table class="table-condensed">
-      <thead>
-      <tr>
-        <th class="prev" style="visibility: visible;"><i class="glyphicon icon-arrow-left"></i></th>
-        <th colspan="5" class="switch">2010-2019</th>
-        <th class="next" style="visibility: visible;"><i class="glyphicon icon-arrow-right"></i></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span
-          class="year">2011</span><span class="year">2012</span><span class="year">2013</span><span
-          class="year">2014</span><span class="year">2015</span><span class="year">2016</span><span
-          class="year">2017</span><span class="year">2018</span><span class="year active">2019</span><span
-          class="year old">2020</span></td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <th colspan="7" class="today" style="display: none;">Aujourd'hui</th>
-      </tr>
-      </tfoot>
-    </table>
-  </div>
-</div>
-<iframe name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame"
-        src="./../../templates/jahiatemplate_files/box-90f3a29ef7448451db5af955688970d7.html"
-        style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe>
-<div id="ads"></div>
-</body>
+  </body>
 </html>
