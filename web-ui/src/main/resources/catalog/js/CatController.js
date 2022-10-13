@@ -133,7 +133,7 @@
               },
               // 'OrgForResource': {
               //   'terms': {
-              //     'field': 'OrgForResource',
+              //     'field': 'OrgForResourceObject',
               //     'include': '.*',
               //     'missing': '- No org -',
               //     'size': 15
@@ -187,6 +187,8 @@
               exactMatch: true,
               language: false
             },
+            // The language strategy define how to search on multilingual content.
+            // It also applies to aggregation using ${aggLanguage} substitute.
             // Language strategy can be:
             // * searchInUILanguage: search in UI languages
             // eg. full text field is any.langfre if French
@@ -525,7 +527,7 @@
               },
               custodianOrgForResource: {
                 terms: {
-                  field: "custodianOrgForResource",
+                  field: "custodianOrgForResource.${aggLang}",
                   include: ".*",
                   exclude: ".*SPW.*",
                   size: 15
