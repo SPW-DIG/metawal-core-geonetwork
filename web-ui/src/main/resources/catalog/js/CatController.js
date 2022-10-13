@@ -516,7 +516,7 @@
                 },
               custodianOrgForResource_tree: {
                 terms: {
-                  field: "custodianOrgForResource_tree",
+                  field: "custodianOrgForResource_tree.keyword",
                   include: "SPW.*",
                   size: 100,
                   order: { _key: "asc" }
@@ -527,7 +527,7 @@
               },
               custodianOrgForResource: {
                 terms: {
-                  field: "custodianOrgForResource.${aggLang}",
+                  field: "custodianOrgForResourceObject.${aggLang}",
                   include: ".*",
                   exclude: ".*SPW.*",
                   size: 15
