@@ -525,7 +525,6 @@
        * Save a user.
        */
       $scope.saveUser = function (formId) {
-
         var selectedRegisteredUserGroups = [],
           selectedEditorGroups = [],
           selectedReviewerGroups = [],
