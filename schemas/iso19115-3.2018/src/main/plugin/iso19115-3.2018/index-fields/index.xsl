@@ -58,14 +58,14 @@
   <xsl:import href="common/index-utils.xsl"/>
   <xsl:import href="link-utility.xsl"/>
 
-
-  <xsl:output method="xml" indent="yes"/>
-
   <xsl:output name="default-serialize-mode"
               indent="no"
               omit-xml-declaration="yes"
               encoding="utf-8"
               escape-uri-attributes="yes"/>
+
+  <xsl:param name="fastIndexMode" select="false()"/>
+
 
   <!-- If identification creation, publication and revision date
     should be indexed as a temporal extent information (eg. in INSPIRE
@@ -468,13 +468,6 @@
         <xsl:for-each select="$overviews">
           <overview type="object">{
             "url": "<xsl:value-of select="if (local-name() = 'FileName') then @src else normalize-space(.)"/>"
-            <xsl:if test="$isStoringOverviewInIndex">
-              <xsl:variable name="data"
-                            select="util:buildDataUrl(., 140)"/>
-              <xsl:if test="$data != ''">,
-                "data": "<xsl:value-of select="$data"/>"
-              </xsl:if>
-            </xsl:if>
             <xsl:if test="count(../../mcc:fileDescription) > 0">,
               "nameObject":
               <xsl:value-of select="gn-fn-index:add-multilingual-field('name', ../../mcc:fileDescription, $allLanguages, true())"/>
@@ -1540,6 +1533,7 @@
 
           <xsl:variable name="resolvedDoc">
             <xsl:if test="$processRemoteDocs
+                          and not($fastIndexMode)
                           and $xlink != ''
                           and not(@xlink:title)
                           and not(starts-with($xlink, $siteUrl))">
@@ -1630,7 +1624,8 @@
 
             <xsl:choose>
               <!-- 1) Is the link referencing an external metadata? -->
-              <xsl:when test="string(normalize-space($xlinkHref))
+              <xsl:when test="not($fastIndexMode)
+                              and string(normalize-space($xlinkHref))
                               and not(starts-with(replace($xlinkHref, 'http://', 'https://'), replace($siteUrl, 'http://', 'https://')))">
 
                 <!-- remote url: request the document to index data -->
