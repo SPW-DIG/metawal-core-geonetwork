@@ -65,7 +65,7 @@
     <msg id="b" xml:lang="eng"> is described in online resource section. Run to add connect point.
     </msg>
     <msg id="a" xml:lang="fre">Le service ESRI REST </msg>
-    <msg id="b" xml:lang="fre"> est décrit dans la section resource en ligne. Exécuter cette ajouter l'adresse de connexion.
+    <msg id="b" xml:lang="fre"> est décrit dans la section resource en ligne. Exécuter pour ajouter l'adresse de connexion.
     </msg>
     <msg id="connectPoint" xml:lang="eng">ESRI-REST View service</msg>
     <msg id="connectPoint" xml:lang="fre">Service de visualisation ESRI-REST</msg>
