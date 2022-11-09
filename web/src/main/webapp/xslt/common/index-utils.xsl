@@ -359,8 +359,7 @@
                           'th_INSPIRE-feature-concept-dictionary',
                           'th_otherKeywords-',
                           'th_otherKeywords-theme',
-                          'th_otherKeywords-place',
-                          'th_Themes_geoportail_wallon_hierarchy'
+                          'th_otherKeywords-place'
                           )"/>
 
     <mw-gp-keywords type="object">{
