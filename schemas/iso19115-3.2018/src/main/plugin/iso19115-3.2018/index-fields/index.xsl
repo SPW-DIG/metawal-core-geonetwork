@@ -1191,7 +1191,7 @@
             <xsl:with-param name="languages" select="$allLanguages"/>
           </xsl:apply-templates>
         </xsl:for-each>
-        
+
         <xsl:for-each select="mrd:distributor/mrd:MD_Distributor
                                   /mrd:distributionOrderProcess/*/mrd:orderingInstructions">
           <xsl:copy-of select="gn-fn-index:add-multilingual-field('orderingInstructions', ., $allLanguages)"/>
@@ -1298,8 +1298,14 @@
               {
               "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
               "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
-              "name":"<xsl:value-of select="gn-fn-index:json-escape((cit:name/*/text())[1])"/>",
-              "description":"<xsl:value-of select="gn-fn-index:json-escape((cit:description/*/text())[1])"/>",
+              <xsl:if test="normalize-space(cit:name) != ''">
+                "nameObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'name', cit:name, $allLanguages)"/>,
+              </xsl:if>
+              <xsl:if test="normalize-space(cit:description) != ''">
+                "descriptionObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'description', cit:description, $allLanguages)"/>,
+              </xsl:if>
               "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
               "applicationProfile":"<xsl:value-of select="gn-fn-index:json-escape(cit:applicationProfile/gco:CharacterString/text())"/>"
               }
