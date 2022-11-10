@@ -1297,7 +1297,10 @@
               <xsl:attribute name="type" select="'object'"/>
               {
               "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
-              "url":"<xsl:value-of select="gn-fn-index:json-escape(cit:linkage/*/text())"/>",
+              <xsl:if test="normalize-space(cit:linkage) != ''">
+                "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'url', cit:linkage, $allLanguages)"/>,
+              </xsl:if>
               <xsl:if test="normalize-space(cit:name) != ''">
                 "nameObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                 'name', cit:name, $allLanguages)"/>,
