@@ -1258,7 +1258,8 @@
         <xsl:variable name="linkConfig">
           <link protocol="WWW:LINK" function="browsing" appProfile="0" field="mw-gp-thematicMap"></link>
           <link protocol="WWW:LINK" function="browsing" appProfile="1" field="mw-gp-staticMap"></link>
-          <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link>
+          <link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileName="walonmap" field="mw-gp-wom"></link>
+          <!--link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-wom"></link-->
           <!--link protocol="WWW:LINK" function="browsing" appProfile="1" appProfileValue="application/vnd.google-earth.kml+xml" field="mw-gp-ge"></link-->
           <link protocol="ESRI:REST|OGC:W.*" function="browsing" appProfile="0" field="mw-gp-allWebServices"></link>
           <!--link protocol="OGC:W.*" function="browsing" appProfile="0"field="mw-gp-allWebServices"></link-->
@@ -1298,8 +1299,30 @@
               {
               "protocol":"<xsl:value-of select="gn-fn-index:json-escape(cit:protocol/*/text())"/>",
               <xsl:if test="normalize-space(cit:linkage) != ''">
-                "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
-                                'url', cit:linkage, $allLanguages)"/>,
+                <xsl:choose>
+                  <xsl:when test="$gpLink/@appProfileName and lower-case(cit:applicationProfile/gco:CharacterString) = $gpLink/@appProfileName">
+                    <xsl:variable name="WOMurl">
+                      <gco:CharacterString>
+                        <xsl:choose>
+                          <xsl:when test="starts-with(cit:linkage/gco:CharacterString,'https://geoportail.wallonie.be/walonmap/?#ADU')">
+                            <xsl:value-of select="cit:linkage/gco:CharacterString"></xsl:value-of>
+                          </xsl:when>
+                          <xsl:otherwise>
+                            <xsl:value-of select="concat('https://geoportail.wallonie.be/walonmap/?#ADU', cit:linkage/gco:CharacterString)"></xsl:value-of>
+                          </xsl:otherwise>
+                        </xsl:choose>
+                      </gco:CharacterString>
+                    </xsl:variable>
+                    "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                  'url', $WOMurl , $allLanguages)"/>,
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:message>test :
+                      <xsl:value-of select="$gpLink/@appProfileName"/></xsl:message>
+                    "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                  'url', cit:linkage, $allLanguages)"/>,
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:if>
               <xsl:if test="normalize-space(cit:name) != ''">
                 "nameObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
