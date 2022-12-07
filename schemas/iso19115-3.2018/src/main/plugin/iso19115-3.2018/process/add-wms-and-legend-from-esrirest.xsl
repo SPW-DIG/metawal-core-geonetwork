@@ -158,8 +158,11 @@
             <gco:CharacterString>Application cartographique du Geoportail (WalOnMap) qui permet de découvrir les données géographiques de la Wallonie.</gco:CharacterString>
           </cit:description>
           <cit:function>
-            <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="information"/>
+            <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="browsing"/>
           </cit:function>
+          <cit:applicationProfile>
+            <gco:CharacterString>WalOnMap</gco:CharacterString>
+          </cit:applicationProfile>
         </cit:CI_OnlineResource>
       </mrd:onLine>
     </xsl:if>

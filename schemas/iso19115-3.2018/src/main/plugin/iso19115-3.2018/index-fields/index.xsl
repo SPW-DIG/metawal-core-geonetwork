@@ -1303,14 +1303,7 @@
                   <xsl:when test="$gpLink/@appProfileName and lower-case(cit:applicationProfile/gco:CharacterString) = $gpLink/@appProfileName">
                     <xsl:variable name="WOMurl">
                       <gco:CharacterString>
-                        <xsl:choose>
-                          <xsl:when test="starts-with(cit:linkage/gco:CharacterString,'https://geoportail.wallonie.be/walonmap/?#ADU')">
-                            <xsl:value-of select="cit:linkage/gco:CharacterString"></xsl:value-of>
-                          </xsl:when>
-                          <xsl:otherwise>
-                            <xsl:value-of select="concat('https://geoportail.wallonie.be/walonmap/?#ADU', cit:linkage/gco:CharacterString)"></xsl:value-of>
-                          </xsl:otherwise>
-                        </xsl:choose>
+                        <xsl:value-of select="cit:linkage/gco:CharacterString"></xsl:value-of>
                       </gco:CharacterString>
                     </xsl:variable>
                     "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
