@@ -1310,8 +1310,6 @@
                                   'url', $WOMurl , $allLanguages)"/>,
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:message>test :
-                      <xsl:value-of select="$gpLink/@appProfileName"/></xsl:message>
                     "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                   'url', cit:linkage, $allLanguages)"/>,
                   </xsl:otherwise>
