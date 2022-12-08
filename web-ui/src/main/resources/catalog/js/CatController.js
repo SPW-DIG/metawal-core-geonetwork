@@ -813,7 +813,8 @@
             showStatusTopBarFor: "",
             showCitation: {
               enabled: false,
-              if: null // {'documentStandard': ['iso19115-3.2018']}
+              // if: {'documentStandard': ['iso19115-3.2018']}
+              if: { resourceType: ["series", "dataset", "nonGeographicDataset"] }
             },
             sortKeywordsAlphabetically: true,
             mainThesaurus: [
@@ -1236,7 +1237,7 @@
             // Add some fuzziness when search on directory entries
             // but boost exact match.
             queryBase:
-              'any.${searchLang}:(${any}) any.common:(${any}) resourceTitleObject.${searchLang}:"${any}"^10 resourceTitleObject.${searchLang}:(${any})^5 resourceTitleObject.${searchLang}:(${any}~2)'
+              'any.${searchLang}:(${any}) OR any.common:(${any}) OR resourceTitleObject.${searchLang}:"${any}"^10 OR resourceTitleObject.${searchLang}:(${any})^5 OR resourceTitleObject.${searchLang}:(${any}~2)'
           },
           admin: {
             enabled: true,
@@ -1417,7 +1418,7 @@
               result = result.concat(
                 that.getObjectKeysPaths(obj[key], stopKeyList, allLevels, prefix + key)
               );
-            } else {
+            } else if (key !== "mods") {
               result.push(prefix + key);
             }
             return result;

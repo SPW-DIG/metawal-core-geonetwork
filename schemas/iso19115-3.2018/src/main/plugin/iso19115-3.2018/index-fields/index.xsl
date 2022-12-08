@@ -25,6 +25,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+                xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
                 xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
                 xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
                 xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
@@ -240,6 +241,22 @@
       </xsl:for-each>
 
 
+      <!-- ISO19115-3 records can be only a feature catalogue description.
+       In this case,
+       * add the resourceType=featureCatalog to enable search when linking records
+       * (TODO: Check which scopeCode is more appropriate eg. featureType ?)
+       * Index feature catalogue name as title, scope as abstract.
+       -->
+      <xsl:variable name="isOnlyFeatureCatalog"
+                    select="not(mdb:identificationInfo)
+                            and exists(mdb:contentInfo/*/mrc:featureCatalogue)"
+                    as="xs:boolean"/>
+
+      <xsl:if test="exists(mdb:contentInfo/*/mrc:featureCatalogue//gfc:FC_FeatureCatalogue/gfc:featureType)">
+        <resourceType>featureCatalog</resourceType>
+      </xsl:if>
+
+
       <xsl:choose>
         <xsl:when test="$isDataset">
           <resourceType>dataset</resourceType>
@@ -289,6 +306,7 @@
         <xsl:copy-of select="gn-fn-index:add-codelist-field(
                                   $fieldName, ., $allLanguages)"/>
       </xsl:for-each-group>
+
 
 
       <!-- Indexing resource information
@@ -441,10 +459,10 @@
 
 
 
-        <xsl:for-each-group select="mri:defaultLocale/lan:PT_Locale/lan:characterEncoding/lan:MD_CharacterSetCode"
+        <xsl:for-each-group select="mri:defaultLocale/*/lan:characterEncoding/*[@codeListValue != '']"
                             group-by="@codeListValue">
           <xsl:copy-of select="gn-fn-index:add-codelist-field(
-                                  'cl_resourceCharacterSet', ., $allLanguages)"/>
+                                'cl_resourceCharacterSet', ., $allLanguages)"/>
         </xsl:for-each-group>
 
         <!-- Indexing resource contact -->
@@ -590,7 +608,9 @@
                                           mcc:code/(gco:CharacterString|gcx:Anchor)"/>
 
             <xsl:variable name="thesaurusId"
-                          select="normalize-space($thesaurusRef/text())"/>
+                          select="if ($thesaurusRef != '')
+                                  then normalize-space($thesaurusRef/text())
+                                  else util:getThesaurusIdByTitle($thesaurusTitle)"/>
 
             <xsl:variable name="thesaurusUri"
                           select="$thesaurusRef/@xlink:href"/>
@@ -942,7 +962,7 @@
 
 
         <!-- Service information -->
-        <xsl:for-each select="srv:serviceType/gco:ScopedName">
+        <xsl:for-each select="srv:serviceType/gco:ScopedName[string(text())]">
           <serviceType>
             <xsl:value-of select="text()"/>
           </serviceType>
@@ -1039,11 +1059,32 @@
       </xsl:for-each-group>
 
 
+      <xsl:if test="$isOnlyFeatureCatalog">
+        <resourceType>featureCatalog</resourceType>
+
+        <xsl:for-each select="mdb:contentInfo/*/mrc:featureCatalogue/*">
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceTitle',
+                                cat:name, $allLanguages)"/>
+
+          <xsl:for-each select="cat:versionNumber/*">
+            <xsl:copy-of select="gn-fn-index:add-field('resourceEdition', .)"/>
+          </xsl:for-each>
+
+          <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract',
+                                cat:scope, $allLanguages)"/>
+        </xsl:for-each>
+
+
+        <xsl:apply-templates mode="index-contact"
+                             select="mdb:contentInfo//gfc:producer">
+          <xsl:with-param name="fieldSuffix" select="'ForResource'"/>
+        </xsl:apply-templates>
+      </xsl:if>
 
       <xsl:variable name="jsonFeatureTypes">[
         <xsl:for-each select="mdb:contentInfo//gfc:FC_FeatureCatalogue/gfc:featureType">{
 
-          "typeName" : "<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:typeName/*/text())"/>",
+          "typeName" : "<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:typeName/text())"/>",
           "definition" :"<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:definition/*/text())"/>",
           "code" :"<xsl:value-of select="gn-fn-index:json-escape(gfc:FC_FeatureType/gfc:code/*/text())"/>",
           "isAbstract" :"<xsl:value-of select="gfc:FC_FeatureType/gfc:isAbstract/*/text()"/>",
