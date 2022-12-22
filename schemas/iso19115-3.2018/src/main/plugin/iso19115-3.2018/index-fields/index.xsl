@@ -1291,6 +1291,14 @@
                                   ($gpLink/@appProfile = 1 and (
                                     count(cit:applicationProfile/gco:CharacterString) > 0
                                     and cit:applicationProfile/gco:CharacterString != '')
+                                    and (not($gpLink/@appProfileName) and
+                                    lower-case(cit:applicationProfile/gco:CharacterString) != $linkConfig/link[contains(@field,'mw-gp-wom')]/@appProfileName)
+                                  )
+                                  or
+                                  ($gpLink/@appProfile = 1 and (
+                                    count(cit:applicationProfile/gco:CharacterString) > 0
+                                    and cit:applicationProfile/gco:CharacterString != '')
+                                    and $gpLink/@appProfileName and lower-case(cit:applicationProfile/gco:CharacterString) = $gpLink/@appProfileName
                                   )
                                 )]">
 
