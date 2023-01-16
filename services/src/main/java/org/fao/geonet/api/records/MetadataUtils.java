@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2016 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2023 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -43,7 +43,6 @@ import org.fao.geonet.api.records.model.related.RelatedItemOrigin;
 import org.fao.geonet.api.records.model.related.RelatedItemType;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.domain.AbstractMetadata;
-import org.fao.geonet.domain.Pair;
 import org.fao.geonet.domain.ReservedOperation;
 import org.fao.geonet.domain.Source;
 import org.fao.geonet.kernel.DataManager;
@@ -229,7 +228,7 @@ public class MetadataUtils {
                         if (isRemote) {
                             remoteRecords.add(r.getUuid());
                         }
-                    };
+                    }
                     queries.put(type,
                         new RelatedTypeDetails(
                             String.format("(uuid:(%s)%s) AND (draft:\"n\" OR draft:\"e\")",
@@ -391,9 +390,10 @@ public class MetadataUtils {
     }
 
     private static String buildRemoteRecord(Map<String, String> props) {
-        return props == null ? "{}" : String.format(
-            "{\"resourceTitleObject\": {\"default\": \"%s\"}}",
-            StringEscapeUtils.escapeJson(props.get("resourceTitle")));
+        return props == null || props.get("resourceTitle") == null
+            ? "{}"
+            : String.format("{\"resourceTitleObject\": {\"default\": \"%s\"}}",
+                StringEscapeUtils.escapeJson(props.get("resourceTitle")));
     }
 
     @Deprecated
@@ -759,9 +759,9 @@ public class MetadataUtils {
                 BinaryFile.copy(is, os);
             }
         } catch (Exception e) {
-            Log.error(Geonet.GEONETWORK, "Backup record. Error: " + e.getMessage(), e);
+            throw new RuntimeException("Error performing backup on record '" + metadata.getUuid() + "'. Contact the system administrator if the problem persists: " + e.getMessage(), e);
         } finally {
-            if (file == null) {
+            if (file != null) {
                 IO.deleteFile(file, false, Geonet.MEF);
             }
         }
