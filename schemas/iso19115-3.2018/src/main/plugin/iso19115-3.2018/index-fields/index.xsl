@@ -419,16 +419,8 @@
 
         <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAbstract', mri:abstract, $allLanguages)"/>
 
-<<<<<<< HEAD
         <!--  MW - Geoportail specific index  START -->
-
-        <!-- supplementalInformation -->
-
-        <xsl:variable name="supplementalInformation"
-                      select="mri:supplementalInformation/gco:CharacterString[. != '']"/>
-
         <!-- infrasigKeywords -->
-
         <xsl:variable name="infrasigKeywords"
                       select="*/mri:MD_Keywords[
         contains(lower-case(
@@ -442,7 +434,6 @@
         </xsl:if>
 
         <!-- hookPhrase -->
-
         <xsl:if test="mri:abstract/gco:CharacterString">
           <xsl:variable name="hookAbstract">
             <xsl:analyze-string select="mri:abstract/gco:CharacterString"
@@ -460,8 +451,6 @@
 
 
 
-=======
->>>>>>> origin/main
         <xsl:for-each-group select="mri:defaultLocale/*/lan:characterEncoding/*[@codeListValue != '']"
                             group-by="@codeListValue">
           <xsl:copy-of select="gn-fn-index:add-codelist-field(
