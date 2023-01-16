@@ -1187,12 +1187,12 @@
                 },
                 meta: {
                   collapsed: true,
-                    decorator: {
+                  decorator: {
                     type: "icon",
-                      prefix: "fa fa-fw ",
-                      map: {
+                    prefix: "fa fa-fw ",
+                    map: {
                       n: "fa-file-text",
-                        y: "fa-file"
+                      y: "fa-file"
                     }
                   }
                 }

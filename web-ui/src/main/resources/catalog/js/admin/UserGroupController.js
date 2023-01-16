@@ -257,7 +257,7 @@
         $scope.userGroups = null;
         $scope.userIsAdmin = false;
         $scope.userIsEnabled = true;
-        $scope.authtypeisLDAP = {'checked': false};
+        $scope.authtypeisLDAP = { checked: false };
 
         updateGroupsByProfile($scope.userGroups);
 
