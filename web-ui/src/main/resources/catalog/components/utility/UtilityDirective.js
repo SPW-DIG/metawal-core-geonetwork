@@ -50,8 +50,8 @@
               if (scope.md && scope.md.groupOwner) {
                 $http
                   .get("../api/groups/" + scope.md.groupOwner, { cache: true })
-                  .success(function (data) {
-                    scope.recordGroup = data;
+                  .then(function (response) {
+                    scope.recordGroup = response.data;
                   });
               }
             }
@@ -102,8 +102,8 @@
           };
           $http
             .get(gnGlobalSettings.gnUrl + "../catalog/config/batch-examples.json")
-            .success(function (data) {
-              scope.batchExamples = data;
+            .then(function (response) {
+              scope.batchExamples = response.data;
             });
         }
       };
@@ -233,8 +233,8 @@
                   cache: true
                 }
               )
-              .success(function (response) {
-                var data = response.region;
+              .then(function (response) {
+                var data = response.data.region;
 
                 // Compute default name and add a
                 // tokens element which is used for filter
@@ -703,7 +703,9 @@
                   cache: true
                 }
               )
-              .success(function (data) {
+              .then(function (response) {
+                var data = response.data;
+
                 // Compute default name and add a
                 // tokens element which is used for filter
                 angular.forEach(data, function (lang) {
@@ -981,14 +983,18 @@
           '<i class="fa fa-fw fa-angle-double-up"/>&nbsp;' +
           "</button>",
         link: function linkFn(scope, element, attr) {
-          var selector =
+          var collapsing = true,
+            selector =
               attr["gnSectionToggle"] ||
-              "form > div > fieldset > legend[data-gn-slide-toggle]",
+              "form > div > fieldset legend[data-gn-slide-toggle]",
             event = attr["event"] || "click";
           element.on("click", function () {
             $(selector).each(function (idx, elem) {
-              $(elem).trigger(event);
+              if (collapsing !== $(elem).hasClass("collapsed")) {
+                $(elem).trigger(event);
+              }
             });
+            collapsing = !collapsing;
             $(this).find("i").toggleClass("fa-angle-double-up fa-angle-double-down");
           });
         }

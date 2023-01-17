@@ -101,11 +101,22 @@
 
   <!--
    Create a multilingual element depending on the metadata record.
-   eg. eng#Basin of Africa|FR#Bassin versant d'Afrique
+
+   Example of input string:
+   EN#SLD style for the layer|FR#Style SLD pour la couche
+   EN#https://lemonde.fr#water|FR#https://lemonde.fr#eau
+   eng#Basin of Africa|FR#Bassin versant d'Afrique
+
+   So:
+    * first split each values with |
+    * split by value separator (usually #) to get each language code and value pair.
+    If not, eg. when adding URL which may contain # from onlinesrc-add.xsl
+    split on 2 chars to get language code and get string from the 4 position
+    to get the value.
    -->
   <xsl:function name="gn-fn-iso19115-3.2018:fillTextElement" as="node()*">
     <xsl:param name="string" as="xs:string"/>
-    <xsl:param name="mainLanguage" as="xs:string"/>
+    <xsl:param name="mainLanguage" as="xs:string?"/>
     <xsl:param name="useOnlyPTFreeText" as="xs:boolean"/>
 
     <xsl:copy-of select="gn-fn-iso19115-3.2018:fillTextElement($string, '\|', '#', $mainLanguage, $useOnlyPTFreeText)"/>
@@ -115,7 +126,7 @@
     <xsl:param name="string" as="xs:string"/>
     <xsl:param name="translationSeparator" as="xs:string"/>
     <xsl:param name="valueSeparator" as="xs:string"/>
-    <xsl:param name="mainLanguage" as="xs:string"/>
+    <xsl:param name="mainLanguage" as="xs:string?"/>
     <xsl:param name="useOnlyPTFreeText" as="xs:boolean"/>
 
     <xsl:choose>

@@ -424,10 +424,11 @@ public class EsSearchManager implements ISearchManager {
         String jsonDocument = mapper.writeValueAsString(doc);
 
         if (forceRefreshReaders) {
-            HashMap<String, String> document = new HashMap<>();
+            Map<String, String> document = new HashMap<>();
             document.put(id, jsonDocument);
             final BulkResponse bulkItemResponses = client.bulkRequest(defaultIndex, document);
             checkIndexResponse(bulkItemResponses, document);
+            overviewFieldUpdater.process(id);
         } else {
             listOfDocumentsToIndex.put(id, jsonDocument);
             if (listOfDocumentsToIndex.size() == commitInterval) {
@@ -560,6 +561,7 @@ public class EsSearchManager implements ISearchManager {
             .add("type")
             .add("resourceDate")
             .add("link")
+            .add("linkProtocol")
             .add("crsDetails")
             .add("format")
             .add("orderingInstructionsObject")

@@ -330,7 +330,7 @@
        * @param {String} title
        * @param {String} url
        */
-      function getPermalink(title, url) {
+      function displayPermalink(title, url) {
         gnPopup.createModal({
           title: $translate.instant("permalinkTo", { title: title }),
           content:
@@ -380,8 +380,18 @@
               var values = angular.isArray(prop.if[key]) ? prop.if[key] : [prop.if[key]];
 
               var recordValue = this.getObjectValueByPath(record, key);
-              if (values.includes(recordValue)) {
-                cb();
+              if (angular.isArray(recordValue)) {
+                if (
+                  values.filter(function (value) {
+                    return recordValue.includes(value);
+                  }).length > 0
+                ) {
+                  cb();
+                }
+              } else {
+                if (values.includes(recordValue)) {
+                  cb();
+                }
               }
             }
           }
@@ -424,7 +434,7 @@
         CSVToArray: CSVToArray,
         getUrlParameter: getUrlParameter,
         randomUuid: randomUuid,
-        getPermalink: getPermalink,
+        displayPermalink: displayPermalink,
         openModal: openModal,
         goBack: goBack
       };
@@ -495,8 +505,8 @@
               },
               cache: true
             })
-            .success(function (response) {
-              var data = response.region;
+            .then(function (response) {
+              var data = response.data.region;
 
               var defaultLang = gnGlobalSettings.gnCfg.langDetector.default;
 
@@ -523,7 +533,9 @@
         loadList: function () {
           if (!listDefer) {
             listDefer = $q.defer();
-            $http.get("../api/regions/types").success(function (data) {
+            $http.get("../api/regions/types").then(function (response) {
+              var data = response.data;
+
               angular.forEach(data, function (value, key) {
                 if (value.id) {
                   var tokens = value.id.split("#"),

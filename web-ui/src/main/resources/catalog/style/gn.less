@@ -193,12 +193,14 @@ div[gn-transfer-ownership] * .list-group {
       }
     }
   }
-  .gn-editor-container,
+  .gn-editor-container {
+    padding-top: 70px;
+  }
   .gn-batch-editor,
   #gn-directory-container,
   #gn-new-metadata-container,
   #gn-import-container {
-    /*padding-top: 70px;*/
+    padding-top: 0px;
   }
   #gn-import-reports-row {
     max-height: calc(~"100vh - @{gn-header-height} - @{gn-menubar-height} - 120px");
@@ -1605,12 +1607,18 @@ gn-indexing-task-status {
 .width-66 {
   width: 66%;
 }
+.w-30-px {
+  width: 30px;
+}
 .max-width-none {
   max-width: none;
 }
 .height-auto {
   height: auto !important;
   max-height: none !important;
+}
+.height-70-px {
+  height: 70px;
 }
 .col-2 {
   column-count: 2;
@@ -1623,6 +1631,9 @@ gn-indexing-task-status {
   & > div {
     break-inside: avoid;
   }
+}
+.d-block {
+  display: block;
 }
 .d-inline {
   display: inline;

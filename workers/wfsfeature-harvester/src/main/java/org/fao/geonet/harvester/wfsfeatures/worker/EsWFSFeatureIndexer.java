@@ -31,6 +31,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import org.apache.camel.Exchange;
+import org.apache.camel.spring.SpringCamelContext;
 import org.apache.jcs.access.exception.InvalidArgumentException;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.bulk.BulkRequest;
@@ -42,6 +43,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.rest.RestStatus;
 import org.fao.geonet.harvester.wfsfeatures.model.WFSHarvesterParameter;
 import org.fao.geonet.index.es.EsRestClient;
+import org.fao.geonet.kernel.search.EsSearchManager;
 import org.geotools.data.DataSourceException;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.store.ReprojectingFeatureCollection;
@@ -73,6 +75,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
@@ -175,6 +178,15 @@ public class EsWFSFeatureIndexer {
             throw new InvalidArgumentException("Missing WFS harvester configuration.");
         }
 
+        try {
+            ((SpringCamelContext) exchange.getContext())
+                .getApplicationContext()
+                .getBean(EsSearchManager.class)
+                .init(false, Optional.of(Arrays.asList("features")));
+        } catch (Exception e) {
+            LOGGER.error("Failed to create missing index for features. " + e.getMessage());
+        }
+
         LOGGER.info("Initializing harvester configuration for uuid '{}', url '{}'," +
             "feature type '{}'. treefields are {}, tokenizedFields are {} Exchange id is '{}'.", new Object[]{
             configuration.getMetadataUuid(),
@@ -233,8 +245,9 @@ public class EsWFSFeatureIndexer {
         void setTitle(ObjectNode objectNode, SimpleFeature simpleFeature);
     }
 
-    public void indexFeatures(Exchange exchange) throws Exception {
+    public CompletableFuture<Void> indexFeatures(Exchange exchange) throws Exception {
         WFSHarvesterExchangeState state = (WFSHarvesterExchangeState) exchange.getProperty("featureTypeConfig");
+        CompletableFuture<Void> future = new CompletableFuture<>();
 
         String url = state.getParameters().getUrl();
         String typeName = state.getParameters().getTypeName();
@@ -441,7 +454,10 @@ public class EsWFSFeatureIndexer {
             throw e;
         } finally {
             report.saveHarvesterReport();
+            future.complete(null);
         }
+
+        return future;
     }
 
     private TitleResolver getTitleResolver(WFSHarvesterExchangeState state) {

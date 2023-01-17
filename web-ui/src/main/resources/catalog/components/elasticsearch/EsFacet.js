@@ -41,7 +41,7 @@
           "group*",
           "logo",
           "category",
-          "topic*",
+          "cl_topic*",
           "inspire*",
           "resource*",
           "draft*",
@@ -74,13 +74,13 @@
           track_total_hits: true
         },
         home: {
-          facets: gnGlobalSettings.gnCfg.mods.home.facetConfig,
+          facets: {},
           source: {
             includes: [
               "id",
               "uuid",
               "creat*",
-              "topicCat",
+              "cl_topic*",
               "inspire*",
               "overview.*",
               "resource*",
@@ -167,7 +167,8 @@
               "group*",
               "resource*",
               "owner*",
-              "isTemplate"
+              "isTemplate",
+              "valid"
             ]
           },
           track_total_hits: true
