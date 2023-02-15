@@ -1,4 +1,8 @@
-UPDATE Settings SET internal = 'n' WHERE name = 'system/server/sitemapLinkUrl';
+UPDATE Settings SET position = '9165' WHERE name = 'system/server/sitemapLinkUrl';
+UPDATE Settings SET name = 'metadata/url/sitemapLinkUrl' WHERE name = 'system/server/sitemapLinkUrl';
+
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/url/sitemapDoiFirst', 'false', 2, 9166, 'y');
+INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('metadata/url/dynamicAppLinkUrl', NULL, 0, 9167, 'y');
 
 
 UPDATE harvestersettings SET value = replace(value, 'gmiTogmd', 'iso19139:convert/fromISO19115-2') WHERE value LIKE 'gmiTogmd%';
@@ -23,7 +27,7 @@ UPDATE harvestersettings SET value = replace(value, 'ESRIDCAT-to-ISO19115-3-2018
 UPDATE harvestersettings SET value = replace(value, 'ISO19115-3-2014-to-ISO19115-3-2018', 'iso19115-3.2018:convert/fromISO19115-3.2014') WHERE value LIKE 'ISO19115-3-2014-to-ISO19115-3-2018%';
 UPDATE harvestersettings SET value = replace(value, 'ISO19139-to-ISO19115-3-2018', 'iso19115-3.2018:convert/fromISO19139') WHERE value LIKE 'ISO19139-to-ISO19115-3-2018%';
 UPDATE harvestersettings SET value = replace(value, 'ISO19139-to-ISO19115-3-2018-with-languages-refactor', 'iso19115-3.2018:convert/fromISO19139-with-languages-refactor') WHERE value LIKE 'ISO19139-to-ISO19115-3-2018-with-languages-refactor%';
-UPDATE harvestersettings SET value = replace(value, 'OPENDATASOFT-to-ISO19115-3-2018', 'iso19115-3.2018:convert/fromJsonOpenDataSoft.xsl') WHERE value LIKE 'OPENDATASOFT-to-ISO19115-3-2018%';
+UPDATE harvestersettings SET value = replace(value, 'OPENDATASOFT-to-ISO19115-3-2018', 'iso19115-3.2018:convert/fromJsonOpenDataSoft') WHERE value LIKE 'OPENDATASOFT-to-ISO19115-3-2018%';
 UPDATE harvestersettings SET value = replace(value, 'SPARQL-DCAT-to-ISO19115-3-2018', 'iso19115-3.2018:convert/fromSPARQL-DCAT') WHERE value LIKE 'SPARQL-DCAT-to-ISO19115-3-2018%';
 UPDATE harvestersettings SET value = replace(value, 'udata-to-ISO19115-3-2018', 'iso19115-3.2018:convert/fromJsonUdata') WHERE value LIKE 'udata-to-ISO19115-3-2018%';
 

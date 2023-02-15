@@ -1081,7 +1081,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   },
                   "trigram": {
                     "type": "text",
@@ -1100,7 +1100,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1111,7 +1111,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1122,7 +1122,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1135,7 +1135,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1146,7 +1146,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1157,7 +1157,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1168,7 +1168,7 @@
                 "fields": {
                   "keyword": {
                     "type": "keyword",
-                    "ignore_above": 256
+                    "ignore_above": ${es.index.ignore_above}
                   }
                 }
               },
@@ -1230,7 +1230,7 @@
           "match": "th_*",
           "mapping": {
             "type": "object",
-            "copy_to": ["th_tag"],
+            "copy_to": ["tag"],
             "properties": {
               "default": {
                 "type": "keyword",
@@ -1653,7 +1653,7 @@
         "fields": {
           "keyword": {
             "type": "keyword",
-            "ignore_above": 256
+            "ignore_above": ${es.index.ignore_above}
           }
         }
       },
@@ -1662,7 +1662,7 @@
         "fields": {
           "keyword": {
             "type": "keyword",
-            "ignore_above": 256
+            "ignore_above": ${es.index.ignore_above}
           }
         }
       },
@@ -1688,7 +1688,7 @@
         "fields": {
           "keyword": {
             "type": "keyword",
-            "ignore_above": 256
+            "ignore_above": ${es.index.ignore_above}
           }
         }
       },
@@ -1697,7 +1697,7 @@
         "fields": {
           "keyword": {
             "type": "keyword",
-            "ignore_above": 256
+            "ignore_above": ${es.index.ignore_above}
           }
         }
       },
@@ -1806,7 +1806,7 @@
         "fields": {
           "keyword": {
             "type": "keyword",
-            "ignore_above": 256
+            "ignore_above": ${es.index.ignore_above}
           }
         }
       },

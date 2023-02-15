@@ -125,7 +125,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -276,6 +276,7 @@
         <artifactId>maven-resources-plugin</artifactId>
         <configuration>
           <encoding>UTF-8</encoding>
+          <propertiesEncoding>ISO-8859-1</propertiesEncoding>
         </configuration>
       </plugin>
 
@@ -425,6 +426,12 @@
         <groupId>org.openrdf</groupId>
         <artifactId>rio</artifactId>
         <version>1.0.9</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.jena</groupId>
+        <artifactId>apache-jena-libs</artifactId>
+        <type>pom</type>
+        <version>3.17.0</version>
       </dependency>
 
       <!-- PDF stuff: Managed by Mapfish -->
@@ -1506,6 +1513,7 @@
     <es.index.max_result_window.limit>15000</es.index.max_result_window.limit>
 
     <es.index.mapping.total_fields.limit>4000</es.index.mapping.total_fields.limit>
+    <es.index.ignore_above>2000</es.index.ignore_above>
 
     <!-- If elasticsearch security is on,
     add a read/write user for index features and records: -->

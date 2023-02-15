@@ -446,14 +446,6 @@
       };
 
       /**
-       * Create a child of the given metadata. Open the editor in new page.
-       * @param {string} md
-       */
-      this.createChild = function (md) {
-        duplicateMetadata(md.id, true);
-      };
-
-      /**
        * Update publication on metadata (one or selection).
        * If a md is provided, it update publication of the given md, depending
        * on its current state. If no metadata is given, it updates the
@@ -582,23 +574,15 @@
       };
 
       /**
-       * Get html formatter link for the given md
+       * Get permalink depending on catalog configuration
        * and open the permalink modal.
-       *
-       * TODO: At some point we may use the point of truth URL
-       * provided in the metadata record (eg. DOI) if set.
        *
        * @param {Object} md
        */
       this.getPermalink = function (md) {
-        var permalinkBaseUrl = gnConfig["system.server.sitemapLinkUrl"],
-          url = gnGlobalSettings.nodeUrl + "api/records/" + md.uuid + "?language=all";
-
-        if (permalinkBaseUrl && permalinkBaseUrl.toUpperCase().indexOf("{{UUID}}")) {
-          url = permalinkBaseUrl.replace(/\{\{UUID\}\}/i, md.uuid);
-        }
-
-        gnUtilityService.displayPermalink(md.resourceTitle, url);
+        $http.get("../api/records/" + md.getUuid() + "/permalink").then(function (r) {
+          gnUtilityService.displayPermalink(md.resourceTitle, r.data);
+        });
       };
 
       /**
