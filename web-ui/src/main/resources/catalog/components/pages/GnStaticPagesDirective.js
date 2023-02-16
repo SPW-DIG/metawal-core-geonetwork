@@ -46,10 +46,12 @@
               method: "GET",
               url: "../api/pages/" + $scope.language + "/" + page + "/content"
             }).then(
-              function mySuccess(response) {
+              function (response) {
+                $sce.trustAsJs(response.data);
+                // $sce.trustAsHtml(response.data);
                 $scope.content = $sce.trustAsHtml(response.data);
               },
-              function myError(response) {
+              function (response) {
                 $scope.content = "Page not available";
                 console.log(response.statusText);
               }
@@ -87,17 +89,16 @@
             $http({
               method: "GET",
               url:
-                "../api/pages/list?language=" +
+                "../api/pages?language=" +
                 $scope.language +
                 "&section=" +
                 $scope.section.toUpperCase()
             }).then(
-              function mySuccess(response) {
+              function (response) {
                 $scope.pagesList = response.data;
               },
-              function myError(response) {
+              function (response) {
                 $scope.pagesList = null;
-                console.log(response.statusText);
               }
             );
           };
