@@ -24,5 +24,11 @@ INSERT INTO Settings (name, value, datatype, position, internal) VALUES ('system
 -- from migrate-default 4.2.2
 UPDATE Settings SET internal = 'n' WHERE name = 'system/server/sitemapLinkUrl';
 
+
+-- Column names change in GeoNetwork 4.x for spg_sections table
+ALTER TABLE spg_sections DROP COLUMN page_language;
+ALTER TABLE spg_sections DROP COLUMN page_linktext;
+
+
 UPDATE Settings SET value='4.2.3' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
