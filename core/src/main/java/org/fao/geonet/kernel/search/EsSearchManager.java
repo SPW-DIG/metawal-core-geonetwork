@@ -528,6 +528,7 @@ public class EsSearchManager implements ISearchManager {
             .add("cat")
             .add("keyword")
             .add("extentDescriptionObject")
+            .add("resourceAltTitleObject")
             .add("resourceCredit")
             .add("resourceCreditObject")
             .add("resolutionScaleDenominator")

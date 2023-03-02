@@ -33,6 +33,7 @@
             "filter": [
               "english_possessive_stemmer",
               "lowercase",
+              "asciifolding",
               "english_synonym",
               "english_stop",
               "english_keywords",
@@ -1507,10 +1508,12 @@
         "type": "keyword"
       },
       "geom": {
-        "type": "geo_shape"
+        "type": "geo_shape",
+        "ignore_malformed": true
       },
       "shape": {
-        "type": "geo_shape"
+        "type": "geo_shape",
+        "ignore_malformed": true
       },
       "location": {
         "type": "geo_point"

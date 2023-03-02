@@ -153,7 +153,7 @@ Ce schéma est également composé des normes :
     to user not having dynamic privilege.
     TODO: other type of services ?
     -->
-    <filter xpath="*//mrd:onLine[starts-with(*/cit:protocol/gco:CharacterString, 'OGC:WMS')]"
+    <filter xpath=".//mrd:onLine[starts-with(*/cit:protocol/gco:CharacterString, 'OGC:WMS')]"
             ifNotOperation="dynamic"/>
   </filters>
 </schema>
