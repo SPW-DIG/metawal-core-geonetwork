@@ -585,6 +585,7 @@ public class EsSearchManager implements ISearchManager {
             .add("mw-gp-download")
             .add("mw-gp-informationWebsite")
             .add("mw-gp-informationDoc")
+            .add("licenseObject")
             .build();
         booleanFields = ImmutableSet.<String>builder()
             .add("hasxlinks")
