@@ -2152,9 +2152,9 @@
                   btnLabel="inspireNetworkService"
                   or="report"
                   in="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality"
-                  if="count(mdb:MD_Metadata/*/srv:SV_ServiceIdentification) > 0 and count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
+                  if="(count(mdb:MD_Metadata/*/srv:SV_ServiceIdentification) > 0 and count(mdb:MD_Metadata/mdb:dataQualityInfo//mdq:DQ_DomainConsistency[
                                 .//mdq:specification/*/cit:title/*[contains(text(), '976/2009')]
-                                ]) = 0">
+                                ]) = 0)">
             <template>
               <snippet label="notEvaluated">
                 <mdq:report>
