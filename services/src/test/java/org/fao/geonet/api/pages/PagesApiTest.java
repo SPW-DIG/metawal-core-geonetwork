@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2016 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2023 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -24,35 +24,29 @@ package org.fao.geonet.api.pages;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import junit.framework.Assert;
-import org.fao.geonet.api.FieldNameExclusionStrategy;
 import org.fao.geonet.api.JsonFieldNamingStrategy;
-import org.fao.geonet.domain.MetadataCategory;
 import org.fao.geonet.domain.page.Page;
 import org.fao.geonet.domain.page.PageIdentity;
-import org.fao.geonet.repository.MetadataCategoryRepository;
 import org.fao.geonet.repository.page.PageRepository;
 import org.fao.geonet.services.AbstractServiceIntegrationTest;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 public class PagesApiTest extends AbstractServiceIntegrationTest {
     @Autowired
     private WebApplicationContext wac;
@@ -79,6 +73,7 @@ public class PagesApiTest extends AbstractServiceIntegrationTest {
         PageProperties newPage = new PageProperties();
         newPage.setPageId(pageId);
         newPage.setLanguage(language);
+        newPage.setLabel(pageId);
         newPage.setLink(link);
         ArrayList<Page.PageSection> sections = new ArrayList<>();
         sections.add(Page.PageSection.TOP);
@@ -95,11 +90,12 @@ public class PagesApiTest extends AbstractServiceIntegrationTest {
             .accept(MediaType.parseMediaType("application/json"));
 
         this.mockMvc.perform(createPageBuilder)
-                .andExpect(status().is(HttpStatus.CREATED.value()));
+            .andExpect(status().is(HttpStatus.CREATED.value()));
 
         page = pageRepository.findById(new PageIdentity(language, pageId));
         Assert.assertTrue(page.isPresent());
         Assert.assertEquals(link, page.get().getLink());
+        Assert.assertEquals(pageId, page.get().getLabel());
         Assert.assertTrue(page.get().getSections().contains(Page.PageSection.TOP));
 
         this.mockMvc.perform(createPageBuilder)
@@ -112,6 +108,7 @@ public class PagesApiTest extends AbstractServiceIntegrationTest {
         newPage.setLanguage(language);
         newPage.setPageId(pageId);
         newPage.setLink(link + "updated");
+        newPage.setLabel(pageId + "updated");
         newPage.getSections().add(Page.PageSection.FOOTER);
         MockHttpServletRequestBuilder updatePageBuilder = put("/srv/api/pages/eng/license")
             .content(gson.toJson(newPage))
@@ -120,21 +117,21 @@ public class PagesApiTest extends AbstractServiceIntegrationTest {
             .accept(MediaType.parseMediaType("application/json"));
 
         this.mockMvc.perform(updatePageBuilder)
-            .andExpect(status().is(HttpStatus.OK.value()));
+            .andExpect(status().is(HttpStatus.NO_CONTENT.value()));
 
         page = pageRepository.findById(new PageIdentity(language, pageId));
         Assert.assertTrue(page.isPresent());
         Assert.assertEquals(link + "updated", page.get().getLink());
+        Assert.assertEquals(pageId + "updated", page.get().getLabel());
         Assert.assertTrue(page.get().getSections().contains(Page.PageSection.TOP));
         Assert.assertTrue(page.get().getSections().contains(Page.PageSection.FOOTER));
 
 
-
         MockHttpServletRequestBuilder deletePageBuilder =
             delete("/srv/api/pages/" + language + "/" + pageId)
-            .contentType(API_JSON_EXPECTED_ENCODING)
-            .session(this.mockHttpSession)
-            .accept(MediaType.parseMediaType("application/json"));
+                .contentType(API_JSON_EXPECTED_ENCODING)
+                .session(this.mockHttpSession)
+                .accept(MediaType.parseMediaType("application/json"));
 
         this.mockMvc.perform(deletePageBuilder)
             .andExpect(status().is(HttpStatus.OK.value()));
