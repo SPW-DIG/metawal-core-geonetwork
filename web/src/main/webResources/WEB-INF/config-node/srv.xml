@@ -3,9 +3,25 @@
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" >
-
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
   <import resource="classpath*:/config-spring-geonetwork.xml"/>
   <import resource="../config-db/database_migration.xml"/>
+
+  <!-- Default using the db.config.file if it exists
+       and if not then derive the db file based on the db.type.
+
+       Use Java argument -Dgeonetwork.db.type=postgres to customize
+        the database type or change the resource URL to ../config-db/postgres.xml.
+
+       Supported types:
+       * db2
+       * h2 (default)
+       * jndi
+       * mysql
+       * oracle
+       * postgres
+       * sqlserver
+    -->
+<!--  <import resource="@db.config.file@"/>-->
   <import resource="../config-db/${db.type}.xml"/>
 </beans>
