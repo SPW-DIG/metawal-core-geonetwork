@@ -183,6 +183,7 @@
                 mdb:defaultLocale|
                 mdb:parentMetadata|
                 mdb:metadataScope|
+                mdb:contact|
                 mdb:dateInfo|
                 mdb:metadataStandard|
                 mdb:metadataProfile|
