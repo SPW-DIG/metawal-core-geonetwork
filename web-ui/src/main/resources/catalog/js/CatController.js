@@ -1689,13 +1689,7 @@
 
       // Links for social media
       $scope.socialMediaLink = $location.absUrl();
-      $scope.$on("$locationChangeSuccess", function (event) {
-        //$scope.showSocialMediaLink =
-        //    $scope.socialMediaLink.includes('/metadata/');
-        $scope.socialMediaLink = $location.absUrl();
-        $scope.showSocialMediaLink = $scope.socialMediaLink.indexOf("/metadata/") != -1;
-      });
-      $scope.getPermalink = gnUtilityService.getPermalink;
+      $scope.getPermalink = gnUtilityService.displayPermalink;
       $scope.fluidEditorLayout = gnGlobalSettings.gnCfg.mods.editor.fluidEditorLayout;
       $scope.fluidHeaderLayout = gnGlobalSettings.gnCfg.mods.header.fluidHeaderLayout;
       $scope.showGNName = gnGlobalSettings.gnCfg.mods.header.showGNName;

@@ -558,7 +558,8 @@ public class MetadataSharingApi {
                 java.util.Optional<GroupOperations> allGroupOpsAfter =
                     privileges.stream().filter(p -> p.getGroup() == ReservedGroup.all.getId()).findFirst();
 
-                boolean publishedAfter = allGroupOpsAfter.get().getOperations().get(ReservedOperation.view.name());
+                // If we cannot find it then default to before value so that it will fail the next condition.
+                boolean publishedAfter = allGroupOpsAfter.isPresent()?allGroupOpsAfter.get().getOperations().getOrDefault(ReservedOperation.view.name(), publishedBefore):publishedBefore;
 
                 if (publishedBefore != publishedAfter) {
                     MetadataPublicationNotificationInfo metadataNotificationInfo = new MetadataPublicationNotificationInfo();
@@ -1214,19 +1215,42 @@ public class MetadataSharingApi {
                     }
 
                     List<GroupOperations> privileges = sharing.getPrivileges();
+                    List<GroupOperations> allGroupPrivileges = new ArrayList<>();
 
                     try {
-                        setOperations(sharing, dataManager, context, appContext, metadata, operationMap, privileges,
-                            ApiUtils.getUserSession(session).getUserIdAsInt(), skipAllReservedGroup, report, request,
-                            metadataListToNotifyPublication, notifyByEmail);
+                        if (metadata instanceof MetadataDraft) {
+                            // If the metadata is a working copy, publish privileges (ALL and INTRANET groups)
+                            // should be applied to the approved version.
+                            Metadata md = this.metadataRepository.findOneByUuid(metadata.getUuid());
+
+                            if (md != null) {
+                                setOperations(sharing, dataManager, context, appContext, md, operationMap, allGroupPrivileges,
+                                    ApiUtils.getUserSession(session).getUserIdAsInt(), skipAllReservedGroup, report, request,
+                                    metadataListToNotifyPublication, notifyByEmail);
+
+                                report.incrementProcessedRecords();
+                                listOfUpdatedRecords.add(String.valueOf(md.getId()));
+                            } else {
+                                setOperations(sharing, dataManager, context, appContext, metadata, operationMap, privileges,
+                                    ApiUtils.getUserSession(session).getUserIdAsInt(), skipAllReservedGroup, report, request,
+                                    metadataListToNotifyPublication, notifyByEmail);
+
+                                report.incrementProcessedRecords();
+                                listOfUpdatedRecords.add(String.valueOf(metadata.getId()));
+                            }
+
+                        } else {
+                            setOperations(sharing, dataManager, context, appContext, metadata, operationMap, privileges,
+                                ApiUtils.getUserSession(session).getUserIdAsInt(), skipAllReservedGroup, report, request,
+                                metadataListToNotifyPublication, notifyByEmail);
+
+                            report.incrementProcessedRecords();
+                            listOfUpdatedRecords.add(String.valueOf(metadata.getId()));
+                        }
                     } catch (NotAllowedException ex) {
                         report.addMetadataError(metadata, ex.getMessage());
                         report.incrementUnchangedRecords();
-                        continue;
                     }
-
-                    report.incrementProcessedRecords();
-                    listOfUpdatedRecords.add(String.valueOf(metadata.getId()));
                 }
             }
 

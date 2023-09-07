@@ -218,7 +218,6 @@ div[gn-transfer-ownership] * .list-group {
 
 a {
   word-wrap: break-word;
-  word-break: break-all;
 }
 .gn-break {
   word-wrap: break-word;
@@ -949,6 +948,11 @@ i.fa-times.delete:hover {
     .gn-status-lg {
       font-size: inherit !important;
     }
+    .gn-md-title {
+      a {
+        word-break: break-all;
+      }
+    }
   }
 }
 
@@ -1262,7 +1266,7 @@ gn-md-type-inspire-validation-widget {
     vertical-align: middle;
     padding-left: 3px;
     margin: -6px 0px;
-    line-height: 1em;
+    line-height: normal;
     .gn-user-name {
       max-width: 200px;
       display: inline-block;

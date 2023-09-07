@@ -1,5 +1,5 @@
 //=============================================================================
-//===	Copyright (C) 2001-2021 Food and Agriculture Organization of the
+//===	Copyright (C) 2001-2023 Food and Agriculture Organization of the
 //===	United Nations (FAO-UN), United Nations World Food Programme (WFP)
 //===	and United Nations Environment Programme (UNEP)
 //===
@@ -431,6 +431,15 @@ public class SettingManager {
     public
     @Nonnull
     String getNodeURL() {
+        return getBaseURL() + getNodeId() + "/";
+    }
+
+    /**
+     * Return node id - i.e. srv
+     */
+    public
+    @Nonnull
+    String getNodeId() {
         String nodeId = NodeInfo.DEFAULT_NODE;
         try {
             NodeInfo node = ApplicationContextHolder.get().getBean(NodeInfo.class);
@@ -438,7 +447,7 @@ public class SettingManager {
                 nodeId = node.getId();
             }
         } catch (Exception e) {}
-        return getBaseURL() + nodeId + "/";
+        return  nodeId;
     }
     /**
      * Return complete node URL eg. http://localhost:8080/geonetwork/
@@ -457,9 +466,36 @@ public class SettingManager {
     String getServerURL() {
         String protocol = getValue(Settings.SYSTEM_SERVER_PROTOCOL);
         String host = getValue(Settings.SYSTEM_SERVER_HOST);
-        String port = getValue(Settings.SYSTEM_SERVER_PORT);
+        Integer port = getServerPort();
 
-        return protocol + "://" + host + (isPortRequired(protocol, port) ? ":" + port : "");
+        StringBuffer sb = new StringBuffer(protocol + "://");
+
+        sb.append(host);
+
+        if (isPortRequired(protocol, port + "")) {
+            sb.append(":");
+            sb.append(port);
+        }
+
+        return sb.toString();
+    }
+
+    public Integer getServerPort() {
+        String protocol = getValue(Settings.SYSTEM_SERVER_PROTOCOL);
+
+        // some conditional logic to handle the case where there's no port in the settings
+        Integer sitePort;
+
+        Integer configuredPort = getValueAsInt(Settings.SYSTEM_SERVER_PORT, -1);
+        if (configuredPort != -1) {
+            sitePort = configuredPort;
+        } else if (protocol != null && protocol.equalsIgnoreCase(Geonet.HttpProtocol.HTTPS)) {
+            sitePort = Geonet.DefaultHttpPort.HTTPS;
+        } else {
+            sitePort = Geonet.DefaultHttpPort.HTTP;
+        }
+
+        return sitePort;
     }
 
     public static boolean isPortRequired(String protocol, String port) {
@@ -469,6 +505,14 @@ public class SettingManager {
             return false;
         } else {
             return true;
+        }
+    }
+
+    private Integer toIntOrNull(String key) {
+        try {
+            return Integer.parseInt(getValue(key));
+        } catch (NumberFormatException e) {
+            return null;
         }
     }
 }
