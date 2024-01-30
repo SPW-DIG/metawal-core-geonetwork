@@ -940,9 +940,16 @@
               isPublishedToAll: {
                 terms: {
                   field: "isPublishedToAll",
-                  size: 2,
-                  order: {
-                    _key: "desc"
+                  size: 2
+                },
+                meta: {
+                  decorator: {
+                    type: "icon",
+                    prefix: "fa fa-fw ",
+                    map: {
+                      false: "fa-lock",
+                      true: "fa-unlock"
+                    }
                   }
                 }
               },
@@ -1152,22 +1159,6 @@
                 },
                 meta: {
                   collapsed: true
-                }
-              },
-              isPublishedToAll: {
-                terms: {
-                  field: "isPublishedToAll",
-                  size: 2
-                },
-                meta: {
-                  decorator: {
-                    type: "icon",
-                    prefix: "fa fa-fw ",
-                    map: {
-                      false: "fa-lock",
-                      true: "fa-unlock"
-                    }
-                  }
                 }
               },
               groupPublishedId: {
