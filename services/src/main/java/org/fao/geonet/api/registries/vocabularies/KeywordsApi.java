@@ -812,7 +812,7 @@ public class KeywordsApi {
                 Log.debug(Geonet.THESAURUS, "Uploading thesaurus: " + fname);
 
                 // Rename .xml to .rdf for all thesaurus
-                fname = fname.replaceAll(Pattern.quote(extension), "rdf");
+                fname = fname.replace(extension, "rdf");
                 uploadThesaurus(rdfFile,
                     getStylesheetForExtension(stylesheet, extension),
                     context, fname, type.toString(), dir);
