@@ -835,7 +835,7 @@
             showStatusWatermarkFor: "",
             showStatusTopBarFor: "",
             showCitation: {
-              enabled: false,
+              enabled: true,
               // if: {'documentStandard': ['iso19115-3.2018']}
               if: { resourceType: ["series", "dataset", "nonGeographicDataset"] }
             },
