@@ -17,7 +17,7 @@
 
   <!-- Who is the creator of the data set?  This can be an individual, a group of individuals, or an organization. -->
   <xsl:param name="authorRoles"
-                select="'custodian,author'"/>
+                select="'owner'"/>
   <xsl:variable name="authorRolesList"
                 select="tokenize($authorRoles, ',')"/>
 
@@ -48,21 +48,22 @@
                   select="count(authorsNameAndOrgList/*) > 0"/>
     <xsl:variable name="hasPublisher"
                   select="count(publishersNameAndOrgList/*) > 0"/>
+
     <textResponse><xsl:value-of select="normalize-space(concat(
                                   (if ($hasAuthor)
                                      then string-join(authorsNameAndOrgList/*, ', ')
                                      else ''),
                                   (if ($hasAuthor)
-                                     then ' '
+                                     then ' - '
                                      else ''),
-                                  (if (lastPublicationDate != '')
-                                    then concat('(', substring(lastPublicationDate, 1, 4), '). ')
-                                    else if ($hasAuthor) then '. ' else ''),
                                   normalize-space(translatedTitle),
-                                  '. ',
+                                  (if (lastPublicationDate != '')
+                                    then concat(' (version ', lastPublicationDate, ') - ')
+                                    else if ($hasAuthor) then ' - ' else ''),
+                                  (:'. ',
                                   (if ($hasPublisher)
                                      then concat(string-join(publishersNameAndOrgList/*, ', '), '. ')
-                                     else ''),
+                                     else ''),:)
                                   if (doiUrl != '') then doiUrl else landingPageUrl))"/>
     </textResponse>
   </xsl:template>
@@ -119,20 +120,26 @@
         </div>
         <div class="col-md-9">
           <p>
+            <!--
+            Metawal citation format:
+            [organisation propriétaire de la donnée (sans l'acronyme - role=owner - ', ' si n)] - [nom de la donnée] (version [date de révision ou à défaut date de création]) - [identifiant de la ressource au format https://geodata.wallonie.be/id/mduuid]-->
+
             <xsl:call-template name="citation-contact">
               <xsl:with-param name="contact" select="authorsNameAndOrgList"/>
             </xsl:call-template>
 
-            <xsl:value-of select="if (lastPublicationDate != '')
-                      then concat('(', substring(lastPublicationDate, 1, 4), ').')
-                      else if ($hasAuthor) then '.'
+            <xsl:value-of select="if ($hasAuthor) then ' - '
                       else ''"/>
 
-            <span><xsl:copy-of select="translatedTitle/(text()|*)"/>.</span>
+            <span><xsl:copy-of select="translatedTitle/(text()|*)"/></span>
 
-            <xsl:call-template name="citation-contact">
+            <xsl:value-of select="if (lastPublicationDate != '')
+                      then concat('(', lastPublicationDate, ')')
+                      else ''"/>
+
+            <!--<xsl:call-template name="citation-contact">
               <xsl:with-param name="contact" select="publishersNameAndOrgList"/>
-            </xsl:call-template>
+            </xsl:call-template>-->
             <br></br>
 
             <xsl:variable name="url"

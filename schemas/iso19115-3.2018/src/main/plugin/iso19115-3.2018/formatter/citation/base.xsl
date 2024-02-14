@@ -92,7 +92,7 @@
                                     ('publication', 'revision')]/
                                     cit:date/gco:*[. != '']"/>
 
-    <xsl:variable name="publicationDates">
+    <xsl:variable name="publicationDates" as="node()*">
       <xsl:perform-sort select="$dates">
         <xsl:sort select="." order="descending"/>
       </xsl:perform-sort>
@@ -108,6 +108,11 @@
                   select="gn-fn-iso19115-3.2018:get-author-list($publishers, $langId)"/>
 
     <!-- Electronic Retrieval Location -->
+    <xsl:variable name="mwResourceIdentifier"
+                  select="(//mdb:identificationInfo/*/mri:citation/*/
+                              cit:identifier/*[contains(mcc:codeSpace/*/text(), '://geodata.wallonie.be')]
+                              /concat(mcc:codeSpace/*/text(), mcc:code/*/text()))[1]"/>
+
     <xsl:variable name="doiInResourceIdentifier"
                   select="(//mdb:identificationInfo/*/mri:citation/*/
                               cit:identifier/*/mcc:code[
@@ -121,7 +126,9 @@
                                $doiProtocolRegex)]/cit:linkage/gco:CharacterString[. != '']"/>
 
     <xsl:variable name="doiUrl"
-                  select="if ($doiInResourceIdentifier != '')
+                  select="if ($mwResourceIdentifier != '')
+                          then $mwResourceIdentifier
+                          else if ($doiInResourceIdentifier != '')
                           then $doiInResourceIdentifier
                           else if ($doiInOnline != '')
                           then $doiInOnline
