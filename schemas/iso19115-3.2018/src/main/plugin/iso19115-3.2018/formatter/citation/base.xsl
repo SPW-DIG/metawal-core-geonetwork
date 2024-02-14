@@ -89,7 +89,7 @@
     <xsl:variable name="dates"
                   select="$metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[
                                   cit:dateType/*/@codeListValue =
-                                    ('publication', 'revision')]/
+                                    ('publication', 'revision', 'creation')]/
                                     cit:date/gco:*[. != '']"/>
 
     <xsl:variable name="publicationDates" as="node()*">
