@@ -79,16 +79,16 @@ public enum OutputSchema {
         if (schema.equals("own")) return "own";
         if (schema.equals("mw")) return "mw";
 
-        Map<String, Namespace> typenames = schemaManager.getHmSchemasTypenames();
-        for (Map.Entry<String, Namespace> entry : typenames.entrySet()) {
-            Namespace ns = entry.getValue();
-            if (schema.equals(ns.getURI())) {
-                return ns.getPrefix();
+        Map<String, String> typenames = schemaManager.getOutputSchemas();
+        for (Map.Entry<String, String> entry : typenames.entrySet()) {
+            String ns = entry.getValue();
+            if (schema.equals(ns)) {
+                return entry.getKey();
             }
         }
 
         throw new InvalidParameterValueEx("outputSchema",
-            String.format("'%s' schema is not valid. Supported values are %s",
+            String.format("'%s' output schema is not valid. Supported values are %s",
                 schema,
                 schemaManager.getListOfOutputSchemaURI().toString()));
     }
