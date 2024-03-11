@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData">
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Données SIGC</dc:title>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Données géographiques intégrées dans le système et les sous-systèmes tels que définis à l’article 68 du règlement (UE) no 1306/2013.</dc:description>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2024-03-11T15:57:13</dcterms:issued>
+    <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/">2024-03-11T15:57:13</dcterms:modified>
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData/lpis">
+    <skos:prefLabel xml:lang="fr">SIPA</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Système d’identification des parcelles agricoles, un élément du système intégré de gestion et de contrôle (SIGC) tel que défini à l’article 68 du règlement (CE) no 1306/2013.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/IACSData" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData/gsaa">
+    <skos:prefLabel xml:lang="fr">Demande d'aide géospatiale</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Demande d'aide géospatiale, faisant partie du sous-système "demandes d'aide et demandes de paiement" du SIGC, défini à l'aticle 68 du règlement (CE) no 1306/2013.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/IACSData" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData/iacs">
+    <skos:prefLabel xml:lang="fr">SIGC</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Système intégré de gestion et de contrôle tel que défini à l’article 67 du règlement (CE) no 1306/2013</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/IACSData" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData/referenceParcel">
+    <skos:prefLabel xml:lang="fr">Parcelle de référence</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Surface géographiquement délimitée conservant une identification unique et une valeur de surface admissible au bénéfice de l’aide.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/IACSData" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData/agriculturalArea">
+    <skos:prefLabel xml:lang="fr">Surface agricole</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Toute surface occupée par des terres arables, des prairies permanentes et des pâturages permanents, ou des cultures permanentes.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/IACSData" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData/ecologicalFocusArea">
+    <skos:prefLabel xml:lang="fr">Surface d’intérêt écologique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Surfaces d’intérêt écologique (SIE) visées à l’article 46 du règlement (UE) No1307/2013 et son règlement délégué (UE) no 639/2014</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/IACSData" />
+  </skos:Concept>
+</rdf:RDF>
+

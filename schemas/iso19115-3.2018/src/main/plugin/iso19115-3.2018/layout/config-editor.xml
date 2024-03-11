@@ -1004,7 +1004,8 @@
         <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
                    transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistIACSData-IACSData" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
         <thesaurus key="external.theme.Themes_geoportail_wallon_hierarchy" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
@@ -2027,7 +2028,8 @@
         <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
                    transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistIACSData-IACSData" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
         <thesaurus key="external.theme.Themes_geoportail_wallon_hierarchy" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
       </thesaurusList>
@@ -3729,7 +3731,8 @@
         <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
                    transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword"/>
+        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
+        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistIACSData-IACSData" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
         <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
         <thesaurus key="external.theme.Themes_geoportail_wallon_hierarchy" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
       </thesaurusList>
