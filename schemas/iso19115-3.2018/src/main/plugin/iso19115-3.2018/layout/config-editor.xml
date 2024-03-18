@@ -933,8 +933,7 @@
                                            }]"
         />
 
-        <directive data-gn-onlinesrc-list=""
-                   data-types="sibling|associated|source|dataset|service|fcats"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
 
         <directive gn-geo-publisher=""
                    data-ng-if="gnCurrentEdit.geoPublisherConfig"
@@ -2072,8 +2071,7 @@
                                            }]"
         />
 
-        <directive data-gn-onlinesrc-list=""
-                   data-types="sibling|associated|source|dataset|service|fcats"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
 
         <directive gn-geo-publisher=""
                    data-ng-if="gnCurrentEdit.geoPublisherConfig"
@@ -3773,8 +3771,7 @@
                                            }]"
         />
 
-        <directive data-gn-onlinesrc-list=""
-                   data-types="sibling|associated|source|dataset|service|fcats"/>
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
 
         <directive gn-geo-publisher=""
                    data-ng-if="gnCurrentEdit.geoPublisherConfig"
