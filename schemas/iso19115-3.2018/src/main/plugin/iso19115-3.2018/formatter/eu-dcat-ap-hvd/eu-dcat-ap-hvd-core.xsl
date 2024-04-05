@@ -19,8 +19,14 @@
   <xsl:variable name="hvdCategoryThesaurusKey"
                 select="'http://data.europa.eu/bna/asd487ae75'"/>
 
+  <xsl:variable name="hvdApplicableLegislationThesaurusKey"
+                select="'http://data.europa.eu/r5r/applicableLegislation'"/>
+
   <xsl:variable name="euHvdDataCategories"
                 select="document('vocabularies/high-value-dataset-category.rdf')"/>
+
+  <xsl:variable name="euHvdApplicableLegislation"
+                select="document('vocabularies/high-value-dataset-applicable-legislation.rdf')"/>
 
 
   <xsl:template mode="iso19115-3-to-dcat-resource"
@@ -88,6 +94,31 @@
   As multiple legislations may apply to the resource the maximum cardinality is not limited.		P
   -->
   <xsl:template mode="iso19115-3-to-dcat"
+                match="mri:descriptiveKeywords[*/mri:thesaurusName/*/cit:title/*/@xlink:href = $hvdApplicableLegislationThesaurusKey]">
+    <xsl:for-each select="*/mri:keyword[*/text() != '']">
+
+      <xsl:variable name="applicableLegislation"
+                    select="$euHvdApplicableLegislation/rdf:RDF/*[skos:prefLabel/text() = current()/*/text()]"/>
+      <xsl:if test="$applicableLegislation">
+        <dcatap:applicableLegislation rdf:resource="{$applicableLegislation/@rdf:about}">
+          <!--<eli:LegalResource>
+            <xsl:for-each select="$applicableLegislation/skos:prefLabel[@xml:lang = $languages/@iso2code]">
+              <dct:title xml:lang="{@xml:lang}">
+                <xsl:value-of select="."/>
+              </dct:title>
+            </xsl:for-each>
+            <xsl:for-each select="$applicableLegislation/skos:scopeNote[@xml:lang = $languages/@iso2code]">
+              <dct:description xml:lang="{@xml:lang}">
+                <xsl:value-of select="."/>
+              </dct:description>
+            </xsl:for-each>
+          </eli:LegalResource>-->
+        </dcatap:applicableLegislation>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template mode="iso19115-3-to-dcat"
                 match="mri:resourceConstraints/mco:MD_LegalConstraints/mco:reference">
     <xsl:variable name="href"
                   select="*/cit:title/*/@xlink:href"/>
@@ -109,8 +140,10 @@
                 match="mdb:distributionInfo//mrd:onLine">
     <xsl:call-template name="iso19115-3-to-dcat-distribution">
       <xsl:with-param name="additionalProperties">
-        <xsl:apply-templates mode="iso19115-3-to-dcat"
-                             select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:reference"/>
+        <xsl:if test="$isCopyingDatasetInfoToDistribution">
+          <xsl:apply-templates mode="iso19115-3-to-dcat"
+                               select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:reference"/>
+        </xsl:if>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>

@@ -73,7 +73,6 @@
                 <owl:versionInfo xml:lang="fre">2003/Cor 1:2006</owl:versionInfo>
               </dct:Standard>
             </dct:conformsTo>
-
           </rdf:Description>
         </dct:source>
         <dct:conformsTo>
@@ -268,6 +267,7 @@
     <dcat:keyword xml:lang="fre">Ressources minérales</dcat:keyword>
     <dcat:keyword xml:lang="fre">Santé et sécurité des personnes</dcat:keyword>
     <dcat:keyword xml:lang="fre">Mobilité</dcat:keyword>
+    <dcat:keyword xml:lang="fre">1143/2014</dcat:keyword>
     <dct:accessRights>
       <dct:RightsStatement
         rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
@@ -334,29 +334,33 @@
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-04-17</dct:issued>
       </dct:Standard>
     </dct:conformsTo>
-    <adms:versionNotes xml:lang="fre">La version numérique vectorielle du plan de secteur se base sur la version papier
-      originale
-      digitalisée par l'Institut Wallon en juin 1994 (fond de plan au 1/10.000) qui a été complétée en mai 2001 par
-      ce même institut. La donnée intègre la légende actuellement en vigueur et est mise à jour en continu par la
-      DGO4 depuis 2001.
+    <dct:provenance>
+      <dct:ProvenanceStatement>
+        <dct:description xml:lang="fre">La version numérique vectorielle du plan de secteur se base sur la version papier
+          originale
+          digitalisée par l'Institut Wallon en juin 1994 (fond de plan au 1/10.000) qui a été complétée en mai 2001 par
+          ce même institut. La donnée intègre la légende actuellement en vigueur et est mise à jour en continu par la
+          DGO4 depuis 2001.
 
-      L'intégration des nouveaux dossiers, la correction d'erreurs et la suppression des dossiers abrogés se font au
-      fur et à mesure de la réception des informations. Les données publiées sont mises à jour mensuellement sur
-      base des données de travail.
+          L'intégration des nouveaux dossiers, la correction d'erreurs et la suppression des dossiers abrogés se font au
+          fur et à mesure de la réception des informations. Les données publiées sont mises à jour mensuellement sur
+          base des données de travail.
 
-      Depuis leur adoption, les plans de secteur ont fait l’objet de nombreuses révisions. Le Gouvernement wallon a
-      en effet estimé nécessaire de les adapter pour y inscrire de nouveaux projets: routes, lignes électriques à
-      haute tension, tracé TGV, nouvelles zones d'activité économique, zones d’extraction, etc.
+          Depuis leur adoption, les plans de secteur ont fait l’objet de nombreuses révisions. Le Gouvernement wallon a
+          en effet estimé nécessaire de les adapter pour y inscrire de nouveaux projets: routes, lignes électriques à
+          haute tension, tracé TGV, nouvelles zones d'activité économique, zones d’extraction, etc.
 
-      La procédure de révision et la légende ont été modifiées à plusieurs reprises.
+          La procédure de révision et la légende ont été modifiées à plusieurs reprises.
 
-      Suite à l'entrée en vigueur du CoDT, des changements sont à noter :
-      - Trois nouvelles zones destinées à l'urbanisation : Zone de dépendance d’extraction destinée à accueillir les
-      dépôts et dépendances industrielles (transformation des matières) à l’activité d’extraction, la zone d'enjeu
-      communal (ZEC) et la zone d'enjeu régional (ZER). Les ZEC et ZER sont toutes deux accompagnées d'une carte
-      d'affectation des sols à valeur indicative
-      - une nouvelle zone non destinée à l'urbanisation : zone d'extraction (ZE).
-    </adms:versionNotes>
+          Suite à l'entrée en vigueur du CoDT, des changements sont à noter :
+          - Trois nouvelles zones destinées à l'urbanisation : Zone de dépendance d’extraction destinée à accueillir les
+          dépôts et dépendances industrielles (transformation des matières) à l’activité d’extraction, la zone d'enjeu
+          communal (ZEC) et la zone d'enjeu régional (ZER). Les ZEC et ZER sont toutes deux accompagnées d'une carte
+          d'affectation des sols à valeur indicative
+          - une nouvelle zone non destinée à l'urbanisation : zone d'extraction (ZE).
+        </dct:description>
+      </dct:ProvenanceStatement>
+    </dct:provenance>
     <adms:identifier>
       <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
@@ -445,7 +449,7 @@
       <dcat:Distribution>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-08T00:00:00</dct:issued>
         <dcat:accessURL rdf:resource="https://data.monde.org/secteur.shp"/>
-        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10485760</dcat:byteSize>
+        <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">10485760</dcat:byteSize>
         <dct:format>
           <dct:MediaType>
             <rdfs:label>ESRI Shapefile (.shp)</rdfs:label>
@@ -454,33 +458,6 @@
         <dcat:compressFormat>
           <dct:MediaType rdf:about="https://publications.europa.eu/resource/authority/file-type/ZIP"/>
         </dcat:compressFormat>
-        <dct:license>
-          <dct:LicenseDocument
-            rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf"/>
-        </dct:license>
-        <dct:accessRights>
-          <dct:RightsStatement
-            rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
-        </dct:accessRights>
-        <dcat:spatialResolutionInMeters rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01
-        </dcat:spatialResolutionInMeters>
-        <dcat:temporalResolution rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">P0Y2M0DT0H0M0S
-        </dcat:temporalResolution>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="https://inspire.ec.europa.eu/id/document/tg/tn"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
-            <rdfs:label xml:lang="fre">INSPIRE Data Specification on Transport Networks – Technical Guidelines, version
-              3.2
-            </rdfs:label>
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-04-17</dct:issued>
-          </dct:Standard>
-        </dct:conformsTo>
       </dcat:Distribution>
     </dcat:distribution>
     <dcat:distribution>
@@ -497,33 +474,6 @@
             <dcat:endpointURL rdf:resource="http://geoapps.wallonie.be/webgisdgo4/#CTX=PDS"/>
           </rdf:Description>
         </dcat:accessService>
-        <dct:license>
-          <dct:LicenseDocument
-            rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf"/>
-        </dct:license>
-        <dct:accessRights>
-          <dct:RightsStatement
-            rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
-        </dct:accessRights>
-        <dcat:spatialResolutionInMeters rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01
-        </dcat:spatialResolutionInMeters>
-        <dcat:temporalResolution rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">P0Y2M0DT0H0M0S
-        </dcat:temporalResolution>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="https://inspire.ec.europa.eu/id/document/tg/tn"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
-            <rdfs:label xml:lang="fre">INSPIRE Data Specification on Transport Networks – Technical Guidelines, version
-              3.2
-            </rdfs:label>
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-04-17</dct:issued>
-          </dct:Standard>
-        </dct:conformsTo>
       </dcat:Distribution>
     </dcat:distribution>
     <dcat:distribution>
@@ -542,33 +492,6 @@
               rdf:resource="https://geoportail.wallonie.be/walonmap/#ADU=https://geoservices.wallonie.be/arcgis/rest/services/AMENAGEMENT_TERRITOIRE/PDS/MapServer"/>
           </rdf:Description>
         </dcat:accessService>
-        <dct:license>
-          <dct:LicenseDocument
-            rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf"/>
-        </dct:license>
-        <dct:accessRights>
-          <dct:RightsStatement
-            rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
-        </dct:accessRights>
-        <dcat:spatialResolutionInMeters rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01
-        </dcat:spatialResolutionInMeters>
-        <dcat:temporalResolution rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">P0Y2M0DT0H0M0S
-        </dcat:temporalResolution>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="https://inspire.ec.europa.eu/id/document/tg/tn"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
-            <rdfs:label xml:lang="fre">INSPIRE Data Specification on Transport Networks – Technical Guidelines, version
-              3.2
-            </rdfs:label>
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-04-17</dct:issued>
-          </dct:Standard>
-        </dct:conformsTo>
       </dcat:Distribution>
     </dcat:distribution>
     <dcat:distribution>
@@ -588,33 +511,6 @@
               rdf:resource="https://geoservices.wallonie.be/arcgis/rest/services/AMENAGEMENT_TERRITOIRE/PDS/MapServer"/>
           </rdf:Description>
         </dcat:accessService>
-        <dct:license>
-          <dct:LicenseDocument
-            rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf"/>
-        </dct:license>
-        <dct:accessRights>
-          <dct:RightsStatement
-            rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
-        </dct:accessRights>
-        <dcat:spatialResolutionInMeters rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01
-        </dcat:spatialResolutionInMeters>
-        <dcat:temporalResolution rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">P0Y2M0DT0H0M0S
-        </dcat:temporalResolution>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="https://inspire.ec.europa.eu/id/document/tg/tn"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
-            <rdfs:label xml:lang="fre">INSPIRE Data Specification on Transport Networks – Technical Guidelines, version
-              3.2
-            </rdfs:label>
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-04-17</dct:issued>
-          </dct:Standard>
-        </dct:conformsTo>
       </dcat:Distribution>
     </dcat:distribution>
     <dcat:distribution>
@@ -636,33 +532,6 @@
             </dct:conformsTo>
           </rdf:Description>
         </dcat:accessService>
-        <dct:license>
-          <dct:LicenseDocument
-            rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf"/>
-        </dct:license>
-        <dct:accessRights>
-          <dct:RightsStatement
-            rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"/>
-        </dct:accessRights>
-        <dcat:spatialResolutionInMeters rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.01
-        </dcat:spatialResolutionInMeters>
-        <dcat:temporalResolution rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">P0Y2M0DT0H0M0S
-        </dcat:temporalResolution>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="http://data.europa.eu/eli/reg/2010/1089"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard rdf:about="https://inspire.ec.europa.eu/id/document/tg/tn"/>
-        </dct:conformsTo>
-        <dct:conformsTo>
-          <dct:Standard>
-            <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
-            <rdfs:label xml:lang="fre">INSPIRE Data Specification on Transport Networks – Technical Guidelines, version
-              3.2
-            </rdfs:label>
-            <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-04-17</dct:issued>
-          </dct:Standard>
-        </dct:conformsTo>
       </dcat:Distribution>
     </dcat:distribution>
     <foaf:page>

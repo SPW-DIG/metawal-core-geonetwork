@@ -22,10 +22,13 @@
   <!--
   Some information are duplicated from the dataset to the distributions.
   This can be enabled or not here.
+
+  Related discussion:
+  https://github.com/SEMICeu/GeoDCAT-AP/issues/100
   -->
   <xsl:param name="copyDatasetInfoToDistribution"
                 as="xs:string"
-                select="'true'"/>
+                select="'false'"/>
   <xsl:variable name="isCopyingDatasetInfoToDistribution"
                 as="xs:boolean"
                 select="xs:boolean($copyDatasetInfoToDistribution)"/>
@@ -203,7 +206,7 @@
             Usage note:
             The checksum is related to the download URL.
 
-            TODO: Not supported
+            TODO: Not supported https://github.com/SEMICeu/GeoDCAT-AP/issues/89
             -->
 
 
@@ -218,7 +221,7 @@
             -->
             <xsl:for-each select="ancestor::mrd:MD_DigitalTransferOptions/mrd:transferSize/*/text()[. castable as xs:double]">
               <!-- Not valid for eu-dcat-ap <dcat:byteSize><xsl:value-of select="concat(., ' MB')"/></dcat:byteSize>-->
-              <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"><xsl:value-of select="format-number(. * 1048576, '#')"/></dcat:byteSize>
+              <dcat:byteSize rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"><xsl:value-of select="format-number(. * 1048576, '#')"/></dcat:byteSize>
             </xsl:for-each>
 
 

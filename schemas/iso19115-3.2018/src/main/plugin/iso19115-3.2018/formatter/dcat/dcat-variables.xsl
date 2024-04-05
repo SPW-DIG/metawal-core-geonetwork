@@ -12,6 +12,10 @@
                 as="xs:boolean"
                 select="true()"/>
 
+  <!-- The first resourceConstraints is accessRights,
+  then rights is used for additional constraints information.
+  https://github.com/SEMICeu/GeoDCAT-AP/issues/82
+  -->
   <xsl:variable name="isPreservingAllResourceConstraints"
                 as="xs:boolean"
                 select="true()"/>
@@ -199,5 +203,4 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">wps</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ZIP">zip</entry>
   </xsl:variable>
-
 </xsl:stylesheet>
