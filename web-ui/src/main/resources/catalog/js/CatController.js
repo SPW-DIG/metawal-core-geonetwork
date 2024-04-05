@@ -722,15 +722,29 @@
               },
               {
                 label: "exportXML",
-                // 'url' : '/formatters/xml?attachment=false',
                 url: "/formatters/xml",
                 class: "fa-file-code-o"
-              } /*,
+              },
               {
-                label: "exportDCAT",
-                url: "/geonetwork/api/collections/main/items/${uuid}?f=dcat",
-                class: "fa-file-code-o"
-              }*/
+                label: "DCAT",
+                url: "/formatters/dcat?output=xml"
+              },
+              {
+                label: "EU-DCAT-AP",
+                url: "/formatters/eu-dcat-ap?output=xml"
+              },
+              {
+                label: "EU-GEO-DCAT-AP",
+                url: "/formatters/eu-geodcat-ap?output=xml"
+              },
+              {
+                label: "EU-DCAT-AP-MOBILITY",
+                url: "/formatters/eu-dcat-ap-mobility?output=xml"
+              },
+              {
+                label: "EU-DCAT-AP-HVD",
+                url: "/formatters/eu-dcat-ap-hvd?output=xml"
+              }
             ],
             // Deprecated (use configuration on resultViewTpls)
             grid: {
