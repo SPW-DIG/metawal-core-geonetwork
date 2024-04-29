@@ -79,6 +79,8 @@
   </add-extent-from-geokeywordsHelp>
 
   <!-- METAWAL basic form-->
+  <mw-addAtomFeed>Ajouter un flux ATOM</mw-addAtomFeed>
+  <mw-addDataDownloadPage>Ajouter la page de téléchargement</mw-addDataDownloadPage>
   <metawalbasicform>MW basic form</metawalbasicform>
   <mwbf-mainInfo>Information</mwbf-mainInfo>
   <mwbf-title>Title</mwbf-title>

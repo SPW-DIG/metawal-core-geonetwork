@@ -931,9 +931,72 @@
                                               filter: 'function:featureCatalogue',
                                               editActions: ['onlineUseFcats']
                                            }]"
-        />
+        >
+          <section>
+            <action type="add"
+                    name=" "
+                    btnLabel="mw-addAtomFeed"
+                    or="onLine"
+                    in="/mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*"
+                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[*/cit:protocol/*/text() = 'atom:feed']) = 0">
+              <template>
+                <snippet>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>https://geoservices.wallonie.be/geotraitement/spwdatadownload/get/${uuid}/atom_service.xml</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>atom:feed</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                        <gco:CharacterString>Service de téléchargement ATOM Feed</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Ce service de téléchargement ATOM Feed permet de télécharger la série de couches de données</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
+                      </cit:function>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </snippet>
+              </template>
+            </action>
+            <action type="add"
+                    name=" "
+                    btnLabel="mw-addDataDownloadPage"
+                    or="onLine"
+                    in="/mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*"
+                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[starts-with(*/cit:linkage/*/text(), 'https://geoadata.wallonie.be/dataset')]) = 0">
+              <template>
+                <snippet>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>https://geoadata.wallonie.be/dataset/${uuid}</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:DOWNLOAD</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                        <gco:CharacterString>Page de téléchargement des données</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Page à partir de laquelle vous avez accès au téléchargement direct de la donnée</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
+                      </cit:function>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </snippet>
+              </template>
+            </action>
+          </section>
+        </directive>
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
 
         <directive gn-geo-publisher=""
                    data-ng-if="gnCurrentEdit.geoPublisherConfig"
@@ -2073,7 +2136,70 @@
                                               filter: 'function:featureCatalogue',
                                               editActions: ['onlineUseFcats']
                                            }]"
-        />
+        >
+          <section>
+            <action type="add"
+                    name=" "
+                    btnLabel="mw-addAtomFeed"
+                    or="onLine"
+                    in="/mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*"
+                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[*/cit:protocol/*/text() = 'atom:feed']) = 0">
+              <template>
+                <snippet>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>https://geoservices.wallonie.be/geotraitement/spwdatadownload/get/${uuid}/atom_service.xml</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>atom:feed</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                        <gco:CharacterString>Service de téléchargement ATOM Feed</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Ce service de téléchargement ATOM Feed permet de télécharger la série de couches de données</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
+                      </cit:function>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </snippet>
+              </template>
+            </action>
+            <action type="add"
+                    name=" "
+                    btnLabel="mw-addDataDownloadPage"
+                    or="onLine"
+                    in="/mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*"
+                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[starts-with(*/cit:linkage/*/text(), 'https://geoadata.wallonie.be/dataset')]) = 0">
+              <template>
+                <snippet>
+                  <mrd:onLine>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>https://geoadata.wallonie.be/dataset/${uuid}</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:DOWNLOAD</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                        <gco:CharacterString>Page de téléchargement des données</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Page à partir de laquelle vous avez accès au téléchargement direct de la donnée</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
+                      </cit:function>
+                    </cit:CI_OnlineResource>
+                  </mrd:onLine>
+                </snippet>
+              </template>
+            </action>
+          </section>
+        </directive>
 
         <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
 
