@@ -4,10 +4,13 @@
   xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
   xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
   xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/2.0"
+  xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+  xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
   xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc/1.0"
   xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
   xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
   xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+  xmlns:util="java:org.fao.geonet.util.XslUtil"
   xmlns:geonet="http://www.fao.org/geonetwork"
   exclude-result-prefixes="#all">
 
@@ -15,6 +18,7 @@
   <xsl:import href="process-utility.xsl"/>
 
   <xsl:param name="esriRestServiceUrl" select="''"/>
+  <xsl:param name="addGeoportal2024UrlStyle" select="'1'"/>
 
   <xsl:variable name="wmsUrl"
                 select="concat(replace($esriRestServiceUrl, '/rest/', '/'), '/WMSServer?request=GetCapabilities&amp;service=WMS')"/>
@@ -29,6 +33,27 @@
                 select="count(//mrd:onLine/*
                                 [cit:protocol/*/text() = 'WWW:LINK'
                                 and cit:linkage/*/text() = $aduUrl]) > 0"/>
+
+  <xsl:variable name="geoportalWallon2024urlTemplate">
+    <xsl:text>https://geoportail.wallonie.be/walonmap#panier={"serviceId":"","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geoportail.wallonie.be/catalogue/{uuid}.html"}</xsl:text>
+  </xsl:variable>
+
+  <xsl:variable name="geoportalLinkRecordtitle"
+                select="//mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:title/gco:CharacterString"/>
+
+  <xsl:variable name="geoportalLinkRecordUuid"
+                select="//mdb:MD_Metadata/mdb:metadataIdentifier/*/mcc:code/gco:CharacterString"/>
+
+  <xsl:variable name="geoportalWallon2024"
+                select="replace(replace(replace(
+                          $geoportalWallon2024urlTemplate, '\{url\}', encode-for-uri($esriRestServiceUrl)),
+                          '\{title\}', encode-for-uri(util:escapeForJson($geoportalLinkRecordtitle))),
+                          '\{uuid\}', encode-for-uri($geoportalLinkRecordUuid))"/>
+
+  <xsl:variable name="isGeoportalWallon2024Defined"
+                select="count(//mrd:onLine/*
+                                [cit:protocol/*/text() = 'WWW:LINK'
+                                and cit:linkage/*/text() = $geoportalWallon2024]) > 0"/>
 
   <xsl:variable name="legendUrl"
                 select="concat($esriRestServiceUrl, '/legend')"/>
@@ -74,6 +99,17 @@
                                 [cit:protocol/*/text() = 'WWW:LINK'
                                 and cit:linkage/*/text() = $aduUrl]) > 0"/>
 
+      <xsl:variable name="geoportalWallon2024"
+                    select="replace(replace(replace(
+                          $geoportalWallon2024urlTemplate, '\{url\}', encode-for-uri(current())),
+                          '\{title\}', encode-for-uri(util:escapeForJson(current()))),
+                          '\{uuid\}', encode-for-uri($geoportalLinkRecordUuid))"/>
+
+      <xsl:variable name="isGeoportalWallon2024Defined"
+                    select="count(//mrd:onLine/*
+                                [cit:protocol/*/text() = 'WWW:LINK'
+                                and cit:linkage/*/text() = $geoportalWallon2024]) > 0"/>
+
       <xsl:variable name="legendUrl"
                     select="concat(., '/legend')"/>
       <xsl:variable name="isLegendDefined"
@@ -81,7 +117,7 @@
                                 mpc:portrayalCatalogueCitation/*/cit:onlineResource/*
                                   [cit:linkage/*/text() = $legendUrl]) > 0"/>
 
-      <xsl:if test="not($isWmsDefined) or not($isAduDefined) or not($isLegendDefined)">
+      <xsl:if test="not($isWmsDefined) or not($isAduDefined) or not($isLegendDefined) or not($isGeoportalWallon2024Defined)">
         <suggestion process="add-wms-and-legend-from-esrirest"
                     id="{generate-id()}"
                     category="online" target="onLine">
@@ -90,7 +126,8 @@
             select="."/>
           </name>
           <operational>true</operational>
-          <params>{"esriRestServiceUrl":{"type":"string", "defaultValue":"<xsl:value-of select="."/>"}}
+          <params>{"esriRestServiceUrl":{"type":"string", "defaultValue":"<xsl:value-of select="."/>"},
+                   "addGeoportal2024UrlStyle":{"type":"boolean", "defaultValue":"1"}}
           </params>
         </suggestion>
       </xsl:if>
@@ -109,7 +146,7 @@
   <xsl:template match="geonet:*" priority="2">
   </xsl:template>
 
-  <xsl:template match="mrd:onLine[(not($isWmsDefined) or not($isAduDefined))
+  <xsl:template match="mrd:onLine[(not($isWmsDefined) or not($isAduDefined) or not($isGeoportalWallon2024Defined))
                                   and */cit:linkage/*/text() = $esriRestServiceUrl]"
                 priority="99">
     <xsl:copy-of select="."/>
@@ -142,11 +179,13 @@
     </xsl:if>
 
 
-    <xsl:if test="not($isAduDefined)">
+    <xsl:if test="not($isAduDefined) or not($isGeoportalWallon2024Defined)">
       <mrd:onLine>
         <cit:CI_OnlineResource>
           <cit:linkage>
-            <gco:CharacterString><xsl:value-of select="$aduUrl"/></gco:CharacterString>
+            <gco:CharacterString>
+              <xsl:value-of select="if($addGeoportal2024UrlStyle = '1') then $geoportalWallon2024 else $aduUrl"/>
+            </gco:CharacterString>
           </cit:linkage>
           <cit:protocol>
             <gco:CharacterString>WWW:LINK</gco:CharacterString>
