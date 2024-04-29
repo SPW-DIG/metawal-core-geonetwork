@@ -977,6 +977,7 @@
             createPageTpl: "../../catalog/templates/editor/new-metadata-horizontal.html",
             editorIndentType: "",
             allowRemoteRecordLink: true,
+            workflowSearchRecordTypes: ["n", "e"],
             facetConfig: {
               "cl_resourceScope.key": {
                 terms: {
@@ -1458,6 +1459,7 @@
           "distributionConfig",
           "collectionTableConfig",
           "queryBaseOptions",
+          "workflowSearchRecordTypes",
           "workflowAssistApps"
         ],
         current: null,

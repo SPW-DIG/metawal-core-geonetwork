@@ -34,15 +34,17 @@
     <xsl:param name="nodeName"
                as="xs:string"/>
 
-    <xsl:element name="{$nodeName}">
-      <xsl:attribute name="xml:lang" select="$languages[@default]/@iso3code"/>
-      <xsl:value-of select="*/text()"/>
-    </xsl:element>
+    <xsl:if test="*/text() != ''">
+      <xsl:element name="{$nodeName}">
+        <xsl:attribute name="xml:lang" select="$languages[@default]/@iso3code"/>
+        <xsl:value-of select="*/text()"/>
+      </xsl:element>
+    </xsl:if>
 
     <xsl:variable name="hasDefaultLanguageCharacterString"
                   select="count(gco:CharacterString|gcx:Anchor) > 0"/>
 
-    <xsl:for-each select="lan:PT_FreeText/*/lan:LocalisedCharacterString">
+    <xsl:for-each select="lan:PT_FreeText/*/lan:LocalisedCharacterString[text() != '']">
       <xsl:variable name="translationLanguage"
                     select="@locale"/>
 
@@ -78,10 +80,14 @@
     <xsl:param name="nodeName"
                as="xs:string"/>
 
+    <xsl:variable name="date"
+                  as="xs:string?"
+                  select="if (*/text()) then */text() else text()"/>
+
     <xsl:element name="{$nodeName}">
       <xsl:attribute name="rdf:datatype"
-                     select="concat('http://www.w3.org/2001/XMLSchema#date', (if (contains(*/text(), 'T')) then 'Time' else ''))"/>
-      <xsl:value-of select="*/text()"/>
+                     select="concat('http://www.w3.org/2001/XMLSchema#date', (if (contains($date, 'T')) then 'Time' else ''))"/>
+      <xsl:value-of select="$date"/>
     </xsl:element>
   </xsl:template>
 
