@@ -1,4 +1,4 @@
-body{margin:1em!important}@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin); /*!
+body{margin:1em!important}:root{--table-togglebutton_bg:#3b82f6;--table-togglebutton_text_color:#fff;--table-togglebutton_bg_active:#1d4ed8;--table-togglebutton_text_color_active:#fff}@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin); /*!
  * # Semantic UI 2.4.0 - Reset
  * http://github.com/semantic-org/semantic-ui/
  *
