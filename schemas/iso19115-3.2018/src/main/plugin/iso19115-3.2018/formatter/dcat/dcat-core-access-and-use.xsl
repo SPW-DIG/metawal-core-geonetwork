@@ -28,7 +28,15 @@
                 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
                 xmlns:owl="http://www.w3.org/2002/07/owl#"
                 xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:skos="http://www.w3.org/2004/02/skos/core#"
                 exclude-result-prefixes="#all">
+
+  <xsl:variable name="euLicenses"
+                select="document('vocabularies/licences-skos.rdf')"/>
+
+  <xsl:variable name="isMappingResourceConstraintsToEuVocabulary"
+                as="xs:boolean"
+                select="false()"/>
 
   <!--
   RDF Property:	dcterms:accessRights
@@ -81,45 +89,52 @@
         <xsl:copy-of select="ancestor::mri:resourceConstraints/*[mco:useConstraints]/mco:otherConstraints"/>
         <xsl:copy-of select="ancestor::mri:resourceConstraints/*[mco:useConstraints]/mco:useLimitation"/>
       </xsl:variable>
-      <xsl:for-each select="$useConstraints">
-        <xsl:choose>
-          <xsl:when test="position() = 1">
-            <dct:license>
-              <dct:LicenseDocument>
-                <xsl:choose>
-                  <!-- TODO: isMappingResourceConstraintsToEuVocabulary -->
-                  <xsl:when test="gcx:Anchor/@xlink:href">
-                    <xsl:attribute name="rdf:about" select="gcx:Anchor/@xlink:href"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:call-template name="rdf-localised">
-                      <xsl:with-param name="nodeName" select="'dct:description'"/>
-                    </xsl:call-template>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </dct:LicenseDocument>
-            </dct:license>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:if test="$isPreservingAllResourceConstraints">
+
+      <xsl:variable name="licensesAndRights" as="node()*">
+        <xsl:for-each select="$useConstraints">
+
+          <xsl:variable name="httpUriInAnchorOrText"
+                        select="(gcx:Anchor/@xlink:href[starts-with(., 'http')]
+                                  |gco:CharacterString[starts-with(., 'http')])[1]"/>
+
+          <xsl:choose>
+            <xsl:when test="$httpUriInAnchorOrText != '' and $isMappingResourceConstraintsToEuVocabulary = true()">
+              <xsl:variable name="licenseUriWithoutHttp"
+                            select="replace($httpUriInAnchorOrText,'https?://','')"/>
+              <xsl:variable name="euDcatLicense"
+                            select="$euLicenses/rdf:RDF/skos:Concept[
+                                                  matches(skos:exactMatch/@rdf:resource,
+                                                          concat('https?://', $licenseUriWithoutHttp, '/?'))]"/>
+
+              <xsl:if test="$euDcatLicense != ''">
+                <dct:license>
+                  <dct:LicenseDocument rdf:about="{$euDcatLicense/@rdf:about}">
+                    <!--<xsl:copy-of select="$euDcatLicense/(skos:prefLabel[@xml:lang = $languages/@iso2code]
+                                                      |skos:exactMatch)"
+                                   copy-namespaces="no"/>-->
+                  </dct:LicenseDocument>
+                </dct:license>
+              </xsl:if>
+            </xsl:when>
+            <xsl:when test="$httpUriInAnchorOrText != ''">
+              <dct:license>
+                <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}"/>
+              </dct:license>
+            </xsl:when>
+            <xsl:otherwise>
               <dct:rights>
                 <dct:RightsStatement>
-                  <xsl:choose>
-                    <xsl:when test="gcx:Anchor/@xlink:href">
-                      <xsl:attribute name="rdf:about" select="gcx:Anchor/@xlink:href"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                      <xsl:call-template name="rdf-localised">
-                        <xsl:with-param name="nodeName" select="'dct:description'"/>
-                      </xsl:call-template>
-                    </xsl:otherwise>
-                  </xsl:choose>
+                  <xsl:call-template name="rdf-localised">
+                    <xsl:with-param name="nodeName" select="'dct:description'"/>
+                  </xsl:call-template>
                 </dct:RightsStatement>
               </dct:rights>
-            </xsl:if>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:for-each>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each>
+      </xsl:variable>
+
+      <xsl:copy-of select="$licensesAndRights"/>
     </xsl:if>
   </xsl:template>
 
