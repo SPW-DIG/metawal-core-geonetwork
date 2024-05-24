@@ -848,7 +848,8 @@
               graticule: false,
               mousePosition: true,
               syncAllLayers: false,
-              drawVector: false
+              drawVector: false,
+              scaleLine: false
             },
             defaultTool: "layers",
             defaultToolAfterMapLoad: "layers",
@@ -865,9 +866,9 @@
               geodesicExtents: false
             },
             "map-editor": {
-              context: "",
+              context: "../../map/config-viewer.xml",
               extent: [0, 0, 0, 0],
-              layers: [{ type: "osm" }]
+              layers: []
             },
             "map-thumbnail": {
               context: "../../map/config-viewer.xml",

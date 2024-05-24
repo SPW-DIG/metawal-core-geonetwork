@@ -279,6 +279,8 @@
         $scope.userUpdated = false;
         $scope.$broadcast("clearResults");
         $scope.userOperation = "editinfo";
+
+        $scope.gnUserEdit.$setPristine();
       };
 
       /**

@@ -230,9 +230,7 @@
             <xsl:copy-of select="gn-fn-render:extent($metadataUuid)"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates mode="render-field"
-                                 select=".//mdb:identificationInfo/*/mri:extent//gex:EX_GeographicBoundingBox">
-            </xsl:apply-templates>
+            <xsl:copy-of select="gn-fn-render:bboxes(.//mdb:identificationInfo/*/mri:extent//gex:EX_GeographicBoundingBox)"/>
           </xsl:otherwise>
         </xsl:choose>
       </section>
@@ -370,7 +368,7 @@
           <div data-ng-if="showCitation"
                data-gn-metadata-citation=""
                data-text="{$citation}">
-            
+
           </div>
         </xsl:when>
         <xsl:otherwise>
@@ -394,18 +392,6 @@
 
 
   <!-- Most of the elements are ... -->
-  <!-- Most of the elements are ... -->
-  <xsl:template mode="render-field"
-                match="*[gco:CharacterString = '']|*[gco:Integer = '']|
-                       *[gco:Decimal = '']|*[gco:Boolean = '']|
-                       *[gco:Real = '']|*[gco:Measure = '']|*[gco:Length = '']|
-                       *[gco:Distance = '']|*[gco:Angle = '']|*[gco:Scale = '']|
-                       *[gco:Record = '']|*[gco:RecordType = '']|
-                       *[gco:LocalName = '']|*[lan:PT_FreeText = '']|
-                       *[gml:beginPosition = '']|*[gml:endPosition = '']|
-                       gml:description[. != '']|gml:timePosition[. != '']|
-                       *[gco:Date = '']|*[gco:DateTime = '']|*[gco:TM_PeriodDuration = '']"
-                priority="500"/>
   <xsl:template mode="render-field"
                 match="*[gco:CharacterString != '']|*[gcx:Anchor != '']|
                        *[gco:Integer != '']|
@@ -419,7 +405,8 @@
                        *[*/@codeListValue]|*[@codeListValue]|
                        gml:identifier[. != '']|gml:name[. != '']|
                        gml:description[. != '']|gml:timePosition[. != '']|
-                       gml:beginPosition[. != '']|gml:endPosition[. != '']"
+                       gml:beginPosition[. != '']|gml:endPosition[. != '']|
+                       gfc:memberName[. != '']|gfc:typeName[. != '']|gfc:aliases[. != '']"
                 priority="500">
     <xsl:param name="fieldName" select="''" as="xs:string"/>
 
@@ -568,8 +555,10 @@
   <!-- Bbox is displayed with an overview and the geom displayed on it
   and the coordinates displayed around -->
   <xsl:template mode="render-field"
-                match="gex:EX_GeographicBoundingBox[
-                            gex:westBoundLongitude/gco:Decimal != '']" priority="100">
+                match="gex:EX_GeographicBoundingBox[gex:eastBoundLongitude/*:Decimal castable as xs:double
+                                                   and gex:southBoundLatitude/*:Decimal castable as xs:double
+                                                   and gex:westBoundLongitude/*:Decimal castable as xs:double
+                                                   and gex:northBoundLatitude/*:Decimal castable as xs:double]" priority="100">
     <xsl:copy-of select="gn-fn-render:bbox(
                             xs:double(gex:westBoundLongitude/gco:Decimal),
                             xs:double(gex:southBoundLatitude/gco:Decimal),
@@ -1181,9 +1170,9 @@
 
     <xsl:if test="@uom">
       <!-- Display the unit value only -->
-      &#160; <xsl:value-of select="if (contains(@uom, '#'))
-                                    then concat(., ' ', tokenize(@uom, '#')[2])
-                                    else  concat(., ' ', @uom)"/>
+      &#160;<xsl:value-of select="if (contains(@uom, '#'))
+                                    then tokenize(@uom, '#')[2]
+                                    else @uom"/>
     </xsl:if>
   </xsl:template>
 

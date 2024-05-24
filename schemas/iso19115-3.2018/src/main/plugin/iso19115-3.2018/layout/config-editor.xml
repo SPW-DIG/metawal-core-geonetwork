@@ -23,7 +23,6 @@
         xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
         xmlns:mac="http://standards.iso.org/iso/19115/-3/mac/2.0"
         xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.1"
-        xmlns:gts="http://www.isotc211.org/2005/gts"
         xmlns:gml="http://www.opengis.net/gml/3.2"
         xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -591,12 +590,14 @@
     a table view force some constraints. -->
     <table for="cit:CI_Responsibility">
       <header>
+        <col/>
         <col label="cit:role"/>
         <col label="cit:CI_Organisation"/>
         <col label="cit:electronicMailAddress"/>
         <col/>
       </header>
       <row>
+        <col orderControl=".."/>
         <col xpath="cit:role"/>
         <col xpath="cit:party/cit:CI_Organisation/cit:name"/>
         <col xpath="cit:party/*/cit:contactInfo/*/cit:address/*/cit:electronicMailAddress"/>
@@ -605,11 +606,14 @@
     </table>
     <table for="gfc:FC_ListedValue">
       <header>
+        <col/>
         <col label="gfc:code"/>
         <col label="gfc:label"/>
         <col label="gfc:definition"/>
+        <col/>
       </header>
       <row>
+        <col orderControl=".."/>
         <col xpath="gfc:code"/>
         <col xpath="gfc:label"/>
         <col xpath="gfc:definition"/>
@@ -618,11 +622,15 @@
     </table>
     <table for="gfc:FC_ListedValue">
       <header>
+        <col/>
         <col label="gfc:code"/>
         <col label="gfc:label"/>
         <col label="gfc:definition"/>
+        <col label="gfc:valueType"/>
+        <col/>
       </header>
       <row>
+        <col orderControl=".."/>
         <col xpath="gfc:code"/>
         <col xpath="gfc:label"/>
         <col xpath="gfc:definition"/>
