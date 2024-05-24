@@ -135,7 +135,7 @@
             <span><xsl:copy-of select="translatedTitle/(text()|*)"/></span>
 
             <xsl:value-of select="if (lastPublicationDate != '')
-                      then concat('(', lastPublicationDate, ')')
+                      then concat(' (', lastPublicationDate, ')')
                       else ''"/>
 
             <!--<xsl:call-template name="citation-contact">
