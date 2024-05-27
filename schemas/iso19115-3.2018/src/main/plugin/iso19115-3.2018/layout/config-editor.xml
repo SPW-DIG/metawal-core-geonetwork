@@ -976,13 +976,13 @@
                     btnLabel="mw-addDataDownloadPage"
                     or="onLine"
                     in="/mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*"
-                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[starts-with(*/cit:linkage/*/text(), 'https://geoadata.wallonie.be/dataset')]) = 0">
+                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[starts-with(*/cit:linkage/*/text(), 'https://geodata.wallonie.be/dataset')]) = 0">
               <template>
                 <snippet>
                   <mrd:onLine>
                     <cit:CI_OnlineResource>
                       <cit:linkage>
-                        <gco:CharacterString>https://geoadata.wallonie.be/dataset/${uuid}</gco:CharacterString>
+                        <gco:CharacterString>https://geodata.wallonie.be/dataset/${uuid}</gco:CharacterString>
                       </cit:linkage>
                       <cit:protocol>
                         <gco:CharacterString>WWW:DOWNLOAD</gco:CharacterString>
@@ -2181,13 +2181,13 @@
                     btnLabel="mw-addDataDownloadPage"
                     or="onLine"
                     in="/mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*"
-                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[starts-with(*/cit:linkage/*/text(), 'https://geoadata.wallonie.be/dataset')]) = 0">
+                    if="count(mdb:MD_Metadata/mdb:distributionInfo/*/mrd:transferOptions/*/mrd:onLine[starts-with(*/cit:linkage/*/text(), 'https://geodata.wallonie.be/dataset')]) = 0">
               <template>
                 <snippet>
                   <mrd:onLine>
                     <cit:CI_OnlineResource>
                       <cit:linkage>
-                        <gco:CharacterString>https://geoadata.wallonie.be/dataset/${uuid}</gco:CharacterString>
+                        <gco:CharacterString>https://geodata.wallonie.be/dataset/${uuid}</gco:CharacterString>
                       </cit:linkage>
                       <cit:protocol>
                         <gco:CharacterString>WWW:DOWNLOAD</gco:CharacterString>

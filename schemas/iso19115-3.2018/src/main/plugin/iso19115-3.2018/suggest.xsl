@@ -34,6 +34,12 @@
     <p>collection-updater</p>
     <p>add-date-for-status</p>
     <p>spatineo-registration</p>
+    <!--<p>add-atom-feed
+      <batch condition=""
+             xpath="">
+
+      </batch>
+    </p>-->
     <!--<p>inspire-add-conformity</p>-->
   </xsl:variable>
 
