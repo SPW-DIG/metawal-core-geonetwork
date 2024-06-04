@@ -1066,23 +1066,7 @@
         <for name="gfc:listedValue"/>
       </flatModeExceptions>
 
-      <thesaurusList>
-        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistIACSData-IACSData" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
-        <thesaurus key="external.theme.Themes_geoportail_wallon_hierarchy" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.high-value-dataset-applicable-legislation" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.high-value-dataset-category" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-      </thesaurusList>
+      <thesaurusList defaultTransformation="to-iso19115-3.2018-keyword-with-anchor"/>
     </view>
 
     <view name="metawal" upAndDownControlHidden="true">
@@ -2090,23 +2074,7 @@
         <for name="mrd:distributorContact"/>
         <for name="mcc:processor"/>
       </flatModeExceptions>
-      <thesaurusList>
-        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistIACSData-IACSData" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
-        <thesaurus key="external.theme.Themes_geoportail_wallon_hierarchy" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.high-value-dataset-applicable-legislation" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.high-value-dataset-category" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-      </thesaurusList>
+      <thesaurusList defaultTransformation="to-iso19115-3.2018-keyword-with-anchor"/>
     </view>
 
     <view name="advanced"
@@ -3857,23 +3825,7 @@
                  in="/mdb:MD_Metadata"/>
       </tab>
 
-      <thesaurusList>
-        <thesaurus key="external.theme.httpinspireeceuropaeutheme-theme"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistPriorityDataset-PriorityDataset"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeufeatureconcept-featureconcept" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistSpatialDataServiceCategory-SpatialDataServiceCategory"
-                   transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.gemet" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.httpinspireeceuropaeumetadatacodelistIACSData-IACSData" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.infraSIG" transformations="to-iso19115-3.2018-keyword"/>
-        <thesaurus key="external.theme.Themes_geoportail_wallon_hierarchy" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.high-value-dataset-applicable-legislation" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-        <thesaurus key="external.theme.high-value-dataset-category" transformations="to-iso19115-3.2018-keyword-with-anchor"/>
-      </thesaurusList>
+      <thesaurusList defaultTransformation="to-iso19115-3.2018-keyword-with-anchor"/>
     </view>
     <view name="xml">
       <sidePanel>
