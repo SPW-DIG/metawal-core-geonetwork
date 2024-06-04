@@ -190,6 +190,9 @@
           <cit:protocol>
             <gco:CharacterString>WWW:LINK</gco:CharacterString>
           </cit:protocol>
+          <cit:applicationProfile>
+            <gco:CharacterString>WalOnMap</gco:CharacterString>
+          </cit:applicationProfile>
           <cit:name>
             <gco:CharacterString>Application WalOnMap - Toute la Wallonie à la carte</gco:CharacterString>
           </cit:name>
@@ -199,9 +202,6 @@
           <cit:function>
             <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="browsing"/>
           </cit:function>
-          <cit:applicationProfile>
-            <gco:CharacterString>WalOnMap</gco:CharacterString>
-          </cit:applicationProfile>
         </cit:CI_OnlineResource>
       </mrd:onLine>
     </xsl:if>
