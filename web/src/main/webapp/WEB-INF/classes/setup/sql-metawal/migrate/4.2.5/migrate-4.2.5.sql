@@ -16,5 +16,8 @@ ALTER TABLE spg_page ALTER COLUMN link TYPE text;
 
 ALTER TABLE Languages DROP COLUMN isdefault;
 
+ALTER TABLE files ALTER COLUMN content TYPE oid USING content::oid;
+ALTER TABLE spg_page ALTER COLUMN link TYPE text USING link::text;
+
 UPDATE Settings SET value='4.2.5' WHERE name='system/platform/version';
 UPDATE Settings SET value='SNAPSHOT' WHERE name='system/platform/subVersion';
