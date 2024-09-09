@@ -838,14 +838,14 @@
     </mrd:MD_Distribution>
   </mdb:distributionInfo>
   <mdb:resourceLineage>
-    <mrl:LI_Lineage xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/1.0">
+    <mrl:LI_Lineage>
       <mrl:statement>
         <gco:CharacterString>lineage</gco:CharacterString>
       </mrl:statement>
       <mrl:scope>
         <mcc:MD_Scope>
           <mcc:level>
-            <mcc:MD_ScopeCode codeList="codeListLocation#MD_ScopeCode" codeListValue="dataset" />
+            <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode" codeListValue="dataset" />
           </mcc:level>
         </mcc:MD_Scope>
       </mrl:scope>
