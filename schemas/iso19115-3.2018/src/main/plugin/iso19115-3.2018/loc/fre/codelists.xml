@@ -1155,7 +1155,7 @@
       </description>
     </entry>
   </codelist>
-  <codelist name="mmi:MD_MaintenanceFrequencyCode">
+  <codelist name="mmi:MD_MaintenanceFrequencyCode" sort="fixed">
     <entry>
       <code>continual</code>
       <label>Continue</label>
@@ -1237,6 +1237,66 @@
       <code>biennially</code>
       <label>Biennale</label>
       <description>La ressource est mise à jour tous les deux ans</description>
+    </entry>
+
+    <!-- Additional DCAT mobility values
+     10min  12h  15min  1h  1min  24h  2h  3 months  30min  3h  5min  6 months  Less than yearly
+     -->
+    <entry>
+      <code></code>
+      <label>-- DCAT Mobility --</label>
+    </entry>
+    <entry>
+      <code>1min</code>
+      <label>1min</label>
+    </entry>
+    <entry>
+      <code>5min</code>
+      <label>5min</label>
+    </entry>
+    <entry>
+      <code>10min</code>
+      <label>10min</label>
+    </entry>
+    <entry>
+      <code>15min</code>
+      <label>15min</label>
+    </entry>
+    <entry>
+      <code>30min</code>
+      <label>30min</label>
+    </entry>
+    <entry>
+      <code>1h</code>
+      <label>1h</label>
+    </entry>
+    <entry>
+      <code>2h</code>
+      <label>2h</label>
+    </entry>
+    <entry>
+      <code>3h</code>
+      <label>3h</label>
+    </entry>
+    <entry>
+      <code>12h</code>
+      <label>12h</label>
+    </entry>
+    <entry>
+      <label>24h</label>
+      <code>24h</code>
+    </entry>
+    <entry>
+      <label>3 months</label>
+      <code>3 months</code>
+    </entry>
+    <entry>
+      <label>6 months</label>
+      <code>6 months</code>
+    </entry>
+    <entry>
+      <label>Less than yearly</label>
+      <code>Less than yearly</code>
     </entry>
   </codelist>
   <codelist name="mrd:MD_MediumFormatCode">
