@@ -34,8 +34,11 @@
                                 [cit:protocol/*/text() = 'WWW:LINK'
                                 and cit:linkage/*/text() = $aduUrl]) > 0"/>
 
+
+  <xsl:variable name="geoportalWallon2024urlEndPoint"
+                      select="'https://geoportail.wallonie.be/walonmap#'"/>
   <xsl:variable name="geoportalWallon2024urlTemplate">
-    <xsl:text>https://geoportail.wallonie.be/walonmap#PANIER=[{"serviceId":"1","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geodata.wallonie.be/id/{uuid}"}]</xsl:text>
+    <xsl:text>PANIER=[{"serviceId":"1","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geodata.wallonie.be/id/{uuid}"}]</xsl:text>
   </xsl:variable>
 
   <xsl:variable name="geoportalLinkRecordtitle"
@@ -45,10 +48,10 @@
                 select="//mdb:MD_Metadata/mdb:metadataIdentifier/*/mcc:code/gco:CharacterString"/>
 
   <xsl:variable name="geoportalWallon2024"
-                select="replace(replace(replace(
-                          $geoportalWallon2024urlTemplate, '\{url\}', encode-for-uri($esriRestServiceUrl)),
-                          '\{title\}', encode-for-uri(util:escapeForJson($geoportalLinkRecordtitle))),
-                          '\{uuid\}', encode-for-uri($geoportalLinkRecordUuid))"/>
+                select="concat($geoportalWallon2024urlEndPoint, encode-for-uri(replace(replace(replace(
+                          $geoportalWallon2024urlTemplate, '\{url\}', $esriRestServiceUrl),
+                          '\{title\}', replace(util:escapeForJson($geoportalLinkRecordtitle), '\\', '\\\\')),
+                          '\{uuid\}', $geoportalLinkRecordUuid)))"/>
 
   <xsl:variable name="isGeoportalWallon2024Defined"
                 select="count(//mrd:onLine/*
@@ -99,11 +102,12 @@
                                 [cit:protocol/*/text() = 'WWW:LINK'
                                 and cit:linkage/*/text() = $aduUrl]) > 0"/>
 
+
       <xsl:variable name="geoportalWallon2024"
-                    select="replace(replace(replace(
-                          $geoportalWallon2024urlTemplate, '\{url\}', encode-for-uri(current())),
-                          '\{title\}', encode-for-uri(util:escapeForJson(current()))),
-                          '\{uuid\}', encode-for-uri($geoportalLinkRecordUuid))"/>
+                    select="concat($geoportalWallon2024urlEndPoint, encode-for-uri(replace(replace(replace(
+                          $geoportalWallon2024urlTemplate, '\{url\}', current()),
+                          '\{title\}', replace(util:escapeForJson($geoportalLinkRecordtitle), '\\', '\\\\')),
+                          '\{uuid\}', $geoportalLinkRecordUuid)))"/>
 
       <xsl:variable name="isGeoportalWallon2024Defined"
                     select="count(//mrd:onLine/*
