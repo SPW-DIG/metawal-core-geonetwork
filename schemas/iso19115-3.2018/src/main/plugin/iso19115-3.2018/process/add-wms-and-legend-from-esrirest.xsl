@@ -38,7 +38,7 @@
   <xsl:variable name="geoportalWallon2024urlEndPoint"
                       select="'https://geoportail.wallonie.be/walonmap#PANIER='"/>
   <xsl:variable name="geoportalWallon2024urlTemplate">
-    <xsl:text>[{"serviceId":"1","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geodata.wallonie.be/id/{uuid}"}]</xsl:text>
+    <xsl:text>[{"serviceId":"1","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geodata.wallonie.be/doc/{uuid}"}]</xsl:text>
   </xsl:variable>
 
   <xsl:variable name="geoportalLinkRecordtitle"
