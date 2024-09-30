@@ -35,7 +35,7 @@
                                 and cit:linkage/*/text() = $aduUrl]) > 0"/>
 
   <xsl:variable name="geoportalWallon2024urlTemplate">
-    <xsl:text>https://geoportail.wallonie.be/walonmap#panier=[{"serviceId":"","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geoportail.wallonie.be/catalogue/{uuid}.html"}]</xsl:text>
+    <xsl:text>https://geoportail.wallonie.be/walonmap#PANIER=[{"serviceId":"1","visible":true,"url":"{url}","label":"{title}","type":"AGS_DYNAMIC","metadataUrl":"https://geodata.wallonie.be/id/{uuid}"}]</xsl:text>
   </xsl:variable>
 
   <xsl:variable name="geoportalLinkRecordtitle"
