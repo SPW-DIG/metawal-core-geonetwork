@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dcat="http://www.w3.org/ns/dcat#" xmlns:adms="http://www.w3.org/ns/adms#" xmlns:vcard="http://www.w3.org/2006/vcard/ns#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dct="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:18 PM CEST</dct:created>
+    <dct:format rdf:resource="http://www.iana.org/assignments/media-types/application/rdf+xml" />
+    <dct:accrualPeriodicity rdf:resource="http://publications.europa.eu/resource/authority/frequency/UNKNOWN" />
+    <dct:title xml:lang="fr">Milieu environnemental</dct:title>
+    <skos:prefLabel xml:lang="fr">Milieu environnemental</skos:prefLabel>
+    <dct:description xml:lang="fr">Catégories définies pour les différents types de milieux environnementaux.</dct:description>
+    <skos:definition xml:lang="fr">Catégories définies pour les différents types de milieux environnementaux.</skos:definition>
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/air" />
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/biota" />
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/sediment" />
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/soil-ground" />
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/landscape" />
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/waste" />
+    <dct:hasPart rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/water" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/air" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/biota" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/sediment" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/soil-ground" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/landscape" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/waste" />
+    <skos:hasTopConcept rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/water" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/extensibility/any" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-legal" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue">
+    <foaf:primaryTopic rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:hasFormat rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.html" />
+    <dct:hasFormat rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.json" />
+    <dct:hasFormat rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.xml" />
+    <dct:hasFormat rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.iso19135xml" />
+    <dct:hasFormat rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.rdf" />
+    <dct:hasFormat rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.csv" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.html">
+    <rdfs:label xml:lang="fr">HTML</rdfs:label>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/HTML" />
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/file-type/FRA" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.json">
+    <rdfs:label xml:lang="fr">JSON</rdfs:label>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/JSON" />
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/file-type/FRA" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.xml">
+    <rdfs:label xml:lang="fr">XML</rdfs:label>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/XML" />
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/file-type/FRA" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.iso19135xml">
+    <rdfs:label xml:lang="fr">ISO19135XML</rdfs:label>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/ISO19135XML" />
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/file-type/FRA" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.rdf">
+    <rdfs:label xml:lang="fr">RDF</rdfs:label>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/RDF" />
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/file-type/FRA" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/MediaValue.fr.csv">
+    <rdfs:label xml:lang="fr">CSV</rdfs:label>
+    <dct:format rdf:resource="http://publications.europa.eu/resource/authority/file-type/CSV" />
+    <dct:language rdf:resource="http://publications.europa.eu/resource/authority/file-type/FRA" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/air">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/air</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/air:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/air" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">air</dct:title>
+    <skos:prefLabel xml:lang="en">air</skos:prefLabel>
+    <dct:description xml:lang="en">air</dct:description>
+    <skos:definition xml:lang="en">air</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/biota">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/biota</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/biota:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/biota" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">biota</dct:title>
+    <skos:prefLabel xml:lang="en">biota</skos:prefLabel>
+    <dct:description xml:lang="en">biota</dct:description>
+    <skos:definition xml:lang="en">biota</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/sediment">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/sediment</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/sediment:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/sediment" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">sediment</dct:title>
+    <skos:prefLabel xml:lang="en">sediment</skos:prefLabel>
+    <dct:description xml:lang="en">sediment</dct:description>
+    <skos:definition xml:lang="en">sediment</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/soil-ground">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/soil-ground</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/soil-ground:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/soil-ground" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">soil/ground</dct:title>
+    <skos:prefLabel xml:lang="en">soil/ground</skos:prefLabel>
+    <dct:description xml:lang="en">soil/ground</dct:description>
+    <skos:definition xml:lang="en">soil/ground</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/landscape">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/landscape</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/landscape:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/landscape" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">landscape</dct:title>
+    <skos:prefLabel xml:lang="en">landscape</skos:prefLabel>
+    <dct:description xml:lang="en">landscape</dct:description>
+    <skos:definition xml:lang="en">landscape</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/waste">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/waste</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/waste:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/waste" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">waste</dct:title>
+    <skos:prefLabel xml:lang="en">waste</skos:prefLabel>
+    <dct:description xml:lang="en">waste</dct:description>
+    <skos:definition xml:lang="en">waste</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://inspire.ec.europa.eu/codelist/MediaValue/water">
+    <dct:identifier rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">http://inspire.ec.europa.eu/codelist/MediaValue/water</dct:identifier>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/registry" />
+    </dcat:isPartOf>
+    <dcat:isPartOf>
+      <dcat:Catalog rdf:about="http://inspire.ec.europa.eu/codelist" />
+    </dcat:isPartOf>
+    <owl:sameAs rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/water:1" />
+    <adms:last rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue/water" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <skos:topConceptOf rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-08-18 17:51 PM CEST</dct:created>
+    <dct:title xml:lang="en">water</dct:title>
+    <skos:prefLabel xml:lang="en">water</skos:prefLabel>
+    <dct:description xml:lang="en">water</dct:description>
+    <skos:definition xml:lang="en">water</skos:definition>
+    <skos:broader rdf:resource="http://inspire.ec.europa.eu/codelist/MediaValue" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/applicationschema/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/theme/ef" />
+    <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/registry/governance-level/eu-technical" />
+    <adms:status rdf:resource="http://inspire.ec.europa.eu/registry/status/valid" />
+  </rdf:Description>
+</rdf:RDF>
+

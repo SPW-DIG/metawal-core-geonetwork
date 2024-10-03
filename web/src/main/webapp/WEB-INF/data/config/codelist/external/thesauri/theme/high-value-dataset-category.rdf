@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_1e787364">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060219</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Reference data for water level gauges relevant to navigation</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_1e787364</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b151a0ba">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0602</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b79e35eb" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Inland waterways datasets</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b151a0ba</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/asd487ae75">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">High-value dataset categories</prefLabel>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-07</modified>
+    <title xmlns="http://purl.org/dc/terms/" xml:lang="en">High-value dataset categories</title>
+    <issued xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-12</issued>
+    <identifier xmlns="http://purl.org/dc/terms/">http://data.europa.eu/bna/asd487ae75</identifier>
+    <versionInfo xmlns="http://www.w3.org/2002/07/owl#">2.0</versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b79e35eb">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">06</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ro">Domeniul Mobilitate</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sv">Rörlighet</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="de">Mobilität</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pt">Mobilidade</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ga">Soghluaisteacht</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="es">Movilidad</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hu">Mobilitási adatok</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sl">Mobilnost</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hr">Mobilnost</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fr">Mobilité</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Mobiliteit</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="et">Liikuvus</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="da">Mobilitet</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="mt">Data dwar il-mobbiltà</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fi">Liikkuvuustiedot</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="it">Dati relativi alla mobilità</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sk">Mobilita</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pl">Dane dotyczące mobilności</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lv">Mobilitāte</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="cs">Mobilita</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Mobility</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="bg">Мобилност</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="el">Κινητικότητα</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lt">Judumas</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b79e35eb</identifier>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</modified>
+    <topConceptOf xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_a2c6dcd8">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0420</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Employment</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_a2c6dcd8</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_e1da4e07">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">04</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ro">Domeniul statistic</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hr">Statistički podatci</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pl">Dane statystyczne</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="it">Dati statistici</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="el">Στατιστικές</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ga">Staidreamh</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="mt">Data statistika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sk">Štatistika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hu">Statisztikák</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fr">Statistiques</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pt">Estatísticas</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="cs">Statistika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lv">Statistika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lt">Statistika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="et">Statistika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="es">Estadística</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Statistiek</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="bg">Статистика</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sl">Statistični podatki</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sv">Statistik</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="de">Statistik</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="da">Statistik</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Statistics</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fi">Tilastotiedot</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_e1da4e07</identifier>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</modified>
+    <topConceptOf xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_bc8941d9">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060221</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Shoreline construction</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_bc8941d9</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_a49ec591">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0403</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Volume of sales by activity</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_a49ec591</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_91185a85">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0206</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Orthoimagery</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_91185a85</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_dd313021">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">02</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="el">Γεωσκόπηση και περιβάλλον</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="de">Erdbeobachtung und Umwelt</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sl">Opazovanje zemlje in okolje</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hr">Promatranje Zemlje i okoliš</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="es">Observación de la Tierra y medio ambiente</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sv">Jordobservation och miljö</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ro">Domeniul Observarea Pământului și mediu</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fr">Observation de la terre et environnement</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Earth observation and environment</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sk">Pozorovanie Zeme a životné prostredie</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fi">Maan havainnointi ja ympäristö</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pl">Dane dotyczące obserwacji Ziemi i środowiska</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="cs">Země a životní prostředí</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Aardobservatie en milieu</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ga">Faire na cruinne agus an comhshaol</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="bg">Наблюдение на Земята и околната среда</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pt">Observação da Terra e do ambiente</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lv">Zemes novērošana un vide</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="et">Maa seire ja keskkond</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lt">Žemės stebėjimas ir aplinka</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="it">Dati relativi all'osservazione della terra e all'ambiente</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="mt">Data dwar l-osservazzjoni tad-dinja u l-ambjent</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="da">Jordobservation og miljø</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hu">Földmegfigyelési és környezeti adatok</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_dd313021</identifier>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</modified>
+    <topConceptOf xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b7de66cd">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0209</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Energy resources</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b7de66cd</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_25f43866">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060203</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Rates of waterway infrastructure charges</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_25f43866</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_317b9493">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0413</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Population, Fertility, Mortality</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_317b9493</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_20cd11bb">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0404</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">EU International trade in goods statistics – exports and imports breakdowns simultaneously by partner, product and flow</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_20cd11bb</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b24028d7">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060225</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Official aids-to-navigation (e.g. buoys, beacons, lights, notice marks)</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b24028d7</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_36807466">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0302</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_164e0bf5" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 3</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Climate data: validated observations</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_36807466</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_164e0bf5">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">03</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 3</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Meteorological</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Meteorologische data</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sv">Meteorologiska data</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pt">Meteorológicas</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sk">Meteorológia</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pl">Dane meteorologiczne</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lt">Meteorologiniai duomenys</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="da">Meteorologiske data</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="bg">Метеорологични данни</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="it">Dati meteorologici</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fr">Météorologiques</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ga">Meitéareolaíoch</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fi">Säätiedot</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lv">Meteoroloģijas datu kopas</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="mt">Data meteoroloġika</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="de">Meteorologie</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="cs">Meteorologie</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="el">Μετεωρολογικές πληροφορίες</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ro">Domeniul meteorologic</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hu">Meteorológiai adatok</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sl">Meteorološki podatki</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hr">Meteorološki podatci</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="et">Meteoroloogiateave</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="es">Meteorología</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_164e0bf5</identifier>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</modified>
+    <topConceptOf xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_2aed31f9">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0402</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Industrial producer price index breakdowns by activity</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_2aed31f9</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_6c2bb82d">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0102</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Geographical names</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_6c2bb82d</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_ac64a52d">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">01</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lv">Ģeotelpisko datu kopas</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lt">Geoerdviniai duomenys</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="et">Georuumilised andmed</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hr">Geoprostorni podatci</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="mt">Data ġeospazjali</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sk">Geopriestorové údaje</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pt">Geoespaciais</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="de">Georaum</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sv">Geospatiala data</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sl">Geoprostorski podatki</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Geospatiale data</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="da">Geospatiale data</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pl">Dane geoprzestrzenne</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="es">Geoespacial</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fi">Paikkatiedot</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ro">Domeniul geospațial</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fr">Géospatiales</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Geospatial</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ga">Geospásúil</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="cs">Geoprostorové údaje</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="el">Γεωχωρικές πληροφορίες</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="bg">Геопространствени данни</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="it">Dati geospaziali</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hu">Térinformatikai adatok</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_ac64a52d</identifier>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</modified>
+    <topConceptOf xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_fd4e881c">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0421</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Unemployment</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_fd4e881c</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_59e64dd4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0221</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Climate</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_59e64dd4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_407951ff">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060218</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Location of ports and transhipment sites</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_407951ff</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_d13a4420">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0304</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_164e0bf5" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 3</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Radar data</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_d13a4420</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_c19af83a">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060216</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Waterway axis with kilometres indication</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_c19af83a</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_13e3cf16">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0305</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_164e0bf5" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 3</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">NWP model data</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_13e3cf16</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_c873f344">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0208</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Bio-geographical regions</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_c873f344</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_6a7250c1">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0415</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Fertility</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_6a7250c1</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_7e19ef26">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060204</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Other physical limitations on waterways</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_7e19ef26</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_883d0205">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060222</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Contours of locks and dams</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_883d0205</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_c0022235">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0406</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Harmonised Indices of consumer prices</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_c0022235</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_f76b01e6">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060201</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Fairway characteristics</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_f76b01e6</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_06b1eec4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0201</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Hydrography</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_06b1eec4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_99bc517f">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060224</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Isolated dangers in the fairway/navigation channel under and above water</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_99bc517f</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_315692ad">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0203</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Elevation</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_315692ad</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_60182062">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0104</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Buildings</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_60182062</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b121e2f6">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060210</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Temporary obstructions in the fairway</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b121e2f6</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b7f6a4f3">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0223</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Nature preservation and biodiversity</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b7f6a4f3</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_a9135398">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">05</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-09-05</created>
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="es">Sociedades y propiedad de sociedades</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fr">Entreprises et propriété d'entreprises</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="de">Unternehmen und Eigentümerschaft von Unternehmen</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="it">Dati relativi alle imprese e alla proprietà delle imprese</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sl">Družbe in lastništvo družb</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="mt">Data dwar il-kumpanniji u l-proprjetà tal-kumpanniji</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lv">Uzņēmumi un uzņēmumu īpašumtiesības</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hu">Vállalati és vállalattulajdonosi adatok</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="lt">Bendrovės ir bendrovių valdymas nuosavybės teise</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="el">Εταιρείες και ιδιοκτησιακό καθεστώς εταιρειών</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="bg">Дружества и собственост на дружествата</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pl">Dane dotyczące przedsiębiorstw i ich własności</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sv">Företag och företagsägande</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="et">Äriühingud ja äriühingu omandisuhted</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ro">Domeniul Societăți și structura de proprietate a societăților</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="nl">Bedrijven en eigendom van bedrijven</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="ga">Cuideachtaí agus úinéireacht cuideachtaí</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Companies and company ownership</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="da">Virksomheder og virksomhedsejerskab</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="cs">Společnosti a vlastnictví společností</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="pt">Empresas e propriedade de empresas</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="hr">Trgovačka društva i vlasništvo nad trgovačkim društvima</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="sk">Spoločnosti a vlastníctvo spoločností</prefLabel>
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="fi">Yritys- ja yritysten omistustiedot</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_a9135398</identifier>
+    <modified xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</modified>
+    <topConceptOf xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_f2b50efd">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0414</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Population</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_f2b50efd</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_1226dc1a">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060220</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Bank of waterway at mean water level</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_1226dc1a</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_59c93ba5">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0216</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Production and industrial facilities</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_59c93ba5</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b72b721f">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0407</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">National accounts – GDP main aggregates</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b72b721f</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_2037ada4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060208</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Navigation rules and recommendations</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_2037ada4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_4d63300b">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0227</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Horizontal legislation</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_4d63300b</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_664c9e5a">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060223</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Boundaries of the fairway/navigation channel</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_664c9e5a</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_593bc53d">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060215</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Short term changes of aids to navigation</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_593bc53d</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_43f88346">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0226</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Water</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_43f88346</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_8f0fac04">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0502</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_a9135398" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Company documents and accounts</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_8f0fac04</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_92874eb2">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0412</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Environmental accounts and statistics</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_92874eb2</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_34abf8c1">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0401</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Industrial production</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_34abf8c1</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_4ba9548e">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0222</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Emissions</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_4ba9548e</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_fbd2fc3f">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0106</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Reference parcels</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_fbd2fc3f</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_9427236f">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0101</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Administrative units</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_9427236f</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_56a1bf47">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0501</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_a9135398" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 5</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Basic company information: key attributes</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_56a1bf47</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_dd8f4797">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0411</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Consolidated government gross debt</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_dd8f4797</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_4acb6bf3">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0416</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Mortality</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_4acb6bf3</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_a8b937c4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0419</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Inequality</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_a8b937c4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_59627af3">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0409</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">National accounts – key indicators on households</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_59627af3</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_83aa10a6">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0202</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Protected sites</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_83aa10a6</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_fef208ab">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060209</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Water depths contours in the navigation channel</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_fef208ab</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_87a129d9">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0218</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Soil</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_87a129d9</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b40e6d46">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0215</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Oceanographic geographical features</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b40e6d46</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_fa2a1c3a">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060202</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Long-time obstructions in the fairway and reliability</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_fa2a1c3a</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_f399050e">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0217</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Sea regions</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_f399050e</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_be47b010">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0303</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_164e0bf5" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 3</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Weather alerts</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_be47b010</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_63b37dd4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0220</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Air</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_63b37dd4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_c3de25e4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0103</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Addresses</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_c3de25e4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_63be22bd">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0214</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Natural risk zones</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_63be22bd</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_a3767648">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0405</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Tourism flows in Europe</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_a3767648</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_642643e6">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0107</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Agricultural parcels</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_642643e6</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_3af3368c">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0301</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_164e0bf5" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 3</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Observations data measured by weather stations</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_3af3368c</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_7b8fbb64">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0210</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Environmental monitoring facilities</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_7b8fbb64</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_95da87c7">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0408</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">National accounts – key indicators on corporations</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_95da87c7</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_e4358335">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0224</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Noise</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_e4358335</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_04bf94a3">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0418</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Poverty</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_04bf94a3</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_af646f5b">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0207</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Area management / restriction / regulation zones &amp; reporting units</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_af646f5b</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_e50004c6">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060212</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">State of the rivers, canals, locks and bridges</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_e50004c6</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_4dd389c5">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0213</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Mineral resources</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_4dd389c5</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_38933a65">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0225</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Waste</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_38933a65</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_6a3f6896">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0105</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-14</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_ac64a52d" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 1</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Cadastral parcels</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_6a3f6896</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_4b74ea13">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0601</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b79e35eb" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Transport networks</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_4b74ea13</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_793164b6">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0219</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Species distribution</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_793164b6</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_4ac557e7">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0410</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Government expenditure and revenue</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_4ac557e7</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_c3919aec">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0211</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Habitats and biotopes</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_c3919aec</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_e5f69a04">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060211</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Present and future water levels at gauges</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_e5f69a04</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_23385471">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0422</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Potential labour force</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_23385471</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_9cbe4435">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060207</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">List of navigation aids and traffic signs</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_9cbe4435</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_f6886b00">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060213</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Restrictions caused by flood and ice</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_f6886b00</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_03ba8d92">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060205</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Regular lock and bridge operating times</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_03ba8d92</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_b21e1296">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0205</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Land cover</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_b21e1296</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_424bb0b4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0417</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_e1da4e07" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 4</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Current healthcare expenditure</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_424bb0b4</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_3e8e3bf7">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060206</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Location and characteristics of ports and transhipment sites</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_3e8e3bf7</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_298ffb73">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060217</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Links to the external xml-files with operation times of restricting structures</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_298ffb73</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_ad9ae929">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0212</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-17</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Land use</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_ad9ae929</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_66b946cb">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">060214</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-21</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_b151a0ba" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 6</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Short term changes of lock and bridge operating times</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_66b946cb</identifier>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/bna/c_e3f55603">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <order xmlns="http://publications.europa.eu/ontology/euvoc#">0204</order>
+    <startDate xmlns="http://publications.europa.eu/ontology/euvoc#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-07-06</startDate>
+    <created xmlns="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</created>
+    <broader xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/c_dd313021" />
+    <definition xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">data sets as described in Commission Implementing Regulation (EU) 2023/138 of 21 December 2022 laying down a list of specific high-value datasets and the arrangements for their publication and re-use, Annex, Section 2</definition>
+    <inScheme xmlns="http://www.w3.org/2004/02/skos/core#" rdf:resource="http://data.europa.eu/bna/asd487ae75" />
+    <prefLabel xmlns="http://www.w3.org/2004/02/skos/core#" xml:lang="en">Geology</prefLabel>
+    <identifier xmlns="http://purl.org/dc/elements/1.1/">c_e3f55603</identifier>
+  </rdf:Description>
+</rdf:RDF>
+

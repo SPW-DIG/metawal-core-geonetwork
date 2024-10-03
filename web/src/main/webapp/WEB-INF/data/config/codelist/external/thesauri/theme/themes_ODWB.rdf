@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns3="http://purl.org/dc/elements/1.1/" xmlns:ns5="http://www.opengis.net/gml#" xmlns:ns2="http://www.w3.org/2004/02/skos/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <rdf:Description rdf:nodeID="node1ficc6293x1">
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#96b3c7bb-0dab-4e24-bab1-65500d616749">
+    <ns2:prefLabel xml:lang="fr">Sport, Loisirs</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficc8ng6x1" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#aca9073f-b359-45bb-a636-252f0f459433">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#06c7567a-d8a8-4fc2-a34c-3c8ca3117941">
+    <ns2:scopeNote xml:lang="en" />
+    <ns2:prefLabel xml:lang="fr">Éducation, Formation, Recherche, Enseignement</ns2:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#aca9073f-b359-45bb-a636-252f0f459433">
+    <ns5:BoundedBy rdf:nodeID="node1ficc6hmhx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc6hmhx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc8ng6x1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc8f2bx1">
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc96ghx1">
+    <ns5:lowerCorner />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#06c7567a-d8a8-4fc2-a34c-3c8ca3117941">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#c839eee8-8936-4a43-8302-52a49a6a8da3">
+    <ns2:scopeNote xml:lang="en" />
+    <ns2:prefLabel xml:lang="fr">Culture, Patrimoine</ns2:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#06c7567a-d8a8-4fc2-a34c-3c8ca3117941">
+    <ns5:BoundedBy rdf:nodeID="node1ficc5o87x1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc5o87x1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc8ng6x1">
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#cca11804-7224-48ee-85e5-d369e46ac564">
+    <ns5:BoundedBy rdf:nodeID="node1ficc6293x1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc6293x1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc96ghx1">
+    <ns5:upperCorner />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://geonetwork-opensource.org/Thèmes ODWB">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <ns3:title>Thèmes ODWB</ns3:title>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc96ghx1">
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#82af0111-50a8-4026-aa54-5e49dc3a6216">
+    <ns2:prefLabel xml:lang="fr">Transports,Déplacements</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficc96ghx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc5o87x1">
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#9a38b772-201e-4bbc-a850-3714ab228526">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="fr">Mobilité, Espace public</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficc7aflx1" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#788c1058-dd37-4a3b-8396-685b72889487">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="fr">Administration, Gouvernement, Finances publiques, Citoyenneté</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficbvje3x1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficbvje3x1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc7aflx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc5o87x1">
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#82af0111-50a8-4026-aa54-5e49dc3a6216">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#6f79e6a2-7453-4aec-a50f-ca537f5bad1b">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="fr">Rapport financier</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficc7indx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc7indx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#96b3c7bb-0dab-4e24-bab1-65500d616749">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#cca11804-7224-48ee-85e5-d369e46ac564">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#8093ec8e-a696-4f23-ac8f-93cc4c1eb54c">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="fr">Santé</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficc80cdx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc80cdx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#cca11804-7224-48ee-85e5-d369e46ac564">
+    <ns2:prefLabel xml:lang="fr">Hébergement, Restauration</ns2:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc96ghx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#d7541dda-2e27-424d-b1d5-706f33a970a4">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="fr">Services, Social</ns2:prefLabel>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#44611ac2-2db4-42cd-8ff5-2dcf9cba68e7">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc56mdx1">
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+    <ns5:upperCorner />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#44611ac2-2db4-42cd-8ff5-2dcf9cba68e7">
+    <ns5:BoundedBy rdf:nodeID="node1ficc06kex1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc06kex1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#d7541dda-2e27-424d-b1d5-706f33a970a4">
+    <ns5:BoundedBy rdf:nodeID="node1ficc8f2bx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc8f2bx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#c839eee8-8936-4a43-8302-52a49a6a8da3">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#44611ac2-2db4-42cd-8ff5-2dcf9cba68e7">
+    <ns2:scopeNote xml:lang="en" />
+    <ns2:prefLabel xml:lang="de" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#c839eee8-8936-4a43-8302-52a49a6a8da3">
+    <ns5:BoundedBy rdf:nodeID="node1ficc116ex1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc116ex1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc8f2bx1">
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#1901d2b7-783e-4ac1-8ff5-cfe5d6c34eff">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="fr">Économie, Business, PME, Développement économique, Emploi</ns2:prefLabel>
+    <ns5:BoundedBy rdf:nodeID="node1ficc56mdx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1ficc56mdx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#44611ac2-2db4-42cd-8ff5-2dcf9cba68e7">
+    <ns2:scopeNote xml:lang="fr" />
+    <ns2:scopeNote xml:lang="de" />
+    <ns2:scopeNote xml:lang="nl" />
+    <ns2:prefLabel xml:lang="fr">Aménagement du territoire, Urbanisme, Bâtiments, Équipements, Logement</ns2:prefLabel>
+    <ns2:prefLabel xml:lang="en" />
+    <ns2:prefLabel xml:lang="nl" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#c839eee8-8936-4a43-8302-52a49a6a8da3">
+    <ns2:prefLabel xml:lang="en" />
+    <ns2:prefLabel xml:lang="nl" />
+    <ns2:prefLabel xml:lang="de" />
+    <ns2:scopeNote xml:lang="fr" />
+    <ns2:scopeNote xml:lang="nl" />
+    <ns2:scopeNote xml:lang="de" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#06c7567a-d8a8-4fc2-a34c-3c8ca3117941">
+    <ns2:prefLabel xml:lang="en" />
+    <ns2:prefLabel xml:lang="nl" />
+    <ns2:prefLabel xml:lang="de" />
+    <ns2:scopeNote xml:lang="fr" />
+    <ns2:scopeNote xml:lang="nl" />
+    <ns2:scopeNote xml:lang="de" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/theme/themes_ODWB#aca9073f-b359-45bb-a636-252f0f459433">
+    <ns2:prefLabel xml:lang="fr">Environnement</ns2:prefLabel>
+    <ns2:prefLabel xml:lang="en" />
+    <ns2:prefLabel xml:lang="nl" />
+    <ns2:prefLabel xml:lang="de" />
+    <ns2:scopeNote xml:lang="fr" />
+    <ns2:scopeNote xml:lang="nl" />
+    <ns2:scopeNote xml:lang="de" />
+    <ns2:scopeNote xml:lang="en" />
+  </rdf:Description>
+</rdf:RDF>
+

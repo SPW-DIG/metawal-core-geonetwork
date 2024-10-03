@@ -12,7 +12,7 @@
         <foaf:name>SPW - DIG</foaf:name>
       </foaf:Organization>
     </dc:creator>
-    <dcterms:modified>2015-12-17 21:40:00</dcterms:modified>
+    <dcterms:modified>2015-12-17</dcterms:modified>
     <skos:hasTopConcept rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/10"/>
     <skos:hasTopConcept rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/20"/>
     <skos:hasTopConcept rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/30"/>
