@@ -3,8 +3,7 @@
   <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://registry.wallonie.be/codelist/media-types">
     <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Type de médias</dc:title>
     <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Ce registre contient les types de média utilisés pour le partage de données spatiales en particulier dans les services de téléchargement du Géoportail de la Wallonie. Il est basé sur le registre INSPIRE et IANA.</dc:description>
-    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2019-08-12T13:16:15</dcterms:issued>
-    <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/">2019-08-12T13:16:15</dcterms:modified>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2019-08-12</dcterms:issued>
     <skos:hasTopConcept rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
     <skos:hasTopConcept rdf:resource="http://registry.wallonie.be/codelist/media-types/image" />
     <skos:hasTopConcept rdf:resource="http://registry.wallonie.be/codelist/media-types/text" />

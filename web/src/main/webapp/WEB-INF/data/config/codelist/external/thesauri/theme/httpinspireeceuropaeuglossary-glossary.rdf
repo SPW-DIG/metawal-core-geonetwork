@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary">
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">INSPIRE glossary</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="de">INSPIRE glossary</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">INSPIRE glossary</dc:title>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2021-06-18</dcterms:issued>
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Actor">
+    <skos:prefLabel xml:lang="en">Actor</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An actor specifies a role played by a user or any other system that interacts with the system under consideration (UML 2.1.2 Superstructure, Clause 16)</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ApplicationData">
+    <skos:prefLabel xml:lang="en">Application data</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Data in support of user requirements</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ApplicationSchema">
+    <skos:prefLabel xml:lang="en">Application schema</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Conceptual schema for data required by one or more applications [ISO 19101]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Class">
+    <skos:prefLabel xml:lang="en">Class</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Description of a set of objects that share the same properties, constraints, and semantics [UML 2.1.2 - modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CodeList">
+    <skos:prefLabel xml:lang="en">Codelist</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Value domain including a code for each permissible value [ISO 19136]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ConceptualModel">
+    <skos:prefLabel xml:lang="en">Conceptual model</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Model that defines concepts of a universe of discourse [ISO 19101]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ConceptualSchema">
+    <skos:prefLabel xml:lang="en">Conceptual schema</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Formal description of a conceptual model [ISO 19101]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ConceptualSchemaLanguage">
+    <skos:prefLabel xml:lang="en">Conceptual schema language</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Formal language based on a conceptual formalism for the purpose of representing conceptual schemas [ISO 19101]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Coverage">
+    <skos:prefLabel xml:lang="en">Coverage</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Spatial object that acts as a function to return values from its range for any direct position within its spatial, temporal or spatiotemporal domain [ISO 19123 - modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataHarmonisation">
+    <skos:prefLabel xml:lang="en">Data harmonisation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Providing access to spatial data through network services in a representation that allows for combining it with other harmonised data in a coherent way by using a common set of data product specifications</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataInteroperabilityComponent">
+    <skos:prefLabel xml:lang="en">Data interoperability component</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Individual aspect that will be addressed to support the interoperability of spatial data sets [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataInteroperabilityProcess">
+    <skos:prefLabel xml:lang="en">Data interoperability process</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Process of developing harmonised data product specifications and implementing the necessary arrangements to transform spatial data into interoperable spatial data [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataProduct">
+    <skos:prefLabel xml:lang="en">Data product</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Data set or data set series that conforms to a data product specification [ISO 19131]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataProductSpecification">
+    <skos:prefLabel xml:lang="en">Data product specification</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Detailed description of a data set or data set series together with additional information that will enable it to be created, supplied to and used by another party [ISO 19131]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataSet">
+    <skos:prefLabel xml:lang="en">Data set</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Identifiable collection of data [ISO 19115]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataSetSeries">
+    <skos:prefLabel xml:lang="en">Data set series</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Collection of data sets sharing the same product specification [ISO 19115]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DataSpecification">
+    <skos:prefLabel xml:lang="en">Data specification</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">(used as a synonym to data product specification)</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Endonym">
+    <skos:prefLabel xml:lang="en">Endonym</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Name of a spatial object in one of the languages occurring in that area where the spatial object is situated [UNGEGN Glossary of Terminology - modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Entity">
+    <skos:prefLabel xml:lang="en">Entity</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Real-world phenomenon [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Enumeration">
+    <skos:prefLabel xml:lang="en">Enumeration</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Data type whose values are enumeration literals [UML 2.1.2 - modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ESDI">
+    <skos:prefLabel xml:lang="en">ESDI</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">European spatial data infrastructure as built based on the INSPIRE Directive [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Exonym">
+    <skos:prefLabel xml:lang="en">Exonym</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Name used in a specific language for a spatial object situated outside the area where that language is spoken, and differing in its form from the name used in an official or well-established language of that area where the spatial object is located [UNGEG</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ExternalObjectIdentifier">
+    <skos:prefLabel xml:lang="en">External object identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Unique object identifier which is published by the responsible body, which may be used by external applications to reference the spatial object [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Feature">
+    <skos:prefLabel xml:lang="en">Feature</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Abstraction of real world phenomena [ISO 19101]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/FeatureCatalogue">
+    <skos:prefLabel xml:lang="en">Feature catalogue</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Catalogue(s) containing definitions and descriptions of the spatial object types, their attributes and associated components occurring in one or more spatial data sets, together with any operations that may be applied [ISO 19110 – modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/FeatureConcept">
+    <skos:prefLabel xml:lang="en">Feature concept</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Concept that may be specified in detail as one or more spatial object types [ISO/DIS 19126 – modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/FeatureConceptDictionary">
+    <skos:prefLabel xml:lang="en">Feature concept dictionary</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Dictionary that contains definitions of and related descriptive information about concepts that may be specified in detail in a feature catalogue [ISO/DIS 19126]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/FeatureRelatedConcepts">
+    <skos:prefLabel xml:lang="en">Feature-related concepts</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Abstract specification of the semantics of a property of a spatial object type [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Gazetteer">
+    <skos:prefLabel xml:lang="en">Gazetteer</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Directory of instances of a class or classes of features containing some information regarding position [ISO 19112]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GeneralFeatureModel">
+    <skos:prefLabel xml:lang="en">General feature model</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Meta-model for spatial object types and their property types specified by ISO 19109 [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GeographicIdentifier">
+    <skos:prefLabel xml:lang="en">Geographic identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Spatial reference in the form of a label or code that identifies a location [ISO 19112]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GeographicalGridSystem">
+    <skos:prefLabel xml:lang="en">Geographical grid system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Harmonised multi-resolution grid with a common point of origin and standardised location and size of grid cells [INSPIRE Directive]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/HarmonisedDataProductSpecifications">
+    <skos:prefLabel xml:lang="en">Harmonised data product specifications</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Set of data product specifications that support the provision of access to interoperable spatial data through spatial data services in a representation that allows for combining it with other interoperable spatial data in a coherent way [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/HomologousSpatialObjects">
+    <skos:prefLabel xml:lang="en">Homologous spatial objects</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Set of spatial objects that correspond to the same real-world phenomenon, but are described by different information according to the different levels of details or point of views [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Identifier">
+    <skos:prefLabel xml:lang="en">Identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Linguistically independent sequence of characters capable of uniquely and permanently identifying that with which it is associated [ISO 19135]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/InfrastructureForSpatialInformation">
+    <skos:prefLabel xml:lang="en">Infrastructure for spatial information</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means metadata, spatial data sets and spatial data services; network services and technologies; agreements on sharing, access and use; and coordination and monitoring mechanisms, processes and procedures, established, operated or made available in accorda</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geodateninfrastruktur</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Metadaten, Geodatensätze und Geodatendienste, Netzdienste und -technologien, Vereinbarungen über gemeinsame Nutzung, Zugang und Verwendung sowie Koordinierungs- und Überwachungsmechanismen, -prozesse und -verfahren, die im Einklang mit dieser Richtlinie g</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Infrastructure d'information géographique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Des métadonnées, des séries de données géographiques et des services de données géographiques; des services et des technologies en réseau; des accords sur le partage, l'accès et l'utilisation; et des mécanismes, des processus et des procédures de coordina</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/INSPIREApplicationSchema">
+    <skos:prefLabel xml:lang="en">INSPIRE application schema</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Application schema specified in an INSPIRE data specification [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/INSPIREDataSpecification">
+    <skos:prefLabel xml:lang="en">INSPIRE data specification</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Harmonised data product specification for a theme adopted as an Implementing Rule [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/InspireGeo-portal">
+    <skos:prefLabel xml:lang="en">INSPIRE geo-portal</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means an Internet site, or equivalent, providing access to the services referred to in Article 11(1) [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geo-Portal INSPIRE</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Eine Internetseite oder eine vergleichbare Organisationsstruktur, die Zugang zu den in Artikel 11 Absatz 1 genannten Diensten bietet</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Portail INSPIRE</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Un site internet ou équivalent qui donne accès aux services visés à l'article 11, paragraphe 1</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/InternalObjectIdentifier">
+    <skos:prefLabel xml:lang="en">Internal object identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Unique object identifier which is used internally and is not intended to be used to identify or reference the spatial object by external applications [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Interoperability">
+    <skos:prefLabel xml:lang="en">Interoperability</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means the possibility for spatial data sets to be combined, and for services to interact, without repetitive manual intervention, in such a way that the result is coherent and the added value of the data sets and services is enhanced [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Interoperabilität</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Im Falle von Geodatensätzen ihre mögliche Kombination und im Falle von Diensten ihre mögliche Interaktion ohne wiederholtes manuelles Eingreifen und in der Weise, dass das Ergebnis kohärent ist und der Zusatznutzen der Datensätze und Datendienste erhöht w</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Interopérabilité</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">La possibilité d'une combinaison de séries de données géographiques et d'une interaction des services, sans intervention manuelle répétitive de telle façon que le résultat soit cohérent et la valeur ajoutée des séries et des services de données renforcée</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/InteroperableSpatialData">
+    <skos:prefLabel xml:lang="en">Interoperable spatial data</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Spatial data conformant to the harmonised data product specifications [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LevelOfDetail">
+    <skos:prefLabel xml:lang="en">Level of detail</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Quantity of information that portrays the real world</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Life-cycleInformation">
+    <skos:prefLabel xml:lang="en">Life-cycle information</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Set of properties of a spatial object that describe the temporal characteristics of a version of a spatial object or the changes between versions</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Life-cycleRules">
+    <skos:prefLabel xml:lang="en">Life-cycle rules</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Rules that specify the types of changes to a spatial object that result in either the creation of a new version or in the deletion / retirement of the spatial object</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LinearReferenceSystem">
+    <skos:prefLabel xml:lang="en">Linear reference system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Reference system that identifies a location by reference to a segment of a linear spatial object and distance along that segment from a given point [ISO 19116 - modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LinguisticText">
+    <skos:prefLabel xml:lang="en">Linguistic text</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Text consisting of or related to language</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Metadata">
+    <skos:prefLabel xml:lang="en">Metadata</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means information describing spatial data sets and spatial data services and making it possible to discover, inventory and use them [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Metadaten</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Informationen, die Geodatensätze und Geodatendienste beschreiben und es ermöglichen, diese zu ermitteln, in Verzeichnisse aufzunehmen und zu nutzen</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Métadonnée</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">L'information décrivant les séries et services de données géographiques et rendant possible leur recherche, leur inventaire et leur utilisation</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Multicultural">
+    <skos:prefLabel xml:lang="en">Multicultural</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Multiplicity in systems of values held by different groups: ethnic, regional, or professional [Hofstede G. 1980. Culture’s Consequences, Sage: London – modified]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Multilingual">
+    <skos:prefLabel xml:lang="en">Multilingual</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">In or using several languages [Oxford Dictionary]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MultipleRepresentation">
+    <skos:prefLabel xml:lang="en">Multiple representation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Representation of the relationship between homologous spatial objects [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Object">
+    <skos:prefLabel xml:lang="en">Object</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">In this document used synonymous with spatial object</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ObjectReferencing">
+    <skos:prefLabel xml:lang="en">Object referencing</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Consistent method of referencing spatial data to location using existing spatial objects [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Ontology">
+    <skos:prefLabel xml:lang="en">Ontology</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Representation of a set of concepts within a domain and the relationships between those concepts [Wikipedia]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Profile">
+    <skos:prefLabel xml:lang="en">Profile</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Set of one or more base standards or subsets of base standards, and, where applicable, the identification of chosen clauses, classes, options and parameters of those base standards, that are necessary for accomplishing a particular function [ISO 19106]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/PublicAuthority">
+    <skos:prefLabel xml:lang="en">Public authority</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means:(a) any government or other public administration, including public advisory bodies, at national, regional or local level;(b) any natural or legal person performing public administrative functions under national law, including specific duties, ac</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Behörde</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">a) die Regierung oder eine andere Stelle der öffentlichen Verwaltung, einschließlich öffentlicher beratender Gremien, auf nationaler, regionaler oder lokaler Ebene; b) natürliche oder juristische Personen, die aufgrund innerstaatlichen Rechts Aufgaben de</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Autorité publique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">a) tout gouvernement ou toute autre administration publique, y compris les organes publics consultatifs, aux niveaux national, régional ou local; b) toute personne physique ou morale exerçant, dans le cadre du droit national, des fonctions d'administrati</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ReferenceData">
+    <skos:prefLabel xml:lang="en">Reference data</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Spatial objects that are used to provide location information in object referencing [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ReferenceModel">
+    <skos:prefLabel xml:lang="en">Reference model</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Architectural framework for a specific context, e.g. an application or an information infrastructure [DSD2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Register">
+    <skos:prefLabel xml:lang="en">Register</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Set of files containing identifiers assigned to items with descriptions of the associated items [ISO 19135]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Registry">
+    <skos:prefLabel xml:lang="en">Registry</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Information system on which a register is maintained [ISO 19135]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Resolution">
+    <skos:prefLabel xml:lang="en">Resolution</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Resolution expresses the size of the smallest object in a spatial data set that can be described. It refers to the amount of detail that can be discerned. It is also known as granularity. Resolution is also limited because geo-spatial databases are intent</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Scale">
+    <skos:prefLabel xml:lang="en">Scale</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The relation between the dimensions of features on a map and the geographic objects they represent on the earth, commonly expressed as a fraction or a ratio. A map scale of 1/100,000 or 1:100,000 means that one unit of measure on the map equals 100,000 of</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialData">
+    <skos:prefLabel xml:lang="en">Spatial data</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means any data with a direct or indirect reference to a specific location or geographical area [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geodaten</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Alle Daten mit direktem oder indirektem Bezug zu einem bestimmten Standort oder geografischen Gebiet</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Donnée géographique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Toute donnée faisant directement ou indirectement référence à un lieu ou une zone géographique spécifique</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialDataServices">
+    <skos:prefLabel xml:lang="en">Spatial data services</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means the operations which may be performed, by invoking a computer application, on the spatial data contained in spatial data sets or on the related metadata;</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geodatendienste</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Mögliche dazugehörige Formen der Verarbeitung der in Geodatensätzen enthaltenen Geodaten oder der dazugehörigen Metadaten mit Hilfe einer Computeranwendung</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Services de données géographiques</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Les opérations qui peuvent être exécutées à l'aide d'une application informatique sur les données géographiques contenues dans des séries de données géographiques ou sur les métadonnées qui s'y rattachent</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialDataSet">
+    <skos:prefLabel xml:lang="en">Spatial data set</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means an identifiable collection of spatial data [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geodatensatz</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Eine identifizierbare Sammlung von Geodaten</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Série de données géographiques</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Une compilation identifiable de données géographiques</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialObject">
+    <skos:prefLabel xml:lang="en">Spatial object</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means an abstract representation of a real-world phenomenon related to a specific location or geographical area [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geo-Objekt</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Die abstrakte Darstellung eines Phänomens der Realwelt in Bezug auf einen bestimmten Standort oder ein geografisches Gebiet</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Objet géographique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Une représentation abstraite d'un phénomène réel lié à un lieu ou à une zone géographique spécifique</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialObjectType">
+    <skos:prefLabel xml:lang="en">Spatial object type</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Classification of spatial objects [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialReferenceSystem">
+    <skos:prefLabel xml:lang="en">Spatial reference system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">System for identifying position in the real world [ISO 19112]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialSchema">
+    <skos:prefLabel xml:lang="en">Spatial schema</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Conceptual schema of spatial geometries and topologies to be used in an application schema [DSD2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/TemporalReferenceSystem">
+    <skos:prefLabel xml:lang="en">Temporal reference system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Reference system against which time is measured [ISO 19108]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/TemporalSchema">
+    <skos:prefLabel xml:lang="en">Temporal schema</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Conceptual schema of temporal geometries and topologies to be used in an application schema [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ThematicIdentifier">
+    <skos:prefLabel xml:lang="en">Thematic identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Descriptive unique object identifier applied to spatial objects in a defined information theme [DSD2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Theme">
+    <skos:prefLabel xml:lang="en">Theme</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Grouping of spatial data according to Annex I, II and III of the INSPIRE Directive [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ThirdParty">
+    <skos:prefLabel xml:lang="en">Third party</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means any natural or legal person other than a public authority [INSPIRE Directive]</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Dritte</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Natürliche oder juristische Person außer Behörden</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Tiers</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Toute personne physique ou morale autre qu'une autorité publique</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Transformation">
+    <skos:prefLabel xml:lang="en">Transformation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An act, process, or instance of change in structure, appearance, or character [Webster]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/UniqueObjectIdentifier">
+    <skos:prefLabel xml:lang="en">Unique object identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Identifier associated with a spatial object [DS-D2.5]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Unit">
+    <skos:prefLabel xml:lang="en">Unit</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Defined quantity in which dimensioned parameters are expressed [ISO 19111]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/UniverseOfDiscourse">
+    <skos:prefLabel xml:lang="en">Universe of discourse</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">View of the real or hypothetical world that includes everything of interest [ISO 19101]</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/UseCase">
+    <skos:prefLabel xml:lang="en">Use case</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A use case defines a goal-oriented set of interactions between actors and the system under consideration.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Version">
+    <skos:prefLabel xml:lang="en">Version</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Particular variation of a spatial object</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/PostalAddress">
+    <skos:prefLabel xml:lang="en">Postal address</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Set of information which, for a postal item, allows the unambiguous determination of an actual or potential delivery point, usually combined with the specification of an addressee and/or mailee. (Universal Postal Union 2006)</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DynamicSegmentation">
+    <skos:prefLabel xml:lang="en">Dynamic segmentation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A way of modelling linear networks where segmentation of the linear elements is independent of the attribution.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LinearElement">
+    <skos:prefLabel xml:lang="en">Linear element</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">1-dimensional object that serves as the axis along which linear referencing is performed.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LinearReferencing">
+    <skos:prefLabel xml:lang="en">Linear referencing</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Specification of a location relative to a one-dimensional object as a measurement along (and optionally offset from) that element.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/StaticSegmentation">
+    <skos:prefLabel xml:lang="en">Static segmentation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A way of modelling geographic information in general and linear networks in particular where the segmentation of the elements is dependent on the set of attributes defined for the linear element.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/RiverBasin">
+    <skos:prefLabel xml:lang="en">River basin</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The area of land from which all surface run-off flows through a sequence of streams, rivers and, possibly, lakes into the sea at a single river mouth, estuary or delta.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Sub-basin">
+    <skos:prefLabel xml:lang="en">Sub-basin</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The area of land from which all surface run-off flows through a series of streams, rivers and, possibly, lakes to a particular point in a water course (normally a lake or a river confluence).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Glacier">
+    <skos:prefLabel xml:lang="en">Glacier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A large mass of snow and ice moving slowly down a slope or valley from above the snowline</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Snowfield">
+    <skos:prefLabel xml:lang="en">Snowfield</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A large area permanently covered by snow or ice over land or water.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Foreshore">
+    <skos:prefLabel xml:lang="en">Foreshore</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">That part of the shore or beach which lies between the low water mark and the coastline/shoreline. The same condition may exist in non-contiguous off-shore areas</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Riverbank">
+    <skos:prefLabel xml:lang="en">Riverbank</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The limit line between the water area of a river and the area of land.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Fictitious">
+    <skos:prefLabel xml:lang="en">Fictitious</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An indication that the geometry of the feature is not well defined</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CrossSectionWatercourse">
+    <skos:prefLabel xml:lang="en">Cross section (watercourse)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A series of profiles of the watercourse bed geometry taken along the length of the watercourse</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DischargeRate">
+    <skos:prefLabel xml:lang="en">Discharge rate</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Rate of water flow in the segment</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/FlowDirection">
+    <skos:prefLabel xml:lang="en">Flow direction</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Direction of water flow in the segment relative to digitisation of segment geometry</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Groundwater">
+    <skos:prefLabel xml:lang="en">Groundwater</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">All water which is below the surface of the ground in the saturation zone and in direct contact with the ground or subsoil.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LargeRiver">
+    <skos:prefLabel xml:lang="en">Large river</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Rivers that have a catchment area &amp;gt; 50,000 km2 or main tributaries that have a catchment area &amp;gt; 5,000 km2.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/LargeLake">
+    <skos:prefLabel xml:lang="en">Large lake</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Lakes that have a surface area &amp;gt; 500 km2.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MainRiver">
+    <skos:prefLabel xml:lang="en">Main river</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Rivers that have a catchment area &amp;gt; 500 km2.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MainLake">
+    <skos:prefLabel xml:lang="en">Main lake</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Lakes that have a surface area &amp;gt; 10 km2.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ArtificialWaterBody">
+    <skos:prefLabel xml:lang="en">Artificial water body</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A body of surface water created by human activity.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/HeavilyModifiedWaterBody">
+    <skos:prefLabel xml:lang="en">Heavily modified water body</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A body of surface water which as a result of physical alterations by human activity is substantially changed in character, as designated by the Member State in accordance with the provisions of WFD Annex II.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DikeLevee">
+    <skos:prefLabel xml:lang="en">Dike / levee</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An embankment built to restrict the flow of water</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Wharf">
+    <skos:prefLabel xml:lang="en">Wharf</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A structure built along or at an angle to the shore of navigable waters so that ships may lie alongside to receive and discharge cargo and passenger</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SluiceGate">
+    <skos:prefLabel xml:lang="en">Sluice gate</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A gate used to regulate the flow of water</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Culvert">
+    <skos:prefLabel xml:lang="en">Culvert</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A sewer or drain crossing under a road, track, or embankment, without affecting the construction of the crossed feature</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Aqueduct">
+    <skos:prefLabel xml:lang="en">Aqueduct</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A pipe or artificial channel designed to transport water from a remote source, usually by gravity</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Bridge">
+    <skos:prefLabel xml:lang="en">Bridge</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A man-made structure spanning and providing passage over a body of water, depression, or other obstacles</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Cistern">
+    <skos:prefLabel xml:lang="en">Cistern</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A man-made container used for collection or storage of rain water</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Tank">
+    <skos:prefLabel xml:lang="en">Tank</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A container used for the storage of liquids or gases</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Well">
+    <skos:prefLabel xml:lang="en">Well</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A hole drilled or dug into the earth or sea bed for the extraction of liquids or gases</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/NaturalWatercourse">
+    <skos:prefLabel xml:lang="en">Natural watercourse</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Natural rivers and streams naturally preserved and that have been canalised either for navigation or for preventing flood disaster</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ManMadeWatercourse">
+    <skos:prefLabel xml:lang="en">Man made watercourse</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A watercourse entirely created by man for drainage or transportation purpose, this includes canals and ditches.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/HeavilyModified">
+    <skos:prefLabel xml:lang="en">Heavily modified</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An object that may once have been natural, but has been extensively modified</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Bifurcation">
+    <skos:prefLabel xml:lang="en">Bifurcation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A fork or division of a watercourse</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/VanishingPoint">
+    <skos:prefLabel xml:lang="en">Vanishing point</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Point where a watercourse disappears underground</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Confluence">
+    <skos:prefLabel xml:lang="en">Confluence</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Point where different watercourse branches merge into one</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/RiverBasinDistrict">
+    <skos:prefLabel xml:lang="en">River basin district</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The area of land and sea, made up of one or more neighbouring river basins together with their associated groundwaters and coastal waters, which is identified under Article 3(1) as the main unit for management of river basins.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Aquifer">
+    <skos:prefLabel xml:lang="en">Aquifer</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Subsurface layer or layers of rock or other geological strata of sufficient porosity and permeability to allow either a significant flow of groundwater or the abstraction of significant quantities of groundwater.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Dam">
+    <skos:prefLabel xml:lang="en">Dam</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A barrier constructed to hold back water and raise its level to form a reservoir or to prevent flooding.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Spring">
+    <skos:prefLabel xml:lang="en">Spring</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A flow of water rising or welling naturally from the earth.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Natura2000">
+    <skos:prefLabel xml:lang="en">Natura2000</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Natura 2000 is a European Union-wide network of nature protection areas established under the 1992 Habitats Directive. The aim of the network is to assure the long-term survival of Europe's most valuable and threatened species and habitats. It is comprised of Special Areas of Conservation (SAC) designated by Member States under the Habitats Directive, and also incorporates Special Protection Areas (SPAs) designated under the 1979 Birds Directive. The establishment of this network ofprotected areas also fulfils a Community obligation under the UN Convention on Biological Diversity.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ProtectedSite">
+    <skos:prefLabel xml:lang="en">Protected Site</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A Protected Site is an area designated or managed within a framework of international, Community and Member States' legislation to achieve specific conservation objectives. Protected Sites and Protected Areas are synonymous.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ProtectedArea">
+    <skos:prefLabel xml:lang="en">Protected Area</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Protected Sites and Protected Areas are synonymous.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CRS">
+    <skos:prefLabel xml:lang="en">Coordinate reference system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A coordinate reference system is a coordinate system related to an object by a datum (from: ISO 19111:2007).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CoordinateSystem">
+    <skos:prefLabel xml:lang="en">Coordinate system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A coordinate system specifies how coordinates are to be assigned to points by means of mathematical rules (from: ISO 19111:2007).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Datum">
+    <skos:prefLabel xml:lang="en">Datum</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A datum is a parameter or set of parameters that define the position of the origin, the scale, and the orientation of a coordinate system (from: ISO 19111:2007).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GridPoint">
+    <skos:prefLabel xml:lang="en">Grid point</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Point located at the intersection of two or more curves in a grid (from: ISO 19123)</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/EuroRoadS">
+    <skos:prefLabel xml:lang="en">EuroRoadS</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An EC funded project (2003-2006) with the aim of producing a specification framework to support interoperable road information.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Eurocontrol">
+    <skos:prefLabel xml:lang="en">Eurocontrol</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Eurocontrol is the European Organisation for the Safety of Air Navigation. The civil and military intergovernmental organisation now counts 38 Member States from across Europe. It is based in Belgium with specialised offices in six other European countries.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CharacterString">
+    <skos:prefLabel xml:lang="en">Character string</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means the value domain of metadata elements expressed as a set of characters treated as a unit</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Zeichenkette</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Wertebereich von Metadatenelementen, ausgedrückt durch eine Menge von Zeichen, die als Einheit behandelt wird</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Chaîne de caractères</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Le domaine de valeur des éléments de métadonnées exprimé sous forme de jeu de caractères traité comme une unité</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/FreeText">
+    <skos:prefLabel xml:lang="en">Free text</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means the value domain of metadata elements expressed in one or more natural languages</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Freitext</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Wertebereich von Metadatenelementen, ausgedrückt in einer oder mehreren natürlichen Sprachen</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Texte libre</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Le domaine de valeur des éléments de métadonnées exprimé dans une ou plusieurs langues naturelles</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Lineage">
+    <skos:prefLabel xml:lang="en">Lineage</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means the history of a data set, and the life cycle from collection and acquisition through compilation and derivation to its current form, in accordance with EN ISO 19101</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Herkunft</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Geschichte des Datensatzes nach EN ISO 19101, einschließlich seines Lebenszyklus von der Sammlung und Erfassung über die Zusammenstellung und Ableitung bis zu seiner derzeitigen Form</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Généalogie</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">L’historique d’une série de données et son cycle de vie, depuis sa collecte et son acquisition jusqu’à sa forme actuelle, en passant par sa compilation et sa dérivation, conformément à la norme EN ISO 19101</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement">
+    <skos:prefLabel xml:lang="en">Metadata element</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means a discrete unit of metadata, in accordance with EN ISO 19115</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Metadatenelement</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Diskrete Metadateneinheit nach EN ISO 19115</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Élément de métadonnées</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Une unité distincte de métadonnées, conformément à la norme EN ISO 19115</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Namespace">
+    <skos:prefLabel xml:lang="en">Namespace</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means a collection of names, identified by a uniform resource identifier (URI) reference, which are used in extensible markup language (XML) documents as element names and attribute names</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Namensraum</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Durch einen einheitlichen Bezeichner für Ressourcen (URI) identifizierte Sammlung von Namen, die in Dokumenten, die in einer erweiterbaren Auszeichnungssprache (XML) abgefasst sind, als Element- und Attributnamen verwendet werden</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Espace de noms</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Une compilation de noms, identifiée par un identificateur de ressource uniforme (Uniform Resource Identifier, URI), qui sont utilisés dans des documents rédigés en XML (Extensible Markup Language) en tant que noms d’éléments et noms d’attributs</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Quality">
+    <skos:prefLabel xml:lang="en">Quality</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means the totality of characteristics of a product that bear on its ability to satisfy stated and implied needs, in accordance with EN ISO 19101</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Qualität</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Nach EN ISO 19101 die Gesamtheit der Merkmale eines Produkts, die sich auf dessen Eignung beziehen, festgelegte oder vorausgesetzte Erfordernisse zu erfüllen</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Qualité</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">La totalité des caractéristiques d’un produit qui lui confèrent l’aptitude à satisfaire des besoins exprimés ou implicites, conformément à la norme EN ISO 19101</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Resource">
+    <skos:prefLabel xml:lang="en">Resource</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means an information resource that has a direct or indirect reference to a specific location or geographic area</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Ressource</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Informationsressource mit direktem oder indirektem Bezug zu einem bestimmten Standort oder geografischen Gebiet</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Ressource</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Une ressource d’information faisant directement ou indirectement référence à un lieu ou une zone géographique spécifique</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialDataSetSeries">
+    <skos:prefLabel xml:lang="en">Spatial data set series</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Means a collection of spatial data sets sharing the same product specification</skos:scopeNote>
+    <skos:prefLabel xml:lang="de">Geodatensatzreihe</skos:prefLabel>
+    <skos:scopeNote xml:lang="de">Sammlung von Geodatensätzen mit derselben Produktspezifikation</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Ensemble de séries de données géographiques</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Une compilation de séries de données géographiques partageant la même spécification de produit</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ResourceTitle">
+    <skos:prefLabel xml:lang="en">Metadata element - Resource title</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This a characteristic, and often unique, name by which the resource is known.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ResourceAbstract">
+    <skos:prefLabel xml:lang="en">Metadata element - Resource abstract</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is a brief narrative summary of the content of the resource.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ResourceType">
+    <skos:prefLabel xml:lang="en">Metadata element - Resource type</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is the type of resource being described by the metadata.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ResourceLocator">
+    <skos:prefLabel xml:lang="en">Metadata element - Resource locator</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The resource locator defines the link(s) to the resource and/or the link to additional information about the resource.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-UniqueResourceIdentifier">
+    <skos:prefLabel xml:lang="en">Metadata element - Unique resource identifier</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A value uniquely identifying the resource.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-CoupledResource">
+    <skos:prefLabel xml:lang="en">Metadata element - Coupled resource</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">If the resource is a spatial data service, this metadata element identifies, where relevant, the target spatial data set(s) of the service through their unique resource identifiers (URI).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ResourceLanguage">
+    <skos:prefLabel xml:lang="en">Metadata element - Resource language</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The language(s) used within the resource.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-TopicCategory">
+    <skos:prefLabel xml:lang="en">Metadata element - Topic category</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The topic category is a high-level classification scheme to assist in the grouping and topic-based search of available spatial data resources.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-SpatialDataServiceType">
+    <skos:prefLabel xml:lang="en">Metadata element - Spatial data service type</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is a classification to assist in the search of available spatial data services. A specific service shall be categorised in only one category.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-Keyword">
+    <skos:prefLabel xml:lang="en">Metadata element - Keyword</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">If the resource is a spatial data service, at least one keyword from Part D.4 shall be provided. If a resource is a spatial data set or spatial data set series, at least one keyword shall be provided from the general environmental multilingual thesaurus</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-GeographicBoundingBox">
+    <skos:prefLabel xml:lang="en">Metadata element - Geographic bounding box</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is the extent of the resource in the geographic space, given as a bounding box.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-TemporalReference">
+    <skos:prefLabel xml:lang="en">Metadata element - Temporal reference</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This metadata element addresses the requirement to have information on the temporal dimension of the data as referred to in Article 8(2)(d) of Directive 2007/2/EC. At least one of the metadata elements referred to in points 5.1 to 5.4 shall be provided.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-Lineage">
+    <skos:prefLabel xml:lang="en">Metadata element - Lineage</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is a statement on process history and/or overall quality of the spatial data set. Where appropriate it may include a statement whether the data set has been validated or quality assured, whether it is the official version (if multiple versions exist)</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-SpatialResolution">
+    <skos:prefLabel xml:lang="en">Metadata element - Spatial resolution</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Spatial resolution refers to the level of detail of the data set. It shall be expressed as a set of zero to many resolution distances (typically for gridded data and imagery-derived products) or equivalent scales (typically for maps or map-derived product</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-Conformity">
+    <skos:prefLabel xml:lang="en">Metadata element - Conformity</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The requirements referred to in Article 5(2)(a) and Article 11(2)(d) of Directive 2007/2/EC relating to the conformity, and the degree of conformity, with implementing rules adopted under Article 7(1) of Directive 2007/2/EC shall be addressed by the follo</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ConditionsForAccessAndUse">
+    <skos:prefLabel xml:lang="en">Metadata element - Conditions for access and use</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This metadata element defines the conditions for access and use of spatial data sets and services, and where applicable, corresponding fees as required by Article 5(2)(b) and Article 11(2)(f) of Directive 2007/2/EC.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-LimitationsOnPublicAccess">
+    <skos:prefLabel xml:lang="en">Metadata element - Limitations on public access</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">When Member States limit public access to spatial data sets and spatial data services under Article 13 of Directive 2007/2/EC, this metadata element shall provide information on the limitations and the reasons for them. If there are no limitations on public access, this metadata element shall indicate that fact.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-ResponsibleOrganisation">
+    <skos:prefLabel xml:lang="en">Metadata element - Responsible organisation</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">For the purposes of Article 5(2)(d) and Article 11(2)(g) of Directive 2007/2/EC, the following two metadata elements shall be provided: 9.1. Responsible party 9.2. Responsible party role.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-MetadataPointOfContact">
+    <skos:prefLabel xml:lang="en">Metadata element - Metadata point of contact</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is the description of the organisation responsible for the creation and maintenance of the metadata.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-MetadataDate">
+    <skos:prefLabel xml:lang="en">Metadata element - Metadata date</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The date which specifies when the metadata record was created or updated.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MetadataElement-MetadataLanguage">
+    <skos:prefLabel xml:lang="en">Metadata element - Metadata language</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">This is the language in which the metadata elements are expressed.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DiscoveryService">
+    <skos:prefLabel xml:lang="en">Discovery service (discovery)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Services making it possible to search for spatial data sets and services on the basis of the content of the corresponding metadata and to display the content of the metadata.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/ViewService">
+    <skos:prefLabel xml:lang="en">View service (view)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Service that makes it possible, as a minimum, to display, navigate, zoom in and out, pan or overlay viewable spatial data sets and to display legend information and any relevant content of metadata.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DownloadService">
+    <skos:prefLabel xml:lang="en">Download service (download)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Service that enables copies of spatial data sets, or parts of such sets, to be downloaded and, where practicable, accessed directly.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/TransformationService">
+    <skos:prefLabel xml:lang="en">Transformation service (transformation)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Service that enables spatial data sets to be transformed with a view to achieving interoperability.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/InvokeSpatialDataService">
+    <skos:prefLabel xml:lang="en">Invoke spatial data service (invoke)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Service that allows defining both the data inputs and data outputs expected by the spatial service and a workflow or service chain combining multiple services. It also allows defining the external web service interface of the workflow or service chain.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/OtherService">
+    <skos:prefLabel xml:lang="en">Other service (service)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">N/a</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SpatialDataServicesClassification">
+    <skos:prefLabel xml:lang="en">Spatial data services - classification</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">N/a</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/AddressableObject">
+    <skos:prefLabel xml:lang="en">Addressable object</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Spatial object type which can have instances to which it is meaningful to associate addresses in the context of the INSPIRE scope.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Property">
+    <skos:prefLabel xml:lang="en">Property</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Plot of land and fixed objects attached to it.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CadastralGap">
+    <skos:prefLabel xml:lang="en">Cadastral gap</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area which is not supposed to be covered by cadastral parcels, due to national regulation.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/TopologicalGap">
+    <skos:prefLabel xml:lang="en">Topological gap</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area which is covered by cadastral parcels in the real world but not in the database.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CadastralOverlap">
+    <skos:prefLabel xml:lang="en">Cadastral overlap</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area which may be covered by several cadastral parcels, due to national regulation.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/TopologicalOverlap">
+    <skos:prefLabel xml:lang="en">Topological overlap</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area which is covered by only one cadastral parcel in the real world but by several parcels in the database.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GeodeticDatum">
+    <skos:prefLabel xml:lang="en">Geodetic datum</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Geodetic datum is a datum describing the relationship of a two- or threedimensional coordinate system to the Earth (from: ISO 19111:2007).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Grid">
+    <skos:prefLabel xml:lang="en">Grid</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Network composed of two or more sets of curves in which the members of each set intersect the members of the other sets in an algorithmic way</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/MapProjection">
+    <skos:prefLabel xml:lang="en">Map projection</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A change of coordinates, based on a one-to-one relationship, from a geodetic coordinate system to a plane, based on the same datum, in accordance with EN ISO 19111</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/CompoundCoordinateReferenceSystem">
+    <skos:prefLabel xml:lang="en">Compound coordinate reference system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A coordinate reference system using two other independent coordinate reference systems, one for the horizontal component and one for the vertical component, to describe a position, in accordance with EN ISO 19111</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GeodeticCoordinateSystem">
+    <skos:prefLabel xml:lang="en">Geodetic coordinate system</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A coordinate system in which position is specified by geodetic latitude, geodetic longitude and (in the three-dimensional case) ellipsoidal height, in accordance with EN ISO 19111</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/GridCell">
+    <skos:prefLabel xml:lang="en">Grid cell</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A cell delineated by grid curves</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/AerodromeReferencePoint">
+    <skos:prefLabel xml:lang="en">Aerodrome reference point</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The designated geographical location of an aerodrome, located near the initial or planned geometric centre of the aerodrome and normally remaining where originally established</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Airport_Heliport">
+    <skos:prefLabel xml:lang="en">Airport/Heliport</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A defined area on land or water (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft/helicopters</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DeepWaterRoute">
+    <skos:prefLabel xml:lang="en">Deep water route</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A route in a designated area within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles to a minimum indicated depth of water</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Inter-modalConnection">
+    <skos:prefLabel xml:lang="en">Inter-modal connection</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A connection between two elements in different transport networks that use a different transport mode, giving the possibility to change transported media (people, goods, etc) from one transport mode to another</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/NavaidEquipment">
+    <skos:prefLabel xml:lang="en">Navaid equipment</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A physical navaid equipment placed on the Earth surface, like Very High Frequency Omnidirectional Radio Range (VOR), Distance Measuring Equipment (DME), localizer, Tactical Air Navigation Beacon (TACAN) etc., which help in guiding aircraft traffic safely</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/RailwayYard">
+    <skos:prefLabel xml:lang="en">Railway yard</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An area crossed by a number of parallel railway tracks (usually more than two) interconnected between them, which are used to stop trains in order to load / unload freight without interrupting the traffic of a main railway line</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/SignificantPoint">
+    <skos:prefLabel xml:lang="en">Significant point</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A specified geographical location used to define an Air Traffic Service (ATS) route, the flight path of an aircraft or for other navigation/ATS purposes</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/DirectAccessDownloadService">
+    <skos:prefLabel xml:lang="en">Direct access download service</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Download Service which provides access to the Spatial Objects in Spatial Data Sets based upon a query.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/glossary/Pre-definedDownloadService">
+    <skos:prefLabel xml:lang="en">Pre-defined data set download service</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Service that enables copies of spatial data sets, or parts of such sets, to be downloaded.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/glossary" />
+  </skos:Concept>
+</rdf:RDF>
+

@@ -12,8 +12,7 @@
     </dc:creator>
     <dc:uri>https://inspire.ec.europa.eu/Technical-Guidelines/Data-Specifications/2892</dc:uri>
     <dc:rights>https://inspire.ec.europa.eu/Technical-Guidelines/Data-Specifications/2892</dc:rights>
-    <dcterms:modified>2019-04-22 07:57:15</dcterms:modified>
-    <dcterms:modified>2019-04-22 07:57:15</dcterms:modified>
+    <dcterms:modified>2019-04-22</dcterms:modified>
     <skos:hasTopConcept rdf:resource="https://inspire.ec.europa.eu/Technical-Guidelines/Data-Specifications/2892"/>
     <skos:hasTopConcept rdf:resource="https://inspire.ec.europa.eu/Technical-Guidelines/Data-Specifications/2892"/>
   </skos:ConceptScheme>
@@ -72,7 +71,7 @@
     <skos:prefLabel xml:lang="fr">RÈGLEMENT (UE) N o 1089/2010 DE LA COMMISSION du 23 novembre 2010 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne l'interopérabilité des séries et des services de données géographiques</skos:prefLabel>
     <skos:broader rdf:resource="https://inspire.ec.europa.eu/Legislation/Data-Specifications/2892"/>
   </skos:Concept>
- 
+
   <!-- Legislation Network Services -->
   <skos:Concept rdf:about="https://inspire.ec.europa.eu/documents/commission-regulation-ec-no-9762009-19-october-2009-implementing-directive-20072ec">
     <skos:prefLabel xml:lang="en">Commission Regulation (EC) No 976/2009 of 19 October 2009 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards the Network Services</skos:prefLabel>
@@ -86,7 +85,7 @@
     <skos:prefLabel xml:lang="fr">RÈGLEMENT (UE) N o 1205/2008 DE LA COMMISSION du 3 décembre 2008 portant modalités d'application de la directive 2007/2/CE du Parlement européen et du Conseil en ce qui concerne les métadonnées</skos:prefLabel>
     <skos:broader rdf:resource="https://inspire.ec.europa.eu/Legislation/Data-Specifications/2892"/>
   </skos:Concept>
-  
+
   <!-- Annex I -->
   <skos:Concept rdf:about="https://inspire.ec.europa.eu/id/document/tg/ad">
     <skos:prefLabel xml:lang="en">INSPIRE Data Specification on Addresses – Technical Guidelines, version 3.1</skos:prefLabel>

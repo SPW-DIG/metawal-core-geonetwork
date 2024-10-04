@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns3="http://purl.org/dc/elements/1.1/" xmlns:ns5="http://www.opengis.net/gml#" xmlns:ns2="http://www.w3.org/2004/02/skos/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/WISE">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <ns3:title>WISE</ns3:title>
+    <ns3:description>WISE</ns3:description>
+    <ns3:identifier>WISE.rdf</ns3:identifier>
+    <ns3:type>theme</ns3:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/WISE#e1f45cb3-bf23-4bc9-a5d8-f7c3ca18c66a">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="en">Water Information System for Europe (WISE)</ns2:prefLabel>
+    <ns2:scopeNote xml:lang="en">Water Information System for Europe (WISE)</ns2:scopeNote>
+    <ns5:BoundedBy rdf:nodeID="node1gdda97mkx1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1gdda97mkx1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/WISE#a0659a32-c445-4d79-8e41-e7f5f25c2aaf">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="en">Water Framework Directive (WFD)</ns2:prefLabel>
+    <ns2:scopeNote xml:lang="en">Water Framework Directive (WFD)</ns2:scopeNote>
+    <ns5:BoundedBy rdf:nodeID="node1gdda9gc5x1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1gdda9gc5x1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/WISE#719370b8-45cf-499d-8db4-2ea001723f42">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <ns2:prefLabel xml:lang="en">Groundwater Directive (GWD)</ns2:prefLabel>
+    <ns2:scopeNote xml:lang="en">Groundwater Directive (GWD)</ns2:scopeNote>
+    <ns5:BoundedBy rdf:nodeID="node1gdda9sr1x1" />
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1gdda9sr1x1">
+    <rdf:type rdf:resource="http://www.opengis.net/gml#Envelope" />
+    <ns5:lowerCorner />
+    <ns5:upperCorner />
+    <ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326" />
+  </rdf:Description>
+</rdf:RDF>
+

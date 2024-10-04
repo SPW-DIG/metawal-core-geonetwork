@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode">
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">Zone Type Code</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Code de type de zone</dc:title>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">High-level classification defining the type of Management, Restriction or Regulation Zone.</dc:description>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Classification de haut niveau définissant le type de zone de gestion, restriction ou réglementation.</dc:description>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2022-09-16</dcterms:issued>
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/airQualityManagementZone">
+    <skos:prefLabel xml:lang="en">air quality management zone</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Part of the territory of a Member State, as delimited by that Member State for the purposes of air quality assessment and management.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone de gestion de la qualité de l’air</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Partie du territoire d’un État membre délimitée par lui aux fins de l’évaluation et de la gestion de la qualité de l’air.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/noiseRestrictionZone">
+    <skos:prefLabel xml:lang="en">noise restriction zone</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">An area delimited by a competent authority to manage and mitigate noise pollution. This includes agglomerations and quiet areas (in agglomerations and open country) as defined in the Directive 2002/49/EC of the European Parliament and of the Council.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone soumise à limitation du bruit</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone délimitée par une autorité compétente en vue de gérer et d’atténuer les nuisances sonores. Il s’agit notamment des agglomérations et des zones calmes (dans les agglomérations et en rase campagne) définies dans la directive 2002/49/CE du Parlement européen et du Conseil.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/animalHealthRestrictionZone">
+    <skos:prefLabel xml:lang="en">animal health restriction zone</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Restriction zones established for the control and eradication of notifiable animal diseases</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone de restriction pour des raisons de santé animale</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zones de restriction mises en place en vue du contrôle et de l’éradication des maladies animales soumises à notification.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/prospectingAndMiningPermitArea">
+    <skos:prefLabel xml:lang="en">prospecting and mining permit area</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The area on which the prospection or extraction of any mineral has been authorised and for which that right or permit is granted.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone faisant l’objet d’un permis d’exploration et d’extraction minière</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone sur laquelle l’exploration ou l’extraction minière a été autorisée et pour laquelle ce droit ou ce permis est octroyé.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/regulatedFairwayAtSeaOrLargeInlandWater">
+    <skos:prefLabel xml:lang="en">regulated fairway at Sea or large inland water</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Regulated navigation areas port-to-port established to organise traffic, prevent accident and pollution and to support management and planning.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">chenal de navigation réglementé en mer ou dans les eaux intérieures importantes</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zones de navigation de port à port réglementées mises en place pour organiser le trafic, prévenir les accidents et la pollution et améliorer la gestion et la planification.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/restrictedZonesAroundContaminatedSites">
+    <skos:prefLabel xml:lang="en">restricted zones around contaminated sites</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Zones established to protect human, plant and animal health and control movement and development within a contaminated site.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zones réglementées autour des sites contaminés</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zones établies en vue de protéger la santé humaine, végétale et animale et de contrôler la circulation et les développements au sein d’un site contaminé.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/areaForDisposalOfWaste">
+    <skos:prefLabel xml:lang="en">area for disposal of waste</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area affected by disposal of waste as defined in Article 3(19) of Directive 2008/98/EC .</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zones d’élimination des déchets</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone touchée par l’élimination des déchets telle que définie à l’article 3, paragraphe 19, de la directive 2008/98/CE .</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/coastalZoneManagementArea">
+    <skos:prefLabel xml:lang="en">coastal zone management area</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area in which integrated coastal zone management takes place.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone de gestion de zone côtière</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone faisant l’objet d’une gestion intégrée des zones côtières.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/drinkingWaterProtectionArea">
+    <skos:prefLabel xml:lang="en">drinking water protection area</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area in which waste water leakage, use of fertilizer or pesticides, or establishment of waste disposal sites are prohibited.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone de protection de l'eau potable</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone dans laquelle les fuites d'eaux usées, l'utilisation d'engrais ou de pesticides, et l'aménagement de sites d'élimination des déchets sont interdits.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/nitrateVulnerableZone">
+    <skos:prefLabel xml:lang="en">nitrate vulnerable zone</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Areas of land which drain into polluted or threatened waters and which contribute to nitrate pollution.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone vulnérable aux nitrates</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zones alimentant des eaux polluées ou menacées et contribuant à la pollution par les nitrates.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/marineRegion">
+    <skos:prefLabel xml:lang="en">marine region</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Marine regions and their subregions are sea regions designated under international, Union, national or sub-national legislation for the purpose of assessment, management and regulation.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">région marine</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Les régions marines et leurs sous-régions sont les régions marines désignées par des actes législatifs internationaux, européens, nationaux ou infranationaux à des fins d'évaluation, gestion et réglementation.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/riverBasinDistrict">
+    <skos:prefLabel xml:lang="en">river basin district</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area of land and sea, made up of one or more neighbouring river basins together with their associated groundwaters and coastal waters, identified under Article 3(1) of Directive 2000/60/EC as the main unit for management of river basins.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">district hydrographique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone terrestre ou marine constituée d'un ou plusieurs bassins hydrographiques avoisinants et des eaux souterraines et côtières correspondantes identifiée au titre de l'article 3, paragraphe 1, de la directive 2000/60/CE comme étant la principale unité à utiliser pour la gestion des bassins hydrographiques.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/bathingWaters">
+    <skos:prefLabel xml:lang="en">bathing waters</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Coastal waters or inland waters (rivers, lakes) explicitly authorised, or not prohibited for recreational bathing by large numbers of people.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">eaux de baignade</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Eaux côtières ou intérieures (cours d'eau, lacs) dans lesquelles la baignade à des fins récréatives par un grand nombre de personnes est expressément autorisée ou n'est pas interdite.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/floodUnitOfManagement">
+    <skos:prefLabel xml:lang="en">flood unit of management</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area of land and sea, identified under Directive 2007/60/EC of the European Parliament and Council as the main unit for management when an alternative to the River Basin Districts or Sub-Districts are chosen.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">unité de gestion pour les inondations</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone terrestre ou marine identifiée au titre de la directive 2007/60/CE du Parlement européen et du Conseil comme étant la principale unité à utiliser pour la gestion des inondations lorsqu'il est décidé de ne pas retenir les districts hydrographiques ou les sous-districts hydrographiques.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/waterBodyForWFD">
+    <skos:prefLabel xml:lang="en">water body under the Water Framework Directive (2000/60/EC)</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The &amp;quot;water body” is a coherent sub-unit in the river basin (district) to which the environmental objectives of the Directive 2000/60/EC must apply. The identification of water bodies is based on geographical and hydrological determinants. This includes surface (river, lake, transitional and coastal) and ground water bodies.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">masse d'eau au titre de la directive-cadre sur l'eau (2000/60/CE)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">La «masse d'eau» est une sous-unité cohérente du bassin (district) hydrographique à laquelle doivent être appliqués les ojectifs environnementaux de la directive 2000/60/CE. L'identification des masses d'eau repose sur des paramètres géographiques et hydrologiques tels que les masses d'eau superficielles (cours d'eau, lacs, eaux de transition et eaux côtières) et souterraines.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/sensitiveArea">
+    <skos:prefLabel xml:lang="en">sensitive area</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Water bodies identified as sensitive areas, as defined in Annex II to Directive 91/271/EEC .</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone sensible</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Masses d'eau considérées comme des zones sensibles au sens de l'annexe II de la directive 91/271/CEE .</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/designatedWaters">
+    <skos:prefLabel xml:lang="en">designated waters</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Marine, coastal or surface waters designated by Member States as needing protection or improvement in order to support fish life.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">eaux désignées</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Eaux marines, côtières ou superficielles désignées par les États membres comme nécessitant une protection ou une amélioration pour devenir des eaux piscicoles.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/plantHealthProtectionZone">
+    <skos:prefLabel xml:lang="en">plant health protection zone</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Protection zone within which protective measures are established against the introduction of organisms harmful to plants or plant products and against their spread.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone de protection phytosanitaire</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone de protection dans laquelle sont mises en œuvre des mesures de protection contre l'introduction d'organismes nuisibles pour les plantes ou les produits végétaux et contre la propagation de ces organismes.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/ZoneTypeCode/forestManagementArea">
+    <skos:prefLabel xml:lang="en">forest management area</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Area designated for the sustainable management of forest resources and functions.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">zone de gestion forestière</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Zone désignée dans le cadre de la gestion durable des ressources et fonctions forestières.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/ZoneTypeCode" />
+  </skos:Concept>
+</rdf:RDF>
+

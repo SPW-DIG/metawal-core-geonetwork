@@ -210,17 +210,26 @@
   -->
   <xsl:template mode="iso19115-3-to-dcat"
                 match="mdb:metadataIdentifier
+                      |mdb:identificationInfo/*/mri:citation/*/cit:identifier
                       |cit:identifier">
     <xsl:variable name="code"
                   select="*/mcc:code/*/text()"/>
     <xsl:variable name="codeSpace"
                   select="*/mcc:codeSpace/*/text()"/>
+    <xsl:variable name="isUrn"
+                  as="xs:boolean"
+                  select="starts-with($codeSpace, 'urn:')"/>
+    <xsl:variable name="separator"
+                  as="xs:string"
+                  select="if ($isUrn) then ':' else '/'"/>
+
     <xsl:variable name="codeWithPrefix"
                   select="if (string($codeSpace))
                           then concat($codeSpace,
-                                      (if (ends-with($codeSpace, '/')) then '' else '/'),
+                                      (if (ends-with($codeSpace, $separator)) then '' else $separator),
                                       $code)
                           else $code"/>
+
     <xsl:variable name="codeType"
                   select="if (matches($codeWithPrefix, '^https?://|urn:'))
                           then 'anyURI' else 'string'"/>

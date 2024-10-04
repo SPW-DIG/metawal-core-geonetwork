@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/metadata-codelist/IACSData">
-    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">IACS data</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">IACS data</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Données SIGC</dc:title>
     <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">Spatial data inserted in the systems and subsystems as defined in Art. 68 of Regulation (EU) No 1306/2013.</dc:description>
     <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Données géographiques intégrées dans le système et les sous-systèmes tels que définis à l’article 68 du règlement (UE) no 1306/2013.</dc:description>
     <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2021-06-08</dcterms:issued>

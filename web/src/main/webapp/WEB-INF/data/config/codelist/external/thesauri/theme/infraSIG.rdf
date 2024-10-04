@@ -1,525 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:foaf="http://xmlns.com/foaf/0.1/"
-	xmlns:dcterms="http://purl.org/dc/terms/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:ns5="http://www.opengis.net/gml#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-	<dc:title>Mots-clés InfraSIG</dc:title>
-	<dc:description>Mots-clés InfraSIG pour Metawal - GeoNetwork</dc:description>
-	<dc:creator rdf:nodeID="node1cakeslfjx1"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx1">
-	<rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
-	<foaf:name>SPW - DIG</foaf:name>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig">
-	<dcterms:issued>2014-06-26</dcterms:issued>
-	<dcterms:modified>2014-06-30</dcterms:modified>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig/Opendata">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<skos:scopeNote xml:lang="fr">Ressource considérée comme Open Data</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig/ReportingINSPIRE">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#OpendataNO">
-	<skos:scopeNote xml:lang="fr">Ressource ne pouvant pas être considérée comme Open Data</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig/Opendata">
-	<skos:prefLabel xml:lang="fr">Open data</skos:prefLabel>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#OpendataNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx2">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#OpendataNO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx2"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx2">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#OpendataNO">
-	<skos:prefLabel xml:lang="fr">Open DataNO</skos:prefLabel>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRENO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig/ReportingINSPIRE">
-	<skos:prefLabel xml:lang="fr">Reporting INSPIRE</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Ressource officiellement dans le scope INSPIRE</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRENO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx3">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRENO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx3"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx3">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx4">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIG">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRENO">
-	<skos:prefLabel xml:lang="fr">Reporting INSPIRENO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Ressource exclue du scope INSPIRE</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIG">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx4"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx4">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx5">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIGNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIG">
-	<skos:prefLabel xml:lang="fr">BDInfraSIG</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée présente dans la BD InfraSIG</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIGNO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx5">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIGNO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx5"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx6">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIE">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIGNO">
-	<skos:prefLabel xml:lang="fr">BDInfraSIGNO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée qui n’est pas présente dans la BD InfraSIG</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIE">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx6">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIE">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx6"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx7">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIENO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIE">
-	<skos:prefLabel xml:lang="fr">CCPIE</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée recensée dans la liste CCPIE</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIENO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx7"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx8"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx8">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIENO">
-	<skos:prefLabel xml:lang="fr">CCPIENO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée ne se trouvant pas dans la liste CCPIE</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREFNO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">
-	<skos:scopeNote xml:lang="fr">Donnée présente dans la BD REF</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREFNO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx9"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx9">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx10">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREFNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx10"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx10">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">
-	<skos:prefLabel xml:lang="fr">DGO3_BDREF</skos:prefLabel>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALE">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREFNO">
-	<skos:scopeNote xml:lang="fr">Donnée absente de la BD REF</skos:scopeNote>
-	<skos:prefLabel xml:lang="fr">DGO3_BDREFNO</skos:prefLabel>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALE">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx11"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx11">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALE">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<skos:scopeNote xml:lang="fr">Donnée consultable via Cigale ou ses déclinaisons</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALENO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALE">
-	<skos:prefLabel xml:lang="fr">DGO3_CIGALE</skos:prefLabel>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALENO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx12"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx12">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx13">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx14">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAPNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx13"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx13">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAPNO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx14"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx14">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALENO">
-	<skos:prefLabel xml:lang="fr">DGO3_CIGALENO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée qui n’est pas consultable via Cigale ou ses déclinaisons</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAPNO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx15">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAP">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAPNO">
-	<skos:prefLabel xml:lang="fr">WalOnMapNO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Ressource qui ne peut pas être consultée dans WalOnMap</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAP">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx15"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx15">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx16">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIGNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAP">
-	<skos:prefLabel xml:lang="fr">WalOnMap</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Ressource consultable dans WalOnMap</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIGNO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx16">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIGNO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx16"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx17">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIG">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<skos:scopeNote xml:lang="fr">L'extraction en vue de la distribution est assurée par la DIG.</skos:scopeNote>
-	<skos:prefLabel xml:lang="fr">Extraction_DIG</skos:prefLabel>
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx17">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIG">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx17"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIGNO">
-	<skos:prefLabel xml:lang="fr">Extraction_DIGNO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">L'extraction en vue de la distribution n'est pas assurée par la DIG</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportail">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx18"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx18">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportail">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportailNO">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx19"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx19">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportailNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportail">
-	<skos:prefLabel xml:lang="fr">PanierTelechargementGeoportail</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée ajoutable au panier de téléchargement du géoportail</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportailNO">
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##Ressourceofficiellewallonne">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx20">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##Ressourceofficiellewallonne">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx20"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportailNO">
-	<skos:prefLabel xml:lang="fr">PanierTelechargementGeoportailNO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée qui ne peut pas être ajoutée au panier de téléchargement du géoportail</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##RessourceofficielleallonneNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx21"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx21">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##Ressourceofficiellewallonne">
-	<skos:scopeNote xml:lang="fr">Ressource officielle wallonne</skos:scopeNote>
-	<skos:prefLabel xml:lang="fr">Ressource officielle wallonne</skos:prefLabel>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##RessourceofficielleallonneNO">
-	<skos:prefLabel xml:lang="fr">Ressource officielle wallonneNO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Ressource qui n'est pas une officielle wallonne</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx22">
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DDW">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx22">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DDW">
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx22"/>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx23"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx23">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DDW">
-	<skos:prefLabel xml:lang="fr">DDW</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Donnée qui remonte dans le portail data.digitalwallonia</skos:scopeNote>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DDWNO">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<skos:prefLabel xml:lang="fr">DDWNO</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">donnée pour laquelle il n'y a pas d'autorisation de remontée dans le portail data.digitalwallonie</skos:scopeNote>
-	<ns5:BoundedBy rdf:nodeID="node1cakeslfjx24"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cakeslfjx24">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#https://metawal.wallonie.be/thesaurus/infrasig/INSPIREPriorityDataset">
-	<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-	<skos:prefLabel xml:lang="fr">INSPIRE Priority Dataset</skos:prefLabel>
-	<skos:scopeNote xml:lang="fr">Identifié comme donnée prioritaire par INSPIRE</skos:scopeNote>
-	<ns5:BoundedBy rdf:nodeID="node1cbpajng6x1"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cbpajng6x1">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:lowerCorner> </ns5:lowerCorner>
-	<ns5:upperCorner> </ns5:upperCorner>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
-<rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#https://metawal.wallonie.be/thesaurus/infrasig/INSPIREPriorityDataset">
-	<ns5:BoundedBy rdf:nodeID="node1cbpajnjjx1"/>
-</rdf:Description>
-
-<rdf:Description rdf:nodeID="node1cbpajnjjx1">
-	<rdf:type rdf:resource="http://www.opengis.net/gml#Envelope"/>
-	<ns5:lowerCorner> </ns5:lowerCorner>
-	<ns5:upperCorner> </ns5:upperCorner>
-	<ns5:srsName rdf:resource="http://www.opengis.net/gml/srs/epsg.xml#epsg:4326"/>
-</rdf:Description>
-
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig">
+    <skos:scopeNote xml:lang="fr">Thésaurus présentant les concepts utilisés pour la gestion de l'InfraSIG</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <dc:title>Mots-clés InfraSIG</dc:title>
+    <dc:description>Mots-clés InfraSIG pour Metawal - GeoNetwork</dc:description>
+    <dc:creator rdf:nodeID="node1cakeslfjx1" />
+    <dcterms:issued>2014-06-26</dcterms:issued>
+    <dcterms:modified>2024-09-25</dcterms:modified>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="node1cakeslfjx1">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization" />
+    <foaf:name>Service Public de Wallonie - Géoportail de la Wallonie</foaf:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig/Opendata">
+    <skos:scopeNote xml:lang="fr">Ressource considérée comme Open Data</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Open Data</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#OpendataNO">
+    <skos:scopeNote xml:lang="fr">Ressource ne pouvant pas être considérée comme Open Data</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Open DataNO</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig/ReportingINSPIRE">
+    <skos:prefLabel xml:lang="fr">Reporting INSPIRE</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource officiellement dans le scope INSPIRE</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRENO">
+    <skos:prefLabel xml:lang="fr">Reporting INSPIRENO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource exclue du scope INSPIRE</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIG">
+    <skos:prefLabel xml:lang="fr">BDInfraSIG</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée présente dans la BD InfraSIG</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIGNO">
+    <skos:prefLabel xml:lang="fr">BDInfraSIGNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée qui n’est pas présente dans la BD InfraSIG</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIE">
+    <skos:prefLabel xml:lang="fr">CCPIE</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée recensée dans la liste CCPIE</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#CCPIENO">
+    <skos:prefLabel xml:lang="fr">CCPIENO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée ne se trouvant pas dans la liste CCPIE</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">
+    <skos:prefLabel xml:lang="fr">DGO3_BDREF</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée présente dans la BD REF</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREFNO">
+    <skos:prefLabel xml:lang="fr">DGO3_BDREFNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée absente de la BD REF</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALE">
+    <skos:prefLabel xml:lang="fr">DGO3_CIGALE</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée consultable via Cigale ou ses déclinaisons</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALENO">
+    <skos:prefLabel xml:lang="fr">DGO3_CIGALENO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée qui n’est pas consultable via Cigale ou ses déclinaisons</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAP">
+    <skos:prefLabel xml:lang="fr">WalOnMap</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource consultable dans WalOnMap</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAPNO">
+    <skos:prefLabel xml:lang="fr">WalOnMapNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource qui ne peut pas être consultée dans WalOnMap</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIG">
+    <skos:prefLabel xml:lang="fr">Extraction_DIG</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">L'extraction en vue de la distribution est assurée par la DIG.</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#ExtractionDIGNO">
+    <skos:prefLabel xml:lang="fr">Extraction_DIGNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">L'extraction en vue de la distribution n'est pas assurée par la DIG</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportail">
+    <skos:prefLabel xml:lang="fr">PanierTelechargementGeoportail</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée ajoutable au panier de téléchargement du géoportail</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportailNO">
+    <skos:prefLabel xml:lang="fr">PanierTelechargementGeoportailNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée qui ne peut pas être ajoutée au panier de téléchargement du géoportail</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##Ressourceofficiellewallonne">
+    <skos:scopeNote xml:lang="fr">Ressource officielle wallonne</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">Ressource officielle wallonne</skos:prefLabel>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig##RessourceofficielleallonneNO">
+    <skos:prefLabel xml:lang="fr">Ressource officielle wallonneNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource qui n'est pas une officielle wallonne</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DDW">
+    <skos:prefLabel xml:lang="fr">DDW</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Donnée qui remonte dans le portail data.digitalwallonia</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#DDWNO">
+    <skos:prefLabel xml:lang="fr">DDWNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">donnée pour laquelle il n'y a pas d'autorisation de remontée dans le portail data.digitalwallonie</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#https://metawal.wallonie.be/thesaurus/infrasig/INSPIREPriorityDataset">
+    <skos:prefLabel xml:lang="fr">INSPIRE Priority Dataset</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Identifié comme donnée prioritaire par INSPIRE</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#NAPITS">
+    <skos:prefLabel xml:lang="fr">ITS</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource dans le scope de la directive ITS</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
+  <rdf:Description rdf:about="https://metawal.wallonie.be/thesaurus/infrasig#NAPITSNO">
+    <skos:prefLabel xml:lang="fr">ITSNO</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ressource exclue du scope de la directive ITS</skos:scopeNote>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+  </rdf:Description>
 </rdf:RDF>
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain">
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">Environmental Domain</dc:title>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Domaine de l'environnement</dc:title>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">Environmental domain, for which environmental objectives can be defined.</dc:description>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fr">Domaine de l'environnement pour lequel des objectifs environnementaux peuvent être définis.</dc:description>
+    <dcterms:issued xmlns:dcterms="http://purl.org/dc/terms/">2022-09-16</dcterms:issued>
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/soil">
+    <skos:prefLabel xml:lang="en">soil</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The top layer of the land surface of the earth that is composed of disintegrated rock particles, humus, water and air.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">sol</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Couche supérieure de la surface terrestre qui est composée de particules de roches désintégrées, d'humus, d'eau et d'air.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/noise">
+    <skos:prefLabel xml:lang="en">noise</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Sound which is unwanted, either because of its effects on humans, its effect on fatigue or malfunction of physical equipment, or its interference with the perception or detection of other sounds.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">bruit</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Son qui est indésirable, soit en raison de son effet sur l'homme, sur la fatigue ou sur le fonctionnement des équipements physiques, soit en raison de son interférence avec la perception ou la détection des autres sons.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/naturalResources">
+    <skos:prefLabel xml:lang="en">natural resources</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A feature or component of the natural environment that is of value in serving human needs, e.g. soil, water, plant life, wildlife, etc. Some natural resources have an economic value (e.g. timber) while others have a "non-economic" value (e.g. scenic beauty).</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">ressources naturelles</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Caractéristique ou composante du milieu naturel qui est utile pour répondre aux besoins de l'homme, comme le sol, l'eau, la végétation, la faune, etc. Certaines ressources naturelles revêtent une valeur économique (par exemple le bois), alors que d'autres ont une valeur dite «non économique» (par exemple la beauté du paysage).</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/climateAndClimateChange">
+    <skos:prefLabel xml:lang="en">climate and climate change</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">State of the climate and/or change in this state that can be identified (e.g., by using statistical tests) by changes in the mean and/or the variability of its properties, and that persists for an extended period, typically decades or longer.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">climat et changement climatique</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">État du climat et/ou changement de cet état qui peut être défini (par exemple, à l’aide d’essais statistiques) par des changements de la moyenne et/ou de la variabilité de ses propriétés, et qui persiste pendant une période prolongée, généralement plusieurs décennies, voire plus longtemps.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/healthProtection">
+    <skos:prefLabel xml:lang="en">health protection</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Measures or devices designed to reduce the risk of harm to human health posed by pollutants or other threatening conditions in the ecosystem.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">protection de la santé</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Mesures ou dispositifs conçus pour réduire le risque que les polluants ou d'autres éléments dangereux de l'écosystème font peser sur la santé humaine.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/air">
+    <skos:prefLabel xml:lang="en">air</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">A predominantly mechanical mixture of a variety of individual gases forming the earth's enveloping atmosphere.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">air</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Mélange essentiellement mécanique de divers gaz présents dans l'atmosphère terrestre.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/water">
+    <skos:prefLabel xml:lang="en">water</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Common liquid (H2O) which forms rain, rivers, the sea, etc., and which makes up a large part of the bodies of organisms.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">eau</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Liquide très répandu (H2O) dont sont constitués la pluie, les cours d'eau, la mer et qui représente une part importante des éléments de l'organisme.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/waste">
+    <skos:prefLabel xml:lang="en">waste</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Material, often unusable, left over from any manufacturing, industrial, agricultural or other human process; material damaged or altered during a manufacturing process and subsequently left useless.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">déchet</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Matériau, souvent inutilisable, restant à l'issue d'une activité humaine manufacturière, industrielle, agricole ou autre; matériau endommagé ou altéré durant un processus de fabrication et devenu dès lors inutile.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/natureAndBiodiversity">
+    <skos:prefLabel xml:lang="en">nature and biodiversity</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Active management of the earth's natural resources and environment to ensure their quality is maintained and that they are wisely used.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">nature et biodiversité</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Gestion active des ressources et de l'environnement naturels terrestres visant à en garantir la qualité et l'utilisation judicieuse.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/sustainableDevelopment">
+    <skos:prefLabel xml:lang="en">sustainable development</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">Development that provides economic, social and environmental benefits in the long term having regard to the needs of living and future generations.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">développement durable</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Développement qui garantit des avantages économiques, sociaux et environnementaux à long terme en tenant compte des besoins des générations actuelles et futures.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain/landUse">
+    <skos:prefLabel xml:lang="en">land use</skos:prefLabel>
+    <skos:scopeNote xml:lang="en">The term land use deals with the spatial aspects of all human activities on the land and with the way in which the land surface is adapted, or could be adapted, to serve human needs.</skos:scopeNote>
+    <skos:prefLabel xml:lang="fr">usage des sols</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Le terme «usage des sols» se rapporte aux aspects géographiques de l'ensemble des activités humaines sur le sol et à la manière dont la surface terrestre est adaptée aux besoins de l'homme ou pourrait l'être.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://inspire.ec.europa.eu/codelist/EnvironmentalDomain" />
+  </skos:Concept>
+</rdf:RDF>
+
