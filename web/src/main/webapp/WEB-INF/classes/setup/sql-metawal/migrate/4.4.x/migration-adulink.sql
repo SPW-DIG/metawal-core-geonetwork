@@ -1,4 +1,5 @@
 UPDATE metadata  SET data = replace(data, 'https://geoportail.wallonie.be/walonmap/?#ADU', 'https://geoportail.wallonie.be/walonmap/#ADU')WHERE data LIKE  '%https://geoportail.wallonie.be/walonmap/?#ADU%';
+UPDATE metadata  SET data = replace(data, 'https://geoportail.wallonie.be/walonmap#ADU', 'https://geoportail.wallonie.be/walonmap/#ADU')WHERE data LIKE  '%https://geoportail.wallonie.be/walonmap#ADU%';
 
 WITH ns AS (select ARRAY [ARRAY ['xlink', 'http://www.w3.org/1999/xlink'],
     ARRAY ['mdb', 'http://standards.iso.org/iso/19115/-3/mdb/2.0'],
