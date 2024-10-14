@@ -1,0 +1,263 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Webcomponents demo</title>
+    <base href="/">
+
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="main.css"></head>
+  <body>
+    <!-- <catalogue-search filter='+resourceType:dataset'></catalogue-search>-->
+    <!--<h1>INSPIRE valid records</h1>
+    <catalogue-results-table
+      columns="overview,resourceTitleObject,resourceAltTitleObject,tag"
+      filter='+valid_inspire:1 +tag.default:"Reporting INSPIRE"'
+      size="2"
+    ></catalogue-results-table>
+
+    <hr/>
+
+    <h1>More about PICC</h1>
+    <catalogue-results-table
+      columns="resourceTitleObject,resourceAltTitleObject"
+      filter="+any.\*:PICC"
+      size="2"
+    ></catalogue-results-table>
+
+    <hr/>-->
+
+    <h1>Contenu de la base de données BD CARTON - INFRASIG test</h1>
+
+    <div style="margin: 2.5em">
+      <p>     </p>
+      <catalogue-results-table
+        catalogueurl="https://metawal.wallonie.be/geonetwork/intranet-table"
+        landingpageurl="https://geoportail.wallonie.be/catalogue/{uuid}.html"
+        fields='
+    {"columnName":"Nom de la donnée","columnIndex":"resourceTitleObject","columnJsonPath":"$.langfre","columnWidth":"2"} |
+    {"columnName":"Nom de la donnée","columnIndex":"overview","columnJsonPath":"$[0].url","columnWidth":"2"} |
+    {"columnName":"Identifiant","columnIndex":"mw-gp-localIdentifier","columnJsonPath":"","columnWidth":"2"} |
+    {"columnName":"Type","columnIndex":"resourceType","columnJsonPath":"$[0]","columnIcon":{"series":"copy outline","dataset":"file outline"},"columnLabel":{"series":"blue","dataset":"teal"},"columnFormatter":"withouttext","columnWidth":"1"} |
+    {"columnName":"BD","columnIndex":"mw-gp-localIdentifierCodespace","columnJsonPath":"","columnValue":{"BE.SPW.INFRASIG.GINET":"G","BE.SPW.INFRASIG.CARTON":"I","BE.SPW.INFRASIG.ENTREPOT":"E"},"columnLabel":{"BE.SPW.INFRASIG.GINET":"green","BE.SPW.INFRASIG.CARTON":"pink","BE.SPW.INFRASIG.ENTREPOT":"yellow"},"columnWidth":"1"} |
+    {"columnName":"Statut","columnIndex":"cl_status","columnJsonPath":"$[0].key","columnPopup":"true","columnIcon":{"onGoing":"sync alternate","completed":"check","obsolete":"ban","planned":"calendar alternate outline","superseded":"ban"}, "columnIconColor":{"onGoing":"violet","completed":"green","obsolete":"red","planned":"orange","superseded":"red"},"columnFormatter":"withouttext","columnWidth":"1"}  |
+	{"columnName":"Modèle et légende","columnIndex":"link","columnJsonPath":"$[?(@.function==\"featureCatalogue\")].urlObject.default","columnIcon":"th","columnWidth":"2"} |
+    {"columnName":"Modèle et légende","columnIndex":"link","columnJsonPath":"$[?(@.function==\"legend\")].urlObject.default","columnIcon":"paint brush","columnWidth":"2"} |
+    {"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-thematicMap","columnJsonPath":"$[*].urlObject.default","columnIcon":"map","columnWidth":"3"} |
+    {"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-allWebServices","columnJsonPath":"$[*].urlObject.default","columnIcon":"world","columnWidth":"3"}|
+    {"columnName":"Crédits","columnIndex":"resourceCreditObject","columnJsonPath":"$[0].langfre","columnWidth":"2"}|
+    {"columnName":"Note","columnIndex":"supplementalInformationObject","columnJsonPath":"$.langfre","columnWidth":"3"}
+	'
+        filter="+(resourceType:dataset or resourceType:series)"
+        fulltextfilter="mw_default_query"
+        search_placeholder="Recherche libre"
+        filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+        size="10"
+        sortby="mw-gp-localIdentifier"
+        sorttype="asc"
+        togglefilterfield="mw-gp-localIdentifierCodespace"
+        toggleismultiselect="true"
+        togglelabel='{"label": "BDREF SIG ARNE", "value": "BE.SPW.INFRASIG.GINET"} | {"label": "BD_INFRASIG", "value": "BE.SPW.INFRASIG.CARTON"} | {"label": "ENTREPOT", "value": "BE.SPW.INFRASIG.ENTREPOT"}'
+        toggleButtonStyle='{"bg":"rgb(204 0 0)", "bg_active":"rgb(204 0 0)","text_color":"rgb(200 200 200)","text_color_active":"white"}'
+      >
+      </catalogue-results-table>
+    </div>
+    <div style="margin: 2.5em">
+
+      <catalogue-results-card
+        catalogueurl="https://metawal.wallonie.be/geonetwork/mapstore"
+        fields='{
+	"imageIndex": "overview", "imageJsonPath":"$[0].url",
+	"titleIndex": "resourceTitleObject", "titleJsonPath":"$.default", "titleSize":"h4",
+	"subTitleIndex": "ownerOrgForResource", "subTitleJsonPath":"",
+	"textIndex": "resourceHookAbstractObject", "textJsonPath":"$.default",
+	"linkIndex": "mw-gp-thematicMap", "linkJsonPath":"$[0].urlObject.default", "linkIcon":"map", "linkButtonColor":"#0676C5", "linkHook":"Découvrir",
+	"additionalInfoIndex":"cl_accessConstraints", "additionalInfoJsonPath":"$[0].key"
+	}
+	'
+
+        filter="+(resourceType:application) -(th_infraSIG.default:Reporting_INSPIRE) -(cl_status.key:obsolete)"
+        fulltextfilter="resourceHookAbstractObject.langfre, resourceTitleObject.langfre"
+        search_placeholder="Recherche libre"
+        filterfield_2="th_Themes_geoportail_wallon_hierarchy.default"
+        filterfield_2_placeholder="Thème"
+        filterfield="ownerOrgForResource"
+        filterfield_placeholder="Propriétaire"
+        linkmdt="false"
+        imageheight="172"
+        itemsperrow="3" size="12" marginx="1.2" margintoolsbottom="1.5" marginbottom="2"
+        sorttype="asc" sortby="resourceTitleObject.default.keyword"
+        sortbylist='{"sortIndexRef":"resourceTitleObject.default.keyword", "sortName":"Titre"} | {"sortIndexRef":"popularity", "sortName":"Popularité"}'
+      >
+      </catalogue-results-card>
+    </div>
+
+    <!--catalogue-results-table
+      columns='resourceTitleObject,overview,resourceType,resourceAltTitleObject,custodianOrgForResource,link'
+      columnnames='Titre,,,Nom abrégé,Gestionnaire,Liens'
+      filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      togglefilterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      toggleismultiselect="true"
+      togglelabel='{"label": "Air", "value": "Air AND Eau"} | {"label": "Eau", "value": "Eau"} | {"label": "Agriculture", "value": "Agriculture"}'
+      filter=""
+      size="4"
+      catalogueurl="https://apps.titellus.net/geonetwork/srv"
+      sorttype="desc"
+      sortby="custodianOrgForResource"
+    ></catalogue-results-table-->
+
+<!--    <catalogue-results-table
+      fields='{"columnName":"Nom du service","columnIndex":"resourceTitleObject","columnJsonPath":"$.default"} |
+      {"columnName":"Type de service","columnIndex":"serviceType","columnJsonPath":""} |
+      {"columnName":"Protocole","columnIndex":"linkProtocol","columnJsonPath":""} |
+      {"columnName":"Point d accès","columnIndex":"linkUrl","columnJsonPath":""} |
+      {"columnName":"Gestionnaire","columnIndex":"custodianOrgForResource","columnJsonPath":""} |
+	  {"columnName":"Données servies","columnIndex":"related","columnJsonPath":"$.datasets[?(@.origin==\"portal\")].title.fre"} |
+	  {"columnName":"Qualité du service","columnIndex":"related","columnJsonPath":"$.onlines[?(@.function==\"dataQualityReport\")].url.fre"}'
+      filterfield="linkProtocol"
+      togglefilterfield="serviceType"
+      toggleismultiselect="true"
+      togglelabel='{"label": "Consultation", "value": "view"} | {"label": "Download", "value": "download"}'
+      filter="+(resourceType:service) -(cl_status.key:obsolete)"
+      size="10"
+      catalogueurl="https://metawal4.test.wallonie.be/geonetwork/srv"
+    ></catalogue-results-table></div>
+
+    <catalogue-results-table
+      fields='{"columnName":"Titre","columnIndex":"resourceTitleObject","columnJsonPath":"$.default", "columnWidth":"1"} |
+      {"columnName":"Titre","columnIndex":"overview","columnJsonPath":"$[0].url", "columnWidth":"4"} |
+      {"columnName":"Titre","columnIndex":"resourceType","columnJsonPath":"$[0]", "columnLabel":"red", "columnRibon":{"dataset":"blue", "series":"teal","application":"green","service":"green", "columnWidth":"1"}} |
+      {"columnName":"Nom abrégé","columnIndex":"resourceAltTitleObject","columnJsonPath":"$.default", "columnLabel":"blue", "columnWidth":"2"} |
+      {"columnName":"Gestionnaire","columnIndex":"custodianOrgForResource","columnJsonPath":"", "columnWidth":"2"} |
+      {"columnName":"Liens","columnIndex":"link","columnJsonPath":"$[0].url","columnIcon":"world", "columnLabel":"red", "columnWidth":"2"} |
+      {"columnName":"related","columnIndex":"related","columnJsonPath":"$.datasets[?(@.origin==\"portal\")].title.eng", "columnWidth":"2"} |
+      {"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-allWebServices","columnJsonPath":"$[*].url","columnIcon":"world"}'
+      filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      togglefilterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      toggleismultiselect="true"
+      togglelabel='{"label": "Air", "value": "Air AND Eau"} |
+      {"label": "Eau", "value": "Eau"} |
+      {"label": "Agriculture", "value": "Agriculture"}'
+      filter="+(resourceType:service)"
+      size="5"
+      catalogueurl="https://metawal4.test.wallonie.be/geonetwork/srv"
+      sorttype="desc"
+      sortby="custodianOrgForResource"
+    ></catalogue-results-table>-->
+
+
+    <h1>Exemple tableau des données #700</h1>
+
+    <catalogue-results-table
+      catalogueurl="https://metawal.wallonie.be/geonetwork/srv"
+      fields='
+	{"columnName":"Nom de la donnée","columnIndex":"resourceTitleObject","columnJsonPath":"$.langfre","columnWidth":"2"} |
+    {"columnName":"Nom de la donnée","columnIndex":"overview","columnJsonPath":"$[0].url","columnWidth":"2"} |
+    {"columnName":"Type","columnIndex":"resourceType","columnJsonPath":"$[0]","columnWidth":"1"} |
+    {"columnName":"BD","columnIndex":"mw-gp-localIdentifierCodespace","columnJsonPath":"","columnWidth":"1"} |
+    {"columnName":"Nom physique","columnIndex":"mw-gp-localIdentifier","columnJsonPath":"","columnWidth":"1"} |
+    {"columnName":"Statut","columnIndex":"cl_status","columnJsonPath":"$[0].langfre","columnWidth":"1"} |
+    {"columnName":"Note","columnIndex":"supplementalInformationObject","columnJsonPath":"$[0].langfre","columnWidth":"2"} |
+		{"columnName":"Modèle et légende - link","columnIndex":"link","columnJsonPath":"$[?(@.function==\"featureCatalogue\")].url","columnIcon":"th","columnWidth":"2","columnFormatter":"withtext"} |
+	{"columnName":"Modèle et légende - related","columnIndex":"related","columnJsonPath":"$.onlines[?(@.function==\"featureCatalogue\")].url.fre","columnIcon":"th","columnWidth":"2","columnFormatter":"withtext"} |
+	{"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-thematicMap","columnJsonPath":"$[*].url","columnIcon":"map","columnWidth":"2"} |
+    {"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-allWebServices","columnJsonPath":"$[*].url","columnIcon":"world","columnWidth":"2"}|
+	{"columnName":"Crédits","columnIndex":"resourceCreditObject","columnJsonPath":"$[0].langfre"}
+	'
+      filter="+(resourceType:dataset or resourceType:series) -(th_infraSIG.default:Reporting INSPIRE) -(cl_status.key:obsolete) +(custodianOrgForResource:*SPW*)" filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      size="10"
+      sortby="mw-gp-localIdentifier"
+      sorttype="asc"
+      togglefilterfield="mw-gp-localIdentifierCodespace"
+      toggleismultiselect="true"
+      togglelabel='{"label": "GINET", "value": "BE.SPW.INFRASIG.GINET"} | {"label": "CARTON", "value": "BE.SPW.INFRASIG.CARTON"}'
+    >
+    </catalogue-results-table>
+
+
+    <!--catalogue-results-table
+      catalogueurl="https://metawal4.test.wallonie.be/geonetwork/srv"
+      fields='{"columnName":"Nom de la donnée","columnIndex":"resourceTitleObject","columnJsonPath":"$.langfre"} |
+      {"columnName":"Nom de la donnée","columnIndex":"overview","columnJsonPath":"$[0].url"} |
+      {"columnName":"Type","columnIndex":"resourceType","columnJsonPath":"$[0]","columnWidth":"1"} |
+      {"columnName":"Nom physique","columnIndex":"mw-gp-localIdentifier","columnJsonPath":"","columnWidth":"4"} |
+      {"columnName":"Statut","columnIndex":"cl_status","columnJsonPath":"$[0].langfre","columnWidth":"1"} |
+      {"columnName":"Note","columnIndex":"supplementalInformationObject","columnJsonPath":"$[0].langfre"} |
+      {"columnName":"Modèle et légende","columnIndex":"related","columnJsonPath":"$.onlines[?(@.function==\"featureCatalogue\")].url.fre","columnIcon":"th"} |
+      {"columnName":"Modèle et légende","columnIndex":"related","columnJsonPath":"$.onlines[?(@.function==\"legend\")].url.fre","columnIcon":"paint brush"} |
+      {"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-thematicMap","columnJsonPath":"$[*].url","columnIcon":"map"} |
+      {"columnName":"Consulter (applications et services)","columnIndex":"mw-gp-allWebServices","columnJsonPath":"$[*].url","columnIcon":"world"} |
+      {"columnName":"Crédits","columnIndex":"resourceCreditObject","columnJsonPath":"$[0].langfre"}'
+      filter="+(resourceType:dataset or resourceType:series) -(th_infraSIG.default:Reporting INSPIRE) -(cl_status.key:obsolete) +(custodianOrgForResource:*SPW*)"
+      filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      size="10"
+      sortby="mw-gp-localIdentifier"
+      sorttype="asc"
+      togglefilterfield="mw-gp-localIdentifierCodespace"
+      toggleismultiselect="true"
+      togglelabel='{"label": "GINET", "value": "BE.SPW.INFRASIG.GINET"} | {"label": "CARTON", "value": "BE.SPW.INFRASIG.CARTON"}'>
+    </catalogue-results-table-->
+
+
+
+    <h1>Exemple MapStore</h1>
+
+    <catalogue-results-card
+      filter=""
+      size="12"
+      itemsperrow="3"
+      marginx="1"
+      marginbottom="1"
+      margincardbottom="2"
+      margintoolsbottom="2"
+      search_placeholder="Recherche libre"
+      filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+      filterfield_placeholder="Thème"
+      filterfield_2="custodianOrgForResource"
+      filterfield_2_placeholder="Propriétaire"
+      fields='{"imageIndex": "overview", "imageJsonPath":"$[0].url", "titleIndex": "resourceTitleObject", "titleJsonPath":"$.default", "titleSize":"h4", "subTitleIndex": "custodianOrgForResource", "subTitleJsonPath":"", "textIndex": "resourceHookAbstractObject", "textJsonPath":"$.default","linkIndex": "mw-gp-thematicMap", "linkJsonPath":"$[0].url", "linkIcon":"map", "linkButtonColor":"#335500", "linkHook":"Découvrir", "infoIndex":"revisionDateForResource", "infoJsonPath":"$[0]", "additionalInfoIndex":"cl_accessConstraints", "additionalInfoJsonPath":"$[0].key"}'
+      fulltextfilter="resourceTitleObject.default, resourceHookAbstractObject.default"
+      catalogueurl="https://metawal.wallonie.be/geonetwork/srv"
+      sortbylist='{"sortIndexRef":"resourceTitleObject.default.keyword", "sortName":"Titre"} | {"sortIndexRef":"popularity", "sortName":"Popularité"} | {"sortIndexRef":"resourceHookAbstractObject.default.keyword", "sortName":"Résumé"}'
+      sorttype="asc"
+      sortby="custodianOrgForResource"
+      linkmdt="true"
+      imageheight="280"
+    ></catalogue-results-card>
+
+
+    <h1>Exemple Tableau des service (#702)</h1>
+
+    <catalogue-results-table
+      fields='{"columnName":"Nom du service","columnIndex":"resourceTitleObject","columnJsonPath":"$.default"} |
+      {"columnName":"Nom physique","columnIndex":"mw-gp-localIdentifier","columnJsonPath":""} |
+      {"columnName":"Type de service","columnIndex":"serviceType","columnJsonPath":""} |
+      {"columnName":"Protocole","columnIndex":"linkProtocol","columnJsonPath":"", "columnLabel":"red"} |
+      {"columnName":"Point d accès","columnIndex":"linkUrl","columnJsonPath":""} |
+      {"columnName":"Gestionnaire","columnIndex":"custodianOrgForResource","columnJsonPath":""}'
+      filterfield="linkProtocol"
+      togglefilterfield="serviceType"
+      toggleismultiselect="true"
+      togglelabel='{"label": "Consultation", "value": "view"} | {"label": "Download", "value": "download"}'
+      filter="+(resourceType:service) -(cl_status.key:obsolete)"
+      size="4"
+      catalogueurl="https://metawal4.test.wallonie.be/geonetwork/srv"
+    ></catalogue-results-table>
+
+    <!--
+    <h1>Exemple Tableau des service (VBS jahia)</h1>
+    <catalogue-results-table catalogueurl="https://metawal4.test.wallonie.be/geonetwork/srv" fields="{&quot;columnName&quot;:&quot;Nom du service&quot;,&quot;columnIndex&quot;:&quot;resourceTitleObject&quot;,&quot;columnJsonPath&quot;:&quot;$.default&quot;} |
+      {&quot;columnName&quot;:&quot;Type de service&quot;,&quot;columnIndex&quot;:&quot;serviceType&quot;,&quot;columnJsonPath&quot;:&quot;&quot;} |
+      {&quot;columnName&quot;:&quot;Protocole&quot;,&quot;columnIndex&quot;:&quot;linkProtocol&quot;,&quot;columnJsonPath&quot;:&quot;&quot;,&quot;columnIcon&quot;:&quot;world&quot;,&quot;columnLabel&quot;:&quot;red&quot;} |
+      {&quot;columnName&quot;:&quot;Point d accès&quot;,&quot;columnIndex&quot;:&quot;linkUrl&quot;,&quot;columnJsonPath&quot;:&quot;&quot;} |
+      {&quot;columnName&quot;:&quot;Gestionnaire&quot;,&quot;columnIndex&quot;:&quot;custodianOrgForResource&quot;,&quot;columnJsonPath&quot;:&quot;&quot;}" filter="+(resourceType:service) -(cl_status.key:obsolete)" filterfield="linkProtocol" size="4" togglefilterfield="serviceType" toggleismultiselect="true" togglelabel="{&quot;label&quot;: &quot;Consultation&quot;, &quot;value&quot;: &quot;view&quot;} | {&quot;label&quot;: &quot;Download&quot;, &quot;value&quot;: &quot;download&quot;}"><div class="css-15g0dol-Base e1n4b2jv0"><div class="ui divided three column grid"><div class="row"><div class="four wide column"><div class="css-a9jdxq-Container e1nzkzy80"><div class="css-3cr1qg-suggestionsContainer"><div class="input-group css-115oy78-InputGroup ed6sflt0"><div class="css-cfyl0p-InputWrapper eiy7zyl0"><input aria-label="tableFullTextFilter" class="css-ayj2ji-Input-input-Input-Input ep3169p0" placeholder="Search ..." value=""><div><div class="css-o0b1qs-IconGroup-IconGroup-IconGroup e1vptp6w0"></div><div class="css-x2wn3v-IconGroup-IconGroup-IconGroup e1vptp6w0"><div class="css-1k0hmue-IconWrapper e1xp9zxm0"><svg alt="Search" class="search-icon" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" style="transform: scale(1.35); position: relative;"><title>Search</title><path d=" M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609, 0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021, 0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338, 4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z "></path></svg></div></div></div></div></div></div></div></div><div class="column"><div class=" css-1ix2het-Container-toggleButtons e1nzkzy80"><a class="  css-1rynwbk-Button-large e165j7gc0" tabindex="0">Consultation</a><a class="  css-1rynwbk-Button-large e165j7gc0" tabindex="0">Download</a></div></div><div class="column"><div class="css-a9jdxq-Container e1nzkzy80"><div class="css-3cr1qg-suggestionsContainer"><button type="button" role="button" aria-label="open menu" aria-expanded="false" aria-haspopup="true" data-toggle="true" class="css-ee3byn-Select e863kyk0" title="Focus on"><div>Focus on</div><span class="css-1bip87l-Chevron e1i1ftc40"></span></button></div></div></div></div></div><div><div class=" css-ol5cu0-Flex-leftLabel e1hwwpu60"><p class=" css-1kfwsuu-resultStats">232 results found in 4ms</p></div><table class="ui table"><thead class=""><tr class=""><th class="">Nom du service<i aria-hidden="true" class="sort link icon"></i></th><th class="">Type de service<i aria-hidden="true" class="sort link icon"></i></th><th class="">Protocole<i aria-hidden="true" class="sort link icon"></i></th><th class="">Point d accès<i aria-hidden="true" class="sort link icon"></i></th><th class="">Gestionnaire<i aria-hidden="true" class="sort link icon"></i></th></tr></thead><tbody class=""><tr class=""><td class=""><span><a href="https://metawal4.test.wallonie.be/geonetwork/srv/api/records/800be0f3-1d87-41c3-8882-83f9b510f243" class="ui fluid container"><span><span>  Orthophotos 2020 - Maillage et tuilage - Service de visualisation</span></span><br></a></span><span></span><span></span><span></span><span></span></td><td class=""><span></span><span><div class="ui fluid container"><span><span>  view</span></span><br></div></span><span></span><span></span><span></span></td><td class=""><span></span><span></span><span><div class="ui fluid container"><span><span>  ESRI:RESTOGC:WMS</span></span><br></div></span><span></span><span></span></td><td class=""><span></span><span></span><span></span><span><div class="ui fluid container"><span><a href="https://geoservices.wallonie.be/arcgis/rest/services/IMAGERIE/ORTHO_MAILLAGE_TUILAGE_2020/MapServer,https://geoservices.wallonie.be/arcgis/services/IMAGERIE/ORTHO_MAILLAGE_TUILAGE_2020/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS">  https://geoservices.wallonie.be/arcgis/rest/services/IMAGERIE/ORTHO_MAILLAGE_TUILAGE_2020/MapServerhttps://geoservices.wallonie.be/arcgis/services/IMAGERIE/ORTHO_MAILLAGE_TUILAGE_2020/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS</a></span><br></div></span><span></span></td><td class=""><span></span><span></span><span></span><span></span><span><div class="ui fluid container"><span><span>  Direction de l'Intégration des géodonnées (SPW - Secrétariat général - SPW Digital - Département de la Géomatique - Direction de l'Intégration des géodonnées)</span></span><br></div></span></td></tr><tr class=""><td class=""><span><a href="https://metawal4.test.wallonie.be/geonetwork/srv/api/records/97c8013c-ed9f-4007-a4fc-fa7dc6cb6435" class="ui fluid container"><span><span>  Zones de distribution en eau (ZDE) - Service de visualisation WMS</span></span><br></a></span><span></span><span></span><span></span><span></span></td><td class=""><span></span><span><div class="ui fluid container"><span><span>  OGC:WMS</span></span><br></div></span><span></span><span></span><span></span></td><td class=""><span></span><span></span><span><div class="ui fluid container"><span><span>  OGC:WMS</span></span><br></div></span><span></span><span></span></td><td class=""><span></span><span></span><span></span><span><div class="ui fluid container"><span><a href="https://geoservices.wallonie.be/arcgis/services/INDUSTRIES_SERVICES/ZDE/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS">  https://geoservices.wallonie.be/arcgis/services/INDUSTRIES_SERVICES/ZDE/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS</a></span><br></div></span><span></span></td><td class=""><span></span><span></span><span></span><span></span><span><div class="ui fluid container"><span><span>  Direction de l'Intégration des géodonnées (SPW - Secrétariat général - SPW Digital - Département de la Géomatique - Direction de l'Intégration des géodonnées)</span></span><br></div></span></td></tr><tr class=""><td class=""><span><a href="https://metawal4.test.wallonie.be/geonetwork/srv/api/records/71b65f27-21e0-4f86-b4af-d1ad5b33b773" class="ui fluid container"><span><span>  Schéma de Développement Communal (SDC) - Service de visualisation REST</span></span><br></a></span><span></span><span></span><span></span><span></span></td><td class=""><span></span><span><div class="ui fluid container"><span><span>  ESRI:REST</span></span><br></div></span><span></span><span></span><span></span></td><td class=""><span></span><span></span><span><div class="ui fluid container"><span><span>  ESRI:REST</span></span><br></div></span><span></span><span></span></td><td class=""><span></span><span></span><span></span><span><div class="ui fluid container"><span><a href="https://geoservices.wallonie.be/arcgis/rest/services/AMENAGEMENT_TERRITOIRE/SDC/MapServer">  https://geoservices.wallonie.be/arcgis/rest/services/AMENAGEMENT_TERRITOIRE/SDC/MapServer</a></span><br></div></span><span></span></td><td class=""><span></span><span></span><span></span><span></span><span><div class="ui fluid container"><span><span>  Direction de l'Intégration des géodonnées (SPW - Secrétariat général - SPW Digital - Département de la Géomatique - Direction de l'Intégration des géodonnées)</span></span><br></div></span></td></tr><tr class=""><td class=""><span><a href="https://metawal4.test.wallonie.be/geonetwork/srv/api/records/6a47828a-2609-48dc-9be1-3fff7fc7ee33" class="ui fluid container"><span><span>  Parcelles dédiées principalement à la production de sapins de Noël en Wallonie en 2015 - Service de visualisation REST</span></span><br></a></span><span></span><span></span><span></span><span></span></td><td class=""><span></span><span><div class="ui fluid container"><span><span>  ESRI:REST</span></span><br></div></span><span></span><span></span><span></span></td><td class=""><span></span><span></span><span><div class="ui fluid container"><span><span>  ESRI:REST</span></span><br></div></span><span></span><span></span></td><td class=""><span></span><span></span><span></span><span><div class="ui fluid container"><span><a href="https://geoservices.wallonie.be/arcgis/rest/services/AGRICULTURE/SAPINS_DE_NOEL_2015/MapServer">  https://geoservices.wallonie.be/arcgis/rest/services/AGRICULTURE/SAPINS_DE_NOEL_2015/MapServer</a></span><br></div></span><span></span></td><td class=""><span></span><span></span><span></span><span></span><span><div class="ui fluid container"><span><span>  Direction de l'Intégration des géodonnées (SPW - Secrétariat général - SPW Digital - Département de la Géomatique - Direction de l'Intégration des géodonnées)</span></span><br></div></span></td></tr></tbody></table><div class=" css-x2306x-pagination"><a class="css-j3i5uf-Button e165j7gc0" disabled="" tabindex="-1">Prev</a><a class=" active css-19p27bs-Button e165j7gc0" tabindex="0" href="?tableOfRecord=1" alt="Page 1">1</a><a class="css-iioxla-Button e165j7gc0" tabindex="0" alt="Page 2" href="?tableOfRecord=2">2</a><a class="css-iioxla-Button e165j7gc0" tabindex="0" alt="Page 3" href="?tableOfRecord=3">3</a><a class="css-iioxla-Button e165j7gc0" tabindex="0" alt="Page 4" href="?tableOfRecord=4">4</a><a class="css-iioxla-Button e165j7gc0" tabindex="0" alt="Page 5" href="?tableOfRecord=5">5</a><a class="css-iioxla-Button e165j7gc0" tabindex="0" href="?tableOfRecord=2" rel="next" alt="Page 2">Next</a></div></div></div></catalogue-results-table>
+-->
+
+    <h1>Graph navigation</h1>
+    <catalogue-results-graph
+      catalogueurl="https://metawal4.test.wallonie.be/geonetwork/srv"
+      filterassociated="false">
+    </catalogue-results-graph>
+
+  <script src="runtime.esm.js" type="module"></script><script src="polyfills.esm.js" type="module"></script><script src="main.esm.js" type="module"></script></body>
+</html>
