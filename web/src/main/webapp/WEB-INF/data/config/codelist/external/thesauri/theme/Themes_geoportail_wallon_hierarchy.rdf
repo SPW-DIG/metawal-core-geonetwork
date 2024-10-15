@@ -12,7 +12,7 @@
         <foaf:name>SPW - DIG</foaf:name>
       </foaf:Organization>
     </dc:creator>
-    <dcterms:modified>2015-12-17</dcterms:modified>
+    <dcterms:modified>2024-10-14</dcterms:modified>
     <skos:hasTopConcept rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/10"/>
     <skos:hasTopConcept rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/20"/>
     <skos:hasTopConcept rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/30"/>
@@ -30,6 +30,8 @@
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1020"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1030"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1040"/>
+    <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1099"/>
+
   </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/20">
@@ -39,6 +41,7 @@
     <skos:altLabel/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/2010"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/2020"/>
+    <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/2099"/>	
   </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/30">
@@ -50,6 +53,7 @@
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/3020"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/3030"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/3040"/>
+	<skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/3099"/>
   </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/40">
@@ -59,6 +63,7 @@
     <skos:altLabel/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/4010"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/4020"/>
+	<skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/4099"/>
   </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/50">
@@ -70,6 +75,7 @@
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/5020"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/5030"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/5040"/>
+	<skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/5099"/>
   </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/60">
@@ -81,6 +87,7 @@
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6020"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6030"/>
     <skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6040"/>
+	<skos:narrower rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6099"/>
   </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1010">
@@ -107,7 +114,13 @@
     <skos:altLabel>1040</skos:altLabel>
     <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/10"/>
   </skos:Concept>
-
+  <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1099">
+    <skos:prefLabel xml:lang="en">Nature and environment (other)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Nature et environnement (autre)</skos:prefLabel>
+    <skos:altLabel>1099</skos:altLabel>
+    <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/10"/>
+  </skos:Concept>
+  
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/2010">
     <skos:prefLabel xml:lang="en">Plans et regulations</skos:prefLabel>
     <skos:prefLabel xml:lang="fr">Plans et règlements</skos:prefLabel>
@@ -118,6 +131,12 @@
     <skos:prefLabel xml:lang="en">Risks and constraints</skos:prefLabel>
     <skos:prefLabel xml:lang="fr">Risques et contraintes</skos:prefLabel>
     <skos:altLabel>2020</skos:altLabel>
+    <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/20"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/2099">
+    <skos:prefLabel xml:lang="en">Land use (other)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Aménagement du territoire (autre)</skos:prefLabel>
+    <skos:altLabel>2099</skos:altLabel>
     <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/20"/>
   </skos:Concept>
 
@@ -145,6 +164,12 @@
     <skos:altLabel>3040</skos:altLabel>
     <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/30"/>
   </skos:Concept>
+  <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/3099">
+    <skos:prefLabel xml:lang="en">Mobility (other)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Mobilité (autre)</skos:prefLabel>
+    <skos:altLabel>3099</skos:altLabel>
+    <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/30"/>
+  </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/4010">
     <skos:prefLabel xml:lang="en">Tourism</skos:prefLabel>
@@ -156,6 +181,12 @@
     <skos:prefLabel xml:lang="en">Leisure</skos:prefLabel>
     <skos:prefLabel xml:lang="fr">Loisirs</skos:prefLabel>
     <skos:altLabel>4020</skos:altLabel>
+    <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/40"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/4099">
+    <skos:prefLabel xml:lang="en">Tourism and leisure (other)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Tourisme et loisir (autre)</skos:prefLabel>
+    <skos:altLabel>4099</skos:altLabel>
     <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/40"/>
   </skos:Concept>
 
@@ -183,6 +214,12 @@
     <skos:altLabel>5040</skos:altLabel>
     <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/50"/>
   </skos:Concept>
+  <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/5099">
+    <skos:prefLabel xml:lang="en">Data baseline (other)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Données de base (autre)</skos:prefLabel>
+    <skos:altLabel>5099</skos:altLabel>
+    <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/50"/>
+  </skos:Concept>
 
   <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6010">
     <skos:prefLabel xml:lang="en">Industry and services</skos:prefLabel>
@@ -206,6 +243,12 @@
     <skos:prefLabel xml:lang="en">Noise</skos:prefLabel>
     <skos:prefLabel xml:lang="fr">Bruit</skos:prefLabel>
     <skos:altLabel>6040</skos:altLabel>
+    <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/60"/>
+  </skos:Concept>
+  <skos:Concept rdf:about="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6099">
+    <skos:prefLabel xml:lang="en">Society and activities (other)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Société et activités (autre)</skos:prefLabel>
+    <skos:altLabel>6099</skos:altLabel>
     <skos:broader rdf:resource="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/60"/>
   </skos:Concept>
 </rdf:RDF>
