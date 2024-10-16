@@ -440,7 +440,7 @@
         contains(lower-case(
         (mri:thesaurusName/*/cit:title/*/text())[1]
         ), 'infrasig')]
-        /mri:keyword/gco:CharacterString"/>
+        /mri:keyword/(gco:CharacterString | gcx:Anchor)"/>
         <xsl:if test="$infrasigKeywords != ''">
           <xsl:call-template name="build-infrasig-keyword">
             <xsl:with-param name="infrasigKeywords" select="$infrasigKeywords"/>
@@ -1109,7 +1109,7 @@
         </xsl:apply-templates>
       </xsl:if>
 
-      
+
       <xsl:variable name="jsonFeatureTypes">[
         <xsl:for-each select="mdb:contentInfo//gfc:FC_FeatureCatalogue/gfc:featureType">{
 
