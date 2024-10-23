@@ -321,19 +321,39 @@
       or SRV_ServiceIdentification or a mix
       eg. de 8bb5334f-558b-982b-7b12-86ea486540d7
       -->
+
       <xsl:for-each select="mdb:identificationInfo[1]/*[1]">
         <xsl:for-each select="mri:citation/cit:CI_Citation">
           <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceTitle', cit:title, $allLanguages)"/>
           <xsl:copy-of select="gn-fn-index:add-multilingual-field('resourceAltTitle', cit:alternateTitle, $allLanguages)"/>
 
-          <xsl:for-each select="cit:date/cit:CI_Date[
+          <xsl:variable name="dates" select="cit:date/cit:CI_Date[
                                         cit:date/*/text() != ''
-                                        and gn-fn-index:is-isoDate(cit:date/*/text())]">
+                                        and gn-fn-index:is-isoDate(cit:date/*/text())]"/>
+          <xsl:variable name="resourceLastUpdateDate" as="xs:string?">
+            <xsl:for-each select="$dates[cit:dateType/cit:CI_DateTypeCode/@codeListValue = ('creation','revision')]
+                        /(cit:date/gco:Date/text()|cit:date/gco:DateTime/text())">
+              <xsl:sort select="." order="descending"/>
+              <xsl:if test="position() = 1">
+                <xsl:value-of select="."/>
+              </xsl:if>
+            </xsl:for-each>
+          </xsl:variable>
+
+          <xsl:if test="$resourceLastUpdateDate != ''">
+            <resourceLastUpdateDate>
+              <xsl:value-of select="$resourceLastUpdateDate"/>
+            </resourceLastUpdateDate>
+          </xsl:if>
+
+          <xsl:for-each select="$dates">
+
             <xsl:variable name="dateType"
                           select="cit:dateType/cit:CI_DateTypeCode/@codeListValue"
                           as="xs:string?"/>
             <xsl:variable name="date"
                           select="string(cit:date/gco:Date|cit:date/gco:DateTime)"/>
+
 
             <xsl:variable name="zuluDateTime" as="xs:string?">
               <xsl:value-of select="date-util:convertToISOZuluDateTime(normalize-space($date))"/>
