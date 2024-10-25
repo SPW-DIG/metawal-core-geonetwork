@@ -56,7 +56,8 @@
     <!--    <for name="mco:otherConstraints" use="textarea"/>-->
     <for name="mco:otherConstraints" use="data-gn-keyword-picker">
       <directiveAttributes data-thesaurus-key="external.theme.access_use_conditions"
-                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"
+                           data-show-hints-on-focus="true"/>
     </for>
     <for name="mri:statement" use="textarea"/>
     <for name="mri:supplementalInformation" use="textarea"/>
@@ -109,14 +110,16 @@
          use="data-gn-keyword-picker">
       <directiveAttributes data-thesaurus-key="external.theme.httpregistrymetawalcodelistmediatypes-media-types"
                            data-number-of-suggestions="200"
-                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"
+                           data-show-hints-on-focus="true"/>
     </for>
 
     <for name="cit:title"
          xpath="/mdb:MD_Metadata/mdb:dataQualityInfo/mdq:DQ_DataQuality/mdq:report/mdq:DQ_DomainConsistency/mdq:result/mdq:DQ_ConformanceResult/mdq:specification/cit:CI_Citation/cit:title"
          use="data-gn-keyword-picker">
       <directiveAttributes data-thesaurus-key="external.theme.inspire-technical-guidelines"
-                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"/>
+                           data-thesaurus-concept-id-attribute="xlinkCOLONhref"
+                           data-show-hints-on-focus="true"/>
     </for>
 
     <for name="mdb:contact" addDirective="data-gn-directory-entry-selector">
