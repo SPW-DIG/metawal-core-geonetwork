@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -27,13 +27,37 @@
 
     <hr/>-->
 
-    <h1>Contenu de la base de données BD CARTON - INFRASIG test</h1>
+    <h1>TEST Catalogue de services - GP</h1>
+    <div style="margin: 2.5em">
+      <p>&nbsp;</p>
+      <catalogue-results-table catalogueurl="https://metawal.wallonie.be/geonetwork/geoportailwal"
+                               fields='
+    {"columnName":"Nom du service","columnIndex":"resourceTitleObject","columnJsonPath":"$.langfre","columnWidth":"3"} |
+    {"columnName":"Protocole","columnIndex":"linkProtocol","columnJsonPath":"$[0]","columnWidth":"1"} |
+    {"columnName":"Accès et infos","columnIndex":"linkUrl","columnJsonPath":"","columnWidth":"5"} |
+    {"columnName":"Données servies","columnIndex":"recordLink","columnJsonPath":"$[*].title","columnWidth":"5"}
+	'
+                               filter="+(resourceType:service)"
+                               filterfield="th_Themes_geoportail_wallon_hierarchy.default"
+                               fulltextfilter="mw_default_query"
+                               size="20"
+                               sortby="linkUrl"
+                               sorttype="asc"
+                               togglebuttonstyle='{"bg":"rgb(104 169 191)", "bg_active":"rgb(104 169 191)","text_color":"grey","text_color_active":"black"}'
+                               togglefilterfield="linkProtocol"
+                               toggleismultiselect="true"
+                               togglelabel='{"label": "ESRI or WMS", "value": "ESRI:REST,OGC:WMS"} | {"label": "OGC WMS", "value": "OGC:WMS"} | {"label": "OGC WMTS", "value": "OGC:WMTS"} | {"label": "Atom feed", "value": "atom:feed"} | {"label": "OGC WFS", "value": "OGC:WFS"} | {"label": "OGC WCS", "value": "OGC:WCS"} |  {"label": "OGC CSW", "value": "OGC:CSW"}'
+      >
+
+      </catalogue-results-table>
+    </div>
+
+    <h1>Contenu de la base de données BD CARTON - INFRASIG</h1>
 
     <div style="margin: 2.5em">
       <p>     </p>
       <catalogue-results-table
         catalogueurl="https://metawal.wallonie.be/geonetwork/intranet-table"
-        landingpageurl="https://geoportail.wallonie.be/catalogue/{uuid}.html"
         fields='
     {"columnName":"Nom de la donnée","columnIndex":"resourceTitleObject","columnJsonPath":"$.langfre","columnWidth":"2"} |
     {"columnName":"Nom de la donnée","columnIndex":"overview","columnJsonPath":"$[0].url","columnWidth":"2"} |
@@ -57,7 +81,7 @@
         sorttype="asc"
         togglefilterfield="mw-gp-localIdentifierCodespace"
         toggleismultiselect="true"
-        togglelabel='{"label": "BDREF SIG ARNE", "value": "BE.SPW.INFRASIG.GINET"} | {"label": "BD_INFRASIG", "value": "BE.SPW.INFRASIG.CARTON"} | {"label": "ENTREPOT", "value": "BE.SPW.INFRASIG.ENTREPOT"}'
+        togglelabel='{"label": "BDREF SIG ARNE", "value": "(BE.SPW.INFRASIG.GINET OR BE.SPW.INFRASIG.CARTON)"} | {"label": "BD_INFRASIG", "value": "BE.SPW.INFRASIG.CARTON"} | {"label": "ENTREPOT", "value": "BE.SPW.INFRASIG.ENTREPOT"}'
         toggleButtonStyle='{"bg":"rgb(204 0 0)", "bg_active":"rgb(204 0 0)","text_color":"rgb(200 200 200)","text_color_active":"white"}'
       >
       </catalogue-results-table>

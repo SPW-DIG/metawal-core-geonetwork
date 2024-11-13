@@ -56,11 +56,6 @@ PERFORMANCE OF THIS SOFTWARE.
  */
 
 /**
- * @preserve XDate v@VERSION
- * Docs & Licensing: http://arshaw.com/xdate/
- */
-
-/**
  * React Router DOM v6.0.2
  *
  * Copyright (c) Remix Software Inc.
