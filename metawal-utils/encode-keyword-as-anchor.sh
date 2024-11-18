@@ -3,7 +3,7 @@
 SERVER=http://localhost:8080/geonetwork
 #SERVER=http://172.22.80.1:8080/geonetwork
 CATALOGUSER=SPBTIT
-CATALOGPASS=tgTdzu8
+CATALOGPASS=<replace>
 #AUTH="-u $CATALOGUSER:$CATALOGPASS"
 AUTH=""
 
