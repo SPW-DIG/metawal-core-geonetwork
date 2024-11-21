@@ -31,8 +31,8 @@ curl "$SERVER/srv/api/me" \
   -H "X-XSRF-TOKEN: $TOKEN" \
   -H "Cookie: XSRF-TOKEN=$TOKEN; JSESSIONID=$JSESSIONID"
 
-QUERY='+uuid:"b5b34ee9-9513-4298-8cd0-2968a5ce4003"'
-#QUERY='*:*'
+#QUERY='+uuid:"b5b34ee9-9513-4298-8cd0-2968a5ce4003"'
+QUERY='*:*'
 FROM=0
 SIZE=5000
 read -r -d '' ESQUERY << EOF
@@ -47,7 +47,7 @@ EOF
 RAWQUERY=`echo ${ESQUERY}`
 echo "RAWQUERY: $RAWQUERY"
 
-curl --insecure --verbose $AUTH "$SERVER/srv/api/search/records/_search?bucket=s101" \
+curl --insecure --verbose $AUTH "$SERVER/srv/api/search/records/_search" \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: eng' \
   -H "X-XSRF-TOKEN: $TOKEN" \
@@ -73,9 +73,10 @@ for hit in $(jq -r '.hits.hits[] | @base64' results.json); do
 echo "progress: $current/$total"
 echo "executing processing for $uuid"
 
-curl --insecure $AUTH "$SERVER/srv/api/processes/encode-keyword-as-anchor?uuids="+uuid+"&applyUpdateFixedInfo=true&index=true" \
+
+curl --insecure $AUTH "$SERVER/srv/api/processes/encode-keyword-as-anchor?uuids=$uuid&applyUpdateFixedInfo=true&index=true" \
       -X 'POST' \
-      -H 'accept: application/json, text/plain, */*' \
+      -H 'accept: application/json' \
       -H 'accept-language: eng' \
       -H "X-XSRF-TOKEN: $TOKEN" \
       -H "Cookie: XSRF-TOKEN=$TOKEN; JSESSIONID=$JSESSIONID" \
