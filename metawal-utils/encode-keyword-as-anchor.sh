@@ -1,23 +1,29 @@
 #!/bin/bash
 
-SERVER=http://localhost:8080/geonetwork
-#SERVER=http://172.22.80.1:8080/geonetwork
+SERVER=https://metawal.test.wallonie.be/geonetwork
+#SERVER=http://localhost:8080/geonetwork
 CATALOGUSER=SPBTIT
-CATALOGPASS=tgTdzu8
+CATALOGPASS=<replace>
 #AUTH="-u $CATALOGUSER:$CATALOGPASS"
 AUTH=""
 
 
-rm -f /tmp/cookie;
+rm -f cookie.txt;
 
-curl -s -c /tmp/cookie -o /dev/null \
+curl -v --insecure -s -c cookie.txt -o /dev/null \
   -X GET  \
   --user $CATALOGUSER:$CATALOGPASS \
   -H "Accept: application/json" \
   "$SERVER/srv/api/me";
 
-export TOKEN=`grep XSRF-TOKEN /tmp/cookie | cut -f 7`;
-export JSESSIONID=`grep JSESSIONID /tmp/cookie | cut -f 7`;
+# Convert file to LF line endings
+sed -i 's/\r$//' cookie.txt
+
+export TOKEN=`grep XSRF-TOKEN cookie.txt | cut -f 7`;
+export JSESSIONID=`grep JSESSIONID cookie.txt | cut -f 7`;
+
+echo "Token: $TOKEN";
+echo "Session: $JSESSIONID";
 
 curl "$SERVER/srv/api/me" \
   -H 'accept: application/json, text/plain, */*' \
@@ -25,10 +31,8 @@ curl "$SERVER/srv/api/me" \
   -H "X-XSRF-TOKEN: $TOKEN" \
   -H "Cookie: XSRF-TOKEN=$TOKEN; JSESSIONID=$JSESSIONID"
 
-
-#QUERY="+linkUrl:/.*PANIER=.*/"
-#QUERY='+uuid:"d4b09a90-62b9-4e5a-88dd-7733f33063df"'
-QUERY='*:*'
+QUERY='+uuid:"b5b34ee9-9513-4298-8cd0-2968a5ce4003"'
+#QUERY='*:*'
 FROM=0
 SIZE=5000
 read -r -d '' ESQUERY << EOF
@@ -41,8 +45,9 @@ read -r -d '' ESQUERY << EOF
 EOF
 
 RAWQUERY=`echo ${ESQUERY}`
+echo "RAWQUERY: $RAWQUERY"
 
-curl $AUTH "$SERVER/srv/api/search/records/_search?bucket=s101" \
+curl --insecure --verbose $AUTH "$SERVER/srv/api/search/records/_search?bucket=s101" \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: eng' \
   -H "X-XSRF-TOKEN: $TOKEN" \
@@ -68,13 +73,14 @@ for hit in $(jq -r '.hits.hits[] | @base64' results.json); do
 echo "progress: $current/$total"
 echo "executing processing for $uuid"
 
-curl -X POST $AUTH "$SERVER/srv/api/processes/encode-keyword-as-anchor?uuids="+uuid+"&applyUpdateFixedInfo=true&index=true" \
+curl --insecure $AUTH "$SERVER/srv/api/processes/encode-keyword-as-anchor?uuids="+uuid+"&applyUpdateFixedInfo=true&index=true" \
+      -X 'POST' \
       -H 'accept: application/json, text/plain, */*' \
       -H 'accept-language: eng' \
       -H "X-XSRF-TOKEN: $TOKEN" \
       -H "Cookie: XSRF-TOKEN=$TOKEN; JSESSIONID=$JSESSIONID" \
       -H 'content-type: application/json;charset=UTF-8' \
-      -o results-replace-keyword.json
+      -o "logs/$uuid-results-replace-keyword.json"
 
 echo "Processing executed for $uuid"
 ((current++));
