@@ -6,9 +6,9 @@
 
 
   <!-- Register here the list of process for the schema-->
+<!--  <xsl:include href="process/translate.xsl"/>-->
   <xsl:include href="process/add-extent-from-geokeywords.xsl"/>
   <xsl:include href="process/add-info-from-wms.xsl"/>
-  <xsl:include href="process/add-connectpoint-from-esrirest.xsl"/>
   <xsl:include href="process/add-wms-and-legend-from-esrirest.xsl"/>
   <xsl:include href="process/add-resource-id.xsl"/>
   <xsl:include href="process/add-contact.xsl"/>
@@ -18,6 +18,8 @@
   <xsl:include href="process/spatineo-registration.xsl"/>
   <xsl:include href="process/collection-updater.xsl"/>
   <xsl:include href="process/add-date-for-status.xsl"/>
+  <xsl:include href="process/add-online-resource-from-atom.xsl"/>
+  <xsl:include href="process/add-connectpoint-from-esrirest.xsl"/>
   <!--<xsl:include href="process/inspire-add-conformity.xsl"/>-->
 
   <xsl:variable name="processes">
@@ -34,12 +36,7 @@
     <p>collection-updater</p>
     <p>add-date-for-status</p>
     <p>spatineo-registration</p>
-    <!--<p>add-atom-feed
-      <batch condition=""
-             xpath="">
-
-      </batch>
-    </p>-->
+    <p>add-online-resource-from-atom</p>
     <!--<p>inspire-add-conformity</p>-->
   </xsl:variable>
 
