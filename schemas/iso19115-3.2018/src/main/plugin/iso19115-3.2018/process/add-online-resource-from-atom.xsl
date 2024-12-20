@@ -70,15 +70,25 @@
     <xsl:copy>
       <xsl:apply-templates select="*"/>
       <xsl:variable name="remoteAtomfeed" select="document($atomfeedUrl)"/>
-      <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link"/>
-      <xsl:apply-templates select="$atomLink" ><xsl:with-param name="distribution" select="."/> </xsl:apply-templates>
+      <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml']/@href"/>
+      <xsl:message><xsl:text>ATOM Link: </xsl:text><xsl:value-of select="$atomLink"/></xsl:message>
+
+      <xsl:variable name="remoteAtomDataset" select="document($atomLink)"/>
+      <!-- Variable to store all dataset links -->
+      <xsl:variable name="datasetLinks" as="node()*" select="$remoteAtomDataset/atom:feed/atom:entry/atom:link"/>
+      <xsl:message><xsl:text>Dataset links: </xsl:text><xsl:value-of select="$datasetLinks/@href"/></xsl:message>
+
+      <xsl:for-each select="$datasetLinks">
+          <xsl:apply-templates select="." ><xsl:with-param name="distribution" select="."/> </xsl:apply-templates>
+      </xsl:for-each>
+
     </xsl:copy>
 
   </xsl:template>
 
     <xsl:template match="atom:link">
       <xsl:param name="distribution"></xsl:param>
-      <!-- Vérify link (online/resource) not already present in distribution-->
+      <!-- TODO : Verify link (online/resource) not already present in distribution-->
       <mrd:transferOptions>
         <mrd:MD_DigitalTransferOptions>
             <mrd:onLine>
