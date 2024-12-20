@@ -6,6 +6,7 @@
                 xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+                xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
                 version="2.0">
 
   <xsl:import href="process-utility.xsl"/>
@@ -64,13 +65,15 @@
   <!-- Remove geonet:* elements. -->
   <xsl:template match="geonet:*" priority="2"/>
 
-
+  <xsl:variable name="uuid" select="mdb:MD_Metadata/mdb:metadataIdentifier/mcc:MD_Identifier/mcc:code/gco:CharacterString"/>
 
   <xsl:template match="mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution">
     <xsl:copy>
       <xsl:apply-templates select="*"/>
+
+      <xsl:message><xsl:text>UUID: </xsl:text><xsl:value-of select="$uuid"/> </xsl:message>
       <xsl:variable name="remoteAtomfeed" select="document($atomfeedUrl)"/>
-      <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml']/@href"/>
+      <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml' and contains(@href, $uuid)]/@href"/>
       <xsl:message><xsl:text>ATOM Link: </xsl:text><xsl:value-of select="$atomLink"/></xsl:message>
 
       <xsl:variable name="remoteAtomDataset" select="document($atomLink)"/>
