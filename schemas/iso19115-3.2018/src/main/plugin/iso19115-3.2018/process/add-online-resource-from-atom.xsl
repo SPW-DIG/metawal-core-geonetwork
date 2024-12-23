@@ -93,7 +93,7 @@
     <xsl:template match="atom:link">
       <xsl:param name="distribution"></xsl:param>
       <xsl:variable name="currentHref" select="@href"/>
-      <!-- TODO : Verify link (online/resource) not already present in distribution-->
+      <!-- Verify link is not already present in distribution-->
       <xsl:choose>
       <xsl:when test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">
 <!--        <xsl:message><xsl:text>link already present ignored: </xsl:text> <xsl:value-of select="$currentHref"/> </xsl:message>-->
