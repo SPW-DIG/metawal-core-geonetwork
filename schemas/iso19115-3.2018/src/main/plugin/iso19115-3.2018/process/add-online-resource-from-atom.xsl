@@ -141,11 +141,11 @@
                       </cit:function>
                   </cit:CI_OnlineResource>
               </mrd:onLine>
-<!--              <mrd:transferSize>-->
-<!--                <gco:Real>-->
-<!--                  <xsl:value-of select="@length"/>-->
-<!--                </gco:Real>-->
-<!--              </mrd:transferSize>-->
+              <mrd:transferSize>
+                <gco:Real>
+                  <xsl:value-of select="@length"/>
+                </gco:Real>
+              </mrd:transferSize>
           </mrd:MD_DigitalTransferOptions>
         </mrd:transferOptions>
       </xsl:otherwise>
