@@ -70,6 +70,7 @@
   <xsl:template match="mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution">
     <xsl:copy>
       <xsl:apply-templates select="*"/>
+      <xsl:variable name="md_distribution" select="."/>
 
       <xsl:message><xsl:text>UUID: </xsl:text><xsl:value-of select="$uuid"/> </xsl:message>
       <xsl:variable name="remoteAtomfeed" select="document($atomfeedUrl)"/>
@@ -82,7 +83,7 @@
       <xsl:message><xsl:text>Dataset links: </xsl:text><xsl:value-of select="$datasetLinks/@href"/></xsl:message>
 
       <xsl:for-each select="$datasetLinks">
-          <xsl:apply-templates select="." ><xsl:with-param name="distribution" select="."/> </xsl:apply-templates>
+          <xsl:apply-templates select="." ><xsl:with-param name="distribution" select="$md_distribution"/> </xsl:apply-templates>
       </xsl:for-each>
 
     </xsl:copy>
@@ -91,36 +92,45 @@
 
     <xsl:template match="atom:link">
       <xsl:param name="distribution"></xsl:param>
+      <xsl:variable name="currentHref" select="@href"/>
       <!-- TODO : Verify link (online/resource) not already present in distribution-->
-      <mrd:transferOptions>
-        <mrd:MD_DigitalTransferOptions>
-            <mrd:onLine>
-                <cit:CI_OnlineResource>
-                    <cit:linkage>
-                        <gco:CharacterString>
-                            <xsl:value-of select="@href"/>
-                        </gco:CharacterString>
-                    </cit:linkage>
-                    <cit:protocol>
-                        <gco:CharacterString>WWW:DOWNLOAD:<xsl:value-of select="@type"/></gco:CharacterString>
-                    </cit:protocol>
-                    <cit:name>
-                        <gco:CharacterString>
-                            <xsl:value-of select="@title" />
-                        </gco:CharacterString>
-                    </cit:name>
-                    <cit:function>
-                        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
-                    </cit:function>
-                </cit:CI_OnlineResource>
-            </mrd:onLine>
-            <mrd:transferSize>
-              <gco:Real>
-                <xsl:value-of select="@length"/>
-              </gco:Real>
-            </mrd:transferSize>
-        </mrd:MD_DigitalTransferOptions>
-      </mrd:transferOptions>
+      <xsl:choose>
+      <xsl:when test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">
+<!--        <xsl:message><xsl:text>link already present ignored: </xsl:text> <xsl:value-of select="$currentHref"/> </xsl:message>-->
+      </xsl:when>
+      <xsl:otherwise>
+<!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
+        <mrd:transferOptions>
+          <mrd:MD_DigitalTransferOptions>
+              <mrd:onLine>
+                  <cit:CI_OnlineResource>
+                      <cit:linkage>
+                          <gco:CharacterString>
+                              <xsl:value-of select="@href"/>
+                          </gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                          <gco:CharacterString>WWW:DOWNLOAD:<xsl:value-of select="@type"/></gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                          <gco:CharacterString>
+                              <xsl:value-of select="@title" />
+                          </gco:CharacterString>
+                      </cit:name>
+                      <cit:function>
+                          <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
+                      </cit:function>
+                  </cit:CI_OnlineResource>
+              </mrd:onLine>
+              <mrd:transferSize>
+                <gco:Real>
+                  <xsl:value-of select="@length"/>
+                </gco:Real>
+              </mrd:transferSize>
+          </mrd:MD_DigitalTransferOptions>
+        </mrd:transferOptions>
+      </xsl:otherwise>
+      </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>
