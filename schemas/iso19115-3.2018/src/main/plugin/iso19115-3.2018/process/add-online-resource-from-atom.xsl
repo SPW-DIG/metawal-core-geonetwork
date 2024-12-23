@@ -75,28 +75,42 @@
       <xsl:message><xsl:text>UUID: </xsl:text><xsl:value-of select="$uuid"/> </xsl:message>
       <xsl:variable name="remoteAtomfeed" select="document($atomfeedUrl)"/>
       <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml' and contains(@href, $uuid)]/@href"/>
-      <xsl:message><xsl:text>ATOM Link: </xsl:text><xsl:value-of select="$atomLink"/></xsl:message>
+<!--      <xsl:message><xsl:text>ATOM Link: </xsl:text><xsl:value-of select="$atomLink"/></xsl:message>-->
 
       <xsl:variable name="remoteAtomDataset" select="document($atomLink)"/>
       <!-- Variable to store all dataset links -->
-      <xsl:variable name="datasetLinks" as="node()*" select="$remoteAtomDataset/atom:feed/atom:entry/atom:link"/>
-      <xsl:message><xsl:text>Dataset links: </xsl:text><xsl:value-of select="$datasetLinks/@href"/></xsl:message>
-
-      <xsl:for-each select="$datasetLinks">
-          <xsl:apply-templates select="." ><xsl:with-param name="distribution" select="$md_distribution"/> </xsl:apply-templates>
-      </xsl:for-each>
+      <xsl:apply-templates select="$remoteAtomDataset/atom:feed/atom:entry">
+        <xsl:with-param name="distribution" select="$md_distribution"/>
+      </xsl:apply-templates>
 
     </xsl:copy>
 
   </xsl:template>
 
+  <xsl:template match="atom:entry">
+    <xsl:param name="distribution"></xsl:param>
+    <xsl:variable name="datasetLinks" as="node()*" select="atom:link"/>
+    <xsl:variable name="entry" as="node()" select="."/>
+<!--    <xsl:message><xsl:text>Dataset links: </xsl:text><xsl:value-of select="$datasetLinks/@href"/></xsl:message>-->
+
+    <xsl:for-each select="$datasetLinks">
+      <xsl:apply-templates select="." >
+        <xsl:with-param name="distribution" select="$distribution"/>
+        <xsl:with-param name="entry" select="$entry"/>
+      </xsl:apply-templates>
+    </xsl:for-each>
+
+  </xsl:template>
+
     <xsl:template match="atom:link">
+
       <xsl:param name="distribution"></xsl:param>
+      <xsl:param name="entry"></xsl:param>
       <xsl:variable name="currentHref" select="@href"/>
       <!-- Verify link is not already present in distribution-->
       <xsl:choose>
       <xsl:when test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">
-<!--        <xsl:message><xsl:text>link already present ignored: </xsl:text> <xsl:value-of select="$currentHref"/> </xsl:message>-->
+<!--        <xsl:message><xsl:text>link already present ignored: </xsl:text> <xsl:value-of select="$currentHref"/></xsl:message>-->
       </xsl:when>
       <xsl:otherwise>
 <!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
@@ -114,19 +128,24 @@
                       </cit:protocol>
                       <cit:name>
                           <gco:CharacterString>
-                              <xsl:value-of select="@title" />
+                              <xsl:value-of select="$entry/atom:title" />
                           </gco:CharacterString>
                       </cit:name>
+                    <cit:description>
+                      <gco:CharacterString>
+                        <xsl:value-of select="$entry/atom:summary" />
+                      </gco:CharacterString>
+                    </cit:description>
                       <cit:function>
                           <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
                       </cit:function>
                   </cit:CI_OnlineResource>
               </mrd:onLine>
-              <mrd:transferSize>
-                <gco:Real>
-                  <xsl:value-of select="@length"/>
-                </gco:Real>
-              </mrd:transferSize>
+<!--              <mrd:transferSize>-->
+<!--                <gco:Real>-->
+<!--                  <xsl:value-of select="@length"/>-->
+<!--                </gco:Real>-->
+<!--              </mrd:transferSize>-->
           </mrd:MD_DigitalTransferOptions>
         </mrd:transferOptions>
       </xsl:otherwise>
