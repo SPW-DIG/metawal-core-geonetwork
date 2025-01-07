@@ -27,6 +27,9 @@
                 */mpc:portrayalCatalogueCitation/*/cit:onlineResource/*/cit:linkage/*/text() = $url]" priority="20"/>
 
   <xsl:template match="gn:*|
+    mrd:transferOptions[count(*/mrd:onLine) = 1 and
+    normalize-space(*/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString) = $url and
+    normalize-space(*/mrd:onLine/cit:CI_OnlineResource/cit:name/gco:CharacterString) = normalize-space($name)]|
     mrd:onLine[
     normalize-space(cit:CI_OnlineResource/cit:linkage/gco:CharacterString) = $url and
     normalize-space(cit:CI_OnlineResource/cit:name/gco:CharacterString) = normalize-space($name)]|
