@@ -143,7 +143,7 @@
               </mrd:onLine>
               <mrd:transferSize>
                 <gco:Real>
-                  <xsl:value-of select="@length"/>
+                  <xsl:value-of select="@length div 1024"/>
                 </gco:Real>
               </mrd:transferSize>
           </mrd:MD_DigitalTransferOptions>
