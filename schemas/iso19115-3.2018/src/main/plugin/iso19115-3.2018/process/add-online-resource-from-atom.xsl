@@ -128,7 +128,7 @@
                       </cit:protocol>
                       <cit:name>
                           <gco:CharacterString>
-                              <xsl:value-of select="$entry/atom:title" />
+                              <xsl:value-of select="@title" />
                           </gco:CharacterString>
                       </cit:name>
                     <cit:description>
