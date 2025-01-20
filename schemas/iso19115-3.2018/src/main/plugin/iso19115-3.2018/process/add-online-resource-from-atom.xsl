@@ -102,12 +102,21 @@
 
   </xsl:template>
 
+  <xsl:template match="mrd:transferOptions" mode="remove">
+    <!-- Do nothing to remove this element -->
+  </xsl:template>
+
     <xsl:template match="atom:link">
 
       <xsl:param name="distribution"></xsl:param>
       <xsl:param name="entry"></xsl:param>
       <xsl:variable name="currentHref" select="@href"/>
       <!-- Verify link is not already present in distribution-->
+<!--      <xsl:if test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">-->
+<!--        <xsl:apply-templates select="$distribution/mrd:transferOptions[mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString/text() = $currentHref]"/>-->
+<!--        <xsl:message><xsl:text>erased content</xsl:text></xsl:message>-->
+<!--      </xsl:if>-->
+
       <xsl:choose>
       <xsl:when test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">
 <!--        <xsl:message><xsl:text>link already present ignored: </xsl:text> <xsl:value-of select="$currentHref"/></xsl:message>-->
@@ -116,6 +125,11 @@
 <!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
         <mrd:transferOptions>
           <mrd:MD_DigitalTransferOptions>
+              <mrd:transferSize>
+                <gco:Real>
+                  <xsl:value-of select="@length div 1048576"/> <!-- size converted from Byte to MB-->
+                </gco:Real>
+              </mrd:transferSize>
               <mrd:onLine>
                   <cit:CI_OnlineResource>
                       <cit:linkage>
@@ -141,11 +155,6 @@
                       </cit:function>
                   </cit:CI_OnlineResource>
               </mrd:onLine>
-              <mrd:transferSize>
-                <gco:Real>
-                  <xsl:value-of select="@length div 1024"/>
-                </gco:Real>
-              </mrd:transferSize>
           </mrd:MD_DigitalTransferOptions>
         </mrd:transferOptions>
       </xsl:otherwise>
