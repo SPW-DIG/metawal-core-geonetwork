@@ -988,7 +988,7 @@
                         <gco:CharacterString>https://geodata.wallonie.be/dataset/${uuid}</gco:CharacterString>
                       </cit:linkage>
                       <cit:protocol>
-                        <gco:CharacterString>WWW:DOWNLOAD</gco:CharacterString>
+                        <gco:CharacterString>WWW:LINK</gco:CharacterString>
                       </cit:protocol>
                       <cit:name>
                         <gco:CharacterString>Page de téléchargement des données</gco:CharacterString>
@@ -2161,7 +2161,7 @@
                         <gco:CharacterString>https://geodata.wallonie.be/dataset/${uuid}</gco:CharacterString>
                       </cit:linkage>
                       <cit:protocol>
-                        <gco:CharacterString>WWW:DOWNLOAD</gco:CharacterString>
+                        <gco:CharacterString>WWW:LINK</gco:CharacterString>
                       </cit:protocol>
                       <cit:name>
                         <gco:CharacterString>Page de téléchargement des données</gco:CharacterString>
