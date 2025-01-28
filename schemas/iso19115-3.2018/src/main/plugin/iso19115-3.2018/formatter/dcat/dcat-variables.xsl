@@ -54,7 +54,7 @@
 
   <xsl:variable name="isoDateTypeToDcatCommonNames"
                 as="node()*">
-    <entry key="dct:issued">creation</entry>
+<!--    <entry key="dct:issued">creation</entry>-->
     <entry key="dct:issued">publication</entry>
     <entry key="dct:modified">revision</entry>
   </xsl:variable>
@@ -63,6 +63,7 @@
                 as="node()*">
     <entry key="dct:creator" as="foaf">author</entry>
     <entry key="dct:publisher" as="foaf">publisher</entry>
+    <entry key="dct:publisher" as="foaf">custodian</entry>
     <entry key="dcat:contactPoint" as="vcard">pointOfContact</entry>
     <entry key="dct:rightsHolder" as="foaf">owner</entry> <!-- TODO: Check if dcat or only in profile -->
     <!-- Others are prov:qualifiedAttribution -->
@@ -118,6 +119,7 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/EPUB">epub</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">fgeo</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">gdb</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">ESRI File Geodatabase (.fgdb)</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GEOJSON">geojson</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GPKG">geopackage</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/RSS">georss</entry>
@@ -178,6 +180,7 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/ZIP">scorm</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">shp</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile (.shp)</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">sos</entry>
     <entry key="https://www.iana.org/assignments/media-types/application/vnd.sqlite3">spatialite</entry>
     <entry key="https://www.iana.org/assignments/media-types/application/vnd.sqlite3">sqlite</entry>

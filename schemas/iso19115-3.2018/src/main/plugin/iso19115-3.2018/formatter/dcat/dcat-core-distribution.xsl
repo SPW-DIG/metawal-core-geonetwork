@@ -258,15 +258,18 @@
             -->
             <xsl:if test="$function = ('download', 'offlineAccess', 'order', 'browsing', 'fileAccess')
                           or matches($protocol, 'OGC:WMS|OGC:WFS|OGC:WCS|OGC:WPS|OGC API Features|OGC API Coverages|ESRI:REST')">
+              <!--
+              FIXME: validator expect the DataService object to contain all mandatory properties
+              <dcat:accessService rdf:about=""/> does not work.
               <dcat:accessService>
                 <rdf:Description>
                   <rdf:type rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
                   <xsl:apply-templates mode="iso19115-3-to-dcat"
                                        select="*/cit:name[normalize-space(.) != '']"/>
                   <dcat:endpointURL rdf:resource="{$url}"/>
-                  <!-- TODO: GetCapabilities document
+                  &lt;!&ndash; TODO: GetCapabilities document
                   <dcat:endpointDescription rdf:resource="{$endpoint-description}"/>
-                   -->
+                   &ndash;&gt;
 
                   <xsl:variable name="standardPage"
                                 as="node()?"
@@ -277,7 +280,7 @@
                     </dct:conformsTo>
                   </xsl:if>
                 </rdf:Description>
-              </dcat:accessService>
+              </dcat:accessService>-->
             </xsl:if>
 
             <!--
@@ -426,7 +429,7 @@
 
     <xsl:variable name="formatUri"
                   as="xs:string?"
-                  select="($formatLabelToUri[lower-case($format) = text()]/@key)[1]"/>
+                  select="($formatLabelToUri[lower-case($format) = lower-case(text())]/@key)[1]"/>
 
     <xsl:variable name="rangeName"
                   as="xs:string"
