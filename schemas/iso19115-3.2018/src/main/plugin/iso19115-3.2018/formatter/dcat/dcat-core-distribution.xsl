@@ -149,6 +149,7 @@
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
       <xsl:when test="$function = ('information', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                 or ($function = ('browsing') and matches($protocol, 'WWW:LINK.*'))
                                  or (not($function) and matches($protocol, 'WWW:LINK.*'))">
         <foaf:page>
           <foaf:Document rdf:about="{$url}">
