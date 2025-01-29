@@ -209,7 +209,16 @@
             <!--
             Message: ClassConstraint[rdfs:Resource]: Expected class :rdfs:Resource for
             -->
-            <dcat:accessURL rdf:resource="{$url}"/>
+            <!-- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/954 -->
+            <xsl:variable name="associatedAccessUrlForDownload" as="xs:string?">
+              <xsl:if test="matches($protocol, '.*DOWNLOAD.*|DB:.*|FILE:.*')">
+                <xsl:value-of select="ancestor::mrd:MD_DigitalTransferOptions
+                                                      /mrd:onLine/*[cit:protocol/gco:CharacterString = 'WWW:LINK' and cit:function/*/@codeListValue='download']
+                                                          /cit:linkage/gco:CharacterString/text()"/>
+              </xsl:if>
+            </xsl:variable>
+
+            <dcat:accessURL rdf:resource="{if ($associatedAccessUrlForDownload) then $associatedAccessUrlForDownload else $url}"/>
 
             <!--
             RDF Property:	dcat:downloadURL
