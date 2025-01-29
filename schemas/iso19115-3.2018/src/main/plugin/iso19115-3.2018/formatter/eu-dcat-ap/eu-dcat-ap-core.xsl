@@ -47,6 +47,7 @@
     <xsl:call-template name="create-namespaces"/>
     <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="eli" select="'http://data.europa.eu/eli/ontology'"/>
+    <xsl:namespace name="j.0" select="'http://data.europa.eu/eli/ontology#'"/>
   </xsl:template>
 
   <!--
@@ -87,7 +88,7 @@
       <xsl:copy-of select="$additionalProperties"/>
 
       <dct:conformsTo>
-        <dct:Standard rdf:about="http://data.europa.eu/r5r/"/>
+        <dct:Standard rdf:about="https://www.w3.org/TR/vocab-dcat/"/>
       </dct:conformsTo>
     </xsl:variable>
 
