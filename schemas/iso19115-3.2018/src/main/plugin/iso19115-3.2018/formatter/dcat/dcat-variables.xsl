@@ -101,9 +101,11 @@
 
   <xsl:variable name="formatLabelToUri"
                 as="node()*">
+    <!-- http://inspire.ec.europa.eu/media-types/application/x-filegdb -->
     <entry key="https://publications.europa.eu/resource/authority/file-type/GRID_ASCII">aaigrid</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GRID">aig</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ATOM">atom</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/CSV">text/csv</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/CSV">csv</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">csw</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/DBF">dbf</entry>
@@ -112,6 +114,7 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/DOC">doc</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/DOCX">docx</entry>
     <entry key="https://www.iana.org/assignments/media-types/image/vn.dxf">dxf</entry>
+    <entry key="https://www.iana.org/assignments/media-types/image/vn.dwg">image/vnd.dwg</entry>
     <entry key="https://www.iana.org/assignments/media-types/image/vn.dwg">dwg</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ECW">ecw</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ECW">ecwp</entry>
@@ -119,14 +122,18 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/EPUB">epub</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">fgeo</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">gdb</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">application/x-filegdb</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GDB">ESRI File Geodatabase (.fgdb)</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GEOJSON">geojson</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/GPKG">application/geopackage+vnd.sqlite3</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GPKG">geopackage</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/RSS">georss</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">image/tiff</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">geotiff</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GIF">gif</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">gml</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GMZ">gmz</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/GMZ">application/x-gmz</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GPKG">gpkg</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">gpx</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GRID">grid</entry>
@@ -134,6 +141,7 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/CSV">gtfs</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">gtiff</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GZIP">gzip</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/HTML">text/html</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/HTML">html</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JPEG">jpeg</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JPEG">jpg</entry>
@@ -179,6 +187,8 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/RTF">rtf</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ZIP">scorm</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">shp</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">application/vnd.shp</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">application/x-shapefile</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile (.shp)</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">sos</entry>
@@ -187,6 +197,7 @@
     <entry key="https://www.iana.org/assignments/media-types/application/vnd.sqlite3">sqlite3</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SVG">svg</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TXT">text</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/TXT">text/csv</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">tiff</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TMX">tmx</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TSV">tsv</entry>
@@ -199,6 +210,7 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/XHTML">xhtml</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XLS">xls</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XLSX">xlsx</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/XML">application/xml</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">xml</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">wcs</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">wfs</entry>
