@@ -19,11 +19,11 @@
     <xsl:variable name="properties" as="node()*">
       <!-- MW: exclude
       |mdb:identificationInfo/*/mri:abstract
+      |mdb:identificationInfo/*/mri:citation/*/cit:title
       to not make repetition with the description of the dataset
       -->
       <xsl:apply-templates mode="iso19115-3-to-dcat"
                            select="mdb:metadataIdentifier
-                                  |mdb:identificationInfo/*/mri:citation/*/cit:title
                                   |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'creation']/cit:date
                                   |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'revision']/cit:date"/>
       <xsl:copy-of select="$additionalProperties"/>
