@@ -102,6 +102,10 @@
                 match="mdb:distributionInfo//mrd:onLine">
     <xsl:call-template name="iso19115-3-to-dcat-distribution">
       <xsl:with-param name="additionalProperties">
+        <!-- In HVD applicable legislation	Legal Resource	1..* -->
+        <xsl:apply-templates mode="iso19115-3-to-dcat"
+                             select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[starts-with(*/@xlink:href, 'http://data.europa.eu/eli')]"/>
+
         <xsl:if test="$isCopyingDatasetInfoToDistribution">
           <xsl:apply-templates mode="iso19115-3-to-dcat"
                                select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/mco:MD_LegalConstraints/mco:reference"/>
