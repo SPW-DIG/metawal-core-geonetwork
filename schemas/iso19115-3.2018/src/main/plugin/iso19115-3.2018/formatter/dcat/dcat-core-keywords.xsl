@@ -39,7 +39,7 @@
   Using dcat:theme when an Anchor is present.
   -->
   <xsl:template mode="iso19115-3-to-dcat"
-                match="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[gcx:Anchor/@xlink:href != '' and not(contains(gcx:Anchor/@xlink:href, '/infrasig'))]"
+                match="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[gcx:Anchor/@xlink:href != '' and not(contains(gcx:Anchor/@xlink:href, 'metawal.wallonie.be'))]"
                 priority="2">
     <xsl:variable name="isDcatTheme"
                   select="../mri:thesaurusName/*/cit:title/*/@xlink:href = ('http://publications.europa.eu/resource/authority/data-theme')"/>
