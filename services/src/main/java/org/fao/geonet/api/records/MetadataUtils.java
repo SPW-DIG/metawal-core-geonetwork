@@ -163,17 +163,19 @@ public class MetadataUtils {
                     Element relation = new Element(entry.getKey().name());
                     relation.setAttribute("uuid", record.getUuid());
                     relation.setAttribute("origin", record.getOrigin());
-                    if (record.getProperties().get("associationType") != null) {
-                        relation.setAttribute("associationType", record.getProperties().get("associationType"));
-                    }
-                    if (record.getProperties().get("initiativeType") != null) {
-                        relation.setAttribute("initiativeType", record.getProperties().get("initiativeType"));
-                    }
-                    if (record.getProperties().get("resourceTitle") != null) {
-                        relation.setAttribute("resourceTitle", record.getProperties().get("resourceTitle"));
-                    }
-                    if (record.getProperties().get("url") != null) {
-                        relation.setAttribute("url", record.getProperties().get("url"));
+                    if (record.getProperties() != null) {
+                        if (record.getProperties().get("associationType") != null) {
+                            relation.setAttribute("associationType", record.getProperties().get("associationType"));
+                        }
+                        if (record.getProperties().get("initiativeType") != null) {
+                            relation.setAttribute("initiativeType", record.getProperties().get("initiativeType"));
+                        }
+                        if (record.getProperties().get("resourceTitle") != null) {
+                            relation.setAttribute("resourceTitle", record.getProperties().get("resourceTitle"));
+                        }
+                        if (record.getProperties().get("url") != null) {
+                            relation.setAttribute("url", record.getProperties().get("url"));
+                        }
                     }
                     relation.addContent(Xml.getXmlFromJSON(record.getRecord().toPrettyString()));
                     relations.addContent(relation);
