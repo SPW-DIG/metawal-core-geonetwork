@@ -31,7 +31,7 @@
   -->
   <xsl:param name="copyDatasetInfoToDistribution"
                 as="xs:string"
-                select="'false'"/>
+                select="'true'"/>
   <xsl:variable name="isCopyingDatasetInfoToDistribution"
                 as="xs:boolean"
                 select="xs:boolean($copyDatasetInfoToDistribution)"/>
@@ -178,7 +178,8 @@
              RDF Property:	dcterms:issued
              Definition:	Date of formal issuance (e.g., publication) of the distribution.
             -->
-            <xsl:for-each select="ancestor::mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime">
+            <xsl:for-each select="ancestor::mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
+                                               ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'revision']">
               <xsl:apply-templates mode="iso19115-3-to-dcat"
                                    select=".">
                 <xsl:with-param name="dateType" select="'publication'"/>
