@@ -163,12 +163,12 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/ODT">odt</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">ogc:csw</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">ogc:sos</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">ogc:wcs</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/GML">ogc:wfs</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WCS_SRVC">ogc:wcs</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WFS_SRVC">ogc:wfs</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">ogc:wfs-g</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">ogc:wmc</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/PNG">ogc:wms</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/PNG">ogc:wmts</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WMS_SRVC">ogc:wms</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WMTS_SRVC">ogc:wmts</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">ogc:wps</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/TXT">pc-axis</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/PDF">pdf</entry>
@@ -189,6 +189,7 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">shp</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">application/vnd.shp</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">application/x-shapefile</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/REST">ESRI:REST</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile (.shp)</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">sos</entry>
@@ -212,12 +213,12 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/XLSX">xlsx</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">application/xml</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">xml</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/TIFF">wcs</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/GML">wfs</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WCS_SRVC">wcs</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WFS_SRVC">wfs</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">wfs-g</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">wmc</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/PNG">wms</entry>
-    <entry key="https://publications.europa.eu/resource/authority/file-type/PNG">wmts</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WMS_SRVC">wms</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/WMTS_SRVC">wmts</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GML">wps</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ZIP">zip</entry>
   </xsl:variable>
