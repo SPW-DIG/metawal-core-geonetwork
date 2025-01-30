@@ -8,9 +8,18 @@
                 xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0"
                 xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/2.0"
                 xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
+                xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                xmlns:mdUtil="java:org.fao.geonet.api.records.MetadataUtils"
+                xmlns:util="java:org.fao.geonet.util.XslUtil"
+                xmlns:dcat="http://www.w3.org/ns/dcat#"
+                xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 exclude-result-prefixes="#all">
+
+  <xsl:variable name="nodeUrl"
+                select="util:getSettingValue('nodeUrl')"/>
 
   <!-- Resource
    Unsupported:
@@ -42,6 +51,50 @@
                                   |mdb:metadataLinkage
                           "/>
 
+    <xsl:call-template name="related-record"/>
+
+  </xsl:template>
+
+  <xsl:template name="related-record">
+    <xsl:variable name="associations"
+                        select="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())"
+                        as="node()?"/>
+
+    <xsl:variable name="legislations"
+                        select="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[starts-with(*/@xlink:href, 'http://data.europa.eu/eli')]"/>
+
+    <xsl:for-each select="$associations/relations/*">
+      <xsl:choose>
+        <xsl:when test="local-name() = 'services'">
+          <xsl:variable name="mainLink"
+                        select="root/link[1]"/>
+
+          <xsl:variable name="serviceUri"
+                        select="if (root/resourceIdentifier) then concat(root/resourceIdentifier/codeSpace, root/resourceIdentifier/code) else ." />
+
+          <dcat:distribution>
+            <dcat:Distribution>
+              <xsl:for-each select="$mainLink/urlObject/default">
+                <dcat:accessURL rdf:resource="{.}"/>
+                <dcat:accessService rdf:resource="{$serviceUri}"/>
+              </xsl:for-each>
+              <dct:title><xsl:value-of select="root/resourceTitleObject/default"/></dct:title>
+              <dct:description xml:lang="fre"><xsl:value-of select="root/resourceAbstractObject/default"/></dct:description>
+
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select="$legislations"/>
+
+              <xsl:call-template name="rdf-format-as-mediatype">
+                <xsl:with-param name="format" select="$mainLink/protocol"/>
+              </xsl:call-template>
+            </dcat:Distribution>
+          </dcat:distribution>
+        </xsl:when>
+        <xsl:otherwise>
+          <!-- TODO: other type of relations -->
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
   </xsl:template>
 
 </xsl:stylesheet>
