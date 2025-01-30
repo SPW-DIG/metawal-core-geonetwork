@@ -277,15 +277,6 @@
   </xsl:template>
 
 
-  <xsl:template mode="iso19115-3-to-eu-dcat-ap"
-                match="mrl:source">
-    <dct:source>
-      <xsl:call-template name="rdf-object-ref-attribute">
-        <xsl:with-param name="isAbout" select="false()"/>
-      </xsl:call-template>
-    </dct:source>
-  </xsl:template>
-
   <!--
    sh:resultMessage              "maxCount[1]: Invalid cardinality: expected max 1: Got count = 2" ;
    sh:resultPath                 dc:accrualPeriodicity ;

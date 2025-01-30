@@ -112,7 +112,7 @@
                  />
   </xsl:function>
 
-  
+
   <xsl:function name="gn-fn-dcat:getResourceUri" as="xs:string">
     <xsl:param name="metadata" as="node()"/>
 

@@ -55,6 +55,20 @@
 
   </xsl:template>
 
+
+
+<!--  <xsl:template mode="iso19115-3-to-eu-dcat-ap"
+                match="mrl:source">
+    <dct:source>
+    Need to point to the Dataset and not the CatalogRecord
+    See below
+      <xsl:call-template name="rdf-object-ref-attribute">
+        <xsl:with-param name="isAbout" select="false()"/>
+      </xsl:call-template>
+    </dct:source>
+  </xsl:template>-->
+
+
   <xsl:template name="related-record">
     <xsl:variable name="associations"
                         select="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())"
@@ -64,13 +78,25 @@
                         select="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[starts-with(*/@xlink:href, 'http://data.europa.eu/eli')]"/>
 
     <xsl:for-each select="$associations/relations/*">
+      <xsl:variable name="recordUri"
+                    select="if (root/resourceIdentifier) then concat(root/resourceIdentifier[1]/codeSpace, root/resourceIdentifier[1]/code) else @url" />
+
       <xsl:choose>
+        <xsl:when test="local-name() = 'parent'">
+          <dcat:inSeries rdf:resource="{$recordUri}"/>
+        </xsl:when>
+        <xsl:when test="local-name() = 'brothersAndSisters'">
+          <dct:relation rdf:resource="{$recordUri}"/>
+        </xsl:when>
+        <xsl:when test="local-name() = 'sources'">
+          <dct:source rdf:resource="{$recordUri}"/>
+        </xsl:when>
         <xsl:when test="local-name() = 'services'">
           <xsl:variable name="mainLink"
                         select="root/link[1]"/>
 
           <xsl:variable name="serviceUri"
-                        select="if (root/resourceIdentifier) then concat(root/resourceIdentifier/codeSpace, root/resourceIdentifier/code) else ." />
+                        select="if (root/resourceIdentifier) then concat(root/resourceIdentifier[1]/codeSpace, root/resourceIdentifier[1]/code) else ." />
 
           <dcat:distribution>
             <dcat:Distribution>
