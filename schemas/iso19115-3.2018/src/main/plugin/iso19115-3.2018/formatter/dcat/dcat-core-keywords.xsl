@@ -6,8 +6,10 @@
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
                 xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+                xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 exclude-result-prefixes="#all">
 
@@ -37,7 +39,7 @@
   Using dcat:theme when an Anchor is present.
   -->
   <xsl:template mode="iso19115-3-to-dcat"
-                match="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[gcx:Anchor/@xlink:href != '']"
+                match="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[gcx:Anchor/@xlink:href != '' and not(contains(gcx:Anchor/@xlink:href, '/infrasig'))]"
                 priority="2">
     <xsl:variable name="isDcatTheme"
                   select="../mri:thesaurusName/*/cit:title/*/@xlink:href = ('http://publications.europa.eu/resource/authority/data-theme')"/>
@@ -56,6 +58,16 @@
         </dcat:theme>
       </xsl:when>
       <xsl:otherwise>
+        <dct:subject>
+          <xsl:attribute name="rdf:resource" select="gcx:Anchor/@xlink:href"/>
+          <!--<skos:Concept>
+            <xsl:call-template name="rdf-object-ref-attribute"/>
+            <xsl:call-template name="rdf-localised">
+              <xsl:with-param name="nodeName"
+                              select="'skos:prefLabel'"/>
+            </xsl:call-template>
+          </skos:Concept>-->
+        </dct:subject>
         <xsl:call-template name="rdf-localised">
           <xsl:with-param name="nodeName"
                           select="'dcat:keyword'"/>
@@ -72,4 +84,7 @@
                       select="'dcat:keyword'"/>
     </xsl:call-template>
   </xsl:template>
+
+  <xsl:template mode="iso19115-3-to-dcat"
+                match="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword"/>
 </xsl:stylesheet>
