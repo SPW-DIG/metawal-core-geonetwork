@@ -143,6 +143,7 @@ public class EsSearchManager implements ISearchManager {
             .add("MD_SecurityConstraintsUseLimitation")
             .add("MD_SecurityConstraintsUseLimitationObject")
             .add("resourceHookAbstractObject")
+            .add("resourceIdentifier")
             .add(Geonet.IndexFieldNames.RESOURCEABSTRACT + "Object")
             .add("operatesOn")
             .build();
