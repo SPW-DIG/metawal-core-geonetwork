@@ -47,7 +47,6 @@
     <xsl:call-template name="create-namespaces"/>
     <xsl:namespace name="dcatap" select="'http://data.europa.eu/r5r/'"/>
     <xsl:namespace name="eli" select="'http://data.europa.eu/eli/ontology'"/>
-    <xsl:namespace name="j.0" select="'http://data.europa.eu/eli/ontology#'"/>
   </xsl:template>
 
   <!--

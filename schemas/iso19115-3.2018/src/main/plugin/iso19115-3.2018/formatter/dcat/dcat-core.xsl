@@ -112,6 +112,7 @@
                  />
   </xsl:function>
 
+  
   <xsl:function name="gn-fn-dcat:getResourceUri" as="xs:string">
     <xsl:param name="metadata" as="node()"/>
 
@@ -121,13 +122,13 @@
 
     <xsl:variable name="resourceIdentifier"
                   as="node()?">
-      <xsl:apply-templates mode="iso19115-3-to-dcat"
-                           select="($metadata/mdb:identificationInfo/*/mri:citation/*/cit:identifier)[1]"/>
+      <xsl:for-each select="($metadata/mdb:identificationInfo/*/mri:citation/*/cit:identifier[starts-with(*/mcc:codeSpace/*/text(), 'http')])[1]">
+        <xsl:call-template name="iso19115-3-to-dcat-identifier"/>
+      </xsl:for-each>
     </xsl:variable>
 
     <xsl:value-of select="if($resourceIdentifier) then $resourceIdentifier
-                                      else concat($catalogRecordUri, '#resource')"
-    />
+                                      else concat($catalogRecordUri, '#resource')"/>
   </xsl:function>
 
 
@@ -242,6 +243,7 @@
   Usage note:	The identifier is a text string which is assigned to the resource to provide an unambiguous reference within a particular context.
   -->
   <xsl:template mode="iso19115-3-to-dcat"
+                name="iso19115-3-to-dcat-identifier"
                 match="mdb:metadataIdentifier
                       |mdb:identificationInfo/*/mri:citation/*/cit:identifier
                       |cit:identifier">
