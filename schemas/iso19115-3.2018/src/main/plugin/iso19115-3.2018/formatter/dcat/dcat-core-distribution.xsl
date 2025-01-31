@@ -191,9 +191,14 @@
             RDF Property:	dcterms:modified
             Definition:	Most recent date on which the distribution was changed, updated or modified.
             Range:	rdfs:Literal encoded using the relevant ISO 8601 Date and Time compliant string [DATETIME] and typed using the appropriate XML Schema datatype [XMLSCHEMA11-2] (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime).
-
-            Not supported
             -->
+            <xsl:for-each select="ancestor::mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
+                                               ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'revision']">
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select=".">
+                <xsl:with-param name="dateType" select="'revision'"/>
+              </xsl:apply-templates>
+            </xsl:for-each>
 
 
             <!--
