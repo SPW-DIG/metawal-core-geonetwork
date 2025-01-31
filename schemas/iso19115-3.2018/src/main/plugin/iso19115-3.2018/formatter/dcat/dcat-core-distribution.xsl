@@ -329,9 +329,22 @@
               <xsl:otherwise>
                 <xsl:choose>
                   <xsl:when test="starts-with($protocol, 'WWW:DOWNLOAD:')">
+                    <xsl:variable name="format"
+                                  select="substring-after($protocol, 'WWW:DOWNLOAD:')"/>
+
+                    <!-- The file format of the Distribution. -->
                     <xsl:call-template name="rdf-format-as-mediatype">
-                      <xsl:with-param name="format" select="substring-after($protocol, 'WWW:DOWNLOAD:')"/>
+                      <xsl:with-param name="format" select="$format"/>
                     </xsl:call-template>
+
+                    <!-- The media type of the Distribution as defined in the official register of media types managed by IANA. -->
+                    <xsl:if test="matches($format, '\w+/[-+.\w]+')">
+                      <dcat:mediaType>
+                        <dct:MediaType>
+                          <rdfs:label><xsl:value-of select="$format"/></rdfs:label>
+                        </dct:MediaType>
+                      </dcat:mediaType>
+                    </xsl:if>
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:apply-templates mode="iso19115-3-to-dcat-distribution"
