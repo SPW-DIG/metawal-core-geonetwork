@@ -148,7 +148,8 @@
 
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
-      <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/><!-- MW: This is used for accessUrl of download distribution type -->
+      <!-- MW: This is used for accessUrl of download distribution type -->
+      <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/>
       <xsl:when test="$function = ('information', 'information.content', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
                                  or ($function = ('browsing') and matches($protocol, 'WWW:LINK.*'))
                                  or (not($function) and matches($protocol, 'WWW:LINK.*'))">
@@ -214,8 +215,8 @@
             <!-- https://github.com/SPW-DIG/metawal-core-geonetwork/issues/954 -->
             <xsl:variable name="associatedAccessUrlForDownload" as="xs:string?">
               <xsl:if test="matches($protocol, '.*DOWNLOAD.*|DB:.*|FILE:.*')">
-                <xsl:value-of select="ancestor::mrd:MD_DigitalTransferOptions
-                                                      /mrd:onLine/*[cit:protocol/gco:CharacterString = 'WWW:LINK' and cit:function/*/@codeListValue='download']
+                <xsl:value-of select="ancestor::mdb:distributionInfo
+                                                      //mrd:onLine/*[cit:protocol/gco:CharacterString = 'WWW:LINK' and cit:function/*/@codeListValue = 'download']
                                                           /cit:linkage/gco:CharacterString/text()"/>
               </xsl:if>
             </xsl:variable>
