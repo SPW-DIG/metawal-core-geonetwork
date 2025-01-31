@@ -102,10 +102,10 @@
 
   <xsl:variable name="formatLabelToUri"
                 as="node()*">
-    <!-- http://inspire.ec.europa.eu/media-types/application/x-filegdb -->
     <entry key="https://publications.europa.eu/resource/authority/file-type/GRID_ASCII">aaigrid</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/GRID">aig</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/ATOM">atom</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/ATOM">atom:feed</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/CSV">text/csv</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/CSV">csv</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/XML">csw</entry>
@@ -147,6 +147,9 @@
     <entry key="https://publications.europa.eu/resource/authority/file-type/JPEG">jpeg</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JPEG">jpg</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JSON">json</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/JSON">OGC API - Coverages</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/JSON">OGC API - Records</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/JSON">OGC API - Features</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JSON_LD">json-ld</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JSON_LD">json_ld</entry>
     <entry key="https://publications.europa.eu/resource/authority/file-type/JSON_LD">jsonld</entry>
