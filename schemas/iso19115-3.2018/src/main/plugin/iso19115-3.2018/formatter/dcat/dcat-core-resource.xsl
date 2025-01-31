@@ -110,8 +110,9 @@
           </dcat:servesDataset>
         </xsl:when>
         <xsl:when test="local-name() = 'services'">
+
           <xsl:variable name="mainLink"
-                        select="root/link[1]"/>
+                        select="(root/link[not(function = ('information', 'dataQualityReport'))])[1]"/>
 
           <xsl:variable name="serviceUri"
                         select="if (root/resourceIdentifier) then concat(root/resourceIdentifier[1]/codeSpace, root/resourceIdentifier[1]/code) else ." />
