@@ -406,9 +406,11 @@
               Usage note:	If the dataset is an image or grid this should correspond to the spacing of items. For other kinds of spatial datasets, this property will usually indicate the smallest distance between items in the dataset.
               Usage note:	Alternative spatial resolutions might be provided as different dataset distributions
               -->
+              <!--
+              MW disabled
               <xsl:apply-templates mode="iso19115-3-to-dcat"
                                    select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:spatialResolution/*/mri:distance
-                                          |ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:temporalResolution/*"/>
+                                          |ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:temporalResolution/*"/>-->
 
               <!--
               RDF Property:	odrl:hasPolicy
@@ -425,8 +427,11 @@
               Range:	dcterms:Standard (A basis for comparison; a reference point against which other things can be evaluated.)
               Usage note:	This property SHOULD be used to indicate the model, schema, ontology, view or profile that this representation of a dataset conforms to. This is (generally) a complementary concern to the media-type or format.
               -->
+              <!--
+              MW disabled
               <xsl:apply-templates mode="iso19115-3-to-dcat"
                                    select="ancestor::mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report/*/mdq:result[mdq:DQ_ConformanceResult and mdq:DQ_ConformanceResult/mdq:pass/*/text() = 'true']"/>
+                                   -->
             </xsl:if>
 
             <xsl:copy-of select="$additionalProperties"/>
