@@ -78,8 +78,12 @@
                         select="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[starts-with(*/@xlink:href, 'http://data.europa.eu/eli')]"/>
 
     <xsl:for-each select="$associations/relations/*">
+      <xsl:variable name="resourceIdentifierWithHttpCodeSpace"
+                          select="(root/resourceIdentifier[starts-with(codeSpace, 'http')])[1]"/>
       <xsl:variable name="recordUri"
-                    select="if (root/resourceIdentifier) then concat(root/resourceIdentifier[1]/codeSpace, root/resourceIdentifier[1]/code) else @url" />
+                          select="if ($resourceIdentifierWithHttpCodeSpace)
+                                       then concat($resourceIdentifierWithHttpCodeSpace/codeSpace, $resourceIdentifierWithHttpCodeSpace/code)
+                                       else @url" />
 
       <xsl:choose>
         <xsl:when test="local-name() = 'parent'">
