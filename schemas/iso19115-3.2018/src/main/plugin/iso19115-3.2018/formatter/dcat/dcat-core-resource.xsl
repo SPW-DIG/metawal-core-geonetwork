@@ -89,11 +89,17 @@
         <xsl:when test="local-name() = 'parent'">
           <dcat:inSeries rdf:resource="{$recordUri}"/>
         </xsl:when>
+        <xsl:when test="local-name() = 'children'">
+          <dcat:seriesMember rdf:resource="{$recordUri}"/>
+        </xsl:when>
         <xsl:when test="local-name() = 'brothersAndSisters'">
           <dct:relation rdf:resource="{$recordUri}"/>
         </xsl:when>
         <xsl:when test="local-name() = 'sources'">
           <dct:source rdf:resource="{$recordUri}"/>
+        </xsl:when>
+        <xsl:when test="local-name() = 'siblings'">
+          <dct:references rdf:resource="{$recordUri}"/>
         </xsl:when>
         <xsl:when test="local-name() = 'services'">
           <xsl:variable name="mainLink"
