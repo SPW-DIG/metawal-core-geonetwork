@@ -432,6 +432,9 @@
               <xsl:apply-templates mode="iso19115-3-to-dcat"
                                    select="ancestor::mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report/*/mdq:result[mdq:DQ_ConformanceResult and mdq:DQ_ConformanceResult/mdq:pass/*/text() = 'true']"/>
                                    -->
+
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:defaultLocale"/>
             </xsl:if>
 
             <xsl:copy-of select="$additionalProperties"/>
