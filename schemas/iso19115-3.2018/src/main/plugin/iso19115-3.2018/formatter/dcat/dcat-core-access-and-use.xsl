@@ -149,6 +149,11 @@
                                   |gco:CharacterString[starts-with(., 'http')])[1]"/>
 
           <xsl:choose>
+            <xsl:when test="$httpUriInAnchorOrText = 'https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf'">
+              <dct:license>
+                <dct:LicenseDocument rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf"/>
+              </dct:license>
+            </xsl:when>
             <xsl:when test="$httpUriInAnchorOrText != '' and $isMappingResourceConstraintsToEuVocabulary = true()">
               <xsl:variable name="licenseUriWithoutHttp"
                             select="replace($httpUriInAnchorOrText,'https?://','')"/>
