@@ -38,6 +38,20 @@
                 as="xs:boolean"
                 select="false()"/>
 
+  <xsl:variable name="dcatApAccessTypes" as="node()*">
+    <entry key="http://publications.europa.eu/resource/authority/access-right/PUBLIC">unrestricted</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/PUBLIC">licenceUnrestricted</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">restricted</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">private</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL">confidential</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/PUBLIC">https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGA.pdf</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/PUBLIC">http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeD1.pdf</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeA1.pdf</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeC4.pdf</entry>
+    <entry key="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e</entry>
+  </xsl:variable>
+
   <!--
   RDF Property:	dcterms:accessRights
   Definition:	Information about who can access the resource or an indication of its security status.
@@ -57,7 +71,20 @@
   -->
   <xsl:template mode="iso19115-3-to-dcat"
                 match="mdb:identificationInfo/*/mri:resourceConstraints/*">
+
     <xsl:if test="count(../preceding-sibling::mri:resourceConstraints/*) = 0">
+
+      <xsl:for-each select="distinct-values(../../mri:resourceConstraints/*/mco:accessConstraints/*/@codeListValue
+                                                                |../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints/gcx:Anchor/@xlink:href)">
+        <xsl:variable name="dcatAccessType"
+                      select="$dcatApAccessTypes[. = current()]"/>
+        <xsl:if test="$dcatAccessType">
+          <dct:accessRights>
+            <dct:RightsStatement rdf:about="{$dcatAccessType/@key}"/>
+          </dct:accessRights>
+        </xsl:if>
+      </xsl:for-each>
+
       <xsl:for-each select="../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints">
         <xsl:if test="position() = 1 or ($isPreservingAllResourceConstraints and position() > 1)">
           <xsl:element name="{if (position() = 1) then 'dct:accessRights' else 'dct:rights'}">
