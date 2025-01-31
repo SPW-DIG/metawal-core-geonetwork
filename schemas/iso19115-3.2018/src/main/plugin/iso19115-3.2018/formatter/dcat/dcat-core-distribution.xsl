@@ -149,7 +149,7 @@
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
       <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/><!-- MW: This is used for accessUrl of download distribution type -->
-      <xsl:when test="$function = ('information', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+      <xsl:when test="$function = ('information', 'information.content', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
                                  or ($function = ('browsing') and matches($protocol, 'WWW:LINK.*'))
                                  or (not($function) and matches($protocol, 'WWW:LINK.*'))">
         <foaf:page>
