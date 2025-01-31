@@ -152,7 +152,7 @@
       <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/>
       <xsl:when test="$function = ('information', 'information.content', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
                                  or ($function = ('browsing') and matches($protocol, 'WWW:LINK.*'))
-                                 or (not($function) and matches($protocol, 'WWW:LINK.*'))">
+                                 or ((not($function) or $function = '') and matches($protocol, 'WWW:LINK.*'))">
         <foaf:page>
           <foaf:Document rdf:about="{$url}">
             <xsl:apply-templates mode="iso19115-3-to-dcat"
