@@ -160,22 +160,23 @@
               <xsl:if test="$euDcatLicense != ''">
                 <dct:license>
                   <dct:LicenseDocument rdf:about="{$euDcatLicense/@rdf:about}">
+                    <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                      <dct:type rdf:resource="{.}"/>
+                    </xsl:for-each>
                     <!--<xsl:copy-of select="$euDcatLicense/(skos:prefLabel[@xml:lang = $languages/@iso2code]
                                                       |skos:exactMatch)"
                                    copy-namespaces="no"/>-->
                   </dct:LicenseDocument>
                 </dct:license>
               </xsl:if>
-
-              <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
-                <dct:license>
-                  <dct:LicenseDocument rdf:about="{.}"/>
-                </dct:license>
-              </xsl:for-each>
             </xsl:when>
             <xsl:when test="$httpUriInAnchorOrText != ''">
               <dct:license>
-                <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}"/>
+                <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}">
+                  <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                    <dct:type rdf:resource="{.}"/>
+                  </xsl:for-each>
+                </dct:LicenseDocument>
               </dct:license>
             </xsl:when>
             <xsl:otherwise>
