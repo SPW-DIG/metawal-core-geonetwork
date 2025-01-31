@@ -52,6 +52,35 @@
     <entry key="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e</entry>
   </xsl:variable>
 
+  <xsl:variable name="admsLicenceTypes" as="node()*">
+    <entry key="https://creativecommons.org/licenses/by/4.0/">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://creativecommons.org/licenses/by/4.0/legalcode.fr">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://publications.europa.eu/resource/authority/licence/CC_BY_4_0">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://creativecommons.org/licenses/by/4.0/deed.fr">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://creativecommons.org/public-domain/cc0/">http://purl.org/adms/licencetype/PublicDomain</entry>
+    <entry key="https://creativecommons.org/publicdomain/zero/1.0/">http://purl.org/adms/licencetype/PublicDomain</entry>
+    <entry key="https://creativecommons.org/licenses/by-sa/3.0/">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://creativecommons.org/licenses/by-sa/3.0/">http://purl.org/adms/licencetype/ViralEffect-ShareAlike</entry>
+    <entry key="https://creativecommons.org/licenses/by-sa/2.0/be">http://purl.org/adms/licencetype/ViralEffect-ShareAlike</entry>
+    <entry key="https://creativecommons.org/licenses/by-sa/2.0/be">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://opendatacommons.org/licenses/odbl/1-0/">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://opendatacommons.org/licenses/odbl/1-0/">http://purl.org/adms/licencetype/ViralEffect-ShareAlike</entry>
+    <entry key="https://opendatacommons.org/licenses/odbl/">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://opendatacommons.org/licenses/odbl/">http://purl.org/adms/licencetype/ViralEffect-ShareAlike</entry>
+    <entry key="https://opendatacommons.org/licenses/odbl/summary/">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://opendatacommons.org/licenses/odbl/summary/">http://purl.org/adms/licencetype/ViralEffect-ShareAlike</entry>
+    <entry key="https://creativecommons.org/licenses/by-nc/4.0/legalcode">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://creativecommons.org/licenses/by-nc/4.0/legalcode">http://purl.org/adms/licencetype/NonCommercialUseOnly</entry>
+    <entry key="https://creativecommons.org/licenses/by-nc/3.0/fr/">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://creativecommons.org/licenses/by-nc/3.0/fr/">http://purl.org/adms/licencetype/NonCommercialUseOnly</entry>
+    <entry key="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeC.pdf">http://purl.org/adms/licencetype/Attribution</entry>
+    <entry key="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf">http://purl.org/adms/licencetype/OtherRestrictiveClauses</entry>
+    <entry key="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeA.pdf">http://purl.org/adms/licencetype/OtherRestrictiveClauses</entry>
+    <entry key="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPU-TypeB.pdf">http://purl.org/adms/licencetype/OtherRestrictiveClauses</entry>
+    <entry key="https://sig.spge.be/carto/sharing/rest/content/items/3ffd9624f6b6467186c09d28e63f0e49/data">http://purl.org/adms/licencetype/OtherRestrictiveClauses</entry>
+    <entry key="https://sig.spge.be/carto/sharing/rest/content/items/f50dddb603254acfa1b8993483680497/data">http://purl.org/adms/licencetype/OtherRestrictiveClauses</entry>
+  </xsl:variable>
+
   <!--
   RDF Property:	dcterms:accessRights
   Definition:	Information about who can access the resource or an indication of its security status.
@@ -137,6 +166,12 @@
                   </dct:LicenseDocument>
                 </dct:license>
               </xsl:if>
+
+              <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                <dct:license>
+                  <dct:LicenseDocument rdf:about="{.}"/>
+                </dct:license>
+              </xsl:for-each>
             </xsl:when>
             <xsl:when test="$httpUriInAnchorOrText != ''">
               <dct:license>
