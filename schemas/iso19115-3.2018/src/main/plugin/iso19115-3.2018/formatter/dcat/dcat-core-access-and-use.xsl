@@ -103,8 +103,7 @@
 
     <xsl:if test="count(../preceding-sibling::mri:resourceConstraints/*) = 0">
 
-      <xsl:for-each select="distinct-values(../../mri:resourceConstraints/*/mco:accessConstraints/*/@codeListValue
-                                                                |../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints/gcx:Anchor/@xlink:href)">
+      <xsl:for-each select="distinct-values(../../mri:resourceConstraints/*/mco:accessConstraints/*/@codeListValue)">
         <xsl:variable name="dcatAccessType"
                       select="$dcatApAccessTypes[. = current()]"/>
         <xsl:if test="$dcatAccessType">
@@ -114,8 +113,11 @@
         </xsl:if>
       </xsl:for-each>
 
-      <xsl:for-each select="../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints">
+     <xsl:for-each select="../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints">
         <xsl:if test="position() = 1 or ($isPreservingAllResourceConstraints and position() > 1)">
+          <!--
+          MW: only one allowed in DCAT-AP so keep only the mapping to DCAT-AP types (see above).
+
           <xsl:element name="{if (position() = 1) then 'dct:accessRights' else 'dct:rights'}">
             <dct:RightsStatement>
               <xsl:choose>
@@ -129,7 +131,7 @@
                 </xsl:otherwise>
               </xsl:choose>
             </dct:RightsStatement>
-          </xsl:element>
+          </xsl:element>-->
         </xsl:if>
       </xsl:for-each>
 
@@ -161,7 +163,9 @@
                 <dct:license>
                   <dct:LicenseDocument rdf:about="{$euDcatLicense/@rdf:about}">
                     <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
-                      <dct:type rdf:resource="{.}"/>
+                      <dct:type>
+                        <skos:Concept rdf:about="{.}"/>
+                      </dct:type>
                     </xsl:for-each>
                     <!--<xsl:copy-of select="$euDcatLicense/(skos:prefLabel[@xml:lang = $languages/@iso2code]
                                                       |skos:exactMatch)"
