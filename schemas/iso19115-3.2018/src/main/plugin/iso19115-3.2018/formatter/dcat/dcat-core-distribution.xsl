@@ -123,13 +123,15 @@
                             |mpc:portrayalCatalogueCitation/*/cit:onlineResource
                             |mrl:additionalDocumentation/*/cit:onlineResource
                             |mdq:reportReference/*/cit:onlineResource
+                            |mdq:reportReference/*/cit:title[gcx:Anchor/@xlink:href]
                             |mdq:specification/*/cit:onlineResource
+                            |mdq:specification/*/cit:title[gcx:Anchor/@xlink:href]
                             |mrc:featureCatalogueCitation/*/cit:onlineResource">
     <xsl:param name="additionalProperties"
                as="node()*"/>
 
     <xsl:variable name="url"
-                  select="*/cit:linkage/gco:CharacterString/text()"/>
+                  select="(*/cit:linkage/gco:CharacterString/text()|gcx:Anchor/@xlink:href)[1]"/>
 
     <xsl:variable name="protocol"
                   select="*/cit:protocol/*/text()"/>
@@ -143,16 +145,19 @@
     <xsl:variable name="function"
                   select="*/cit:function/*/@codeListValue"/>
 
-    <!-- TODO: SEMICeu check if GetCapabilities in URL. Could check for protocols ?-->
-    <xsl:variable name="pointsToService" select="false()"/>
-
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
       <!-- MW: This is used for accessUrl of download distribution type -->
       <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/>
       <xsl:when test="$function = ('information', 'information.content', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
                                  or ($function = ('browsing') and matches($protocol, 'WWW:LINK.*'))
-                                 or ((not($function) or $function = '') and matches($protocol, 'WWW:LINK.*'))">
+                                 or ((not($function) or $function = '') and (matches($protocol, 'WWW:LINK.*') or not($protocol) or $protocol = ''))">
+
+        <xsl:variable name="isDocumentation"
+                      select="count(ancestor::mrl:additionalDocumentation
+                                              |mdq:reportReference
+                                              |mdq:specification) > 0"/>
+
         <foaf:page>
           <foaf:Document rdf:about="{$url}">
             <xsl:apply-templates mode="iso19115-3-to-dcat"

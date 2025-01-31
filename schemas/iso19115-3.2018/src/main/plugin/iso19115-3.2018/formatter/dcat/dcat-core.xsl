@@ -160,7 +160,9 @@
                                   |.//mpc:portrayalCatalogueCitation/*/cit:onlineResource
                                   |.//mrl:additionalDocumentation//cit:onlineResource
                                   |.//mdq:reportReference//cit:onlineResource
+                                  |.//mdq:reportReference/*/cit:title[gcx:Anchor/@xlink:href]
                                   |.//mdq:specification//cit:onlineResource
+                                  |.//mdq:specification/*/cit:title[gcx:Anchor/@xlink:href]
                                   |.//mrc:featureCatalogueCitation//cit:onlineResource
                                   |mdb:identificationInfo/*/mri:graphicOverview
                            "/>
