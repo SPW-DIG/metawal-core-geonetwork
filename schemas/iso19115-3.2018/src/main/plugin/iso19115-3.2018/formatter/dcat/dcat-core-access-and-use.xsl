@@ -81,6 +81,8 @@
     <entry key="https://sig.spge.be/carto/sharing/rest/content/items/f50dddb603254acfa1b8993483680497/data">http://purl.org/adms/licencetype/OtherRestrictiveClauses</entry>
   </xsl:variable>
 
+  <xsl:variable name="admsLicenceTypeVocabulary"
+                       select="document('vocabularies/adms-licence-type.rdf')"/>
   <!--
   RDF Property:	dcterms:accessRights
   Definition:	Information about who can access the resource or an indication of its security status.
@@ -168,8 +170,12 @@
                 <dct:license>
                   <dct:LicenseDocument rdf:about="{$euDcatLicense/@rdf:about}">
                     <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                      <xsl:variable name="uri" select="."/>
                       <dct:type>
-                        <skos:Concept rdf:about="{.}"/>
+                        <skos:Concept rdf:about="{$uri}">
+                          <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
+                                               copy-namespaces="no"/>
+                        </skos:Concept>
                       </dct:type>
                     </xsl:for-each>
                     <!--<xsl:copy-of select="$euDcatLicense/(skos:prefLabel[@xml:lang = $languages/@iso2code]
@@ -183,7 +189,13 @@
               <dct:license>
                 <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}">
                   <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
-                    <dct:type rdf:resource="{.}"/>
+                    <xsl:variable name="uri" select="."/>
+                    <dct:type>
+                      <skos:Concept rdf:about="{$uri}">
+                        <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
+                                             copy-namespaces="no"/>
+                      </skos:Concept>
+                    </dct:type>
                   </xsl:for-each>
                 </dct:LicenseDocument>
               </dct:license>
