@@ -8,6 +8,7 @@
                 xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0"
                 xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/2.0"
                 xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
+                xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
                 xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:mdUtil="java:org.fao.geonet.api.records.MetadataUtils"
@@ -77,6 +78,8 @@
     <xsl:variable name="legislations"
                         select="mdb:identificationInfo/*/mri:descriptiveKeywords/*/mri:keyword[starts-with(*/@xlink:href, 'http://data.europa.eu/eli')]"/>
 
+    <xsl:variable name="metadata" select="."/>
+
     <xsl:for-each select="$associations/relations/*">
       <xsl:variable name="resourceIdentifierWithHttpCodeSpace"
                           select="(root/resourceIdentifier[starts-with(codeSpace, 'http')])[1]"/>
@@ -121,6 +124,39 @@
               </xsl:for-each>
               <dct:title><xsl:value-of select="root/resourceTitleObject/default"/></dct:title>
               <dct:description xml:lang="fre"><xsl:value-of select="root/resourceAbstractObject/default"/></dct:description>
+
+              <!--
+               RDF Property:	dcterms:issued
+               Definition:	Date of formal issuance (e.g., publication) of the distribution.
+              -->
+              <xsl:for-each select="$metadata//mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
+                                               $metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'publication']">
+                <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                     select=".">
+                  <xsl:with-param name="dateType" select="'publication'"/>
+                </xsl:apply-templates>
+              </xsl:for-each>
+
+              <!--
+              RDF Property:	dcterms:modified
+              Definition:	Most recent date on which the distribution was changed, updated or modified.
+              Range:	rdfs:Literal encoded using the relevant ISO 8601 Date and Time compliant string [DATETIME] and typed using the appropriate XML Schema datatype [XMLSCHEMA11-2] (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime).
+              -->
+              <xsl:for-each select="$metadata//mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
+                                               $metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'revision']">
+                <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                     select=".">
+                  <xsl:with-param name="dateType" select="'revision'"/>
+                </xsl:apply-templates>
+              </xsl:for-each>
+
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select="$metadata/mdb:identificationInfo/*/mri:resourceConstraints/*[mco:useConstraints]"/>
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select="$metadata/mdb:identificationInfo/*/mri:resourceConstraints/*[mco:accessConstraints]"/>
+
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select="$metadata/mdb:identificationInfo/*/mri:defaultLocale"/>
 
               <xsl:apply-templates mode="iso19115-3-to-dcat"
                                    select="$legislations"/>
