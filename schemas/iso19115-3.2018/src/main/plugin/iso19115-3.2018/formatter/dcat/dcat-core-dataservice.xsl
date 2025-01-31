@@ -65,8 +65,10 @@
   -->
   <xsl:template mode="iso19115-3-to-dcat"
                 match="srv:operatesOn">
+    <!--
+    See related API in dcat-core-resource
     <dcat:servesDataset>
       <dcat:Dataset rdf:about="{if (@xlink:href) then @xlink:href else @uuidref}"/>
-    </dcat:servesDataset>
+    </dcat:servesDataset>-->
   </xsl:template>
 </xsl:stylesheet>

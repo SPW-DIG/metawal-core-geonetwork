@@ -101,6 +101,11 @@
         <xsl:when test="local-name() = 'siblings'">
           <dct:references rdf:resource="{$recordUri}"/>
         </xsl:when>
+        <xsl:when test="local-name() = 'datasets'">
+          <dcat:servesDataset>
+            <dcat:Dataset rdf:about="{$recordUri}"/>
+          </dcat:servesDataset>
+        </xsl:when>
         <xsl:when test="local-name() = 'services'">
           <xsl:variable name="mainLink"
                         select="root/link[1]"/>
