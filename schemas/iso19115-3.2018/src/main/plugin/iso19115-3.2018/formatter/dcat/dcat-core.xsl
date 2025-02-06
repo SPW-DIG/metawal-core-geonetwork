@@ -185,6 +185,7 @@
                       |mdb:resourceLineage/*/mrl:statement
                       |mrd:onLine/*/cit:name
                       |mrd:onLine/*/cit:description
+                      |cit:onlineResource/*/cit:name
                       |cit:onlineResource/*/cit:description
                       |mri:graphicOverview/*/mcc:fileDescription
                       ">
@@ -194,7 +195,7 @@
     <xsl:variable name="dcatElementName"
                   as="node()?"
                   select="$isoToDcatCommonNames[. = $xpath]"/>
-
+    
     <xsl:choose>
       <xsl:when test="$dcatElementName and $dcatElementName/@isMultilingual = 'false'">
         <xsl:call-template name="rdf-not-localised">
