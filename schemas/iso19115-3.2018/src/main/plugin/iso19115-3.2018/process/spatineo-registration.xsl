@@ -65,6 +65,7 @@
                   select="distinct-values($root//mdb:distributionInfo//mrd:onLine/*[
                             contains(cit:protocol/*, 'WFS')
                             or contains(cit:protocol/*, 'WMS')
+                            or contains(cit:protocol/*, 'atom:feed')
                             or contains(cit:protocol/*, 'ESRI:REST')]
                               /cit:linkage/*/text())"/>
 
