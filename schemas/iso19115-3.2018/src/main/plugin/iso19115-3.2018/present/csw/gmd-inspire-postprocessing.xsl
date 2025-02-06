@@ -29,6 +29,10 @@
                    select="concat(., '/formatters/iso19139?output=xml')"/>
   </xsl:template>
 
+  <xsl:template match="gmd:resourceConstraints/*/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue[. ='unrestricted']">
+    <xsl:attribute name="codeListValue" select="'otherRestrictions'"/>
+  </xsl:template>
+
   <!-- Remove geonet:* elements. -->
   <xsl:template match="gn:*" priority="2"/>
 
