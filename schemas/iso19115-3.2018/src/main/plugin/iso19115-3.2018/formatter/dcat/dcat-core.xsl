@@ -195,7 +195,7 @@
     <xsl:variable name="dcatElementName"
                   as="node()?"
                   select="$isoToDcatCommonNames[. = $xpath]"/>
-    
+
     <xsl:choose>
       <xsl:when test="$dcatElementName and $dcatElementName/@isMultilingual = 'false'">
         <xsl:call-template name="rdf-not-localised">
