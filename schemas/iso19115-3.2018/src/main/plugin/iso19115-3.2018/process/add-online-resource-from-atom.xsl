@@ -1,6 +1,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:atom="http://www.w3.org/2005/Atom"
                 xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
                 xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
@@ -108,10 +109,11 @@
   </xsl:template>
 
     <xsl:template match="atom:link[@rel='enclosure']">
+      <xsl:param name="distribution"/>
+      <xsl:param name="entry"/>
 
-      <xsl:param name="distribution"></xsl:param>
-      <xsl:param name="entry"></xsl:param>
       <xsl:variable name="currentHref" select="@href"/>
+
       <!-- Verify link is not already present in distribution-->
 <!--      <xsl:if test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">-->
 <!--        <xsl:apply-templates select="$distribution/mrd:transferOptions[mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString/text() = $currentHref]"/>-->
