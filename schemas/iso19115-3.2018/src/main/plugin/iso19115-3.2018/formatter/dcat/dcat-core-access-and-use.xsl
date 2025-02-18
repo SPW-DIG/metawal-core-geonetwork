@@ -156,49 +156,70 @@
                 <dct:LicenseDocument rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf"/>
               </dct:license>
             </xsl:when>
-            <xsl:when test="$httpUriInAnchorOrText != '' and $isMappingResourceConstraintsToEuVocabulary = true()">
-              <xsl:variable name="licenseUriWithoutHttp"
-                            select="replace($httpUriInAnchorOrText,'https?://','')"/>
-              <xsl:variable name="euDcatLicense"
-                            select="$euLicenses/rdf:RDF/skos:Concept[
-                                                  matches(skos:exactMatch/@rdf:resource,
-                                                          concat('https?://', $licenseUriWithoutHttp, '/?'))
-                                                  or matches(@rdf:about,
-                                                          concat('https?://', $licenseUriWithoutHttp, '/?'))]"/>
-
-              <xsl:if test="$euDcatLicense != ''">
-                <dct:license>
-                  <dct:LicenseDocument rdf:about="{$euDcatLicense/@rdf:about}">
-                    <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
-                      <xsl:variable name="uri" select="."/>
-                      <dct:type>
-                        <skos:Concept rdf:about="{$uri}">
-                          <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
-                                               copy-namespaces="no"/>
-                        </skos:Concept>
-                      </dct:type>
-                    </xsl:for-each>
-                    <!--<xsl:copy-of select="$euDcatLicense/(skos:prefLabel[@xml:lang = $languages/@iso2code]
-                                                      |skos:exactMatch)"
-                                   copy-namespaces="no"/>-->
-                  </dct:LicenseDocument>
-                </dct:license>
-              </xsl:if>
-            </xsl:when>
             <xsl:when test="$httpUriInAnchorOrText != ''">
-              <dct:license>
-                <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}">
-                  <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
-                    <xsl:variable name="uri" select="."/>
-                    <dct:type>
-                      <skos:Concept rdf:about="{$uri}">
-                        <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
+              <xsl:choose>
+                <xsl:when test="$isMappingResourceConstraintsToEuVocabulary = true()">
+                  <xsl:variable name="licenseUriWithoutHttp"
+                                select="replace($httpUriInAnchorOrText,'https?://','')"/>
+                  <xsl:variable name="euDcatLicense"
+                                select="$euLicenses/rdf:RDF/skos:Concept[
+                                                    matches(skos:exactMatch/@rdf:resource,
+                                                            concat('https?://', $licenseUriWithoutHttp, '/?'))
+                                                    or matches(@rdf:about,
+                                                            concat('https?://', $licenseUriWithoutHttp, '/?'))]"/>
+
+                  <xsl:choose>
+                    <xsl:when test="$euDcatLicense != ''">
+                      <dct:license>
+                        <dct:LicenseDocument rdf:about="{$euDcatLicense/@rdf:about}">
+                          <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                            <xsl:variable name="uri" select="."/>
+                            <dct:type>
+                              <skos:Concept rdf:about="{$uri}">
+                                <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
                                              copy-namespaces="no"/>
-                      </skos:Concept>
-                    </dct:type>
-                  </xsl:for-each>
-                </dct:LicenseDocument>
-              </dct:license>
+                              </skos:Concept>
+                            </dct:type>
+                          </xsl:for-each>
+                          <!--<xsl:copy-of select="$euDcatLicense/(skos:prefLabel[@xml:lang = $languages/@iso2code]
+                                                            |skos:exactMatch)"
+                                         copy-namespaces="no"/>-->
+                        </dct:LicenseDocument>
+                      </dct:license>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <dct:license>
+                        <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}">
+                          <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                            <xsl:variable name="uri" select="."/>
+                            <dct:type>
+                              <skos:Concept rdf:about="{$uri}">
+                                <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
+                                             copy-namespaces="no"/>
+                              </skos:Concept>
+                            </dct:type>
+                          </xsl:for-each>
+                        </dct:LicenseDocument>
+                      </dct:license>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                  <dct:license>
+                    <dct:LicenseDocument rdf:about="{$httpUriInAnchorOrText}">
+                      <xsl:for-each select="$admsLicenceTypes[@key = $httpUriInAnchorOrText]">
+                        <xsl:variable name="uri" select="."/>
+                        <dct:type>
+                          <skos:Concept rdf:about="{$uri}">
+                            <xsl:copy-of select="$admsLicenceTypeVocabulary//owl:NamedIndividual[@rdf:about = $uri]/skos:*"
+                                         copy-namespaces="no"/>
+                          </skos:Concept>
+                        </dct:type>
+                      </xsl:for-each>
+                    </dct:LicenseDocument>
+                  </dct:license>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
               <dct:rights>
