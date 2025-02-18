@@ -144,12 +144,13 @@
 
     <xsl:variable name="function"
                   select="*/cit:function/*/@codeListValue"/>
-
+    
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
       <!-- MW: This is used for accessUrl of download distribution type -->
       <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/>
-      <xsl:when test="$function = ('information', 'information.content', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+      <xsl:when test="$function = ('information', 'information.content', 'information.portrayal', 'information.lineage', 'information.qualitySpecification', 'information.qualityReport',
+                                                     'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
                                  or ($function = ('browsing') and matches($protocol, 'WWW:LINK.*'))
                                  or ((not($function) or $function = '') and (matches($protocol, 'WWW:LINK.*') or not($protocol) or $protocol = ''))">
 
