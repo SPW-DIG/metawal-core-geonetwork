@@ -74,6 +74,7 @@
 
       <xsl:message><xsl:text>UUID: </xsl:text><xsl:value-of select="$uuid"/> </xsl:message>
       <xsl:variable name="remoteAtomfeed" select="document($atomfeedUrl)"/>
+      <!-- Select link where type is application/atom+xml  (to select atom datasets) -->
       <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml' and contains(@href, $uuid)]/@href"/>
 <!--      <xsl:message><xsl:text>ATOM Link: </xsl:text><xsl:value-of select="$atomLink"/></xsl:message>-->
 
@@ -106,7 +107,7 @@
     <!-- Do nothing to remove this element -->
   </xsl:template>
 
-    <xsl:template match="atom:link">
+    <xsl:template match="atom:link[@rel='enclosure']">
 
       <xsl:param name="distribution"></xsl:param>
       <xsl:param name="entry"></xsl:param>
@@ -125,11 +126,13 @@
 <!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
         <mrd:transferOptions>
           <mrd:MD_DigitalTransferOptions>
+<!--            <xsl:if test="@length"> &lt;!&ndash; Only add 'transferSize' if 'length' attribute is present in the link.&ndash;&gt;-->
               <mrd:transferSize>
                 <gco:Real>
                   <xsl:value-of select="@length div 1048576"/> <!-- size converted from Byte to MB-->
                 </gco:Real>
               </mrd:transferSize>
+<!--            </xsl:if>-->
               <mrd:onLine>
                   <cit:CI_OnlineResource>
                       <cit:linkage>
