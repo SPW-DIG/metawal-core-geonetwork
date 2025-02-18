@@ -144,7 +144,7 @@
 
     <xsl:variable name="function"
                   select="*/cit:function/*/@codeListValue"/>
-    
+
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
       <!-- MW: This is used for accessUrl of download distribution type -->

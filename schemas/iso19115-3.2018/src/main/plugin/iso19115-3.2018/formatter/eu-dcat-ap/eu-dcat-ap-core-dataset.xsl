@@ -191,8 +191,11 @@
   because MobilityDCAT restrict it to 0..1. The other identifiers are mapped to adms:identifier.
   https://www.w3.org/TR/vocab-adms/#identifier
   -->
-  <xsl:template mode="iso19115-3-to-dcat"
+<!--  MW rule <xsl:template mode="iso19115-3-to-dcat"
                 match="mdb:identificationInfo/*/mri:citation/*/cit:identifier[position() > 1]"
+                priority="20">-->
+  <xsl:template mode="iso19115-3-to-dcat"
+                match="mdb:identificationInfo/*/mri:citation/*/cit:identifier[not(starts-with(*/mcc:codeSpace/*/text(), 'http'))]"
                 priority="20">
     <xsl:variable name="code"
                   select="*/mcc:code/*/text()"/>
