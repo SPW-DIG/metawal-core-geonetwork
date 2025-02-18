@@ -126,7 +126,7 @@
 <!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
         <mrd:transferOptions>
           <mrd:MD_DigitalTransferOptions>
-            <xsl:if test="@length"> <!-- Only add 'transferSize' if 'length' attribute is present in the link.-->
+            <xsl:if test="@length[. castable as xs:double]"> <!-- Only add 'transferSize' if 'length' attribute is present in the link.-->
               <mrd:transferSize>
                 <gco:Real>
                   <xsl:value-of select="@length div 1048576"/> <!-- size converted from Byte to MB-->
