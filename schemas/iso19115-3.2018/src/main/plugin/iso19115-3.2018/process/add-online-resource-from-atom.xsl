@@ -63,8 +63,11 @@
     </xsl:copy>
   </xsl:template>
 
+
   <!-- Remove geonet:* elements. -->
   <xsl:template match="geonet:*" priority="2"/>
+  <!-- Remove all download links to force update -->
+  <xsl:template match="mrd:MD_Distribution/mrd:transferOptions[mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:protocol/gco:CharacterString[starts-with(., 'WWW:DOWNLOAD:')]]" priority="2"/>
 
   <xsl:variable name="uuid" select="mdb:MD_Metadata/mdb:metadataIdentifier/mcc:MD_Identifier/mcc:code/gco:CharacterString"/>
 
@@ -91,7 +94,7 @@
 
   <xsl:template match="atom:entry">
     <xsl:param name="distribution"></xsl:param>
-    <xsl:variable name="datasetLinks" as="node()*" select="atom:link"/>
+    <xsl:variable name="datasetLinks" as="node()*" select="atom:link[@rel='enclosure']"/>
     <xsl:variable name="entry" as="node()" select="."/>
 <!--    <xsl:message><xsl:text>Dataset links: </xsl:text><xsl:value-of select="$datasetLinks/@href"/></xsl:message>-->
 
@@ -108,7 +111,7 @@
     <!-- Do nothing to remove this element -->
   </xsl:template>
 
-    <xsl:template match="atom:link[@rel='enclosure']">
+    <xsl:template match="atom:link">
       <xsl:param name="distribution"/>
       <xsl:param name="entry"/>
 
@@ -120,11 +123,6 @@
 <!--        <xsl:message><xsl:text>erased content</xsl:text></xsl:message>-->
 <!--      </xsl:if>-->
 
-      <xsl:choose>
-      <xsl:when test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">
-<!--        <xsl:message><xsl:text>link already present ignored: </xsl:text> <xsl:value-of select="$currentHref"/></xsl:message>-->
-      </xsl:when>
-      <xsl:otherwise>
 <!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
         <mrd:transferOptions>
           <mrd:MD_DigitalTransferOptions>
@@ -162,8 +160,6 @@
               </mrd:onLine>
           </mrd:MD_DigitalTransferOptions>
         </mrd:transferOptions>
-      </xsl:otherwise>
-      </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>
