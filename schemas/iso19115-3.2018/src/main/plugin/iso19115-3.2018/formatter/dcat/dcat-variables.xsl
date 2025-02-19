@@ -134,8 +134,8 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/GPKG">geopackage</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/RSS">georss</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/TIFF">image/tiff</entry>
-    <entry key="http://publications.europa.eu/resource/authority/file-type/TIFF">geotiff</entry>
-    <entry key="http://publications.europa.eu/resource/authority/file-type/TIFF">application/x-worldfile</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/GeoTIFF">geotiff</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/GeoTIFF">application/x-worldfile</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GIF">gif</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GML">gml</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GML">application/gml+xml</entry>
