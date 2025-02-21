@@ -1,6 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:atom="http://www.w3.org/2005/Atom"
-                xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:geonet="http://www.fao.org/geonetwork"
                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
@@ -12,11 +11,19 @@
 
   <xsl:import href="process-utility.xsl"/>
 
+
   <xsl:param name="atomfeedUrl" select="''"/>
+  <xsl:variable name="uuid" select="/mdb:MD_Metadata/mdb:metadataIdentifier[position() = 1]/mcc:MD_Identifier/mcc:code/gco:CharacterString"/>
+  <xsl:variable name="remoteAtomfeed" select="if ($atomfeedUrl != '' ) then document($atomfeedUrl) else ''"/>
+  <xsl:variable name="atomLink"
+                select="if ($atomfeedUrl != '' ) then $remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml' and contains(@href, $uuid)]/@href else ''"/>
+  <xsl:variable name="remoteAtomDataset"
+                select="if ($atomLink != '') then document($remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml' and contains(@href, $uuid)]/@href) else ''"/>
+
 
   <xsl:variable name="atomfeed-registration-loc">
-    <msg id="a" xml:lang="eng">Add online resource from atom feed: </msg>
-    <msg id="a" xml:lang="fre">Ajouter resource depuis atom feed: </msg>
+    <msg id="a" xml:lang="eng">Add online resource from atom feed:</msg>
+    <msg id="a" xml:lang="fre">Ajouter resource depuis atom feed:</msg>
   </xsl:variable>
 
   <xsl:template name="list-add-online-resource-from-atom">
@@ -37,19 +44,18 @@
     <xsl:for-each select="$services">
       <xsl:variable name="url"
                     select="."/>
-      <xsl:variable name="isRegistered" select="false()" />
-<!--                    select="count($root//mdb:dataQualityInfo/*/-->
-<!--                              mdq:standaloneQualityReport[-->
-<!--                                contains(*/mdq:abstract/*[1]/text(), $url)]) > 0"-->
-<!--                    as="xs:boolean"/>-->
+      <xsl:variable name="isRegistered" select="false()"/>
       <xsl:if test="not($isRegistered)">
         <suggestion process="add-online-resource-from-atom"
                     id="{concat($id, '-', position())}"
                     category="contentinfo"
                     target="metadata">
-          <name><xsl:value-of select="geonet:i18n($atomfeed-registration-loc, 'a', $guiLang)"/><xsl:value-of select="."/></name>
+          <name>
+            <xsl:value-of select="geonet:i18n($atomfeed-registration-loc, 'a', $guiLang)"/><xsl:value-of select="."/>
+          </name>
           <operational>true</operational>
-          <params>{"atomfeedUrl":{"type":"text", "defaultValue":"<xsl:value-of select="."/>"}}</params>
+          <params>{"atomfeedUrl":{"type":"text", "defaultValue":"<xsl:value-of select="."/>"}}
+          </params>
         </suggestion>
       </xsl:if>
     </xsl:for-each>
@@ -63,103 +69,72 @@
     </xsl:copy>
   </xsl:template>
 
-
   <!-- Remove geonet:* elements. -->
   <xsl:template match="geonet:*" priority="2"/>
-  <!-- Remove all download links to force update -->
-  <xsl:template match="mrd:MD_Distribution/mrd:transferOptions[mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:protocol/gco:CharacterString[starts-with(., 'WWW:DOWNLOAD:')]]" priority="2"/>
 
-  <xsl:variable name="uuid" select="mdb:MD_Metadata/mdb:metadataIdentifier/mcc:MD_Identifier/mcc:code/gco:CharacterString"/>
+  <!-- Remove all transfer options having a linkage pointing to the current atom feed to analyze -->
+  <xsl:template
+    match="mrd:MD_Distribution/mrd:transferOptions[*/mrd:onLine/*/cit:linkage/gco:CharacterString = $remoteAtomDataset/atom:feed/atom:entry/atom:link[@rel='enclosure']/@href]"
+    priority="2"/>
 
-  <xsl:template match="mdb:MD_Metadata/mdb:distributionInfo/mrd:MD_Distribution">
+
+  <!-- Insert into the first distribution section, the atom feed links -->
+  <xsl:template match="mdb:MD_Metadata/mdb:distributionInfo[1]/mrd:MD_Distribution">
     <xsl:copy>
       <xsl:apply-templates select="*"/>
-      <xsl:variable name="md_distribution" select="."/>
-
-      <xsl:message><xsl:text>UUID: </xsl:text><xsl:value-of select="$uuid"/> </xsl:message>
-      <xsl:variable name="remoteAtomfeed" select="document($atomfeedUrl)"/>
-      <!-- Select link where type is application/atom+xml  (to select atom datasets) -->
-      <xsl:variable name="atomLink" as="node()*" select="$remoteAtomfeed/atom:feed/atom:entry/atom:link[@type='application/atom+xml' and contains(@href, $uuid)]/@href"/>
-<!--      <xsl:message><xsl:text>ATOM Link: </xsl:text><xsl:value-of select="$atomLink"/></xsl:message>-->
-
-      <xsl:variable name="remoteAtomDataset" select="document($atomLink)"/>
-      <!-- Variable to store all dataset links -->
-      <xsl:apply-templates select="$remoteAtomDataset/atom:feed/atom:entry">
-        <xsl:with-param name="distribution" select="$md_distribution"/>
-      </xsl:apply-templates>
-
+      <xsl:apply-templates select="$remoteAtomDataset/atom:feed/atom:entry/atom:link[@rel='enclosure']"/>
     </xsl:copy>
-
   </xsl:template>
 
-  <xsl:template match="atom:entry">
-    <xsl:param name="distribution"></xsl:param>
-    <xsl:variable name="datasetLinks" as="node()*" select="atom:link[@rel='enclosure']"/>
-    <xsl:variable name="entry" as="node()" select="."/>
-<!--    <xsl:message><xsl:text>Dataset links: </xsl:text><xsl:value-of select="$datasetLinks/@href"/></xsl:message>-->
 
-    <xsl:for-each select="$datasetLinks">
-      <xsl:apply-templates select="." >
-        <xsl:with-param name="distribution" select="$distribution"/>
-        <xsl:with-param name="entry" select="$entry"/>
-      </xsl:apply-templates>
-    </xsl:for-each>
+  <xsl:template match="atom:link">
+    <!-- Verify link is not already present in distribution-->
+    <!--      <xsl:if test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">-->
+    <!--        <xsl:apply-templates select="$distribution/mrd:transferOptions[mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString/text() = $currentHref]"/>-->
+    <!--        <xsl:message><xsl:text>erased content</xsl:text></xsl:message>-->
+    <!--      </xsl:if>-->
 
+    <!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
+    <mrd:transferOptions>
+      <mrd:MD_DigitalTransferOptions>
+        <xsl:if
+          test="@length[. castable as xs:double]"> <!-- Only add 'transferSize' if 'length' attribute is present in the link.-->
+          <mrd:transferSize>
+            <gco:Real>
+              <xsl:value-of select="@length div 1048576"/> <!-- size converted from Byte to MB-->
+            </gco:Real>
+          </mrd:transferSize>
+        </xsl:if>
+        <mrd:onLine>
+          <cit:CI_OnlineResource>
+            <cit:linkage>
+              <gco:CharacterString>
+                <xsl:value-of select="@href"/>
+              </gco:CharacterString>
+            </cit:linkage>
+            <cit:protocol>
+              <gco:CharacterString>WWW:DOWNLOAD:<xsl:value-of select="@type"/>
+              </gco:CharacterString>
+            </cit:protocol>
+            <cit:name>
+              <gco:CharacterString>
+                <xsl:value-of select="@title"/>
+              </gco:CharacterString>
+            </cit:name>
+            <cit:description>
+              <gco:CharacterString>
+                <xsl:value-of select="ancestor::atom:entry/atom:summary"/>
+              </gco:CharacterString>
+            </cit:description>
+            <cit:function>
+              <cit:CI_OnLineFunctionCode
+                codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                codeListValue="download"/>
+            </cit:function>
+          </cit:CI_OnlineResource>
+        </mrd:onLine>
+      </mrd:MD_DigitalTransferOptions>
+    </mrd:transferOptions>
   </xsl:template>
-
-  <xsl:template match="mrd:transferOptions" mode="remove">
-    <!-- Do nothing to remove this element -->
-  </xsl:template>
-
-    <xsl:template match="atom:link">
-      <xsl:param name="distribution"/>
-      <xsl:param name="entry"/>
-
-      <xsl:variable name="currentHref" select="@href"/>
-
-      <!-- Verify link is not already present in distribution-->
-<!--      <xsl:if test="count($distribution/mrd:transferOptions/mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString[text() = $currentHref])>0">-->
-<!--        <xsl:apply-templates select="$distribution/mrd:transferOptions[mrd:MD_DigitalTransferOptions/mrd:onLine/cit:CI_OnlineResource/cit:linkage/gco:CharacterString/text() = $currentHref]"/>-->
-<!--        <xsl:message><xsl:text>erased content</xsl:text></xsl:message>-->
-<!--      </xsl:if>-->
-
-<!--        <xsl:message><xsl:text>Adding download link: </xsl:text><xsl:value-of select="$currentHref"/> </xsl:message>-->
-        <mrd:transferOptions>
-          <mrd:MD_DigitalTransferOptions>
-            <xsl:if test="@length[. castable as xs:double]"> <!-- Only add 'transferSize' if 'length' attribute is present in the link.-->
-              <mrd:transferSize>
-                <gco:Real>
-                  <xsl:value-of select="@length div 1048576"/> <!-- size converted from Byte to MB-->
-                </gco:Real>
-              </mrd:transferSize>
-            </xsl:if>
-              <mrd:onLine>
-                  <cit:CI_OnlineResource>
-                      <cit:linkage>
-                          <gco:CharacterString>
-                              <xsl:value-of select="@href"/>
-                          </gco:CharacterString>
-                      </cit:linkage>
-                      <cit:protocol>
-                          <gco:CharacterString>WWW:DOWNLOAD:<xsl:value-of select="@type"/></gco:CharacterString>
-                      </cit:protocol>
-                      <cit:name>
-                          <gco:CharacterString>
-                              <xsl:value-of select="@title" />
-                          </gco:CharacterString>
-                      </cit:name>
-                    <cit:description>
-                      <gco:CharacterString>
-                        <xsl:value-of select="$entry/atom:summary" />
-                      </gco:CharacterString>
-                    </cit:description>
-                      <cit:function>
-                          <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode" codeListValue="download"/>
-                      </cit:function>
-                  </cit:CI_OnlineResource>
-              </mrd:onLine>
-          </mrd:MD_DigitalTransferOptions>
-        </mrd:transferOptions>
-    </xsl:template>
 
 </xsl:stylesheet>
