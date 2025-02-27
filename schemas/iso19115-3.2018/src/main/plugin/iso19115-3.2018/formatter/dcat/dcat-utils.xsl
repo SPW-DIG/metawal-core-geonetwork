@@ -64,6 +64,22 @@
   </xsl:template>
 
 
+  <xsl:template name="rdf-index-field-localised">
+    <xsl:param name="nodeName"
+                      as="xs:string"/>
+    <xsl:param name="field"
+                      as="node()"/>
+
+    <xsl:for-each select="$field/*[starts-with(local-name(.), 'lang')]">
+      <xsl:variable name="language" select="substring-after(local-name(.), 'lang')"/>
+      <xsl:element name="{$nodeName}">
+        <xsl:attribute name="xml:lang" select="$language"/>
+        <xsl:value-of select="."/>
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:template>
+
+
   <xsl:template name="rdf-not-localised">
     <xsl:param name="nodeName"
                as="xs:string"/>
