@@ -152,7 +152,6 @@
     <entry key="TRIDECENNIAL">http://publications.europa.eu/resource/authority/frequency/TRIDECENNIAL</entry>
     <entry key="BIHOURLY">http://publications.europa.eu/resource/authority/frequency/BIHOURLY</entry>
     <entry key="TRIHOURLY">http://publications.europa.eu/resource/authority/frequency/TRIHOURLY</entry>
-    <entry key="OTHER">http://publications.europa.eu/resource/authority/frequency/OTHER</entry>
     <entry key="WEEKLY">http://publications.europa.eu/resource/authority/frequency/WEEKLY</entry>
     <entry key="NOT_PLANNED">http://publications.europa.eu/resource/authority/frequency/NOT_PLANNED</entry>
     <entry key="NOTPLANNED">http://publications.europa.eu/resource/authority/frequency/NOT_PLANNED</entry>
@@ -188,12 +187,10 @@
     <entry key="ANNUAL_3">http://publications.europa.eu/resource/authority/frequency/ANNUAL_3</entry>
     <entry key="ANNUAL">http://publications.europa.eu/resource/authority/frequency/ANNUAL</entry>
     <entry key="ANNUALLY">http://publications.europa.eu/resource/authority/frequency/ANNUAL</entry>
-    <!--
-    Missing from the codelist
-    fortnightly
-    periodic
-    biennially
-    -->
+    <entry key="OTHER">http://publications.europa.eu/resource/authority/frequency/OTHER</entry>
+    <entry key="FORTNIGHTLY">http://publications.europa.eu/resource/authority/frequency/OTHER</entry>
+    <entry key="PERIODIC">http://publications.europa.eu/resource/authority/frequency/OTHER</entry>
+    <entry key="BIENNIALLY">http://publications.europa.eu/resource/authority/frequency/OTHER</entry>
   </xsl:variable>
 
   <!--
