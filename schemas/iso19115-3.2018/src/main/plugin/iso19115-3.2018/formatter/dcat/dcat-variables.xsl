@@ -113,12 +113,12 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/XML">csw</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/DBF">dbf</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/BIN">dgn</entry>
-    <entry key="https://www.iana.org/assignments/media-types/image/vn.djvu">djvu</entry>
+    <entry key="https://www.iana.org/assignments/media-types/image/vnd.djvu">djvu</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/DOC">doc</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/DOCX">docx</entry>
-    <entry key="https://www.iana.org/assignments/media-types/image/vn.dxf">dxf</entry>
-    <entry key="https://www.iana.org/assignments/media-types/image/vn.dwg">image/vnd.dwg</entry>
-    <entry key="https://www.iana.org/assignments/media-types/image/vn.dwg">dwg</entry>
+    <entry key="https://www.iana.org/assignments/media-types/image/vnd.dxf">dxf</entry>
+    <entry key="https://www.iana.org/assignments/media-types/image/vnd.dwg">image/vnd.dwg</entry>
+    <entry key="https://www.iana.org/assignments/media-types/image/vnd.dwg">dwg</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/ECW">ecw</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/ECW">ecwp</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/EXE">elp</entry>
@@ -131,6 +131,7 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/GEOJSON">application/geo+json</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GPKG">application/geopackage+vnd.sqlite3</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GPKG">application/geopackage+sqlite3</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/GPKG">OGC GeoPackage (.gpkg)</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GPKG">geopackage</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/RSS">georss</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/TIFF">image/tiff</entry>
