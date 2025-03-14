@@ -210,6 +210,10 @@
             </xsl:if>
           </div>
           <div class="gn-md-side gn-md-side-advanced col-md-4">
+
+            <xsl:call-template name="render-portal-link"/>
+
+
             <xsl:apply-templates mode="getOverviews" select="$metadata"/>
             <xsl:apply-templates mode="getExtent" select="$metadata"/>
 
@@ -217,23 +221,6 @@
               <xsl:with-param name="byThesaurus" select="true()"/>
             </xsl:apply-templates>
 
-            <br/>
-            <br/>
-
-            <a class="btn btn-primary"
-               data-ng-if="mdView.current.record.isPublished()"
-               href="http://geoportail.wallonie.be/catalogue/{$metadataUuid}.html">Fiche dans le Géoportail de la Wallonie</a>
-            <br/>
-
-            <section class="gn-md-side-providedby">
-              <h2>
-                <i class="fa fa-fw fa-cog"></i>
-                <span><xsl:value-of select="$schemaStrings/providedBy"/></span>
-              </h2>
-              <img class="gn-source-logo"
-                   alt="{$schemaStrings/logo}"
-                   src="{$nodeUrl}../images/logos/{$source}.png" />
-            </section>
 
             <xsl:if test="$isSocialbarEnabled">
               <section class="gn-md-side-social">
@@ -299,19 +286,6 @@
               </section>
             </xsl:if>
 
-            <section class="gn-md-side-access">
-              <a class="btn btn-block btn-primary"
-                 href="{if ($portalLink != '')
-                        then replace($portalLink, '\$\{uuid\}', $metadataUuid)
-                        else utils:getDefaultUrl($metadataUuid, $language)}">
-                <i class="fa fa-fw fa-link"></i>
-                <xsl:value-of select="$schemaStrings/linkToPortal"/>
-              </a>
-              <div class="hidden-xs hidden-sm">
-                <xsl:value-of select="$schemaStrings/linkToPortal-help"/>
-              </div>
-            </section>
-
             <!-- Don't add the associated resources in the metadata static page, this page doesn't include JS libs -->
             <xsl:if test="$sideRelated != '' and $root != 'html'">
               <section class="gn-md-side-associated">
@@ -343,6 +317,44 @@
       <br/>
     </div>
   </xsl:template>
+
+
+
+  <xsl:template name="render-portal-link">
+    <xsl:if test="$root != 'div'">
+      <section class="gn-md-side-providedby">
+        <h2>
+          <i class="fa fa-fw fa-cog"></i>
+          <span><xsl:value-of select="$schemaStrings/providedBy"/></span>
+        </h2>
+        <div class="text-center">
+          <img class="gn-source-logo"
+               alt="{$schemaStrings/logo}"
+               src="{$nodeUrl}../images/logos/{$source}.png" />
+        </div>
+      </section>
+    </xsl:if>
+
+    <section class="gn-md-side-access">
+    <xsl:if test="$root != 'div'">
+        <a class="btn btn-block btn-primary"
+           style="margin-bottom: 4px;"
+           href="{if ($portalLink != '')
+                        then replace($portalLink, '\$\{uuid\}', $metadataUuid)
+                        else utils:getDefaultUrl($metadataUuid, $language)}">
+          Metawal
+        </a>
+      </xsl:if>
+
+      <a class="btn btn-primary btn-block"
+         data-ng-if="mdView.current.record.isPublished()"
+         href="http://geoportail.wallonie.be/catalogue/{$metadataUuid}.html">
+        <div>Géoportail de la Wallonie</div></a>
+
+    </section>
+  </xsl:template>
+
+
 
   <!-- Render list of tabs in the current view -->
   <xsl:template mode="render-toc" match="view">
@@ -419,7 +431,7 @@
     <xsl:if test="$isDisplayed">
       <div id="gn-view-{generate-id()}" class="gn-tab-content">
         <xsl:apply-templates mode="render-view" select="@xpath"/>
-        
+
       </div>
     </xsl:if>
   </xsl:template>
