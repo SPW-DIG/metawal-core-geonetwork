@@ -221,39 +221,38 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
-<!--            <xsl:otherwise>-->
-<!--              <dct:rights>-->
-<!--                <dct:RightsStatement>-->
-<!--                  <xsl:call-template name="rdf-localised">-->
-<!--                    <xsl:with-param name="nodeName" select="'dct:description'"/>-->
-<!--                  </xsl:call-template>-->
-<!--                </dct:RightsStatement>-->
-<!--              </dct:rights>-->
-<!--            </xsl:otherwise>-->
+            <xsl:otherwise>
+              <dct:rights>
+                <dct:RightsStatement>
+                  <xsl:call-template name="rdf-localised">
+                    <xsl:with-param name="nodeName" select="'dct:description'"/>
+                  </xsl:call-template>
+                </dct:RightsStatement>
+              </dct:rights>
+            </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>
       </xsl:variable>
 
-      <xsl:copy-of select="$licensesAndRights"/>
+      <!-- Copy all licenses except rights (added further) -->
+      <xsl:copy-of select="$licensesAndRights[name() != 'dct:rights']"/>
 
-      <xsl:variable name="MergedRightsStatements" as="node()*">
+      <!-- Add rights (grouped in a single 'dct:rights' tag) -->
+      <xsl:if test="$licensesAndRights[name() = 'dct:rights']">
         <dct:rights>
-        <dct:RightsStatement>
-        <xsl:for-each select="$useConstraints">
-          <xsl:variable name="httpUriInAnchorOrText"
-                        select="(gcx:Anchor/@xlink:href[starts-with(., 'http')]
-                                  |gco:CharacterString[starts-with(., 'http')])[1]"/>
-          <xsl:choose>
-          <xsl:when test="not(string-length($httpUriInAnchorOrText))">
-            <xsl:value-of select="gco:CharacterString/text()"/>
-          </xsl:when>
-          </xsl:choose>
-        </xsl:for-each>
-        </dct:RightsStatement>
+          <dct:RightsStatement>
+            <xsl:for-each-group select="$licensesAndRights[name() = 'dct:rights']/*/dct:description"
+                                group-by="@xml:lang">
+              <dct:description xml:lang="{current-grouping-key()}">
+                <xsl:for-each select="current-group()/text()">
+                  <xsl:value-of select="."/><xsl:text>&#xa;</xsl:text>
+                </xsl:for-each>
+              </dct:description>
+            </xsl:for-each-group>
+          </dct:RightsStatement>
         </dct:rights>
-      </xsl:variable>
+      </xsl:if>
 
-      <xsl:copy-of select="$MergedRightsStatements"/>
 
     </xsl:if>
   </xsl:template>
