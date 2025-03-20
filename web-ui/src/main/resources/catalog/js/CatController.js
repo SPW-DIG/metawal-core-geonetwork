@@ -727,7 +727,7 @@
               },
               {
                 label: "EU-DCAT-AP",
-                url: "/formatters/eu-dcat-ap?output=xml"
+                url: "/formatters/eu-dcat-ap-hvd?output=xml"
               },
               {
                 label: "EU-GEO-DCAT-AP",
