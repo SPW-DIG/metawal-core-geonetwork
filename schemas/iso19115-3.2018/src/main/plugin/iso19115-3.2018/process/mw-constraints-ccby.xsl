@@ -88,7 +88,7 @@
 
 
   <xsl:template match="mco:otherConstraints[$hasCcbyConstraints and not($citationContainsLastRevisionDate)
-                                          and starts-with(gco:CharacterString, 'Source : ')]">
+                                          and starts-with(gco:CharacterString, 'Source :')]">
                 priority="2">
     <xsl:copy>
       <xsl:call-template name="build-citation"/>
