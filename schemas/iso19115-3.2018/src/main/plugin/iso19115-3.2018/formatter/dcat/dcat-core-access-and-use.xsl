@@ -221,20 +221,40 @@
                 </xsl:otherwise>
               </xsl:choose>
             </xsl:when>
-            <xsl:otherwise>
-              <dct:rights>
-                <dct:RightsStatement>
-                  <xsl:call-template name="rdf-localised">
-                    <xsl:with-param name="nodeName" select="'dct:description'"/>
-                  </xsl:call-template>
-                </dct:RightsStatement>
-              </dct:rights>
-            </xsl:otherwise>
+<!--            <xsl:otherwise>-->
+<!--              <dct:rights>-->
+<!--                <dct:RightsStatement>-->
+<!--                  <xsl:call-template name="rdf-localised">-->
+<!--                    <xsl:with-param name="nodeName" select="'dct:description'"/>-->
+<!--                  </xsl:call-template>-->
+<!--                </dct:RightsStatement>-->
+<!--              </dct:rights>-->
+<!--            </xsl:otherwise>-->
           </xsl:choose>
         </xsl:for-each>
       </xsl:variable>
 
       <xsl:copy-of select="$licensesAndRights"/>
+
+      <xsl:variable name="MergedRightsStatements" as="node()*">
+        <dct:rights>
+        <dct:RightsStatement>
+        <xsl:for-each select="$useConstraints">
+          <xsl:variable name="httpUriInAnchorOrText"
+                        select="(gcx:Anchor/@xlink:href[starts-with(., 'http')]
+                                  |gco:CharacterString[starts-with(., 'http')])[1]"/>
+          <xsl:choose>
+          <xsl:when test="not(string-length($httpUriInAnchorOrText))">
+            <xsl:value-of select="gco:CharacterString/text()"/>
+          </xsl:when>
+          </xsl:choose>
+        </xsl:for-each>
+        </dct:RightsStatement>
+        </dct:rights>
+      </xsl:variable>
+
+      <xsl:copy-of select="$MergedRightsStatements"/>
+
     </xsl:if>
   </xsl:template>
 
