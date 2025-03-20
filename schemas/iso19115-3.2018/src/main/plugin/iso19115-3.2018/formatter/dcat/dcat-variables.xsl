@@ -155,7 +155,7 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/JPEG">jpeg</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JPEG">jpg</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">application/json</entry>
-    <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">application/vnd.geo+json</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/GEOJSON">application/vnd.geo+json</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">json</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">OGC API - Coverages</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">OGC API - Records</entry>
