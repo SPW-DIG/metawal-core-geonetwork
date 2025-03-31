@@ -30,10 +30,6 @@
     <msg id="update" xml:lang="fre">Mettre à jour la citation dans la contrainte CC-BY.</msg>
   </xsl:variable>
 
-  <xsl:template name="list-mw-update-ccby">
-    <suggestion process="mw-update-ccby"/>
-  </xsl:template>
-
   <xsl:variable name="ccByConstraint"
                 select="//mri:resourceConstraints/*/mco:otherConstraints[gcx:Anchor/@xlink:href = 'https://creativecommons.org/licenses/by/4.0/']"/>
 
@@ -52,25 +48,8 @@
   <xsl:variable name="citationContainsLastRevisionDate"
                 select="count(//$ccByConstraint/following-sibling::mco:otherConstraints[1][contains(gco:CharacterString, $lastRevisionDate)]) > 0"/>
 
-  <xsl:template name="analyze-mw-update-ccby">
-    <xsl:variable name="id"
-                  select="generate-id(.)"/>
-
-    <xsl:if test="$hasCcbyConstraints and $lastRevisionDate != '' and not($citationContainsLastRevisionDate)">
-      <suggestion process="mw-update-ccby"
-                  id="{concat($id, '-', position())}"
-                  category="contentinfo"
-                  target="metadata">
-        <name><xsl:value-of select="gn:i18n($mw-update-ccby-loc, 'update', $guiLang)"/></name>
-        <operational>true</operational>
-        <params>{}</params>
-      </suggestion>
-    </xsl:if>
-  </xsl:template>
-
   <xsl:variable name="metadataIdentifier"
                 select="//mdb:MD_Metadata/mdb:metadataIdentifier[1]/*/mcc:code/gco:CharacterString"/>
-
 
   <xsl:template match="mco:otherConstraints[$hasCcbyConstraints and not($citationContainsLastRevisionDate)
                                           and starts-with(gco:CharacterString, 'Source :')]"
