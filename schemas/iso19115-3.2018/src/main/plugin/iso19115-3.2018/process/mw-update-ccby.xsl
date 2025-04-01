@@ -25,11 +25,6 @@
   <xsl:variable name="configuration"
                 select="/empty"/>
 
-  <xsl:variable name="mw-update-ccby-loc">
-    <msg id="update" xml:lang="eng">Update citation in CC-BY constraint.</msg>
-    <msg id="update" xml:lang="fre">Mettre à jour la citation dans la contrainte CC-BY.</msg>
-  </xsl:variable>
-
   <xsl:variable name="ccByConstraint"
                 select="//mri:resourceConstraints/*/mco:otherConstraints[gcx:Anchor/@xlink:href = 'https://creativecommons.org/licenses/by/4.0/']"/>
 
