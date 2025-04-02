@@ -1342,6 +1342,38 @@
         </xsl:for-each>
       </xsl:for-each>
 
+
+      <xsl:for-each select=".//srv:connectPoint/*[cit:linkage/gco:CharacterString != '']">
+        <connectPoint type="object">{
+          "operation": "<xsl:value-of select="util:escapeForJson(ancestor::srv:SV_OperationMetadata/srv:operationName/*/text())"/>",
+          "protocol":"<xsl:value-of select="util:escapeForJson(cit:protocol/*/text())"/>",
+          "mimeType":"<xsl:value-of select="if (*/gcx:MimeFileType)
+                                              then util:escapeForJson(*/gcx:MimeFileType/@type)
+                                              else if (starts-with(cit:protocol/gco:CharacterString, 'WWW:DOWNLOAD:'))
+                                              then util:escapeForJson(replace(cit:protocol/gco:CharacterString, 'WWW:DOWNLOAD:', ''))
+                                              else ''"/>",
+          <xsl:if test="normalize-space(cit:linkage) != ''">
+            "urlObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'url', cit:linkage, $allLanguages, true())"/>,
+          </xsl:if>
+          <xsl:if test="normalize-space(cit:name) != ''">
+            "nameObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'name', cit:name, $allLanguages, true())"/>,
+          </xsl:if>
+          <xsl:if test="normalize-space(cit:description) != ''">
+            "descriptionObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'description', cit:description, $allLanguages, true())"/>,
+          </xsl:if>
+          <xsl:if test="../@gco:nilReason">
+            "nilReason": "<xsl:value-of select="../@gco:nilReason"/>",
+          </xsl:if>
+          "function":"<xsl:value-of select="cit:function/cit:CI_OnLineFunctionCode/@codeListValue"/>",
+          "applicationProfile":"<xsl:value-of select="util:escapeForJson(cit:applicationProfile/(gco:CharacterString|gcx:Anchor)/text())"/>"
+          }
+        </connectPoint>
+      </xsl:for-each>
+
+
       <xsl:for-each select="mdb:distributionInfo/*">
         <xsl:for-each select="mrd:distributionFormat/*/
                                 mrd:formatSpecificationCitation/*/cit:title/*/text()[. != '']">
@@ -1398,6 +1430,9 @@
               "descriptionObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                 'description', cit:description, $allLanguages, true())"/>,
             </xsl:if>
+            <xsl:if test="ancestor::mrd:MD_DigitalTransferOptions/mrd:transferSize/gco:Real">
+              "transferSize": "<xsl:value-of select="(ancestor::mrd:MD_DigitalTransferOptions/mrd:transferSize/gco:Real)[1]"/>",
+            </xsl:if>
             <xsl:if test="../@gco:nilReason">
               "nilReason": "<xsl:value-of select="../@gco:nilReason"/>",
             </xsl:if>
@@ -1406,6 +1441,8 @@
             "group": <xsl:value-of select="$transferGroup"/>
             }
           </link>
+
+
 
           <xsl:if test="$operatesOnSetByProtocol and normalize-space($protocol) != ''">
             <xsl:if test="daobs:contains($protocol, 'wms')">

@@ -1756,6 +1756,53 @@
           "description": {
             "type": "text"
           },
+          "transferSize": {
+            "type": "double"
+          },
+          "descriptionObject": {
+            "type": "object"
+          }
+        }
+      },
+      "connectPoint": {
+        "type": "nested",
+        "properties": {
+          "protocol": {
+            "type": "keyword",
+            "copy_to": "any.common"
+          },
+          "link": {
+            "type": "text",
+            "copy_to": "any.common"
+          },
+          "linkObject": {
+            "type": "object",
+            "properties": {
+              "default": {
+                "type": "keyword",
+                "copy_to": "any.common"
+              }
+            }
+          },
+          "operation": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "text",
+            "copy_to": "any.common"
+          },
+          "nameObject": {
+            "type": "object",
+            "properties": {
+              "default": {
+                "type": "keyword",
+                "copy_to": "any.common"
+              }
+            }
+          },
+          "description": {
+            "type": "text"
+          },
           "descriptionObject": {
             "type": "object"
           }
