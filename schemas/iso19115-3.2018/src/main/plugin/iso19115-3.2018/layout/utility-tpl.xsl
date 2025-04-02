@@ -20,6 +20,7 @@
   xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.1"
   xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
   xmlns:util="java:org.fao.geonet.util.XslUtil"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:gn="http://www.fao.org/geonetwork"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all">
 
@@ -40,9 +41,11 @@
 
   <xsl:template mode="get-formats-as-json" match="mdb:MD_Metadata">
     [
-    <xsl:for-each select="mdb:distributionInfo/*/mrd:distributionFormat/*/mrd:formatSpecificationCitation/*/cit:title/*/text()">{
-      "value": "WWW:DOWNLOAD:<xsl:value-of select="util:escapeForJson(.)"/>",
-      "label": "<xsl:value-of select="util:escapeForJson(.)"/>"}
+    <xsl:for-each select="mdb:distributionInfo/*/mrd:distributionFormat/*/mrd:formatSpecificationCitation/*/cit:title">{
+      <xsl:variable name="formatId"
+                    select="if(starts-with(gcx:Anchor/@xlink:href, 'https://www.iana.org/assignments/media-types/')) then replace(gcx:Anchor/@xlink:href, 'https://www.iana.org/assignments/media-types/', '') else */text()"/>
+      "value": "WWW:DOWNLOAD:<xsl:value-of select="util:escapeForJson($formatId)"/>",
+      "label": "<xsl:value-of select="util:escapeForJson(*/text())"/>"}
       <xsl:if test="position() != last()">,</xsl:if>
     </xsl:for-each>
     ]
