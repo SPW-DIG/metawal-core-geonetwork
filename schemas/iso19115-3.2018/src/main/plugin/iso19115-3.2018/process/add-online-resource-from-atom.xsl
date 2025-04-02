@@ -7,6 +7,7 @@
                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
                 xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+                exclude-result-prefixes="#all"
                 version="2.0">
 
   <xsl:import href="process-utility.xsl"/>
