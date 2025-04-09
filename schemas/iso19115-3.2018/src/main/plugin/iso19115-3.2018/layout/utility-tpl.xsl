@@ -43,7 +43,7 @@
     [
     <xsl:for-each select="mdb:distributionInfo/*/mrd:distributionFormat/*/mrd:formatSpecificationCitation/*/cit:title">{
       <xsl:variable name="formatId"
-                    select="if(starts-with(gcx:Anchor/@xlink:href, 'https://www.iana.org/assignments/media-types/')) then replace(gcx:Anchor/@xlink:href, 'https://www.iana.org/assignments/media-types/', '') else */text()"/>
+                    select="if(contains(gcx:Anchor/@xlink:href, '/media-types/')) then replace(gcx:Anchor/@xlink:href, '.*/media-types/', '') else */text()"/>
       "value": "WWW:DOWNLOAD:<xsl:value-of select="util:escapeForJson($formatId)"/>",
       "label": "<xsl:value-of select="util:escapeForJson(*/text())"/>"}
       <xsl:if test="position() != last()">,</xsl:if>
