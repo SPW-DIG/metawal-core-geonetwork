@@ -20,6 +20,7 @@
                 xmlns:dct="http://purl.org/dc/terms/"
                 xmlns:dcat="http://www.w3.org/ns/dcat#"
                 xmlns:foaf="http://xmlns.com/foaf/0.1/"
+                xmlns:mdUtil="java:org.fao.geonet.api.records.MetadataUtils"
                 exclude-result-prefixes="#all">
 
   <!--
@@ -144,6 +145,7 @@
 
     <xsl:variable name="function"
                   select="*/cit:function/*/@codeListValue"/>
+
 
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
@@ -286,6 +288,27 @@
               -->
               <xsl:if test="$function = ('download', 'offlineAccess', 'order', 'browsing', 'fileAccess')
                             or matches($protocol, 'OGC:WMS|OGC:WFS|OGC:WCS|OGC:WPS|OGC API Features|OGC API Coverages|ESRI:REST')">
+
+                <!-- MW / Atom feed are added as an accessService to the corresponding file for download. -->
+                <xsl:if test="starts-with($url, 'https://geoservices.wallonie.be/geotraitement/spwdatadownload')">
+                  <xsl:variable name="associatedAtomService"
+                                select="ancestor::mdb:distributionInfo//mrd:onLine/*[cit:protocol/*/text() = 'atom:feed']"/>
+                  <xsl:if test="$associatedAtomService">
+                    <xsl:variable name="associations"
+                                  select="mdUtil:getAssociatedAsXml(ancestor::mdb:MD_Metadata/mdb:metadataIdentifier/*/mcc:code/*/text())"
+                                  as="node()?"/>
+
+                    <xsl:variable name="relatedAtomService"
+                                  select="$associations/relations/services[root/link/urlObject/default = $associatedAtomService/cit:linkage/*/text()]"/>
+                    <xsl:variable name="serviceUri"
+                                  select="if ($relatedAtomService[1]/root/resourceIdentifier)
+                                               then concat($relatedAtomService[1]/root/resourceIdentifier[1]/codeSpace, $relatedAtomService[1]/root/resourceIdentifier[1]/code)
+                                               else ." />
+                    <xsl:if test="$serviceUri">
+                      <dcat:accessService rdf:about="{$serviceUri}"/>
+                    </xsl:if>
+                  </xsl:if>
+                </xsl:if>
                 <!--
                 FIXME: validator expect the DataService object to contain all mandatory properties
                 <dcat:accessService rdf:about=""/> does not work.
