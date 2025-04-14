@@ -366,12 +366,15 @@
                             |*:portrayalCatalogueCitation/*/*:onlineResource
                             |*:additionalDocumentation/*/*:onlineResource
                             |*:reportReference/*/*:onlineResource
+                            |*:reportReference/*/cit:title[*:Anchor/@xlink:href]
                             |*:specification/*/*:onlineResource
+                            |*:specification/*/cit:title[*:Anchor/@xlink:href]
                             |*:featureCatalogueCitation/*/*:onlineResource)"/>
       <sch:let name="documentationUrls"
                value="$onlineResource[*/*:function/*/@codeListValue = ('documentation')
                                   or count(ancestor::*:additionalDocumentation) = 1
-                                  or starts-with(*/*:linkage/(*:CharacterString|*:URL), 'https://directory.spatineo.com')]/*/*:linkage/(*:CharacterString|*:URL)"/>
+                                  or count(ancestor::*:DQ_ConformanceResult) = 1
+                                  or starts-with(*/*:linkage/(*:CharacterString|*:URL), 'https://directory.spatineo.com')]/(*/*:linkage/(*:CharacterString|*:URL)|*:Anchor/@xlink:href)"/>
 
       <sch:let name="hasOneOrMoreDocumentation"
                value="count($documentationUrls) > 0"/>
