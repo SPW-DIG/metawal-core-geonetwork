@@ -101,7 +101,7 @@
         <xsl:when test="local-name() = 'sources'">
           <dct:source rdf:resource="{$recordUri}"/>
         </xsl:when>
-        <xsl:when test="local-name() = 'siblings'">
+        <xsl:when test="local-name() = 'siblings' and not(@uuid = (../children/@uuid))">
           <dct:references rdf:resource="{$recordUri}"/>
         </xsl:when>
         <xsl:when test="local-name() = 'datasets'">
