@@ -136,24 +136,32 @@
         </mdb:dateInfo>
       </xsl:if>
 
-      <!-- Preserve date order -->
-      <xsl:for-each select="mdb:dateInfo">
-        <xsl:variable name="currentDateType" select="*/cit:dateType/*/@codeListValue"/>
-        <!-- Update revision date-->
-        <xsl:choose>
-          <xsl:when test="$currentDateType = 'revision' and /root/env/changeDate">
-            <mdb:dateInfo>
-              <xsl:copy-of select="gn-fn-iso19115-3.2018:write-date-or-dateTime(/root/env/changeDate, 'revision')"/>
-            </mdb:dateInfo>
-          </xsl:when>
-          <xsl:when test="$currentDateType = 'creation'
-                          and */cit:date/* = ''">
-            <!-- remove empty creation date, added before if emtpy. -->
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:copy-of select="."/>
-          </xsl:otherwise>
-        </xsl:choose>
+      <!-- Preserve one date per type and keep latest -->
+      <xsl:variable name="metadata" select="."/>
+
+      <xsl:for-each select="distinct-values(mdb:dateInfo/*/cit:dateType/*/@codeListValue)">
+        <xsl:for-each select="$metadata/mdb:dateInfo[*/cit:dateType/*/@codeListValue = current()]">
+          <xsl:sort select="*/cit:date/*" order="descending"/>
+
+          <xsl:if test="position() = 1">
+            <xsl:variable name="currentDateType" select="*/cit:dateType/*/@codeListValue"/>
+            <!-- Update revision date-->
+            <xsl:choose>
+              <xsl:when test="$currentDateType = 'revision' and /root/env/changeDate">
+                <mdb:dateInfo>
+                  <xsl:copy-of select="gn-fn-iso19115-3.2018:write-date-or-dateTime(/root/env/changeDate, 'revision')"/>
+                </mdb:dateInfo>
+              </xsl:when>
+              <xsl:when test="$currentDateType = 'creation'
+                              and */cit:date/* = ''">
+                <!-- remove empty creation date, added before if emtpy. -->
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:copy-of select="."/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </xsl:for-each>
       </xsl:for-each>
 
 
