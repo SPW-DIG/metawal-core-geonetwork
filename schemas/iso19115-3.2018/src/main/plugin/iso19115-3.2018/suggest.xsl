@@ -25,6 +25,7 @@
 
   <xsl:variable name="processes">
     <p>collection-updater</p>
+<!--    <p>translate</p>-->
     <p>add-extent-from-geokeywords</p>
     <p>add-resource-id</p>
     <p>add-contact</p>

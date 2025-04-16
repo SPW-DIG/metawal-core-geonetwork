@@ -255,7 +255,7 @@
                             }),
                             type: "success"
                           },
-                          5000
+                          5
                         );
                       }
                     },
@@ -293,7 +293,7 @@
                           url: config.url,
                           extent: extent ? extent.join(",") : ""
                         }),
-                        delay: 5000,
+                        delay: 5,
                         type: "warning"
                       });
                       // TODO: You may want to add more than one time
@@ -408,7 +408,7 @@
                         filters: {
                           filters: {
                             maps: {
-                              query_string: { query: '+resourceType:"map/interactive"' }
+                              query_string: { query: '+resourceType:"map-interactive"' }
                             }
                           }
                         }
@@ -474,7 +474,7 @@
 
                   // handle processes tool
                   if (scope.activeTools.processes && openedTool.url) {
-                    scope.wpsTabs.byUrl = true;
+                    scope.wpsTabs.url = true;
                     scope.selectedWps.url = openedTool.url;
                   }
 

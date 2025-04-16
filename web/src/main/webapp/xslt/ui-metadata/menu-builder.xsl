@@ -41,8 +41,9 @@
     <div class="gn-scroll-spy"
          data-gn-scroll-spy="gn-editor-{$metadataId}"
          data-watch=""
-         data-all-depth="{if ($isFlatMode) then 'true' else 'false'}"/>
-    <ul class="nav nav-tabs {if ('metawal' = $currentView/@name) then 'mw-editor-tab-ul' else ''}">
+         data-all-depth="{if ($isFlatMode) then 'true' else 'false'}"></div>
+
+    <div class="nav nav-tabs">
       <!-- Make a drop down choice to swith to one view to another -->
       <span id="gn-view-menu-{$metadataId}" class="btn-group">
         <button type="button"
@@ -108,7 +109,7 @@
               <li role="menuitem">
                 <a data-ng-click="toggleAttributes(true)" href="">
                   <i class="fa"
-                     data-ng-class="gnCurrentEdit.displayAttributes ? 'fa-check-square-o' : 'fa-square-o'"/>
+                     data-ng-class="gnCurrentEdit.displayAttributes ? 'fa-check-square-o' : 'fa-square-o'"></i>
                   &#160;
                   <span data-translate="">toggleAttributes</span>
                 </a>
@@ -116,7 +117,7 @@
               <li role="menuitem">
                 <a data-ng-click="toggleTooltips(true)" href="">
                   <i class="fa"
-                     data-ng-class="gnCurrentEdit.displayTooltips ? 'fa-check-square-o' : 'fa-square-o'"/>
+                     data-ng-class="gnCurrentEdit.displayTooltips ? 'fa-check-square-o' : 'fa-square-o'"></i>
                   &#160;
                   <span data-translate="">toggleTooltips</span>
                 </a>
@@ -161,7 +162,7 @@
           </li>
         </xsl:if>
       </xsl:if>
-    </ul>
+    </div>
   </xsl:template>
 
 

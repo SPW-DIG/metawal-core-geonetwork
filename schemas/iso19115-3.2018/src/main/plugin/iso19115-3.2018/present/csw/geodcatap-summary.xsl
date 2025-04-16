@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (C) 2001-2016 Food and Agriculture Organization of the
+  ~ Copyright (C) 2001-2024 Food and Agriculture Organization of the
   ~ United Nations (FAO-UN), United Nations World Food Programme (WFP)
   ~ and United Nations Environment Programme (UNEP)
   ~
@@ -23,5 +23,9 @@
   -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="2.0">
+<<<<<<<< HEAD:schemas/iso19115-3.2018/src/main/plugin/iso19115-3.2018/present/csw/geodcatap-summary.xsl
   <xsl:import href="geodcatap-full.xsl"/>
+========
+  <xsl:import href="../../formatter/dcat/view.xsl"/>
+>>>>>>>> origin/main:schemas/iso19139/src/main/plugin/iso19139/present/csw/dcat-core.xsl
 </xsl:stylesheet>

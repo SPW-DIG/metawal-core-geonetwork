@@ -108,13 +108,31 @@
     </for>
     -->
 
+    <!-- Check if metadata title is defined in other metadata record
+    <for name="gmd:title" use="data-gn-duplicated-metadata-title-checker" />
+    -->
+
     <for name="gts:TM_PeriodDuration" use="data-gn-field-duration-div"/>
     <for name="gml:duration" use="data-gn-field-duration-div"/>
 
     <for name="gco:Distance" use="number"/>
+    <for name="gco:Distance/@uom" use="data-gn-keyword-picker">
+      <directiveAttributes
+        data-thesaurus-key="local.theme.codelist_unit_distance"
+        data-display-definition="true"
+        data-show-hints-on-focus="true"/>
+    </for>
     <for name="gco:Decimal" use="number"/>
     <for name="gco:Integer" use="number"/>
     <for name="gco:Real" use="number"/>
+    <for name="gco:Measure" use="number"/>
+    <for name="gco:Measure/@uom" use="data-gn-keyword-picker">
+      <directiveAttributes
+        data-thesaurus-key="xpath::../*:dimensionName/*[@codeListValue]/(if (@codeListValue = 'time') then 'local.theme.codelist_unit_time' else 'local.theme.codelist_unit_distance')"
+        data-display-definition="true"
+        data-show-hints-on-focus="true"/>
+    </for>
+
     <for name="gco:Boolean" use="checkbox"/>
 
     <!-- Use data-gn-checkbox-with-nilreason for INSPIRE conformity, using xpath attribute.Similar configuration can be
@@ -3233,7 +3251,7 @@
                                             editActions: []}]"
         />
 
-        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata" />
+        <directive data-gn-associated-resources-panel="gnCurrentEdit.metadata"/>
 
         <directive gn-geo-publisher=""
                    data-ng-if="gnCurrentEdit.geoPublisherConfig"
@@ -3334,12 +3352,7 @@
                    transformations="to-iso19139-keyword-with-anchor"/>
       </thesaurusList>
       -->
-
-      <thesaurusList>
-        <thesaurus key="external.none.allThesaurus"
-                   fieldset="false"/>
-      </thesaurusList>
-
+      <thesaurusList defaultTransformation="to-iso19139-keyword-with-anchor"/>
     </view>
     <view name="advanced"
           class="gn-label-above-input gn-indent-bluescale">
@@ -3441,6 +3454,8 @@
         <section xpath="/gmd:MD_Metadata/gmd:applicationSchemaInfo" or="applicationSchemaInfo"
                  in="/gmd:MD_Metadata"/>
       </tab>
+
+      <thesaurusList defaultTransformation="to-iso19139-keyword-with-anchor"/>
     </view>
     <view name="xml">
       <sidePanel>

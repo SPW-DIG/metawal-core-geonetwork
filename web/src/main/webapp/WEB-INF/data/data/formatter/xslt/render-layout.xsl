@@ -156,8 +156,14 @@
 
             <header>
               <h1>
-                <i class="fa fa-fw gn-icon-{$type}"></i>
+                <i class="fa fa-fw gn-icon-{$type}"/>
                 <xsl:copy-of select="$title"/>
+                <xsl:if test="$root = 'div'">
+                  <span class="text-muted badge"
+                        data-ng-class="{{ 'text-success': md.mdStatus == 2, 'text-warning': md.mdStatus == 4 }}"
+                        data-ng-if="user.isEditorOrMore() &amp;&amp; md.mdStatus &lt; 50 &amp;&amp; isMdWorkflowEnable"
+                  >{{('status-' + md.mdStatus) | translate}}</span>
+                </xsl:if>
               </h1>
               <h1 class="hidden">
                 <a href="{concat($nodeUrl, 'api/records/', $metadataUuid)}">
@@ -447,7 +453,7 @@
     <xsl:if test="$isDisplayed">
       <xsl:variable name="content">
         <xsl:apply-templates mode="render-view"
-                             select="section|field|xsl"/>&#160;
+                             select="section|field|xsl|list"/>&#160;
       </xsl:variable>
 
       <xsl:if test="count($content/*) > 0">
@@ -487,7 +493,7 @@
 
   <!-- Render metadata elements defined by XPath -->
   <xsl:template mode="render-view"
-                match="field[not(template)]">
+                match="field[not(template)]|list[@xpath]">
     <xsl:param name="base" select="$metadata"/>
 
     <!-- Matching nodes -->

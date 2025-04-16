@@ -577,7 +577,6 @@
     </gmd:dataQualityInfo>
   </xsl:template>
 
-
   <xsl:template match="mmi:maintenanceDate">
     <gmd:dateOfNextUpdate>
       <xsl:apply-templates select="cit:CI_Date/cit:date/*"/>

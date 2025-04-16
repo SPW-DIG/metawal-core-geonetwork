@@ -321,8 +321,7 @@
             // properly without removing them. There is maybe
             // references to DOM objects in the JS code which
             // make those objects not reachable by GC.
-            $(gnCurrentEdit.containerId).find("*").remove();
-
+            $(gnCurrentEdit.containerId).empty();
             $(gnCurrentEdit.containerId).replaceWith(snippet);
 
             if (gnCurrentEdit.compileScope) {
@@ -414,9 +413,10 @@
             version: getInputValue("version"),
             tab: getInputValue("currTab"),
             geoPublisherConfig: angular.fromJson(getInputValue("geoPublisherConfig")),
-            resourceContainerDescription: angular.fromJson(
-              getInputValue("resourceContainerDescription")
-            ),
+            resourceContainerDescription:
+              getInputValue("resourceContainerDescription") == ""
+                ? null
+                : angular.fromJson(getInputValue("resourceContainerDescription")),
             resourceManagementExternalProperties: angular.fromJson(
               getInputValue("resourceManagementExternalProperties")
             ),

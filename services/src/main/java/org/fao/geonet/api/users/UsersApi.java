@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2021 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2024 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -38,7 +38,9 @@ import org.fao.geonet.api.users.model.PasswordResetDto;
 import org.fao.geonet.api.users.model.UserDto;
 import org.fao.geonet.api.users.validation.PasswordResetDtoValidator;
 import org.fao.geonet.api.users.validation.UserDtoValidator;
+import org.fao.geonet.auditable.UserAuditableService;
 import org.fao.geonet.domain.*;
+import org.fao.geonet.domain.auditable.UserAuditable;
 import org.fao.geonet.exceptions.UserNotFoundEx;
 import org.fao.geonet.kernel.DataManager;
 import org.fao.geonet.kernel.datamanager.IMetadataUtils;
@@ -116,6 +118,9 @@ public class UsersApi {
 
     @Autowired(required=false)
     SecurityProviderConfiguration securityProviderConfiguration;
+
+    @Autowired
+    UserAuditableService userAuditableService;
 
     private BufferedImage pixel;
 
@@ -198,7 +203,7 @@ public class UsersApi {
             myUserId.equals(Integer.toString(userIdentifier))) {
             Optional<User> user = userRepository.findById(userIdentifier);
 
-            if (!user.isPresent()) {
+            if (user.isEmpty()) {
                 throw new UserNotFoundEx(Integer.toString(userIdentifier));
             }
 
@@ -247,7 +252,7 @@ public class UsersApi {
             try {
                 Optional<User> user = userRepository.findById(userIdentifier);
 
-                if (!user.isPresent()) {
+                if (user.isEmpty()) {
                     throw new UserNotFoundEx(Integer.toString(userIdentifier));
                 }
 
@@ -342,16 +347,27 @@ public class UsersApi {
             }
         }
 
+        Optional<User> userToDelete = userRepository.findById(userIdentifier);
+        List<UserGroup> userGroups = userGroupRepository.findAll(UserGroupSpecs.hasUserId(userIdentifier));
+
         userGroupRepository.deleteAllByIdAttribute(UserGroupId_.userId,
-            Arrays.asList(userIdentifier));
+            List.of(userIdentifier));
 
         userSavedSelectionRepository.deleteAllByUser(userIdentifier);
+
+
 
         try {
             userRepository.deleteById(userIdentifier);
         } catch (org.springframework.dao.EmptyResultDataAccessException ex) {
             throw new UserNotFoundEx(Integer.toString(userIdentifier));
         }
+
+        if (userToDelete.isPresent()) {
+            UserAuditable userAuditable = UserAuditable.build(userToDelete.get(), userGroups);
+            userAuditableService.auditDelete(userAuditable);
+        }
+
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -394,7 +410,7 @@ public class UsersApi {
                 return new ResponseEntity<>(HttpStatus.OK);
             }
         } else {
-            throw new IllegalArgumentException(String.format("Property '%s' is not supported. You can only check username and email"));
+            throw new IllegalArgumentException("Property is not supported. You can only check username and email");
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -443,7 +459,7 @@ public class UsersApi {
 
         // TODO: CheckAccessRights
 
-        if (!myProfile.getAll().contains(profile)) {
+        if (!myProfile.getProfileAndAllChildren().contains(profile)) {
             throw new IllegalArgumentException(
                 "Trying to set profile to " + profile
                     + " max profile permitted is: " + myProfile);
@@ -490,6 +506,12 @@ public class UsersApi {
 
         user = userRepository.save(user);
         setUserGroups(user, groups);
+
+        List<UserGroup> userGroups = userGroupRepository.findAll(UserGroupSpecs
+            .hasUserId(user.getId()));
+
+        UserAuditable userAuditable = UserAuditable.build(user, userGroups);
+        userAuditableService.auditSave(userAuditable);
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -538,16 +560,16 @@ public class UsersApi {
 
         // TODO: CheckAccessRights
 
-        User user = userRepository.findById(userIdentifier).get();
-        if (user == null) {
-            throw new IllegalArgumentException("No user found with id: "
-                + userDto.getId());
+        Optional<User> userOptional = userRepository.findById(userIdentifier);
+        if (userOptional.isEmpty()) {
+            throw new IllegalArgumentException(String.format("No user found with id: %s", userDto.getId()));
         }
+        User user = userOptional.get();
 
         // Check no duplicated username and if we are adding a duplicate existing name with other case combination
         List<User> usersWithUsernameIgnoreCase = userRepository.findByUsernameIgnoreCase(userDto.getUsername());
-        if (usersWithUsernameIgnoreCase.size() != 0 &&
-            (!usersWithUsernameIgnoreCase.stream().anyMatch(u -> u.getId() == userIdentifier)
+        if (!usersWithUsernameIgnoreCase.isEmpty() &&
+            (usersWithUsernameIgnoreCase.stream().noneMatch(u -> u.getId() == userIdentifier)
                 || usersWithUsernameIgnoreCase.stream().anyMatch(u ->
                 u.getUsername().equals(userDto.getUsername()) && u.getId() != userIdentifier)
             )) {
@@ -556,7 +578,7 @@ public class UsersApi {
         }
 
 
-        if (!myProfile.getAll().contains(profile)) {
+        if (!myProfile.getProfileAndAllChildren().contains(profile)) {
             throw new IllegalArgumentException(
                 "Trying to set profile to " + profile
                     + " max profile permitted is: " + myProfile);
@@ -569,7 +591,7 @@ public class UsersApi {
         groups.addAll(processGroups(userDto.getGroupsReviewer(), Profile.Reviewer));
         groups.addAll(processGroups(userDto.getGroupsUserAdmin(), Profile.UserAdmin));
 
-        //If it is a useradmin updating,
+        //If it is an useradmin updating,
         //maybe we don't know all the groups the user is part of
         if (!Profile.Administrator.equals(myProfile)) {
             List<Integer> myUserAdminGroups = userGroupRepository.findGroupIds(Specification.where(
@@ -617,6 +639,12 @@ public class UsersApi {
         if (securityProviderConfiguration == null || securityProviderConfiguration.isUserGroupUpdateEnabled()) {
             setUserGroups(user, groups);
         }
+        
+        List<UserGroup> userGroups = userGroupRepository.findAll(UserGroupSpecs
+            .hasUserId(user.getId()));
+
+        UserAuditable userAuditable = UserAuditable.build(user, userGroups);
+        userAuditableService.auditSave(userAuditable);
 
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
@@ -670,14 +698,14 @@ public class UsersApi {
         Profile myProfile = session.getProfile();
         String myUserId = session.getUserId();
 
-        if (!Profile.Administrator.equals(myProfile) 
-            && !Profile.UserAdmin.equals(myProfile) 
+        if (!Profile.Administrator.equals(myProfile)
+            && !Profile.UserAdmin.equals(myProfile)
             && !myUserId.equals(Integer.toString(userIdentifier))) {
             throw new IllegalArgumentException("You don't have rights to do this");
         }
 
         Optional<User> user = userRepository.findById(userIdentifier);
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
             throw new UserNotFoundEx(Integer.toString(userIdentifier));
         }
 
@@ -727,10 +755,12 @@ public class UsersApi {
 
         if (Profile.Administrator.equals(myProfile) || Profile.UserAdmin.equals(myProfile) || myUserId.equals(Integer.toString(userIdentifier))) {
             // -- get the profile of the user id supplied
-            User user = userRepository.findById(userIdentifier).get();
-            if (user == null) {
+            Optional<User> userOptional = userRepository.findById(userIdentifier);
+
+            if (userOptional.isEmpty()) {
                 throw new IllegalArgumentException("user " + userIdentifier + " doesn't exist");
             }
+            User user = userOptional.get();
 
             String userProfile = user.getProfile().name();
 
@@ -796,7 +826,7 @@ public class UsersApi {
             .hasUserId(user.getId()));
 
         // Have a quick reference of existing groups and profiles for this user
-        Set<String> listOfAddedProfiles = new HashSet<String>();
+        Set<String> listOfAddedProfiles = new HashSet<>();
         for (UserGroup ug : all) {
             String key = ug.getProfile().name() + ug.getGroup().getId();
             listOfAddedProfiles.add(key);
@@ -804,11 +834,10 @@ public class UsersApi {
 
         // We start removing all old usergroup objects. We will remove the
         // explicitly defined for this call
-        Collection<UserGroup> toRemove = new ArrayList<UserGroup>();
-        toRemove.addAll(all);
+        Collection<UserGroup> toRemove = new ArrayList<>(all);
 
         // New pairs of group-profile we need to add
-        Collection<UserGroup> toAdd = new ArrayList<UserGroup>();
+        Collection<UserGroup> toAdd = new ArrayList<>();
 
         // For each of the parameters on the request, make sure the group is
         // updated.
@@ -868,7 +897,7 @@ public class UsersApi {
 
 
     private List<GroupElem> processGroups(List<String> groupsToProcessList, Profile profile) {
-        List<GroupElem> groups = new LinkedList<GroupElem>();
+        List<GroupElem> groups = new LinkedList<>();
         for (String g : groupsToProcessList) {
             groups.add(new GroupElem(profile.name(), Integer.parseInt(g)));
         }

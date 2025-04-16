@@ -45,8 +45,10 @@ import org.fao.geonet.domain.MetadataResource;
 import org.fao.geonet.domain.MetadataResourceContainer;
 import org.fao.geonet.domain.MetadataResourceVisibility;
 import org.fao.geonet.kernel.setting.SettingManager;
+import org.fao.geonet.lib.Lib;
 import org.fao.geonet.utils.DateUtil;
 import org.fao.geonet.utils.GeonetHttpRequestFactory;
+import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.ClientHttpResponse;
@@ -302,6 +304,11 @@ public class FMEStore extends AbstractStore {
                 return String.format("Unable to remove metadata '%s' directory.", metadataUuid);
             }
         }
+    }
+
+    @Override
+    public String delResources(ServiceContext context, int metadataId) throws Exception {
+       throw new UnsupportedOperationException("FME store does not support deleting metadata by ID.");
     }
 
     @Override
