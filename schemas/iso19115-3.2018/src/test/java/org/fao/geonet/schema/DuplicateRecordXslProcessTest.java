@@ -46,16 +46,46 @@ public class DuplicateRecordXslProcessTest extends XslProcessTest {
     private static final String XPATH_RECORD_RESOURCE_IDENTIFIER =
         ".//mri:citation/*/cit:identifier";
 
+//    @Test
+//    public void testDuplicateRecord() throws Exception {
+//        Element inputElement = Xml.loadFile(xmlFile);
+//        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_DATE).size(), equalTo(2));
+//        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_ONLINE_DOI).size(), equalTo(1));
+//        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_RESOURCE_IDENTIFIER).size(), equalTo(2));
+//
+//        Element resultElement = Xml.transform(inputElement, xslFile);
+//        assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_DATE).size(), equalTo(0));
+//        assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_ONLINE_DOI).size(), equalTo(0));
+//        assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_RESOURCE_IDENTIFIER).size(), equalTo(1));
+//
+//    }
+
     @Test
-    public void testDuplicateRecord() throws Exception {
+    public void testDuplicateRecordRemovesRecordDate() throws Exception {
+
         Element inputElement = Xml.loadFile(xmlFile);
         assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_DATE).size(), equalTo(2));
-        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_ONLINE_DOI).size(), equalTo(1));
-        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_RESOURCE_IDENTIFIER).size(), equalTo(2));
 
         Element resultElement = Xml.transform(inputElement, xslFile);
         assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_DATE).size(), equalTo(0));
+
+    }
+
+    @Test
+    public void testDuplicateRecordRemovesOnlineDOI() throws Exception {
+        Element inputElement = Xml.loadFile(xmlFile);
+        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_ONLINE_DOI).size(), equalTo(1));
+
+        Element resultElement = Xml.transform(inputElement, xslFile);
         assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_ONLINE_DOI).size(), equalTo(0));
+    }
+
+    @Test
+    public void testDuplicateRecordKeepsOnlyOneResourceIdentifier() throws Exception {
+        Element inputElement = Xml.loadFile(xmlFile);
+        assertThat(Xml.selectNodes(inputElement, XPATH_RECORD_RESOURCE_IDENTIFIER).size(), equalTo(2));
+
+        Element resultElement = Xml.transform(inputElement, xslFile);
         assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_RESOURCE_IDENTIFIER).size(), equalTo(1));
 
     }
