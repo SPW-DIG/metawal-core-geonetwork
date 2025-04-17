@@ -73,7 +73,7 @@
 	</rdf:Description>
 	<rdf:Description rdf:about="https://creativecommons.org/publicdomain/zero/1.0/">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">Licence CC0 1.0 : L’utilisateur peut librement copier, modifier, redistribuer et dériver une oeuvre de ces données.</skos:prefLabel>
+		<skos:prefLabel xml:lang="fr">Licence CC0 1.0 : Les données sont dans le domaine public. L’utilisateur peut librement copier, modifier, redistribuer et dériver une oeuvre de ces données.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Licence CC0 1.0 : domaine public.</skos:scopeNote>
 	</rdf:Description>
 	<rdf:Description rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
