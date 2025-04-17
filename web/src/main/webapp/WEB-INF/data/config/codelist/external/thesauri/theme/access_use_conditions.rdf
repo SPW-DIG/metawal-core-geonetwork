@@ -36,6 +36,11 @@
 		<skos:prefLabel xml:lang="fr">CPA Type A1 SPW : La donnée est accessible par toute personne physique ou morale, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent pour toute finalité autre que commerciale.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type A1.</skos:scopeNote>
 	</rdf:Description>
+	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeB2.pdf">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">CPA Type B2 SPW : La donnée n’est accessible qu’aux partenaires liés au SPW par une convention cosignée pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et pour toute finalité.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type B2.</skos:scopeNote>
+	</rdf:Description>
 	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeD1.pdf">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 		<skos:prefLabel xml:lang="fr">CPA Type D1 SPW : La donnée n’est accessible gratuitement que pour les services publics (commune, province, communautés et régions belges, fédéral, Intercommunale, police, services d’incendie, OIP, et leurs équivalents étrangers) et les soumissionnaires ou adjudicataires dans le cadre d'un marché public lancé par les services publics susmentionnés, ou pour l’enseignement et la recherche académique sans but lucratif. La donnée n’est accessible que pendant la durée du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la donnée et telle que reprise dans la Licence d’utilisation. La donnée n’est distribuée que sur l’étendue de la zone d’intérêt du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la donnée et telle que reprise dans la Licence d’utilisation. La donnée n’est accessible que pour la finalité du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la donnée et telle que reprise dans la Licence d’utilisation.</skos:prefLabel>
@@ -90,14 +95,9 @@
 		<skos:prefLabel xml:lang="fr">CPA Type B1 SPW : La donnée est accessible par toute personne physique ou morale avec des restrictions de durée, de couverture territoriale et de finalité à convenir entre l’Utilisateur et le Gestionnaire de la donnée à travers une Licence d’utilisation. La donnée peut ne pas être gratuite.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type B1.</skos:scopeNote>
 	</rdf:Description>
-	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeB2.pdf">
-		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">CPA Type B1 SPW : La donnée n’est accessible qu’aux partenaires liés au SPW par une convention cosignée pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et pour toute finalité.</skos:prefLabel>
-		<skos:scopeNote xml:lang="fr">Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type B2.</skos:scopeNote>
-	</rdf:Description>
 	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeC1.pdf">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">CPA Type B1 SPW : La donnée n’est accessible que pour les Zones de police et les Communes (collège communal), pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et uniquement à des fins d’étude.</skos:prefLabel>
+		<skos:prefLabel xml:lang="fr">CPA Type C1 SPW : La donnée n’est accessible que pour les Zones de police et les Communes (collège communal), pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elles couvrent et uniquement à des fins d’étude.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type C1.</skos:scopeNote>
 	</rdf:Description>
 	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CPA-TypeC2.pdf">
