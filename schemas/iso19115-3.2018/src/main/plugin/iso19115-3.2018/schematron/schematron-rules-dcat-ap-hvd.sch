@@ -64,25 +64,6 @@
                   xml:lang="fr">La législation applicable HVD est encodée.
   </sch:diagnostic>
 
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-failure-en" xml:lang="en">
-    No implementing rule or other specification found. Check the data quality
-    report specification to add one. For INSPIRE datasets, this is a data specification conformity.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-failure-fr" xml:lang="fr">
-    Aucune règle d'implémentation ou autre spécification n'a été trouvée. Vérifiez la spécification du rapport de
-    qualité des données
-    pour en ajouter une. Pour les ensembles de données INSPIRE, il s'agit d'une conformité aux spécifications des
-    données.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-success-en"
-                  xml:lang="en">
-    Implementing rules or specifications found:<sch:value-of
-    select="concat(' ', string-join($implementingRules, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-success-fr"
-                  xml:lang="fr">
-    Règles ou spécifications encodées :<sch:value-of select="concat(' ', string-join($implementingRules, ', '))"/>.
-  </sch:diagnostic>
 
 
   <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
@@ -112,11 +93,25 @@
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.category.mandatory-success-en"
                   xml:lang="en">
-    HVD categories found:<sch:value-of select="concat(' ', string-join($hvdCategories, ', '))"/>.
+    HVD categories found:<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.category.mandatory-success-fr"
                   xml:lang="fr">
-    Catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdCategories, ', '))"/>.
+    Catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.subcategory.mandatory-failure-en" xml:lang="en">
+    The HVD sub-category to which this Dataset belongs is missing.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.subcategory.mandatory-failure-fr" xml:lang="fr">
+    La sous-catégorie HVD à laquelle appartient cet ensemble de données est manquante.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.subcategory.mandatory-success-en"
+                  xml:lang="en">
+    HVD sub-categories found:<sch:value-of select="concat(' ', string-join($hvdSubCategories, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.subcategory.mandatory-success-fr"
+                  xml:lang="fr">
+    Sous-catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdSubCategories, ', '))"/>.
   </sch:diagnostic>
 
 
@@ -138,6 +133,24 @@
                   xml:lang="fr">
     URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
   </sch:diagnostic>
+
+
+
+  <sch:diagnostic id="rule.hvd.license.mandatory-failure-en" xml:lang="en">
+    The usage license is specified and is of public type (use constraints unrestricted)
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.license.mandatory-failure-fr" xml:lang="fr">
+    La licence d'utilisation est spécifiée et est de type ouverte (use constraints de type license unrestricted).
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.license.mandatory-success-en"
+                  xml:lang="en">
+    License found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.license.mandatory-success-fr"
+                  xml:lang="fr">
+    Licence encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+  </sch:diagnostic>
+
 
   <sch:diagnostic id="rule.hvd.endpointurl.mandatory-failure-en" xml:lang="en">
     The root location or primary endpoint of the service (an IRI) is missing. Add an operation with a protocol which is
@@ -202,12 +215,18 @@
     <sch:title>HVD</sch:title>
     <sch:rule
       context="//*:MD_Metadata">
+      <!-- https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/#Dataset -->
 
+      <!--
+      applicable legislation	Legal Resource	1..*
+      The legislation that mandates the creation or management of the Dataset.
+      For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
+      As multiple legislations may apply to the resource the maximum cardinality is not limited.
+      -->
       <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
                value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
                               *:keyword[*:Anchor/@xlink:href
                                   = 'http://data.europa.eu/eli/reg_impl/2023/138/oj']) = 1"/>
-      <!-- TODO: Relax with CharacterString? -->
 
       <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
                   diagnostics="rule.hvd.legislation.mandatory-failure-en rule.hvd.legislation.mandatory-failure-fr"/>
@@ -216,7 +235,7 @@
 
 
       <!--
-      HVD Category
+      HVD Category and subcategory
       Concept
       1..*
       The HVD category to which this Dataset belongs.
@@ -237,86 +256,46 @@
                         <gcx:Anchor xlink:href="http://data.europa.eu/bna/asd487ae75">High-value dataset categories</gcx:Anchor>
                      </cit:title>
       -->
+      <sch:let name="hvdTopCategoriesUris"
+               value="( 'http://data.europa.eu/bna/c_164e0bf5',
+                             'http://data.europa.eu/bna/c_a9135398',
+                             'http://data.europa.eu/bna/c_ac64a52d',
+                             'http://data.europa.eu/bna/c_b79e35eb',
+                             'http://data.europa.eu/bna/c_dd313021',
+                             'http://data.europa.eu/bna/c_e1da4e07')"/>
       <sch:let name="hvdCategories"
                value="*:identificationInfo/*/*:descriptiveKeywords/*[
                *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
                or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*[text() != '']"/>
+      <sch:let name="hvdTopCategories"
+               value="*:identificationInfo/*/*:descriptiveKeywords/*[
+               *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
+               or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*:Anchor[@xlink:href = $hvdTopCategoriesUris]"/>
+      <sch:let name="hvdSubCategories"
+               value="*:identificationInfo/*/*:descriptiveKeywords/*[
+               *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
+               or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*:Anchor[not(@xlink:href = $hvdTopCategoriesUris)]"/>
       <sch:let name="hasOneOrMoreKeywordEncodingHvdCategory"
                value="count($hvdCategories) > 0"/>
+      <sch:let name="hasOneOrMoreKeywordEncodingHvdTopCategory"
+                     value="count($hvdTopCategories) > 0"/>
+      <sch:let name="hasOneOrMoreKeywordEncodingHvdSubCategory"
+                     value="count($hvdSubCategories) > 0"/>
 
-      <sch:assert test="$hasOneOrMoreKeywordEncodingHvdCategory"
+      <sch:assert test="$hasOneOrMoreKeywordEncodingHvdTopCategory"
                   diagnostics="rule.hvd.category.mandatory-failure-en rule.hvd.category.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreKeywordEncodingHvdCategory"
+      <sch:report test="$hasOneOrMoreKeywordEncodingHvdTopCategory"
                   diagnostics="rule.hvd.category.mandatory-success-en rule.hvd.category.mandatory-success-fr"/>
-
-
-      <!--
-      contact point
-      Kind
-      0..* (dataset) 1..* (service)
-      Contact information that can be used for sending comments about the Dataset.
-      A
-
-      <mri:pointOfContact>
-        <cit:CI_Responsibility>
-          <cit:role>
-          <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="pointOfContact"/>
-          </cit:role>
-
-       Rule is more strict than HVD because contact point is mandatory in ISO and INSPIRE.
-      -->
-      <sch:let name="resourcePointOfContact"
-               value="*:identificationInfo/*/*:pointOfContact[*/*:role/*/@codeListValue = 'pointOfContact']"/>
-      <sch:let name="hasOneOrMorePointOfContact"
-               value="count($resourcePointOfContact) > 0"/>
-
-      <sch:assert test="$hasOneOrMorePointOfContact"
-                  diagnostics="rule.hvd.contactPoint.mandatory-failure-en rule.hvd.contactPoint.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMorePointOfContact"
-                  diagnostics="rule.hvd.contactPoint.mandatory-success-en rule.hvd.contactPoint.mandatory-success-fr"/>
-
+      <sch:assert test="$hasOneOrMoreKeywordEncodingHvdSubCategory"
+                  diagnostics="rule.hvd.subcategory.mandatory-failure-en rule.hvd.subcategory.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMoreKeywordEncodingHvdSubCategory"
+                  diagnostics="rule.hvd.subcategory.mandatory-success-en rule.hvd.subcategory.mandatory-success-fr"/>
 
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="HVD (dataset)">
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
-
-      <!--
-      conforms to
-      Standard
-      0..*
-      An implementing rule or other specification.
-      The provided information should enable to the verification whether the detailed information
-      requirements by the HVD is satisfied. For more usage suggestions see section on specific data requirements.
-      A
-
-      ISO encoding
-      <mdq:report>
-          <mdq:DQ_DomainConsistency>
-             <mdq:result>
-                <mdq:DQ_ConformanceResult>
-                   <mdq:specification>
-                      <cit:CI_Citation>
-                         <cit:title>
-                            <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/tg/ad">
-                            INSPIRE Data Specification on Addresses – Technical Guidelines, version 3.1</gcx:Anchor>
-
-          Rule:
-          * More strict, at least one?
-          * TODO: non INSPIRE datasets?
-      -->
-      <sch:let name="implementingRules"
-               value="*:dataQualityInfo/*/*:report/*/*:result/*/*:specification/*/
-                                    *:title[starts-with(*:Anchor/@xlink:href, 'https://inspire.ec.europa.eu/id/document')]"/>
-      <!-- TODO: Relax with has a specification ? or CharacterString starting with INSPIRE Data Specification... ? -->
-      <sch:let name="hasOneOrMoreDataSpecConformityForINSPIRE"
-               value="count($implementingRules) > 0"/>
-
-      <sch:assert test="$hasOneOrMoreDataSpecConformityForINSPIRE"
-                  diagnostics="rule.hvd.conformity.mandatory-failure-en rule.hvd.conformity.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreDataSpecConformityForINSPIRE"
-                  diagnostics="rule.hvd.conformity.mandatory-success-en rule.hvd.conformity.mandatory-success-fr"/>
 
 
       <!--
@@ -345,6 +324,20 @@
       <sch:report test="$hasOneOrMoreDistributions"
                   diagnostics="rule.hvd.distribution.mandatory-success-en rule.hvd.distribution.mandatory-success-fr"/>
 
+
+
+      <sch:let name="isPublicLicenseType"
+                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:accessConstraints/*/@codeListValue[. = ('unrestricted', 'licenceUnrestricted')]) > 0"/>
+      <sch:let name="license"
+               value="*:identificationInfo/*/*:resourceConstraints/*/*:otherConstraints/*/@xlink:href"/>
+
+      <sch:let name="hasPublicLicense"
+                value="$isPublicLicenseType and count($license) > 0"/>
+
+      <sch:assert test="$hasPublicLicense"
+                  diagnostics="rule.hvd.license.mandatory-failure-en rule.hvd.license.mandatory-failure-fr"/>
+      <sch:report test="$hasPublicLicense"
+                  diagnostics="rule.hvd.license.mandatory-success-en rule.hvd.license.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
 
@@ -352,6 +345,35 @@
   <sch:pattern id="HVD (service)">
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+
+
+      <!--
+      contact point
+      Kind
+      0..* (dataset) 1..* (service)
+      Contact information that can be used for sending comments about the Dataset.
+      A
+
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+          <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="pointOfContact"/>
+          </cit:role>
+
+       Rule is more strict than HVD because contact point is mandatory in ISO and INSPIRE.
+      -->
+      <sch:let name="resourcePointOfContact"
+               value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'pointOfContact']/*:party/*/*:name/*[text() != '']"/>
+      <sch:let name="hasOneOrMorePointOfContact"
+               value="count($resourcePointOfContact) > 0"/>
+
+      <sch:assert test="$hasOneOrMorePointOfContact"
+                  diagnostics="rule.hvd.contactPoint.mandatory-failure-en rule.hvd.contactPoint.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMorePointOfContact"
+                  diagnostics="rule.hvd.contactPoint.mandatory-success-en rule.hvd.contactPoint.mandatory-success-fr"/>
+
+
+
       <!--
       documentation (service)
       Document
@@ -432,4 +454,5 @@
 
     </sch:rule>
   </sch:pattern>
+
 </sch:schema>
