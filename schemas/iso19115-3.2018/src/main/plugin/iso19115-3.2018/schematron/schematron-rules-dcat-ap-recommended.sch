@@ -105,7 +105,7 @@
 
       <!-- Temporal extent -->
       <sch:let name="temporalElement"
-               value="mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent"/>
+               value="mri:extent/*/gex:temporalElement/*/gex:extent"/>
       <sch:let name="periodStart"
                value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
       <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
