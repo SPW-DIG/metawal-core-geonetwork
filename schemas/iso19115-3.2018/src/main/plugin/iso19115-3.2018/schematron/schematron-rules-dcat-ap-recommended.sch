@@ -25,7 +25,7 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
 
   <sch:title xmlns="http://www.w3.org/2001/XMLSchema">DCAT-AP - Recommended</sch:title>
-  <sch:ns prefix="gml" uri="http://www.opengis.net/gml"/>
+  <sch:ns prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
   <sch:ns prefix="gmd" uri="http://standards.iso.org/iso/19115/-3/gmd"/>
   <sch:ns prefix="gmx" uri="http://standards.iso.org/iso/19115/-3/gmx"/>
   <sch:ns prefix="geonet" uri="http://www.fao.org/geonetwork"/>
@@ -50,43 +50,74 @@
 
 
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
-   Ggeospatial extent is recommended. Add a geospatial extent.
+   Geospatial extent is recommended. Add a geospatial extent.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-fr" xml:lang="fr">
-    L'emrpise geospatiale est recommendée. Ajoutez une emprise géospatiale.
+    L'emprise geospatiale est recommendée. Ajoutez une emprise géospatiale.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en"
-                  xml:lang="en">Geospatial extent found./>
+  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en" xml:lang="en">
+                  Geospatial extent found.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-fr"
-                  xml:lang="fr">Emprise géospatiale trouvée./>
+  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-fr" xml:lang="fr">
+  Emprise géospatiale trouvée.
   </sch:diagnostic>
+
+    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
+     Temporal extent is recommended. Add a temporal extent. <sch:value-of select="$temporalElement"/>
+     start: <sch:value-of select="$periodStart"/>
+     end: <sch:value-of select="$periodEnd"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
+      La période temporelle est recommendée. Ajoutez une période temporelle.
+      début: <sch:value-of select="$periodStart"/>
+      fin: <sch:value-of select="$periodEnd"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
+                    Temporal extent found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
+    Période temporelle trouvée.
+    </sch:diagnostic>
 
 
 
   <sch:pattern>
     <sch:title>DCAT-AP - Recommended</sch:title>
     <sch:rule
-      context="//*:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification">
+      context="//*:MD_DataIdentification">
 
       <sch:let name="geospatialExtent"
-               value="mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_GeographicBoundingBox"/>
+               value="mri:extent/*/*:geographicElement/*"/>
 
       <sch:let name="hasGeospatialExtent"
                value="boolean(
-                        mri:extent/gex:EX_Extent/gex:geographicElement/gex:EX_GeographicBoundingBox[
-                          gex:westBoundLongitude and
-                          gex:eastBoundLongitude and
-                          gex:southBoundLatitude and
-                          gex:northBoundLatitude
+                        $geospatialExtent[
+                          gex:westBoundLongitude/gco:Decimal and
+                          gex:eastBoundLongitude/gco:Decimal and
+                          gex:southBoundLatitude/gco:Decimal and
+                          gex:northBoundLatitude/gco:Decimal
                         ])"/>
 
       <sch:assert test="$hasGeospatialExtent"
-                  diagnostics="rule.dcatap.geospatial-extent.recommended-failure-fr"/>
+                  diagnostics="rule.dcatap.geospatial-extent.recommended-failure-en rule.dcatap.geospatial-extent.recommended-failure-fr"/>
       <sch:report test="$hasGeospatialExtent"
-                  diagnostics="rule.dcatap.geospatial-extent.recommended-success-fr"/>
+                  diagnostics="rule.dcatap.geospatial-extent.recommended-success-en rule.dcatap.geospatial-extent.recommended-success-fr"/>
 
+      <!-- Temporal extent -->
+      <sch:let name="temporalElement"
+               value="mri:extent/gex:EX_Extent/gex:temporalElement/gex:EX_TemporalExtent/gex:extent"/>
+      <sch:let name="periodStart"
+               value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
+      <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
+
+      <sch:let name="hasTemporalExtent" value="count($periodStart) > 0 and count($periodEnd) > 0" />
+
+      <sch:assert test="$hasTemporalExtent"
+                  diagnostics="rule.dcatap.temporal-extent.recommended-failure-en rule.dcatap.temporal-extent.recommended-failure-fr"/>
+      <sch:report test="$hasTemporalExtent"
+                  diagnostics="rule.dcatap.temporal-extent.recommended-success-en rule.dcatap.temporal-extent.recommended-success-fr"/>
 
     </sch:rule>
+
   </sch:pattern>
 </sch:schema>
