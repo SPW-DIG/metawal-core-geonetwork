@@ -47,8 +47,9 @@
   <sch:ns prefix="mdq" uri="http://standards.iso.org/iso/19157/-2/mdq/1.0"/>
   <sch:ns prefix="mrl" uri="http://standards.iso.org/iso/19115/-3/mrl/2.0"/>
   <sch:ns prefix="gco" uri="http://standards.iso.org/iso/19115/-3/gco/1.0"/>
+  <sch:ns prefix="mmi" uri="http://standards.iso.org/iso/19115/-3/mmi/1.0"/>
 
-
+  <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
    Geospatial extent is recommended. Add a geospatial extent.
   </sch:diagnostic>
@@ -62,24 +63,37 @@
   Emprise géospatiale trouvée.
   </sch:diagnostic>
 
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
-     Temporal extent is recommended. Add a temporal extent. <sch:value-of select="$temporalElement"/>
-     start: <sch:value-of select="$periodStart"/>
-     end: <sch:value-of select="$periodEnd"/>
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
-      La période temporelle est recommendée. Ajoutez une période temporelle.
-      début: <sch:value-of select="$periodStart"/>
-      fin: <sch:value-of select="$periodEnd"/>
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
-                    Temporal extent found.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
-    Période temporelle trouvée.
-    </sch:diagnostic>
+  <!-- Temporal Extent -->
+  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
+   Temporal extent is recommended. Add a temporal extent.
+   start: <sch:value-of select="$periodStart"/>
+   end: <sch:value-of select="$periodEnd"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
+    La période temporelle est recommendée. Ajoutez une période temporelle.
+    début: <sch:value-of select="$periodStart"/>
+    fin: <sch:value-of select="$periodEnd"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
+                  Temporal extent found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
+  Période temporelle trouvée.
+  </sch:diagnostic>
 
-
+  <!-- Update Frequency -->
+  <sch:diagnostic id="rule.dcatap.update-frequency.recommended-failure-en" xml:lang="en">
+     Update Frequency is recommended. Add an update frequency.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.update-frequency.recommended-failure-fr" xml:lang="fr">
+      La fréquence de mise à jour est recommendée. Ajoutez une fréquence de mise à jour.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.update-frequency.recommended-success-en" xml:lang="en">
+                    Update Frequency found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.update-frequency.recommended-success-fr" xml:lang="fr">
+    Fréquence de mise à jour trouvée.
+    </sch:diagnostic>
 
   <sch:pattern>
     <sch:title>DCAT-AP - Recommended</sch:title>
@@ -116,6 +130,18 @@
                   diagnostics="rule.dcatap.temporal-extent.recommended-failure-en rule.dcatap.temporal-extent.recommended-failure-fr"/>
       <sch:report test="$hasTemporalExtent"
                   diagnostics="rule.dcatap.temporal-extent.recommended-success-en rule.dcatap.temporal-extent.recommended-success-fr"/>
+
+
+      <!-- Update frequency -->
+       <sch:let name="updateFrequency"
+                value="mri:resourceMaintenance/*/mmi:maintenanceAndUpdateFrequency[*/@codeListValue != '']"/>
+
+       <sch:let name="hasUpdateFrequency" value="count($updateFrequency) > 0" />
+
+       <sch:assert test="$hasUpdateFrequency"
+                   diagnostics="rule.dcatap.update-frequency.recommended-failure-en rule.dcatap.update-frequency.recommended-failure-fr"/>
+       <sch:report test="$hasUpdateFrequency"
+                   diagnostics="rule.dcatap.update-frequency.recommended-success-en rule.dcatap.update-frequency.recommended-success-fr"/>
 
     </sch:rule>
 
