@@ -66,13 +66,9 @@
   <!-- Temporal Extent -->
   <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
    Temporal extent is recommended. Add a temporal extent.
-   start: <sch:value-of select="$periodStart"/>
-   end: <sch:value-of select="$periodEnd"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
     La période temporelle est recommendée. Ajoutez une période temporelle.
-    début: <sch:value-of select="$periodStart"/>
-    fin: <sch:value-of select="$periodEnd"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
                   Temporal extent found.
@@ -93,6 +89,20 @@
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.update-frequency.recommended-success-fr" xml:lang="fr">
     Fréquence de mise à jour trouvée.
+    </sch:diagnostic>
+
+    <!-- EU legislation keyword-->
+    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-failure-en" xml:lang="en">
+         EU legislation keyword is recommended. Add a keyword related to an European legislation.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-failure-fr" xml:lang="fr">
+          Présence de mot-clé en lien avec une législation européenne recommendé. Ajoutez un mot-clé en lien avec une législation européenne.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-success-en" xml:lang="en">
+                        EU legislation keyword found
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-success-fr" xml:lang="fr">
+        Mot-clé relatif à une législation européene trouvé.
     </sch:diagnostic>
 
   <sch:pattern>
@@ -143,7 +153,16 @@
        <sch:report test="$hasUpdateFrequency"
                    diagnostics="rule.dcatap.update-frequency.recommended-success-en rule.dcatap.update-frequency.recommended-success-fr"/>
 
-    </sch:rule>
+      <!-- Update frequency -->
+       <sch:let name="euLegislationKeyword"
+                value="mri:descriptiveKeywords/*/mri:keyword/gcx:Anchor[starts-with(@xlink:href, 'http://data.europa.eu/eli')]"/>
+       <sch:let name="hasEuLegislationKeyword" value="count($euLegislationKeyword) > 0" />
 
+       <sch:assert test="$hasEuLegislationKeyword"
+                   diagnostics="rule.dcatap.eu-legislation-keyword.recommended-failure-en rule.dcatap.eu-legislation-keyword.recommended-failure-fr"/>
+       <sch:report test="$hasEuLegislationKeyword"
+                   diagnostics="rule.dcatap.eu-legislation-keyword.recommended-success-en rule.dcatap.eu-legislation-keyword.recommended-success-fr"/>
+
+    </sch:rule>
   </sch:pattern>
 </sch:schema>
