@@ -107,11 +107,10 @@
 
   <sch:pattern>
     <sch:title>DCAT-AP - Recommended</sch:title>
-    <sch:rule
-      context="//*:MD_DataIdentification">
+    <sch:rule context="//*:MD_Metadata">
 
       <sch:let name="geospatialExtent"
-               value="mri:extent/*/*:geographicElement/*"/>
+               value="//*:extent/*/*:geographicElement/*"/>
 
       <sch:let name="hasGeospatialExtent"
                value="boolean(
@@ -129,7 +128,7 @@
 
       <!-- Temporal extent -->
       <sch:let name="temporalElement"
-               value="mri:extent/*/gex:temporalElement/*/gex:extent"/>
+               value="//*:extent/*/*:temporalElement/*/*:extent"/>
       <sch:let name="periodStart"
                value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
       <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
@@ -144,7 +143,7 @@
 
       <!-- Update frequency -->
        <sch:let name="updateFrequency"
-                value="mri:resourceMaintenance/*/mmi:maintenanceAndUpdateFrequency[*/@codeListValue != '']"/>
+                value="//*:resourceMaintenance/*/*:maintenanceAndUpdateFrequency[*/@codeListValue != '']"/>
 
        <sch:let name="hasUpdateFrequency" value="count($updateFrequency) > 0" />
 
@@ -155,13 +154,16 @@
 
       <!-- Update frequency -->
        <sch:let name="euLegislationKeyword"
-                value="mri:descriptiveKeywords/*/mri:keyword/gcx:Anchor[starts-with(@xlink:href, 'http://data.europa.eu/eli')]"/>
+                value="*:identificationInfo/*/*:descriptiveKeywords/*/*:keyword/*:Anchor[starts-with(@xlink:href, 'http://data.europa.eu/eli')]"/>
        <sch:let name="hasEuLegislationKeyword" value="count($euLegislationKeyword) > 0" />
 
        <sch:assert test="$hasEuLegislationKeyword"
                    diagnostics="rule.dcatap.eu-legislation-keyword.recommended-failure-en rule.dcatap.eu-legislation-keyword.recommended-failure-fr"/>
        <sch:report test="$hasEuLegislationKeyword"
                    diagnostics="rule.dcatap.eu-legislation-keyword.recommended-success-en rule.dcatap.eu-legislation-keyword.recommended-success-fr"/>
+
+    <!-- RULES Specific to Dataset-->
+
 
     </sch:rule>
   </sch:pattern>
