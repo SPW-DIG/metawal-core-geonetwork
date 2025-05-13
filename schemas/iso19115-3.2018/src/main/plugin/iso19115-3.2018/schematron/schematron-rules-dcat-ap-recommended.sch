@@ -162,9 +162,21 @@
        <sch:report test="$hasEuLegislationKeyword"
                    diagnostics="rule.dcatap.eu-legislation-keyword.recommended-success-en rule.dcatap.eu-legislation-keyword.recommended-success-fr"/>
 
-    <!-- RULES Specific to Dataset-->
-
-
     </sch:rule>
+    </sch:pattern>
+
+    <!-- RULE Specific to Dataset-->
+    <sch:pattern id="dataset">
+     <sch:rule context="//*:MD_Metadata[*:metadataScope/*:MD_MetadataScope/*:resourceScope/*:MD_ScopeCode/@codeListValue = 'dataset']" >
+
+        <!-- todo: to be removed, this is just for testing purposes.-->
+        <sch:let name="isADataset"
+                       value="boolean(*:metadataScope/*:MD_MetadataScope/*:resourceScope/*:MD_ScopeCode[@codeListValue = 'dataset'])" />
+        <sch:assert test="$isADataset">
+               Is not a dataset
+        </sch:assert>
+        <sch:report test="$isADataset" diagnostics="rule.dcatap.eu-legislation-keyword.recommended-success-en" />
+
+     </sch:rule>
   </sch:pattern>
 </sch:schema>
