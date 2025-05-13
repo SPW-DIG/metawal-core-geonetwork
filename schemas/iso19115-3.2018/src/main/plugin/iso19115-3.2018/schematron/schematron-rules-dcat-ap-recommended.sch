@@ -166,16 +166,34 @@
     </sch:pattern>
 
     <!-- RULE Specific to Dataset-->
+
+      <!-- Default Lang -->
+      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-failure-en" xml:lang="en">
+      Default language is recommended. Add a default language.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-failure-fr" xml:lang="fr">
+       La présence d'une langue par défaut est recommandée. Ajoutez une langue par défaut.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-success-en" xml:lang="en">
+      Default language found.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-success-fr" xml:lang="fr">
+      Langue par défaut trouvée.
+      </sch:diagnostic>
+
     <sch:pattern id="dataset">
+
+    <sch:title>DCAT-AP - Recommended (Dataset)</sch:title>
+
      <sch:rule context="//*:MD_Metadata[*:metadataScope/*:MD_MetadataScope/*:resourceScope/*:MD_ScopeCode/@codeListValue = 'dataset']" >
 
-        <!-- todo: to be removed, this is just for testing purposes.-->
-        <sch:let name="isADataset"
-                       value="boolean(*:metadataScope/*:MD_MetadataScope/*:resourceScope/*:MD_ScopeCode[@codeListValue = 'dataset'])" />
-        <sch:assert test="$isADataset">
-               Is not a dataset
-        </sch:assert>
-        <sch:report test="$isADataset" diagnostics="rule.dcatap.eu-legislation-keyword.recommended-success-en" />
+        <sch:let name="hasDefaultLang"
+            value="boolean(*:defaultLocale/*/lan:language/*/@codeListValue != '')" />
+
+        <sch:assert test="$hasDefaultLang"
+                    diagnostics="rule.dcatap.dataset.lang.recommended-failure-en rule.dcatap.dataset.lang.recommended-failure-fr"/>
+        <sch:report test="$hasDefaultLang"
+                    diagnostics="rule.dcatap.dataset.lang.recommended-success-en rule.dcatap.dataset.lang.recommended-success-fr"/>
 
      </sch:rule>
   </sch:pattern>
