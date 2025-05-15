@@ -81,9 +81,17 @@
 		<skos:prefLabel xml:lang="fr">Licence CC-BY-NC 4.0 : L’utilisateur peut utiliser et modifier les données pour en dériver une œuvre. Il peut publier les données et l’œuvre dérivée à condition de citer les sources. L'usage commercial des données, des données dérivées ou de l'oeuvre dérivée est interdit.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Licence CC-BY-NC 4.0 : licence ouverte avec obligation d'attribution et interdiction d'usage commercial.</skos:scopeNote>
 	</rdf:Description>
-
-
-<!--	 Types de CAU qui ne sont pas / plus utilisés dans Metawal
+	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">Licence de webservice SPW : Les conditions d'utilisation du service sont régies par les Conditions d’accès et d’utilisation des services web géographiques du Service public de Wallonie. L’utilisateur n’appelle pas les services de manière disproportionnée ou inadaptée.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Licence de webservice SPW : licence d'utilisation ouverte</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">Les services sont librement accessibles.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Tout le monde peut accéder à ce service.</skos:scopeNote>
+	</rdf:Description>
+	<!--	 Types de CAU qui ne sont pas / plus utilisés dans Metawal
 
 	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
@@ -117,5 +125,4 @@
 	</rdf:Description>
 
 -->
-
 </rdf:RDF>
