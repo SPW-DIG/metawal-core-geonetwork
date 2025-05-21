@@ -16,10 +16,10 @@
     <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-ecw" />
     <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-filegdb" />
     <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-gmz" />
-    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-las" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.las" />
     <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-laz" />
     <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-oracledump" />
-    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-shapefile" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.shp" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/geopackage+sqlite3" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/gml+xml" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml" />
@@ -36,6 +36,10 @@
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/zip" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/geo+json" />
     <skos:narrower rdf:resource="http://registry.wallonie.be/codelist/media-types/gpx+xml" />
+    <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/application/atom+xml" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-worldfile" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-tab" />
+    <skos:narrower rdf:resource="http://inspire.ec.europa.eu/media-types/application/x-tab-raster" />
   </skos:Concept>
   <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://registry.wallonie.be/codelist/media-types/image">
     <skos:prefLabel xml:lang="fr">image</skos:prefLabel>
@@ -44,9 +48,9 @@
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/jp2" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/tiff" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/png" />
+    <skos:narrower rdf:resource="http://registry.wallonie.be/codelist/media-types/x-geo+tiff" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/vnd.dwg" />
     <skos:narrower rdf:resource="https://www.iana.org/assignments/media-types/image/vnd.dxf" />
-    <skos:narrower rdf:resource="http://registry.wallonie.be/codelist/media-types/x-geo+tiff" />
   </skos:Concept>
   <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://registry.wallonie.be/codelist/media-types/text">
     <skos:prefLabel xml:lang="fr">texte</skos:prefLabel>
@@ -78,7 +82,7 @@
     <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
     <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
   </skos:Concept>
-  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-las">
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.las">
     <skos:prefLabel xml:lang="fr">LAS (.las)</skos:prefLabel>
     <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichiers ASPRS LASer ayant l'extension : las. Le format de fichier LAS est un format public permettant l'échange de données en 3 dimensions de nuages ​​de points.</skos:scopeNote>
     <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
@@ -96,7 +100,7 @@
     <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
     <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
   </skos:Concept>
-  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-shapefile">
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/vnd.shp">
     <skos:prefLabel xml:lang="fr">ESRI Shapefile (.shp)</skos:prefLabel>
     <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichier shape d'ESRI. L'archive zip contient au moins les fichiers shp, shx et dbf.</skos:scopeNote>
     <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
@@ -227,6 +231,30 @@
     <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour la/les extension(s) suivante : dxf</skos:scopeNote>
     <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
     <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/image" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://www.iana.org/assignments/media-types/application/atom+xml">
+    <skos:prefLabel xml:lang="fr">Atom (.xml)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les flux Atom de téléchargement</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-worldfile">
+    <skos:prefLabel xml:lang="fr">x-worldfile (.tfw, .jgw)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les wordlfiles généralement associés aux images géoréférencées</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-tab">
+    <skos:prefLabel xml:lang="fr">MapInfo Raster TAB (.tab)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichier MapInfo raster</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="http://inspire.ec.europa.eu/media-types/application/x-tab-raster">
+    <skos:prefLabel xml:lang="fr">MapInfo TAB (.tab)</skos:prefLabel>
+    <skos:scopeNote xml:lang="fr">Ce media type doit être utilisé pour les fichiers MapInfo TAB. Ce type de fichier est une archive zip qui contient au moins le tab, le dat le map et le id file.</skos:scopeNote>
+    <skos:inScheme rdf:resource="http://registry.wallonie.be/codelist/media-types" />
+    <skos:broader rdf:resource="http://registry.wallonie.be/codelist/media-types/application" />
   </skos:Concept>
 </rdf:RDF>
 
