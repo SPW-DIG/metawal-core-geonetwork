@@ -181,11 +181,29 @@
       Langue par défaut trouvée.
       </sch:diagnostic>
 
+       <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
+          A Distribution is expected to be present. Add an online resource with a download protocol or
+          function.
+        </sch:diagnostic>
+        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-fr" xml:lang="fr">
+          Une distribution est attendue. Ajoutez une ressource en ligne avec un protocole ou une fonction de téléchargement.
+        </sch:diagnostic>
+        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
+                        xml:lang="en">
+          Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+        </sch:diagnostic>
+        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-fr"
+                        xml:lang="fr">
+          URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+        </sch:diagnostic>
+
+
     <sch:pattern id="dataset">
 
     <sch:title>DCAT-AP - Recommended (Dataset)</sch:title>
 
-     <sch:rule context="//*:MD_Metadata[*:metadataScope/*:MD_MetadataScope/*:resourceScope/*:MD_ScopeCode/@codeListValue = 'dataset']" >
+
+     <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
 
         <sch:let name="hasDefaultLang"
             value="boolean(*:defaultLocale/*/lan:language/*/@codeListValue != '')" />
@@ -195,6 +213,22 @@
         <sch:report test="$hasDefaultLang"
                     diagnostics="rule.dcatap.dataset.lang.recommended-success-en rule.dcatap.dataset.lang.recommended-success-fr"/>
 
+        <sch:let name="distributions"
+                 value="*:distributionInfo//*:onLine/*[*:linkage/(*:CharacterString|*:URL)/text() != ''][not(
+                                          cit:function/*/@codeListValue = ('information', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                          or (not(cit:function/*/@codeListValue) and matches(*:protocol/*/text(), 'WWW:LINK.*')))]/*:linkage/(*:CharacterString|*:URL)"/>
+
+        <sch:let name="hasOneOrMoreDistributions"
+                 value="count($distributions) > 0"/>
+
+        <sch:assert test="$hasOneOrMoreDistributions"
+                    diagnostics="rule.dcatap.dataset.distribution.mandatory-failure-en rule.dcatap.dataset.distribution.mandatory-failure-fr"/>
+        <sch:report test="$hasOneOrMoreDistributions"
+                    diagnostics="rule.dcatap.dataset.distribution.mandatory-success-en rule.dcatap.dataset.distribution.mandatory-success-fr"/>
+
      </sch:rule>
+
+
+
   </sch:pattern>
 </sch:schema>
