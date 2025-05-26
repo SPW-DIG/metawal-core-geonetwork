@@ -325,7 +325,7 @@ public class MetadataValidateApi {
             MediaType.APPLICATION_JSON_VALUE,
             MediaType.APPLICATION_XML_VALUE}
     )
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('Editor')")
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "List of SHACL rules."),
         @ApiResponse(responseCode = "403", description = ApiParams.API_RESPONSE_NOT_ALLOWED_CAN_EDIT)})
