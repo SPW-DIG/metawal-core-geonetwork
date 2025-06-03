@@ -47,6 +47,7 @@
   <sch:ns prefix="mdq" uri="http://standards.iso.org/iso/19157/-2/mdq/1.0"/>
   <sch:ns prefix="mrl" uri="http://standards.iso.org/iso/19115/-3/mrl/2.0"/>
   <sch:ns prefix="gco" uri="http://standards.iso.org/iso/19115/-3/gco/1.0"/>
+  <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
 
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-failure-en" xml:lang="en">
@@ -192,38 +193,6 @@
       select="count($keywords)"/> mot(s) clé(s) encodé(s).
   </sch:diagnostic>
 
-
-  <sch:diagnostic id="rule.dcatap.constraints.mandatory-failure-en" xml:lang="en">
-    Access constraints are mandatory.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.constraints.mandatory-failure-fr" xml:lang="fr">
-    Les contraintes d'accès sont obligatoires.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.constraints.mandatory-success-en"
-                  xml:lang="en">
-    Access constraints found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.constraints.mandatory-success-fr"
-                  xml:lang="fr">
-    Contraintes d'accès encodées.
-  </sch:diagnostic>
-
-
-  <sch:diagnostic id="rule.dcatap.lineage.mandatory-failure-en" xml:lang="en">
-    Access lineage are mandatory.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.lineage.mandatory-failure-fr" xml:lang="fr">
-    La généalogie est obligatoire.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.lineage.mandatory-success-en"
-                  xml:lang="en">
-    Lineage found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.lineage.mandatory-success-fr"
-                  xml:lang="fr">
-    Généalogie encodée.
-  </sch:diagnostic>
-
   <sch:pattern>
     <sch:title>DCAT-AP</sch:title>
     <sch:rule
@@ -330,6 +299,45 @@
       <sch:report test="$hasKeywords"
                   diagnostics="rule.dcatap.keywords.mandatory-success-en rule.dcatap.keywords.mandatory-success-fr"/>
 
+    </sch:rule>
+  </sch:pattern>
+
+  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-failure-en" xml:lang="en">
+    Access constraints are mandatory.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-failure-fr" xml:lang="fr">
+    Les contraintes d'accès sont obligatoires.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-success-en"
+                  xml:lang="en">
+    Access constraints found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-success-fr"
+                  xml:lang="fr">
+    Contraintes d'accès encodées.
+  </sch:diagnostic>
+
+
+  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-failure-en" xml:lang="en">
+    Access lineage are mandatory.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-failure-fr" xml:lang="fr">
+    La généalogie est obligatoire.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-success-en"
+                  xml:lang="en">
+    Lineage found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-success-fr"
+                  xml:lang="fr">
+    Généalogie encodée.
+  </sch:diagnostic>
+  <sch:pattern id="dataset">
+
+  <sch:title>DCAT-AP (Dataset)</sch:title>
+  <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
+
+
 
       <sch:let name="hasConstraintType"
                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:accessConstraints/*/@codeListValue[. != '']) > 0"/>
@@ -340,20 +348,58 @@
                value="$hasConstraintType and count($constraints) > 0"/>
 
       <sch:assert test="$hasConstraints"
-                  diagnostics="rule.dcatap.constraints.mandatory-failure-en rule.dcatap.constraints.mandatory-failure-fr"/>
+                  diagnostics="rule.dcatap.dataset.constraints.mandatory-failure-en rule.dcatap.dataset.constraints.mandatory-failure-fr"/>
       <sch:report test="$hasConstraints"
-                  diagnostics="rule.dcatap.constraints.mandatory-success-en rule.dcatap.constraints.mandatory-success-fr"/>
-
-
+                  diagnostics="rule.dcatap.dataset.constraints.mandatory-success-en rule.dcatap.dataset.constraints.mandatory-success-fr"/>
 
       <sch:let name="hasLineage"
                value="count(*:resourceLineage/*/*:statement[*/text() != '']) > 0"/>
 
       <sch:assert test="$hasLineage"
-                  diagnostics="rule.dcatap.lineage.mandatory-failure-en rule.dcatap.lineage.mandatory-failure-fr"/>
+                  diagnostics="rule.dcatap.dataset.lineage.mandatory-failure-en rule.dcatap.dataset.lineage.mandatory-failure-fr"/>
       <sch:report test="$hasLineage"
-                  diagnostics="rule.dcatap.lineage.mandatory-success-en rule.dcatap.lineage.mandatory-success-fr"/>
+                  diagnostics="rule.dcatap.dataset.lineage.mandatory-success-en rule.dcatap.dataset.lineage.mandatory-success-fr"/>
+  </sch:rule>
+  </sch:pattern>
+
+  <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-en" xml:lang="en">
+    No related dataset.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-fr" xml:lang="fr">
+    Pas de resource associée.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-success-en"
+                  xml:lang="en">
+    Serie associated with one ore more datasets.
+    <sch:value-of select="string-join($children/root/resourceIdentifier, ' | ')"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-success-fr"
+                  xml:lang="fr">
+    Série associée à une ou plusieures resources.
+    <sch:value-of select="string-join($children/root/resourceIdentifier, ' | ')"/>
+  </sch:diagnostic>
+
+  <sch:pattern id="series">
+
+    <sch:title>DCAT-AP (Serie)</sch:title>
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']" >
+
+     <sch:let name="associations"
+              value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations" />
+     <sch:let name="children"
+              value="$associations/*:children" />
+     <sch:let name="hasRelatedDataset"
+                   value="count($children) > 0"/>
+
+    <sch:assert test="$hasRelatedDataset"
+                      diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
+    <sch:report test="$hasRelatedDataset"
+                      diagnostics="rule.dcatap.series.has-dataset.mandatory-success-en rule.dcatap.series.has-dataset.mandatory-success-fr"/>
+
+
 
     </sch:rule>
-  </sch:pattern>
+    </sch:pattern>
+
+
 </sch:schema>
