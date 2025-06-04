@@ -387,9 +387,10 @@
      <sch:let name="associations"
               value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations" />
      <sch:let name="children"
-              value="$associations/*:children" />
+              value="$associations/*:children[@associationType='crossReference' and @initiativeType='collection']" />
      <sch:let name="hasRelatedDataset"
                    value="count($children) > 0"/>
+
 
     <sch:assert test="$hasRelatedDataset"
                       diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
