@@ -24,6 +24,7 @@
 package org.fao.geonet.api.records;
 
 import com.google.common.collect.Lists;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -54,6 +55,7 @@ import org.jdom.filter.ElementFilter;
 import org.jdom.input.SAXBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -281,16 +283,25 @@ public class MetadataValidateApi {
 
     @io.swagger.v3.oas.annotations.Operation(
         summary = "Validate a record using SHACL",
-        description = "User MUST be able to edit the record to validate it. "
+        description = "User MUST be able to edit the record to validate it.\n" +
+            "\n" +
+            "Use one or more SHACL shapes to validate the record.\n" +
+            "Validation is done using the [JENA library](https://jena.apache.org/documentation/shacl/)."
     )
     @RequestMapping(
         value = "/{metadataUuid}/validate/shacl",
-        method = RequestMethod.PUT,
+        method = {
+            RequestMethod.GET,
+        },
         produces = {
-            MediaType.APPLICATION_XML_VALUE
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_JSON_VALUE,
+            "application/ld+json",
+            "text/turtle",
+            "application/rdf+xml"
         }
     )
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('Editor')")
     @ApiResponses(value = {@ApiResponse(responseCode = "201", description = "Validation report."),
         @ApiResponse(responseCode = "403", description = ApiParams.API_RESPONSE_NOT_ALLOWED_CAN_EDIT)})
@@ -303,27 +314,29 @@ public class MetadataValidateApi {
         @RequestParam(required = false, defaultValue = "dcat")
         String formatter,
         @Parameter(description = "SHACL shape version to use", required = false)
-        @RequestParam(required = false) String shapeModel,
+        @RequestParam(required = true) List<String> shapeModel,
         HttpServletRequest request,
-        @Parameter(hidden = true) HttpSession session) throws Exception {
+        @Parameter(hidden = true)
+        @RequestHeader(value = HttpHeaders.ACCEPT, defaultValue = MediaType.APPLICATION_XML_VALUE)
+        String acceptHeader) throws Exception {
         AbstractMetadata metadata = ApiUtils.canEditRecord(metadataUuid, request);
 
         ServiceContext context = ApiUtils.createServiceContext(request);
-        return shaclValidationService.validate(formatter, metadata, shapeModel, context);
+        return shaclValidationService.validate(formatter, metadata, shapeModel, context, acceptHeader);
     }
 
 
     @io.swagger.v3.oas.annotations.Operation(
-        summary = "Get available SHACL rules",
-        description = "Returns a list of available SHACL rules (files with .ttl extension in the shacl directory). " +
-            "Rules are common for all schemas and a corresponding formatter MUST be used to validate metadata (eg.  `eu-dcat-ap` for `eu-dcat-ap-3.0.0/shapes.ttl`). "
+        summary = "Get available SHACL shapes",
+        description = "Returns a list of available SHACL shapes (files with .ttl extension in the shacl directory). " +
+            "Rules are common for all schemas and a proper formatter MUST be used to validate metadata (eg.  `eu-dcat-ap` for `eu-dcat-ap-3.0.0/shapes.ttl`). "
     )
     @RequestMapping(
         value = "/{metadataUuid}/validate/shacl/testsuites",
         method = RequestMethod.GET,
         produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE}
+            MediaType.APPLICATION_JSON_VALUE
+        }
     )
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('Editor')")
