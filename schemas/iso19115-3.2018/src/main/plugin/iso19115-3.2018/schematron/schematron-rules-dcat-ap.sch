@@ -386,8 +386,11 @@
 
      <sch:let name="associations"
               value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations" />
+     <!-- <sch:let name="children"
+                   value="$associations/*:children[@associationType='crossReference' and @initiativeType='collection']" />
+     -->
      <sch:let name="children"
-              value="$associations/*:children[@associationType='crossReference' and @initiativeType='collection']" />
+              value="$associations/*:children" />
      <sch:let name="hasRelatedDataset"
                    value="count($children) > 0"/>
 
