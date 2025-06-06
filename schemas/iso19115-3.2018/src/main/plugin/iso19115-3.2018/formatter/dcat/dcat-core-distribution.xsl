@@ -149,6 +149,11 @@
 
     <xsl:choose>
       <xsl:when test="normalize-space($url) = ''"/>
+      <!--
+      TODO: The rule to populate the documentation element depends a lot on the context.
+      There is no known common guidance how to encode this and this can be quite user specific.
+      For service, it is mandatory from an HVD point of view ("quality of service information is considered part of the generic documentation of a Data Service.").
+      -->
       <!-- MW: This is used for accessUrl of download distribution type -->
       <xsl:when test="$protocol = 'WWW:LINK' and $function = 'download'"/>
       <xsl:when test="$function = ('information', 'information.content', 'information.portrayal', 'information.lineage', 'information.qualitySpecification', 'information.qualityReport',
@@ -211,7 +216,6 @@
                   <xsl:with-param name="dateType" select="'revision'"/>
                 </xsl:apply-templates>
               </xsl:for-each>
-
 
               <!--
               RDF Property:	dcat:accessURL
@@ -285,6 +289,8 @@
                Definition:	A data service that gives access to the distribution of the dataset
                Range:	dcat:DataService
                Usage note:	dcat:accessService SHOULD be used to link to a description of a dcat:DataService that can provide access to this distribution.
+
+             DataService can be better described by an associated service metadata record.
               -->
               <xsl:if test="$function = ('download', 'offlineAccess', 'order', 'browsing', 'fileAccess')
                             or matches($protocol, 'OGC:WMS|OGC:WFS|OGC:WCS|OGC:WPS|OGC API Features|OGC API Coverages|ESRI:REST')">
@@ -398,6 +404,7 @@
 
               <xsl:if test="$isCopyingDatasetInfoToDistribution">
                 <!--
+              [mco:useConstraints]
                 RDF Property:	dcterms:license
                 Definition:	A legal document under which the distribution is made available.
                 Range:	dcterms:LicenseDocument
@@ -408,17 +415,15 @@
                 for a Distribution of that Dataset SHOULD be avoided as this can create legal conflicts.
                 See also guidance at 9. License and rights statements.
                 -->
-                <xsl:apply-templates mode="iso19115-3-to-dcat"
-                                     select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/*[mco:useConstraints]"/>
-
                 <!--
+             [mco:accessConstraints]
                 RDF Property:	dcterms:accessRights
                 Definition:	A rights statement that concerns how the distribution is accessed.
                 Range:	dcterms:RightsStatement
                 Usage note:	Information about licenses and rights MAY be provided for the Distribution. See also guidance at 9. License and rights statements.
                 -->
                 <xsl:apply-templates mode="iso19115-3-to-dcat"
-                                     select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/*[mco:accessConstraints]"/>
+                                   select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:resourceConstraints/*"/>
 
                 <!--
                 RDF Property:	dcterms:rights
@@ -462,8 +467,8 @@
                 -->
                 <!--
                 MW disabled
-                <xsl:apply-templates mode="iso19115-3-to-dcat"
-                                     select="ancestor::mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report/*/mdq:result[mdq:DQ_ConformanceResult and mdq:DQ_ConformanceResult/mdq:pass/*/text() = 'true']"/>
+              <xsl:apply-templates mode="iso19115-3-to-dcat"
+                                   select="ancestor::mdb:MD_Metadata/mdb:dataQualityInfo/*/mdq:report/*/mdq:result[mdq:DQ_ConformanceResult and mdq:DQ_ConformanceResult/mdq:pass/*/text() = 'true']"/>
                                      -->
 
                 <xsl:apply-templates mode="iso19115-3-to-dcat"

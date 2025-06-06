@@ -115,7 +115,7 @@
         </xsl:if>
       </xsl:for-each>
 
-     <xsl:for-each select="../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints">
+      <xsl:for-each select="../../mri:resourceConstraints/*[mco:accessConstraints]/mco:otherConstraints">
         <xsl:if test="position() = 1 or ($isPreservingAllResourceConstraints and position() > 1)">
           <!--
           MW: only one allowed in DCAT-AP so keep only the mapping to DCAT-AP types (see above).
@@ -252,8 +252,6 @@
           </dct:RightsStatement>
         </dct:rights>
       </xsl:if>
-
-
     </xsl:if>
   </xsl:template>
 

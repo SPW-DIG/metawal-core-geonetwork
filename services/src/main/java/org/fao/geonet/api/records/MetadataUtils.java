@@ -156,6 +156,7 @@ public class MetadataUtils {
 
         ServiceContext context = ServiceContext.get();
 
+
         try {
             Map<RelatedItemType, List<AssociatedRecord>> associated = MetadataUtils.getAssociated(context, metadataEntity, RelatedItemType.values(), 0, 100);
             for (Map.Entry<RelatedItemType, List<AssociatedRecord>> entry : associated.entrySet()) {

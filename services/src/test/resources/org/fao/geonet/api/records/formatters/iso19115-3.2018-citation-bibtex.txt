@@ -1,7 +1,7 @@
 @misc{{uuid},
-      author = {Production géomatique et traitement de données (SPW - Secrétariat général - SPW Digital - Département Données transversales - Production géomatique et traitement de données)},
+      author = {Service public de Wallonie (SPW), Université Libre de Bruxelles (ULB), Université catholique de Louvain (UCL), Institut Scientifique de Service Public (ISSeP)},
       publisher = {},
       title = {Utilisation du Sol en Wallonie - WALOUS 2018},
-      year = {2020},
-      url = {http://localhost:8080/srv/api/records/{uuid}}
+      year = {2020},doi = {http://geodata.wallonie.be/id/fafb9fc7-4e32-4a40-8163-c64966cb573c},
+      url = {http://geodata.wallonie.be/id/fafb9fc7-4e32-4a40-8163-c64966cb573c}
       }

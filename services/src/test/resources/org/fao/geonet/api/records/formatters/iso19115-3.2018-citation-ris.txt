@@ -1,5 +1,8 @@
 TY  - DATA
-AU  - Production géomatique et traitement de données (SPW - Secrétariat général - SPW Digital - Département Données transversales - Production géomatique et traitement de données)
+AU  - Service public de Wallonie (SPW)
+AU  - Université Libre de Bruxelles (ULB)
+AU  - Université catholique de Louvain (UCL)
+AU  - Institut Scientifique de Service Public (ISSeP)
 TI  - Utilisation du Sol en Wallonie - WALOUS 2018
 LA  - fre
 KW  - Données de base
@@ -19,7 +22,8 @@ KW  - Télédétection
 KW  - Aménagement du territoire
 KW  - UTS
 KW  - COSW
-UR  - http://localhost:8080/srv/api/records/{uuid}
+UR  - http://geodata.wallonie.be/id/fafb9fc7-4e32-4a40-8163-c64966cb573c
+DO  - http://geodata.wallonie.be/id/fafb9fc7-4e32-4a40-8163-c64966cb573c
 ID  - {uuid}
 DA  - 2020/10/30/
 PY  - 2020

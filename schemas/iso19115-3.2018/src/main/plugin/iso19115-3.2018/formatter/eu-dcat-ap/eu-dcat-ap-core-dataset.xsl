@@ -177,9 +177,6 @@
                 priority="2">
     <xsl:call-template name="iso19115-3-to-dcat-resource"/>
 
-    <xsl:apply-templates mode="iso19115-3-to-eu-dcat-ap"
-                         select="mdb:resourceLineage/*/mrl:source"/>
-
     <xsl:call-template name="rdf-eu-dcat-ap-theme"/>
   </xsl:template>
 
