@@ -218,20 +218,21 @@ public class KeywordsApiTest extends AbstractServiceIntegrationTest {
         HttpSession session = loginAs(user);
         MockHttpSession mockHttpSession = loginAsAdmin();
 
-        MockMultipartHttpServletRequest request = new MockMultipartHttpServletRequest(session.getServletContext());
-        request.setRequestURI("/srv/api/registries/vocabularies");
-        MockMultipartFile file = new MockMultipartFile(
-            "file",
-            "mobility-theme.owl",
-            null,
-            getClass().getClassLoader().getResourceAsStream("mobility-theme.owl"));
-        request.addFile(file);
-        request.setSession(session);
-        request.setParameter("type", "external");
-        request.setParameter("dir", "theme");
-        MockHttpServletResponse response = new MockHttpServletResponse();
-        invoker.invoke(request, response);
-        assertEquals(200, response.getStatus());
+        // Thesaurus available by default in Metawal
+//        MockMultipartHttpServletRequest request = new MockMultipartHttpServletRequest(session.getServletContext());
+//        request.setRequestURI("/srv/api/registries/vocabularies");
+//        MockMultipartFile file = new MockMultipartFile(
+//            "file",
+//            "mobility-theme.owl",
+//            null,
+//            getClass().getClassLoader().getResourceAsStream("mobility-theme.owl"));
+//        request.addFile(file);
+//        request.setSession(session);
+//        request.setParameter("type", "external");
+//        request.setParameter("dir", "theme");
+//        MockHttpServletResponse response = new MockHttpServletResponse();
+//        invoker.invoke(request, response);
+//        assertEquals(200, response.getStatus());
 
 
         MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();

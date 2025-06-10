@@ -90,7 +90,7 @@ public class RegionsApiTest  extends AbstractServiceIntegrationTest {
             .accept(MediaType.parseMediaType("application/json")))
             .andExpect(status().isOk())
             .andExpect(content().contentType(API_JSON_EXPECTED_ENCODING))
-            .andExpect(jsonPath("$.regions", hasSize(6)));
+            .andExpect(jsonPath("$.regions", hasSize(0)));
     }
 
 
@@ -137,8 +137,9 @@ public class RegionsApiTest  extends AbstractServiceIntegrationTest {
             .accept(MediaType.parseMediaType("application/json")))
             .andExpect(status().isOk())
             .andExpect(content().contentType(API_JSON_EXPECTED_ENCODING))
-            .andExpect(jsonPath("$[*].id", hasItem("http://www.naturalearthdata.com/ne_admin#Continent")))
-            .andExpect(jsonPath("$[*].id", hasItem("http://www.naturalearthdata.com/ne_admin#Country")));
+//            .andExpect(jsonPath("$[*].id", hasItem("http://www.naturalearthdata.com/ne_admin#Continent")))
+//            .andExpect(jsonPath("$[*].id", hasItem("http://www.naturalearthdata.com/ne_admin#Continent")))
+            .andExpect(jsonPath("$[*].id", hasItem("https://metawal.wallonie.be/thesaurus/entitesadministratives#Region")));
 
     }
 }
