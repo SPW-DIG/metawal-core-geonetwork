@@ -26,8 +26,7 @@
       <foaf:isPrimaryTopicOf>
          <rdf:Description rdf:about="http://localhost:8080/srv/api/records/{uuid}">
             <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
-            <dct:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
-              {uuid}</dct:identifier>
+            <dct:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#string">{uuid}</dct:identifier>
             <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-26</dct:modified>
             <foaf:primaryTopic rdf:resource="http://localhost:8080/srv/api/records/{uuid}#resource"/>
          </rdf:Description>
