@@ -249,12 +249,6 @@ public class JCloudStore extends AbstractStore {
                 .withMessageKey("exception.resourceNotFound.resource", new String[]{resourceId})
                 .withDescriptionKey("exception.resourceNotFound.resource.description", new String[]{resourceId, metadataUuid});
         }
-
-    }
-
-    @Override
-    public ResourceHolder getResourceInternal(String metadataUuid, MetadataResourceVisibility visibility, String resourceId, Boolean approved) throws Exception {
-        throw new UnsupportedOperationException("JCloud does not support getResourceInternal.");
     }
 
     @Override
