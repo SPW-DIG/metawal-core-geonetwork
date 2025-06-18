@@ -51,67 +51,25 @@
 
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
-   Geospatial extent is recommended. Add a geospatial extent.
+   Define the geospatial extent.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-fr" xml:lang="fr">
-    L'emprise geospatiale est recommendée. Ajoutez une emprise géospatiale.
+    Définissez l'emprise géospatiale.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en" xml:lang="en">
-                  Geospatial extent found.
+    Geospatial extent found.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-fr" xml:lang="fr">
-  Emprise géospatiale trouvée.
+    Emprise géospatiale trouvée.
   </sch:diagnostic>
 
-  <!-- Temporal Extent -->
-  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
-   Temporal extent is recommended. Add a temporal extent.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
-    La période temporelle est recommendée. Ajoutez une période temporelle.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
-                  Temporal extent found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
-  Période temporelle trouvée.
-  </sch:diagnostic>
-
-  <!-- Update Frequency -->
-  <sch:diagnostic id="rule.dcatap.update-frequency.recommended-failure-en" xml:lang="en">
-     Update Frequency is recommended. Add an update frequency.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.update-frequency.recommended-failure-fr" xml:lang="fr">
-      La fréquence de mise à jour est recommendée. Ajoutez une fréquence de mise à jour.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.update-frequency.recommended-success-en" xml:lang="en">
-                    Update Frequency found.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.update-frequency.recommended-success-fr" xml:lang="fr">
-    Fréquence de mise à jour trouvée.
-    </sch:diagnostic>
-
-    <!-- EU legislation keyword-->
-    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-failure-en" xml:lang="en">
-         EU legislation keyword is recommended. Add a keyword related to an European legislation.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-failure-fr" xml:lang="fr">
-          Présence de mot-clé en lien avec une législation européenne recommendé. Ajoutez un mot-clé en lien avec une législation européenne.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-success-en" xml:lang="en">
-                        EU legislation keyword found
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.eu-legislation-keyword.recommended-success-fr" xml:lang="fr">
-        Mot-clé relatif à une législation européene trouvé.
-    </sch:diagnostic>
-
-  <sch:pattern>
-    <sch:title>DCAT-AP - Recommended</sch:title>
+  <sch:pattern id="geospatial-extent">
+    <sch:title xml:lang="en">Geospatial Extent Is defined</sch:title>
+    <sch:title xml:lang="fr">L'emprise géographique est définie</sch:title>
     <sch:rule context="//*:MD_Metadata">
 
       <sch:let name="geospatialExtent"
                value="//*:extent/*/*:geographicElement/*"/>
-
       <sch:let name="hasGeospatialExtent"
                value="boolean(
                         $geospatialExtent[
@@ -125,62 +83,43 @@
                   diagnostics="rule.dcatap.geospatial-extent.recommended-failure-en rule.dcatap.geospatial-extent.recommended-failure-fr"/>
       <sch:report test="$hasGeospatialExtent"
                   diagnostics="rule.dcatap.geospatial-extent.recommended-success-en rule.dcatap.geospatial-extent.recommended-success-fr"/>
-
-      <!-- Temporal extent -->
-      <sch:let name="temporalElement"
-               value="//*:extent/*/*:temporalElement/*/*:extent"/>
-      <sch:let name="periodStart"
-               value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
-      <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
-
-      <sch:let name="hasTemporalExtent" value="count($periodStart) > 0 and count($periodEnd) > 0" />
-
-      <sch:assert test="$hasTemporalExtent"
-                  diagnostics="rule.dcatap.temporal-extent.recommended-failure-en rule.dcatap.temporal-extent.recommended-failure-fr"/>
-      <sch:report test="$hasTemporalExtent"
-                  diagnostics="rule.dcatap.temporal-extent.recommended-success-en rule.dcatap.temporal-extent.recommended-success-fr"/>
-
-
-      <!-- Update frequency -->
-       <sch:let name="updateFrequency"
-                value="//*:resourceMaintenance/*/*:maintenanceAndUpdateFrequency[*/@codeListValue != '']"/>
-
-       <sch:let name="hasUpdateFrequency" value="count($updateFrequency) > 0" />
-
-       <sch:assert test="$hasUpdateFrequency"
-                   diagnostics="rule.dcatap.update-frequency.recommended-failure-en rule.dcatap.update-frequency.recommended-failure-fr"/>
-       <sch:report test="$hasUpdateFrequency"
-                   diagnostics="rule.dcatap.update-frequency.recommended-success-en rule.dcatap.update-frequency.recommended-success-fr"/>
-
-      <!-- Update frequency -->
-       <sch:let name="euLegislationKeyword"
-                value="*:identificationInfo/*/*:descriptiveKeywords/*/*:keyword/*:Anchor[starts-with(@xlink:href, 'http://data.europa.eu/eli')]"/>
-       <sch:let name="hasEuLegislationKeyword" value="count($euLegislationKeyword) > 0" />
-
-       <sch:assert test="$hasEuLegislationKeyword"
-                   diagnostics="rule.dcatap.eu-legislation-keyword.recommended-failure-en rule.dcatap.eu-legislation-keyword.recommended-failure-fr"/>
-       <sch:report test="$hasEuLegislationKeyword"
-                   diagnostics="rule.dcatap.eu-legislation-keyword.recommended-success-en rule.dcatap.eu-legislation-keyword.recommended-success-fr"/>
-
     </sch:rule>
     </sch:pattern>
 
-    <!-- RULE Specific to Dataset-->
+      <!-- Temporal Extent -->
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
+       Define the temporal extent.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
+        Définissez l'étendue temporelle.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
+                      Temporal extent found.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
+      Période temporelle trouvée.
+      </sch:diagnostic>
+     <sch:pattern id="temporal-extent" >
+        <sch:title xml:lang="en">Temporal Extent Is defined</sch:title>
+        <sch:title xml:lang="fr">L'étendue temporelle est définie</sch:title>
+        <sch:rule context="//*:MD_Metadata">
 
-      <!-- Default Lang -->
-      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-failure-en" xml:lang="en">
-      Default language is recommended. Add a default language.
-      </sch:diagnostic>
-      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-failure-fr" xml:lang="fr">
-       La présence d'une langue par défaut est recommandée. Ajoutez une langue par défaut.
-      </sch:diagnostic>
-      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-success-en" xml:lang="en">
-      Default language found.
-      </sch:diagnostic>
-      <sch:diagnostic id="rule.dcatap.dataset.lang.recommended-success-fr" xml:lang="fr">
-      Langue par défaut trouvée.
-      </sch:diagnostic>
+          <sch:let name="temporalElement"
+                   value="//*:extent/*/*:temporalElement/*/*:extent"/>
+          <sch:let name="periodStart"
+                   value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
+          <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
 
+          <sch:let name="hasTemporalExtent" value="count($periodStart) > 0 and count($periodEnd) > 0" />
+
+          <sch:assert test="$hasTemporalExtent"
+                      diagnostics="rule.dcatap.temporal-extent.recommended-failure-en rule.dcatap.temporal-extent.recommended-failure-fr"/>
+          <sch:report test="$hasTemporalExtent"
+                      diagnostics="rule.dcatap.temporal-extent.recommended-success-en rule.dcatap.temporal-extent.recommended-success-fr"/>
+        </sch:rule>
+     </sch:pattern>
+
+    <!-- Dataset Distribution-->
        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
           A Distribution is expected to be present. Add an online resource with a download protocol or
           function.
@@ -197,21 +136,11 @@
           URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
         </sch:diagnostic>
 
+    <sch:pattern id="dataset-distribution">
+      <sch:title xml:lang="en">Dataset should have at least 1 distribution</sch:title>
+      <sch:title xml:lang="fr">Dataset devrait avoir au moins une distribution</sch:title>
 
-    <sch:pattern id="dataset">
-
-    <sch:title>DCAT-AP - Recommended (Dataset)</sch:title>
-
-
-     <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
-
-        <sch:let name="hasDefaultLang"
-            value="boolean(*:defaultLocale/*/lan:language/*/@codeListValue != '')" />
-
-        <sch:assert test="$hasDefaultLang"
-                    diagnostics="rule.dcatap.dataset.lang.recommended-failure-en rule.dcatap.dataset.lang.recommended-failure-fr"/>
-        <sch:report test="$hasDefaultLang"
-                    diagnostics="rule.dcatap.dataset.lang.recommended-success-en rule.dcatap.dataset.lang.recommended-success-fr"/>
+      <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
 
         <sch:let name="distributions"
                  value="*:distributionInfo//*:onLine/*[*:linkage/(*:CharacterString|*:URL)/text() != ''][not(
@@ -225,10 +154,7 @@
                     diagnostics="rule.dcatap.dataset.distribution.mandatory-failure-en rule.dcatap.dataset.distribution.mandatory-failure-fr"/>
         <sch:report test="$hasOneOrMoreDistributions"
                     diagnostics="rule.dcatap.dataset.distribution.mandatory-success-en rule.dcatap.dataset.distribution.mandatory-success-fr"/>
-
-     </sch:rule>
-
-
-
+      </sch:rule>
   </sch:pattern>
+
 </sch:schema>
