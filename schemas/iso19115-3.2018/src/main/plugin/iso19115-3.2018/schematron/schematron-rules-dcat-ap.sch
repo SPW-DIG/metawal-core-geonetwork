@@ -295,10 +295,21 @@
       <sch:report test="$hasDcatThemes"
                   diagnostics="rule.dcatap.themes.mandatory-success-en rule.dcatap.themes.mandatory-success-fr"/>
 
+      <!--
+      Keywords can be mapped to DCAT themes, legislation, or excluded eg. internal themes.
+      See dcat-core-keywords.xsl.
+      Only consider others.
+      -->
+      <sch:let name="thesaurusToIgnore"
+               value="('http://publications.europa.eu/resource/authority/data-theme',
+                            'http://data.europa.eu/r5r/applicableLegislation',
+                            'https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon',
+                            'https://metawal.wallonie.be/thesaurus/infrasig')"/>
 
       <sch:let name="keywords"
-               value="*:identificationInfo/*/*:descriptiveKeywords/*/
-                              *:keyword[*/text() != '']"/>
+               value="*:identificationInfo/*/*:descriptiveKeywords/*[
+               not(mri:thesaurusName/*/cit:title/*/@xlink:href = $thesaurusToIgnore)
+               ]/*:keyword[*/text() != '']"/>
       <sch:let name="hasKeywords"
                value="count($keywords) > 0"/>
 
