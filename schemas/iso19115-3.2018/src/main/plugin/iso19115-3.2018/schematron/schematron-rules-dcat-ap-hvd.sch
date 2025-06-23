@@ -139,10 +139,10 @@
 
 
   <sch:diagnostic id="rule.hvd.license.mandatory-failure-en" xml:lang="en">
-    The usage license is specified and is of public type (use constraints unrestricted)
+    The usage license is not specified or is not of public type (use constraints unrestricted license)
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-failure-fr" xml:lang="fr">
-    La licence d'utilisation est spécifiée et est de type ouverte (use constraints de type license unrestricted).
+    La licence d'utilisation n'est pas spécifiée ou n'est pas de type ouverte (type de licence unrestricted).
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-success-en"
                   xml:lang="en">
@@ -333,9 +333,9 @@
 
 
       <sch:let name="isPublicLicenseType"
-                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:accessConstraints/*/@codeListValue[. = ('unrestricted', 'licenceUnrestricted')]) > 0"/>
+                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:useConstraints/*/@codeListValue[. = ('unrestricted', 'licenceUnrestricted')]) > 0"/>
       <sch:let name="license"
-               value="*:identificationInfo/*/*:resourceConstraints/*/*:otherConstraints/*/@xlink:href"/>
+               value="*:identificationInfo/*/*:resourceConstraints/*[*:useConstraints]/*:otherConstraints/*/@xlink:href"/>
 
       <sch:let name="hasPublicLicense"
                 value="$isPublicLicenseType and count($license) > 0"/>
