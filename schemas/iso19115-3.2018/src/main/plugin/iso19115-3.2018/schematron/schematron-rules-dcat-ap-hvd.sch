@@ -65,6 +65,22 @@
   </sch:diagnostic>
 
 
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-failure-en" xml:lang="en">
+    One legislation is recommended. Use a keyword with an Anchor pointing to
+    http://data.europa.eu/eli/....
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-failure-fr" xml:lang="fr">
+    Une législation applicable est obligatoire. Utilisez un mot-clé avec une ancre pointant vers
+    http://data.europa.eu/eli/....
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-success-en"
+                  xml:lang="en">One applicable legislation found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-success-fr"
+                  xml:lang="fr">Une législation applicable est encodée.
+  </sch:diagnostic>
+
+
 
   <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
     Contact information that can be used for sending comments about the Dataset is missing.
@@ -209,15 +225,30 @@
       For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
       As multiple legislations may apply to the resource the maximum cardinality is not limited.
       -->
-      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
+      <sch:let name="hasOneKeywordEncodingHvdLegislationAsAnchor"
                value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
                               *:keyword[*:Anchor/@xlink:href
                                   = 'http://data.europa.eu/eli/reg_impl/2023/138/oj']) = 1"/>
 
-      <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+      <sch:assert test="$hasOneKeywordEncodingHvdLegislationAsAnchor"
                   diagnostics="rule.hvd.legislation.mandatory-failure-en rule.hvd.legislation.mandatory-failure-fr"/>
-      <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+      <sch:report test="$hasOneKeywordEncodingHvdLegislationAsAnchor"
                   diagnostics="rule.hvd.legislation.mandatory-success-en rule.hvd.legislation.mandatory-success-fr"/>
+
+
+      <!--
+      See eu-dcat-ap-core-dataset.xsl
+      -->
+      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
+               value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
+                              *:keyword[*:Anchor/@xlink:href != 'http://data.europa.eu/eli/reg_impl/2023/138/oj'
+                              and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]) > 1"/>
+
+      <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+                  diagnostics="rule.hvd.one.legislation.mandatory-failure-en rule.hvd.one.legislation.mandatory-failure-fr"/>
+      <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+                  diagnostics="rule.hvd.one.legislation.mandatory-success-en rule.hvd.one.legislation.mandatory-success-fr"/>
+
 
 
       <!--
