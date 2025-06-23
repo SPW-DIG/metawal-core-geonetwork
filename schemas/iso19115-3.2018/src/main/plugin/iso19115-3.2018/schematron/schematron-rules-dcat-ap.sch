@@ -54,13 +54,16 @@
     Resource identifier is mandatory. Add a citation identifier with a codespace starting with http.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-failure-fr" xml:lang="fr">
-    L'identifiant de la ressource est obligatoire. Ajoutez un identifiant de citation avec un codespace commençant par http.
+    L'identifiant de la ressource est obligatoire. Ajoutez un identifiant de citation avec un codespace commençant par
+    http.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-success-en"
-                  xml:lang="en">Resource identifier found: <sch:value-of select="string-join($resourceIdentifier, ', ')"/>
+                  xml:lang="en">Resource identifier found:
+    <sch:value-of select="string-join($resourceIdentifier, ', ')"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-success-fr"
-                  xml:lang="fr">Identifiant de la ressource encodé: <sch:value-of select="string-join($resourceIdentifier, ', ')"/>
+                  xml:lang="fr">Identifiant de la ressource encodé:
+    <sch:value-of select="string-join($resourceIdentifier, ', ')"/>
   </sch:diagnostic>
 
 
@@ -71,10 +74,12 @@
     Le titre de la ressource est obligatoire.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourcetitle.mandatory-success-en"
-                  xml:lang="en">Resource title found: <sch:value-of select="$resourceTitle"/>
+                  xml:lang="en">Resource title found:
+    <sch:value-of select="$resourceTitle"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourcetitle.mandatory-success-fr"
-                  xml:lang="fr">Titre de la resource encodé : <sch:value-of select="$resourceTitle"/>
+                  xml:lang="fr">Titre de la resource encodé :
+    <sch:value-of select="$resourceTitle"/>
   </sch:diagnostic>
 
 
@@ -92,7 +97,6 @@
   </sch:diagnostic>
 
 
-
   <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-en" xml:lang="en">
     Resource revision date is mandatory.
   </sch:diagnostic>
@@ -100,10 +104,12 @@
     La date de modification de la ressource est obligatoire.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-en"
-                  xml:lang="en">Resource revision date found: <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
+                  xml:lang="en">Resource revision date found:
+    <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-fr"
-                  xml:lang="fr">Date de modification de la resource encodée : <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
+                  xml:lang="fr">Date de modification de la resource encodée :
+    <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
   </sch:diagnostic>
 
 
@@ -114,12 +120,13 @@
     La date de publication de la ressource est obligatoire.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-en"
-                  xml:lang="en">Resource publication date found: <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
+                  xml:lang="en">Resource publication date found:
+    <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-fr"
-                  xml:lang="fr">Date de publication de la resource encodée : <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
+                  xml:lang="fr">Date de publication de la resource encodée :
+    <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
   </sch:diagnostic>
-
 
 
   <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-failure-en" xml:lang="en">
@@ -185,12 +192,14 @@
   <sch:diagnostic id="rule.dcatap.keywords.mandatory-success-en"
                   xml:lang="en">
     <sch:value-of
-    select="count($keywords)"/> keyword(s) found.
+      select="count($keywords)"/>
+    keyword(s) found.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.keywords.mandatory-success-fr"
                   xml:lang="fr">
     <sch:value-of
-      select="count($keywords)"/> mot(s) clé(s) encodé(s).
+      select="count($keywords)"/>
+    mot(s) clé(s) encodé(s).
   </sch:diagnostic>
 
   <sch:pattern>
@@ -275,7 +284,6 @@
                   diagnostics="rule.dcatap.custodian.mandatory-success-en rule.dcatap.custodian.mandatory-success-fr"/>
 
 
-
       <sch:let name="dcatThemes"
                value="*:identificationInfo/*/*:descriptiveKeywords/*/
                               *:keyword[starts-with(*:Anchor/@xlink:href, 'http://publications.europa.eu/resource/authority/data-theme')]"/>
@@ -317,26 +325,11 @@
     Contraintes d'accès encodées.
   </sch:diagnostic>
 
-
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-failure-en" xml:lang="en">
-    Access lineage are mandatory.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-failure-fr" xml:lang="fr">
-    La généalogie est obligatoire.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-success-en"
-                  xml:lang="en">
-    Lineage found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-success-fr"
-                  xml:lang="fr">
-    Généalogie encodée.
-  </sch:diagnostic>
   <sch:pattern id="dataset">
 
-  <sch:title>DCAT-AP (Dataset)</sch:title>
-  <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
-
+    <sch:title>DCAT-AP (Dataset)</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
 
 
       <sch:let name="hasConstraintType"
@@ -351,15 +344,7 @@
                   diagnostics="rule.dcatap.dataset.constraints.mandatory-failure-en rule.dcatap.dataset.constraints.mandatory-failure-fr"/>
       <sch:report test="$hasConstraints"
                   diagnostics="rule.dcatap.dataset.constraints.mandatory-success-en rule.dcatap.dataset.constraints.mandatory-success-fr"/>
-
-      <sch:let name="hasLineage"
-               value="count(*:resourceLineage/*/*:statement[*/text() != '']) > 0"/>
-
-      <sch:assert test="$hasLineage"
-                  diagnostics="rule.dcatap.dataset.lineage.mandatory-failure-en rule.dcatap.dataset.lineage.mandatory-failure-fr"/>
-      <sch:report test="$hasLineage"
-                  diagnostics="rule.dcatap.dataset.lineage.mandatory-success-en rule.dcatap.dataset.lineage.mandatory-success-fr"/>
-  </sch:rule>
+    </sch:rule>
   </sch:pattern>
 
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-en" xml:lang="en">
@@ -382,25 +367,25 @@
   <sch:pattern id="series">
 
     <sch:title>DCAT-AP (Serie)</sch:title>
-    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']" >
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']">
 
-     <sch:let name="associations"
-              value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations" />
-     <sch:let name="children"
-              value="$associations/children" />
-     <sch:let name="hasRelatedDataset"
-                   value="count($children) > 0"/>
+      <sch:let name="associations"
+               value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations"/>
+      <sch:let name="children"
+               value="$associations/children"/>
+      <sch:let name="hasRelatedDataset"
+               value="count($children) > 0"/>
 
 
-    <sch:assert test="$hasRelatedDataset"
-                      diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
-    <sch:report test="$hasRelatedDataset"
-                      diagnostics="rule.dcatap.series.has-dataset.mandatory-success-en rule.dcatap.series.has-dataset.mandatory-success-fr"/>
-
+      <sch:assert test="$hasRelatedDataset"
+                  diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
+      <sch:report test="$hasRelatedDataset"
+                  diagnostics="rule.dcatap.series.has-dataset.mandatory-success-en rule.dcatap.series.has-dataset.mandatory-success-fr"/>
 
 
     </sch:rule>
-    </sch:pattern>
+  </sch:pattern>
 
 
 </sch:schema>
