@@ -626,6 +626,7 @@ public class EsSearchManager implements ISearchManager {
             .add("mw-gp-allWebServices")
             .add("mw-gp-esriWebServices")
             .add("mw-gp-ogcWebServices")
+            .add("mw-gp-downloadService")
             .add("mw-gp-download")
             .add("mw-gp-informationWebsite")
             .add("mw-gp-informationDoc")
