@@ -146,11 +146,11 @@
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-success-en"
                   xml:lang="en">
-    License found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+    Open license found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-success-fr"
                   xml:lang="fr">
-    Licence encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+    Licence ouverte encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
   </sch:diagnostic>
 
 
