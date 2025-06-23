@@ -333,7 +333,7 @@
 
 
       <sch:let name="isPublicLicenseType"
-                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:useConstraints/*/@codeListValue[. = ('unrestricted', 'licenceUnrestricted')]) > 0"/>
+                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:useConstraints/*/@codeListValue[. = ('licenceUnrestricted')]) > 0"/>
       <sch:let name="license"
                value="*:identificationInfo/*/*:resourceConstraints/*[*:useConstraints]/*:otherConstraints/*/@xlink:href"/>
 
