@@ -352,7 +352,6 @@
   </sch:diagnostic>
 
   <sch:pattern id="dataset">
-
     <sch:title>DCAT-AP (Dataset)</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
@@ -397,6 +396,79 @@
     <sch:value-of select="string-join($children/root/resourceIdentifier, ' | ')"/>
   </sch:diagnostic>
 
+
+  <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-en" xml:lang="en">
+    No distribution found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-fr" xml:lang="fr">
+    Pas de distribution trouvée.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-success-en"
+                  xml:lang="en">
+    <sch:value-of select="count($onlineResourceMappedAsDistribution)"/>  distribution(s) found:
+    <sch:value-of select="string-join($onlineResourceMappedAsDistribution, ', ')"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-success-fr"
+                  xml:lang="fr">
+    <sch:value-of select="count($onlineResourceMappedAsDistribution)"/> distribution(s) encodée(s) :
+    <sch:value-of select="string-join($onlineResourceMappedAsDistribution, ', ')"/>
+  </sch:diagnostic>
+
+
+  <sch:diagnostic id="rule.dcatap.distribution-has-name.mandatory-failure-en" xml:lang="en">
+    Distribution
+    <sch:value-of select="$linkage"/>
+    has no name.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-name.mandatory-failure-fr" xml:lang="fr">
+    Nom du fichier manquant dans la distribution <sch:value-of select="$linkage"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-name.mandatory-success-en"
+                  xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    name is set to <sch:value-of select="$name"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-name.mandatory-success-fr"
+                  xml:lang="fr">
+    Distribution <sch:value-of select="$linkage"/>. Nom du fichier encodé : <sch:value-of select="$name"/>.
+  </sch:diagnostic>
+
+  <sch:diagnostic id="rule.dcatap.distribution-has-description.mandatory-failure-en" xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    has no description.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-description.mandatory-failure-fr" xml:lang="fr">
+    Description du fichier manquant dans la distribution <sch:value-of select="$linkage"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-description.mandatory-success-en"
+                  xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    description is set to <sch:value-of select="$description"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-description.mandatory-success-fr"
+                  xml:lang="fr">
+    Distribution <sch:value-of select="$linkage"/>. Description encodée : <sch:value-of select="$description"/>.
+  </sch:diagnostic>
+
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-en" xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    has no download protocol (WWW:DOWNLOAD:IANA).
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-fr" xml:lang="fr">
+    Protocol du fichier manquant dans la distribution <sch:value-of select="$linkage"/>
+    (WWW:DOWNLOAD:IANA).
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-en"
+                  xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    download protocol is set to<sch:value-of select="$protocol"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-fr"
+                  xml:lang="fr">
+    Distribution <sch:value-of select="$linkage"/>. Protocole encodé : <sch:value-of select="$protocol"/>.
+  </sch:diagnostic>
+
+
   <sch:pattern id="series">
 
     <sch:title>DCAT-AP (Serie)</sch:title>
@@ -415,10 +487,71 @@
                   diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
       <sch:report test="$hasRelatedDataset"
                   diagnostics="rule.dcatap.series.has-dataset.mandatory-success-en rule.dcatap.series.has-dataset.mandatory-success-fr"/>
-
-
     </sch:rule>
   </sch:pattern>
 
 
+  <sch:pattern id="distribution">
+    <sch:title>DCAT-AP (Distribution)</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo">
+
+      <sch:let name="onlineResourceMappedAsDistribution"
+               value=".//*:onLine[
+                                   not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
+                                   and
+                                   not(
+                                    */*:function/*/@codeListValue = ('information', 'information.content', 'information.portrayal', 'information.lineage', 'information.qualitySpecification', 'information.qualityReport', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                    or (*/*:function/*/@codeListValue = 'browsing' and matches(*/*:protocol/*/text(), 'WWW:LINK.*'))
+                                    or ((not(*/*:function/*) or */*:function/*/@codeListValue = '') and (matches(*/*:protocol/*/text(), 'WWW:LINK.*') or not(*/*:protocol/*) or */*:protocol/*/text() = ''))
+                                   )
+                                   and not(*/*:protocol/* = ('ESRI:REST', 'ESRI:REST-TILED', 'OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'atom:feed', 'INSPIRE atom', 'OGC API - Features'))
+                                 ]/*/*:linkage/*[text() != '']"/>
+
+      <sch:let name="hasDistribution"
+               value="count($onlineResourceMappedAsDistribution) > 0"/>
+
+      <sch:assert test="$hasDistribution"
+                  diagnostics="rule.dcatap.has-distribution.mandatory-failure-en rule.dcatap.has-distribution.mandatory-failure-fr"/>
+      <sch:report test="$hasDistribution"
+                  diagnostics="rule.dcatap.has-distribution.mandatory-success-en rule.dcatap.has-distribution.mandatory-success-fr"/>
+
+    </sch:rule>
+
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo//*:onLine[
+                                   not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
+                                   and
+                                   not(
+                                    */*:function/*/@codeListValue = ('information', 'information.content', 'information.portrayal', 'information.lineage', 'information.qualitySpecification', 'information.qualityReport', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                    or (*/*:function/*/@codeListValue = 'browsing' and matches(*/*:protocol/*/text(), 'WWW:LINK.*'))
+                                    or ((not(*/*:function/*) or */*:function/*/@codeListValue = '') and (matches(*/*:protocol/*/text(), 'WWW:LINK.*') or not(*/*:protocol/*) or */*:protocol/*/text() = ''))
+                                   )
+                                   and not(*/*:protocol/* = ('ESRI:REST', 'ESRI:REST-TILED', 'OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'atom:feed', 'INSPIRE atom', 'OGC API - Features'))
+                                 ][*/*:linkage/*/text() != '']">
+
+      <sch:let name="linkage"
+               value="*/*:linkage/*[text() != '']"/>
+      <sch:let name="name"
+               value="*/*:name/*[text() != '']"/>
+      <sch:let name="description"
+               value="*/*:description/*[text() != '']"/>
+      <sch:let name="protocol"
+               value="*/*:protocol/*[text() != '']"/>
+
+      <sch:assert test="exists($name)"
+                  diagnostics="rule.dcatap.distribution-has-name.mandatory-failure-en rule.dcatap.distribution-has-name.mandatory-failure-fr"/>
+      <sch:report test="exists($name)"
+                  diagnostics="rule.dcatap.distribution-has-name.mandatory-success-en rule.dcatap.distribution-has-name.mandatory-success-fr"/>
+      <sch:assert test="exists($description)"
+                  diagnostics="rule.dcatap.distribution-has-description.mandatory-failure-en rule.dcatap.distribution-has-description.mandatory-failure-fr"/>
+      <sch:report test="exists($description)"
+                  diagnostics="rule.dcatap.distribution-has-description.mandatory-success-en rule.dcatap.distribution-has-description.mandatory-success-fr"/>
+      <sch:assert test="matches($protocol, 'WWW:DOWNLOAD:.*')"
+                  diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-en rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-fr"/>
+      <sch:report test="matches($protocol, 'WWW:DOWNLOAD:.*')"
+                  diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-en rule.dcatap.distribution-has-downloadprotocol.mandatory-success-fr"/>
+
+    </sch:rule>
+
+  </sch:pattern>
 </sch:schema>
