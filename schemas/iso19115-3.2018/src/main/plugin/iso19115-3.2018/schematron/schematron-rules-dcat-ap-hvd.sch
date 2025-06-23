@@ -99,20 +99,6 @@
                   xml:lang="fr">
     Catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-failure-en" xml:lang="en">
-    The HVD sub-category to which this Dataset belongs is missing.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-failure-fr" xml:lang="fr">
-    La sous-catégorie HVD à laquelle appartient cet ensemble de données est manquante.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-success-en"
-                  xml:lang="en">
-    HVD sub-categories found:<sch:value-of select="concat(' ', string-join($hvdSubCategories, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-success-fr"
-                  xml:lang="fr">
-    Sous-catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdSubCategories, ', '))"/>.
-  </sch:diagnostic>
 
 
   <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-en" xml:lang="en">
@@ -271,26 +257,15 @@
                value="*:identificationInfo/*/*:descriptiveKeywords/*[
                *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
                or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*:Anchor[@xlink:href = $hvdTopCategoriesUris]"/>
-      <sch:let name="hvdSubCategories"
-               value="*:identificationInfo/*/*:descriptiveKeywords/*[
-               *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
-               or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*:Anchor[not(@xlink:href = $hvdTopCategoriesUris)]"/>
       <sch:let name="hasOneOrMoreKeywordEncodingHvdCategory"
                value="count($hvdCategories) > 0"/>
       <sch:let name="hasOneOrMoreKeywordEncodingHvdTopCategory"
                      value="count($hvdTopCategories) > 0"/>
-      <sch:let name="hasOneOrMoreKeywordEncodingHvdSubCategory"
-                     value="count($hvdSubCategories) > 0"/>
 
       <sch:assert test="$hasOneOrMoreKeywordEncodingHvdTopCategory"
                   diagnostics="rule.hvd.category.mandatory-failure-en rule.hvd.category.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreKeywordEncodingHvdTopCategory"
                   diagnostics="rule.hvd.category.mandatory-success-en rule.hvd.category.mandatory-success-fr"/>
-      <sch:assert test="$hasOneOrMoreKeywordEncodingHvdSubCategory"
-                  diagnostics="rule.hvd.subcategory.mandatory-failure-en rule.hvd.subcategory.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreKeywordEncodingHvdSubCategory"
-                  diagnostics="rule.hvd.subcategory.mandatory-success-en rule.hvd.subcategory.mandatory-success-fr"/>
-
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="HVD (dataset)">

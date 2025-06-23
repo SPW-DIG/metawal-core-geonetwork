@@ -356,7 +356,7 @@
     <sch:title>DCAT-AP (Dataset)</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
-      
+
 
       <sch:let name="accessConstraints"
                value="*:identificationInfo/*/*:resourceConstraints/*[not(*:useConstraints) and *:otherConstraints/*/text() != '' and *:accessConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
