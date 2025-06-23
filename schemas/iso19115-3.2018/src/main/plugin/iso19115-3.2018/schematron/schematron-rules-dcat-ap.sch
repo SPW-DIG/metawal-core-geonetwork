@@ -321,19 +321,34 @@
     </sch:rule>
   </sch:pattern>
 
-  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-failure-en" xml:lang="en">
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-en" xml:lang="en">
     Access constraints are mandatory.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-failure-fr" xml:lang="fr">
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-fr" xml:lang="fr">
     Les contraintes d'accès sont obligatoires.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-success-en"
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-success-en"
                   xml:lang="en">
     Access constraints found.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.constraints.mandatory-success-fr"
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-success-fr"
                   xml:lang="fr">
     Contraintes d'accès encodées.
+  </sch:diagnostic>
+
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-en" xml:lang="en">
+    Use constraints are mandatory.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-fr" xml:lang="fr">
+    Les contraintes d'utilisation sont obligatoires.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-en"
+                  xml:lang="en">
+    Use constraints found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-fr"
+                  xml:lang="fr">
+    Contraintes d'utilisation encodées.
   </sch:diagnostic>
 
   <sch:pattern id="dataset">
@@ -341,20 +356,27 @@
     <sch:title>DCAT-AP (Dataset)</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
+      
 
+      <sch:let name="accessConstraints"
+               value="*:identificationInfo/*/*:resourceConstraints/*[not(*:useConstraints) and *:otherConstraints/*/text() != '' and *:accessConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
+      <sch:let name="useConstraints"
+               value="*:identificationInfo/*/*:resourceConstraints/*[not(*:accessConstraints) and *:otherConstraints/*/text() != '' and *:useConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
 
-      <sch:let name="hasConstraintType"
-               value="count(*:identificationInfo/*/*:resourceConstraints/*/*:accessConstraints/*/@codeListValue[. != '']) > 0"/>
-      <sch:let name="constraints"
-               value="*:identificationInfo/*/*:resourceConstraints/*/*:otherConstraints[*/text() != '']"/>
+      <sch:let name="hasAccessConstraints"
+               value="count($accessConstraints) > 0"/>
+      <sch:let name="hasUseConstraints"
+               value="count($useConstraints) > 0"/>
 
-      <sch:let name="hasConstraints"
-               value="$hasConstraintType and count($constraints) > 0"/>
+      <sch:assert test="$hasAccessConstraints"
+                  diagnostics="rule.dcatap.dataset.access.constraints.mandatory-failure-en rule.dcatap.dataset.access.constraints.mandatory-failure-fr"/>
+      <sch:report test="$hasAccessConstraints"
+                  diagnostics="rule.dcatap.dataset.access.constraints.mandatory-success-en rule.dcatap.dataset.access.constraints.mandatory-success-fr"/>
 
-      <sch:assert test="$hasConstraints"
-                  diagnostics="rule.dcatap.dataset.constraints.mandatory-failure-en rule.dcatap.dataset.constraints.mandatory-failure-fr"/>
-      <sch:report test="$hasConstraints"
-                  diagnostics="rule.dcatap.dataset.constraints.mandatory-success-en rule.dcatap.dataset.constraints.mandatory-success-fr"/>
+      <sch:assert test="$hasUseConstraints"
+                  diagnostics="rule.dcatap.dataset.use.constraints.mandatory-failure-en rule.dcatap.dataset.use.constraints.mandatory-failure-fr"/>
+      <sch:report test="$hasUseConstraints"
+                  diagnostics="rule.dcatap.dataset.use.constraints.mandatory-success-en rule.dcatap.dataset.use.constraints.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
 
