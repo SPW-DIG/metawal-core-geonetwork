@@ -52,10 +52,10 @@
 
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
-   Define the geospatial extent.
+   Define the resource's geospatial extent.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-fr" xml:lang="fr">
-    Définissez l'emprise géospatiale.
+    Définissez l'emprise géospatiale de la ressource.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en" xml:lang="en">
     Geospatial extent found.
@@ -65,7 +65,7 @@
   </sch:diagnostic>
 
   <sch:pattern id="geospatial-extent">
-    <sch:title xml:lang="en">Geospatial Extent Is defined</sch:title>
+    <sch:title xml:lang="en">Geospatial extent is defined</sch:title>
     <sch:title xml:lang="fr">L'emprise géographique est définie</sch:title>
     <sch:rule context="//*:MD_Metadata">
 
@@ -89,10 +89,10 @@
 
       <!-- Temporal Extent -->
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
-       Define the temporal extent.
+       Define the resource's temporal extent.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
-        Définissez l'étendue temporelle.
+        Définissez l'étendue temporelle de la ressource.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
                       Temporal extent found.
@@ -101,9 +101,10 @@
       Période temporelle trouvée.
       </sch:diagnostic>
      <sch:pattern id="temporal-extent" >
-        <sch:title xml:lang="en">Temporal Extent Is defined</sch:title>
+        <sch:title xml:lang="en">Temporal extent is defined</sch:title>
         <sch:title xml:lang="fr">L'étendue temporelle est définie</sch:title>
-        <sch:rule context="//*:MD_Metadata">
+        <sch:rule
+          context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
 
           <sch:let name="temporalElement"
                    value="//*:extent/*/*:temporalElement/*/*:extent"/>
@@ -122,11 +123,10 @@
 
     <!-- Dataset Distribution-->
   <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
-      A Distribution is expected to be present. Add an online resource with a download protocol or
-      function.
+      Add a download page, a direct download link, or a link to a visualization or download service
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-fr" xml:lang="fr">
-      Une distribution est attendue. Ajoutez une ressource en ligne avec un protocole ou une fonction de téléchargement.
+      Ajoutez une page de téléchargement, un lien de téléchargement direct ou un lien vers un service de visualisation ou de téléchargement
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
                     xml:lang="en">
@@ -138,8 +138,8 @@
     </sch:diagnostic>
 
     <sch:pattern id="dataset-distribution">
-      <sch:title xml:lang="en">Dataset should have at least 1 distribution</sch:title>
-      <sch:title xml:lang="fr">Dataset devrait avoir au moins une distribution</sch:title>
+      <sch:title xml:lang="en">A distribution is defined</sch:title>
+      <sch:title xml:lang="fr">Une distribution est définie</sch:title>
 
       <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
 
