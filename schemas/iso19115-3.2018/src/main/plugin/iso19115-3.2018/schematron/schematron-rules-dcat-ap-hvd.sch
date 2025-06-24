@@ -65,6 +65,22 @@
   </sch:diagnostic>
 
 
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-failure-en" xml:lang="en">
+    One legislation is recommended. Use a keyword with an Anchor pointing to
+    http://data.europa.eu/eli/....
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-failure-fr" xml:lang="fr">
+    Une législation applicable est obligatoire. Utilisez un mot-clé avec une ancre pointant vers
+    http://data.europa.eu/eli/....
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-success-en"
+                  xml:lang="en">One applicable legislation found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-success-fr"
+                  xml:lang="fr">Une législation applicable est encodée.
+  </sch:diagnostic>
+
+
 
   <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
     Contact information that can be used for sending comments about the Dataset is missing.
@@ -99,20 +115,6 @@
                   xml:lang="fr">
     Catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-failure-en" xml:lang="en">
-    The HVD sub-category to which this Dataset belongs is missing.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-failure-fr" xml:lang="fr">
-    La sous-catégorie HVD à laquelle appartient cet ensemble de données est manquante.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-success-en"
-                  xml:lang="en">
-    HVD sub-categories found:<sch:value-of select="concat(' ', string-join($hvdSubCategories, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.subcategory.mandatory-success-fr"
-                  xml:lang="fr">
-    Sous-catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdSubCategories, ', '))"/>.
-  </sch:diagnostic>
 
 
   <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-en" xml:lang="en">
@@ -137,18 +139,18 @@
 
 
   <sch:diagnostic id="rule.hvd.license.mandatory-failure-en" xml:lang="en">
-    The usage license is specified and is of public type (use constraints unrestricted)
+    The usage license is not specified or is not of public type (use constraints unrestricted license)
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-failure-fr" xml:lang="fr">
-    La licence d'utilisation est spécifiée et est de type ouverte (use constraints de type license unrestricted).
+    La licence d'utilisation n'est pas spécifiée ou n'est pas de type ouverte (type de licence unrestricted).
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-success-en"
                   xml:lang="en">
-    License found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+    Open license found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.license.mandatory-success-fr"
                   xml:lang="fr">
-    Licence encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+    Licence ouverte encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
   </sch:diagnostic>
 
 
@@ -223,15 +225,30 @@
       For HVD the value must include the ELI http://data.europa.eu/eli/reg_impl/2023/138/oj.
       As multiple legislations may apply to the resource the maximum cardinality is not limited.
       -->
-      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
+      <sch:let name="hasOneKeywordEncodingHvdLegislationAsAnchor"
                value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
                               *:keyword[*:Anchor/@xlink:href
                                   = 'http://data.europa.eu/eli/reg_impl/2023/138/oj']) = 1"/>
 
-      <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+      <sch:assert test="$hasOneKeywordEncodingHvdLegislationAsAnchor"
                   diagnostics="rule.hvd.legislation.mandatory-failure-en rule.hvd.legislation.mandatory-failure-fr"/>
-      <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+      <sch:report test="$hasOneKeywordEncodingHvdLegislationAsAnchor"
                   diagnostics="rule.hvd.legislation.mandatory-success-en rule.hvd.legislation.mandatory-success-fr"/>
+
+
+      <!--
+      See eu-dcat-ap-core-dataset.xsl
+      -->
+      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
+               value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
+                              *:keyword[*:Anchor/@xlink:href != 'http://data.europa.eu/eli/reg_impl/2023/138/oj'
+                              and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]) > 1"/>
+
+      <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+                  diagnostics="rule.hvd.one.legislation.mandatory-failure-en rule.hvd.one.legislation.mandatory-failure-fr"/>
+      <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+                  diagnostics="rule.hvd.one.legislation.mandatory-success-en rule.hvd.one.legislation.mandatory-success-fr"/>
+
 
 
       <!--
@@ -271,26 +288,15 @@
                value="*:identificationInfo/*/*:descriptiveKeywords/*[
                *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
                or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*:Anchor[@xlink:href = $hvdTopCategoriesUris]"/>
-      <sch:let name="hvdSubCategories"
-               value="*:identificationInfo/*/*:descriptiveKeywords/*[
-               *:thesaurusName/*/*:title/*:CharacterString = 'High-value dataset categories'
-               or *:thesaurusName/*/*:title/*:Anchor/@xlink:href = 'http://data.europa.eu/bna/asd487ae75']/*:keyword/*:Anchor[not(@xlink:href = $hvdTopCategoriesUris)]"/>
       <sch:let name="hasOneOrMoreKeywordEncodingHvdCategory"
                value="count($hvdCategories) > 0"/>
       <sch:let name="hasOneOrMoreKeywordEncodingHvdTopCategory"
                      value="count($hvdTopCategories) > 0"/>
-      <sch:let name="hasOneOrMoreKeywordEncodingHvdSubCategory"
-                     value="count($hvdSubCategories) > 0"/>
 
       <sch:assert test="$hasOneOrMoreKeywordEncodingHvdTopCategory"
                   diagnostics="rule.hvd.category.mandatory-failure-en rule.hvd.category.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreKeywordEncodingHvdTopCategory"
                   diagnostics="rule.hvd.category.mandatory-success-en rule.hvd.category.mandatory-success-fr"/>
-      <sch:assert test="$hasOneOrMoreKeywordEncodingHvdSubCategory"
-                  diagnostics="rule.hvd.subcategory.mandatory-failure-en rule.hvd.subcategory.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreKeywordEncodingHvdSubCategory"
-                  diagnostics="rule.hvd.subcategory.mandatory-success-en rule.hvd.subcategory.mandatory-success-fr"/>
-
     </sch:rule>
   </sch:pattern>
   <sch:pattern id="HVD (dataset)">
@@ -327,9 +333,9 @@
 
 
       <sch:let name="isPublicLicenseType"
-                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:accessConstraints/*/@codeListValue[. = ('unrestricted', 'licenceUnrestricted')]) > 0"/>
+                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:useConstraints/*/@codeListValue[. = ('licenceUnrestricted')]) > 0"/>
       <sch:let name="license"
-               value="*:identificationInfo/*/*:resourceConstraints/*/*:otherConstraints/*/@xlink:href"/>
+               value="*:identificationInfo/*/*:resourceConstraints/*[*:useConstraints]/*:otherConstraints/*/@xlink:href"/>
 
       <sch:let name="hasPublicLicense"
                 value="$isPublicLicenseType and count($license) > 0"/>
