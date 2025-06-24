@@ -120,21 +120,40 @@
      </sch:pattern>
 
     <!-- Dataset Distribution-->
-       <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
-          A Distribution is expected to be present. Add an online resource with a download protocol or
-          function.
-        </sch:diagnostic>
-        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-fr" xml:lang="fr">
-          Une distribution est attendue. Ajoutez une ressource en ligne avec un protocole ou une fonction de téléchargement.
-        </sch:diagnostic>
-        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
-                        xml:lang="en">
-          Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
-        </sch:diagnostic>
-        <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-fr"
-                        xml:lang="fr">
-          URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
-        </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-en" xml:lang="en">
+      Distribution <sch:value-of select="$linkage"/>
+      has no size and it is recommended to set it.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-fr" xml:lang="fr">
+      Taille du téléchargement manquante dans la distribution <sch:value-of select="$linkage"/>.
+      Il est recommandé d'ajouter la taille du fichier de téléchargement en Mo.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-size.success-en"
+                    xml:lang="en">
+      Distribution <sch:value-of select="$linkage"/>
+      size is <sch:value-of select="$size"/> Mo.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-size.success-fr"
+                    xml:lang="fr">
+      Taille du téléchargement pour <sch:value-of select="$linkage"/> est : <sch:value-of select="$size"/> Mo.
+    </sch:diagnostic>
+
+
+  <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
+      A Distribution is expected to be present. Add an online resource with a download protocol or
+      function.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-fr" xml:lang="fr">
+      Une distribution est attendue. Ajoutez une ressource en ligne avec un protocole ou une fonction de téléchargement.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
+                    xml:lang="en">
+      Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-fr"
+                    xml:lang="fr">
+      URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+    </sch:diagnostic>
 
     <sch:pattern id="dataset-distribution">
       <sch:title xml:lang="en">Dataset should have at least 1 distribution</sch:title>
@@ -157,4 +176,31 @@
       </sch:rule>
   </sch:pattern>
 
+
+  <sch:pattern id="distribution">
+    <sch:title>DCAT-AP (Distribution)</sch:title>
+
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo//*:onLine[
+                                   not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
+                                   and
+                                   not(
+                                    */*:function/*/@codeListValue = ('information', 'information.content', 'information.portrayal', 'information.lineage', 'information.qualitySpecification', 'information.qualityReport', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                    or (*/*:function/*/@codeListValue = 'browsing' and matches(*/*:protocol/*/text(), 'WWW:LINK.*'))
+                                    or ((not(*/*:function/*) or */*:function/*/@codeListValue = '') and (matches(*/*:protocol/*/text(), 'WWW:LINK.*') or not(*/*:protocol/*) or */*:protocol/*/text() = ''))
+                                   )
+                                   and not(*/*:protocol/* = ('ESRI:REST', 'ESRI:REST-TILED', 'OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'atom:feed', 'INSPIRE atom', 'OGC API - Features'))
+                                 ][*/*:linkage/*/text() != '']">
+
+      <sch:let name="linkage"
+               value="*/*:linkage/*[text() != '']"/>
+      <sch:let name="size"
+               value="ancestor::mrd:MD_DigitalTransferOptions/mrd:transferSize/*/text()[. castable as xs:double]"/>
+
+      <sch:report test="exists($size)"
+                  diagnostics="rule.dcatap.distribution-has-size.success-en rule.dcatap.distribution-has-size.success-fr"/>
+      <sch:assert test="exists($size)"
+                  diagnostics="rule.dcatap.distribution-has-size.failure-en rule.dcatap.distribution-has-size.failure-fr"/>
+    </sch:rule>
+
+  </sch:pattern>
 </sch:schema>

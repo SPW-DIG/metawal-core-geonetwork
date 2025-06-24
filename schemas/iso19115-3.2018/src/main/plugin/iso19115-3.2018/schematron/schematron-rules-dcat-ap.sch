@@ -403,7 +403,7 @@
   <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-failure-fr" xml:lang="fr">
     Ajoutez la page de téléchargement avec une ressource en ligne dont le protocole est "WWW:LINK"
     et la fonction est "download". Complétez aussi les informations
-    "Adresse internet", "titre" et "description" pour la page de téléchargement.
+    "adresse internet", "titre" et "description" pour la page de téléchargement.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-success-en"
                   xml:lang="en">
@@ -418,10 +418,12 @@
 
 
   <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-en" xml:lang="en">
-    No distribution found.
+    No distribution found. Add an online resource with protocol WWW:DOWNLOAD:code_IANA_format and function download.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-fr" xml:lang="fr">
-    Pas de distribution trouvée.
+    Pas de distribution trouvée. Ajoutez un téléchargement avec une ressource en ligne
+    dont le protocole est "WWW:DOWNLOAD:code_IANA_du_format" et la fonction est "download".
+    Complétez les informations "adresse internet", "titre" et "description"  pour le fichier de téléchargement.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-success-en"
                   xml:lang="en">
@@ -489,8 +491,8 @@
   </sch:diagnostic>
 
 
-  <sch:pattern id="series">
 
+  <sch:pattern id="series">
     <sch:title>DCAT-AP (Serie)</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']">
@@ -581,7 +583,6 @@
                   diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-en rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-fr"/>
       <sch:report test="matches($protocol, 'WWW:DOWNLOAD:.*')"
                   diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-en rule.dcatap.distribution-has-downloadprotocol.mandatory-success-fr"/>
-
     </sch:rule>
 
   </sch:pattern>
