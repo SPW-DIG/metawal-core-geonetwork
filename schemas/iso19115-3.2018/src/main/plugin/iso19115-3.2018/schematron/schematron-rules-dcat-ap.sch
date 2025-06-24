@@ -397,6 +397,26 @@
   </sch:diagnostic>
 
 
+  <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-failure-en" xml:lang="en">
+    No download page found. Add an online resource with protocol WWW:LINK and function download.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez la page de téléchargement avec une ressource en ligne dont le protocole est "WWW:LINK"
+    et la fonction est "download". Complétez aussi les informations
+    "Adresse internet", "titre" et "description" pour la page de téléchargement.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-success-en"
+                  xml:lang="en">
+    <sch:value-of select="count($onlineResourceDownloadPages)"/>  download page(s) found:
+    <sch:value-of select="string-join($onlineResourceDownloadPages, ', ')"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-success-fr"
+                  xml:lang="fr">
+    <sch:value-of select="count($onlineResourceDownloadPages)"/> page(s) de téléchargement encodée(s) :
+    <sch:value-of select="string-join($onlineResourceDownloadPages, ', ')"/>
+  </sch:diagnostic>
+
+
   <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-en" xml:lang="en">
     No distribution found.
   </sch:diagnostic>
@@ -495,6 +515,17 @@
     <sch:title>DCAT-AP (Distribution)</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo">
+
+
+      <sch:let name="onlineResourceDownloadPages"
+               value=".//*:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download']/*/*:linkage/*[text() != '']"/>
+
+      <sch:assert test="exists($onlineResourceDownloadPages)"
+                  diagnostics="rule.dcatap.has-download-page.mandatory-failure-en rule.dcatap.has-download-page.mandatory-failure-fr"/>
+      <sch:report test="exists($onlineResourceDownloadPages)"
+                  diagnostics="rule.dcatap.has-download-page.mandatory-success-en rule.dcatap.has-download-page.mandatory-success-fr"/>
+
+
 
       <sch:let name="onlineResourceMappedAsDistribution"
                value=".//*:onLine[
