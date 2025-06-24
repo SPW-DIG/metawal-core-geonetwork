@@ -1605,13 +1605,13 @@
 
 
     <sch:diagnostic id="rule.mri.defaultlocalewhenhastext-success-en"
-                    xml:lang="en">Number of resource language:
-      <sch:value-of select="count($resourceLanguages)"/>.
+                    xml:lang="en">Resource language(s) defined:
+      <sch:value-of select="string-join($resourceLanguages, ', ')"/>.
     </sch:diagnostic>
 
     <sch:diagnostic id="rule.mri.defaultlocalewhenhastext-success-fr"
-                    xml:lang="fr">Nombre de langues de la ressource :
-      <sch:value-of select="count($resourceLanguages)"/>.
+                    xml:lang="fr">Langue(s) de la ressource :
+      <sch:value-of select="string-join($resourceLanguages, ', ')"/>.
     </sch:diagnostic>
 
   </sch:diagnostics>
@@ -1631,11 +1631,11 @@
     -->
 
     <sch:rule
-            context="//mri:MD_DataIdentification[       ../../mdb:contentInfo/mrc:MD_FeatureCatalogue or       ../../mdb:contentInfo/mrc:MD_FeatureCatalogueDescription]">
+            context="//mri:MD_DataIdentification[*:spatialRepresentationType/*/@codeListValue != 'grid']">
 
 
       <sch:let name="resourceLanguages"
-               value="mri:defaultLocale/lan:PT_Locale/                 lan:language/lan:LanguageCode/@codeListValue[. != '']"/>
+               value="(mri:defaultLocale|mri:otherLocale)/lan:PT_Locale/lan:language/lan:LanguageCode/@codeListValue[. != '']"/>
 
       <sch:let name="hasAtLeastOneLanguage"
                value="count($resourceLanguages) &gt; 0"/>
