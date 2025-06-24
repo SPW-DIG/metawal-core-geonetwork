@@ -219,6 +219,54 @@
         </sch:rule>
       </sch:pattern>
 
+    <!-- Keywords -->
+    <sch:diagnostic id="rule.dcatap.keywords.mandatory-failure-en" xml:lang="en">
+      Add keywords.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.keywords.mandatory-failure-fr" xml:lang="fr">
+      Décrivez votre ressource à l'aide de mots-clés
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.keywords.mandatory-success-en"
+                    xml:lang="en">
+      <sch:value-of
+        select="count($keywords)"/>
+      keyword(s) found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.keywords.mandatory-success-fr"
+                    xml:lang="fr">
+      <sch:value-of
+        select="count($keywords)"/>
+      mot(s) clé(s) encodé(s).
+    </sch:diagnostic>
+    <sch:pattern id="resource-keywords">
+      <sch:title xml:lang="en">Keywords are defined</sch:title>
+      <sch:title xml:lang="fr">Des mots-clés sont définis</sch:title>
+      <sch:rule
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+      <!--
+      Keywords can be mapped to DCAT themes, legislation, or excluded eg. internal themes.
+      See dcat-core-keywords.xsl.
+      Only consider others.
+      -->
+      <sch:let name="thesaurusToIgnore"
+               value="('http://publications.europa.eu/resource/authority/data-theme',
+                            'http://data.europa.eu/r5r/applicableLegislation',
+                            'https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon',
+                            'https://metawal.wallonie.be/thesaurus/infrasig')"/>
+
+      <sch:let name="keywords"
+               value="*:identificationInfo/*/*:descriptiveKeywords/*[
+               not(mri:thesaurusName/*/cit:title/*/@xlink:href = $thesaurusToIgnore)
+               ]/*:keyword[*/text() != '']"/>
+      <sch:let name="hasKeywords"
+               value="count($keywords) > 0"/>
+
+      <sch:assert test="$hasKeywords"
+                  diagnostics="rule.dcatap.keywords.mandatory-failure-en rule.dcatap.keywords.mandatory-failure-fr"/>
+      <sch:report test="$hasKeywords"
+                  diagnostics="rule.dcatap.keywords.mandatory-success-en rule.dcatap.keywords.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
 
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
