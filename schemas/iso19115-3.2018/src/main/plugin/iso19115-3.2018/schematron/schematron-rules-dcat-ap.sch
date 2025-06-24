@@ -143,39 +143,6 @@
     </sch:rule>
   </sch:pattern>
 
-  <!-- Resource Publication date-->
-  <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-failure-en" xml:lang="en">
-    Resource publication date is mandatory.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-failure-fr" xml:lang="fr">
-    La date de publication de la ressource est obligatoire.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-en"
-                  xml:lang="en">Resource publication date found:
-    <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-fr"
-                  xml:lang="fr">Date de publication de la resource encodée :
-    <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
-  </sch:diagnostic>
-  <sch:pattern id="resource-publication-date">
-    <sch:title xml:lang="en">Resource publication date is defined</sch:title>
-    <sch:title xml:lang="fr">La date de publication de la ressource est renseignée</sch:title>
-    <sch:rule
-      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
-
-      <sch:let name="resourcePublicationDate"
-               value="*:identificationInfo/*/*:citation/*/*:date/*[*:dateType/*/@codeListValue = 'publication']/*:date[*/text() != '']"/>
-      <sch:let name="hasResourcePublicationDate"
-               value="count($resourcePublicationDate) > 0"/>
-
-      <sch:assert test="$hasResourcePublicationDate"
-                  diagnostics="rule.dcatap.resourcepublicationdate.mandatory-failure-en rule.dcatap.resourcepublicationdate.mandatory-failure-fr"/>
-      <sch:report test="$hasResourcePublicationDate"
-                  diagnostics="rule.dcatap.resourcepublicationdate.mandatory-success-en rule.dcatap.resourcepublicationdate.mandatory-success-fr"/>
-      </sch:rule>
-    </sch:pattern>
-
   <!-- Contact Point-->
   <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-failure-en" xml:lang="en">
     Add a contact with a role of pointOfContact.
