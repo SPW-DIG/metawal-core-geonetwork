@@ -182,6 +182,77 @@
       </sch:rule>
     </sch:pattern>
 
+    <!-- Geospatial extent -->
+    <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
+     Define the resource's geospatial extent.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-fr" xml:lang="fr">
+      Définissez l'emprise géospatiale de la ressource.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en" xml:lang="en">
+      Geospatial extent found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-fr" xml:lang="fr">
+      Emprise géospatiale trouvée.
+    </sch:diagnostic>
+
+    <sch:pattern id="geospatial-extent">
+      <sch:title xml:lang="en">Geospatial extent is defined</sch:title>
+      <sch:title xml:lang="fr">L'emprise géographique est définie</sch:title>
+      <sch:rule context="//*:MD_Metadata">
+
+        <sch:let name="geospatialExtent"
+                 value="//*:extent/*/*:geographicElement/*"/>
+        <sch:let name="hasGeospatialExtent"
+                 value="boolean(
+                          $geospatialExtent[
+                            gex:westBoundLongitude/gco:Decimal and
+                            gex:eastBoundLongitude/gco:Decimal and
+                            gex:southBoundLatitude/gco:Decimal and
+                            gex:northBoundLatitude/gco:Decimal
+                          ])"/>
+
+        <sch:assert test="$hasGeospatialExtent"
+                    diagnostics="rule.dcatap.geospatial-extent.recommended-failure-en rule.dcatap.geospatial-extent.recommended-failure-fr"/>
+        <sch:report test="$hasGeospatialExtent"
+                    diagnostics="rule.dcatap.geospatial-extent.recommended-success-en rule.dcatap.geospatial-extent.recommended-success-fr"/>
+      </sch:rule>
+      </sch:pattern>
+
+      <!-- Temporal Extent -->
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
+       Define the resource's temporal extent.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
+        Définissez l'étendue temporelle de la ressource.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
+                      Temporal extent found.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
+      Période temporelle trouvée.
+      </sch:diagnostic>
+      <sch:pattern id="temporal-extent" >
+         <sch:title xml:lang="en">Temporal extent is defined</sch:title>
+         <sch:title xml:lang="fr">L'étendue temporelle est définie</sch:title>
+         <sch:rule
+           context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+
+           <sch:let name="temporalElement"
+                    value="//*:extent/*/*:temporalElement/*/*:extent"/>
+           <sch:let name="periodStart"
+                    value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
+           <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
+
+           <sch:let name="hasTemporalExtent" value="count($periodStart) > 0 and count($periodEnd) > 0" />
+
+           <sch:assert test="$hasTemporalExtent"
+                       diagnostics="rule.dcatap.temporal-extent.recommended-failure-en rule.dcatap.temporal-extent.recommended-failure-fr"/>
+           <sch:report test="$hasTemporalExtent"
+                       diagnostics="rule.dcatap.temporal-extent.recommended-success-en rule.dcatap.temporal-extent.recommended-success-fr"/>
+         </sch:rule>
+      </sch:pattern>
+
    <!-- Theme -->
       <sch:diagnostic id="rule.dcatap.themes.mandatory-failure-en" xml:lang="en">
         Add a theme from thesaurus "Data Theme DCAT-AP" of Publication Europa
@@ -267,77 +338,6 @@
                   diagnostics="rule.dcatap.keywords.mandatory-success-en rule.dcatap.keywords.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
-
-<!-- Geospatial extent -->
-  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
-   Define the resource's geospatial extent.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-fr" xml:lang="fr">
-    Définissez l'emprise géospatiale de la ressource.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en" xml:lang="en">
-    Geospatial extent found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-fr" xml:lang="fr">
-    Emprise géospatiale trouvée.
-  </sch:diagnostic>
-
-  <sch:pattern id="geospatial-extent">
-    <sch:title xml:lang="en">Geospatial extent is defined</sch:title>
-    <sch:title xml:lang="fr">L'emprise géographique est définie</sch:title>
-    <sch:rule context="//*:MD_Metadata">
-
-      <sch:let name="geospatialExtent"
-               value="//*:extent/*/*:geographicElement/*"/>
-      <sch:let name="hasGeospatialExtent"
-               value="boolean(
-                        $geospatialExtent[
-                          gex:westBoundLongitude/gco:Decimal and
-                          gex:eastBoundLongitude/gco:Decimal and
-                          gex:southBoundLatitude/gco:Decimal and
-                          gex:northBoundLatitude/gco:Decimal
-                        ])"/>
-
-      <sch:assert test="$hasGeospatialExtent"
-                  diagnostics="rule.dcatap.geospatial-extent.recommended-failure-en rule.dcatap.geospatial-extent.recommended-failure-fr"/>
-      <sch:report test="$hasGeospatialExtent"
-                  diagnostics="rule.dcatap.geospatial-extent.recommended-success-en rule.dcatap.geospatial-extent.recommended-success-fr"/>
-    </sch:rule>
-    </sch:pattern>
-
-    <!-- Temporal Extent -->
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
-     Define the resource's temporal extent.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
-      Définissez l'étendue temporelle de la ressource.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
-                    Temporal extent found.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
-    Période temporelle trouvée.
-    </sch:diagnostic>
-    <sch:pattern id="temporal-extent" >
-       <sch:title xml:lang="en">Temporal extent is defined</sch:title>
-       <sch:title xml:lang="fr">L'étendue temporelle est définie</sch:title>
-       <sch:rule
-         context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
-
-         <sch:let name="temporalElement"
-                  value="//*:extent/*/*:temporalElement/*/*:extent"/>
-         <sch:let name="periodStart"
-                  value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
-         <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
-
-         <sch:let name="hasTemporalExtent" value="count($periodStart) > 0 and count($periodEnd) > 0" />
-
-         <sch:assert test="$hasTemporalExtent"
-                     diagnostics="rule.dcatap.temporal-extent.recommended-failure-en rule.dcatap.temporal-extent.recommended-failure-fr"/>
-         <sch:report test="$hasTemporalExtent"
-                     diagnostics="rule.dcatap.temporal-extent.recommended-success-en rule.dcatap.temporal-extent.recommended-success-fr"/>
-       </sch:rule>
-    </sch:pattern>
 
   <!-- Access constraints -->
   <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-en" xml:lang="en">
