@@ -143,39 +143,6 @@
     </sch:rule>
   </sch:pattern>
 
-  <!-- Custodian -->
-  <sch:diagnostic id="rule.dcatap.custodian.mandatory-failure-en" xml:lang="en">
-    Add a contact with a role of custodian.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.custodian.mandatory-failure-fr" xml:lang="fr">
-     Ajoutez un responsable avec le rôle "gestionnaire".
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.custodian.mandatory-success-en"
-                  xml:lang="en">
-    Custodian found:<sch:value-of
-    select="concat(' ', string-join($resourceCustodian, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.custodian.mandatory-success-fr"
-                  xml:lang="fr">
-    Gestionnaire encodé :<sch:value-of
-    select="concat(' ', string-join($resourceCustodian, ', '))"/>.
-  </sch:diagnostic>
-  <sch:pattern id="resource-custodian">
-    <sch:title xml:lang="en">Resource custodian is defined</sch:title>
-    <sch:title xml:lang="fr">Le gestionnaire est défini</sch:title>
-    <sch:rule context="//*:MD_Metadata">
-      <sch:let name="resourceCustodian"
-               value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'custodian']/*:party/*/*:name/*[text() != '']"/>
-      <sch:let name="hasOneOrMoreCustodian"
-               value="count($resourceCustodian) > 0"/>
-
-      <sch:assert test="$hasOneOrMoreCustodian"
-                  diagnostics="rule.dcatap.custodian.mandatory-failure-en rule.dcatap.custodian.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreCustodian"
-                  diagnostics="rule.dcatap.custodian.mandatory-success-en rule.dcatap.custodian.mandatory-success-fr"/>
-      </sch:rule>
-    </sch:pattern>
-
     <!-- Theme -->
     <sch:diagnostic id="rule.dcatap.themes.mandatory-failure-en" xml:lang="en">
       Add a theme from thesaurus "Data Theme DCAT-AP" of Publication Europa
