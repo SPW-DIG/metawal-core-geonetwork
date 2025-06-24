@@ -182,14 +182,6 @@
   </sch:pattern>
 
   <!-- Distribution -->
-  <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-failure-en" xml:lang="en">
-    No download page found. Add an online resource with protocol WWW:LINK and function download.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-failure-fr" xml:lang="fr">
-    Ajoutez la page de téléchargement avec une ressource en ligne dont le protocole est "WWW:LINK"
-    et la fonction est "download". Complétez aussi les informations
-    "adresse internet", "titre" et "description" pour la page de téléchargement.
-  </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-success-en"
                   xml:lang="en">
     <sch:value-of select="count($onlineResourceDownloadPages)"/>  download page(s) found:
@@ -201,15 +193,6 @@
     <sch:value-of select="string-join($onlineResourceDownloadPages, ', ')"/>
   </sch:diagnostic>
 
-
-  <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-en" xml:lang="en">
-    No distribution found. Add an online resource with protocol WWW:DOWNLOAD:code_IANA_format and function download.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-failure-fr" xml:lang="fr">
-    Pas de distribution trouvée. Ajoutez un téléchargement avec une ressource en ligne
-    dont le protocole est "WWW:DOWNLOAD:code_IANA_du_format" et la fonction est "download".
-    Complétez les informations "adresse internet", "titre" et "description"  pour le fichier de téléchargement.
-  </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.has-distribution.mandatory-success-en"
                   xml:lang="en">
     <sch:value-of select="count($onlineResourceMappedAsDistribution)"/>  distribution(s) found:
@@ -219,6 +202,14 @@
                   xml:lang="fr">
     <sch:value-of select="count($onlineResourceMappedAsDistribution)"/> distribution(s) encodée(s) :
     <sch:value-of select="string-join($onlineResourceMappedAsDistribution, ', ')"/>
+  </sch:diagnostic>
+
+  <sch:diagnostic id="rule.dcatap.has-distribution-or-download-page-or-service.mandatory-failure-en" xml:lang="en">
+   Add a download page, or a download link, or a service (viewing or download).
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.has-distribution-or-download-page-or-service.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez une page de téléchargement, un lien de téléchargement direct ou un lien vers un service de visualisation ou de téléchargement
+    "adresse internet", "titre" et "description" pour la page de téléchargement.
   </sch:diagnostic>
 
 
@@ -276,16 +267,14 @@
   </sch:diagnostic>
 
   <sch:pattern id="distribution">
+   <!-- TODO: add support for service-->
     <sch:title>DCAT-AP (Distribution)</sch:title>
     <sch:rule
-      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo">
-
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo">
 
       <sch:let name="onlineResourceDownloadPages"
                value=".//*:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download']/*/*:linkage/*[text() != '']"/>
 
-      <sch:assert test="exists($onlineResourceDownloadPages)"
-                  diagnostics="rule.dcatap.has-download-page.mandatory-failure-en rule.dcatap.has-download-page.mandatory-failure-fr"/>
       <sch:report test="exists($onlineResourceDownloadPages)"
                   diagnostics="rule.dcatap.has-download-page.mandatory-success-en rule.dcatap.has-download-page.mandatory-success-fr"/>
 
@@ -306,10 +295,14 @@
       <sch:let name="hasDistribution"
                value="count($onlineResourceMappedAsDistribution) > 0"/>
 
-      <sch:assert test="$hasDistribution"
-                  diagnostics="rule.dcatap.has-distribution.mandatory-failure-en rule.dcatap.has-distribution.mandatory-failure-fr"/>
+      <sch:let name="hasDistributionOrDownloadPageOrService"
+               value="(count($onlineResourceDownloadPages) + count($onlineResourceMappedAsDistribution)) > 0"/>
+
       <sch:report test="$hasDistribution"
                   diagnostics="rule.dcatap.has-distribution.mandatory-success-en rule.dcatap.has-distribution.mandatory-success-fr"/>
+
+      <sch:assert test="$hasDistributionOrDownloadPageOrService"
+                  diagnostics="rule.dcatap.has-distribution-or-download-page-or-service.mandatory-failure-en rule.dcatap.has-distribution-or-download-page-or-service.mandatory-failure-fr"/>
 
     </sch:rule>
 
