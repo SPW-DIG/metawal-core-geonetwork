@@ -143,43 +143,6 @@
     </sch:rule>
   </sch:pattern>
 
-    <!-- Theme -->
-    <sch:diagnostic id="rule.dcatap.themes.mandatory-failure-en" xml:lang="en">
-      Add a theme from thesaurus "Data Theme DCAT-AP" of Publication Europa
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.themes.mandatory-failure-fr" xml:lang="fr">
-      Ajoutez un thème provenant du thésaurus "Themes de données européens DCAT-AP"
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.themes.mandatory-success-en"
-                    xml:lang="en">
-      DCAT themes found:<sch:value-of
-      select="concat(' ', string-join($dcatThemes, ', '))"/>.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.themes.mandatory-success-fr"
-                    xml:lang="fr">
-      Thèmes DCAT encodés :<sch:value-of
-      select="concat(' ', string-join($dcatThemes, ', '))"/>.
-    </sch:diagnostic>
-    <sch:pattern id="resource-theme">
-      <sch:title xml:lang="en">The resource is classified under one of the European data themes of DCAT-AP</sch:title>
-      <sch:title xml:lang="fr">La ressource est classée dans un des thèmes de données européens DCAT-AP</sch:title>
-      <sch:rule
-        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
-
-
-      <sch:let name="dcatThemes"
-               value="*:identificationInfo/*/*:descriptiveKeywords/*/
-                              *:keyword[starts-with(*:Anchor/@xlink:href, 'http://publications.europa.eu/resource/authority/data-theme')]"/>
-      <sch:let name="hasDcatThemes"
-               value="count($dcatThemes) > 0"/>
-
-      <sch:assert test="$hasDcatThemes"
-                  diagnostics="rule.dcatap.themes.mandatory-failure-en rule.dcatap.themes.mandatory-failure-fr"/>
-      <sch:report test="$hasDcatThemes"
-                  diagnostics="rule.dcatap.themes.mandatory-success-en rule.dcatap.themes.mandatory-success-fr"/>
-      </sch:rule>
-    </sch:pattern>
-
     <!-- Keywords -->
     <sch:diagnostic id="rule.dcatap.keywords.mandatory-failure-en" xml:lang="en">
       Add keywords.
