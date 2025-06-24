@@ -306,7 +306,7 @@
 
     </sch:rule>
 
-    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo//*:onLine[
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//*:onLine[
                                    not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
                                    and
                                    not(
@@ -338,6 +338,26 @@
                   diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-en rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-fr"/>
       <sch:report test="matches($protocol, 'WWW:DOWNLOAD:.*')"
                   diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-en rule.dcatap.distribution-has-downloadprotocol.mandatory-success-fr"/>
+    </sch:rule>
+
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//
+                                        *:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download'][*/*:linkage/*/text() != '']">
+
+      <sch:let name="linkage"
+               value="*/*:linkage/*[text() != '']"/>
+      <sch:let name="name"
+               value="*/*:name/*[text() != '']"/>
+      <sch:let name="description"
+               value="*/*:description/*[text() != '']"/>
+
+      <sch:assert test="exists($name)"
+                  diagnostics="rule.dcatap.distribution-has-name.mandatory-failure-en rule.dcatap.distribution-has-name.mandatory-failure-fr"/>
+      <sch:report test="exists($name)"
+                  diagnostics="rule.dcatap.distribution-has-name.mandatory-success-en rule.dcatap.distribution-has-name.mandatory-success-fr"/>
+      <sch:assert test="exists($description)"
+                  diagnostics="rule.dcatap.distribution-has-description.mandatory-failure-en rule.dcatap.distribution-has-description.mandatory-failure-fr"/>
+      <sch:report test="exists($description)"
+                  diagnostics="rule.dcatap.distribution-has-description.mandatory-success-en rule.dcatap.distribution-has-description.mandatory-success-fr"/>
     </sch:rule>
 
   </sch:pattern>
