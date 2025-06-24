@@ -116,6 +116,39 @@
         </sch:rule>
       </sch:pattern>
 
+    <!-- Contact Point-->
+    <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-failure-en" xml:lang="en">
+      Add a contact with a role of pointOfContact.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-failure-fr" xml:lang="fr">
+      Ajoutez un responsable avec le rôle "point de contact".
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-success-en"
+                    xml:lang="en">
+      Point of contact found:<sch:value-of
+      select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-success-fr"
+                    xml:lang="fr">
+      Point de contact encodé :<sch:value-of
+      select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
+    </sch:diagnostic>
+    <sch:pattern id="resource-contact">
+      <sch:title xml:lang="en">Resource's contact points defined</sch:title>
+      <sch:title xml:lang="fr">Le point de contact est défini</sch:title>
+      <sch:rule context="//*:MD_Metadata">
+        <sch:let name="resourcePointOfContact"
+                 value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'pointOfContact']/*:party/*/*:name/*[text() != '']"/>
+        <sch:let name="hasOneOrMorePointOfContact"
+                 value="count($resourcePointOfContact) > 0"/>
+
+        <sch:assert test="$hasOneOrMorePointOfContact"
+                    diagnostics="rule.dcatap.contactPoint.mandatory-failure-en rule.dcatap.contactPoint.mandatory-failure-fr"/>
+        <sch:report test="$hasOneOrMorePointOfContact"
+                    diagnostics="rule.dcatap.contactPoint.mandatory-success-en rule.dcatap.contactPoint.mandatory-success-fr"/>
+      </sch:rule>
+    </sch:pattern>
+
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
    Define the resource's geospatial extent.
