@@ -268,6 +268,40 @@
     </sch:rule>
   </sch:pattern>
 
+ <!-- Access constraints -->
+ <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-en" xml:lang="en">
+    Define the applicable standard access constraints or, if not applicable, specify non-standard access constraints by selecting a value from the 'Access Constraints' list and indicating any 'Other Constraints'
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-fr" xml:lang="fr">
+    Définissez les conditions d'accès standard applicables ou à défaut spécifiez des conditions d'accès non-standard en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes"
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-success-en"
+                  xml:lang="en">
+    Access constraints found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-success-fr"
+                  xml:lang="fr">
+    Contraintes d'accès encodées.
+  </sch:diagnostic>
+  <sch:pattern id="dataset-accessconstraints">
+   <sch:title xml:lang="en">Dataset - Access constraints are defined</sch:title>
+   <sch:title xml:lang="fr">Dataset - Les contraintes d'accès sont définies</sch:title>
+   <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
+
+      <sch:let name="accessConstraints"
+               value="*:identificationInfo/*/*:resourceConstraints/*[not(*:useConstraints) and *:otherConstraints/*/text() != '' and *:accessConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
+
+      <sch:let name="hasAccessConstraints"
+               value="count($accessConstraints) > 0"/>
+
+      <sch:assert test="$hasAccessConstraints"
+                  diagnostics="rule.dcatap.dataset.access.constraints.mandatory-failure-en rule.dcatap.dataset.access.constraints.mandatory-failure-fr"/>
+      <sch:report test="$hasAccessConstraints"
+                  diagnostics="rule.dcatap.dataset.access.constraints.mandatory-success-en rule.dcatap.dataset.access.constraints.mandatory-success-fr"/>
+   </sch:rule>
+  </sch:pattern>
+
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
    Define the resource's geospatial extent.
