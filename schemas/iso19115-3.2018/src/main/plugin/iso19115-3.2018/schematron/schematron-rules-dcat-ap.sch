@@ -317,21 +317,6 @@
     Contraintes d'accès encodées.
   </sch:diagnostic>
 
-
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-failure-en" xml:lang="en">
-    Access lineage are mandatory.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-failure-fr" xml:lang="fr">
-    La généalogie est obligatoire.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-success-en"
-                  xml:lang="en">
-    Lineage found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.lineage.mandatory-success-fr"
-                  xml:lang="fr">
-    Généalogie encodée.
-  </sch:diagnostic>
   <sch:pattern id="dataset">
 
   <sch:title>DCAT-AP (Dataset)</sch:title>
@@ -352,13 +337,6 @@
       <sch:report test="$hasConstraints"
                   diagnostics="rule.dcatap.dataset.constraints.mandatory-success-en rule.dcatap.dataset.constraints.mandatory-success-fr"/>
 
-      <sch:let name="hasLineage"
-               value="count(*:resourceLineage/*/*:statement[*/text() != '']) > 0"/>
-
-      <sch:assert test="$hasLineage"
-                  diagnostics="rule.dcatap.dataset.lineage.mandatory-failure-en rule.dcatap.dataset.lineage.mandatory-failure-fr"/>
-      <sch:report test="$hasLineage"
-                  diagnostics="rule.dcatap.dataset.lineage.mandatory-success-en rule.dcatap.dataset.lineage.mandatory-success-fr"/>
   </sch:rule>
   </sch:pattern>
 
