@@ -161,7 +161,9 @@
   <sch:pattern id="resource-revision-date">
     <sch:title xml:lang="en">Resource revision date is defined</sch:title>
     <sch:title xml:lang="fr">La date de dernière modification de la ressource est renseignée</sch:title>
-    <sch:rule context="//*:MD_Metadata">
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+
       <sch:let name="resourceRevisionDate"
                value="*:identificationInfo/*/*:citation/*/*:date/*[*:dateType/*/@codeListValue = 'revision']/*:date[*/text() != '']"/>
       <sch:let name="hasResourceRevisionDate"
@@ -192,7 +194,9 @@
   <sch:pattern id="resource-publication-date">
     <sch:title xml:lang="en">Resource publication date is defined</sch:title>
     <sch:title xml:lang="fr">La date de publication de la ressource est renseignée</sch:title>
-    <sch:rule context="//*:MD_Metadata">
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+
       <sch:let name="resourcePublicationDate"
                value="*:identificationInfo/*/*:citation/*/*:date/*[*:dateType/*/@codeListValue = 'publication']/*:date[*/text() != '']"/>
       <sch:let name="hasResourcePublicationDate"
@@ -255,7 +259,7 @@
     Gestionnaire encodé :<sch:value-of
     select="concat(' ', string-join($resourceCustodian, ', '))"/>.
   </sch:diagnostic>
-  <sch:pattern id="resource-revision-date">
+  <sch:pattern id="resource-custodian">
     <sch:title xml:lang="en">Resource custodian is defined</sch:title>
     <sch:title xml:lang="fr">Le gestionnaire est défini</sch:title>
     <sch:rule context="//*:MD_Metadata">
@@ -291,7 +295,9 @@
     <sch:pattern id="resource-theme">
       <sch:title xml:lang="en">The resource is classified under one of the European data themes of DCAT-AP</sch:title>
       <sch:title xml:lang="fr">La ressource est classée dans un des thèmes de données européens DCAT-AP</sch:title>
-      <sch:rule context="//*:MD_Metadata">
+      <sch:rule
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+
 
       <sch:let name="dcatThemes"
                value="*:identificationInfo/*/*:descriptiveKeywords/*/
@@ -328,7 +334,8 @@
     <sch:pattern id="resource-keywords">
       <sch:title xml:lang="en">Keywords are defined</sch:title>
       <sch:title xml:lang="fr">Des mots-clés sont définis</sch:title>
-      <sch:rule context="//*:MD_Metadata">
+      <sch:rule
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
       <!--
       Keywords can be mapped to DCAT themes, legislation, or excluded eg. internal themes.
       See dcat-core-keywords.xsl.
@@ -421,11 +428,12 @@
       </sch:rule>
     </sch:pattern>
 
+  <!-- Series - has dataset -->
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-en" xml:lang="en">
-    No related dataset.
+    Add a link between the series and its constituent datasets.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-fr" xml:lang="fr">
-    Pas de resource associée.
+    Ajoutez un lien entre la série et ses données constitutives.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-success-en"
                   xml:lang="en">
@@ -437,8 +445,28 @@
     Série associée à une ou plusieures resources.
     <sch:value-of select="string-join($children/root/resourceIdentifier, ' | ')"/>
   </sch:diagnostic>
+  <sch:pattern id="series-hasdataset">
+         <sch:title xml:lang="en">Series - A dataset is part of the series</sch:title>
+         <sch:title xml:lang="fr">Série - Une donnée fait partie de la série</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']">
+
+      <sch:let name="associations"
+               value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations"/>
+      <sch:let name="children"
+               value="$associations/children"/>
+      <sch:let name="hasRelatedDataset"
+               value="count($children) > 0"/>
 
 
+      <sch:assert test="$hasRelatedDataset"
+                  diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
+      <sch:report test="$hasRelatedDataset"
+                  diagnostics="rule.dcatap.series.has-dataset.mandatory-success-en rule.dcatap.series.has-dataset.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
+
+  <!-- Distribution -->
   <sch:diagnostic id="rule.dcatap.has-download-page.mandatory-failure-en" xml:lang="en">
     No download page found. Add an online resource with protocol WWW:LINK and function download.
   </sch:diagnostic>
@@ -531,29 +559,6 @@
                   xml:lang="fr">
     Distribution <sch:value-of select="$linkage"/>. Protocole encodé : <sch:value-of select="$protocol"/>.
   </sch:diagnostic>
-
-
-
-  <sch:pattern id="series">
-    <sch:title>DCAT-AP (Serie)</sch:title>
-    <sch:rule
-      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']">
-
-      <sch:let name="associations"
-               value="mdUtil:getAssociatedAsXml(mdb:metadataIdentifier/*/mcc:code/*/text())/relations"/>
-      <sch:let name="children"
-               value="$associations/children"/>
-      <sch:let name="hasRelatedDataset"
-               value="count($children) > 0"/>
-
-
-      <sch:assert test="$hasRelatedDataset"
-                  diagnostics="rule.dcatap.series.has-dataset.mandatory-failure-en rule.dcatap.series.has-dataset.mandatory-failure-fr"/>
-      <sch:report test="$hasRelatedDataset"
-                  diagnostics="rule.dcatap.series.has-dataset.mandatory-success-en rule.dcatap.series.has-dataset.mandatory-success-fr"/>
-    </sch:rule>
-  </sch:pattern>
-
 
   <sch:pattern id="distribution">
     <sch:title>DCAT-AP (Distribution)</sch:title>
