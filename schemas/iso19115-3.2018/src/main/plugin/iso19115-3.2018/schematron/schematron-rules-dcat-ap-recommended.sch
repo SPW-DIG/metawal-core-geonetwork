@@ -50,6 +50,39 @@
   <sch:ns prefix="mmi" uri="http://standards.iso.org/iso/19115/-3/mmi/1.0"/>
   <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
+   <!-- Resource Revision date -->
+    <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-en" xml:lang="en">
+      Resource revision date is mandatory.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-fr" xml:lang="fr">
+      La date de modification de la ressource est obligatoire.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-en"
+                    xml:lang="en">Resource revision date found:
+      <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-fr"
+                    xml:lang="fr">Date de modification de la resource encodée :
+      <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
+    </sch:diagnostic>
+    <sch:pattern id="resource-revision-date">
+      <sch:title xml:lang="en">Resource revision date is defined</sch:title>
+      <sch:title xml:lang="fr">La date de dernière modification de la ressource est renseignée</sch:title>
+      <sch:rule
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+
+        <sch:let name="resourceRevisionDate"
+                 value="*:identificationInfo/*/*:citation/*/*:date/*[*:dateType/*/@codeListValue = 'revision']/*:date[*/text() != '']"/>
+        <sch:let name="hasResourceRevisionDate"
+                 value="count($resourceRevisionDate) > 0"/>
+
+        <sch:assert test="$hasResourceRevisionDate"
+                    diagnostics="rule.dcatap.resourcerevisiondate.mandatory-failure-en rule.dcatap.resourcerevisiondate.mandatory-failure-fr"/>
+        <sch:report test="$hasResourceRevisionDate"
+                    diagnostics="rule.dcatap.resourcerevisiondate.mandatory-success-en rule.dcatap.resourcerevisiondate.mandatory-success-fr"/>
+      </sch:rule>
+    </sch:pattern>
+
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
    Define the resource's geospatial extent.
