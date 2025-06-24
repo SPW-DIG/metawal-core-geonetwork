@@ -155,25 +155,6 @@
   </sch:diagnostic>
 
 
-  <sch:diagnostic id="rule.hvd.endpointurl.mandatory-failure-en" xml:lang="en">
-    The root location or primary endpoint of the service (an IRI) is missing. Add an operation with a protocol which is
-    not considered as an endpoint description (ie.<sch:value-of
-    select="concat(' ', $endpointDescriptionProtocolsExpression)"/>) or a URL containing <sch:value-of select="$endpointDescriptionUrllExpression"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.endpointurl.mandatory-failure-fr" xml:lang="fr">
-    L'URL principale du service (un IRI) est manquant. Ajoutez une opération avec un protocole qui n'est pas une
-    description de service
-    (ie.<sch:value-of
-    select="concat(' ', $endpointDescriptionProtocolsExpression)"/>) ou une URL contenant <sch:value-of select="$endpointDescriptionUrllExpression"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.endpointurl.mandatory-success-en"
-                  xml:lang="en">
-    End point URL found:<sch:value-of select="concat(' ', string-join($endpointUrls, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.endpointurl.mandatory-success-fr"
-                  xml:lang="fr">
-    URL(s) du service encodées :<sch:value-of select="concat(' ', string-join($endpointUrls, ', '))"/>.
-  </sch:diagnostic>
 
   <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
     An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data
@@ -412,32 +393,6 @@
                   diagnostics="rule.hvd.servicedocumentation.mandatory-failure-en rule.hvd.servicedocumentation.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreDocumentation"
                   diagnostics="rule.hvd.servicedocumentation.mandatory-success-en rule.hvd.servicedocumentation.mandatory-success-fr"/>
-
-      <!--
-      endpoint URL	Resource
-      1..*
-      The root location or primary endpoint of the service (an IRI).
-      The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power
-      to maintain the value stable and existing.
-      E
-      -->
-
-      <sch:let name="endpointDescriptionUrllExpression"
-                    value="'GetCapabilities|WSDL'"/>
-      <sch:let name="endpointDescriptionProtocolsExpression"
-                    value="'OpenAPI|Swagger|GetCapabilities|WSDL|Description'"/>
-      <sch:let name="endpointUrls"
-                    value=".//*:containsOperations/*/*:connectPoint/*[not(
-                                matches(*:protocol/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionProtocolsExpression, 'i')
-                                or matches(*:linkage/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionUrllExpression, 'i'))]/(*:linkage|*:URL)/*/text()"/>
-
-      <sch:let name="hasOneOrMoreEndPointUrls"
-               value="count($endpointUrls) > 0"/>
-
-      <sch:assert test="$hasOneOrMoreEndPointUrls"
-                  diagnostics="rule.hvd.endpointurl.mandatory-failure-en rule.hvd.endpointurl.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreEndPointUrls"
-                  diagnostics="rule.hvd.endpointurl.mandatory-success-en rule.hvd.endpointurl.mandatory-success-fr"/>
 
       <!--
       serves dataset

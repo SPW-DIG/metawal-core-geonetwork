@@ -50,6 +50,35 @@
   <sch:ns prefix="mmi" uri="http://standards.iso.org/iso/19115/-3/mmi/1.0"/>
   <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
+
+  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-en" xml:lang="en">
+    Add an abstract.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez une description de la ressource.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-en"
+                  xml:lang="en">Resource abstract found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-fr"
+                  xml:lang="fr">La resource a un descriptif.
+  </sch:diagnostic>
+  <sch:pattern id="resource-abstract">
+    <sch:title xml:lang="en">Resource abstract is defined</sch:title>
+    <sch:title xml:lang="fr">La ressource a un descriptif</sch:title>
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+      <sch:let name="resourceAbstract"
+               value="*:identificationInfo/*/*:abstract/*[text() != '']"/>
+      <sch:let name="hasResourceAbstract"
+               value="count($resourceAbstract) > 0"/>
+
+      <sch:assert test="$hasResourceAbstract"
+                  diagnostics="rule.dcatap.resourceabstract.mandatory-failure-en rule.dcatap.resourceabstract.mandatory-failure-fr"/>
+      <sch:report test="$hasResourceAbstract"
+                  diagnostics="rule.dcatap.resourceabstract.mandatory-success-en rule.dcatap.resourceabstract.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
+
    <!-- Resource Revision date -->
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-en" xml:lang="en">
       Resource revision date is mandatory.
@@ -389,10 +418,10 @@
     Contraintes d'utilisation encodées.
   </sch:diagnostic>
   <sch:pattern id="dataset-useconstraints">
-     <sch:title xml:lang="en">Dataset - License or use-constraints are defined</sch:title>
-     <sch:title xml:lang="fr">Dataset - La licence ou les conditions d'utilisation sont spécifiées</sch:title>
+     <sch:title xml:lang="en">Dataset/Service - License or use-constraints are defined</sch:title>
+     <sch:title xml:lang="fr">Dataset/Service - La licence ou les conditions d'utilisation sont spécifiées</sch:title>
       <sch:rule
-        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'service')]">
 
         <sch:let name="useConstraints"
                  value="*:identificationInfo/*/*:resourceConstraints/*[not(*:accessConstraints) and *:otherConstraints/*/text() != '' and *:useConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
@@ -516,6 +545,105 @@
                   diagnostics="rule.dcatap.distribution-has-atomservice.failure-en rule.dcatap.distribution-has-atomservice.failure-fr"/>
 
     </sch:rule>
+  </sch:pattern>
 
+
+
+
+
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
+    An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data
+    Service is at least tightly connected with a Dataset.
+    Add at least one operatesOn element with a xlink:href or uuidref.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-fr" xml:lang="fr">
+    Une API dans le contexte de HVD n'est pas une ressource autonome. Elle est utilisée pour ouvrir des ensembles de
+    données HVD. Par conséquent, chaque service de données est au moins étroitement lié à un ensemble de données.
+    Ajoutez au moins un élément operateOn avec un xlink:href ou un uuidref.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-en"
+                  xml:lang="en">
+    Operates on dataset found:<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-fr"
+                  xml:lang="fr">
+    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
+  </sch:diagnostic>
+
+
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-en" xml:lang="en">
+    A page that provides additional information about the Data Service is missing.
+    Add at least one online resource with a function documentation, an additional documentation or a URL pointing to https://directory.spatineo.com.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
+    Il manque une page qui fournit des informations supplémentaires sur le service de données.
+    Ajoutez au moins une ressource en ligne avec une function documentation, une documentation supplémentaire ou une URL pointant vers https://directory.spatineo.com.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-en"
+                  xml:lang="en">
+    Documentation pages found:<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-fr"
+                  xml:lang="fr">
+    Documentations encodées :<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
+  </sch:diagnostic>
+
+  <sch:pattern id="Service">
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+
+      <!--
+      documentation (service)
+      Document
+      1..*
+      A page that provides additional information about the Data Service.	Quality of service covers a broad spectrum of aspects.
+      The HVD regulation does not list any mandatory topic. Therefore quality of service information is considered
+      part of the generic documentation of a Data Service.
+      P
+      -->
+      <sch:let name="onlineResource"
+               value=".//(*:distributionInfo//mrd:onLine
+                            |*:portrayalCatalogueCitation/*/*:onlineResource
+                            |*:additionalDocumentation/*/*:onlineResource
+                            |*:reportReference/*/*:onlineResource
+                            |*:reportReference/*/cit:title[*:Anchor/@xlink:href]
+                            |*:specification/*/*:onlineResource
+                            |*:specification/*/cit:title[*:Anchor/@xlink:href]
+                            |*:featureCatalogueCitation/*/*:onlineResource)"/>
+      <sch:let name="documentationUrls"
+               value="$onlineResource[*/*:function/*/@codeListValue = ('documentation')
+                                  or count(ancestor::*:additionalDocumentation) = 1
+                                  or count(ancestor::*:DQ_ConformanceResult) = 1
+                                  or starts-with(*/*:linkage/(*:CharacterString|*:URL), 'https://directory.spatineo.com')]/(*/*:linkage/(*:CharacterString|*:URL)|*:Anchor/@xlink:href)"/>
+
+      <sch:let name="hasOneOrMoreDocumentation"
+               value="count($documentationUrls) > 0"/>
+
+      <sch:assert test="$hasOneOrMoreDocumentation"
+                  diagnostics="rule.hvd.servicedocumentation.mandatory-failure-en rule.hvd.servicedocumentation.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMoreDocumentation"
+                  diagnostics="rule.hvd.servicedocumentation.mandatory-success-en rule.hvd.servicedocumentation.mandatory-success-fr"/>
+
+      <!--
+      serves dataset
+      Dataset
+      1..*
+      This property refers to a collection of data that this data service can distribute.
+      An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets.
+      Therefore each Data Service is at least tightly connected with a Dataset.
+      -->
+      <sch:let name="operatesOnDatasets"
+               value=".//*:operatesOn/(@xlink:href[. != ''], @uuidref[. != ''])[1]"/>
+
+      <sch:let name="hasOneOrMoreOperatesOn"
+               value="count($operatesOnDatasets) > 0"/>
+
+      <sch:assert test="$hasOneOrMoreOperatesOn"
+                  diagnostics="rule.hvd.operateson.mandatory-failure-en rule.hvd.operateson.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMoreOperatesOn"
+                  diagnostics="rule.hvd.operateson.mandatory-success-en rule.hvd.operateson.mandatory-success-fr"/>
+
+
+    </sch:rule>
   </sch:pattern>
 </sch:schema>
