@@ -2482,7 +2482,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Addresses - Guidelines v 3.1.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/aa">INSPIRE Data Specification on Addresses - Guidelines v 3.1.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2515,7 +2515,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Administrative units - Guidelines v 3.1.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/au">INSPIRE Data Specification on Administrative units - Guidelines v 3.1.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2548,7 +2548,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Cadastral parcels - Guidelines v 3.1.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/cp">INSPIRE Data Specification on Cadastral parcels - Guidelines v 3.1.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2581,7 +2581,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Coordinate reference systems - Guidelines v 3.2.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/rs">INSPIRE Data Specification on Coordinate reference systems - Guidelines v 3.2.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2614,40 +2614,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Geographical grid systems - Guidelines v 3.1.0</gco:CharacterString>
-                            </cit:title>
-                            <cit:date>
-                              <cit:CI_Date>
-                                <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
-                                </cit:date>
-                                <cit:dateType>
-                                  <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
-                                </cit:dateType>
-                              </cit:CI_Date>
-                            </cit:date>
-                          </cit:CI_Citation>
-                        </mdq:specification>
-                        <mdq:explanation>
-                          <gco:CharacterString>Voir la spécification référencée</gco:CharacterString>
-                        </mdq:explanation>
-                        <mdq:pass>
-                          <gco:Boolean>true</gco:Boolean>
-                        </mdq:pass>
-                      </mdq:DQ_ConformanceResult>
-                    </mdq:result>
-                  </mdq:DQ_DomainConsistency>
-                </mdq:report>
-              </snippet>
-              <snippet label="dataSpecAU">
-                <mdq:report>
-                  <mdq:DQ_DomainConsistency>
-                    <mdq:result>
-                      <mdq:DQ_ConformanceResult>
-                        <mdq:specification>
-                          <cit:CI_Citation>
-                            <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Administrative units - Guidelines v 3.1.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/gg">INSPIRE Data Specification on Geographical grid systems - Guidelines v 3.1.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2680,7 +2647,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Geographical names - Guidelines v 3.1.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/gn">INSPIRE Data Specification on Geographical names - Guidelines v 3.1.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2713,7 +2680,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Hydrography - Guidelines v 3.1.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hy">INSPIRE Data Specification on Hydrography - Guidelines v 3.1.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2746,7 +2713,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Protected Sites - Guidelines v 3.2.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ps">INSPIRE Data Specification on Protected Sites - Guidelines v 3.2.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2779,7 +2746,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Transport Networks - Guidelines v 3.2.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/tn">INSPIRE Data Specification on Transport Networks - Guidelines v 3.2.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2812,7 +2779,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Elevation - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/el">INSPIRE Data Specification on Elevation - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2845,7 +2812,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Geology - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ge">INSPIRE Data Specification on Geology - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2878,7 +2845,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Land Cover - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/lc">INSPIRE Data Specification on Land Cover - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2911,7 +2878,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Orthoimagery - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/oi">INSPIRE Data Specification on Orthoimagery - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2944,7 +2911,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Agricultural and Aquaculture Facilities - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/af">INSPIRE Data Specification on Agricultural and Aquaculture Facilities - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -2977,7 +2944,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/am">INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3010,7 +2977,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ac">INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3043,7 +3010,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Bio-geographical Regions - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/br">INSPIRE Data Specification on Bio-geographical Regions - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3076,7 +3043,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Buildings - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/bu">INSPIRE Data Specification on Buildings - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3109,7 +3076,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Energy Resources - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/er">INSPIRE Data Specification on Energy Resources - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3142,7 +3109,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Environmental Monitoring Facilities - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ef">INSPIRE Data Specification on Environmental Monitoring Facilities - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3175,7 +3142,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Habitats and Biotopes - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hb">INSPIRE Data Specification on Habitats and Biotopes - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3208,7 +3175,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Human Health and Safety - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hh">INSPIRE Data Specification on Human Health and Safety - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3241,7 +3208,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Land Use - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/lu">INSPIRE Data Specification on Land Use - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3274,7 +3241,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Mineral Resources - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/mr">INSPIRE Data Specification on Mineral Resources - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3307,7 +3274,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Natural Risk Zones - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/nz">INSPIRE Data Specification on Natural Risk Zones - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3340,7 +3307,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Oceanographic geographical features - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/of">INSPIRE Data Specification on Oceanographic geographical features - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3373,7 +3340,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Production and Industrial Facilities - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/pf">INSPIRE Data Specification on Production and Industrial Facilities - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3406,7 +3373,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Population Distribution - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/pd">INSPIRE Data Specification on Population Distribution - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3439,7 +3406,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Sea Regions - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/sr">INSPIRE Data Specification on Sea Regions - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3472,7 +3439,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Soil - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/so">INSPIRE Data Specification on Soil - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3505,7 +3472,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Species Distribution - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/sd">INSPIRE Data Specification on Species Distribution - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3538,7 +3505,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Statistical Units - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/su">INSPIRE Data Specification on Statistical Units - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
@@ -3571,7 +3538,7 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gco:CharacterString>INSPIRE Data Specification on Utility and Government Services - Guidelines v 3.0.0</gco:CharacterString>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/us">INSPIRE Data Specification on Utility and Government Services - Guidelines v 3.0.0</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
