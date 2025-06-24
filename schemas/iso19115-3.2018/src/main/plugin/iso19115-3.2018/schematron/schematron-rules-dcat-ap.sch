@@ -143,38 +143,6 @@
     </sch:rule>
   </sch:pattern>
 
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-en" xml:lang="en">
-    Define the applicable standard license or, if not applicable, specify non-standard terms of use.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-fr" xml:lang="fr">
-    Définissez la licence standard applicable ou à défaut spécifiez des conditions d'utilisation non-standard.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-en"
-                  xml:lang="en">
-    Use constraints found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-fr"
-                  xml:lang="fr">
-    Contraintes d'utilisation encodées.
-  </sch:diagnostic>
-  <sch:pattern id="dataset-useconstraints">
-     <sch:title xml:lang="en">Dataset - License or use-constraints are defined</sch:title>
-     <sch:title xml:lang="fr">Dataset - La licence ou les conditions d'utilisation sont spécifiées</sch:title>
-      <sch:rule
-        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
-
-        <sch:let name="useConstraints"
-                 value="*:identificationInfo/*/*:resourceConstraints/*[not(*:accessConstraints) and *:otherConstraints/*/text() != '' and *:useConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
-        <sch:let name="hasUseConstraints"
-                 value="count($useConstraints) > 0"/>
-
-        <sch:assert test="$hasUseConstraints"
-                    diagnostics="rule.dcatap.dataset.use.constraints.mandatory-failure-en rule.dcatap.dataset.use.constraints.mandatory-failure-fr"/>
-        <sch:report test="$hasUseConstraints"
-                    diagnostics="rule.dcatap.dataset.use.constraints.mandatory-success-en rule.dcatap.dataset.use.constraints.mandatory-success-fr"/>
-      </sch:rule>
-    </sch:pattern>
-
   <!-- Series - has dataset -->
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-en" xml:lang="en">
     Add a link between the series and its constituent datasets.
