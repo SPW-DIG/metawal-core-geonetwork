@@ -17,7 +17,7 @@
 
   <!-- Who is the creator of the data set?  This can be an individual, a group of individuals, or an organization. -->
   <xsl:param name="authorRoles"
-                select="'owner'"/>
+                select="'owner,rightsHolder'"/>
   <xsl:variable name="authorRolesList"
                 select="tokenize($authorRoles, ',')"/>
 
