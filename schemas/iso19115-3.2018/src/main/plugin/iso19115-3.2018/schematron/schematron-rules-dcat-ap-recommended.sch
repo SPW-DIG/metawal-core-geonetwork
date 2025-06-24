@@ -48,6 +48,7 @@
   <sch:ns prefix="mrl" uri="http://standards.iso.org/iso/19115/-3/mrl/2.0"/>
   <sch:ns prefix="gco" uri="http://standards.iso.org/iso/19115/-3/gco/1.0"/>
   <sch:ns prefix="mmi" uri="http://standards.iso.org/iso/19115/-3/mmi/1.0"/>
+  <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
   <!-- Geospatial extent -->
   <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
@@ -120,25 +121,6 @@
      </sch:pattern>
 
     <!-- Dataset Distribution-->
-    <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-en" xml:lang="en">
-      Distribution <sch:value-of select="$linkage"/>
-      has no size and it is recommended to set it.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-fr" xml:lang="fr">
-      Taille du téléchargement manquante dans la distribution <sch:value-of select="$linkage"/>.
-      Il est recommandé d'ajouter la taille du fichier de téléchargement en Mo.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.distribution-has-size.success-en"
-                    xml:lang="en">
-      Distribution <sch:value-of select="$linkage"/>
-      size is <sch:value-of select="$size"/> Mo.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.dcatap.distribution-has-size.success-fr"
-                    xml:lang="fr">
-      Taille du téléchargement pour <sch:value-of select="$linkage"/> est : <sch:value-of select="$size"/> Mo.
-    </sch:diagnostic>
-
-
   <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
       A Distribution is expected to be present. Add an online resource with a download protocol or
       function.
@@ -177,6 +159,42 @@
   </sch:pattern>
 
 
+
+
+  <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-en" xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    has no size and it is recommended to set it.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-fr" xml:lang="fr">
+    Taille du téléchargement manquante dans la distribution <sch:value-of select="$linkage"/>.
+    Il est recommandé d'ajouter la taille du fichier de téléchargement en Mo.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-size.success-en"
+                  xml:lang="en">
+    Distribution <sch:value-of select="$linkage"/>
+    size is <sch:value-of select="$size"/> Mo.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-size.success-fr"
+                  xml:lang="fr">
+    Taille du téléchargement pour <sch:value-of select="$linkage"/> est : <sch:value-of select="$size"/> Mo.
+  </sch:diagnostic>
+
+
+  <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-en" xml:lang="en">
+    ATOM service not found, it is recommended to set it.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-fr" xml:lang="fr">
+    Le service ATOM n'a pas été trouvé, il est recommandé de le définir.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.success-en"
+                  xml:lang="en">
+    ATOM service found: <sch:value-of select="$atomService/root/nameObject/default"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.success-fr"
+                  xml:lang="fr">
+    Service ATOM encodé : <sch:value-of select="$atomService/root/resourceTitleObject/default"/>.
+  </sch:diagnostic>
+
   <sch:pattern id="distribution">
     <sch:title>DCAT-AP (Distribution)</sch:title>
 
@@ -200,6 +218,18 @@
                   diagnostics="rule.dcatap.distribution-has-size.success-en rule.dcatap.distribution-has-size.success-fr"/>
       <sch:assert test="exists($size)"
                   diagnostics="rule.dcatap.distribution-has-size.failure-en rule.dcatap.distribution-has-size.failure-fr"/>
+
+
+      <sch:let name="associations"
+                    value="mdUtil:getAssociatedAsXml(ancestor::*:MD_Metadata/mdb:metadataIdentifier/*/mcc:code/*/text())"/>
+
+      <sch:let name="atomService"
+               value="$associations/relations/services[root/resourceType = 'service' and root/link/protocol = 'atom:feed']"/>
+      <sch:report test="exists($atomService)"
+                  diagnostics="rule.dcatap.distribution-has-atomservice.success-en rule.dcatap.distribution-has-atomservice.success-fr"/>
+      <sch:assert test="exists($atomService)"
+                  diagnostics="rule.dcatap.distribution-has-atomservice.failure-en rule.dcatap.distribution-has-atomservice.failure-fr"/>
+
     </sch:rule>
 
   </sch:pattern>
