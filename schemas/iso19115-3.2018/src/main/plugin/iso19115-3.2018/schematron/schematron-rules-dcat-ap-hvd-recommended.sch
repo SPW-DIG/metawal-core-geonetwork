@@ -130,18 +130,18 @@
 
           Rule:
           * More strict, at least one?
-          * TODO: non INSPIRE datasets?
+          * non INSPIRE datasets
       -->
+      <!-- Any specification is considered valid (only check for anchor presence) -->
       <sch:let name="implementingRules"
                value="*:dataQualityInfo/*/*:report/*/*:result/*/*:specification/*/
-                                    *:title[starts-with(*:Anchor/@xlink:href, 'https://inspire.ec.europa.eu/id/document')]"/>
-      <!-- TODO: Relax with has a specification ? or CharacterString starting with INSPIRE Data Specification... ? -->
-      <sch:let name="hasOneOrMoreDataSpecConformityForINSPIRE"
+                                    *:title/*:Anchor/@xlink:href"/>
+      <sch:let name="hasOneOrMoreDataSpecConformity"
                value="count($implementingRules) > 0"/>
 
-      <sch:assert test="$hasOneOrMoreDataSpecConformityForINSPIRE"
+      <sch:assert test="$hasOneOrMoreDataSpecConformity"
                   diagnostics="rule.hvd.conformity.mandatory-failure-en rule.hvd.conformity.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMoreDataSpecConformityForINSPIRE"
+      <sch:report test="$hasOneOrMoreDataSpecConformity"
                   diagnostics="rule.hvd.conformity.mandatory-success-en rule.hvd.conformity.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
