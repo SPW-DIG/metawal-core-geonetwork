@@ -212,6 +212,45 @@
   </sch:diagnostic>
 
 
+  <!-- Diagnostic for NAME, description and URL combined -->
+    <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-failure-en" xml:lang="en">
+      Complete the 'Internet address', 'Name', and 'Description' fields for the download page.
+      Distribution: <sch:value-of select="$linkage"/>
+
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-failure-fr" xml:lang="fr">
+      Complétez les informations "Adresse internet", "Nom" et "Description" pour la page de téléchargement.
+      Distribution: <sch:value-of select="$linkage"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-success-en"
+                    xml:lang="en">
+      Distribution <sch:value-of select="$linkage"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-success-fr"
+                    xml:lang="fr">
+      Distribution <sch:value-of select="$linkage"/>.
+    </sch:diagnostic>
+
+      <!-- Diagnostic for PROTOCOL, NAME, DESCRIPTION and URL combined -->
+        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-en" xml:lang="en">
+          Complete the 'Internet address', 'Name', and 'Description' fields for the direct download link.
+          Distribution: <sch:value-of select="$linkage"/>
+
+        </sch:diagnostic>
+        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-fr" xml:lang="fr">
+          Complétez les informations "Adresse internet", "Nom" et "Description" pour le lien de téléchargement direct.
+          Distribution: <sch:value-of select="$linkage"/>
+        </sch:diagnostic>
+        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-en"
+                        xml:lang="en">
+          Distribution <sch:value-of select="$linkage"/>
+        </sch:diagnostic>
+        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-fr"
+                        xml:lang="fr">
+          Distribution <sch:value-of select="$linkage"/>.
+        </sch:diagnostic>
+
+  <!--TODO : remove diangnostic for separated name, edcription, url ? -->
   <sch:diagnostic id="rule.dcatap.distribution-has-name.mandatory-failure-en" xml:lang="en">
     Distribution
     <sch:value-of select="$linkage"/>
@@ -304,8 +343,13 @@
                   diagnostics="rule.dcatap.has-distribution-or-download-page-or-service.mandatory-failure-en rule.dcatap.has-distribution-or-download-page-or-service.mandatory-failure-fr"/>
 
     </sch:rule>
+    </sch:pattern>
 
-    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//*:onLine[
+    <!-- Direct DOWNLOAD Link -->
+    <sch:pattern>
+      <sch:title xml:lang="en">The information describing the direct download link MUST be completed.</sch:title>
+      <sch:title xml:lang="fr">Les informations décrivant le lien de téléchargement DOIVENT être complétées</sch:title>
+      <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//*:onLine[
                                    not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
                                    and
                                    not(
@@ -316,48 +360,55 @@
                                    and not(*/*:protocol/* = ('ESRI:REST', 'ESRI:REST-TILED', 'OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'atom:feed', 'INSPIRE atom', 'OGC API - Features'))
                                  ][*/*:linkage/*/text() != '']">
 
-      <sch:let name="linkage"
-               value="*/*:linkage/*[text() != '']"/>
-      <sch:let name="name"
-               value="*/*:name/*[text() != '']"/>
-      <sch:let name="description"
-               value="*/*:description/*[text() != '']"/>
-      <sch:let name="protocol"
-               value="*/*:protocol/*[text() != '']"/>
+        <sch:let name="linkage"
+                 value="*/*:linkage/*[text() != '']"/>
+        <sch:let name="name"
+                 value="*/*:name/*[text() != '']"/>
+        <sch:let name="description"
+                 value="*/*:description/*[text() != '']"/>
+        <sch:let name="protocol"
+                 value="*/*:protocol/*[text() != '']"/>
 
-      <sch:assert test="exists($name)"
-                  diagnostics="rule.dcatap.distribution-has-name.mandatory-failure-en rule.dcatap.distribution-has-name.mandatory-failure-fr"/>
-      <sch:report test="exists($name)"
-                  diagnostics="rule.dcatap.distribution-has-name.mandatory-success-en rule.dcatap.distribution-has-name.mandatory-success-fr"/>
-      <sch:assert test="exists($description)"
-                  diagnostics="rule.dcatap.distribution-has-description.mandatory-failure-en rule.dcatap.distribution-has-description.mandatory-failure-fr"/>
-      <sch:report test="exists($description)"
-                  diagnostics="rule.dcatap.distribution-has-description.mandatory-success-en rule.dcatap.distribution-has-description.mandatory-success-fr"/>
-      <sch:assert test="matches($protocol, 'WWW:DOWNLOAD:.*')"
-                  diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-en rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-fr"/>
-      <sch:report test="matches($protocol, 'WWW:DOWNLOAD:.*')"
-                  diagnostics="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-en rule.dcatap.distribution-has-downloadprotocol.mandatory-success-fr"/>
-    </sch:rule>
+        <sch:assert test="exists($name) and exists($description) and exists($linkage) and matches($protocol, 'WWW:DOWNLOAD:.*')"
+                    diagnostics="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-en rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-fr"/>
+        <sch:report test="exists($name) and exists($description) and exists($linkage) and matches($protocol, 'WWW:DOWNLOAD:.*')"
+                    diagnostics="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-en rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-fr"/>
+      </sch:rule>
+    </sch:pattern>
 
-    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//
-                                        *:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download'][*/*:linkage/*/text() != '']">
+    <!-- DOWNLOAD Page -->
+    <sch:pattern id="distribution-download-page">
+      <sch:title xml:lang="en">The information describing the download page MUST be completed.</sch:title>
+      <sch:title xml:lang="fr">Les informations décrivant la page de téléchargement DOIVENT être complétées</sch:title>
 
-      <sch:let name="linkage"
-               value="*/*:linkage/*[text() != '']"/>
-      <sch:let name="name"
-               value="*/*:name/*[text() != '']"/>
-      <sch:let name="description"
-               value="*/*:description/*[text() != '']"/>
+      <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//
+                                          *:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download'][*/*:linkage/*/text() != '']">
 
-      <sch:assert test="exists($name)"
-                  diagnostics="rule.dcatap.distribution-has-name.mandatory-failure-en rule.dcatap.distribution-has-name.mandatory-failure-fr"/>
-      <sch:report test="exists($name)"
-                  diagnostics="rule.dcatap.distribution-has-name.mandatory-success-en rule.dcatap.distribution-has-name.mandatory-success-fr"/>
-      <sch:assert test="exists($description)"
-                  diagnostics="rule.dcatap.distribution-has-description.mandatory-failure-en rule.dcatap.distribution-has-description.mandatory-failure-fr"/>
-      <sch:report test="exists($description)"
-                  diagnostics="rule.dcatap.distribution-has-description.mandatory-success-en rule.dcatap.distribution-has-description.mandatory-success-fr"/>
-    </sch:rule>
+        <sch:let name="linkage"
+                 value="*/*:linkage/*[text() != '']"/>
+        <sch:let name="name"
+                 value="*/*:name/*[text() != '']"/>
+        <sch:let name="description"
+                 value="*/*:description/*[text() != '']"/>
+
+
+      <sch:assert test="exists($name) and exists($description) and exists($linkage)"
+                  diagnostics="rule.dcatap.distribution-has-name-description-url.mandatory-failure-en rule.dcatap.distribution-has-name-description-url.mandatory-failure-fr"/>
+      <sch:report test="exists($name) and exists($description) and exists($linkage)"
+                  diagnostics="rule.dcatap.distribution-has-name-description-url.mandatory-success-en rule.dcatap.distribution-has-name-description-url.mandatory-success-fr"/>
+
+      <!--
+        <sch:assert test="exists($name)"
+                    diagnostics="rule.dcatap.distribution-has-name.mandatory-failure-en rule.dcatap.distribution-has-name.mandatory-failure-fr"/>
+        <sch:report test="exists($name)"
+                    diagnostics="rule.dcatap.distribution-has-name.mandatory-success-en rule.dcatap.distribution-has-name.mandatory-success-fr"/>
+        <sch:assert test="exists($description)"
+                    diagnostics="rule.dcatap.distribution-has-description.mandatory-failure-en rule.dcatap.distribution-has-description.mandatory-failure-fr"/>
+        <sch:report test="exists($description)"
+                    diagnostics="rule.dcatap.distribution-has-description.mandatory-success-en rule.dcatap.distribution-has-description.mandatory-success-fr"/>
+
+        -->
+      </sch:rule>
   </sch:pattern>
 
 
