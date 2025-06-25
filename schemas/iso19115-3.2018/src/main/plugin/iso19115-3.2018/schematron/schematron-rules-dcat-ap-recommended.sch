@@ -497,10 +497,10 @@
 
 
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-en" xml:lang="en">
-    ATOM service not found, it is recommended to set it.
+    Add a link between the dataset record and the record of the Atom service that allows it to be downloaded.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-fr" xml:lang="fr">
-    Le service ATOM n'a pas été trouvé, il est recommandé de le définir.
+    Ajoutez un lien entre la fiche de la donnée et la fiche du service atom qui permet de la télécharger.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.success-en"
                   xml:lang="en">
@@ -508,7 +508,7 @@
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.success-fr"
                   xml:lang="fr">
-    Service ATOM encodé : <sch:value-of select="$atomService/root/resourceTitleObject/default"/>.
+    Service ATOM encodé: <sch:value-of select="$atomService/root/resourceTitleObject/default"/>.
   </sch:diagnostic>
 
   <sch:pattern id="distribution">
