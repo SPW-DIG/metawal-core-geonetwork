@@ -51,11 +51,10 @@
 
 <!-- Resource ID -->
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-failure-en" xml:lang="en">
-    Resource identifier is mandatory. Add a citation identifier with a codespace starting with http.
+    Add a global identifier for the resource (code + codespace in the form of a URL)
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-failure-fr" xml:lang="fr">
-    L'identifiant de la ressource est obligatoire. Ajoutez un identifiant de citation avec un codespace commençant par
-    http.
+    Ajoutez un identifiant global pour la ressource (code + codespace sous forme d'url)
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceid.mandatory-success-en"
                   xml:lang="en">Resource identifier found:
@@ -66,8 +65,8 @@
     <sch:value-of select="string-join($resourceIdentifier, ', ')"/>
   </sch:diagnostic>
   <sch:pattern id="resource-identifier">
-    <sch:title xml:lang="en">Resource identifier is defined</sch:title>
-    <sch:title xml:lang="fr">L'identifiant de la resource est défini</sch:title>
+    <sch:title xml:lang="en">Resource MUST have a global identifier</sch:title>
+    <sch:title xml:lang="fr">La ressource DOIT avoir un identifiant global</sch:title>
     <sch:rule context="//*:MD_Metadata">
 
       <sch:let name="resourceIdentifier"
@@ -84,22 +83,22 @@
 
     <!-- Resource TITLE-->
     <sch:diagnostic id="rule.dcatap.resourcetitle.mandatory-failure-en" xml:lang="en">
-      Add resource title.
+      Add resource name.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcetitle.mandatory-failure-fr" xml:lang="fr">
-      Ajoutez le titre de la resource.
+      Ajoutez le nom de la ressource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcetitle.mandatory-success-en"
-                    xml:lang="en">Resource title found:
+                    xml:lang="en">Resource name found:
       <sch:value-of select="$resourceTitle"/>
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcetitle.mandatory-success-fr"
-                    xml:lang="fr">Titre de la resource encodé :
+                    xml:lang="fr">Nom de la resource encodé:
       <sch:value-of select="$resourceTitle"/>
     </sch:diagnostic>
   <sch:pattern id="resource-title">
-    <sch:title xml:lang="en">Resource title is defined</sch:title>
-    <sch:title xml:lang="fr">La ressource a un nom</sch:title>
+    <sch:title xml:lang="en">Resource MUST have a name</sch:title>
+    <sch:title xml:lang="fr">La ressource DOIT avoir un nom</sch:title>
     <sch:rule context="//*:MD_Metadata">
 
       <sch:let name="resourceTitle"
@@ -116,20 +115,20 @@
 
   <!-- Resource Abstract-->
   <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-en" xml:lang="en">
-    Add an abstract.
+    Add an abstract to the resource.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-fr" xml:lang="fr">
-    Ajoutez une description de la ressource.
+    Ajoutez un résumé à la ressource.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-en"
                   xml:lang="en">Resource abstract found.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-fr"
-                  xml:lang="fr">La resource a un descriptif.
+                  xml:lang="fr">La resource a un résumé.
   </sch:diagnostic>
   <sch:pattern id="resource-abstract">
-    <sch:title xml:lang="en">Resource abstract is defined</sch:title>
-    <sch:title xml:lang="fr">La ressource a un descriptif</sch:title>
+    <sch:title xml:lang="en">Resource MUST have an abstract</sch:title>
+    <sch:title xml:lang="fr">La ressource DOIT avoir un descriptif</sch:title>
     <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'service']">
       <sch:let name="resourceAbstract"
                value="*:identificationInfo/*/*:abstract/*[text() != '']"/>
