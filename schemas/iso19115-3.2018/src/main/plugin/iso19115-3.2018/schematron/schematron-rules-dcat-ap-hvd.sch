@@ -146,39 +146,6 @@
     </sch:rule>
   </sch:pattern>
 
-    <!-- One EU Legislation-->
-    <sch:diagnostic id="rule.hvd.one.legislation.recommended-failure-en" xml:lang="en">
-      Add the applicable European legislation from the 'Applicable Legislations' thesaurus.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.hvd.one.legislation.recommended-failure-fr" xml:lang="fr">
-      Ajoutez la législation européenne applicable à partir du thésaurus "Applicable Legislations".
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-en"
-                    xml:lang="en">One applicable European legislation found.
-    </sch:diagnostic>
-    <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-fr"
-                    xml:lang="fr">Une législation Européenne applicable est encodée.
-    </sch:diagnostic>
-  <sch:pattern>
-    <sch:title xml:lang="en">It is recommended to enter the European legislation related to the resource</sch:title>
-    <sch:title xml:lang="fr">Il est recommandé d'indiquer la législation européenne relative à la ressource</sch:title>
-    <sch:rule context="//*:MD_Metadata">
-
-      <!--
-      See eu-dcat-ap-core-dataset.xsl
-      -->
-      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
-               value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
-                              *:keyword[*:Anchor/@xlink:href != 'http://data.europa.eu/eli/reg_impl/2023/138/oj'
-                              and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]) > 1"/>
-
-      <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
-                  diagnostics="rule.hvd.one.legislation.recommended-failure-en rule.hvd.one.legislation.recommended-failure-fr"/>
-      <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
-                  diagnostics="rule.hvd.one.legislation.recommended-success-en rule.hvd.one.legislation.recommended-success-fr"/>
-    </sch:rule>
-  </sch:pattern>
-
   <!-- HVD category-->
   <sch:diagnostic id="rule.hvd.category.mandatory-failure-en" xml:lang="en">
     Choose a top-level category from the 'High Value Datasets Categories' thesaurus.

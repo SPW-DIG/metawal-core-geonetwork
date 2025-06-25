@@ -49,6 +49,40 @@
   <sch:ns prefix="gco" uri="http://standards.iso.org/iso/19115/-3/gco/1.0"/>
 
 
+  <!-- One EU Legislation-->
+  <sch:diagnostic id="rule.hvd.one.legislation.recommended-failure-en" xml:lang="en">
+    Add the applicable European legislation from the 'Applicable Legislations' thesaurus.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.recommended-failure-fr" xml:lang="fr">
+    Ajoutez la législation européenne applicable à partir du thésaurus "Applicable Legislations".
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-en"
+                  xml:lang="en">One applicable European legislation found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-fr"
+                  xml:lang="fr">Une législation Européenne applicable est encodée.
+  </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">It is recommended to enter the European legislation related to the resource</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé d'indiquer la législation européenne relative à la ressource</sch:title>
+    <sch:rule context="//*:MD_Metadata">
+
+      <!--
+      See eu-dcat-ap-core-dataset.xsl
+      -->
+      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
+               value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
+                              *:keyword[*:Anchor/@xlink:href != 'http://data.europa.eu/eli/reg_impl/2023/138/oj'
+                              and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]) > 1"/>
+
+      <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+                  diagnostics="rule.hvd.one.legislation.recommended-failure-en rule.hvd.one.legislation.recommended-failure-fr"/>
+      <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
+                  diagnostics="rule.hvd.one.legislation.recommended-success-en rule.hvd.one.legislation.recommended-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
+
+  <!-- Conforms To -->
   <sch:diagnostic id="rule.hvd.conformity.mandatory-failure-en" xml:lang="en">
     No implementing rule or other specification found. Check the data quality
     report specification to add one. For INSPIRE datasets, this is a data specification conformity.
@@ -68,16 +102,9 @@
                   xml:lang="fr">
     Règles ou spécifications encodées :<sch:value-of select="concat(' ', string-join($implementingRules, ', '))"/>.
   </sch:diagnostic>
-
-
   <sch:pattern>
-    <sch:title>HVD - recommended</sch:title>
-    <sch:rule
-      context="//*:MD_Metadata">
-
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern id="HVD (dataset)">
+    <sch:title xml:lang="en">It is recommended to enter the conformity of the data to specifications</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé d'indiquer la conformité des données à des spécifications</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
 
