@@ -256,10 +256,12 @@
        Ajoutez l'étendue temporelle de la ressource.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
-                      Temporal extent found.
+      Temporal extent found, from:
+      <sch:value-of select="concat(' ', $periodStart, ' à ',$periodEnd)"/>
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-fr" xml:lang="fr">
-      Période temporelle trouvée.
+      Période temporelle trouvée, de:
+      <sch:value-of select="concat(' ', $periodStart, ' à ',$periodEnd)"/>
       </sch:diagnostic>
       <sch:pattern id="temporal-extent" >
          <sch:title xml:lang="en">It is recommended to provide the temporal extent</sch:title>
