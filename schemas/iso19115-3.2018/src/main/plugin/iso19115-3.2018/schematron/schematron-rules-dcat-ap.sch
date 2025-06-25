@@ -160,8 +160,8 @@
     <sch:value-of select="string-join($children/root/resourceIdentifier, ' | ')"/>
   </sch:diagnostic>
   <sch:pattern id="series-hasdataset">
-         <sch:title xml:lang="en">Series - A dataset is part of the series</sch:title>
-         <sch:title xml:lang="fr">Série - Une donnée fait partie de la série</sch:title>
+         <sch:title xml:lang="en">At least one dataset MUST be part of the series</sch:title>
+         <sch:title xml:lang="fr">Au moins une donnée DOIT faire partie de la série</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'series']">
 
