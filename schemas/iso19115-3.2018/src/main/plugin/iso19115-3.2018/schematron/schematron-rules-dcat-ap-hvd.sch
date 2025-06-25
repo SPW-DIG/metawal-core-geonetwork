@@ -50,38 +50,6 @@
   <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
 
-  <sch:diagnostic id="rule.hvd.legislation.mandatory-failure-en" xml:lang="en">
-    Applicable legislation is mandatory. Use a keyword with an Anchor pointing to
-    http://data.europa.eu/eli/reg_impl/2023/138/oj.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.legislation.mandatory-failure-fr" xml:lang="fr">
-    La législation applicable est obligatoire. Utilisez un mot-clé avec une ancre pointant vers
-    http://data.europa.eu/eli/reg_impl/2023/138/oj.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.legislation.mandatory-success-en"
-                  xml:lang="en">Applicable legislation keyword found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.legislation.mandatory-success-fr"
-                  xml:lang="fr">La législation applicable HVD est encodée.
-  </sch:diagnostic>
-
-
-  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-failure-en" xml:lang="en">
-    One legislation is recommended. Use a keyword with an Anchor pointing to
-    http://data.europa.eu/eli/....
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-failure-fr" xml:lang="fr">
-    Une législation applicable est obligatoire. Utilisez un mot-clé avec une ancre pointant vers
-    http://data.europa.eu/eli/....
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-success-en"
-                  xml:lang="en">One applicable legislation found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.one.legislation.mandatory-success-fr"
-                  xml:lang="fr">Une législation applicable est encodée.
-  </sch:diagnostic>
-
-
 
   <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
     Contact information that can be used for sending comments about the Dataset is missing.
@@ -100,60 +68,6 @@
     Contact pouvant être utilisées pour envoyer des commentaires sur l'ensemble de données encodé :<sch:value-of
     select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
   </sch:diagnostic>
-
-
-  <sch:diagnostic id="rule.hvd.category.mandatory-failure-en" xml:lang="en">
-    The HVD category to which this Dataset belongs is missing.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.category.mandatory-failure-fr" xml:lang="fr">
-    La catégorie HVD à laquelle appartient cet ensemble de données est manquante.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.category.mandatory-success-en"
-                  xml:lang="en">
-    HVD categories found:<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.category.mandatory-success-fr"
-                  xml:lang="fr">
-    Catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
-  </sch:diagnostic>
-
-
-  <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-en" xml:lang="en">
-    The HVD IR is a quality improvement of existing datasets. The intention is that HVD datasets are publicly and open
-    accessible. Therefore a Distribution is expected to be present. Add an online resource with a download protocol or
-    function.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-fr" xml:lang="fr">
-    Les règles d'implémentation HVD ont pour objectif une amélioration de la qualité des ensembles de données existants.
-    L'objectif est que les ensembles de données HVD soient accessibles au public et en libre accès. Par conséquent, une
-    distribution est attendue. Ajoutez une ressource en ligne avec un protocole ou une fonction de téléchargement.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.distribution.mandatory-success-en"
-                  xml:lang="en">
-    Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.distribution.mandatory-success-fr"
-                  xml:lang="fr">
-    URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
-  </sch:diagnostic>
-
-
-
-  <sch:diagnostic id="rule.hvd.license.mandatory-failure-en" xml:lang="en">
-    The usage license is not specified or is not of public type (use constraints unrestricted license)
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.license.mandatory-failure-fr" xml:lang="fr">
-    La licence d'utilisation n'est pas spécifiée ou n'est pas de type ouverte (type de licence unrestricted).
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.license.mandatory-success-en"
-                  xml:lang="en">
-    Open license found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.license.mandatory-success-fr"
-                  xml:lang="fr">
-    Licence ouverte encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
-  </sch:diagnostic>
-
 
 
   <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
@@ -194,9 +108,22 @@
   </sch:diagnostic>
 
 
-
+  <!-- HVD legislation -->
+  <sch:diagnostic id="rule.hvd.legislation.mandatory-failure-en" xml:lang="en">
+   Add the European HVD legislation (2023/138 - High Value Datasets Regulation) from the 'Applicable Legislations' thesaurus.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.legislation.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez la législation européenne HVD (2023/138 - High Value Datasets Regulation) à partir du thésaurus "Applicable Legislations".
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.legislation.mandatory-success-en"
+                  xml:lang="en">The European HVD legislation is encoded.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.legislation.mandatory-success-fr"
+                  xml:lang="fr">La législation européenne HVD est encodée.
+  </sch:diagnostic>
   <sch:pattern>
-    <sch:title>HVD</sch:title>
+    <sch:title xml:lang="en">The HVD legislation MUST be specified</sch:title>
+    <sch:title xml:lang="fr">La législation HVD DOIT être indiquée</sch:title>
     <sch:rule
       context="//*:MD_Metadata">
       <!-- https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/#Dataset -->
@@ -216,7 +143,26 @@
                   diagnostics="rule.hvd.legislation.mandatory-failure-en rule.hvd.legislation.mandatory-failure-fr"/>
       <sch:report test="$hasOneKeywordEncodingHvdLegislationAsAnchor"
                   diagnostics="rule.hvd.legislation.mandatory-success-en rule.hvd.legislation.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
 
+    <!-- One EU Legislation-->
+    <sch:diagnostic id="rule.hvd.one.legislation.recommended-failure-en" xml:lang="en">
+      Add the applicable European legislation from the 'Applicable Legislations' thesaurus.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.hvd.one.legislation.recommended-failure-fr" xml:lang="fr">
+      Ajoutez la législation européenne applicable à partir du thésaurus "Applicable Legislations".
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-en"
+                    xml:lang="en">One applicable European legislation found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-fr"
+                    xml:lang="fr">Une législation Européenne applicable est encodée.
+    </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">It is recommended to enter the European legislation related to the resource</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé d'indiquer la législation européenne relative à la ressource</sch:title>
+    <sch:rule context="//*:MD_Metadata">
 
       <!--
       See eu-dcat-ap-core-dataset.xsl
@@ -227,12 +173,31 @@
                               and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]) > 1"/>
 
       <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
-                  diagnostics="rule.hvd.one.legislation.mandatory-failure-en rule.hvd.one.legislation.mandatory-failure-fr"/>
+                  diagnostics="rule.hvd.one.legislation.recommended-failure-en rule.hvd.one.legislation.recommended-failure-fr"/>
       <sch:report test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
-                  diagnostics="rule.hvd.one.legislation.mandatory-success-en rule.hvd.one.legislation.mandatory-success-fr"/>
+                  diagnostics="rule.hvd.one.legislation.recommended-success-en rule.hvd.one.legislation.recommended-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
 
-
-
+  <!-- HVD category-->
+  <sch:diagnostic id="rule.hvd.category.mandatory-failure-en" xml:lang="en">
+    Choose a top-level category from the 'High Value Datasets Categories' thesaurus.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.category.mandatory-failure-fr" xml:lang="fr">
+    Choisissez une catégorie de premier niveau depuis le thésaurus "High Value Datasets Categories".
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.category.mandatory-success-en"
+                  xml:lang="en">
+    HVD categories found:<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.category.mandatory-success-fr"
+                  xml:lang="fr">
+    Catégories HVD encodées :<sch:value-of select="concat(' ', string-join($hvdTopCategories, ', '))"/>.
+  </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">The resource MUST be classified under one of the HVD categories</sch:title>
+    <sch:title xml:lang="fr">La ressource DOIT être classée dans une des catégories HVD</sch:title>
+    <sch:rule context="//*:MD_Metadata">
       <!--
       HVD Category and subcategory
       Concept
@@ -281,10 +246,69 @@
                   diagnostics="rule.hvd.category.mandatory-success-en rule.hvd.category.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
-  <sch:pattern id="HVD (dataset)">
+
+    <!-- License -->
+    <sch:diagnostic id="rule.hvd.license.mandatory-failure-en" xml:lang="en">
+        Define an open-use license by selecting the value 'LicenseUnrestricted' from the 'Access Constraints' list and by specifying the applicable standard open license under 'Other Constraints'.
+        The terms of use must be grouped in a 'Resource Constraints' block and kept separate from the access conditions.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.hvd.license.mandatory-failure-fr" xml:lang="fr">
+        Définissez une licence d'utilisation ouverte en choisissant la valeur "LicenseUnrestricted" de la liste "Contraintes d'accès" et en mentionnant dans "Autres contraintes" la licence ouverte standard applicable.
+        Les conditions d'utilisation doivent être regroupées dans un bloc de "Contraintes sur la ressource" et séparées des conditions d'accès.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.hvd.license.mandatory-success-en"
+                      xml:lang="en">
+        Open license found:<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+      </sch:diagnostic>
+      <sch:diagnostic id="rule.hvd.license.mandatory-success-fr"
+                      xml:lang="fr">
+        Licence ouverte encodée :<sch:value-of select="concat(' ', string-join($license, ', '))"/>.
+      </sch:diagnostic>
+    <sch:pattern>
+      <sch:title xml:lang="en">An open-use license MUST be defined for an HVD dataset</sch:title>
+      <sch:title xml:lang="fr">Une licence d'utilisation ouverte DOIT être définie pour une donnée HVD</sch:title>
+      <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
+
+        <sch:let name="isPublicLicenseType"
+                        value="count(*:identificationInfo/*/*:resourceConstraints/*/*:useConstraints/*/@codeListValue[. = ('licenceUnrestricted')]) > 0"/>
+        <sch:let name="license"
+                 value="*:identificationInfo/*/*:resourceConstraints/*[*:useConstraints]/*:otherConstraints/*/@xlink:href"/>
+
+        <sch:let name="hasPublicLicense"
+                  value="$isPublicLicenseType and count($license) > 0"/>
+
+        <sch:assert test="$hasPublicLicense"
+                    diagnostics="rule.hvd.license.mandatory-failure-en rule.hvd.license.mandatory-failure-fr"/>
+        <sch:report test="$hasPublicLicense"
+                    diagnostics="rule.hvd.license.mandatory-success-en rule.hvd.license.mandatory-success-fr"/>
+
+      </sch:rule>
+    </sch:pattern>
+
+    <!-- Public Distribution -->
+    <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-en" xml:lang="en">
+      Add a download page (online resource with protocol 'WWW:LINK' and function 'download')
+      OR a direct download link (online resource with protocol 'WWW:DOWNLOAD' and function 'download')
+      OR a reference to the record of a visualization or download service.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-fr" xml:lang="fr">
+       Ajoutez une page de téléchargement (ressource en ligne avec protocole "WWW:LINK" et fonction "download")
+       OU un lien de téléchargement direct (ressource en ligne avec protocole "WWW:DOWNLOAD" et fonction "download")
+       OU une relation vers la fiche d'un service de visualisation ou de téléchargement.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.hvd.distribution.mandatory-success-en"
+                    xml:lang="en">
+      Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.hvd.distribution.mandatory-success-fr"
+                    xml:lang="fr">
+      URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+    </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">An HVD dataset MUST be accessible to the public</sch:title>
+    <sch:title xml:lang="fr">Une donnée HVD DOIT être accessible au public</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
-
 
       <!--
         dataset distribution
@@ -311,21 +335,6 @@
                   diagnostics="rule.hvd.distribution.mandatory-failure-en rule.hvd.distribution.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreDistributions"
                   diagnostics="rule.hvd.distribution.mandatory-success-en rule.hvd.distribution.mandatory-success-fr"/>
-
-
-
-      <sch:let name="isPublicLicenseType"
-                value="count(*:identificationInfo/*/*:resourceConstraints/*/*:useConstraints/*/@codeListValue[. = ('licenceUnrestricted')]) > 0"/>
-      <sch:let name="license"
-               value="*:identificationInfo/*/*:resourceConstraints/*[*:useConstraints]/*:otherConstraints/*/@xlink:href"/>
-
-      <sch:let name="hasPublicLicense"
-                value="$isPublicLicenseType and count($license) > 0"/>
-
-      <sch:assert test="$hasPublicLicense"
-                  diagnostics="rule.hvd.license.mandatory-failure-en rule.hvd.license.mandatory-failure-fr"/>
-      <sch:report test="$hasPublicLicense"
-                  diagnostics="rule.hvd.license.mandatory-success-en rule.hvd.license.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
 
