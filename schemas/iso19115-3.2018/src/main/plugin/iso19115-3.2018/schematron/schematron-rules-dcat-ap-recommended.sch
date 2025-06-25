@@ -235,10 +235,10 @@
         <sch:let name="hasGeospatialExtent"
                  value="boolean(
                           $geospatialExtent[
-                            gex:westBoundLongitude/gco:Decimal and
-                            gex:eastBoundLongitude/gco:Decimal and
-                            gex:southBoundLatitude/gco:Decimal and
-                            gex:northBoundLatitude/gco:Decimal
+                            gex:westBoundLongitude/gco:Decimal[text() != ''] and
+                            gex:eastBoundLongitude/gco:Decimal[text() != ''] and
+                            gex:southBoundLatitude/gco:Decimal[text() != ''] and
+                            gex:northBoundLatitude/gco:Decimal[text() != '']
                           ])"/>
 
         <sch:assert test="$hasGeospatialExtent"
