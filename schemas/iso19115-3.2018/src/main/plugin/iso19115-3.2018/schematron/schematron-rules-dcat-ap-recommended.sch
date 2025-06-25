@@ -81,22 +81,22 @@
 
    <!-- Resource Revision date -->
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-en" xml:lang="en">
-      Resource revision date is mandatory.
+      Enter the last modification date of the resource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-fr" xml:lang="fr">
-      La date de modification de la ressource est obligatoire.
+      Renseignez la date de dernière modification de la ressource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-en"
                     xml:lang="en">Resource revision date found:
       <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-fr"
-                    xml:lang="fr">Date de modification de la resource encodée :
+                    xml:lang="fr">Date de modification de la resource encodée:
       <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
     </sch:diagnostic>
     <sch:pattern id="resource-revision-date">
-      <sch:title xml:lang="en">Resource revision date is defined</sch:title>
-      <sch:title xml:lang="fr">La date de dernière modification de la ressource est renseignée</sch:title>
+      <sch:title xml:lang="en">It is recommended to indicate the last modification date of the resource</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de dernière modification de la ressource</sch:title>
       <sch:rule
         context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
 
@@ -114,22 +114,22 @@
 
     <!-- Resource Publication date-->
       <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-failure-en" xml:lang="en">
-        Resource publication date is mandatory.
+       Enter the publication date.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-failure-fr" xml:lang="fr">
-        La date de publication de la ressource est obligatoire.
+       Renseignez la date de publication de la donnée.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-en"
                       xml:lang="en">Resource publication date found:
         <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-fr"
-                      xml:lang="fr">Date de publication de la resource encodée :
+                      xml:lang="fr">Date de publication de la resource encodée:
         <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
       </sch:diagnostic>
       <sch:pattern id="resource-publication-date">
         <sch:title xml:lang="en">Resource publication date is defined</sch:title>
-        <sch:title xml:lang="fr">La date de publication de la ressource est renseignée</sch:title>
+        <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de publication de la donnée</sch:title>
         <sch:rule
           context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
 
@@ -147,10 +147,10 @@
 
     <!-- Contact Point-->
     <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-failure-en" xml:lang="en">
-      Add a contact with a role of pointOfContact.
+      Add a Responsible Party with the role of 'point of contact'.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-failure-fr" xml:lang="fr">
-      Ajoutez un responsable avec le rôle "point de contact".
+     Ajoutez un Responsable avec le rôle "point de contact"
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.contactPoint.mandatory-success-en"
                     xml:lang="en">
@@ -163,8 +163,8 @@
       select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
     </sch:diagnostic>
     <sch:pattern id="resource-contact">
-      <sch:title xml:lang="en">Resource's contact points defined</sch:title>
-      <sch:title xml:lang="fr">Le point de contact est défini</sch:title>
+      <sch:title xml:lang="en">It is recommended to define a point of contact</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé de définir un point de contact</sch:title>
       <sch:rule context="//*:MD_Metadata">
         <sch:let name="resourcePointOfContact"
                  value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'pointOfContact']/*:party/*/*:name/*[text() != '']"/>
@@ -180,10 +180,10 @@
 
   <!-- Custodian -->
     <sch:diagnostic id="rule.dcatap.custodian.mandatory-failure-en" xml:lang="en">
-      Add a contact with a role of custodian.
+      Add a Responsible Party with the role of 'custodian'.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.custodian.mandatory-failure-fr" xml:lang="fr">
-       Ajoutez un responsable avec le rôle "gestionnaire".
+       Ajoutez un Responsable avec le rôle "gestionnaire".
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.custodian.mandatory-success-en"
                     xml:lang="en">
@@ -196,8 +196,8 @@
       select="concat(' ', string-join($resourceCustodian, ', '))"/>.
     </sch:diagnostic>
     <sch:pattern id="resource-custodian">
-      <sch:title xml:lang="en">Resource custodian is defined</sch:title>
-      <sch:title xml:lang="fr">Le gestionnaire est défini</sch:title>
+      <sch:title xml:lang="en">It is recommended to define the custodian</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé de définir le gestionnaire de la ressource</sch:title>
       <sch:rule context="//*:MD_Metadata">
         <sch:let name="resourceCustodian"
                  value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'custodian']/*:party/*/*:name/*[text() != '']"/>
@@ -213,10 +213,10 @@
 
     <!-- Geospatial extent -->
     <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-en" xml:lang="en">
-     Define the resource's geospatial extent.
+     Add the geographic extent of the resource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-failure-fr" xml:lang="fr">
-      Définissez l'emprise géospatiale de la ressource.
+      Ajoutez l'emprise géographique de la ressource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.geospatial-extent.recommended-success-en" xml:lang="en">
       Geospatial extent found.
@@ -226,8 +226,8 @@
     </sch:diagnostic>
 
     <sch:pattern id="geospatial-extent">
-      <sch:title xml:lang="en">Geospatial extent is defined</sch:title>
-      <sch:title xml:lang="fr">L'emprise géographique est définie</sch:title>
+      <sch:title xml:lang="en">It is recommended to provide the geographic extent</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé de renseigner l'emprise géographique</sch:title>
       <sch:rule context="//*:MD_Metadata">
 
         <sch:let name="geospatialExtent"
@@ -250,10 +250,10 @@
 
       <!-- Temporal Extent -->
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-en" xml:lang="en">
-       Define the resource's temporal extent.
+       Add the temporal extent of the resource.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-failure-fr" xml:lang="fr">
-        Définissez l'étendue temporelle de la ressource.
+       Ajoutez l'étendue temporelle de la ressource.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.temporal-extent.recommended-success-en" xml:lang="en">
                       Temporal extent found.
@@ -262,8 +262,8 @@
       Période temporelle trouvée.
       </sch:diagnostic>
       <sch:pattern id="temporal-extent" >
-         <sch:title xml:lang="en">Temporal extent is defined</sch:title>
-         <sch:title xml:lang="fr">L'étendue temporelle est définie</sch:title>
+         <sch:title xml:lang="en">It is recommended to provide the temporal extent</sch:title>
+         <sch:title xml:lang="fr">Il est recommandé de renseigner l'étendue temporelle</sch:title>
          <sch:rule
            context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
 
@@ -284,10 +284,10 @@
 
    <!-- Theme -->
       <sch:diagnostic id="rule.dcatap.themes.mandatory-failure-en" xml:lang="en">
-        Add a theme from thesaurus "Data Theme DCAT-AP" of Publication Europa
+       Add a theme from the 'European Data Themes DCAT-AP' thesaurus.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.themes.mandatory-failure-fr" xml:lang="fr">
-        Ajoutez un thème provenant du thésaurus "Themes de données européens DCAT-AP"
+       Ajoutez un thème provenant du thésaurus "Themes de données européens DCAT-AP".
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.themes.mandatory-success-en"
                       xml:lang="en">
@@ -300,8 +300,8 @@
         select="concat(' ', string-join($dcatThemes, ', '))"/>.
       </sch:diagnostic>
       <sch:pattern id="resource-theme">
-        <sch:title xml:lang="en">The resource is classified under one of the European data themes of DCAT-AP</sch:title>
-        <sch:title xml:lang="fr">La ressource est classée dans un des thèmes de données européens DCAT-AP</sch:title>
+        <sch:title xml:lang="en">It is recommended to classify the resource under one of the European data themes of DCAT-AP</sch:title>
+        <sch:title xml:lang="fr">Il est recommandé de classer la ressource dans un des thèmes de données européens DCAT-AP</sch:title>
         <sch:rule
           context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
 
@@ -321,10 +321,10 @@
 
     <!-- Keywords -->
     <sch:diagnostic id="rule.dcatap.keywords.mandatory-failure-en" xml:lang="en">
-      Add keywords.
+      Add keywords that describe your resource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.keywords.mandatory-failure-fr" xml:lang="fr">
-      Décrivez votre ressource à l'aide de mots-clés
+     Ajoutez des mots-clés qui décrivent votre ressource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.keywords.mandatory-success-en"
                     xml:lang="en">
@@ -339,8 +339,8 @@
       mot(s) clé(s) encodé(s).
     </sch:diagnostic>
     <sch:pattern id="resource-keywords">
-      <sch:title xml:lang="en">Keywords are defined</sch:title>
-      <sch:title xml:lang="fr">Des mots-clés sont définis</sch:title>
+      <sch:title xml:lang="en">It is recommended to describe the resource using keywords</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé de décrire la ressource avec des mots-clés</sch:title>
       <sch:rule
         context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
       <!--
@@ -370,10 +370,10 @@
 
   <!-- Access constraints -->
   <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-en" xml:lang="en">
-    Define the applicable standard access constraints or, if not applicable, specify non-standard access constraints by selecting a value from the 'Access Constraints' list and indicating any 'Other Constraints'
+   Define the applicable access conditions by selecting a value from the 'Access Constraints' list and specifying any 'Other Constraints'. The access conditions must be grouped within a 'Resource Constraints' block and kept separate from the usage conditions.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-failure-fr" xml:lang="fr">
-    Définissez les conditions d'accès standard applicables ou à défaut spécifiez des conditions d'accès non-standard en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes"
+    Définissez les conditions d'accès applicables en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes". Les conditions d'accès doivent être regroupées dans un bloc de "Contraintes sur la ressource" et séparées des conditions d'utilisation.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.dataset.access.constraints.mandatory-success-en"
                   xml:lang="en">
@@ -384,8 +384,8 @@
     Contraintes d'accès encodées.
   </sch:diagnostic>
   <sch:pattern id="dataset-accessconstraints">
-   <sch:title xml:lang="en">Dataset - Access constraints are defined</sch:title>
-   <sch:title xml:lang="fr">Dataset - Les contraintes d'accès sont définies</sch:title>
+   <sch:title xml:lang="en">It is recommended to define the access level of the resource</sch:title>
+   <sch:title xml:lang="fr">Il est recommandé de définir le niveau d'accès à la ressource</sch:title>
    <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
 
@@ -404,10 +404,10 @@
 
   <!-- Use constraints-->
   <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-en" xml:lang="en">
-    Define the applicable standard license or, if not applicable, specify non-standard terms of use.
+    Define the applicable terms of use by selecting a value from the 'Access Constraints' list and specifying any 'Other Constraints'. The terms of use must be grouped within a 'Resource Constraints' block and kept separate from the access conditions.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-fr" xml:lang="fr">
-    Définissez la licence standard applicable ou à défaut spécifiez des conditions d'utilisation non-standard.
+    Définissez les conditions d'utilisation applicables en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes". Les conditions d'utilisation doivent être regroupées dans un bloc de "Contraintes sur la ressource" et séparées des conditions d'accès.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-en"
                   xml:lang="en">
@@ -418,8 +418,8 @@
     Contraintes d'utilisation encodées.
   </sch:diagnostic>
   <sch:pattern id="dataset-useconstraints">
-     <sch:title xml:lang="en">Dataset/Service - License or use-constraints are defined</sch:title>
-     <sch:title xml:lang="fr">Dataset/Service - La licence ou les conditions d'utilisation sont spécifiées</sch:title>
+     <sch:title xml:lang="en">It is recommended to define a license or terms of use</sch:title>
+     <sch:title xml:lang="fr">Il est recommandé de définir une licence ou des conditions d'utilisation</sch:title>
       <sch:rule
         context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'service')]">
 
@@ -437,10 +437,10 @@
 
   <!-- Dataset Distribution-->
   <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-en" xml:lang="en">
-      Add a download page, a direct download link, or a link to a visualization or download service
+      Add a download page (online resource with protocol 'WWW:LINK' and function 'download') OR a direct download link (online resource with protocol 'WWW:DOWNLOAD' and function 'download') OR a relation to the record of a visualization or download service.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-failure-fr" xml:lang="fr">
-      Ajoutez une page de téléchargement, un lien de téléchargement direct ou un lien vers un service de visualisation ou de téléchargement
+      Ajoutez une page de téléchargement (ressource en ligne avec protocole "WWW:LINK" et fonction "download") OU un lien de téléchargement direct (ressource en ligne avec protocole "WWW:DOWNLOAD" et fonction "download") OU une relation vers la fiche d'un service de visualisation ou de téléchargement.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
                     xml:lang="en">
@@ -452,8 +452,8 @@
     </sch:diagnostic>
 
     <sch:pattern id="dataset-distribution">
-      <sch:title xml:lang="en">A distribution is defined</sch:title>
-      <sch:title xml:lang="fr">Une distribution est définie</sch:title>
+      <sch:title xml:lang="en">It is recommended to specify at least one distribution</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé de spécifier au moins un canal de distribution</sch:title>
 
       <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']" >
 
