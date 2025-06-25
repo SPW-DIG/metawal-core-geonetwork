@@ -81,10 +81,10 @@
 
    <!-- Resource Revision date -->
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-en" xml:lang="en">
-      Enter the last modification date of the resource.
+      Enter the revision date of the resource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-fr" xml:lang="fr">
-      Renseignez la date de dernière modification de la ressource.
+      Renseignez la date de révision de la ressource.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-success-en"
                     xml:lang="en">Resource revision date found:
