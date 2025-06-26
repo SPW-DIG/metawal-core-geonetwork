@@ -395,14 +395,13 @@
 
   <sch:diagnostic id="rule.hvd.endpointurl.mandatory-failure-en" xml:lang="en">
     The root location or primary endpoint of the service (an IRI) is missing. Add an operation with a protocol which is
-    not considered as an endpoint description (ie.<sch:value-of
-    select="concat(' ', $endpointDescriptionProtocolsExpression)"/>) or a URL containing <sch:value-of select="$endpointDescriptionUrllExpression"/>.
+    not considered as an endpoint description
+    (ie.<sch:value-of select="concat(' ', $endpointDescriptionProtocolsExpression)"/>) or a URL containing <sch:value-of select="$endpointDescriptionUrllExpression"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.endpointurl.mandatory-failure-fr" xml:lang="fr">
     L'URL principale du service (un IRI) est manquant. Ajoutez une opération avec un protocole qui n'est pas une
     description de service
-    (ie.<sch:value-of
-    select="concat(' ', $endpointDescriptionProtocolsExpression)"/>) ou une URL contenant <sch:value-of select="$endpointDescriptionUrllExpression"/>.
+    (ie.<sch:value-of select="concat(' ', $endpointDescriptionProtocolsExpression)"/>) ou une URL contenant <sch:value-of select="$endpointDescriptionUrllExpression"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.endpointurl.mandatory-success-en"
                   xml:lang="en">
@@ -415,6 +414,8 @@
 
 
   <sch:pattern id="L'opération access point du service est défine">
+    <sch:title xml:lang="en">Online resource: the service address MUST be provided</sch:title>
+    <sch:title xml:lang="fr">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
 
