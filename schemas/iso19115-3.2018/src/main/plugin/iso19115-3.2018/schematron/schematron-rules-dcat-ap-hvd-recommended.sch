@@ -57,10 +57,10 @@
     Ajoutez la législation européenne applicable à partir du thésaurus "Applicable Legislations".
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-en"
-                  xml:lang="en"><sch:value-of select="count($keywordEncodingApplicableLegislationAsAnchor)"/> legislation encoded: <sch:value-of select="$keywordEncodingApplicableLegislationAsAnchor"/>.
+                  xml:lang="en"><sch:value-of select="count($keywordEncodingApplicableLegislationAsAnchor)"/> legislation encoded: <sch:value-of select="string-join($keywordEncodingApplicableLegislationAsAnchor, ', ')"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-fr"
-                  xml:lang="fr"><sch:value-of select="count($keywordEncodingApplicableLegislationAsAnchor)"/> législation(s) encodée(s) : <sch:value-of select="$keywordEncodingApplicableLegislationAsAnchor"/>.
+                  xml:lang="fr"><sch:value-of select="count($keywordEncodingApplicableLegislationAsAnchor)"/> législation(s) encodée(s) : <sch:value-of select="string-join($keywordEncodingApplicableLegislationAsAnchor, ', ')"/>.
   </sch:diagnostic>
   <sch:pattern>
     <sch:title xml:lang="en">It is recommended to enter the European legislation related to the resource</sch:title>
