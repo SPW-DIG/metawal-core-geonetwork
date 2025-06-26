@@ -69,7 +69,7 @@
       <sch:title xml:lang="en">It is recommended to enter the last modification date of the resource</sch:title>
       <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de dernière modification de la ressource</sch:title>
       <sch:rule
-        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != ('series','service')]">
 
         <sch:let name="resourceRevisionDate"
                  value="*:identificationInfo/*/*:citation/*/*:date/*[*:dateType/*/@codeListValue = 'revision']/*:date[*/text() != '']"/>
@@ -102,7 +102,7 @@
         <sch:title xml:lang="en">It is recommended to enter the publication date of the resource</sch:title>
         <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de publication de la ressource</sch:title>
         <sch:rule
-          context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
+          context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != ('series','service')]">
 
           <sch:let name="resourcePublicationDate"
                    value="*:identificationInfo/*/*:citation/*/*:date/*[*:dateType/*/@codeListValue = 'publication']/*:date[*/text() != '']"/>
@@ -199,7 +199,7 @@
     <sch:pattern id="geospatial-extent">
       <sch:title xml:lang="en">It is recommended to provide the geographic extent</sch:title>
       <sch:title xml:lang="fr">Il est recommandé de renseigner l'emprise géographique</sch:title>
-      <sch:rule context="//*:MD_Metadata">
+      <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'service']">
 
         <sch:let name="geospatialExtent"
                  value="//*:extent/*/*:geographicElement/*"/>
