@@ -470,7 +470,6 @@
     Taille du téléchargement pour <sch:value-of select="$linkage"/> est : <sch:value-of select="$size"/> Mo.
   </sch:diagnostic>
 
-
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-en" xml:lang="en">
     It is recommended to provide the Atom service of the data -
     Add a link between the dataset record and the record of the Atom service that allows it to be downloaded.
@@ -488,6 +487,25 @@
                   xml:lang="fr">
     Il est recommandé de renseigner le service atom de la donnée -
     Service ATOM encodé: <sch:value-of select="$atomService/root/resourceTitleObject/default"/>.
+  </sch:diagnostic>
+
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.failure-en" xml:lang="en">
+    It is recommended to specify the format of the download file -
+    Verify that the protocol specifies the file format in the form 'WWW:DOWNLOAD:IANA_code_of_the_format' <sch:value-of select="$linkage"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.failure-fr" xml:lang="fr">
+    Il est recommandé de spécifier le format du fichier de téléchargement -
+    Vérifiez que le protocole mentionne le format du fichier sous la forme "WWW:DOWNLOAD:code_IANA_du_format" <sch:value-of select="$linkage"/>
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.success-en"
+                  xml:lang="en">
+    It is recommended to specify the format of the download file -
+    Download protocol is set to<sch:value-of select="$protocol"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.success-fr"
+                  xml:lang="fr">
+    Il est recommandé de spécifier le format du fichier de téléchargement -
+    Protocole encodé : <sch:value-of select="$protocol"/>.
   </sch:diagnostic>
 
   <sch:pattern id="distribution">
@@ -513,7 +531,6 @@
       <sch:assert test="exists($size)"
                   diagnostics="rule.dcatap.distribution-has-size.failure-en rule.dcatap.distribution-has-size.failure-fr"/>
 
-
       <sch:let name="associations"
                     value="mdUtil:getAssociatedAsXml(ancestor::*:MD_Metadata/mdb:metadataIdentifier/*/mcc:code/*/text())"/>
 
@@ -524,6 +541,12 @@
       <sch:assert test="exists($atomService)"
                   diagnostics="rule.dcatap.distribution-has-atomservice.failure-en rule.dcatap.distribution-has-atomservice.failure-fr"/>
 
+      <sch:let name="protocol"
+               value="*/*:protocol/*[text() != '']"/>
+      <sch:assert test="matches($protocol, 'WWW:DOWNLOAD.*')"
+                  diagnostics="rule.dcatap.distribution-has-downloadprotocol.failure-en rule.dcatap.distribution-has-downloadprotocol.failure-fr"/>
+      <sch:report test="matches($protocol, 'WWW:DOWNLOAD.*')"
+                  diagnostics="rule.dcatap.distribution-has-downloadprotocol.success-en rule.dcatap.distribution-has-downloadprotocol.success-fr"/>
     </sch:rule>
   </sch:pattern>
 

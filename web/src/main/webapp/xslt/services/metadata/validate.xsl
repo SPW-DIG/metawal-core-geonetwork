@@ -195,7 +195,7 @@
             <xsl:value-of select="@name"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:text>--</xsl:text>
+            <xsl:text></xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </title>

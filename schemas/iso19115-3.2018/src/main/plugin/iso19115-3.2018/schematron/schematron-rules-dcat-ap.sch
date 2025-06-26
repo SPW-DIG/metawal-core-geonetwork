@@ -284,24 +284,6 @@
     Distribution <sch:value-of select="$linkage"/>. Description encodée : <sch:value-of select="$description"/>.
   </sch:diagnostic>
 
-  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-en" xml:lang="en">
-    Distribution <sch:value-of select="$linkage"/>
-    has no download protocol (WWW:DOWNLOAD:IANA).
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-failure-fr" xml:lang="fr">
-    Protocol du fichier manquant dans la distribution <sch:value-of select="$linkage"/>
-    (WWW:DOWNLOAD:IANA).
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-en"
-                  xml:lang="en">
-    Distribution <sch:value-of select="$linkage"/>
-    download protocol is set to<sch:value-of select="$protocol"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.distribution-has-downloadprotocol.mandatory-success-fr"
-                  xml:lang="fr">
-    Distribution <sch:value-of select="$linkage"/>. Protocole encodé : <sch:value-of select="$protocol"/>.
-  </sch:diagnostic>
-
   <sch:pattern id="distribution">
    <!-- TODO: add support for service-->
     <sch:title>DCAT-AP (Distribution)</sch:title>
