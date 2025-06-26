@@ -144,10 +144,10 @@
 
   <!-- Series - has dataset -->
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-en" xml:lang="en">
-    Add a link between the series and its constituent datasets.
+    Add a link between the series and its constituent datasets by assigning the series as a parent of the datasets.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-failure-fr" xml:lang="fr">
-    Ajoutez un lien entre la série et ses données constitutives.
+    Ajoutez un lien entre la série et ses données constitutives en ajoutant la série comme parent à partir des fiches de données.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-success-en"
                   xml:lang="en">
