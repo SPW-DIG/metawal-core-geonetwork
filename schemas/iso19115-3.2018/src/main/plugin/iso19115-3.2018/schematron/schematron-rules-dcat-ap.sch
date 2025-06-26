@@ -369,9 +369,9 @@
         <sch:let name="protocol"
                  value="*/*:protocol/*[text() != '']"/>
 
-        <sch:assert test="exists($name) and exists($description) and exists($linkage) and matches($protocol, 'WWW:DOWNLOAD:.*')"
+        <sch:assert test="exists($name) and exists($description) and exists($linkage) and matches($protocol, 'WWW:DOWNLOAD.*')"
                     diagnostics="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-en rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-fr"/>
-        <sch:report test="exists($name) and exists($description) and exists($linkage) and matches($protocol, 'WWW:DOWNLOAD:.*')"
+        <sch:report test="exists($name) and exists($description) and exists($linkage) and matches($protocol, 'WWW:DOWNLOAD.*')"
                     diagnostics="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-en rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-fr"/>
       </sch:rule>
     </sch:pattern>
