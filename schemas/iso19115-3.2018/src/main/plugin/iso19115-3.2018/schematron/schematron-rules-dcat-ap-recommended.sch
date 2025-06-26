@@ -417,10 +417,12 @@
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
                     xml:lang="en">
-      Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+       <sch:value-of select="$numberOfDistributions"/>
+       Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-fr"
                     xml:lang="fr">
+      <sch:value-of select="$numberOfDistributions"/>
       URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
     </sch:diagnostic>
 
@@ -435,8 +437,10 @@
                                           cit:function/*/@codeListValue = ('information', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
                                           or (not(cit:function/*/@codeListValue) and matches(*:protocol/*/text(), 'WWW:LINK.*')))]/*:linkage/(*:CharacterString|*:URL)"/>
 
+         <sch:let name="numberOfDistributions"
+                         value="count($distributions)"/>
         <sch:let name="hasOneOrMoreDistributions"
-                 value="count($distributions) > 0"/>
+                 value="$numberOfDistributions > 0"/>
 
         <sch:assert test="$hasOneOrMoreDistributions"
                     diagnostics="rule.dcatap.dataset.distribution.mandatory-failure-en rule.dcatap.dataset.distribution.mandatory-failure-fr"/>
