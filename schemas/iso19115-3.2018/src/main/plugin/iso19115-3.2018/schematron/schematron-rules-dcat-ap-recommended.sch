@@ -543,15 +543,17 @@
 
       <sch:let name="protocol"
                value="*/*:protocol/*[text() != '']"/>
-      <sch:assert test="matches($protocol, 'WWW:DOWNLOAD.*')"
+      <sch:assert test="matches($protocol, 'WWW:DOWNLOAD:.*')"
                   diagnostics="rule.dcatap.distribution-has-downloadprotocol.failure-en rule.dcatap.distribution-has-downloadprotocol.failure-fr"/>
-      <sch:report test="matches($protocol, 'WWW:DOWNLOAD.*')"
+      <sch:report test="matches($protocol, 'WWW:DOWNLOAD:.*')"
                   diagnostics="rule.dcatap.distribution-has-downloadprotocol.success-en rule.dcatap.distribution-has-downloadprotocol.success-fr"/>
     </sch:rule>
   </sch:pattern>
 
 
-
+  <!-- -->
+  <!-- SERVICE RULES -->
+  <!-- -->
 
 
   <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
@@ -649,10 +651,6 @@
 
     </sch:rule>
   </sch:pattern>
-
-  <!-- -->
-  <!-- SERVICE RULES -->
-  <!-- -->
 
     <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-en" xml:lang="en">
       Add an abstract.
