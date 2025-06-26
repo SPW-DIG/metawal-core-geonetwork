@@ -57,10 +57,10 @@
     Ajoutez la législation européenne applicable à partir du thésaurus "Applicable Legislations".
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-en"
-                  xml:lang="en">One applicable European legislation found.
+                  xml:lang="en"><sch:value-of select="count($keywordEncodingApplicableLegislationAsAnchor)"/> legislation encoded: <sch:value-of select="$keywordEncodingApplicableLegislationAsAnchor"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.one.legislation.recommended-success-fr"
-                  xml:lang="fr">Une législation Européenne applicable est encodée.
+                  xml:lang="fr"><sch:value-of select="count($keywordEncodingApplicableLegislationAsAnchor)"/> législation(s) encodée(s) : <sch:value-of select="$keywordEncodingApplicableLegislationAsAnchor"/>.
   </sch:diagnostic>
   <sch:pattern>
     <sch:title xml:lang="en">It is recommended to enter the European legislation related to the resource</sch:title>
@@ -70,10 +70,13 @@
       <!--
       See eu-dcat-ap-core-dataset.xsl
       -->
-      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
-               value="count(*:identificationInfo/*/*:descriptiveKeywords/*/
+      <sch:let name="keywordEncodingApplicableLegislationAsAnchor"
+               value="*:identificationInfo/*/*:descriptiveKeywords/*/
                               *:keyword[*:Anchor/@xlink:href != 'http://data.europa.eu/eli/reg_impl/2023/138/oj'
-                              and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]) > 1"/>
+                                                and starts-with(*:Anchor/@xlink:href, 'http://data.europa.eu/eli/')]"/>
+
+      <sch:let name="hasOneKeywordEncodingApplicableLegislationAsAnchor"
+               value="count($keywordEncodingApplicableLegislationAsAnchor) > 0"/>
 
       <sch:assert test="$hasOneKeywordEncodingApplicableLegislationAsAnchor"
                   diagnostics="rule.hvd.one.legislation.recommended-failure-en rule.hvd.one.legislation.recommended-failure-fr"/>
