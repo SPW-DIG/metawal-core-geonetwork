@@ -215,12 +215,11 @@
   <!-- Diagnostic for NAME, description and URL combined -->
     <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-failure-en" xml:lang="en">
       Complete the 'Internet address', 'Name', and 'Description' fields for the download page.
-      Distribution: <sch:value-of select="$linkage"/>
-
+      <sch:value-of select="$linkage"/>
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-failure-fr" xml:lang="fr">
       Complétez les informations "Adresse internet", "Nom" et "Description" pour la page de téléchargement.
-      Distribution: <sch:value-of select="$linkage"/>
+      <sch:value-of select="$linkage"/>
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.distribution-has-name-description-url.mandatory-success-en"
                     xml:lang="en">
@@ -232,23 +231,22 @@
     </sch:diagnostic>
 
       <!-- Diagnostic for PROTOCOL, NAME, DESCRIPTION and URL combined -->
-        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-en" xml:lang="en">
-          Complete the 'Internet address', 'Name', and 'Description' fields for the direct download link.
-          Distribution: <sch:value-of select="$linkage"/>
-
-        </sch:diagnostic>
-        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-fr" xml:lang="fr">
-          Complétez les informations "Adresse internet", "Nom" et "Description" pour le lien de téléchargement direct.
-          Distribution: <sch:value-of select="$linkage"/>
-        </sch:diagnostic>
-        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-en"
-                        xml:lang="en">
-          Distribution <sch:value-of select="$linkage"/>
-        </sch:diagnostic>
-        <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-fr"
-                        xml:lang="fr">
-          Distribution <sch:value-of select="$linkage"/>.
-        </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-en" xml:lang="en">
+      Complete the 'Internet address', 'Name', and 'Description' fields for the direct download link.
+      <sch:value-of select="$linkage"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-failure-fr" xml:lang="fr">
+      Complétez les informations "Adresse internet", "Nom" et "Description" pour le lien de téléchargement direct.
+      <sch:value-of select="$linkage"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-en"
+                    xml:lang="en">
+      Distribution <sch:value-of select="$linkage"/>
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.distribution-has-protocol-name-description-url.mandatory-success-fr"
+                    xml:lang="fr">
+      Distribution <sch:value-of select="$linkage"/>.
+    </sch:diagnostic>
 
   <!--TODO : remove diangnostic for separated name, edcription, url ? -->
   <sch:diagnostic id="rule.dcatap.distribution-has-name.mandatory-failure-en" xml:lang="en">
