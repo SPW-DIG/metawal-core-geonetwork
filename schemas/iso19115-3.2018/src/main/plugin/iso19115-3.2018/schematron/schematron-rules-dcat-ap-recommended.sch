@@ -451,40 +451,42 @@
   </sch:pattern>
 
   <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-en" xml:lang="en">
-    Titre <br/>
-    Distribution <sch:value-of select="$linkage"/>
-    has no size and it is recommended to set it.
+    It is recommended to specify the size of the download file -
+    Add the size of the download file in MB <sch:value-of select="$linkage"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-fr" xml:lang="fr">
-    Titre <br/>
-    Taille du téléchargement manquante dans la distribution <sch:value-of select="$linkage"/>.
-    Il est recommandé d'ajouter la taille du fichier de téléchargement en Mo.
+    Il est recommandé d'indiquer la taille du fichier de téléchargement -
+    Ajoutez la taille du fichier de téléchargement en Mo <sch:value-of select="$linkage"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-size.success-en"
                   xml:lang="en">
-    Titre <br/>
+    It is recommended to specify the size of the download file -
     Distribution <sch:value-of select="$linkage"/>
     size is <sch:value-of select="$size"/> Mo.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-size.success-fr"
                   xml:lang="fr">
-    Titre <br/>
+    Il est recommandé d'indiquer la taille du fichier de téléchargement -
     Taille du téléchargement pour <sch:value-of select="$linkage"/> est : <sch:value-of select="$size"/> Mo.
   </sch:diagnostic>
 
 
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-en" xml:lang="en">
+    It is recommended to provide the Atom service of the data -
     Add a link between the dataset record and the record of the Atom service that allows it to be downloaded.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.failure-fr" xml:lang="fr">
+    Il est recommandé de renseigner le service atom de la donnée -
     Ajoutez un lien entre la fiche de la donnée et la fiche du service atom qui permet de la télécharger.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.success-en"
                   xml:lang="en">
+    It is recommended to provide the Atom service of the data -
     ATOM service found: <sch:value-of select="$atomService/root/nameObject/default"/>.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-atomservice.success-fr"
                   xml:lang="fr">
+    Il est recommandé de renseigner le service atom de la donnée -
     Service ATOM encodé: <sch:value-of select="$atomService/root/resourceTitleObject/default"/>.
   </sch:diagnostic>
 
