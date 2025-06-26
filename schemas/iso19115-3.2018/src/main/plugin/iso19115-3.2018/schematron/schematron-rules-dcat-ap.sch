@@ -317,7 +317,7 @@
                   diagnostics="rule.dcatap.has-download-page.mandatory-success-en rule.dcatap.has-download-page.mandatory-success-fr"/>
 
 
-
+      <!-- TODO vérifier que linkage/*[text() != '']-->
       <sch:let name="onlineResourceMappedAsDistribution"
                value=".//*:onLine[
                                    not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
@@ -358,7 +358,7 @@
                                     or ((not(*/*:function/*) or */*:function/*/@codeListValue = '') and (matches(*/*:protocol/*/text(), 'WWW:LINK.*') or not(*/*:protocol/*) or */*:protocol/*/text() = ''))
                                    )
                                    and not(*/*:protocol/* = ('ESRI:REST', 'ESRI:REST-TILED', 'OGC:WMS', 'OGC:WMTS', 'OGC:WFS', 'OGC:WCS', 'atom:feed', 'INSPIRE atom', 'OGC API - Features'))
-                                 ][*/*:linkage/*/text() != '']">
+                                 ]">
 
         <sch:let name="linkage"
                  value="*/*:linkage/*[text() != '']"/>
@@ -382,7 +382,7 @@
       <sch:title xml:lang="fr">Les informations décrivant la page de téléchargement DOIVENT être complétées</sch:title>
 
       <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//
-                                          *:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download'][*/*:linkage/*/text() != '']">
+                                          *:onLine[*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download']">
 
         <sch:let name="linkage"
                  value="*/*:linkage/*[text() != '']"/>
