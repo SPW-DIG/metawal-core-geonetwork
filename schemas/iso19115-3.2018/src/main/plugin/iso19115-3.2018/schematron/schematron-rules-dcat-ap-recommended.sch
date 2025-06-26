@@ -578,11 +578,11 @@
 
   <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-en" xml:lang="en">
     A page that provides additional information about the Data Service is missing.
-    Add at least one online resource with a function documentation, an additional documentation or a URL pointing to https://directory.spatineo.com.
+    Add at least one online resource with a function information, an additional documentation or a URL pointing to https://directory.spatineo.com.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
     Il manque une page qui fournit des informations supplémentaires sur le service de données.
-    Ajoutez au moins une ressource en ligne avec une function documentation, une documentation supplémentaire ou une URL pointant vers https://directory.spatineo.com.
+    Ajoutez au moins une ressource en ligne avec une function information, une documentation supplémentaire ou une URL pointant vers https://directory.spatineo.com.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-en"
                   xml:lang="en">

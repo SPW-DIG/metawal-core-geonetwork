@@ -49,65 +49,6 @@
   <sch:ns prefix="gco" uri="http://standards.iso.org/iso/19115/-3/gco/1.0"/>
   <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
-
-
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
-    Contact information that can be used for sending comments about the Dataset is missing.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-fr" xml:lang="fr">
-    Les informations de contact pouvant être utilisées pour envoyer des commentaires sur l'ensemble de données sont
-    manquantes.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-en"
-                  xml:lang="en">
-    Contact information that can be used for sending comments about the Dataset defined:<sch:value-of
-    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-fr"
-                  xml:lang="fr">
-    Contact pouvant être utilisées pour envoyer des commentaires sur l'ensemble de données encodé :<sch:value-of
-    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
-  </sch:diagnostic>
-
-
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
-    An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets. Therefore each Data
-    Service is at least tightly connected with a Dataset.
-    Add at least one operatesOn element with a xlink:href or uuidref.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-fr" xml:lang="fr">
-    Une API dans le contexte de HVD n'est pas une ressource autonome. Elle est utilisée pour ouvrir des ensembles de
-    données HVD. Par conséquent, chaque service de données est au moins étroitement lié à un ensemble de données.
-    Ajoutez au moins un élément operateOn avec un xlink:href ou un uuidref.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-en"
-                  xml:lang="en">
-    Operates on dataset found:<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-fr"
-                  xml:lang="fr">
-    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
-  </sch:diagnostic>
-
-
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-en" xml:lang="en">
-    A page that provides additional information about the Data Service is missing.
-    Add at least one online resource with a function documentation, an additional documentation or a URL pointing to https://directory.spatineo.com.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
-    Il manque une page qui fournit des informations supplémentaires sur le service de données.
-    Ajoutez au moins une ressource en ligne avec une function documentation, une documentation supplémentaire ou une URL pointant vers https://directory.spatineo.com.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-en"
-                  xml:lang="en">
-    Documentation pages found:<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-fr"
-                  xml:lang="fr">
-    Documentations encodées :<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
-  </sch:diagnostic>
-
-
   <!-- HVD legislation -->
   <sch:diagnostic id="rule.hvd.legislation.mandatory-failure-en" xml:lang="en">
    Add the European HVD legislation (2023/138 - High Value Datasets Regulation) from the 'Applicable Legislations' thesaurus.
@@ -306,10 +247,27 @@
   </sch:pattern>
 
 
-  <sch:pattern id="HVD (service)">
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
+    Add a Responsible Party with the role of 'point of contact'.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez un Responsable avec le rôle "point de contact"
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-en"
+                  xml:lang="en">
+    Point of contact found:<sch:value-of
+    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-fr"
+                  xml:lang="fr">
+    Point de contact encodé :<sch:value-of
+    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
+  </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">A point of contact MUST be defined</sch:title>
+    <sch:title xml:lang="fr">Un point de contact DOIT être défini</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
-
 
       <!--
       contact point
@@ -336,7 +294,8 @@
       <sch:report test="$hasOneOrMorePointOfContact"
                   diagnostics="rule.hvd.contactPoint.mandatory-success-en rule.hvd.contactPoint.mandatory-success-fr"/>
 
-
+    </sch:rule>
+  </sch:pattern>
 
       <!--
       documentation (service)
@@ -347,6 +306,25 @@
       part of the generic documentation of a Data Service.
       P
       -->
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-en" xml:lang="en">
+    Ajoutez une déclaration de conformité avec une ancre, un lien vers la page Spatineo, un rapport de qualité ou une ressource en ligne avec la fonction 'information.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez une déclaration de conformité avec une ancre, un lien vers la page Spatineo, un rapport de qualité ou une ressource en ligne avec la fonction "information".
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-en"
+                  xml:lang="en">
+    Documentation pages found:<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-fr"
+                  xml:lang="fr">
+    Documentations encodées :<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
+  </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">The service MUST be documented</sch:title>
+    <sch:title xml:lang="fr">Le service DOIT être documenté</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
       <sch:let name="onlineResource"
                value=".//(*:distributionInfo//mrd:onLine
                             |*:portrayalCatalogueCitation/*/*:onlineResource
@@ -360,6 +338,7 @@
                value="$onlineResource[*/*:function/*/@codeListValue = ('information')
                                   or count(ancestor::*:additionalDocumentation) = 1
                                   or count(ancestor::*:DQ_ConformanceResult) = 1
+                                  or count(ancestor::*:DQ_StandaloneQualityReportInformation) = 1
                                   or starts-with(*/*:linkage/(*:CharacterString|*:URL), 'https://directory.spatineo.com')]/(*/*:linkage/(*:CharacterString|*:URL)|*:Anchor/@xlink:href)"/>
 
       <sch:let name="hasOneOrMoreDocumentation"
@@ -369,15 +348,36 @@
                   diagnostics="rule.hvd.servicedocumentation.mandatory-failure-en rule.hvd.servicedocumentation.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreDocumentation"
                   diagnostics="rule.hvd.servicedocumentation.mandatory-success-en rule.hvd.servicedocumentation.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
 
-      <!--
-      serves dataset
-      Dataset
-      1..*
-      This property refers to a collection of data that this data service can distribute.
-      An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets.
-      Therefore each Data Service is at least tightly connected with a Dataset.
-      -->
+    <!--
+  serves dataset
+  Dataset
+  1..*
+  This property refers to a collection of data that this data service can distribute.
+  An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets.
+  Therefore each Data Service is at least tightly connected with a Dataset.
+  -->
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
+    Establish a link between the service and the data it delivers by associating the service through the data’s metadata page
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez un lien entre le service et la la donnée qu'il sert en ajoutant le service depuis la fiche de la donnée
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-en"
+                  xml:lang="en">
+    Operates on dataset found:<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-fr"
+                  xml:lang="fr">
+    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
+  </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">The service data MUST be specified</sch:title>
+    <sch:title xml:lang="fr">La donnée service DOIT être indiquée</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
       <sch:let name="operatesOnDatasets"
                value=".//*:operatesOn/(@xlink:href[. != ''], @uuidref[. != ''])[1]"/>
 
