@@ -323,6 +323,7 @@
       -->
       <sch:let name="thesaurusToIgnore"
                value="('http://publications.europa.eu/resource/authority/data-theme',
+                        'http://data.europa.eu/bna/asd487ae75',
                             'http://data.europa.eu/r5r/applicableLegislation',
                             'https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon',
                             'https://metawal.wallonie.be/thesaurus/infrasig')"/>
@@ -449,24 +450,25 @@
       </sch:rule>
   </sch:pattern>
 
-
-
-
   <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-en" xml:lang="en">
+    Titre <br/>
     Distribution <sch:value-of select="$linkage"/>
     has no size and it is recommended to set it.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-size.failure-fr" xml:lang="fr">
+    Titre <br/>
     Taille du téléchargement manquante dans la distribution <sch:value-of select="$linkage"/>.
     Il est recommandé d'ajouter la taille du fichier de téléchargement en Mo.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-size.success-en"
                   xml:lang="en">
+    Titre <br/>
     Distribution <sch:value-of select="$linkage"/>
     size is <sch:value-of select="$size"/> Mo.
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.distribution-has-size.success-fr"
                   xml:lang="fr">
+    Titre <br/>
     Taille du téléchargement pour <sch:value-of select="$linkage"/> est : <sch:value-of select="$size"/> Mo.
   </sch:diagnostic>
 
@@ -487,8 +489,7 @@
   </sch:diagnostic>
 
   <sch:pattern id="distribution">
-    <sch:title>DCAT-AP (Distribution)</sch:title>
-
+    <sch:title>&#10;</sch:title>
     <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('dataset', 'series')]/*:distributionInfo//*:onLine[
                                    not(*/*:protocol/*/text() = 'WWW:LINK' and */*:function/*/@codeListValue = 'download')
                                    and
