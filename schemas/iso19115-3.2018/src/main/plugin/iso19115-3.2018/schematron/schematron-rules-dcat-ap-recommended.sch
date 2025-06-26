@@ -616,7 +616,7 @@
                             |*:specification/*/cit:title[*:Anchor/@xlink:href]
                             |*:featureCatalogueCitation/*/*:onlineResource)"/>
       <sch:let name="documentationUrls"
-               value="$onlineResource[*/*:function/*/@codeListValue = ('documentation')
+               value="$onlineResource[*/*:function/*/@codeListValue = ('information')
                                   or count(ancestor::*:additionalDocumentation) = 1
                                   or count(ancestor::*:DQ_ConformanceResult) = 1
                                   or starts-with(*/*:linkage/(*:CharacterString|*:URL), 'https://directory.spatineo.com')]/(*/*:linkage/(*:CharacterString|*:URL)|*:Anchor/@xlink:href)"/>
