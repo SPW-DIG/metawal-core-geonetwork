@@ -307,7 +307,7 @@
       P
       -->
   <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-en" xml:lang="en">
-    Ajoutez une déclaration de conformité avec une ancre, un lien vers la page Spatineo, un rapport de qualité ou une ressource en ligne avec la fonction 'information.
+    Add a declaration of conformity with an anchor, a link to the Spatineo page, a quality report, or an online resource using the 'information' function.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
     Ajoutez une déclaration de conformité avec une ancre, un lien vers la page Spatineo, un rapport de qualité ou une ressource en ligne avec la fonction "information".
