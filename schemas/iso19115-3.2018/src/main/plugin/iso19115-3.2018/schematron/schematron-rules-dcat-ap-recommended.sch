@@ -50,35 +50,6 @@
   <sch:ns prefix="mmi" uri="http://standards.iso.org/iso/19115/-3/mmi/1.0"/>
   <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
-
-  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-en" xml:lang="en">
-    Add an abstract.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-fr" xml:lang="fr">
-    Ajoutez une description de la ressource.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-en"
-                  xml:lang="en">Resource abstract found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-fr"
-                  xml:lang="fr">La resource a un descriptif.
-  </sch:diagnostic>
-  <sch:pattern id="resource-abstract">
-    <sch:title xml:lang="en">Resource abstract is defined</sch:title>
-    <sch:title xml:lang="fr">La ressource a un descriptif</sch:title>
-    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
-      <sch:let name="resourceAbstract"
-               value="*:identificationInfo/*/*:abstract/*[text() != '']"/>
-      <sch:let name="hasResourceAbstract"
-               value="count($resourceAbstract) > 0"/>
-
-      <sch:assert test="$hasResourceAbstract"
-                  diagnostics="rule.dcatap.resourceabstract.mandatory-failure-en rule.dcatap.resourceabstract.mandatory-failure-fr"/>
-      <sch:report test="$hasResourceAbstract"
-                  diagnostics="rule.dcatap.resourceabstract.mandatory-success-en rule.dcatap.resourceabstract.mandatory-success-fr"/>
-    </sch:rule>
-  </sch:pattern>
-
    <!-- Resource Revision date -->
     <sch:diagnostic id="rule.dcatap.resourcerevisiondate.mandatory-failure-en" xml:lang="en">
       Enter the revision date of the resource.
@@ -95,7 +66,7 @@
       <sch:value-of select="string-join($resourceRevisionDate, ', ')"/>
     </sch:diagnostic>
     <sch:pattern id="resource-revision-date">
-      <sch:title xml:lang="en">It is recommended to indicate the last modification date of the resource</sch:title>
+      <sch:title xml:lang="en">It is recommended to enter the last modification date of the resource</sch:title>
       <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de dernière modification de la ressource</sch:title>
       <sch:rule
         context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
@@ -117,7 +88,7 @@
        Enter the publication date.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-failure-fr" xml:lang="fr">
-       Renseignez la date de publication de la donnée.
+       Renseignez la date de publication de la ressource.
       </sch:diagnostic>
       <sch:diagnostic id="rule.dcatap.resourcepublicationdate.mandatory-success-en"
                       xml:lang="en">Resource publication date found:
@@ -128,8 +99,8 @@
         <sch:value-of select="string-join($resourcePublicationDate, ', ')"/>
       </sch:diagnostic>
       <sch:pattern id="resource-publication-date">
-        <sch:title xml:lang="en">Resource publication date is defined</sch:title>
-        <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de publication de la donnée</sch:title>
+        <sch:title xml:lang="en">It is recommended to enter the publication date of the resource</sch:title>
+        <sch:title xml:lang="fr">Il est recommandé d'indiquer la date de publication de la ressource</sch:title>
         <sch:rule
           context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue != 'series']">
 
@@ -648,4 +619,37 @@
 
     </sch:rule>
   </sch:pattern>
+
+  <!-- -->
+  <!-- SERVICE RULES -->
+  <!-- -->
+
+    <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-en" xml:lang="en">
+      Add an abstract.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-failure-fr" xml:lang="fr">
+      Ajoutez un résumé la ressource.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-en"
+                    xml:lang="en">Resource abstract found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.resourceabstract.mandatory-success-fr"
+                    xml:lang="fr">La resource a un descriptif.
+    </sch:diagnostic>
+    <sch:pattern id="resource-abstract">
+      <sch:title xml:lang="en">"It is recommended to complete the description of the resource</sch:title>
+      <sch:title xml:lang="fr">Il est recommandé de compléter le descriptif de la ressource</sch:title>
+      <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+        <sch:let name="resourceAbstract"
+                 value="*:identificationInfo/*/*:abstract/*[text() != '']"/>
+        <sch:let name="hasResourceAbstract"
+                 value="count($resourceAbstract) > 0"/>
+
+        <sch:assert test="$hasResourceAbstract"
+                    diagnostics="rule.dcatap.resourceabstract.mandatory-failure-en rule.dcatap.resourceabstract.mandatory-failure-fr"/>
+        <sch:report test="$hasResourceAbstract"
+                    diagnostics="rule.dcatap.resourceabstract.mandatory-success-en rule.dcatap.resourceabstract.mandatory-success-fr"/>
+      </sch:rule>
+    </sch:pattern>
+
 </sch:schema>
