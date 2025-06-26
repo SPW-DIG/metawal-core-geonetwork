@@ -83,28 +83,25 @@
   </sch:pattern>
 
   <!-- Conforms To -->
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-failure-en" xml:lang="en">
-    No implementing rule or other specification found. Check the data quality
+  <sch:diagnostic id="rule.hvd.conformity.recommended-failure-en" xml:lang="en">
+    Add a declaration of compliance with specifications by referencing them with an anchor.
     report specification to add one. For INSPIRE datasets, this is a data specification conformity.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-failure-fr" xml:lang="fr">
-    Aucune règle d'implémentation ou autre spécification n'a été trouvée. Vérifiez la spécification du rapport de
-    qualité des données
-    pour en ajouter une. Pour les ensembles de données INSPIRE, il s'agit d'une conformité aux spécifications des
-    données.
+  <sch:diagnostic id="rule.hvd.conformity.recommended-failure-fr" xml:lang="fr">
+    Ajoutez une déclaration de conformité à des spécifications en les référençant avec une ancre.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-success-en"
+  <sch:diagnostic id="rule.hvd.conformity.recommended-success-en"
                   xml:lang="en">
     Implementing rules or specifications found:<sch:value-of
     select="concat(' ', string-join($implementingRules, ', '))"/>.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.conformity.mandatory-success-fr"
+  <sch:diagnostic id="rule.hvd.conformity.recommended-success-fr"
                   xml:lang="fr">
     Règles ou spécifications encodées :<sch:value-of select="concat(' ', string-join($implementingRules, ', '))"/>.
   </sch:diagnostic>
   <sch:pattern>
-    <sch:title xml:lang="en">It is recommended to enter the conformity of the data to specifications</sch:title>
-    <sch:title xml:lang="fr">Il est recommandé d'indiquer la conformité des données à des spécifications</sch:title>
+    <sch:title xml:lang="en">It is recommended to enter the compliance of the resource with specifications</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé d'indiquer la conformité de la ressource à des spécifications</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']">
 
@@ -140,9 +137,9 @@
                value="count($implementingRules) > 0"/>
 
       <sch:assert test="$hasOneOrMoreDataSpecConformity"
-                  diagnostics="rule.hvd.conformity.mandatory-failure-en rule.hvd.conformity.mandatory-failure-fr"/>
+                  diagnostics="rule.hvd.conformity.recommended-failure-en rule.hvd.conformity.recommended-failure-fr"/>
       <sch:report test="$hasOneOrMoreDataSpecConformity"
-                  diagnostics="rule.hvd.conformity.mandatory-success-en rule.hvd.conformity.mandatory-success-fr"/>
+                  diagnostics="rule.hvd.conformity.recommended-success-en rule.hvd.conformity.recommended-success-fr"/>
     </sch:rule>
   </sch:pattern>
 </sch:schema>
