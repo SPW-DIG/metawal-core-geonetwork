@@ -309,8 +309,8 @@
                     <xsl:variable name="serviceUri"
                                   select="if ($relatedAtomService[1]/root/resourceIdentifier)
                                                then concat($relatedAtomService[1]/root/resourceIdentifier[1]/codeSpace, $relatedAtomService[1]/root/resourceIdentifier[1]/code)
-                                               else ." />
-                    <xsl:if test="$serviceUri">
+                                               else ()" />
+                    <xsl:if test="exists($serviceUri)">
                       <dcat:accessService rdf:about="{$serviceUri}"/>
                     </xsl:if>
                   </xsl:if>
