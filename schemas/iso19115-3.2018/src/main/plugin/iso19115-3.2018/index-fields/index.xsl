@@ -1525,8 +1525,8 @@
           <link protocol="ESRI:REST" function="browsing" appProfile="0" field="mw-gp-esriWebServices"></link>
           <link protocol="OGC:W.*" function="browsing" appProfile="0" field="mw-gp-ogcWebServices"></link>
           <link protocol="WWW:LINK" function="download" appProfile="0" field="mw-gp-download"></link>
-          <link protocol="OGC:WCS|OGC:WFS|atom:feed" function="download" appProfile="0" field="mw-gp-downloadService"></link>
-          <link protocol="OGC:WCS|OGC:WFS|atom:feed" function="download" appProfile="1" field="mw-gp-downloadService"></link>
+          <link protocol="OGC:WCS|OGC:WFS|atom:feed|OGC API - Features" function="download" appProfile="0" field="mw-gp-downloadService"></link>
+          <link protocol="OGC:WCS|OGC:WFS|atom:feed|OGC API - Features" function="download" appProfile="1" field="mw-gp-downloadService"></link>
           <link protocol="WWW:LINK" function="information" appProfile="0" field="mw-gp-informationWebsite"></link>
           <link protocol="WWW:LINK" function="information" appProfile="1" field="mw-gp-informationDoc"></link>
         </xsl:variable>
@@ -1534,6 +1534,7 @@
         <xsl:variable name="allLinks"
                       select="mrd:transferOptions/*/
                                   mrd:onLine/*[cit:linkage/gco:CharacterString != '']"/>
+
 
         <xsl:for-each select="$linkConfig/link">
           <xsl:variable name="gpLink"
