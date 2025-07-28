@@ -635,7 +635,11 @@
       <version>${xmlunit.version}</version>
       <scope>test</scope>
     </dependency>
-
+    <dependency>
+      <groupId>org.geonetwork-opensource.plugins</groupId>
+      <artifactId>gn-datahub-integration</artifactId>
+      <version>${project.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
