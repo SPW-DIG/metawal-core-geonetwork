@@ -63,7 +63,7 @@
 	</rdf:Description>
 	<rdf:Description rdf:about="https://opendatacommons.org/licenses/odbl/1-0/">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">Licence ODbL v1.0 : L’utilisateur peut partager, adapter et dériver une œuvre de ces données. Il peut publier les données initiales, les données dérivées et l’œuvre dérivée à condition de citer les sources (attribution), de le faire sous la licence ODbL (share alike). Il est autorisé à utiliser des moyens technologique de restriction d'accès (DRM) pour autant qu'une version non restreinte soit aussi distribuée.</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Licence ODbL v1.0 : L’utilisateur peut utiliser et modifier les données pour en dériver une œuvre. Il peut publier les données et l’œuvre dérivée à condition de citer les sources (attribution) et de le faire sous la licence ODbL (share alike). Une traduction non-officielle de la licence ODbL est disponible à l'adresse https://mobilite.wallonie.be/files/ODbL-fr.pdf</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Licence ODbL v1.0. Cette licence est à utiliser pour toute donnée exploitant des données sous licence ODbL, comme par exemple les données OpenStreetMap</skos:scopeNote>
 	</rdf:Description>
 	<rdf:Description rdf:about="https://creativecommons.org/licenses/by/4.0/">
@@ -125,4 +125,5 @@
 	</rdf:Description>
 
 -->
+
 </rdf:RDF>
