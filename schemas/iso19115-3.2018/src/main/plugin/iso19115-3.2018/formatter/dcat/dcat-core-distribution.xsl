@@ -311,7 +311,7 @@
                                                then concat($relatedAtomService[1]/root/resourceIdentifier[1]/codeSpace, $relatedAtomService[1]/root/resourceIdentifier[1]/code)
                                                else ()" />
                     <xsl:if test="exists($serviceUri)">
-                      <dcat:accessService rdf:about="{$serviceUri}"/>
+                      <dcat:accessService rdf:resource="{$serviceUri}"/>
                     </xsl:if>
                   </xsl:if>
                 </xsl:if>
