@@ -61,6 +61,8 @@
           scope.isDownloadedRecord = false;
           scope.isEnabled = false;
           scope.testSuites = {};
+          scope.shaclTestsuites = {};
+          scope.shaclReport = {};
 
           scope.$watch("gnCurrentEdit.uuid", function (newValue, oldValue) {
             if (newValue == undefined) {
@@ -69,11 +71,19 @@
             scope.isEnabled = true;
             scope.inspMdUuid = newValue;
             scope.md = gnCurrentEdit.metadata;
+
             $http({
               method: "GET",
               url: "../api/records/" + scope.inspMdUuid + "/validate/inspire/testsuites"
             }).then(function (r) {
               scope.testsuites = r.data;
+            });
+
+            $http({
+              method: "GET",
+              url: "../api/records/" + scope.inspMdUuid + "/validate/shacl/testsuites"
+            }).then(function (r) {
+              scope.shaclTestsuites = r.data;
             });
 
             gnConfigService.load().then(function (c) {
@@ -89,6 +99,50 @@
                 gnConfig["system.inspire.remotevalidation.nodeid"] || "";
             });
           });
+
+          scope.validateShacl = function (formatter, testsuite) {
+            scope.shaclReport = {};
+            $http
+              .get(
+                "../api/records/" +
+                  scope.inspMdUuid +
+                  "/validate/shacl" +
+                  "?formatter=" +
+                  formatter +
+                  "&testsuite=" +
+                  testsuite,
+                {
+                  headers: {
+                    Accept: "application/json"
+                  }
+                }
+              )
+              .then(function (response) {
+                console.log(response.data);
+                scope.shaclReport = response.data;
+                gnPopup.createModal(
+                  {
+                    class: "disclaimer-popup",
+                    title: $translate.instant("shaclValidationPopupReportTitle"),
+                    content:
+                      "<div>" +
+                      "<table class='table'>" +
+                      "  <tr><th>Severity</th><th>Context</th><th>Message</th><th>Node</th></tr>" +
+                      "  <tr data-ng-repeat='g in shaclReport[\"@graph\"]'" +
+                      "         data-ng-show='g[\"sh:resultMessage\"]'" +
+                      '         data-ng-init=\'severity=g["sh:resultSeverity"]["@id"]\'>' +
+                      '     <td data-ng-class=\'{"danger": severity === "sh:Violation"}\'>{{severity}}</td>' +
+                      "     <td>{{g['sh:resultPath']['@id']}}</td>" +
+                      "     <td>{{g['sh:resultMessage']}}</td>" +
+                      "     <td>{{g['sh:focusNode']['@id']}}</td>" +
+                      "  </tr>" +
+                      "</table>" +
+                      "</div>"
+                  },
+                  scope
+                );
+              });
+          };
 
           scope.validateInspire = function (test, mode) {
             if (scope.isEnabled) {
