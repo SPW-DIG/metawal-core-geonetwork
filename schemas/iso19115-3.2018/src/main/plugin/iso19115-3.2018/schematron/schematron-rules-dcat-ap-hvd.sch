@@ -49,6 +49,58 @@
   <sch:ns prefix="gco" uri="http://standards.iso.org/iso/19115/-3/gco/1.0"/>
   <sch:ns prefix="mdUtil" uri="java:org.fao.geonet.api.records.MetadataUtils"/>
 
+
+  <!-- Contact Point -->
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
+    Add a Responsible Party with the role of 'point of contact'.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-fr" xml:lang="fr">
+    Ajoutez un Responsable avec le rôle "point de contact"
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-en"
+                  xml:lang="en">
+    Point of contact found:<sch:value-of
+    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-fr"
+                  xml:lang="fr">
+    Point de contact encodé :<sch:value-of
+    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
+  </sch:diagnostic>
+  <sch:pattern>
+    <sch:title xml:lang="en">A point of contact MUST be defined</sch:title>
+    <sch:title xml:lang="fr">Un point de contact DOIT être défini</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+
+      <!--
+      contact point
+      Kind
+      0..* (dataset) 1..* (service)
+      Contact information that can be used for sending comments about the Dataset.
+      A
+
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+          <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="pointOfContact"/>
+          </cit:role>
+
+       Rule is more strict than HVD because contact point is mandatory in ISO and INSPIRE.
+      -->
+      <sch:let name="resourcePointOfContact"
+               value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'pointOfContact']/*:party/*/*:name/*[text() != '']"/>
+      <sch:let name="hasOneOrMorePointOfContact"
+               value="count($resourcePointOfContact) > 0"/>
+
+      <sch:assert test="$hasOneOrMorePointOfContact"
+                  diagnostics="rule.hvd.contactPoint.mandatory-failure-en rule.hvd.contactPoint.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMorePointOfContact"
+                  diagnostics="rule.hvd.contactPoint.mandatory-success-en rule.hvd.contactPoint.mandatory-success-fr"/>
+
+    </sch:rule>
+  </sch:pattern>
+
   <!-- HVD legislation -->
   <sch:diagnostic id="rule.hvd.legislation.mandatory-failure-en" xml:lang="en">
    Add the European HVD legislation (2023/138 - High Value Datasets Regulation) from the 'Applicable Legislations' thesaurus.
@@ -193,6 +245,39 @@
       </sch:rule>
     </sch:pattern>
 
+    <!-- Use constraints-->
+    <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-en" xml:lang="en">
+      Define the applicable terms of use by selecting a value from the 'Access Constraints' list and specifying any 'Other Constraints'. The terms of use must be grouped within a 'Resource Constraints' block and kept separate from the access conditions.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-fr" xml:lang="fr">
+      Définissez les conditions d'utilisation applicables en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes". Les conditions d'utilisation doivent être regroupées dans un bloc de "Contraintes sur la ressource" et séparées des conditions d'accès.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-en"
+                    xml:lang="en">
+      Use constraints found.
+    </sch:diagnostic>
+    <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-fr"
+                    xml:lang="fr">
+      Contraintes d'utilisation encodées.
+    </sch:diagnostic>
+    <sch:pattern id="dataset-useconstraints">
+      <sch:title xml:lang="en">A license or terms of use MUST be specified</sch:title>
+      <sch:title xml:lang="fr">"Une licence ou des conditions d'utilisation DOIVENT être spécifiées</sch:title>
+      <sch:rule
+        context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('service')]">
+
+        <sch:let name="useConstraints"
+                 value="*:identificationInfo/*/*:resourceConstraints/*[not(*:accessConstraints) and *:otherConstraints/*/text() != '' and *:useConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
+        <sch:let name="hasUseConstraints"
+                 value="count($useConstraints) > 0"/>
+
+        <sch:assert test="$hasUseConstraints"
+                    diagnostics="rule.dcatap.dataset.use.constraints.mandatory-failure-en rule.dcatap.dataset.use.constraints.mandatory-failure-fr"/>
+        <sch:report test="$hasUseConstraints"
+                    diagnostics="rule.dcatap.dataset.use.constraints.mandatory-success-en rule.dcatap.dataset.use.constraints.mandatory-success-fr"/>
+      </sch:rule>
+    </sch:pattern>
+
     <!-- Public Distribution -->
     <sch:diagnostic id="rule.hvd.distribution.mandatory-failure-en" xml:lang="en">
       Add a download page (online resource with protocol 'WWW:LINK' and function 'download')
@@ -246,56 +331,6 @@
     </sch:rule>
   </sch:pattern>
 
-
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-en" xml:lang="en">
-    Add a Responsible Party with the role of 'point of contact'.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-failure-fr" xml:lang="fr">
-    Ajoutez un Responsable avec le rôle "point de contact"
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-en"
-                  xml:lang="en">
-    Point of contact found:<sch:value-of
-    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.contactPoint.mandatory-success-fr"
-                  xml:lang="fr">
-    Point de contact encodé :<sch:value-of
-    select="concat(' ', string-join($resourcePointOfContact, ', '))"/>.
-  </sch:diagnostic>
-  <sch:pattern>
-    <sch:title xml:lang="en">A point of contact MUST be defined</sch:title>
-    <sch:title xml:lang="fr">Un point de contact DOIT être défini</sch:title>
-    <sch:rule
-      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
-
-      <!--
-      contact point
-      Kind
-      0..* (dataset) 1..* (service)
-      Contact information that can be used for sending comments about the Dataset.
-      A
-
-      <mri:pointOfContact>
-        <cit:CI_Responsibility>
-          <cit:role>
-          <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="pointOfContact"/>
-          </cit:role>
-
-       Rule is more strict than HVD because contact point is mandatory in ISO and INSPIRE.
-      -->
-      <sch:let name="resourcePointOfContact"
-               value="*:identificationInfo/*/*:pointOfContact/*[*:role/*/@codeListValue = 'pointOfContact']/*:party/*/*:name/*[text() != '']"/>
-      <sch:let name="hasOneOrMorePointOfContact"
-               value="count($resourcePointOfContact) > 0"/>
-
-      <sch:assert test="$hasOneOrMorePointOfContact"
-                  diagnostics="rule.hvd.contactPoint.mandatory-failure-en rule.hvd.contactPoint.mandatory-failure-fr"/>
-      <sch:report test="$hasOneOrMorePointOfContact"
-                  diagnostics="rule.hvd.contactPoint.mandatory-success-en rule.hvd.contactPoint.mandatory-success-fr"/>
-
-    </sch:rule>
-  </sch:pattern>
 
       <!--
       documentation (service)
@@ -390,39 +425,6 @@
                   diagnostics="rule.hvd.operateson.mandatory-success-en rule.hvd.operateson.mandatory-success-fr"/>
 
 
-    </sch:rule>
-  </sch:pattern>
-
-  <!-- Use constraints-->
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-en" xml:lang="en">
-    Define the applicable terms of use by selecting a value from the 'Access Constraints' list and specifying any 'Other Constraints'. The terms of use must be grouped within a 'Resource Constraints' block and kept separate from the access conditions.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-fr" xml:lang="fr">
-    Définissez les conditions d'utilisation applicables en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes". Les conditions d'utilisation doivent être regroupées dans un bloc de "Contraintes sur la ressource" et séparées des conditions d'accès.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-en"
-                  xml:lang="en">
-    Use constraints found.
-  </sch:diagnostic>
-  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-fr"
-                  xml:lang="fr">
-    Contraintes d'utilisation encodées.
-  </sch:diagnostic>
-  <sch:pattern id="dataset-useconstraints">
-    <sch:title xml:lang="en">A license or terms of use MUST be specified</sch:title>
-    <sch:title xml:lang="fr">"Une licence ou des conditions d'utilisation DOIVENT être spécifiées</sch:title>
-    <sch:rule
-      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('service')]">
-
-      <sch:let name="useConstraints"
-               value="*:identificationInfo/*/*:resourceConstraints/*[not(*:accessConstraints) and *:otherConstraints/*/text() != '' and *:useConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
-      <sch:let name="hasUseConstraints"
-               value="count($useConstraints) > 0"/>
-
-      <sch:assert test="$hasUseConstraints"
-                  diagnostics="rule.dcatap.dataset.use.constraints.mandatory-failure-en rule.dcatap.dataset.use.constraints.mandatory-failure-fr"/>
-      <sch:report test="$hasUseConstraints"
-                  diagnostics="rule.dcatap.dataset.use.constraints.mandatory-success-en rule.dcatap.dataset.use.constraints.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
 
