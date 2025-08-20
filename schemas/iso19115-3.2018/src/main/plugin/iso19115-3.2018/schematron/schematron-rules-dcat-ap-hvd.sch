@@ -409,8 +409,8 @@
     Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ','))"/>.
   </sch:diagnostic>
   <sch:pattern>
-    <sch:title xml:lang="en">The service data MUST be specified</sch:title>
-    <sch:title xml:lang="fr">La donnée service DOIT être indiquée</sch:title>
+    <sch:title xml:lang="en">The data served MUST be specified</sch:title>
+    <sch:title xml:lang="fr">La donnée servie DOIT être indiquée</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
       <sch:let name="operatesOnDatasets"
