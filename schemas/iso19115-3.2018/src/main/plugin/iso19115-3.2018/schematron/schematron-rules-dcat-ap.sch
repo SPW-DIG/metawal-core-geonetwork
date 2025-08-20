@@ -435,7 +435,8 @@
       <sch:let name="endpointUrls"
                value=".//*:containsOperations/*/*:connectPoint/*[not(
                                 matches(*:protocol/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionProtocolsExpression, 'i')
-                                or matches(*:linkage/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionUrllExpression, 'i'))]/(*:linkage|*:URL)/*/text()"/>
+                                or matches(*:linkage/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionUrllExpression, 'i')
+                                or cit:function/*/@codeListValue = 'information')]/(*:linkage|*:URL)/*/text()"/>
 
       <sch:let name="hasOneOrMoreEndPointUrls"
                value="count($endpointUrls) > 0"/>
