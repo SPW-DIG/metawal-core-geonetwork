@@ -86,6 +86,7 @@ public class MetadataValidateApi {
     public static final String EL_SUCCESS_REPORT = "successful-report";
     public static final String ATT_CONTEXT = "context";
     public static final String DEFAULT_CONTEXT = "??";
+
     @Autowired
     LanguageUtils languageUtils;
     @Autowired
@@ -278,72 +279,5 @@ public class MetadataValidateApi {
                 .publish(appContext);
         }
         return response;
-    }
-
-
-    @io.swagger.v3.oas.annotations.Operation(
-        summary = "Validate a record using SHACL",
-        description = "User MUST be able to edit the record to validate it.\n" +
-            "\n" +
-            "Use one or more SHACL shapes to validate the record.\n" +
-            "Validation is done using the [JENA library](https://jena.apache.org/documentation/shacl/)."
-    )
-    @RequestMapping(
-        value = "/{metadataUuid}/validate/shacl",
-        method = {
-            RequestMethod.GET,
-        },
-        produces = {
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE,
-            "application/ld+json",
-            "text/turtle",
-            "application/rdf+xml"
-        }
-    )
-    @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasAuthority('Editor')")
-    @ApiResponses(value = {@ApiResponse(responseCode = "201", description = "Validation report."),
-        @ApiResponse(responseCode = "403", description = ApiParams.API_RESPONSE_NOT_ALLOWED_CAN_EDIT)})
-    public @ResponseBody
-    String validateRecordUsingShacl(
-        @Parameter(description = API_PARAM_RECORD_UUID, required = true)
-        @PathVariable
-        String metadataUuid,
-        @Parameter(description = "Formatter to validate", required = false)
-        @RequestParam(required = false, defaultValue = "dcat")
-        String formatter,
-        @Parameter(description = "SHACL shape version to use", required = false)
-        @RequestParam(required = true) List<String> shapeModel,
-        HttpServletRequest request,
-        @Parameter(hidden = true)
-        @RequestHeader(value = HttpHeaders.ACCEPT, defaultValue = MediaType.APPLICATION_XML_VALUE)
-        String acceptHeader) throws Exception {
-        AbstractMetadata metadata = ApiUtils.canEditRecord(metadataUuid, request);
-
-        ServiceContext context = ApiUtils.createServiceContext(request);
-        return shaclValidationService.validate(formatter, metadata, shapeModel, context, acceptHeader);
-    }
-
-
-    @io.swagger.v3.oas.annotations.Operation(
-        summary = "Get available SHACL shapes",
-        description = "Returns a list of available SHACL shapes (files with .ttl extension in the shacl directory). " +
-            "Rules are common for all schemas and a proper formatter MUST be used to validate metadata (eg.  `eu-dcat-ap` for `eu-dcat-ap-3.0.0/shapes.ttl`). "
-    )
-    @RequestMapping(
-        value = "/{metadataUuid}/validate/shacl/testsuites",
-        method = RequestMethod.GET,
-        produces = {
-            MediaType.APPLICATION_JSON_VALUE
-        }
-    )
-    @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasAuthority('Editor')")
-    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "List of SHACL rules."),
-        @ApiResponse(responseCode = "403", description = ApiParams.API_RESPONSE_NOT_ALLOWED_CAN_EDIT)})
-    public @ResponseBody
-    List<String> getShaclRules() throws Exception {
-        return shaclValidationService.getShaclValidationFiles();
     }
 }
