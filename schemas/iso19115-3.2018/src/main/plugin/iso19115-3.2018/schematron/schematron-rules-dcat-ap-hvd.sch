@@ -371,7 +371,7 @@
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.operateson.mandatory-success-fr"
                   xml:lang="fr">
-    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ',&#10;'))"/>.
+    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ','))"/>.
   </sch:diagnostic>
   <sch:pattern>
     <sch:title xml:lang="en">The service data MUST be specified</sch:title>
