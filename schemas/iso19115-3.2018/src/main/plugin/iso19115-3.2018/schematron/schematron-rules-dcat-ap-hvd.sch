@@ -371,7 +371,7 @@
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.operateson.mandatory-success-fr"
                   xml:lang="fr">
-    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
+    Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ',&#10;'))"/>.
   </sch:diagnostic>
   <sch:pattern>
     <sch:title xml:lang="en">The service data MUST be specified</sch:title>
@@ -392,4 +392,39 @@
 
     </sch:rule>
   </sch:pattern>
+
+  <!-- Use constraints-->
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-en" xml:lang="en">
+    Define the applicable terms of use by selecting a value from the 'Access Constraints' list and specifying any 'Other Constraints'. The terms of use must be grouped within a 'Resource Constraints' block and kept separate from the access conditions.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-failure-fr" xml:lang="fr">
+    Définissez les conditions d'utilisation applicables en choisissant une valeur de la liste "Contraintes d'accès" et en mentionnant des "Autres contraintes". Les conditions d'utilisation doivent être regroupées dans un bloc de "Contraintes sur la ressource" et séparées des conditions d'accès.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-en"
+                  xml:lang="en">
+    Use constraints found.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.dataset.use.constraints.mandatory-success-fr"
+                  xml:lang="fr">
+    Contraintes d'utilisation encodées.
+  </sch:diagnostic>
+  <sch:pattern id="dataset-useconstraints">
+    <sch:title xml:lang="en">A license or terms of use MUST be specified</sch:title>
+    <sch:title xml:lang="fr">"Une licence ou des conditions d'utilisation DOIVENT être spécifiées</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = ('service')]">
+
+      <sch:let name="useConstraints"
+               value="*:identificationInfo/*/*:resourceConstraints/*[not(*:accessConstraints) and *:otherConstraints/*/text() != '' and *:useConstraints/*/@codeListValue != '']/*:otherConstraints/*/text()"/>
+      <sch:let name="hasUseConstraints"
+               value="count($useConstraints) > 0"/>
+
+      <sch:assert test="$hasUseConstraints"
+                  diagnostics="rule.dcatap.dataset.use.constraints.mandatory-failure-en rule.dcatap.dataset.use.constraints.mandatory-failure-fr"/>
+      <sch:report test="$hasUseConstraints"
+                  diagnostics="rule.dcatap.dataset.use.constraints.mandatory-success-en rule.dcatap.dataset.use.constraints.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
+
+
 </sch:schema>
