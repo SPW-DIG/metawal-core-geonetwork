@@ -301,6 +301,7 @@
     "setCRS": "Définir le système de coordonnées",
     "setDynamicGraphicOverview": "Définir l'aperçu de la fiche à partir d'une requête GetMap sur le service associé",
     "setExtent": "Définir l'étendue",
+    "shaclValidation": "DCAT validation",
     "shaclValidationPopupReportTitle": "SHACL validation report",
     "shaclValidationFormat": "Format validated: ",
     "shaclSeverity": "Severity",
