@@ -5,9 +5,8 @@ import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,9 +14,13 @@ import javax.annotation.Resource;
 import jeeves.server.context.ServiceContext;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.jena.graph.Node;
 import org.apache.jena.graph.compose.MultiUnion;
+import org.apache.jena.rdf.model.InfModel;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.reasoner.Reasoner;
+import org.apache.jena.reasoner.ReasonerRegistry;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.shacl.ShaclValidator;
@@ -98,34 +101,23 @@ public class ShaclValidationService {
                            String outputFormat, boolean isSavingValidationStatus) {
         String rdfToValidate = convertMetadataToRdf(metadata, formatter, context);
 
-        MultiUnion shapesGraph = new MultiUnion();
-        try {
-            List<String> testSuiteShapes = testsuite == null ? List.of() : List.of(testsuites.get(testsuite));
-            if (!testSuiteShapes.isEmpty()){
-                shaclShapes = testSuiteShapes;
-            }
+        shaclShapes = getShaclShapes(testsuite, shaclShapes);
+        Shapes shapes = parseShapesFromFiles(shaclShapes);
+        Reasoner reasoner = configureReasoner(shapes.getImports());
 
-            for (String shaclFile : shaclShapes) {
-                Path shaclPath = dataDirectory.getConfigDir().resolve("shacl").resolve(shaclFile);
-                if (!Files.exists(shaclPath)) {
-                    return "SHACL shape file not found: " + shaclPath;
-                }
-                shapesGraph.addGraph(RDFDataMgr.loadGraph(shaclPath.toString()));
-            }
-        } catch (Exception e) {
-            return "Error loading SHACL shapes: " + e.getMessage();
-        }
-
-        Shapes shapes = Shapes.parse(shapesGraph);
-        Model model = ModelFactory.createDefaultModel();
+        Model dataModel = ModelFactory.createDefaultModel();
         try (StringReader reader = new StringReader(rdfToValidate)) {
-            RDFDataMgr.read(model, reader, null, Lang.RDFXML);
+            RDFDataMgr.read(dataModel, reader, null, Lang.RDFXML);
         } catch (Exception e) {
-            return "Document is not valid RDF/XML: " + e.getMessage();
+            return buildStatusResponse("Document is not valid RDF/XML: " + e.getMessage(), false);
         }
+
         long violationCount = 0;
         String validationReportKey = buildValidationReportKey(formatter, testsuite, shaclShapes);
-        ValidationReport report = ShaclValidator.get().validate(shapes, model.getGraph());
+
+        InfModel infModel = ModelFactory.createInfModel(reasoner, dataModel);
+        ValidationReport report = ShaclValidator.get().validate(shapes, infModel.getGraph());
+
         if (!report.conforms()) {
             violationCount = report.getEntries().stream()
                 .filter(e -> e.severity().level().getURI().equals("http://www.w3.org/ns/shacl#Violation"))
@@ -145,7 +137,43 @@ public class ShaclValidationService {
             saveValidationStatus(metadata, validationReportKey, violationCount);
         }
 
-        return "Document is valid.";
+        return buildStatusResponse(String.format("Document in format %s is valid according to testsuite %s.", formatter, testsuite), true);
+    }
+
+    private List<String> getShaclShapes(String testsuite, List<String> shaclShapes) {
+        List<String> testSuiteShapes = testsuite == null ? List.of() : List.of(testsuites.get(testsuite));
+        if (!testSuiteShapes.isEmpty()){
+            shaclShapes = testSuiteShapes;
+        }
+        return shaclShapes;
+    }
+
+    private Shapes parseShapesFromFiles(List<String> shaclShapes) {
+        MultiUnion shapesGraph = new MultiUnion();
+        for (String shaclFile : shaclShapes) {
+            Path shaclPath = dataDirectory.getConfigDir().resolve("shacl").resolve(shaclFile);
+            if (!Files.exists(shaclPath)) {
+                throw new IllegalArgumentException("SHACL shape file not found: " + shaclPath);
+            }
+            shapesGraph.addGraph(RDFDataMgr.loadGraph(shaclPath.toString()));
+        }
+        return Shapes.parse(shapesGraph);
+    }
+
+    private Reasoner configureReasoner(Collection<Node> imports) {
+        Reasoner reasoner = ReasonerRegistry.getRDFSReasoner();
+        Model combinedOntologyModel = ModelFactory.createDefaultModel();
+
+        for (Node importedShape : imports) {
+            System.out.println("Loaded imported shapes: " + importedShape);
+            Model model = ModelFactory.createOntologyModel();
+            combinedOntologyModel.add(model.read(importedShape.getURI().toString()));
+        }
+        return reasoner.bindSchema(combinedOntologyModel);
+    }
+
+    private static String buildStatusResponse(String message, boolean isValid) {
+        return String.format("{\"valid\": %s, \"message\": \"%s\"}", isValid, message);
     }
 
     private static String buildValidationReportKey(String formatter, String testsuite, List<String> shaclShapes) {
