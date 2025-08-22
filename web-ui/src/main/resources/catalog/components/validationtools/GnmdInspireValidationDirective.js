@@ -122,14 +122,15 @@
               .then(function (response) {
                 scope.shaclReport = response.data;
                 // Count failure with sh:resultSeverity"]["@id"] in shaclReport @graph
-                scope.shaclFailureCount = scope.shaclReport["@graph"].filter(function (
-                  g
-                ) {
-                  return (
-                    g["sh:resultSeverity"] &&
-                    g["sh:resultSeverity"]["@id"] === "sh:Violation"
-                  );
-                }).length;
+                scope.shaclFailureCount = scope.shaclReport["@graph"]
+                  ? scope.shaclReport["@graph"].filter(function (g) {
+                      return (
+                        g["sh:resultSeverity"] &&
+                        g["sh:resultSeverity"]["@id"].match("sh:Violation|sh:Warning")
+                      );
+                    }).length
+                  : 0;
+
                 gnPopup.createModal(
                   {
                     class: "disclaimer-popup",
@@ -144,23 +145,34 @@
                       formatterUrl +
                       "' target='_blank'>" +
                       formatter +
-                      "</a> / <span data-translate=''>sh:Violation</span>: {{shaclFailureCount}}" +
-                      "<table class='table table-striped'>" +
+                      "</a><br/>" +
+                      "<div data-ng-show='shaclFailureCount > 0' class='label label-danger'><span data-translate=''>sh:Violation</span>: {{shaclFailureCount}}</div>" +
+                      "<div data-ng-show='shaclReport.valid === true' class='label label-success'><span>{{shaclReport.message}}</span></div>" +
+                      "<div data-ng-show='shaclReport.valid === false' class='label label-warning'><span>{{shaclReport.message}}</span></div>" +
+                      "<br/>" +
+                      "<table class='table table-striped' data-ng-show='shaclFailureCount > 0'>" +
                       "  <tr><th data-translate=''>shaclSeverity</th><th data-translate=''>shaclContext</th><th data-translate=''>shaclMessage</th><th data-translate=''>shaclNode</th></tr>" +
                       "  <tr data-ng-repeat='g in shaclReport[\"@graph\"]'" +
                       "         data-ng-show='g[\"sh:resultMessage\"]'" +
-                      '         data-ng-init=\'severity=g["sh:resultSeverity"]["@id"]\'>' +
+                      '         data-ng-init=\'severity = g["sh:resultSeverity"]["@id"]\'' +
+                      "         >" +
                       '     <td data-ng-class=\'{"danger": severity === "sh:Violation", "warning": severity === "sh:Warning"}\'>{{severity | translate}}</td>' +
                       "     <td>{{g['sh:resultPath']['@id']}}</td>" +
                       "     <td>{{g['sh:resultMessage']}}</td>" +
-                      "     <td>{{g['sh:focusNode']['@id']}}</td>" +
+                      "     <td>{{g['sh:focusNode']['@id']}}" +
+                      "         <br/>" +
+                      '         SHACL rule id: {{g["sh:sourceShape"]["@id"]}}' +
+                      "     </td>" +
                       "  </tr>" +
                       "</table>" +
                       "</div>"
                   },
                   scope
                 );
-              });
+              }),
+              function (error) {
+                console.error("Error during SHACL validation:", error);
+              };
           };
 
           scope.validateInspire = function (test, mode) {

@@ -1,1 +1,1 @@
-SHACL from https://github.com/SEMICeu/DCAT-AP/tree/gh-pages/releases/3.0.1/shacl
+SHACL from https://semiceu.github.io/DCAT-AP/releases/3.0.1/#validation-of-dcat-ap

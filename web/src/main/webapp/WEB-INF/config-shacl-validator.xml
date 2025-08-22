@@ -28,28 +28,45 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
   <util:map id="shaclValidatorTestsuites" key-type="java.lang.String" value-type="java.lang.String[]">
-    <entry key="eu-dcat-ap-300-level1">
+    <entry key="EU DCAT AP 3.0.1 - Mandatory">
       <array value-type="java.lang.String">
-        <value>eu-dcat-ap-3.0.0/shapes.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes.ttl</value>
       </array>
     </entry>
-    <entry key="eu-dcat-ap-300-level2">
+    <entry key="EU DCAT AP 3.0.1 - Mandatory with Ontology">
       <array value-type="java.lang.String">
-        <value>eu-dcat-ap-3.0.0/shapes.ttl</value>
-        <value>eu-dcat-ap-3.0.0/shapes_recommended.ttl</value>
+        <value>eu-dcat-ap-3.0.1/imports.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes.ttl</value>
       </array>
     </entry>
-    <entry key="eu-dcat-ap-300-level4">
+    <entry key="EU DCAT AP 3.0.1 - Recommended">
       <array value-type="java.lang.String">
-        <value>eu-dcat-ap-3.0.0/range.ttl</value>
-        <value>eu-dcat-ap-3.0.0/shapes.ttl</value>
-        <value>eu-dcat-ap-3.0.0/shapes_recommended.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes_recommended.ttl</value>
       </array>
     </entry>
-    <entry key="eu-dcat-ap-301">
+    <entry key="EU DCAT AP 3.0.1 - Recommended with Ontology">
       <array value-type="java.lang.String">
-        <value>eu-dcat-ap-3.0.1/ranges.ttl</value>
-        <value>eu-dcat-ap-3.0.1/dcat-ap-SHACL.ttl</value>
+        <value>eu-dcat-ap-3.0.1/imports.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes_recommended.ttl</value>
+      </array>
+    </entry>
+    <entry key="EU DCAT AP 3.0.1 - with range">
+      <array value-type="java.lang.String">
+        <value>eu-dcat-ap-3.0.1/range.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes_recommended.ttl</value>
+      </array>
+    </entry>
+    <entry key="EU DCAT AP 3.0.1 - with range and vocabularies">
+      <array value-type="java.lang.String">
+        <value>eu-dcat-ap-3.0.1/imports.ttl</value>
+        <value>eu-dcat-ap-3.0.1/mdr_imports.ttl</value>
+        <value>eu-dcat-ap-3.0.1/mdr-vocabularies.shape.ttl</value>
+        <value>eu-dcat-ap-3.0.1/range.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes.ttl</value>
+        <value>eu-dcat-ap-3.0.1/shapes_recommended.ttl</value>
       </array>
     </entry>
   </util:map>
