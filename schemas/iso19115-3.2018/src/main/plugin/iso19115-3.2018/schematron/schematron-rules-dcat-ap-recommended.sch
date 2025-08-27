@@ -272,8 +272,9 @@
            <sch:let name="temporalElement"
                     value="//*:extent/*/*:temporalElement/*/*:extent"/>
            <sch:let name="periodStart"
-                    value="$temporalElement//gml:start/gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
-           <sch:let name="periodEnd" value="$temporalElement//gml:end/gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
+                    value="$temporalElement//gml:begin//gml:timePosition[text() != '']|$temporalElement//gml:beginPosition[. != '']"/>
+           <sch:let name="periodEnd" value="$temporalElement//gml:end//gml:timePosition[text() != '']|$temporalElement//gml:endPosition[. != '']"/>
+
 
            <sch:let name="hasTemporalExtent" value="count($periodStart) > 0 and count($periodEnd) > 0" />
 
