@@ -5,8 +5,8 @@ import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -115,7 +115,7 @@ public class ShaclValidationService {
         long violationCount = 0;
         String validationReportKey = buildValidationReportKey(formatter, testsuite, shaclShapes);
 
-        InfModel infModel = ModelFactory.createInfModel(reasoner, dataModel);
+        Model infModel = ModelFactory.createInfModel(reasoner, dataModel);
         ValidationReport report = ShaclValidator.get().validate(shapes, infModel.getGraph());
 
         if (!report.conforms()) {
@@ -148,9 +148,9 @@ public class ShaclValidationService {
         return shaclShapes;
     }
 
-    private Shapes parseShapesFromFiles(List<String> shaclShapes) {
+    private Shapes parseShapesFromFiles(List<String> shaclFiles) {
         MultiUnion shapesGraph = new MultiUnion();
-        for (String shaclFile : shaclShapes) {
+        for (String shaclFile : shaclFiles) {
             Path shaclPath = dataDirectory.getConfigDir().resolve("shacl").resolve(shaclFile);
             if (!Files.exists(shaclPath)) {
                 throw new IllegalArgumentException("SHACL shape file not found: " + shaclPath);
@@ -165,7 +165,6 @@ public class ShaclValidationService {
         Model combinedOntologyModel = ModelFactory.createDefaultModel();
 
         for (Node importedShape : imports) {
-            System.out.println("Loaded imported shapes: " + importedShape);
             Model model = ModelFactory.createOntologyModel();
             combinedOntologyModel.add(model.read(importedShape.getURI().toString()));
         }

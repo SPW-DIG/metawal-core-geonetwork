@@ -116,20 +116,16 @@ public class ShaclValidationApi {
         @Parameter(description = "SHACL testsuite to use",
             examples = {
                 @ExampleObject(
-                    name = "EU DCAT AP 3.0.0 Level 1",
-                    value = "eu-dcat-ap-300-level1"
+                    name = "EU DCAT AP 3.0.1 - Base Zero (no background knowledge)",
+                    value = "EU DCAT AP 3.0.1 - Base Zero (no background knowledge)"
                 ),
                 @ExampleObject(
-                    name = "EU DCAT AP 3.0.0 Level 2",
-                    value = "eu-dcat-ap-300-level2"
+                    name = "EU DCAT AP 3.0.1 - Ranges Zero (no background knowledge)",
+                    value = "EU DCAT AP 3.0.1 - Ranges Zero (no background knowledge)"
                 ),
                 @ExampleObject(
-                    name = "EU DCAT AP 3.0.0 Level 3",
-                    value = "eu-dcat-ap-300-level3"
-                ),
-                @ExampleObject(
-                    name = "EU DCAT AP 3.0.1",
-                    value = "eu-dcat-ap-301"
+                    name = "EU DCAT AP 3.0.1 - Full (no background knowledge)",
+                    value = "EU DCAT AP 3.0.1 - Full (no background knowledge)"
                 )
             },
             required = false)
