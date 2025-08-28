@@ -10,8 +10,10 @@
                 xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
                 xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns:foaf="http://xmlns.com/foaf/0.1/"
                 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
                 xmlns:dct="http://purl.org/dc/terms/"
+                xmlns:gn-fn-dcat="http://geonetwork-opensource.org/xsl/functions/dcat"
                 exclude-result-prefixes="#all">
 
   <xsl:import href="../dcat/dcat-core.xsl"/>
@@ -106,13 +108,18 @@
   <xsl:template mode="iso19115-3-to-eu-dcat-ap"
                 match="mdb:MD_Metadata/mdb:metadataLinkage">
     <dct:source>
-      <rdf:Description rdf:about="{*/cit:linkage/*/text()}">
+      <!-- Adding an extra character to have 2 distinct CatalogRecord object.
+       One is the DCAT record which has for source document the one converted by the formatter.
+       Both must have different IRI to not overlap in validation rules. -->
+      <rdf:Description rdf:about="{*/cit:linkage/*/text()}#">
         <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
         <xsl:apply-templates mode="iso19115-3-to-dcat"
-                             select="ancestor::mdb:MD_Metadata/mdb:metadataStandard
+                             select="ancestor::mdb:MD_Metadata/(mdb:metadataStandard
                                     |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'creation']/cit:date
                                     |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'revision']/cit:date
-                                    |ancestor::mdb:MD_Metadata/mdb:defaultLocale/*/lan:characterEncoding/*/@codeListValue"/>
+                                    |ancestor::mdb:MD_Metadata/mdb:defaultLocale/*/lan:characterEncoding/*/@codeListValue)"/>
+
+        <foaf:primaryTopic rdf:resource="{gn-fn-dcat:getResourceUri($metadata)}"/>
       </rdf:Description>
     </dct:source>
   </xsl:template>
