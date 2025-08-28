@@ -13,18 +13,22 @@
 
 <http://data.europa.eu/r5r>
   rdf:type owl:Ontology ;
-  owl:imports <https://www.w3.org/ns/dcat2.ttl> ;
-  owl:imports <http://dublincore.org/2020/01/20/dublin_core_terms.ttl> ;
   owl:imports <http://xmlns.com/foaf/spec/index.rdf> ;
-  owl:imports <https://www.w3.org/ns/locn.ttl> ;
-  owl:imports <https://spdx.org/rdf/terms/spdx-ontology.owl.xml> ;
+#  owl:imports <http://data.europa.eu/eli/ontology> ;
+
+#  owl:imports <https://www.w3.org/ns/dcat2.ttl> ;
+#  owl:imports <http://dublincore.org/2020/01/20/dublin_core_terms.ttl> ;
+#  owl:imports <https://www.w3.org/ns/locn.ttl> ;
+#  owl:imports <https://spdx.org/rdf/terms/spdx-ontology.owl.xml> ;
+
 #  Loaded imported shapes: https://schema.org/version/latest/schema.ttl
 #ERROR [geonetwork] - 404 - Not Found
 #org.apache.jena.atlas.web.HttpException: 404 - Not Found
 #  owl:imports <https://schema.org/version/latest/schema.ttl> ;
-  owl:imports <http://www.w3.org/ns/prov-o.ttl> ;
-  owl:imports <http://www.w3.org/2006/time.ttl> ;
-  owl:imports <http://www.w3.org/2006/vcard/ns.ttl> ;
-  owl:imports <http://www.w3.org/ns/adms.ttl>
+
+#  owl:imports <http://www.w3.org/ns/prov-o.ttl> ;
+#  owl:imports <http://www.w3.org/2006/time.ttl> ;
+#  owl:imports <http://www.w3.org/2006/vcard/ns.ttl> ;
+#  owl:imports <http://www.w3.org/ns/adms.ttl>
 .
 
