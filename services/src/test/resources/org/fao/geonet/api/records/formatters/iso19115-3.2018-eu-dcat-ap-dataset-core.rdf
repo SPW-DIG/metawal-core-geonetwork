@@ -29,8 +29,9 @@
                <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
             </dct:language>
             <dct:source>
-               <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/7fe2f305-1302-4297-b67e-792f55acd834">
+               <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/7fe2f305-1302-4297-b67e-792f55acd834#base-metadata">
                   <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
+                 <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-08T12:26:19.337626Z</dct:modified>
                   <dct:conformsTo>
                      <dct:Standard>
                         <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
@@ -38,6 +39,7 @@
                         <owl:versionInfo xml:lang="fr">2003/Cor 1:2006</owl:versionInfo>
                      </dct:Standard>
                   </dct:conformsTo>
+                 <foaf:primaryTopic rdf:resource="http://geodata.wallonie.be/id/7fe2f305-1302-4297-b67e-792f55acd834"/>
                </rdf:Description>
             </dct:source>
             <dct:conformsTo>

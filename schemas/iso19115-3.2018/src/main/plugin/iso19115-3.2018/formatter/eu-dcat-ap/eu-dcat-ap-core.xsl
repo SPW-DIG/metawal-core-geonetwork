@@ -117,7 +117,7 @@
                              select="ancestor::mdb:MD_Metadata/(mdb:metadataStandard
                                     |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'creation']/cit:date
                                     |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'revision']/cit:date
-                                    |ancestor::mdb:MD_Metadata/mdb:defaultLocale/*/lan:characterEncoding/*/@codeListValue)"/>
+                                    |mdb:defaultLocale/*/lan:characterEncoding/*/@codeListValue)"/>
 
         <foaf:primaryTopic rdf:resource="{gn-fn-dcat:getResourceUri($metadata)}"/>
       </rdf:Description>
