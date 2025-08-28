@@ -119,6 +119,13 @@
   <xsl:function name="gn-fn-dcat:getRecordUri" as="xs:string">
     <xsl:param name="metadata" as="node()"/>
 
+    <xsl:value-of select="gn-fn-dcat:getRecordUri($metadata, ())"/>
+  </xsl:function>
+
+  <xsl:function name="gn-fn-dcat:getRecordUri" as="xs:string">
+    <xsl:param name="metadata" as="node()"/>
+    <xsl:param name="formatter" as="xs:string?"/>
+
     <xsl:variable name="metadataLinkage"
                   select="$metadata/mdb:metadataLinkage/*/cit:linkage/(gco:CharacterString|gcx:Anchor)/text()"
                   as="xs:string?"/>
@@ -130,7 +137,8 @@
     </xsl:variable>
     <!-- TODO: Should we consider DOI? It may be encoded in metadata linkage (not available in ISO19139) -->
 
-    <xsl:value-of select="if($metadataLinkage) then $metadataLinkage
+    <xsl:value-of select="if($metadataLinkage and $formatter) then concat($metadataLinkage, '/formatter/', $formatter)
+                            else if ($metadataLinkage) then $metadataLinkage
                             else if (string($metadataIdentifier) and starts-with($metadataIdentifier, 'http')) then $metadataIdentifier
                             else if (string($metadataIdentifier)) then concat($resourcePrefix, encode-for-uri($metadataIdentifier))
                             else concat($resourcePrefix, encode-for-uri($metadata/mdb:metadataIdentifier/*/mcc:code/*/text()))"

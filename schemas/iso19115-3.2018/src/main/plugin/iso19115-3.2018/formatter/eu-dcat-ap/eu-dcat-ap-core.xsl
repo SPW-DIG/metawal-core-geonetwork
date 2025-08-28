@@ -111,7 +111,7 @@
       <!-- Adding an extra character to have 2 distinct CatalogRecord object.
        One is the DCAT record which has for source document the one converted by the formatter.
        Both must have different IRI to not overlap in validation rules. -->
-      <rdf:Description rdf:about="{*/cit:linkage/*/text()}#base-metadata">
+      <rdf:Description rdf:about="{*/cit:linkage/*/text()}">
         <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
         <xsl:apply-templates mode="iso19115-3-to-dcat"
                              select="ancestor::mdb:MD_Metadata/(mdb:metadataStandard

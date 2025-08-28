@@ -24,7 +24,7 @@
          </skos:Concept>
       </dct:type>
       <foaf:isPrimaryTopicOf>
-         <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/3dbe0017-a71f-4923-9b44-fdb5afef5778">
+         <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/3dbe0017-a71f-4923-9b44-fdb5afef5778/formatters/dcat">
             <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
             <dct:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:uuid:{uuid}</dct:identifier>
             <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-11T07:25:51.082626Z</dct:modified>
@@ -35,8 +35,8 @@
          <foaf:Document rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/3dbe0017-a71f-4923-9b44-fdb5afef5778"/>
       </dcat:landingPage>
       <dct:title xml:lang="fr">INSPIRE - Sites protégés en Wallonie (BE) - Service de téléchargement
-              
-              
+
+
             </dct:title>
       <dct:title xml:lang="en">INSPIRE - Protected site in Walloon region (BE) - Download
                   service</dct:title>
@@ -71,7 +71,7 @@
           dérivées selon le mécanisme de désignation;
           - Accéder aux séries de couches de données géographiques relatives au thème "Sites protégés" et aux sites de
           désignation par site protégé.
-          
+
         </dct:description>
       <dcat:contactPoint>
          <rdf:Description>
@@ -80,7 +80,7 @@
                <rdf:Description>
                   <vcard:organisation-name xml:lang="fr">Helpdesk carto du SPW (SPW - Secrétariat général - SPW Digital - Département de la
                   Géomatique - Direction de l'Intégration des géodonnées)
-                  
+
                 </vcard:organisation-name>
                </rdf:Description>
             </vcard:org>
@@ -92,7 +92,7 @@
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
             <foaf:name xml:lang="fr">Direction de l'Intégration des géodonnées (SPW - Secrétariat général - SPW Digital
                   - Département de la Géomatique - Direction de l'Intégration des géodonnées)
-                  
+
                 </foaf:name>
             <foaf:mbox rdf:resource="mailto:helpdesk.carto@spw.wallonie.be"/>
          </rdf:Description>
@@ -101,133 +101,133 @@
          <rdf:Description rdf:about="https://geoportail.wallonie.be">
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
             <foaf:name xml:lang="fr">Service public de Wallonie (SPW)
-                  
+
                 </foaf:name>
             <foaf:mbox rdf:resource="mailto:helpdesk.carto@spw.wallonie.be"/>
             <foaf:workplaceHomepage xml:lang="fr">https://geoportail.wallonie.be
-                          
+
                         </foaf:workplaceHomepage>
          </rdf:Description>
       </dct:rightsHolder>
       <dct:subject rdf:resource="http://inspire.ec.europa.eu/theme/ps"/>
       <dcat:keyword xml:lang="fr">Sites protégés
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">zones naturelles, paysages, écosystèmes
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">politique environnementale
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">biologie
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">site naturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">écologie
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">évaluation du patrimoine naturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">politique de conservation de la nature
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">monument historique
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">parc naturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">espace naturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">législation en matière de préservation de la nature
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">conservation des ressources naturelles
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">site naturel protégé
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">archéologie
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">milieu naturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">patrimoine naturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">paysage
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">géologie
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">monument
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">conservation
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">espace protégé
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">patrimoine culturel
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">Reporting INSPIRE
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">natura2000
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">N2K
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">biodiversité
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">protected sites
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">site protégé
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">aire protégée
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">inspire
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">téléchargement
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">Feed
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">ATOM
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">IUCN
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">ProtectedSite
-              
+
             </dcat:keyword>
       <dct:subject rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoProductAccessService"/>
       <dcat:keyword xml:lang="fr">Service d’accès aux produits
-              
+
             </dcat:keyword>
       <dcat:keyword xml:lang="fr">Location of sites (Habitats Directive)
-              
+
             </dcat:keyword>
       <dct:subject rdf:resource="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional"/>
       <dcat:keyword xml:lang="fr">Régional
-              
+
             </dcat:keyword>
       <dct:license>
          <dct:LicenseDocument rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf"/>
@@ -235,8 +235,8 @@
       <dct:rights>
          <dct:RightsStatement>
             <dct:description xml:lang="fr">Conditions d'utilisation spécifiques
-              
-            
+
+
 </dct:description>
          </dct:RightsStatement>
       </dct:rights>
@@ -248,7 +248,7 @@
       </dct:conformsTo>
       <adms:versionNotes xml:lang="fr">Ce service de téléchargement simple INSPIRE basé sur ATOM est au standard Atom RFC 4287, à
           la spécification GeoRSS Simple et à la spécification OpenSearch (pour les éléments concernés).
-          
+
         </adms:versionNotes>
       <dcat:servesDataset>
          <dcat:Dataset rdf:about="https://metawal.wallonie.be/geonetwork/insipre/api/records/541e92de-dbc9-46df-880c-1076798bdbb3"/>
@@ -280,7 +280,7 @@
       <foaf:page>
          <foaf:Document rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/3dbe0017-a71f-4923-9b44-fdb5afef5778/attachments/download_Inspire_20190430.png">
             <dct:description xml:lang="fr">INSPIRE_PS_DS_PIC
-              
+
             </dct:description>
          </foaf:Document>
       </foaf:page>

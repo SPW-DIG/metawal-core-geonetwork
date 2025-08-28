@@ -154,6 +154,7 @@ public class XsltFormatter implements FormatterImpl {
         ));
         gui.addContent(new Element("nodeUrl").setText(settingManager.getNodeURL()));
         gui.addContent(new Element("nodeId").setText(settingManager.getNodeId()));
+        gui.addContent(new Element("formatter").setText(fparams.formatDir.getFileName().toString()));
         gui.addContent(new Element("baseUrl").setText(baseUrl));
         gui.addContent(new Element("serverUrl").setText(settingManager.getServerURL()));
         gui.addContent(new Element("language").setText(fparams.context.getLanguage()));

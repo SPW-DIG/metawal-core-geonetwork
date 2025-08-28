@@ -24,7 +24,7 @@
          </skos:Concept>
       </dct:type>
       <foaf:isPrimaryTopicOf>
-         <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/7fe2f305-1302-4297-b67e-792f55acd834">
+         <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/7fe2f305-1302-4297-b67e-792f55acd834/formatters/dcat">
             <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
             <dct:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:uuid:{uuid}</dct:identifier>
             <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-08T12:26:19.337626Z</dct:modified>
