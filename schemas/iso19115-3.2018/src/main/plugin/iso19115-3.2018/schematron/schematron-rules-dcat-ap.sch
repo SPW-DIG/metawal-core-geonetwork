@@ -391,7 +391,42 @@
       </sch:rule>
   </sch:pattern>
 
+<!-- accessUrl-->
+  <sch:diagnostic id="rule.dcatap.distribution-has-accessurl.mandatory-failure-en" xml:lang="en">
+    A url MUST be provided
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-accessurl.mandatory-failure-fr" xml:lang="fr">
+    Une URL doit être présente <sch:value-of select="$linkage"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-accessurl.mandatory-success-en"
+                  xml:lang="en">
+    Distribution
+    Access URL:
+    <sch:value-of select="if (string-length($accessUrlForDownload) > 0) then $accessUrlForDownload else $linkage"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.distribution-has-accessurl.mandatory-success-fr"
+                  xml:lang="fr">
+    Distribution
+    Access URL:
+    <sch:value-of select="if (string-length($accessUrlForDownload) > 0) then $accessUrlForDownload else $linkage"/>.
+  </sch:diagnostic>
+  <sch:pattern id="distribution-accessUrl">
+  <sch:title xml:lang="en">The information describing the accessUrl MUST be completed.</sch:title>
+  <sch:title xml:lang="fr">L'url d'accès DOIT être complétée</sch:title>
+    <sch:rule context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo//*:onLine">
 
+      <sch:let name="linkage"
+               value="*/*:linkage/*[text() != '']"/>
+      <sch:let name="accessUrlForDownload" value="*[cit:protocol/gco:CharacterString = 'WWW:LINK' and cit:function/*/@codeListValue = 'download']
+                                                            /cit:linkage/gco:CharacterString/text()"/>
+
+      <sch:assert test="exists($accessUrlForDownload) or exists($linkage)"
+                  diagnostics="rule.dcatap.distribution-has-accessurl.mandatory-failure-en rule.dcatap.distribution-has-accessurl.mandatory-failure-fr"/>
+      <sch:report test="exists($accessUrlForDownload) or exists($linkage)"
+                  diagnostics="rule.dcatap.distribution-has-accessurl.mandatory-success-en rule.dcatap.distribution-has-accessurl.mandatory-success-fr"/>
+
+    </sch:rule>
+  </sch:pattern>
 
   <sch:diagnostic id="rule.hvd.endpointurl.mandatory-failure-en" xml:lang="en">
     The root location or primary endpoint of the service (an IRI) is missing. Add an operation with a protocol which is
