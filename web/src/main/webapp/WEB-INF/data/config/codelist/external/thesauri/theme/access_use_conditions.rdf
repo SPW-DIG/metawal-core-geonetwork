@@ -9,18 +9,9 @@
 			</foaf:Organization>
 		</dc:creator>
 		<dcterms:issued>2019-09-24</dcterms:issued>
-		<dcterms:modified>2021-01-19</dcterms:modified>
+		<dcterms:modified>2025-09-10</dcterms:modified>
 	</skos:ConceptScheme>
-	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">
-		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">No limitations to public access and use</skos:prefLabel>
-		<skos:scopeNote xml:lang="fr">Il n'y a pas de limitation d'accès ni de limitation d'utilisation pour cette donnée.</skos:scopeNote>
-	</rdf:Description>
-	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
-		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">Pas de limitation d'accès public à cette donnée.</skos:prefLabel>
-		<skos:scopeNote xml:lang="fr">L'accès à cette donnée n'est pas limité à un public particulier.</skos:scopeNote>
-	</rdf:Description>
+	<!--	 CAU spécifiques SPW -->
 	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGA.pdf">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 		<skos:prefLabel xml:lang="fr">CGA SPW : La donnée est accessible par toute personne physique ou morale, pour une durée indéterminée, gratuitement, sur l’entièreté du territoire qu’elle couvre et pour toute finalité.</skos:prefLabel>
@@ -61,9 +52,10 @@
 		<skos:prefLabel xml:lang="fr">CPU Type C SPW : L’Utilisateur peut redistribuer la donnée à un tiers, publier la donnée sur Internet via un service web ou sur support statique (carte papier, brochure, support de présentation orale, pdf ou image sur Internet, rapport, etc.).</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Les conditions générales d'utilisation s'appliquent et sont étendues par les conditions particulières de type C.</skos:scopeNote>
 	</rdf:Description>
+	<!--	 Licences ouvertes -->
 	<rdf:Description rdf:about="https://opendatacommons.org/licenses/odbl/1-0/">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-    <skos:prefLabel xml:lang="fr">Licence ODbL v1.0 : L’utilisateur peut utiliser et modifier les données pour en dériver une œuvre. Il peut publier les données et l’œuvre dérivée à condition de citer les sources (attribution) et de le faire sous la licence ODbL (share alike). Une traduction non-officielle de la licence ODbL est disponible à l'adresse https://mobilite.wallonie.be/files/ODbL-fr.pdf</skos:prefLabel>
+		<skos:prefLabel xml:lang="fr">Licence ODbL v1.0 : L’utilisateur peut utiliser et modifier les données pour en dériver une œuvre. Il peut publier les données et l’œuvre dérivée à condition de citer les sources (attribution) et de le faire sous la licence ODbL (share alike). Une traduction non-officielle de la licence ODbL est disponible à l'adresse https://mobilite.wallonie.be/files/ODbL-fr.pdf</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Licence ODbL v1.0. Cette licence est à utiliser pour toute donnée exploitant des données sous licence ODbL, comme par exemple les données OpenStreetMap</skos:scopeNote>
 	</rdf:Description>
 	<rdf:Description rdf:about="https://creativecommons.org/licenses/by/4.0/">
@@ -81,19 +73,91 @@
 		<skos:prefLabel xml:lang="fr">Licence CC-BY-NC 4.0 : L’utilisateur peut utiliser et modifier les données pour en dériver une œuvre. Il peut publier les données et l’œuvre dérivée à condition de citer les sources. L'usage commercial des données, des données dérivées ou de l'oeuvre dérivée est interdit.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Licence CC-BY-NC 4.0 : licence ouverte avec obligation d'attribution et interdiction d'usage commercial.</skos:scopeNote>
 	</rdf:Description>
-	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf">
+	<rdf:Description rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-		<skos:prefLabel xml:lang="fr">Licence de webservice SPW : Les conditions d'utilisation du service sont régies par les Conditions d’accès et d’utilisation des services web géographiques du Service public de Wallonie. L’utilisateur n’appelle pas les services de manière disproportionnée ou inadaptée.</skos:prefLabel>
-		<skos:scopeNote xml:lang="fr">Licence de webservice SPW : licence d'utilisation ouverte</skos:scopeNote>
+		<skos:prefLabel xml:lang="fr">Licence CC-BY-SA 4.0 : L’utilisateur peut utiliser et modifier les données pour en dériver une œuvre. Il peut publier les données et l’œuvre dérivée à condition de citer les sources et de les partager avec la même licence que les données originales.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Licence CC-BY-SA 4.0 : licence ouverte avec obligation d'attribution et partage dans les mêmes conditions.</skos:scopeNote>
 	</rdf:Description>
+	<!--	 Codes spécifiques INSPIRE -->
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">Pas de limitation d'accès public à cette donnée.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">L'accès à cette donnée n'est pas limité à un public particulier.</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">No limitations to public access and use</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Il n'y a pas de limitation d'accès ni de limitation d'utilisation pour cette donnée.</skos:scopeNote>
+	</rdf:Description>
+	<!--	 Codes spécifiques aux services -->
 	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 		<skos:prefLabel xml:lang="fr">Les services sont librement accessibles.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Tout le monde peut accéder à ce service.</skos:scopeNote>
 	</rdf:Description>
-	<!--	 Types de CAU qui ne sont pas / plus utilisés dans Metawal
-
-	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown">
+	<rdf:Description rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/LicServicesSPW.pdf">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">Licence de webservice SPW : Les conditions d'utilisation du service sont régies par les Conditions d’accès et d’utilisation des services web géographiques du Service public de Wallonie. L’utilisateur n’appelle pas les services de manière disproportionnée ou inadaptée.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Licence de webservice SPW : licence d'utilisation ouverte</skos:scopeNote>
+	</rdf:Description>
+	<!--	 Justification des accès retreints -->
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1a">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car la divulgation des données pourrait nuire à la confidentialité des délibérations et travaux des autorités publiques.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Confidentialité des travaux des autorités publiques.</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1b">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car la divulgation des données pourrait nuire aux relations internationales, à la défense nationale ou à la sécurité publique, y compris la protection des infrastructures critiques.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Relations internationales, défense nationale ou sécurité publique</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1c">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car la divulgation des données pourrait nuire à la bonne marche de la justice, à la possibilité pour toute personne d'être jugée équitablement ou à la capacité d'une autorité publique d'effectuer une enquête d'ordre pénal ou disciplinaire.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Bonne marche de la justice</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car la divulgation des données pourrait nuire à la confidentialité des informations commerciales ou industrielles.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Secret des affaires</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint conformément au principe de confidentialité des unités statistiques individuelles.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Secret statistique</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1e">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L'accès est restreint en raison de droits d’auteur ou de brevets détenus par des tiers qui n'autorisent pas la divulgation des données.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Droits de propriété intellectuelle tiers</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1f">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car les données contiennent des informations à caractère personnel pour lesquelles il n'existe pas d'autorisation de divulgation au public.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Données personnelles</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1g">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car la divulgation des données pourrait nuire aux intérêts ou à la protection de personnes ayant fourni des informations sur base volontaire pour dénoncer un fait punissable ou supposé tel.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Protection des lanceurs d'alerte</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1h">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L’accès est restreint car la divulgation des données pourrait nuire à la protection de l'environnement, des espèces ou des habitats vulnérables.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Données environnementales sensibles</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L'accès est restreint suite à une obligation de secret ou de confidentialité imposée à l'organisme public en vertu d'une convention ou d'un engagement contractuel.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Restriction contractuelle</skos:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://publications.europa.eu/resource/authority/confidentiality-level/OP_DATPRO">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<skos:prefLabel xml:lang="fr">L'accès est restreint car la donnée n'est pas encore finalisée.</skos:prefLabel>
+		<skos:scopeNote xml:lang="fr">Données provisoires</skos:scopeNote>
+	</rdf:Description>
+	<!--	 Types de CAU qui ne sont pas / plus utilisés dans Metawal-->
+	<!--	 <rdf:Description rdf:about="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/conditionsUnknown">
 		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
 		<skos:prefLabel xml:lang="fr">Conditions d'accès et d'utilisation inconnues.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Les conditions d'accès et d'utilisation sont inconnues</skos:scopeNote>
@@ -123,7 +187,5 @@
 		<skos:prefLabel xml:lang="fr">CPA Type D1 SPW : La donnée n’est accessible que pour les compagnies d’assurance, gratuitement et que pendant la durée du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la donnée et telle que reprise dans la Licence d’utilisation. La donnée n’est distribuée que sur l’étendue de la zone d’intérêt du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la donnée et telle que reprise dans la Licence d’utilisation. La donnée n’est accessible que pour la finalité du projet ou de la mission convenue entre l’Utilisateur et le Gestionnaire de la donnée et telle que reprise dans la Licence d’utilisation.</skos:prefLabel>
 		<skos:scopeNote xml:lang="fr">Les conditions générales d'accès s’appliquent mais sont restreintes ou étendues par les conditions particulières de type D2.</skos:scopeNote>
 	</rdf:Description>
-
--->
-
+	-->
 </rdf:RDF>
