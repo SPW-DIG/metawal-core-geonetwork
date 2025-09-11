@@ -57,6 +57,7 @@
     <for name="mco:otherConstraints" use="data-gn-keyword-picker">
       <directiveAttributes data-thesaurus-key="external.theme.access_use_conditions"
                            data-thesaurus-concept-id-attribute="xlinkCOLONhref"
+                           data-number-of-suggestions="200"
                            data-show-hints-on-focus="true"/>
     </for>
     <for name="mri:statement" use="textarea"/>
