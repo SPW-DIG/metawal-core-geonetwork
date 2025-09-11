@@ -137,7 +137,7 @@
     </xsl:variable>
     <!-- TODO: Should we consider DOI? It may be encoded in metadata linkage (not available in ISO19139) -->
 
-    <xsl:value-of select="if($metadataLinkage and $formatter) then concat($metadataLinkage, '/formatter/', $formatter)
+    <xsl:value-of select="if($metadataLinkage and $formatter) then concat($metadataLinkage, '/formatters/', $formatter)
                             else if ($metadataLinkage) then $metadataLinkage
                             else if (string($metadataIdentifier) and starts-with($metadataIdentifier, 'http')) then $metadataIdentifier
                             else if (string($metadataIdentifier)) then concat($resourcePrefix, encode-for-uri($metadataIdentifier))
