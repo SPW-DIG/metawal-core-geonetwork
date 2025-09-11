@@ -247,14 +247,15 @@
     <xsl:variable name="href"
                   select="*/cit:title/*/@xlink:href"/>
     <xsl:if test="$href">
-      <dcatap:applicableLegislation rdf:resource="{$href}">
-        <!--<eli:LegalResource>
+      <dcatap:applicableLegislation>
+        <rdf:Description rdf:about="{$href}">
+          <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
           <xsl:for-each select="*/cit:title">
             <xsl:call-template name="rdf-localised">
               <xsl:with-param name="nodeName" select="'dct:title'"/>
             </xsl:call-template>
           </xsl:for-each>
-        </eli:LegalResource>-->
+        </rdf:Description>
       </dcatap:applicableLegislation>
     </xsl:if>
   </xsl:template>

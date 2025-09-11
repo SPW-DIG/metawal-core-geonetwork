@@ -246,7 +246,12 @@
       <dcat:keyword xml:lang="fr">Santé et sécurité des personnes</dcat:keyword>
       <dcat:keyword xml:lang="fr">Mobilité</dcat:keyword>
       <dcat:keyword xml:lang="fr">Observation de la terre et environnement</dcat:keyword>
-      <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg/2014/1143/oj"/>
+      <dcatap:applicableLegislation>
+        <rdf:Description rdf:about="http://data.europa.eu/eli/reg/2014/1143/oj">
+          <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+          <dct:title xml:lang="fr">1143/2014</dct:title>
+        </rdf:Description>
+      </dcatap:applicableLegislation>
       <dct:license>
          <dct:LicenseDocument rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf">
             <dct:type>
@@ -497,7 +502,12 @@
             <dct:language>
                <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
             </dct:language>
-            <dcatap:applicableLegislation rdf:resource="http://data.europa.eu/eli/reg/2014/1143/oj"/>
+           <dcatap:applicableLegislation>
+             <rdf:Description rdf:about="http://data.europa.eu/eli/reg/2014/1143/oj">
+               <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+               <dct:title xml:lang="fr">1143/2014</dct:title>
+             </rdf:Description>
+           </dcatap:applicableLegislation>
          </dcat:Distribution>
       </dcat:distribution>
       <foaf:page>
