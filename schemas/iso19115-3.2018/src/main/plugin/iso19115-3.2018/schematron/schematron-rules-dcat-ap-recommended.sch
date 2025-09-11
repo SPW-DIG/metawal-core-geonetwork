@@ -449,12 +449,14 @@
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-en"
                     xml:lang="en">
        <sch:value-of select="$numberOfDistributions"/>
-       Distribution URLs found:<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+       Distribution URLs found:
+      <sch:value-of select="string-join( for $d in $distributions return concat(' •', $d),', ')"/>
     </sch:diagnostic>
     <sch:diagnostic id="rule.dcatap.dataset.distribution.mandatory-success-fr"
                     xml:lang="fr">
       <sch:value-of select="$numberOfDistributions"/>
-      URL(s) de distribution encodées :<sch:value-of select="concat(' ', string-join($distributions, ', '))"/>.
+      URL(s) de distribution encodées :
+      <sch:value-of select="string-join( for $d in $distributions return concat(' •', $d),', ')"/>
     </sch:diagnostic>
 
     <sch:pattern id="dataset-distribution">
