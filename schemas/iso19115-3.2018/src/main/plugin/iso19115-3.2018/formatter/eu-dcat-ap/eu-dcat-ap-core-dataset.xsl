@@ -217,11 +217,29 @@
 
   <!--
   applicable legislation	Legal Resource	0..*	The legislation that mandates the creation or management of the Dataset.
+
+
+<http://data.europa.eu/eli/dir/2012/19/oj>
+  a eli:LegalResource ;
+  dc:title "Directive 2012/19/EU on waste electrical and electronic equipment (WEEE) (recast)"@en ;
+  dc:creator "European Parliament and of the Council"@en ;
+  dc:date "2012-07-24"^^xsd:date ;
+  eli:legal_date_publication "2012-07-24"^^xsd:date ;
+  eli:is_part_of_type eli:Directive ;
+  eli:id_local "L_2012197EN.01003801.xml" .
+
   -->
   <xsl:template mode="iso19115-3-to-dcat"
                 match="mri:descriptiveKeywords/*/mri:keyword[starts-with(*/@xlink:href, 'http://data.europa.eu/eli')]"
                 priority="20">
-    <dcatap:applicableLegislation rdf:resource="{*/@xlink:href}"/>
+    <dcatap:applicableLegislation>
+      <rdf:Description rdf:about="{*/@xlink:href}">
+        <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+        <xsl:call-template name="rdf-localised">
+          <xsl:with-param name="nodeName" select="'dct:title'"/>
+        </xsl:call-template>
+      </rdf:Description>
+    </dcatap:applicableLegislation>
   </xsl:template>
 
   <xsl:template mode="iso19115-3-to-dcat"
