@@ -151,13 +151,13 @@
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-success-en"
                   xml:lang="en">
-    Serie associated with one ore more datasets.
-    <sch:value-of select="string-join( for $d in $distributions/root/resourceIdentifier return concat(' •', $d),', ')"/>
+    Serie associated with one or more datasets.
+    <sch:value-of select="string-join( for $d in $children/root/resourceIdentifier[1]/code return concat(' •', $d),', ')"/>
   </sch:diagnostic>
   <sch:diagnostic id="rule.dcatap.series.has-dataset.mandatory-success-fr"
                   xml:lang="fr">
     Série associée à une ou plusieures resources.
-    <sch:value-of select="string-join( for $d in $distributions/root/resourceIdentifier return concat(' •', $d),', ')"/>
+    <sch:value-of select="string-join( for $d in $children/root/resourceIdentifier[1]/code return concat(' •', $d),', ')"/>
   </sch:diagnostic>
   <sch:pattern id="series-hasdataset">
          <sch:title xml:lang="en">At least one dataset MUST be part of the series</sch:title>
