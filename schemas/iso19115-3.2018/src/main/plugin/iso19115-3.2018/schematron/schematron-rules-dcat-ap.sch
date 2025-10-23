@@ -285,7 +285,6 @@
   </sch:diagnostic>
 
   <sch:pattern id="distribution">
-   <!-- TODO: add support for service-->
     <sch:title>DCAT-AP (Distribution)</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'dataset']/*:distributionInfo">
@@ -413,6 +412,26 @@
   </sch:diagnostic>
 
 
+
+  <sch:diagnostic id="rule.hvd.accessUrl.mandatory-failure-en" xml:lang="en">
+    Online resource: the service access URL address MUST be provided.
+    Declare the service connection address in an online resource.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.accessUrl.mandatory-failure-fr" xml:lang="fr">
+    Ressource en ligne : l'adresse d'accès au service DOIT être renseignée.
+    Déclarez l'adresse de connexion du service dans une ressource en ligne
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.accessUrl.mandatory-success-en"
+                  xml:lang="en">
+    Access URL found:<sch:value-of select="concat(' ', string-join($accessUrlForService, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.hvd.accessUrl.mandatory-success-fr"
+                  xml:lang="fr">
+    URL(s) d'accès au service encodées :<sch:value-of select="concat(' ', string-join($accessUrlForService, ', '))"/>.
+  </sch:diagnostic>
+
+
+
   <sch:pattern id="L'opération access point du service est défine">
     <sch:title xml:lang="en">Online resource: the service address MUST be provided</sch:title>
     <sch:title xml:lang="fr">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
@@ -426,8 +445,10 @@
       The endpoint URL SHOULD be persistent. This means that publishers should do everything in their power
       to maintain the value stable and existing.
       E
+      endpoint URL : Le point d'accès du service DOIT être renseigné //
+      Encodez une opération qui mentionne le point d'accès du service avec une fonction autre que "Information". Un point d'accès ne contient pas de paramètre de requête.
+      Cette règle valide qu'il y a bien une opération qui mentionne le point d'accès du service. Elle permet de traduire l'info vers la balise dcat:endpointURL de la fiche DCAT de service
       -->
-
       <sch:let name="endpointDescriptionUrllExpression"
                value="'GetCapabilities|WSDL'"/>
       <sch:let name="endpointDescriptionProtocolsExpression"
@@ -445,6 +466,31 @@
                   diagnostics="rule.hvd.endpointurl.mandatory-failure-en rule.hvd.endpointurl.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreEndPointUrls"
                   diagnostics="rule.hvd.endpointurl.mandatory-success-en rule.hvd.endpointurl.mandatory-success-fr"/>
+
+
+      <!--
+      access URL : Ressource en ligne : l'adresse du service DOIT être renseignée // Déclarez l'adresse de connexion du service dans une ressource en ligne
+      Cette règle valide la présence d'une ressource en ligne (section distribution) qui indique l'adresse de connexion au service. Elle permet de traduire l'info vers la balise dcataccessURL de la distribution de la donnée liée au service.
+      cf. dcat-core-resource.xsl  which
+      * collect related services
+      * check link object from the index (excluding atom:feed)
+      * and use those information to populate dcat:accessURL
+      -->
+      <sch:let name="accessUrlForService"
+               value=".//*:onLine/*[
+                                not(
+                                        cit:function/*/@codeListValue = ('information', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                        or (not(cit:function/*/@codeListValue) and matches(*:protocol/*/text(), 'WWW:LINK.*'))
+                                        )]/*:linkage/*/text()"/>
+
+      <sch:let name="hasOneOrMoreAccessUrlForService"
+               value="count($accessUrlForService) > 0"/>
+
+      <sch:assert test="$hasOneOrMoreAccessUrlForService"
+                  diagnostics="rule.hvd.accessUrl.mandatory-failure-en rule.hvd.accessUrl.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMoreAccessUrlForService"
+                  diagnostics="rule.hvd.accessUrl.mandatory-success-en rule.hvd.accessUrl.mandatory-success-fr"/>
+
 
     </sch:rule>
   </sch:pattern>
