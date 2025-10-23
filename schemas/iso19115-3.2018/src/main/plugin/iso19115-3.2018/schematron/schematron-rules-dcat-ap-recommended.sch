@@ -587,25 +587,29 @@
   <!-- SERVICE RULES -->
   <!-- -->
 
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-en" xml:lang="en">
+  <sch:diagnostic id="rule.dcatap.servicedocumentation.mandatory-failure-en" xml:lang="en">
     Add a declaration of conformity with an anchor, a link to the Spatineo page, a quality report, or an online resource using the 'information' function
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
+  <sch:diagnostic id="rule.dcatap.servicedocumentation.mandatory-failure-fr" xml:lang="fr">
     Ajoutez une déclaration de conformité avec une ancre, un lien vers la page Spatineo, un rapport de qualité ou une ressource en ligne avec la fonction "information".
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-en"
+  <sch:diagnostic id="rule.dcatap.servicedocumentation.mandatory-success-en"
                   xml:lang="en">
     Documentation pages found:<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.servicedocumentation.mandatory-success-fr"
+  <sch:diagnostic id="rule.dcatap.servicedocumentation.mandatory-success-fr"
                   xml:lang="fr">
     Documentations encodées :<sch:value-of select="concat(' ', string-join($documentationUrls, ', '))"/>.
   </sch:diagnostic>
+
+
+
   <sch:pattern>
     <sch:title xml:lang="en">It is recommended to document the service</sch:title>
     <sch:title xml:lang="fr">Il est recommandé de documenter le service</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+
 
       <!--
       documentation (service)
@@ -635,9 +639,9 @@
                value="count($documentationUrls) > 0"/>
 
       <sch:assert test="$hasOneOrMoreDocumentation"
-                  diagnostics="rule.hvd.servicedocumentation.mandatory-failure-en rule.hvd.servicedocumentation.mandatory-failure-fr"/>
+                  diagnostics="rule.dcatap.servicedocumentation.mandatory-failure-en rule.dcatap.servicedocumentation.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreDocumentation"
-                  diagnostics="rule.hvd.servicedocumentation.mandatory-success-en rule.hvd.servicedocumentation.mandatory-success-fr"/>
+                  diagnostics="rule.dcatap.servicedocumentation.mandatory-success-en rule.dcatap.servicedocumentation.mandatory-success-fr"/>
     </sch:rule>
   </sch:pattern>
       <!--
@@ -648,17 +652,17 @@
       An API in the context of HVD is not a standalone resource. It is used to open up HVD datasets.
       Therefore each Data Service is at least tightly connected with a Dataset.
       -->
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-en" xml:lang="en">
+  <sch:diagnostic id="rule.dcatap.operateson.mandatory-failure-en" xml:lang="en">
     Establish a link between the service and the data it delivers by associating the service through the data’s metadata page
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-failure-fr" xml:lang="fr">
+  <sch:diagnostic id="rule.dcatap.operateson.mandatory-failure-fr" xml:lang="fr">
     Ajoutez un lien entre le service et la la donnée qu'il sert en ajoutant le service depuis la fiche de la donnée
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-en"
+  <sch:diagnostic id="rule.dcatap.operateson.mandatory-success-en"
                   xml:lang="en">
     Operates on dataset found:<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
   </sch:diagnostic>
-  <sch:diagnostic id="rule.hvd.operateson.mandatory-success-fr"
+  <sch:diagnostic id="rule.dcatap.operateson.mandatory-success-fr"
                   xml:lang="fr">
     Données associées encodées :<sch:value-of select="concat(' ', string-join($operatesOnDatasets, ', '))"/>.
   </sch:diagnostic>
@@ -674,12 +678,156 @@
                value="count($operatesOnDatasets) > 0"/>
 
       <sch:assert test="$hasOneOrMoreOperatesOn"
-                  diagnostics="rule.hvd.operateson.mandatory-failure-en rule.hvd.operateson.mandatory-failure-fr"/>
+                  diagnostics="rule.dcatap.operateson.mandatory-failure-en rule.dcatap.operateson.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreOperatesOn"
-                  diagnostics="rule.hvd.operateson.mandatory-success-en rule.hvd.operateson.mandatory-success-fr"/>
+                  diagnostics="rule.dcatap.operateson.mandatory-success-en rule.dcatap.operateson.mandatory-success-fr"/>
 
 
     </sch:rule>
   </sch:pattern>
+
+
+
+
+  <sch:diagnostic id="rule.dcatap.endpointdescriptionurl.mandatory-failure-en" xml:lang="en">
+    Add an operation with one of the following protocols:  <sch:value-of select="concat(' ', $endpointDescriptionProtocolsExpression)"/>
+    or with a URL containing: <sch:value-of select="$endpointDescriptionUrllExpression"/>,
+    or with function "information".
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.endpointdescriptionurl.mandatory-failure-fr" xml:lang="fr">
+    Encodez l'opération qui permet d'obtenir la description du service
+    avec un des protocoles suivants :  <sch:value-of select="concat(' ', $endpointDescriptionProtocolsExpression)"/>
+    ou une URL contenant : <sch:value-of select="$endpointDescriptionUrllExpression"/>,
+    ou avec la fonction "information".
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.endpointdescriptionurl.mandatory-success-en"
+                  xml:lang="en">
+    End point description URL found:<sch:value-of select="concat(' ', string-join($endpointDescriptionUrls, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.endpointdescriptionurl.mandatory-success-fr"
+                  xml:lang="fr">
+    URL(s) de la description du service encodées :<sch:value-of select="concat(' ', string-join($endpointDescriptionUrls, ', '))"/>.
+  </sch:diagnostic>
+
+  <sch:pattern>
+    <sch:title xml:lang="en">Service description operation URL is recommended.</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé de renseigner l'opération "description" du service</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+      <!--
+       // Encodez l'opération qui permet d'obtenir la description du service (GetCapabilities, WSDL, Swagger, Open API, Description…) avec la fonction "information"
+      -->
+
+      <sch:let name="endpointDescriptionUrllExpression"
+               value="'GetCapabilities|WSDL'"/>
+      <sch:let name="endpointDescriptionProtocolsExpression"
+               value="'OpenAPI|Swagger|GetCapabilities|WSDL|Description'"/>
+      <sch:let name="endpointDescriptionUrls"
+               value=".//*:containsOperations/*/*:connectPoint/*[
+                                matches(*:protocol/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionProtocolsExpression, 'i')
+                                or matches(*:linkage/(*:CharacterString|*:Anchor)/text(), $endpointDescriptionUrllExpression, 'i')
+                                or cit:function/*/@codeListValue = 'information']/(*:linkage|*:URL)/*/text()"/>
+
+      <sch:let name="hasOneOrMoreEndPointDescriptionUrls"
+               value="count($endpointDescriptionUrls) > 0"/>
+
+      <sch:assert test="$hasOneOrMoreEndPointDescriptionUrls"
+                  diagnostics="rule.dcatap.endpointdescriptionurl.mandatory-failure-en rule.dcatap.endpointdescriptionurl.mandatory-failure-fr"/>
+      <sch:report test="$hasOneOrMoreEndPointDescriptionUrls"
+                  diagnostics="rule.dcatap.endpointdescriptionurl.mandatory-success-en rule.dcatap.endpointdescriptionurl.mandatory-success-fr"/>
+
+
+    </sch:rule>
+  </sch:pattern>
+
+
+
+  <sch:diagnostic id="rule.dcatap.accessUrlProtocol.recommended-failure-en" xml:lang="en">
+    Declare the service protocol in an online resource.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.accessUrlProtocol.recommended-failure-fr" xml:lang="fr">
+    Déclarez le protocole du service dans une ressource en ligne.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.accessUrlProtocol.recommended-success-en"
+                  xml:lang="en">
+    Access URL protocol found:<sch:value-of select="concat(' ', string-join($accessUrlProtocolForService, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.accessUrlProtocol.recommended-success-fr"
+                  xml:lang="fr">
+    Protocole de l'URL d'accès au service encodé :<sch:value-of select="concat(' ', string-join($accessUrlProtocolForService, ', '))"/>.
+  </sch:diagnostic>
+
+
+  <sch:pattern>
+    <sch:title xml:lang="en">Service protocol is recommended.</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé de renseigner le protocole du service</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+
+      <!--
+      format : Ressource en ligne : il est recommandé de renseigner le protocole du service
+      // Déclarez le protocole du service dans une ressource en ligne
+      -->
+      <sch:let name="accessUrlProtocolForService"
+               value=".//*:onLine/*[
+                                not(
+                                        cit:function/*/@codeListValue = ('information', 'search', 'completeMetadata', 'browseGraphic', 'upload', 'emailService')
+                                        or (not(cit:function/*/@codeListValue) and matches(*:protocol/*/text(), 'WWW:LINK.*'))
+                                        )]/*:protocol/*/text()"/>
+
+      <sch:let name="hasOneOrMoreAccessUrlProtocolForService"
+               value="count($accessUrlProtocolForService) > 0"/>
+
+      <sch:assert test="$hasOneOrMoreAccessUrlProtocolForService"
+                  diagnostics="rule.dcatap.accessUrlProtocol.recommended-failure-en rule.dcatap.accessUrlProtocol.recommended-failure-fr"/>
+      <sch:report test="$hasOneOrMoreAccessUrlProtocolForService"
+                  diagnostics="rule.dcatap.accessUrlProtocol.recommended-success-en rule.dcatap.accessUrlProtocol.recommended-success-fr"/>
+
+    </sch:rule>
+  </sch:pattern>
+
+
+
+  <sch:diagnostic id="rule.dcatap.conformity.recommended-failure-en" xml:lang="en">
+    Add a declaration of compliance with specifications by referencing them with an anchor.
+    report specification to add one.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.conformity.recommended-failure-fr" xml:lang="fr">
+    Ajoutez une déclaration de conformité à des spécifications en les référençant avec une ancre.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.conformity.recommended-success-en"
+                  xml:lang="en">
+    Implementing rules or specifications found:<sch:value-of
+    select="concat(' ', string-join($implementingRules, ', '))"/>.
+  </sch:diagnostic>
+  <sch:diagnostic id="rule.dcatap.conformity.recommended-success-fr"
+                  xml:lang="fr">
+    Règles ou spécifications encodées :<sch:value-of select="concat(' ', string-join($implementingRules, ', '))"/>.
+  </sch:diagnostic>
+
+  <sch:pattern>
+    <sch:title xml:lang="en">Resource conformity is recommended.</sch:title>
+    <sch:title xml:lang="fr">Il est recommandé d'indiquer la conformité de la ressource à des spécifications.</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
+      <!--
+      conforms to : Il est recommandé d'indiquer la conformité de la ressource à des spécifications.
+      // Ajoutez une déclaration de conformité à des spécifications en les référençant avec une ancre.
+      -->
+
+      <sch:let name="implementingRules"
+               value="*:dataQualityInfo/*/*:report/*/*:result/*/*:specification/*/
+                                    *:title/*:Anchor/@xlink:href"/>
+      <sch:let name="hasOneOrMoreDataSpecConformity"
+               value="count($implementingRules) > 0"/>
+
+      <sch:assert test="$hasOneOrMoreDataSpecConformity"
+                  diagnostics="rule.dcatap.conformity.recommended-failure-en rule.dcatap.conformity.recommended-failure-fr"/>
+      <sch:report test="$hasOneOrMoreDataSpecConformity"
+                  diagnostics="rule.dcatap.conformity.recommended-success-en rule.dcatap.conformity.recommended-success-fr"/>
+
+    </sch:rule>
+  </sch:pattern>
+
 
 </sch:schema>
