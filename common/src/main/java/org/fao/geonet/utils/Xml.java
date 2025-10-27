@@ -623,6 +623,9 @@ public final class Xml {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode json = objectMapper.readTree(jsonAsString);
+
+            renameNumericProperties(json);
+
             String recordAsXml = XML.toString(
                 new JSONObject(
                     objectMapper.writeValueAsString(json)), "root");
@@ -640,6 +643,49 @@ public final class Xml {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    /**
+     * Recursively browse JSON node and rename all properties starting with number by prefixing with 'n_'.
+     */
+    private static void renameNumericProperties(JsonNode node) {
+        if (node == null) return;
+
+        if (node.isObject()) {
+            com.fasterxml.jackson.databind.node.ObjectNode obj = (com.fasterxml.jackson.databind.node.ObjectNode) node;
+
+            // Collect field names that start with a digit to avoid concurrent modification
+            List<String> fieldsToRename = new ArrayList<>();
+            Iterator<String> fieldNames = obj.fieldNames();
+            while (fieldNames.hasNext()) {
+                String name = fieldNames.next();
+                if (!name.isEmpty() && Character.isDigit(name.charAt(0))) {
+                    fieldsToRename.add(name);
+                }
+            }
+
+            // Rename collected fields
+            for (String oldName : fieldsToRename) {
+                JsonNode value = obj.get(oldName);
+                obj.remove(oldName);
+                obj.set("n_" + oldName, value);
+            }
+
+            // Recurse into remaining fields
+            Iterator<Map.Entry<String, JsonNode>> fields = obj.fields();
+            while (fields.hasNext()) {
+                Map.Entry<String, JsonNode> entry = fields.next();
+                renameNumericProperties(entry.getValue());
+            }
+
+        } else if (node.isArray()) {
+            com.fasterxml.jackson.databind.node.ArrayNode arr = (com.fasterxml.jackson.databind.node.ArrayNode) node;
+            for (int i = 0; i < arr.size(); i++) {
+                renameNumericProperties(arr.get(i));
+            }
+        }
+        // primitives / other node types: nothing to do
     }
 
     /**

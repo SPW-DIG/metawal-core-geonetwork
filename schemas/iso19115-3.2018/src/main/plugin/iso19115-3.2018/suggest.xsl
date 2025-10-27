@@ -21,6 +21,7 @@
   <xsl:include href="process/add-online-resource-from-atom.xsl"/>
   <xsl:include href="process/add-connectpoint-from-esrirest.xsl"/>
   <xsl:include href="process/mw-constraints-ccby.xsl"/>
+  <xsl:include href="process/mw-import-datamodel.xsl"/>
   <!--<xsl:include href="process/inspire-add-conformity.xsl"/>-->
 
   <xsl:variable name="processes">
@@ -40,6 +41,7 @@
     <p>spatineo-registration</p>
     <p>add-online-resource-from-atom</p>
     <p>mw-constraints-ccby</p>
+    <p>mw-import-datamodel</p>
     <!--<p>inspire-add-conformity</p>-->
   </xsl:variable>
 
