@@ -70,6 +70,35 @@
   </xsl:template>
 
 
+  <xsl:template mode="citation" match="citation[lower-case($format) = 'attribution']">
+    <xsl:variable name="hasAuthor"
+                  select="count(authorsNameAndOrgList/*) > 0"/>
+    <xsl:variable name="authorsAcronyms" as="node()*">
+      <xsl:for-each select="authorsNameAndOrgList/*">
+        <acronym>
+          <xsl:choose>
+            <xsl:when test="matches(., '.* \(.*\)')">
+              <xsl:value-of select="replace(., '.* \((.*)\)', '$1')"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="."/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </acronym>
+      </xsl:for-each>
+    </xsl:variable>
+
+    <textResponse><xsl:value-of select="normalize-space(concat(
+                                  (if ($hasAuthor)
+                                     then string-join($authorsAcronyms, ', ')
+                                     else ''),
+                                  (if (lastPublicationDate != '')
+                                    then concat(' (', substring(lastPublicationDate, 1, 4), ')')
+                                    else '')))"/>
+    </textResponse>
+  </xsl:template>
+
+
   <xsl:template mode="citation" match="citation[lower-case($format) = 'bibtex']">
     <!-- https://en.wikipedia.org/wiki/BibTeX -->
     <textResponse>@misc{<xsl:value-of select="uuid"/>,
