@@ -37,36 +37,41 @@
   <xsl:import href="process-utility.xsl"/>
 
   <xsl:param name="dataModelUrl" select="''" as="xs:string"/>
-  <xsl:param name="replaceExistingContentInfo" select="true()" as="xs:boolean"/>
+  <xsl:param name="replaceExistingContentInfo" select="false()" as="xs:boolean"/>
 
   <xsl:variable name="datamodel-registration-loc">
-    <msg id="a" xml:lang="eng">Import data model from JSON specification.</msg>
-    <msg id="a" xml:lang="fre">Importer le modèle de données à partir du format JSON.</msg>
+    <msg id="a" xml:lang="eng">Import data model from JSON specification: </msg>
+    <msg id="a" xml:lang="fre">Importer le modèle de données à partir du format JSON : </msg>
   </xsl:variable>
 
   <xsl:template name="list-mw-import-datamodel">
     <suggestion process="mw-import-datamodel"/>
   </xsl:template>
 
+  <xsl:variable name="jsonDataModelSpec"
+                select="//mdb:contentInfo/*/mrc:featureCatalogueCitation/*/cit:onlineResource/*/cit:linkage/gco:CharacterString[ends-with(., '.json')]"/>
+
   <xsl:template name="analyze-mw-import-datamodel">
     <xsl:param name="root"/>
 
-    <xsl:variable name="id"
-                  select="generate-id(.)"/>
+    <xsl:if test="normalize-space($jsonDataModelSpec)">
+      <xsl:variable name="id"
+                    select="generate-id(.)"/>
 
-    <suggestion process="mw-import-datamodel"
-                id="{concat($id, '-', position())}"
-                category="contentinfo"
-                target="metadata">
-      <name>
-        <xsl:value-of select="geonet:i18n($datamodel-registration-loc, 'a', $guiLang)"/>
-      </name>
-      <operational>true</operational>
-      <params>{"dataModelUrl":{
-        "type":"string",
-        "defaultValue":"https://metawal.wallonie.be/geonetwork/srv/api/records/1b7fec23-6908-4c8c-88ed-7046bdbe4ff6/attachments/AC_TS.json"}
-        }</params>
-    </suggestion>
+      <suggestion process="mw-import-datamodel"
+                  id="{concat($id, '-', position())}"
+                  category="contentinfo"
+                  target="metadata">
+        <name>
+          <xsl:value-of select="geonet:i18n($datamodel-registration-loc, 'a', $guiLang)"/><xsl:value-of select="$jsonDataModelSpec"/>
+        </name>
+        <operational>true</operational>
+        <params>{"dataModelUrl":{
+          "type":"string",
+          "defaultValue":"<xsl:value-of select="$jsonDataModelSpec"/>"}
+          }</params>
+      </suggestion>
+    </xsl:if>
   </xsl:template>
 
 
@@ -103,12 +108,8 @@
                 mdb:metadataExtensionInfo|
                 mdb:identificationInfo"/>
 
-      <xsl:copy-of select="geonet:make-iso19115-3.2018-featurecatalogue-from-mwdatamodel($dataModelUrl)"/>
+      <xsl:copy-of select="geonet:make-iso19115-3.2018-featurecatalogue-from-mwdatamodel($dataModelUrl, ., $replaceExistingContentInfo)"/>
 
-      <xsl:if test="not($replaceExistingContentInfo)">
-        <xsl:apply-templates
-          select="mdb:contentInfo"/>
-      </xsl:if>
 
       <xsl:apply-templates
         select="
@@ -129,13 +130,22 @@
   <!-- eg.
   https://metawal.wallonie.be/geonetwork/srv/api/records/1b7fec23-6908-4c8c-88ed-7046bdbe4ff6/attachments/AC_TS.json
    -->
-  <xsl:function name="geonet:make-iso19115-3.2018-featurecatalogue-from-mwdatamodel" as="node()?">
+  <xsl:function name="geonet:make-iso19115-3.2018-featurecatalogue-from-mwdatamodel" as="node()*">
     <xsl:param name="dataModelUrl" as="xs:string"/>
+    <xsl:param name="metadata" as="node()"/>
+    <xsl:param name="replaceExistingContentInfo" as="xs:boolean"/>
 
     <!-- Get JSON spec as XM -->
     <xsl:variable name="dataModelSpec"
                   select="util:downloadJsonAsXML($dataModelUrl)"/>
 
+    <xsl:if test="not($replaceExistingContentInfo)">
+      <xsl:for-each select="$metadata/mdb:contentInfo[
+                                                    not(*/mrc:featureCatalogue/*/gfc:identifier/*/mcc:code/gco:CharacterString)
+                                                    or */mrc:featureCatalogue/*/gfc:identifier/*/mcc:code/gco:CharacterString != $dataModelSpec/root/guid]">
+        <xsl:apply-templates select="."/>
+      </xsl:for-each>
+    </xsl:if>
 
     <xsl:choose>
       <xsl:when test="$dataModelSpec">
@@ -143,39 +153,117 @@
           <mrc:MD_FeatureCatalogue>
             <mrc:featureCatalogue>
               <gfc:FC_FeatureCatalogue>
-                <xsl:for-each select="distinct-values($dataModelSpec//encoding)">
+                <xsl:for-each select="$dataModelSpec/root/full_name">
+                  <cat:name>
+                    <gco:CharacterString><xsl:value-of select="current()"/></gco:CharacterString>
+                  </cat:name>
+                </xsl:for-each>
+                <xsl:for-each select="$dataModelSpec/root/version">
+                  <cat:versionNumber>
+                    <gco:CharacterString><xsl:value-of select="current()"/></gco:CharacterString>
+                  </cat:versionNumber>
+                </xsl:for-each>
+
+                <xsl:variable name="now" select="format-date(current-date(), '[Y0001]-[M01]-[D01]')"/>
+
+                <xsl:for-each select="($dataModelSpec/root/version_date, $now)[1]">
+                  <cat:versionDate>
+                    <gco:Date><xsl:value-of select="current()"/></gco:Date>
+                  </cat:versionDate>
+                </xsl:for-each>
+                <xsl:for-each select="distinct-values($dataModelSpec//root/encoding)">
                   <cat:characterSet>
                     <lan:MD_CharacterSetCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode"
                                              codeListValue="{if (current() = 'UTF-8') then 'utf8' else current()}"/>
                   </cat:characterSet>
                 </xsl:for-each>
-                <gfc:producer></gfc:producer>
+                <xsl:for-each select="$dataModelSpec/root/guid">
+                  <gfc:identifier>
+                    <mcc:MD_Identifier>
+                      <mcc:code>
+                        <gco:CharacterString><xsl:value-of select="current()"/></gco:CharacterString>
+                      </mcc:code>
+                    </mcc:MD_Identifier>
+                  </gfc:identifier>
+                </xsl:for-each>
+                <gfc:producer>
+                  <cit:CI_Responsibility>
+                    <cit:role>
+                      <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                                       codeListValue="author"/>
+                    </cit:role>
+                    <cit:party>
+                      <cit:CI_Organisation>
+                        <cit:name gco:nilReason="missing">
+                          <gco:CharacterString/>
+                        </cit:name>
+                      </cit:CI_Organisation>
+                    </cit:party>
+                  </cit:CI_Responsibility>
+                </gfc:producer>
                     <xsl:for-each select="$dataModelSpec//layers">
                       <gfc:featureType>
                         <gfc:FC_FeatureType>
-                          <gfc:typeName><xsl:value-of select="name"/> </gfc:typeName>
+                          <xsl:for-each select="(alias, name)[1]">
+                            <gfc:typeName><xsl:value-of select="current()"/> </gfc:typeName>
+                          </xsl:for-each>
+                          <xsl:for-each select="semantic_description">
+                            <gfc:definition>
+                              <gco:CharacterString><xsl:value-of select="current()"/></gco:CharacterString>
+                            </gfc:definition>
+                          </xsl:for-each>
+                          <xsl:for-each select="(name, alias)[1]">
+                            <gfc:code>
+                              <gco:CharacterString><xsl:value-of select="current()"/></gco:CharacterString>
+                            </gfc:code>
+                          </xsl:for-each>
                           <gfc:isAbstract>
                             <gco:Boolean>false</gco:Boolean>
                           </gfc:isAbstract>
+
+                          <xsl:if test="spatial = 'true'">
+                            <gfc:carrierOfCharacteristics>
+                              <gfc:FC_FeatureAttribute>
+                              <gfc:memberName><xsl:value-of select="'GEOMETRY'"/></gfc:memberName>
+                              <gfc:definition>
+                                <gco:CharacterString>
+                                  <xsl:value-of select="geometry_description"/>
+                                </gco:CharacterString>
+                              </gfc:definition>
+                              <gfc:cardinality>
+                                <gco:CharacterString>
+                                  <xsl:value-of select="if(mandatory) then '1..1' else '1..0'"/>
+                                </gco:CharacterString>
+                              </gfc:cardinality>
+                              <gfc:designation>
+                                <gco:CharacterString></gco:CharacterString>
+                              </gfc:designation>
+                              <gfc:code>
+                                <gco:CharacterString><xsl:value-of select="'GEOMETRY'"/></gco:CharacterString>
+                              </gfc:code>
+                              <gfc:valueType>
+                                <gco:TypeName>
+                                  <gco:aName>
+                                    <gco:CharacterString>
+                                      <xsl:value-of select="concat(geometry_type, (if (n_3d = 'true') then ' - 3D' else ''), (if (linear_referencing_system = 'true') then ' - LRS' else ''), (if (crs != '') then concat(' (', crs, ')') else ''))"/>
+                                    </gco:CharacterString>
+                                  </gco:aName>
+                                </gco:TypeName>
+                              </gfc:valueType>
+                              </gfc:FC_FeatureAttribute>
+                            </gfc:carrierOfCharacteristics>
+                          </xsl:if>
+
                           <xsl:for-each select="attributes">
                             <gfc:carrierOfCharacteristics>
                               <gfc:FC_FeatureAttribute>
-                                <xsl:for-each select="(mandatory|stable|unique|encoding)">
-                                  <gfc:constrainedBy>
-                                    <gfc:FC_Constraint>
-                                      <gfc:description>
-                                        <gco:CharacterString><xsl:value-of select="concat(name(), ' : ', .)"/></gco:CharacterString>
-                                      </gfc:description>
-                                    </gfc:FC_Constraint>
-                                  </gfc:constrainedBy>
-                                </xsl:for-each>
-
                                 <gfc:memberName><xsl:value-of select="name"/></gfc:memberName>
                                 <gfc:definition>
                                   <gco:CharacterString><xsl:value-of select="description"/></gco:CharacterString>
                                 </gfc:definition>
                                 <gfc:cardinality>
                                   <gco:CharacterString>
+                                    <xsl:value-of select="if(mandatory) then '1..1' else '1..0'"/>
                                   </gco:CharacterString>
                                 </gfc:cardinality>
                                 <gfc:designation>
