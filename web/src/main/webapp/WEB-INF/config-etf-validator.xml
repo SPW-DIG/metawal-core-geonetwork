@@ -77,6 +77,35 @@
         <value>Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records.</value>
         <value>Conformance Class 3: INSPIRE Spatial Data Service baseline metadata.</value>
         <value>Conformance Class 4: INSPIRE Network Services metadata.</value>
+      </array>
+    </entry>
+    <entry key="TG version 2.0 - Network services (for Monitoring)">
+      <array value-type="java.lang.String">
+        <value>Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records.</value>
+        <value>Conformance Class 3: INSPIRE Spatial Data Service baseline metadata.</value>
+        <value>Conformance Class 4: INSPIRE Network Services metadata.</value>
+        <value>Conformance Class 4.b: INSPIRE Network Services metadata for Monitoring.</value>
+      </array>
+    </entry>
+    <entry key="TG version 2.0 - Spatial data services">
+      <array value-type="java.lang.String">
+        <value>Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records.</value>
+        <value>Conformance Class 3: INSPIRE Spatial Data Service baseline metadata.</value>
+        <value>Conformance Class 5: INSPIRE Invocable Spatial Data Services metadata.</value>
+      </array>
+    </entry>
+    <entry key="TG version 2.0 - Spatial data services (Interoperable)">
+      <array value-type="java.lang.String">
+        <value>Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records.</value>
+        <value>Conformance Class 3: INSPIRE Spatial Data Service baseline metadata.</value>
+        <value>Conformance Class 5: INSPIRE Invocable Spatial Data Services metadata.</value>
+        <value>Conformance Class 6: INSPIRE Interoperable Spatial Data Services metadata.</value>
+      </array>
+    </entry>
+    <entry key="TG version 2.0 - Spatial data services (harmonised)">
+      <array value-type="java.lang.String">
+        <value>Common Requirements for ISO/TC 19139:2007 based INSPIRE metadata records.</value>
+        <value>Conformance Class 3: INSPIRE Spatial Data Service baseline metadata.</value>
         <value>Conformance Class 5: INSPIRE Invocable Spatial Data Services metadata.</value>
         <value>Conformance Class 6: INSPIRE Interoperable Spatial Data Services metadata.</value>
         <value>Conformance Class 7: INSPIRE Harmonised Spatial Data Services metadata.</value>
