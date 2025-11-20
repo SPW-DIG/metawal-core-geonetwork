@@ -222,36 +222,53 @@
                           </gfc:isAbstract>
 
                           <xsl:if test="spatial = 'true'">
-                            <gfc:carrierOfCharacteristics>
-                              <gfc:FC_FeatureAttribute>
-                              <gfc:memberName><xsl:value-of select="'GEOMETRY'"/></gfc:memberName>
-                              <gfc:definition>
-                                <gco:CharacterString>
-                                  <xsl:value-of select="geometry_description"/>
-                                </gco:CharacterString>
-                              </gfc:definition>
-                              <gfc:cardinality>
-                                <gco:CharacterString>
-                                  <xsl:value-of select="if(mandatory) then '1..1' else '1..0'"/>
-                                </gco:CharacterString>
-                              </gfc:cardinality>
-                              <gfc:designation>
-                                <gco:CharacterString></gco:CharacterString>
-                              </gfc:designation>
-                              <gfc:code>
-                                <gco:CharacterString><xsl:value-of select="'GEOMETRY'"/></gco:CharacterString>
-                              </gfc:code>
-                              <gfc:valueType>
-                                <gco:TypeName>
-                                  <gco:aName>
-                                    <gco:CharacterString>
-                                      <xsl:value-of select="concat(geometry_type, (if (n_3d = 'true') then ' - 3D' else ''), (if (linear_referencing_system = 'true') then ' - LRS' else ''), (if (crs != '') then concat(' (', crs, ')') else ''))"/>
-                                    </gco:CharacterString>
-                                  </gco:aName>
-                                </gco:TypeName>
-                              </gfc:valueType>
-                              </gfc:FC_FeatureAttribute>
-                            </gfc:carrierOfCharacteristics>
+                            <xsl:variable name="geomAsColumn" select="false()"/>
+
+                            <xsl:choose>
+                              <xsl:when test="$geomAsColumn">
+                                <gfc:carrierOfCharacteristics>
+                                  <gfc:FC_FeatureAttribute>
+                                    <gfc:memberName><xsl:value-of select="'GEOMETRY'"/></gfc:memberName>
+                                    <gfc:definition>
+                                      <gco:CharacterString>
+                                        <xsl:value-of select="geometry_description"/>
+                                      </gco:CharacterString>
+                                    </gfc:definition>
+                                    <gfc:cardinality>
+                                      <gco:CharacterString>
+                                        <xsl:value-of select="if(mandatory) then '1..1' else '0..1'"/>
+                                      </gco:CharacterString>
+                                    </gfc:cardinality>
+                                    <gfc:designation>
+                                      <gco:CharacterString></gco:CharacterString>
+                                    </gfc:designation>
+                                    <gfc:code>
+                                      <gco:CharacterString><xsl:value-of select="'GEOMETRY'"/></gco:CharacterString>
+                                    </gfc:code>
+                                    <gfc:valueType>
+                                      <gco:TypeName>
+                                        <gco:aName>
+                                          <gco:CharacterString>
+                                            <xsl:value-of select="concat(geometry_type, (if (n_3d = 'true') then ' - 3D' else ''), (if (linear_referencing_system = 'true') then ' - LRS' else ''), (if (crs != '') then concat(' (', crs, ')') else ''))"/>
+                                          </gco:CharacterString>
+                                        </gco:aName>
+                                      </gco:TypeName>
+                                    </gfc:valueType>
+                                  </gfc:FC_FeatureAttribute>
+                                </gfc:carrierOfCharacteristics>
+                              </xsl:when>
+                              <xsl:otherwise>
+                                <gfc:designation>
+                                  <gco:CharacterString>
+                                    * Type de table : Spatial
+                                    * Type de géométrie : <xsl:value-of select="geometry_type"/>
+                                    * Description : <xsl:value-of select="geometry_description"/>
+                                    * 3D : <xsl:value-of select="n_3d"/>
+                                    * LRS : <xsl:value-of select="linear_referencing_system"/>
+                                  </gco:CharacterString>
+                                </gfc:designation>
+                              </xsl:otherwise>
+                            </xsl:choose>
                           </xsl:if>
 
                           <xsl:for-each select="attributes">
