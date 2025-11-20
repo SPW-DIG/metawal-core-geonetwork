@@ -400,6 +400,7 @@
     "featureType": "Type d’entité",
     "featureTypeName": "Nom",
     "featureDefinition": "Définition",
+    "featureDesignation": "Désignation",
     "featureCode": "Code",
     "featureIsAbstract": "Classe abstraite",
     "featureAliases": "Alias",

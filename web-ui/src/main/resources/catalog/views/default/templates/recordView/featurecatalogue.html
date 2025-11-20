@@ -39,6 +39,10 @@
         <th data-translate="">featureDefinition</th>
         <td>{{featureType.definition}}</td>
       </tr>
+      <tr data-ng-if="featureType.designation">
+        <th data-translate="">featureDesignation</th>
+        <td data-ng-bind-html="featureType.designation | newlines"></td>
+      </tr>
       <tr data-ng-if="featureType.code">
         <th data-translate="">featureCode</th>
         <td>{{featureType.code}}</td>
