@@ -38,7 +38,7 @@
   <xsl:template match="gmd:resourceConstraints/*/gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue[. = 'license']">
     <xsl:attribute name="codeListValue" select="'otherRestrictions'"/>
   </xsl:template>
-
+  
   <!-- Remove geonet:* elements. -->
   <xsl:template match="gn:*" priority="2"/>
 
