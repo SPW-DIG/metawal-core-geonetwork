@@ -433,8 +433,8 @@
 
 
   <sch:pattern id="L'opération access point du service est défine">
-    <sch:title xml:lang="en">Online resource: the service address MUST be provided</sch:title>
-    <sch:title xml:lang="fr">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
+    <sch:title xml:lang="en">Operates on: The service address MUST be provided</sch:title>
+    <sch:title xml:lang="fr">Opération : Le point d'accès du service DOIT être renseigné</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
 
