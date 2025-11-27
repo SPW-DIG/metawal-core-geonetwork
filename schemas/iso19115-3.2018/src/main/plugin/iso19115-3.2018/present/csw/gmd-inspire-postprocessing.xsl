@@ -29,10 +29,13 @@
                    select="concat(., '/formatters/iso19139?output=xml')"/>
   </xsl:template>
 
-  <xsl:template match="gmd:resourceConstraints/*/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue[. ='unrestricted']">
+  <xsl:template match="gmd:resourceConstraints/*/gmd:accessConstraints/gmd:MD_RestrictionCode/@codeListValue[. = 'unrestricted']">
     <xsl:attribute name="codeListValue" select="'otherRestrictions'"/>
   </xsl:template>
-  <xsl:template match="gmd:resourceConstraints/*/gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue[. ='licenceUnrestricted']">
+  <xsl:template match="gmd:resourceConstraints/*/gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue[. = 'licenceUnrestricted']">
+    <xsl:attribute name="codeListValue" select="'otherRestrictions'"/>
+  </xsl:template>
+  <xsl:template match="gmd:resourceConstraints/*/gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue[. = 'license']">
     <xsl:attribute name="codeListValue" select="'otherRestrictions'"/>
   </xsl:template>
 
