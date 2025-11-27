@@ -38,7 +38,11 @@
   <xsl:template match="gmd:resourceConstraints/*/gmd:useConstraints/gmd:MD_RestrictionCode/@codeListValue[. = 'license']">
     <xsl:attribute name="codeListValue" select="'otherRestrictions'"/>
   </xsl:template>
-  
+
+  <!-- Some DQ section only contains reports about Spatineo which are mapped to online resources.
+  Those section may end-up being empty with only a scope element. Removing them. -->
+  <xsl:template match="gmd:dataQualityInfo[count(*/*[name() != 'gmd:scope']) = 0]"/>
+
   <!-- Remove geonet:* elements. -->
   <xsl:template match="gn:*" priority="2"/>
 
