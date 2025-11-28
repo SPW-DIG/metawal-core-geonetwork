@@ -236,7 +236,7 @@
                                     </gfc:definition>
                                     <gfc:cardinality>
                                       <gco:CharacterString>
-                                        <xsl:value-of select="if(mandatory) then '1..1' else '0..1'"/>
+                                        <xsl:value-of select="if(mandatory = 'true') then '1..1' else '0..1'"/>
                                       </gco:CharacterString>
                                     </gfc:cardinality>
                                     <gfc:designation>
@@ -280,7 +280,7 @@
                                 </gfc:definition>
                                 <gfc:cardinality>
                                   <gco:CharacterString>
-                                    <xsl:value-of select="if(mandatory) then '1..1' else '1..0'"/>
+                                    <xsl:value-of select="if(mandatory = 'true') then '1..1' else '1..0'"/>
                                   </gco:CharacterString>
                                 </gfc:cardinality>
                                 <gfc:designation>
