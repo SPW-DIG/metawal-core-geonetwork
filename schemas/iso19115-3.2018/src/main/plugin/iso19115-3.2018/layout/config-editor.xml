@@ -490,6 +490,7 @@
     <name>mdq:result</name>
     <name>mrd:distributionFormat</name>
     <name>mrd:onLine</name>
+    <name>mrd:transferOptions</name>
     <name>mri:associatedResource</name>
     <name>mri:descriptiveKeywords</name>
     <name>mri:resourceSpecificUsage</name>
@@ -1048,8 +1049,8 @@
 
       <tab id="default" default="true" mode="flat">
         <section xpath="/mdb:MD_Metadata/mdb:identificationInfo" collapsible="false"/>
-        <section xpath="/mdb:MD_Metadata/mdb:contentInfo" collapsible="false"/>
-        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>
+<!--        <section xpath="/mdb:MD_Metadata/mdb:contentInfo" collapsible="false"/>-->
+<!--        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>-->
         <section xpath="/mdb:MD_Metadata/mdb:dataQualityInfo"/>
         <section xpath="/mdb:MD_Metadata/mdb:resourceLineage"/>
         <section xpath="/mdb:MD_Metadata/mdb:spatialRepresentationInfo"/>
@@ -2483,12 +2484,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/aa">INSPIRE Data Specification on Addresses - Guidelines v 3.1.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/aa">INSPIRE Data Specification on Addresses – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2516,12 +2517,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/au">INSPIRE Data Specification on Administrative units - Guidelines v 3.1.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/au">INSPIRE Data Specification on Administrative units – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2549,12 +2550,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/cp">INSPIRE Data Specification on Cadastral parcels - Guidelines v 3.1.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/cp">INSPIRE Data Specification on Cadastral parcels – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2582,12 +2583,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/rs">INSPIRE Data Specification on Coordinate reference systems - Guidelines v 3.2.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/rs">INSPIRE Data Specification on Coordinate reference systems – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2615,12 +2616,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/gg">INSPIRE Data Specification on Geographical grid systems - Guidelines v 3.1.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/gg">INSPIRE Data Specification on Geographical grid systems – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2023-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2648,12 +2649,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/gn">INSPIRE Data Specification on Geographical names - Guidelines v 3.1.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/gn">INSPIRE Data Specification on Geographical names – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2681,12 +2682,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hy">INSPIRE Data Specification on Hydrography - Guidelines v 3.1.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hy">INSPIRE Data Specification on Hydrography – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2714,12 +2715,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ps">INSPIRE Data Specification on Protected Sites - Guidelines v 3.2.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ps">INSPIRE Data Specification on Protected Sites – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2747,12 +2748,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/tn">INSPIRE Data Specification on Transport Networks - Guidelines v 3.2.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/tn">INSPIRE Data Specification on Transport Networks – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2014-04-17</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2780,12 +2781,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/el">INSPIRE Data Specification on Elevation - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/el">INSPIRE Data Specification on Elevation – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2813,12 +2814,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ge">INSPIRE Data Specification on Geology - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ge">INSPIRE Data Specification on Geology – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2846,12 +2847,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/lc">INSPIRE Data Specification on Land Cover - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/lc">INSPIRE Data Specification on Land Cover – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2879,12 +2880,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/oi">INSPIRE Data Specification on Orthoimagery - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/oi">INSPIRE Data Specification on Orthoimagery – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2912,12 +2913,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/af">INSPIRE Data Specification on Agricultural and Aquaculture Facilities - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/af">INSPIRE Data Specification on Agricultural and Aquaculture Facilities – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2945,12 +2946,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/am">INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/am">INSPIRE Data Specification on Area Management/Restriction/Regulation Zones and Reporting Units – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2025-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -2978,12 +2979,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ac">INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ac">INSPIRE Data Specification on Atmospheric Conditions and Meteorological Geographical Features – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3011,12 +3012,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/br">INSPIRE Data Specification on Bio-geographical Regions - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/br">INSPIRE Data Specification on Bio-geographical Regions – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3044,12 +3045,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/bu">INSPIRE Data Specification on Buildings - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/bu">INSPIRE Data Specification on Buildings – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3077,12 +3078,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/er">INSPIRE Data Specification on Energy Resources - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/er">INSPIRE Data Specification on Energy Resources – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3110,12 +3111,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ef">INSPIRE Data Specification on Environmental Monitoring Facilities - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/ef">INSPIRE Data Specification on Environmental Monitoring Facilities – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3143,12 +3144,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hb">INSPIRE Data Specification on Habitats and Biotopes - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hb">INSPIRE Data Specification on Habitats and Biotopes – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3176,12 +3177,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hh">INSPIRE Data Specification on Human Health and Safety - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/hh">INSPIRE Data Specification on Human Health and Safety – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3209,12 +3210,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/lu">INSPIRE Data Specification on Land Use - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/lu">INSPIRE Data Specification on Land Use – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3242,12 +3243,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/mr">INSPIRE Data Specification on Mineral Resources - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/mr">INSPIRE Data Specification on Mineral Resources – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3275,12 +3276,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/nz">INSPIRE Data Specification on Natural Risk Zones - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/nz">INSPIRE Data Specification on Natural Risk Zones – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3308,12 +3309,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/of">INSPIRE Data Specification on Oceanographic geographical features - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/of">INSPIRE Data Specification on Oceanographic geographical features – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3341,12 +3342,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/pf">INSPIRE Data Specification on Production and Industrial Facilities - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/pf">INSPIRE Data Specification on Production and Industrial Facilities – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3374,12 +3375,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/pd">INSPIRE Data Specification on Population Distribution - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/pd">INSPIRE Data Specification on Population Distribution – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3407,12 +3408,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/sr">INSPIRE Data Specification on Sea Regions - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/sr">INSPIRE Data Specification on Sea Regions – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-07-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3440,12 +3441,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/so">INSPIRE Data Specification on Soil - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/so">INSPIRE Data Specification on Soil – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3473,12 +3474,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/sd">INSPIRE Data Specification on Species Distribution - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/sd">INSPIRE Data Specification on Species Distribution – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3506,12 +3507,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/su">INSPIRE Data Specification on Statistical Units - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/su">INSPIRE Data Specification on Statistical Units – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
@@ -3539,12 +3540,12 @@
                         <mdq:specification>
                           <cit:CI_Citation>
                             <cit:title>
-                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/us">INSPIRE Data Specification on Utility and Government Services - Guidelines v 3.0.0</gcx:Anchor>
+                              <gcx:Anchor xlink:href="https://inspire.ec.europa.eu/id/document/us">INSPIRE Data Specification on Utility and Government Services – Technical Guidelines</gcx:Anchor>
                             </cit:title>
                             <cit:date>
                               <cit:CI_Date>
                                 <cit:date>
-                                  <gco:Date>2013-12-10</gco:Date>
+                                  <gco:Date>2024-01-31</gco:Date>
                                 </cit:date>
                                 <cit:dateType>
                                   <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" />
