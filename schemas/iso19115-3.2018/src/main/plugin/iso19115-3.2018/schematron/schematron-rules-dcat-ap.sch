@@ -432,7 +432,7 @@
 
 
 
-  <sch:pattern id="L'opération access point du service est défine">
+  <sch:pattern id="Le point d'accès du service DOIT être renseigné">
     <sch:title xml:lang="en">Operates on: The service address MUST be provided</sch:title>
     <sch:title xml:lang="fr">Opération : Le point d'accès du service DOIT être renseigné</sch:title>
     <sch:rule
@@ -466,7 +466,15 @@
                   diagnostics="rule.hvd.endpointurl.mandatory-failure-en rule.hvd.endpointurl.mandatory-failure-fr"/>
       <sch:report test="$hasOneOrMoreEndPointUrls"
                   diagnostics="rule.hvd.endpointurl.mandatory-success-en rule.hvd.endpointurl.mandatory-success-fr"/>
+    </sch:rule>
+  </sch:pattern>
 
+
+  <sch:pattern id="l'adresse du service DOIT être renseignée">
+    <sch:title xml:lang="en">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
+    <sch:title xml:lang="fr">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
+    <sch:rule
+      context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
 
       <!--
       access URL : Ressource en ligne : l'adresse du service DOIT être renseignée // Déclarez l'adresse de connexion du service dans une ressource en ligne
