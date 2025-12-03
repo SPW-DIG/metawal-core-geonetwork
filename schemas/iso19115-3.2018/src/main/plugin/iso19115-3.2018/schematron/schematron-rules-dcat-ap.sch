@@ -414,11 +414,9 @@
 
 
   <sch:diagnostic id="rule.hvd.accessUrl.mandatory-failure-en" xml:lang="en">
-    Online resource: the service access URL address MUST be provided.
     Declare the service connection address in an online resource.
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.accessUrl.mandatory-failure-fr" xml:lang="fr">
-    Ressource en ligne : l'adresse d'accès au service DOIT être renseignée.
     Déclarez l'adresse de connexion du service dans une ressource en ligne
   </sch:diagnostic>
   <sch:diagnostic id="rule.hvd.accessUrl.mandatory-success-en"
