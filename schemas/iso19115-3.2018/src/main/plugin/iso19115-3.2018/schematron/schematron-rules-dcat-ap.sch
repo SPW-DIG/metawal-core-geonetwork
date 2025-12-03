@@ -469,7 +469,7 @@
 
 
   <sch:pattern id="l'adresse du service DOIT être renseignée">
-    <sch:title xml:lang="en">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
+    <sch:title xml:lang="en">Online resource: the service access URL address MUST be provided.</sch:title>
     <sch:title xml:lang="fr">Ressource en ligne : l'adresse du service DOIT être renseignée</sch:title>
     <sch:rule
       context="//*:MD_Metadata[(*:metadataScope/*/*:resourceScope|*:hierarchyLevel)/*/@codeListValue = 'service']">
