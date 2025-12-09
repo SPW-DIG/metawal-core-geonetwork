@@ -80,7 +80,7 @@ public class ShaclValidationService {
     }
 
     public List<String> getShaclValidationFiles() {
-        Path shaclRulesFolder = dataDirectory.getConfigDir().resolve("shacl");
+        Path shaclRulesFolder = dataDirectory.getShaclDir();
         try (Stream<Path> paths = java.nio.file.Files.walk(shaclRulesFolder)) {
             return paths.filter(path -> path.toString().endsWith(".ttl"))
                 .map(path -> shaclRulesFolder.relativize(path).toString())

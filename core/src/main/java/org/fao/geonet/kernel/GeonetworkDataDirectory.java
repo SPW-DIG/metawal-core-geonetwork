@@ -713,6 +713,15 @@ public class GeonetworkDataDirectory {
     }
 
     /**
+     * Get the directory containing the shacl files.
+     *
+     * @return the directory containing the shacl files.
+     */
+    public Path getShaclDir(){
+        return getWebappDir().resolve("WEB-INF").resolve("config").resolve("shacl");
+    }
+
+    /**
      * Get directory for caching html data.
      *
      * @return directory for caching html data.
