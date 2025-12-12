@@ -322,6 +322,11 @@
 
   <xsl:template match="mrd:onLine" priority="1000">
 
+    <!-- Add other online resources first -->
+    <gmd:onLine>
+      <xsl:apply-templates select="*"/>
+    </gmd:onLine>
+
     <!-- Add a new distribution section after existing one with
     documents referenced in other sections of the record. -->
     <xsl:if test="$mergeAllOnlineResourcesInDistribution and position() = 1">
@@ -345,13 +350,14 @@
         <xsl:for-each select="ancestor::mdb:MD_Metadata/descendant::*[
             local-name() = $functionMap/entry/@key
             ]/*[cit:onlineResource/*/cit:linkage/gco2:CharacterString != '']">
+
           <gmd:onLine>
             <gmd:CI_OnlineResource>
               <gmd:linkage>
                 <xsl:apply-templates select="cit:onlineResource/cit:CI_OnlineResource/cit:linkage/gco2:CharacterString"/>
               </gmd:linkage>
               <gmd:protocol>
-                <gco:CharacterString>WWW:LINK-1.0-http--link</gco:CharacterString>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
               </gmd:protocol>
 
               <xsl:call-template name="writeCharacterStringElement">
@@ -384,9 +390,6 @@
       </xsl:if>
     </xsl:if>
 
-    <gmd:onLine>
-      <xsl:apply-templates select="*"/>
-    </gmd:onLine>
   </xsl:template>
 
   <xsl:template match="mdb:distributionInfo">
