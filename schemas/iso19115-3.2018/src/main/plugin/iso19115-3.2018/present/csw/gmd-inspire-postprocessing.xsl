@@ -43,6 +43,9 @@
   Those section may end-up being empty with only a scope element. Removing them. -->
   <xsl:template match="gmd:dataQualityInfo[count(*/*[name() != 'gmd:scope']) = 0]"/>
 
+  <!-- Remove feature catalogue description. -->
+  <xsl:template match="gmd:contentInfo[gmd:MD_FeatureCatalogueDescription]"/>
+
   <!-- Remove geonet:* elements. -->
   <xsl:template match="gn:*" priority="2"/>
 
