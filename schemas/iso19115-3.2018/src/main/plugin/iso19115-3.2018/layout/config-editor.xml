@@ -1050,7 +1050,7 @@
       <tab id="default" default="true" mode="flat">
         <section xpath="/mdb:MD_Metadata/mdb:identificationInfo" collapsible="false"/>
 <!--        <section xpath="/mdb:MD_Metadata/mdb:contentInfo" collapsible="false"/>-->
-<!--        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>-->
+        <section xpath="/mdb:MD_Metadata/mdb:distributionInfo"/>
         <section xpath="/mdb:MD_Metadata/mdb:dataQualityInfo"/>
         <section xpath="/mdb:MD_Metadata/mdb:resourceLineage"/>
         <section xpath="/mdb:MD_Metadata/mdb:spatialRepresentationInfo"/>
