@@ -125,7 +125,7 @@
           </execution>
           <!--   Build datahub app   -->
           <execution>
-            <id>npm-build</id>
+            <id>npm-build-datahub</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>npm</goal>
@@ -141,6 +141,23 @@
               <installDirectory>${basedir}</installDirectory>
             </configuration>
           </execution>
+          <execution>
+            <id>npm-build-metadata-editor</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <environmentVariables>
+                <NX_DAEMON>false</NX_DAEMON>
+              </environmentVariables>
+              <arguments>
+                run nx -- build metadata-editor --base-href=./
+              </arguments>
+              <workingDirectory>geonetwork-ui</workingDirectory>
+              <installDirectory>${basedir}</installDirectory>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
 
@@ -149,7 +166,7 @@
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
-            <id>copy-resources</id>
+            <id>copy-datahub</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -161,6 +178,31 @@
               <resources>
                 <resource>
                   <directory>geonetwork-ui/dist/apps/datahub</directory>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>geonetwork-ui</directory>
+                  <includes>
+                    <include>package.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-metadata-editor</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <overwrite>true</overwrite>
+              <encoding>UTF-8</encoding>
+              <outputDirectory>target/resources/metadata-editor</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>geonetwork-ui/dist/apps/metadata-editor</directory>
                   <filtering>false</filtering>
                 </resource>
               </resources>

@@ -1,6 +1,6 @@
 # Datahub Module
 
-Dathub module is integrated with maven build environment, making use of the following build locations:
+Datahub module is integrated with maven build environment, making use of the following build locations:
 
 - ``node`` - geonetwork-ui build environment
 - ``geonetwork-ui`` - submodule used to build geonetwork-ui locally, often a tag
@@ -12,4 +12,4 @@ A successful build result is assembled into ``target/gn-datahub-integration-4.4.
 
 The ``node`` build environment is covered by ``.gitignore`` to prevent accidental commit.
 
-The ``mvn clean:clean@reset`` target is availale to reset the node build environment.
+The ``mvn clean:clean@reset`` target is available to reset the node build environment.

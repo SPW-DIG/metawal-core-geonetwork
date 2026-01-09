@@ -260,6 +260,10 @@
           pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/datahub.*"
           access="permitAll"/>
         <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/datahub.*" access="permitAll"/>
+        <sec:intercept-url
+          pattern="/[a-zA-Z0-9_\-]+/[a-z]{2,3}/metadata-editor.*"
+          access="permitAll"/>
+        <sec:intercept-url pattern="/[a-zA-Z0-9_\-]+/metadata-editor.*" access="permitAll"/>
 
         <sec:intercept-url pattern="/.*" access="denyAll"/>
       </sec:filter-security-metadata-source>

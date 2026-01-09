@@ -1,11 +1,26 @@
 package org.fao.geonet.datahub;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.zip.GZIPOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpHeaders;
 import org.fao.geonet.NodeInfo;
 import org.fao.geonet.domain.Source;
 import org.fao.geonet.domain.SourceType;
+import static org.fao.geonet.kernel.schema.SchemaPlugin.LOGGER_NAME;
 import org.fao.geonet.repository.SourceRepository;
 import org.fao.geonet.utils.Log;
 import org.json.JSONObject;
@@ -18,88 +33,78 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.GZIPOutputStream;
-
-import static org.fao.geonet.kernel.schema.SchemaPlugin.LOGGER_NAME;
-
 // FIXME: unit tests missing for this class!
 
-@RequestMapping(value = {"/{geonetworkPath:[a-zA-Z0-9_\\-]+}"})
-@Controller("datahub")
+/**
+ * Controller for handling requests for client application.
+ * <p/>
+ * To add a new app:
+ * <ul>
+ *     <li>Build the app in pom.xml</li>
+ *     <li>Add the app name in the request mapping</li>
+ *     <li>Register it in the config-security-mapping.xml.</li>
+ * </ul>
+ */
+@RequestMapping(value = {
+    "/{geonetworkPath:[a-zA-Z0-9_\\-]+}/{app:datahub|metadata-editor}",
+    "/{geonetworkPath:[a-zA-Z0-9_\\-]+}/{locale:[a-z]{2,3}}/{app:datahub|metadata-editor}"
+})
+@Controller
 public class DatahubController {
-    public static final String INDEX_PATH = "/datahub/index.html";
-    public static final String DATAHUB_FILES_PATH = "/datahub/";
-    public static final String DEFAULT_CONFIGURATION_FILE_PATH = DATAHUB_FILES_PATH + "assets/configuration/default.toml";
+    public static final String INDEX_PATH = "index.html";
+    public static final String DEFAULT_CONFIGURATION_FILE_PATH = "assets/configuration/default.toml";
 
     @Autowired
     SourceRepository sourceRepository;
 
-    @GetMapping("/datahub/status")
-    public ResponseEntity<String> getDatahubStatus() throws IOException {
-        File configFile = FileUtils.getFileFromJar(DEFAULT_CONFIGURATION_FILE_PATH);
+    @GetMapping("/status")
+    public ResponseEntity<String> getDatahubStatus(@PathVariable String app) throws IOException {
+        File configFile = FileUtils.getFileFromJar(String.format("%s/%s", app, DEFAULT_CONFIGURATION_FILE_PATH));
         String defaultConfig = FileUtils.readFromInputStream(new FileInputStream(configFile));
         JSONObject body = new JSONObject();
         body.put("defaultConfig", defaultConfig);
+
+        File packageJsonFile = FileUtils.getFileFromJar(String.format("%s/package.json", app));
+        String packageJsonContent = FileUtils.readFromInputStream(new FileInputStream(packageJsonFile));
+        JSONObject packageJson = new JSONObject(packageJsonContent);
+        body.put("datahubVersion", packageJson.getString("version"));
+
         return ResponseEntity
-                .ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(body.toString());
+            .ok()
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(body.toString());
     }
 
-    @GetMapping("/datahub")
-    public RedirectView redirectDatahub(HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping
+    public RedirectView redirectDatahub(@PathVariable String app, HttpServletRequest request) {
         String uri = request.getRequestURI();
         if (!uri.endsWith("/")) {
             uri += "/";
         }
-        return new RedirectView(uri + "index.html");
+        return new RedirectView(uri + INDEX_PATH);
     }
 
-    @GetMapping("/{locale:[a-z]{2,3}}/datahub")
-    public RedirectView redirectLocalizedDatahub(HttpServletRequest request, HttpServletResponse response) {
-        String uri = request.getRequestURI();
-        if (!uri.endsWith("/")) {
-            uri += "/";
-        }
-        return new RedirectView(uri + "index.html");
+    @RequestMapping("/**")
+    public void handleDatahubWithFilepath(@PathVariable String app, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        handleDatahubRequest(request, response, app);
     }
 
-    @RequestMapping("/datahub/**")
-    public void handleDatahubWithFilepath(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        handleDatahubRequest(request, response);
-    }
-
-    @RequestMapping("/{locale:[a-z]{2,3}}/datahub/**")
-    public void handleLocalizedDatahubWithFilepath(HttpServletRequest request, HttpServletResponse response,
-                                                   @PathVariable String locale) throws IOException {
-        handleDatahubRequest(request, response);
-    }
-
-    void handleDatahubRequest(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
+    void handleDatahubRequest(HttpServletRequest request, HttpServletResponse response, String app)
+        throws IOException {
         String portalName = getPortalName(request);
         if (!isPortalDatahubEnabled(portalName)) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
-        File actualFile = getRequestedFile(request);
+        File actualFile = getRequestedFile(request, app);
         if (!actualFile.exists()) {
-            actualFile = getFallbackFile();
+            actualFile = getFallbackFile(app);
             disableCacheForIndex(response);
         }
 
         setResponseHeaders(response, actualFile);
-        writeResponseContent(request, response, actualFile, portalName);
+        writeResponseContent(request, response, actualFile, portalName, app);
     }
 
     private String getPortalName(HttpServletRequest request) {
@@ -117,23 +122,24 @@ public class DatahubController {
         return false;
     }
 
-    private File getRequestedFile(HttpServletRequest request) {
+    private File getRequestedFile(HttpServletRequest request, String app) {
         String reqPath = request.getPathInfo();
-        String filePath = Stream.of(reqPath.split("/datahub/")).skip(1).collect(Collectors.joining("/"));
+        String appPath = String.format("/%s/", app);
+        String filePath = Stream.of(reqPath.split(appPath)).skip(1).collect(Collectors.joining("/"));
         filePath = FilenameUtils.normalize(filePath);
         try {
-            return FileUtils.getFileFromJar(DATAHUB_FILES_PATH + filePath);
+            return FileUtils.getFileFromJar(appPath + filePath);
         } catch (IOException e) {
-            return new File(INDEX_PATH);// return file doesn't exist in jar => go back to main menu
+            return new File(appPath + INDEX_PATH);// return file doesn't exist in jar => go back to main menu
         }
     }
 
-    private File getFallbackFile() {
+    private File getFallbackFile(String app) {
         try {
             return FileUtils.getFileFromJar(INDEX_PATH);
         } catch (IOException e) {
             Log.error(LOGGER_NAME, e.getMessage());
-            return new File(INDEX_PATH);
+            return new File(String.format("/%s/%s", app, INDEX_PATH));
         }
     }
 
@@ -147,14 +153,14 @@ public class DatahubController {
         response.setStatus(HttpServletResponse.SC_OK);
         String extension = actualFile.getName().toLowerCase();
         String contentType = extension.equals("js") ? "text/javascript; charset=UTF-8"
-                : Files.probeContentType(actualFile.toPath());
+            : Files.probeContentType(actualFile.toPath());
         response.setContentType(contentType);
     }
 
     void writeResponseContent(HttpServletRequest request, HttpServletResponse response, File actualFile,
-                              String portalName) throws IOException {
-        InputStream inStream = actualFile.getName().equals("default.toml") ? readConfiguration(portalName)
-                : new FileInputStream(actualFile);
+                              String portalName, String app) throws IOException {
+        InputStream inStream = actualFile.getName().equals("default.toml") ? readConfiguration(request.getContextPath(), portalName)
+            : new FileInputStream(actualFile);
         OutputStream outStream = response.getOutputStream();
 
         if (request.getHeader(HttpHeaders.ACCEPT_ENCODING).contains("gzip")) {
@@ -164,10 +170,10 @@ public class DatahubController {
 
         if (actualFile.getName().equals("index.html")) {
             // rewrite the base-href attribute to make app routing work
-            String baseHref = "/geonetwork/" + portalName + "/datahub/";
+            String baseHref = String.format("%s/%s/%s/", request.getContextPath(), portalName, app);
             String content = IOUtils
-                    .toString(inStream, StandardCharsets.UTF_8)
-                    .replaceAll("<base href=\".*\">", "<base href=\"" + baseHref + "\">");
+                .toString(inStream, StandardCharsets.UTF_8)
+                .replaceAll("<base href=\".*\">", "<base href=\"" + baseHref + "\">");
             outStream.write(content.getBytes());
         } else {
             IOUtils.copy(inStream, outStream);
@@ -176,10 +182,11 @@ public class DatahubController {
         outStream.close();
     }
 
-    InputStream readConfiguration(String portalName) throws IOException {
+    InputStream readConfiguration(String contextPath, String portalName) throws IOException {
         String configuration = getPortalConfiguration(portalName);
         configuration = configuration.replaceAll("\ngeonetwork4_api_url\\s?=.+", "\n")
-                .replace("[global]", "[global]\ngeonetwork4_api_url = \"/geonetwork/" + portalName + "/api\"");
+            .replace("[global]",
+                String.format("[global]\ngeonetwork4_api_url = \"%s/%s/api\"", contextPath, portalName));
         return new ByteArrayInputStream(configuration.getBytes());
     }
 
@@ -199,7 +206,8 @@ public class DatahubController {
         }
         // 3. fallback: read from default.toml file in resource
         else {
-            File defaultConfig = FileUtils.getFileFromJar(DEFAULT_CONFIGURATION_FILE_PATH);
+            // TODO: Could we have different default configurations for different apps?
+            File defaultConfig = FileUtils.getFileFromJar("/datahub/" + DEFAULT_CONFIGURATION_FILE_PATH);
             return FileUtils.readFromInputStream(new FileInputStream(defaultConfig));
         }
     }
@@ -210,7 +218,7 @@ public class DatahubController {
 
     private boolean datahubConfigurationExist(Source portal) {
         return portal != null
-                && portal.getDatahubConfiguration() != null
-                && !portal.getDatahubConfiguration().isEmpty();
+            && portal.getDatahubConfiguration() != null
+            && !portal.getDatahubConfiguration().isEmpty();
     }
 }
