@@ -122,7 +122,7 @@ public class DatahubController {
         return false;
     }
 
-    private File getRequestedFile(HttpServletRequest request, String app) {
+    private File getRequestedFile(HttpServletRequest request, String app) throws IOException {
         String reqPath = request.getPathInfo();
         String appPath = String.format("/%s/", app);
         String filePath = Stream.of(reqPath.split(appPath)).skip(1).collect(Collectors.joining("/"));
@@ -130,7 +130,7 @@ public class DatahubController {
         try {
             return FileUtils.getFileFromJar(appPath + filePath);
         } catch (IOException e) {
-            return new File(appPath + INDEX_PATH);// return file doesn't exist in jar => go back to main menu
+            return FileUtils.getFileFromJar(appPath + INDEX_PATH);// return file doesn't exist in jar => go back to main menu
         }
     }
 
