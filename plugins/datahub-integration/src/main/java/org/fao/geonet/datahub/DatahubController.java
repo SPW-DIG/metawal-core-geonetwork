@@ -97,7 +97,7 @@ public class DatahubController {
             return;
         }
 
-        File actualFile = getRequestedFile(request, app);
+        File actualFile = getRequestedFile(request, app, portalName);
         if (!actualFile.exists()) {
             actualFile = getFallbackFile(app);
             disableCacheForIndex(response);
@@ -122,10 +122,15 @@ public class DatahubController {
         return false;
     }
 
-    private File getRequestedFile(HttpServletRequest request, String app) throws IOException {
+    private File getRequestedFile(HttpServletRequest request, String app, String portalName) throws IOException {
         String reqPath = request.getPathInfo();
         String appPath = String.format("/%s/", app);
-        String filePath = Stream.of(reqPath.split(appPath)).skip(1).collect(Collectors.joining("/"));
+
+        String portalPath = "";
+        if(portalExists(portalName)){
+            portalPath = String.format("%s/", portalName);
+        }
+        String filePath = Stream.of(reqPath.split(appPath + portalPath)).skip(1).collect(Collectors.joining("/"));
         filePath = FilenameUtils.normalize(filePath);
         try {
             return FileUtils.getFileFromJar(appPath + filePath);
@@ -214,6 +219,10 @@ public class DatahubController {
 
     private boolean isNotDefaultPortal(String portalName) {
         return !portalName.equals(NodeInfo.DEFAULT_NODE);
+    }
+
+    private boolean portalExists(String portalName){
+        return sourceRepository.findOneByUuid(portalName) != null;
     }
 
     private boolean datahubConfigurationExist(Source portal) {
