@@ -128,9 +128,9 @@ public class DatahubController {
 
         String portalPath = "";
         if(portalExists(portalName)){
-            portalPath = String.format("%s/", portalName);
+            portalPath =portalName;
         }
-        String filePath = Stream.of(reqPath.split(appPath + portalPath)).skip(1).collect(Collectors.joining("/"));
+        String filePath = Stream.of(reqPath.split(portalPath + appPath)).skip(1).collect(Collectors.joining("/"));
         filePath = FilenameUtils.normalize(filePath);
         try {
             return FileUtils.getFileFromJar(appPath + filePath);
