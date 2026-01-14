@@ -59,12 +59,13 @@ public class DatahubController {
 
     @GetMapping("/status")
     public ResponseEntity<String> getDatahubStatus(@PathVariable String app) throws IOException {
-        File configFile = FileUtils.getFileFromJar(String.format("%s/%s", app, DEFAULT_CONFIGURATION_FILE_PATH));
+
+        File configFile = FileUtils.getFileFromJar(String.format("/%s/%s", app, DEFAULT_CONFIGURATION_FILE_PATH));
         String defaultConfig = FileUtils.readFromInputStream(new FileInputStream(configFile));
         JSONObject body = new JSONObject();
         body.put("defaultConfig", defaultConfig);
 
-        File packageJsonFile = FileUtils.getFileFromJar(String.format("%s/package.json", app));
+        File packageJsonFile = FileUtils.getFileFromJar(String.format("/%s/package.json", app));
         String packageJsonContent = FileUtils.readFromInputStream(new FileInputStream(packageJsonFile));
         JSONObject packageJson = new JSONObject(packageJsonContent);
         body.put("datahubVersion", packageJson.getString("version"));
@@ -128,7 +129,7 @@ public class DatahubController {
 
         String portalPath = "";
         if(portalExists(portalName)){
-            portalPath =portalName;
+            portalPath = portalName;
         }
         String filePath = Stream.of(reqPath.split(portalPath + appPath)).skip(1).collect(Collectors.joining("/"));
         filePath = FilenameUtils.normalize(filePath);
