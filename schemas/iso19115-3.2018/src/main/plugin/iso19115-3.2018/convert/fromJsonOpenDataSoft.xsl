@@ -28,15 +28,17 @@
 
   <xsl:strip-space elements="*"/>
 
+  <!--
+  * v2.1 / Remove dataset level metadata, use only metas/default/...
+  -->
   <xsl:template match="/record">
-
     <mdb:MD_Metadata>
       <xsl:call-template name="add-iso19115-3.2018-namespaces"/>
       <mdb:metadataIdentifier>
         <mcc:MD_Identifier>
           <mcc:code>
             <gco:CharacterString>
-              <xsl:value-of select="(datasetid|dataset/dataset_id)[1]"/>
+              <xsl:value-of select="(datasetid|dataset/dataset_id|dataset_id)[1]"/>
             </gco:CharacterString>
           </mcc:code>
         </mcc:MD_Identifier>
@@ -46,7 +48,7 @@
           <lan:language>
             <lan:LanguageCode codeList="codeListLocation#LanguageCode"
                               codeListValue="{java-xsl-util:threeCharLangCode(
-                                (metas/language|dataset/metas/default/metadata_languages)[1])}"/>
+                                (metas/language|dataset/metas/default/metadata_languages|metas/default/metadata_languages)[1])}"/>
           </lan:language>
           <lan:characterEncoding>
             <lan:MD_CharacterSetCode codeList="codeListLocation#MD_CharacterSetCode"
@@ -74,7 +76,7 @@
             <cit:CI_Organisation>
               <cit:name>
                 <gco:CharacterString>
-                  <xsl:value-of select="(metas/publisher|dataset/metas/default/publisher)[1]"/>
+                  <xsl:value-of select="(metas/publisher|dataset/metas/default/publisher|metas/default/publisher)[1]"/>
                 </gco:CharacterString>
               </cit:name>
               <cit:contactInfo>
@@ -108,7 +110,7 @@
         </cit:CI_Citation>
       </mdb:metadataStandard>
 
-      <xsl:apply-templates select="dataset/metas/default/records_count"
+      <xsl:apply-templates select="dataset/metas/default/records_count|metas/default/records_count"
                            mode="ods-to-iso"/>
 
       <mdb:identificationInfo>
@@ -117,7 +119,7 @@
             <cit:CI_Citation>
               <cit:title>
                 <gco:CharacterString>
-                  <xsl:value-of select="(metas/title|dataset/metas/default/title)[1]"/>
+                  <xsl:value-of select="(metas/title|dataset/metas/default/title|metas/default/title)[1]"/>
                 </gco:CharacterString>
               </cit:title>
 
@@ -125,17 +127,17 @@
                 <xsl:with-param name="tag" select="'cit:date'"/>
               </xsl:call-template>
 
-              <xsl:apply-templates select="dataset/dataset_id"
+              <xsl:apply-templates select="dataset/dataset_id|dataset_id"
                                    mode="ods-to-iso"/>
             </cit:CI_Citation>
           </mri:citation>
           <mri:abstract>
             <gco:CharacterString>
-              <xsl:value-of select="(metas/description|dataset/metas/default/description)[1]"/>
+              <xsl:value-of select="(metas/description|dataset/metas/default/description|metas/default/description)[1]"/>
             </gco:CharacterString>
           </mri:abstract>
 
-          <xsl:for-each select="dataset/metas/default/attributions[. != 'null']">
+          <xsl:for-each select="dataset/metas/default/attributions[. != 'null']|default/attributions[. != 'null']">
             <mri:credit>
               <gco:CharacterString>
                 <xsl:value-of select="."/>
@@ -160,7 +162,7 @@
                   <cit:CI_Organisation>
                     <cit:name>
                       <gco:CharacterString>
-                        <xsl:value-of select="metas/publisher|dataset/metas/default/publisher"/>
+                        <xsl:value-of select="metas/publisher|dataset/metas/default/publisher|metas/default/publisher"/>
                       </gco:CharacterString>
                     </cit:name>
                     <xsl:if test="author_email">
@@ -216,12 +218,12 @@
             </mri:pointOfContact>
           </xsl:for-each>
 
-          <xsl:apply-templates select="dataset/metas/dcat/creator"
+          <xsl:apply-templates select="dataset/metas/dcat/creator|metas/dcat/creator"
                                mode="ods-to-iso"/>
 
 
           <xsl:variable name="odsThemes"
-                        select="metas/theme|dataset/metas/default/theme"/>
+                        select="metas/theme|dataset/metas/default/theme|metas/default/theme"/>
           <xsl:if test="count($odsThemes) > 0">
             <xsl:for-each select="distinct-values($odsThemeToIsoTopic[theme = $odsThemes]/name())">
               <mri:topicCategory>
@@ -234,7 +236,7 @@
 
           <mri:extent>
             <gex:EX_Extent>
-              <xsl:for-each select="dataset/metas/default/bbox">
+              <xsl:for-each select="dataset/metas/default/bbox|metas/default/bbox">
                 <gex:geographicElement>
                   <gex:EX_GeographicBoundingBox>
                     <gex:westBoundLongitude>
@@ -261,7 +263,7 @@
                 </gex:geographicElement>
               </xsl:for-each>
 
-              <xsl:for-each select="dataset/metas/default/geographic_reference">
+              <xsl:for-each select="dataset/metas/default/geographic_reference|metas/default/geographic_reference">
                 <gex:geographicElement>
                   <gex:EX_GeographicDescription>
                     <gex:geographicIdentifier>
@@ -277,18 +279,18 @@
                 </gex:geographicElement>
               </xsl:for-each>
 
-              <xsl:apply-templates select="dataset/metas/dcat/temporal_coverage_start"
+              <xsl:apply-templates select="dataset/metas/dcat/temporal_coverage_start|metas/dcat/temporal_coverage_start"
                                    mode="ods-to-iso"/>
             </gex:EX_Extent>
           </mri:extent>
 
-          <xsl:apply-templates select="dataset/metas/dcat/accrualperiodicity"
+          <xsl:apply-templates select="dataset/metas/dcat/accrualperiodicity|metas/dcat/accrualperiodicity"
                                mode="ods-to-iso"/>
 
-          <xsl:apply-templates select="dataset/metas/dcat/temporal"
+          <xsl:apply-templates select="dataset/metas/dcat/temporal|metas/dcat/temporal"
                                mode="ods-to-iso"/>
 
-          <xsl:apply-templates select="dataset/metas/default/territory"
+          <xsl:apply-templates select="dataset/metas/default/territory|metas/default/territory"
                                mode="ods-to-iso"/>
 
           <xsl:if test="count($odsThemes) > 0">
@@ -311,7 +313,7 @@
 
           <!-- ODS keywords copied without type -->
           <xsl:variable name="keywords"
-                        select="metas/keyword|dataset/metas/default/keyword"/>
+                        select="metas/keyword|dataset/metas/default/keyword|metas/default/keyword"/>
           <xsl:if test="$keywords">
             <mri:descriptiveKeywords>
               <mri:MD_Keywords>
@@ -336,16 +338,16 @@
                 <cit:CI_Citation>
                   <cit:title>
                     <xsl:variable name="licenseUrl"
-                                  select="metas/license_url[. != 'null']|dataset/metas/default/license_url[. != 'null']"/>
+                                  select="metas/license_url[. != 'null']|dataset/metas/default/license_url[. != 'null']|metas/default/license_url[. != 'null']"/>
                     <xsl:choose>
                       <xsl:when test="$licenseUrl != ''">
                         <gcx:Anchor xlink:href="{$licenseUrl}">
-                          <xsl:value-of select="metas/license|dataset/metas/default/license"/>
+                          <xsl:value-of select="metas/license|dataset/metas/default/license|metas/default/license"/>
                         </gcx:Anchor>
                       </xsl:when>
                       <xsl:otherwise>
                         <gco:CharacterString>
-                          <xsl:value-of select="metas/license|dataset/metas/default/license"/>
+                          <xsl:value-of select="metas/license|dataset/metas/default/license|metas/default/license"/>
                         </gco:CharacterString>
                       </xsl:otherwise>
                     </xsl:choose>
@@ -354,7 +356,7 @@
                     <cit:CI_OnlineResource>
                       <cit:linkage>
                         <gco:CharacterString>
-                          <xsl:value-of select="metas/license_url|dataset/metas/default/license_url"/>
+                          <xsl:value-of select="metas/license_url|dataset/metas/default/license_url|metas/default/license_url"/>
                         </gco:CharacterString>
                       </cit:linkage>
                     </cit:CI_OnlineResource>
@@ -371,7 +373,7 @@
               </mco:useConstraints>
               <mco:otherConstraints>
                 <gco:CharacterString>
-                  <xsl:value-of select="metas/license|dataset/metas/default/license"/>
+                  <xsl:value-of select="metas/license|dataset/metas/default/license|metas/default/license"/>
                 </gco:CharacterString>
               </mco:otherConstraints>
             </mco:MD_LegalConstraints>
@@ -382,7 +384,7 @@
             <lan:PT_Locale>
               <lan:language>
                 <lan:LanguageCode codeList="codeListLocation#LanguageCode"
-                                  codeListValue="{java-xsl-util:threeCharLangCode((metas/language|dataset/metas/default/language)[1])}"/>
+                                  codeListValue="{java-xsl-util:threeCharLangCode((metas/language|dataset/metas/default/language|metas/default/language)[1])}"/>
               </lan:language>
               <lan:characterEncoding>
                 <lan:MD_CharacterSetCode codeList="codeListLocation#MD_CharacterSetCode"
@@ -412,7 +414,7 @@
                 <gfc:featureType>
                   <gfc:FC_FeatureType>
                     <gfc:typeName>
-                      <xsl:value-of select="(metas/title|dataset/metas/default/title)[1]"/>
+                      <xsl:value-of select="(metas/title|dataset/metas/default/title|metas/default/title)[1]"/>
                     </gfc:typeName>
                     <gfc:isAbstract>
                       <gco:Boolean>false</gco:Boolean>
@@ -562,7 +564,7 @@
                     <gco:CharacterString>
                       <xsl:value-of select="concat(nodeUrl,
                                           '/explore/dataset/',
-                                          (datasetid|dataset/dataset_id)[1],
+                                          (datasetid|dataset/dataset_id|dataset_id)[1],
                                            '/information/')"/>
                     </gco:CharacterString>
                   </cit:linkage>
@@ -608,7 +610,7 @@
         <mrl:LI_Lineage>
           <mrl:statement>
             <gco:CharacterString>
-              <xsl:value-of select="dataset/metas/dcat/dataquality[. != 'null']"/>
+              <xsl:value-of select="dataset/metas/dcat/dataquality[. != 'null']|metas/dcat/dataquality[. != 'null']"/>
             </gco:CharacterString>
           </mrl:statement>
           <mrl:scope>
@@ -633,7 +635,7 @@
           <gco:CharacterString>
             <xsl:value-of select="concat(nodeUrl,
                                    '/api/explore/v2.1/catalog/datasets/',
-                                   (datasetid|dataset/dataset_id)[1],
+                                   (datasetid|dataset/dataset_id|dataset_id)[1],
                                    '/exports/', $format, '?use_labels=true')"/>
           </gco:CharacterString>
         </cit:linkage>
@@ -683,6 +685,8 @@
     <xsl:param name="tag"/>
     <xsl:for-each select="metas/modified[. != 'null']|
                                           metas/data_processed[. != 'null']|
+                                          metas/default/modified[. != 'null']|
+                                          metas/default/data_processed[. != 'null']|
                                           dataset/metas/default/modified[. != 'null']|
                                           dataset/metas/default/data_processed[. != 'null']">
 
@@ -704,7 +708,7 @@
   </xsl:template>
 
 
-  <xsl:template match="dataset/metas/dcat/accrualperiodicity"
+  <xsl:template match="metas/dcat/accrualperiodicity"
                 mode="ods-to-iso">
     <mri:resourceMaintenance>
       <mmi:MD_MaintenanceInformation>
@@ -717,7 +721,7 @@
     </mri:resourceMaintenance>
   </xsl:template>
 
-  <xsl:template match="dataset/metas/dcat/creator"
+  <xsl:template match="metas/dcat/creator"
                 mode="ods-to-iso">
     <mri:pointOfContact>
       <cit:CI_Responsibility>
@@ -776,8 +780,8 @@
           "dcat": {...
           "accrualperiodicity": "daily",
 -->
-  <xsl:template match="dataset/metas/dcat/temporal[. != 'null']
-                                    |dataset/metas/default/territory[. != 'null']"
+  <xsl:template match="metas/dcat/temporal[. != 'null']
+                                    |metas/default/territory[. != 'null']"
                 mode="ods-to-iso">
     <xsl:variable name="type"
                   select="if(name() = 'temporal') then 'temporal' else 'place'"/>
@@ -802,7 +806,7 @@
             "temporal_coverage_start": "2018-12-30T23:00:00+00:00",
             "temporal_coverage_end": "2020-12-30T23:00:00+00:00",
   -->
-  <xsl:template match="dataset/metas/dcat/temporal_coverage_start[. != 'null']"
+  <xsl:template match="metas/dcat/temporal_coverage_start[. != 'null']"
                 mode="ods-to-iso">
     <gex:temporalElement>
       <gex:EX_TemporalExtent>
@@ -821,7 +825,7 @@
   </xsl:template>
 
 
-  <xsl:template match="dataset/dataset_id"
+  <xsl:template match="dataset_id"
                 mode="ods-to-iso">
     <cit:identifier>
       <mcc:MD_Identifier>
@@ -834,7 +838,7 @@
     </cit:identifier>
   </xsl:template>
 
-  <xsl:template match="dataset/metas/default/records_count"
+  <xsl:template match="metas/default/records_count"
                 mode="ods-to-iso">
     <mdb:spatialRepresentationInfo>
       <msr:MD_VectorSpatialRepresentation>
