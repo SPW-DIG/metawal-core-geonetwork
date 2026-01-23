@@ -30,8 +30,10 @@
                 xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
                 xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/2.0"
                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+                xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
                 xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.1"
                 xmlns:gml="http://www.opengis.net/gml/3.2"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:gn-fn-sparql="http://geonetwork-opensource.org/xsl/functions/sparql"
                 version="2.0"
                 exclude-result-prefixes="#all">
@@ -342,22 +344,53 @@
                     </xsl:for-each>
                   </xsl:for-each>
 
-                  <!--
-                  <mri:extent>
-                    <gex:EX_Extent>
-                       <gex:temporalElement>
-                          <gex:EX_TemporalExtent>
-                             <gex:extent>
-                                <gml:TimePeriod gml:id="d36068e416a1053983">
-                                   <gml:beginPosition>1992-02-01</gml:beginPosition>
-                                   <gml:endPosition>2023-01-14</gml:endPosition>
-                                </gml:TimePeriod>
-                             </gex:extent>
-                          </gex:EX_TemporalExtent>
-                       </gex:temporalElement>
-                    </gex:EX_Extent>
-                 </mri:extent>
-                  -->
+                  <xsl:variable name="spatialUri"
+                                select="gn-fn-sparql:getObject($root,
+                                                  'http://purl.org/dc/terms/spatial',
+                                                  $resourceUri)/sr:uri"/>
+
+                  <xsl:for-each select="$spatialUri">
+                    <mri:extent>
+                      <gex:EX_Extent>
+                        <gex:description>
+                          <gco:CharacterString><xsl:value-of select="current()"/></gco:CharacterString>
+                        </gex:description>
+                      </gex:EX_Extent>
+                    </mri:extent>
+                  </xsl:for-each>
+
+                  <xsl:variable name="temporal"
+                                select="gn-fn-sparql:getObject($root,
+                                                  'http://purl.org/dc/terms/temporal',
+                                                  $resourceUri)/sr:bnode"/>
+
+                  <xsl:for-each select="$temporal">
+                    <xsl:variable name="startDate"
+                                  select="gn-fn-sparql:getObject($root,
+                                                    'http://schema.org/startDate',
+                                                    current())/sr:literal"/>
+                    <xsl:variable name="endDate"
+                                  select="gn-fn-sparql:getObject($root,
+                                                    'http://schema.org/endDate',
+                                                    current())/sr:literal"/>
+
+                    <xsl:if test="$startDate != '' or $endDate != ''">
+                      <mri:extent>
+                        <gex:EX_Extent>
+                           <gex:temporalElement>
+                              <gex:EX_TemporalExtent>
+                                 <gex:extent>
+                                    <gml:TimePeriod gml:id="{generate-id()}">
+                                       <gml:beginPosition><xsl:value-of select="$startDate"/></gml:beginPosition>
+                                       <gml:endPosition><xsl:value-of select="$endDate"/></gml:endPosition>
+                                    </gml:TimePeriod>
+                                 </gex:extent>
+                              </gex:EX_TemporalExtent>
+                           </gex:temporalElement>
+                        </gex:EX_Extent>
+                      </mri:extent>
+                    </xsl:if>
+                  </xsl:for-each>
 
                   <xsl:for-each select="gn-fn-sparql:getObject($root,
                                                   'http://purl.org/dc/terms/accrualPeriodicity',
@@ -415,6 +448,13 @@
                           <gco:CharacterString><xsl:value-of select="$label"/></gco:CharacterString>
                         </mri:keyword>
                       </xsl:for-each>
+                      <xsl:for-each select="gn-fn-sparql:getObject($root,
+                                                      ('http://www.w3.org/ns/dcat#keyword'),
+                                                      $resourceUri)/sr:literal">
+                        <mri:keyword>
+                          <gco:CharacterString><xsl:value-of select="."/></gco:CharacterString>
+                        </mri:keyword>
+                      </xsl:for-each>
                     </mri:MD_Keywords>
                   </mri:descriptiveKeywords>
 
@@ -441,6 +481,31 @@
                     </mco:MD_LegalConstraints>
                   </mri:resourceConstraints>-->
 
+
+                  <xsl:variable name="relation"
+                                select="gn-fn-sparql:getObject($root,
+                                    'http://purl.org/dc/terms/relation',
+                                    $resourceUri)/sr:uri"/>
+
+                  <xsl:for-each select="$relation">
+
+                    <xsl:variable name="relationTitle"
+                                  select="gn-fn-sparql:getObject($root,
+                                    'http://www.w3.org/2000/01/rdf-schema#label',
+                                    current())/sr:literal"/>
+                    <mri:associatedResource>
+                      <mri:MD_AssociatedResource>
+                        <mri:associationType>
+                          <mri:DS_AssociationTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#DS_AssociationTypeCode" codeListValue="crossReference"/>
+                        </mri:associationType>
+                        <mri:metadataReference xlink:href="{current()}">
+                          <xsl:if test="$relationTitle != ''">
+                            <xsl:attribute name="xlink:title" select="$relationTitle"/>
+                          </xsl:if>
+                        </mri:metadataReference>
+                      </mri:MD_AssociatedResource>
+                    </mri:associatedResource>
+                  </xsl:for-each>
 
                   <xsl:variable name="resourceLanguages"
                                 select="gn-fn-sparql:getObject($root,
@@ -486,28 +551,54 @@
           <xsl:variable name="distributions"
                         select="gn-fn-sparql:getObject($root,
                                                   'http://www.w3.org/ns/dcat#distribution',
-                                                  $resourceUri)/sr:bnode[. != '']"/>
+                                                  $resourceUri)/(sr:bnode[. != '']|sr:uri)"/>
 
-          <xsl:if test="$distributions">
+          <xsl:variable name="pages"
+                        select="gn-fn-sparql:getObject($root,
+                                                  'http://xmlns.com/foaf/0.1/page',
+                                                  $resourceUri)/sr:uri"/>
+
+          <xsl:variable name="landingPages"
+                        select="gn-fn-sparql:getObject($root,
+                                                  'http://www.w3.org/ns/dcat#landingPage',
+                                                  $resourceUri)/sr:uri"/>
+
+          <xsl:if test="$distributions or $pages or $landingPages">
             <mdb:distributionInfo>
               <mrd:MD_Distribution>
-                <!--
-                <mrd:distributionFormat>
-                  <mrd:MD_Format>
-                     <mrd:formatSpecificationCitation>
-                        <cit:CI_Citation>
-                           <cit:title>
-                              <gcx:Anchor xlink:href="http://inspire.ec.europa.eu/media-types/application/x-shapefile">ESRI Shapefile (.shp)</gcx:Anchor>
-                           </cit:title>
-                           <cit:date gco:nilReason="unknown"/>
-                           <cit:edition>
-                              <gco:CharacterString>-</gco:CharacterString>
-                           </cit:edition>
-                        </cit:CI_Citation>
-                     </mrd:formatSpecificationCitation>
-                  </mrd:MD_Format>
-               </mrd:distributionFormat>
-                -->
+                <xsl:for-each select="$distributions">
+                  <xsl:variable name="mediaType"
+                                select="gn-fn-sparql:getObject($root,
+                                                          'http://www.w3.org/ns/dcat#mediaType',
+                                                          .)/sr:literal"/>
+                  <xsl:variable name="formatUri"
+                                select="gn-fn-sparql:getObject($root,
+                                                          'http://purl.org/dc/terms/format',
+                                                          .)/sr:uri"/>
+                   <xsl:if test="$mediaType or $formatUri">
+                    <mrd:distributionFormat>
+                      <mrd:MD_Format>
+                         <mrd:formatSpecificationCitation>
+                            <cit:CI_Citation>
+                               <cit:title>
+                                  <gcx:Anchor>
+                                    <xsl:if test="$formatUri">
+                                      <xsl:attribute name="xlink:href" select="$formatUri"/>
+                                    </xsl:if>
+                                    <xsl:value-of select="$mediaType"/>
+                                  </gcx:Anchor>
+                               </cit:title>
+                               <cit:date gco:nilReason="unknown"/>
+                               <cit:edition>
+                                  <gco:CharacterString>-</gco:CharacterString>
+                               </cit:edition>
+                            </cit:CI_Citation>
+                         </mrd:formatSpecificationCitation>
+                      </mrd:MD_Format>
+                   </mrd:distributionFormat>
+                 </xsl:if>
+                </xsl:for-each>
+
                 <mrd:transferOptions>
                   <mrd:MD_DigitalTransferOptions>
                     <xsl:for-each select="$distributions">
@@ -515,6 +606,18 @@
                                     select="gn-fn-sparql:getObject($root,
                                                         'http://www.w3.org/ns/dcat#accessURL',
                                                         .)/sr:uri"/>
+                      <xsl:variable name="mediaType"
+                                    select="gn-fn-sparql:getObject($root,
+                                                        'http://www.w3.org/ns/dcat#mediaType',
+                                                        .)/sr:literal"/>
+                      <xsl:variable name="formatUri"
+                                    select="gn-fn-sparql:getObject($root,
+                                                        'http://purl.org/dc/terms/format',
+                                                        .)/sr:uri"/>
+                      <xsl:variable name="representationTechnique"
+                                    select="gn-fn-sparql:getObject($root,
+                                                          'http://www.w3.org/ns/adms#representationTechnique',
+                                                          .)/sr:bnode[. != '']"/>
                       <mrd:onLine>
                         <cit:CI_OnlineResource>
                           <cit:linkage>
@@ -523,19 +626,40 @@
                             </gco:CharacterString>
                           </cit:linkage>
 
-                          <xsl:for-each select="gn-fn-sparql:getObject($root,
-                                                        'http://www.w3.org/ns/adms#representationTechnique',
-                                                        .)/sr:bnode[. != '']">
-                            <xsl:for-each select="gn-fn-sparql:getObject($root,
+                          <xsl:variable name="protocol" as="xs:string">
+                            <xsl:choose>
+                              <xsl:when test="$mediaType">
+                                <xsl:value-of select="concat('WWW:DOWNLOAD:', $mediaType)"/>
+                              </xsl:when>
+                              <xsl:when test="$representationTechnique">
+                                <xsl:for-each select="$representationTechnique">
+                                  <xsl:for-each select="gn-fn-sparql:getObject($root,
                                                           'http://www.w3.org/2004/02/skos/core#prefLabel',
                                                           .)/sr:literal[. != '']">
-                              <cit:protocol>
+                                    <xsl:value-of select="."/>
+                                  </xsl:for-each>
+                                </xsl:for-each>
+                              </xsl:when>
+                              <xsl:otherwise>
+                                WWW:LINK
+                              </xsl:otherwise>
+                            </xsl:choose>
+                          </xsl:variable>
+
+                          <cit:protocol>
+                            <xsl:choose>
+                              <xsl:when test="$formatUri != ''">
+                                <gcx:Anchor xlink:href="{ $formatUri }">
+                                  <xsl:value-of select="$protocol"/>
+                                </gcx:Anchor>
+                              </xsl:when>
+                              <xsl:otherwise>
                                 <gco:CharacterString>
-                                  <xsl:value-of select="."/>
+                                  <xsl:value-of select="$protocol"/>
                                 </gco:CharacterString>
-                              </cit:protocol>
-                            </xsl:for-each>
-                          </xsl:for-each>
+                              </xsl:otherwise>
+                            </xsl:choose>
+                          </cit:protocol>
 
                           <xsl:for-each select="gn-fn-sparql:getObject($root,
                                                         'http://purl.org/dc/terms/title',
@@ -556,6 +680,22 @@
                               </gco:CharacterString>
                             </cit:description>
                           </xsl:for-each>
+                        </cit:CI_OnlineResource>
+                      </mrd:onLine>
+                    </xsl:for-each>
+
+
+                    <xsl:for-each select="$pages|$landingPages">
+                      <mrd:onLine>
+                        <cit:CI_OnlineResource>
+                          <cit:linkage>
+                            <gco:CharacterString>
+                              <xsl:value-of select="."/>
+                            </gco:CharacterString>
+                          </cit:linkage>
+                          <cit:protocol>
+                            <gco:CharacterString>WWW:LINK</gco:CharacterString>
+                          </cit:protocol>
                         </cit:CI_OnlineResource>
                       </mrd:onLine>
                     </xsl:for-each>
@@ -633,6 +773,10 @@
                   select="gn-fn-sparql:getObject($root,
                                     'http://www.w3.org/2006/vcard/ns#title',
                                     $contactUri)/sr:literal"/>
+    <xsl:variable name="fn"
+                  select="gn-fn-sparql:getObject($root,
+                                    'http://www.w3.org/2006/vcard/ns#fn',
+                                    $contactUri)/sr:literal"/>
     <xsl:variable name="email"
                   select="gn-fn-sparql:getObject($root,
                                     'http://www.w3.org/2006/vcard/ns#hasEmail',
@@ -649,7 +793,7 @@
           <cit:CI_Organisation>
             <cit:name>
               <gco:CharacterString>
-                <xsl:value-of select="$title"/>
+                <xsl:value-of select="(($title|$fn)[. != ''])[1]"/>
               </gco:CharacterString>
             </cit:name>
             <cit:contactInfo>
