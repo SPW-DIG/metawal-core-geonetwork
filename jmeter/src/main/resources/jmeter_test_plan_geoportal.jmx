@@ -6,7 +6,6 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Base Variables">
@@ -35,12 +34,12 @@
           </elementProp>
           <elementProp name="NUMBER_OF_THREADS" elementType="Argument">
             <stringProp name="Argument.name">NUMBER_OF_THREADS</stringProp>
-            <stringProp name="Argument.value">100</stringProp>
+            <stringProp name="Argument.value">60</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="RAMP_UP" elementType="Argument">
             <stringProp name="Argument.name">RAMP_UP</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">30</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="NUMBER_OF_LOOP" elementType="Argument">
@@ -63,11 +62,11 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
         <intProp name="HTTPSampler.response_timeout">30000</intProp>
-        <stringProp name="HTTPSampler.domain">${__P(testserver.host,metawal.test.wallonie.be)}</stringProp>
-        <stringProp name="HTTPSampler.port">${__P(testserver.port,443)}</stringProp>
-        <stringProp name="HTTPSampler.protocol">${__P(testserver.protocol,https)}</stringProp>
+        <stringProp name="HTTPSampler.domain">${__P(testserver.host,localhost)}</stringProp>
+        <stringProp name="HTTPSampler.port">${__P(testserver.port,8080)}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${__P(testserver.protocol,http)}</stringProp>
         <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments"/>
@@ -75,7 +74,7 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Add content type" enabled="true">
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Add content type">
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">content-type</stringProp>
@@ -88,539 +87,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="API Free Text Search" enabled="true">
-        <stringProp name="ThreadGroup.num_threads">${NUMBER_OF_THREADS}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP}</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${NUMBER_OF_LOOP}</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="API Search endpoint" enabled="true"/>
-        <hashTree>
-          <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="100 requests/second" enabled="false">
-            <doubleProp>
-              <name>throughput</name>
-              <value>6000.0</value>
-              <savedValue>0.0</savedValue>
-            </doubleProp>
-            <intProp name="calcMode">1</intProp>
-          </ConstantThroughputTimer>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search all and check total hits" enabled="true">
-            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:80,&quot;query&quot;:{&quot;function_score&quot;:{&quot;boost&quot;:5,&quot;score_mode&quot;:&quot;multiply&quot;,&quot;functions&quot;:[{&quot;filter&quot;:{&quot;exists&quot;:{&quot;field&quot;:&quot;parentUuid&quot;}},&quot;weight&quot;:0.3},{&quot;filter&quot;:{&quot;match&quot;:{&quot;cl_status.key&quot;:&quot;obsolete&quot;}},&quot;weight&quot;:0.2},{&quot;filter&quot;:{&quot;match&quot;:{&quot;cl_status.key&quot;:&quot;superseded&quot;}},&quot;weight&quot;:0.3},{&quot;gauss&quot;:{&quot;changeDate&quot;:{&quot;scale&quot;:&quot;365d&quot;,&quot;offset&quot;:&quot;90d&quot;,&quot;decay&quot;:0.5}}}],&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:[{&quot;multi_match&quot;:{&quot;query&quot;:&quot;parcelaire&quot;,&quot;type&quot;:&quot;bool_prefix&quot;,&quot;fields&quot;:[&quot;resourceTitleObject.langfre^6&quot;,&quot;resourceAbstractObject.langfre^.5&quot;,&quot;tag&quot;,&quot;uuid&quot;,&quot;resourceIdentifier&quot;]}},{&quot;terms&quot;:{&quot;isTemplate&quot;:[&quot;n&quot;]}}],&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}}}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-            </DurationAssertion>
-            <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-              <boolProp name="JSONVALIDATION">true</boolProp>
-              <boolProp name="EXPECT_NULL">false</boolProp>
-              <boolProp name="INVERT">false</boolProp>
-              <boolProp name="ISREGEX">true</boolProp>
-            </JSONPathAssertion>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="API Search - categories available" enabled="true">
-        <stringProp name="ThreadGroup.num_threads">${NUMBER_OF_THREADS}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP}</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${NUMBER_OF_LOOP}</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="100 requests/second" enabled="false">
-          <doubleProp>
-            <name>throughput</name>
-            <value>6000.0</value>
-            <savedValue>0.0</savedValue>
-          </doubleProp>
-          <intProp name="calcMode">1</intProp>
-        </ConstantThroughputTimer>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Orthophotos" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;dfc9f3a2-adff-4b7f-ab77-8a890c4cabbb&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - PICC" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;b795de68-726c-4bdf-a62a-a42686aa5b6f&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Relief de la Wallonie" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;a004e570-99d6-4fe5-b83d-49b774409278&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Reseau hydrographique wallon" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;407d2651-e652-4652-8767-459453155bbe&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Limites administratives" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;56d7efe4-b25b-4d82-adca-c2c193b1b4fa&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Plan de secteur en vigueur" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;7fe2f305-1302-4297-b67e-792f55acd834&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Plan parcellaire cadastral" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;2aec918f-d04a-4c9b-9407-42825ab482f0&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Alea inondation" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;14084108-2c7b-4091-b62d-ff0fc235213a&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Ravel et Veloroutes" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;ff71a317-fc05-4d0d-b30b-58a1740eb314&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Zones de baignade" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;faabb79d-2714-440e-9abe-72cbf21fd808&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Patrimoine Biens exceptionnels" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;6997776d-8b95-4dc7-9b66-a5d9c4050ea8&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Insertion Activation et Aide Sociale" enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;08993909-fa8f-415b-97f6-5ceecc022d32&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Circuits Points Noeuds vélo en Wallonie " enabled="true">
-          <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;1240d67e-a05b-4d69-aa09-190a05f6b561&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-        </HTTPSamplerProxy>
-        <hashTree>
-          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-            <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-          </DurationAssertion>
-          <hashTree/>
-          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-            <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-            <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-            <boolProp name="JSONVALIDATION">true</boolProp>
-            <boolProp name="EXPECT_NULL">false</boolProp>
-            <boolProp name="INVERT">false</boolProp>
-            <boolProp name="ISREGEX">true</boolProp>
-          </JSONPathAssertion>
-          <hashTree/>
-        </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="API  Search - categories Faune et flore" enabled="true">
-        <stringProp name="ThreadGroup.num_threads">${NUMBER_OF_THREADS}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP}</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">${NUMBER_OF_LOOP}</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="API Search endpoint" enabled="true"/>
-        <hashTree>
-          <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="100 requests/second" enabled="false">
-            <doubleProp>
-              <name>throughput</name>
-              <value>6000.0</value>
-              <savedValue>0.0</savedValue>
-            </doubleProp>
-            <intProp name="calcMode">1</intProp>
-          </ConstantThroughputTimer>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search all and check total hits" enabled="true">
-            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:80,&quot;query&quot;:{&quot;bool&quot;:{&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}},{&quot;query_string&quot;:{&quot;query&quot;:&quot;(th_Themes_geoportail_wallon_hierarchy_tree.default:\&quot;Nature et environnement^Faune et flore\&quot;)&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
-              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
-            </DurationAssertion>
-            <hashTree/>
-            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
-              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
-              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
-              <boolProp name="JSONVALIDATION">true</boolProp>
-              <boolProp name="EXPECT_NULL">false</boolProp>
-              <boolProp name="INVERT">false</boolProp>
-              <boolProp name="ISREGEX">true</boolProp>
-            </JSONPathAssertion>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-      </hashTree>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -652,7 +119,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -684,6 +151,510 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <stringProp name="ThreadGroup.num_threads">${NUMBER_OF_THREADS}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP}</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">${NUMBER_OF_LOOP}</stringProp>
+        </LoopController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="API Search endpoint"/>
+          <hashTree>
+            <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="100 requests/second" enabled="false">
+              <doubleProp>
+                <name>throughput</name>
+                <value>6000.0</value>
+                <savedValue>0.0</savedValue>
+              </doubleProp>
+              <intProp name="calcMode">1</intProp>
+            </ConstantThroughputTimer>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search all and check total hits">
+              <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:80,&quot;query&quot;:{&quot;function_score&quot;:{&quot;boost&quot;:5,&quot;score_mode&quot;:&quot;multiply&quot;,&quot;functions&quot;:[{&quot;filter&quot;:{&quot;exists&quot;:{&quot;field&quot;:&quot;parentUuid&quot;}},&quot;weight&quot;:0.3},{&quot;filter&quot;:{&quot;match&quot;:{&quot;cl_status.key&quot;:&quot;obsolete&quot;}},&quot;weight&quot;:0.2},{&quot;filter&quot;:{&quot;match&quot;:{&quot;cl_status.key&quot;:&quot;superseded&quot;}},&quot;weight&quot;:0.3},{&quot;gauss&quot;:{&quot;changeDate&quot;:{&quot;scale&quot;:&quot;365d&quot;,&quot;offset&quot;:&quot;90d&quot;,&quot;decay&quot;:0.5}}}],&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:[{&quot;multi_match&quot;:{&quot;query&quot;:&quot;parcelaire&quot;,&quot;type&quot;:&quot;bool_prefix&quot;,&quot;fields&quot;:[&quot;resourceTitleObject.langfre^6&quot;,&quot;resourceAbstractObject.langfre^.5&quot;,&quot;tag&quot;,&quot;uuid&quot;,&quot;resourceIdentifier&quot;]}},{&quot;terms&quot;:{&quot;isTemplate&quot;:[&quot;n&quot;]}}],&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}}}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+                <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+              </DurationAssertion>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+                <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+                <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">true</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Orthophotos" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;dfc9f3a2-adff-4b7f-ab77-8a890c4cabbb&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - PICC" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;b795de68-726c-4bdf-a62a-a42686aa5b6f&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Relief de la Wallonie" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;a004e570-99d6-4fe5-b83d-49b774409278&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request - Reseau hydrographique wallon" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;407d2651-e652-4652-8767-459453155bbe&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Limites administratives" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;56d7efe4-b25b-4d82-adca-c2c193b1b4fa&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Plan de secteur en vigueur" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;7fe2f305-1302-4297-b67e-792f55acd834&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Plan parcellaire cadastral" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;2aec918f-d04a-4c9b-9407-42825ab482f0&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Alea inondation" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;14084108-2c7b-4091-b62d-ff0fc235213a&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -   Ravel et Veloroutes" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;ff71a317-fc05-4d0d-b30b-58a1740eb314&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Zones de baignade" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;faabb79d-2714-440e-9abe-72cbf21fd808&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Patrimoine Biens exceptionnels" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;6997776d-8b95-4dc7-9b66-a5d9c4050ea8&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Insertion Activation et Aide Sociale" enabled="true">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;08993909-fa8f-415b-97f6-5ceecc022d32&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request -  Circuits Points Noeuds vélo en Wallonie ">
+            <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:1,&quot;query&quot;:{&quot;bool&quot;:{&quot;must&quot;:{&quot;match&quot;:{&quot;uuid&quot;:&quot;1240d67e-a05b-4d69-aa09-190a05f6b561&quot;}},&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+              <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+              <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="API Search endpoint"/>
+          <hashTree>
+            <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="100 requests/second" enabled="false">
+              <doubleProp>
+                <name>throughput</name>
+                <value>6000.0</value>
+                <savedValue>0.0</savedValue>
+              </doubleProp>
+              <intProp name="calcMode">1</intProp>
+            </ConstantThroughputTimer>
+            <hashTree/>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search all and check total hits" enabled="true">
+              <stringProp name="HTTPSampler.path">${__P(base.loc.url, /geonetwork/srv)}/api/search/records/_search?bucket=metadata</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&quot;from&quot;:0,&quot;size&quot;:80,&quot;query&quot;:{&quot;bool&quot;:{&quot;filter&quot;:[{&quot;query_string&quot;:{&quot;query&quot;:&quot;infrasig_WalOnMap:true&quot;}},{&quot;query_string&quot;:{&quot;query&quot;:&quot;(th_Themes_geoportail_wallon_hierarchy_tree.default:\&quot;Nature et environnement^Faune et flore\&quot;)&quot;}}]}},&quot;_source&quot;:{&quot;includes&quot;:[&quot;resourceTitleObject.default&quot;,&quot;overview.url&quot;,&quot;uuid&quot;,&quot;resourceHookAbstractObject.default&quot;,&quot;linkUrlProtocolESRIREST&quot;,&quot;linkUrlProtocolOGCWMS&quot;,&quot;cl_resourceScope.key*&quot;,&quot;th_Themes_geoportail_wallon_hierarchy_tree.default*&quot;]}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+                <stringProp name="DurationAssertion.duration">${MAX_RESPONSE_TIME}</stringProp>
+              </DurationAssertion>
+              <hashTree/>
+              <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Assertion" enabled="true">
+                <stringProp name="JSON_PATH">$.hits.total.value</stringProp>
+                <stringProp name="EXPECTED_VALUE">\d+</stringProp>
+                <boolProp name="JSONVALIDATION">true</boolProp>
+                <boolProp name="EXPECT_NULL">false</boolProp>
+                <boolProp name="INVERT">false</boolProp>
+                <boolProp name="ISREGEX">true</boolProp>
+              </JSONPathAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
     </hashTree>
   </hashTree>
 </jmeterTestPlan>
