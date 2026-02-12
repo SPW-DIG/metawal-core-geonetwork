@@ -1043,6 +1043,42 @@
             "isMultilingual": false
           }
         }
+      },
+      {
+        "group": "links",
+        "label": "onlineWalOnMap",
+        "sources": {
+          "filestore": true
+        },
+        "icon": "fa gn-icon-onlinesrc",
+        "process": "onlinesrc-add",
+        "fields": {
+          "url": {
+            "value": "https://geoportail.wallonie.be/walonmap",
+            "isMultilingual": true
+          },
+          "protocol": {
+            "value": "WWW:LINK",
+            "hidden": true,
+            "isMultilingual": false
+          },
+          "name": {
+            "value": "Application WalOnMap - Toute la Wallonie à la carte"
+          },
+          "desc": {
+            "value": "Application cartographique du Geoportail (WalOnMap) qui permet de découvrir les données géographiques de la Wallonie."
+          },
+          "applicationProfile": {
+            "value": "WalOnMap",
+            "hidden": true,
+            "isMultilingual": false
+          },
+          "function": {
+            "value": "browsing",
+            "hidden": true,
+            "isMultilingual": false
+          }
+        }
       }
     ],
     "associatedResourcesTypes": [{

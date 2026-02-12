@@ -247,6 +247,7 @@
     "onlineMore": "Plus d'information",
     "onlineMoreWWW": "Site web",
     "onlineMoreFile": "Documentation",
+    "onlineWalOnMap": "WalOnMap",
     "onlyErrors": "Afficher uniquement les erreurs",
     "areYouSureToAddALinkWithError": "Le catalogue n'arrive pas à accèder à l'URL actuelle (cela peut être lié à une erreur de proxy ou l'URL n'est pas disponible en ce moment). Vous devriez vérifier l'URL manuellement avant de l'ajouter à la fiche.",
     "addLinkAnyway": "Ajouter le lien quand même",
