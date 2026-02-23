@@ -1559,9 +1559,9 @@
     <db.password>#{systemEnvironment['GEONETWORK_DB_PASSWORD']?:'www-data'}</db.password>
     <db.connectionProperties>#{systemEnvironment['GEONETWORK_DB_CONNECTION_PROPERTIES']}</db.connectionProperties>
 
-    <db.pool.maxActive>60</db.pool.maxActive>
-    <db.pool.maxIdle>30</db.pool.maxIdle>
-    <db.pool.initialSize>10</db.pool.initialSize>
+    <db.pool.maxActive>#{systemEnvironment['GEONETWORK_DB_POOL_MAX_ACTIVE']?:60}</db.pool.maxActive>
+    <db.pool.maxIdle>#{systemEnvironment['GEONETWORK_DB_POOL_MAX_IDLE']?:30}</db.pool.maxIdle>
+    <db.pool.initialSize>#{systemEnvironment['GEONETWORK_DB_POOL_INITIAL_SIZE']?:10}</db.pool.initialSize>
 
     <!-- Default catalog language when accessing the home page
     ie. http://localhost:8080/geonetwork. -->
