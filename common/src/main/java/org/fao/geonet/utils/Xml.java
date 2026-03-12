@@ -622,6 +622,8 @@ public final class Xml {
     public static Element getXmlFromJSON(String jsonAsString) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
+            jsonAsString = stripBom(jsonAsString);
+
             JsonNode json = objectMapper.readTree(jsonAsString);
 
             renameNumericProperties(json);
@@ -647,45 +649,46 @@ public final class Xml {
 
 
     /**
-     * Recursively browse JSON node and rename all properties starting with number by prefixing with 'n_'.
+     * Recursively browse JSON node and rename all properties
+     * <ul>
+     *     <li>starting with number by prefixing with 'n_'.</li>
+     *     <li>replaceing invalid xml tag characters eg. /</li>
+     * </ul>
      */
     private static void renameNumericProperties(JsonNode node) {
-        if (node == null) return;
+        if (node == null) {
+            return;
+        }
 
         if (node.isObject()) {
             com.fasterxml.jackson.databind.node.ObjectNode obj = (com.fasterxml.jackson.databind.node.ObjectNode) node;
+            List<String> fieldNames = new ArrayList<>();
+            obj.fieldNames().forEachRemaining(fieldNames::add);
 
-            // Collect field names that start with a digit to avoid concurrent modification
-            List<String> fieldsToRename = new ArrayList<>();
-            Iterator<String> fieldNames = obj.fieldNames();
-            while (fieldNames.hasNext()) {
-                String name = fieldNames.next();
-                if (!name.isEmpty() && Character.isDigit(name.charAt(0))) {
-                    fieldsToRename.add(name);
+            for (String name : fieldNames) {
+                String newName = name.replaceAll("[^a-zA-Z0-9_\\-.]", "_");
+                if (!name.isEmpty() && Character.isDigit(newName.charAt(0))) {
+                    newName = "n_" + newName;
                 }
-            }
 
-            // Rename collected fields
-            for (String oldName : fieldsToRename) {
-                JsonNode value = obj.get(oldName);
-                obj.remove(oldName);
-                obj.set("n_" + oldName, value);
+                JsonNode value = obj.remove(name);
+                obj.set(newName, value);
+                renameNumericProperties(value);
             }
-
-            // Recurse into remaining fields
-            Iterator<Map.Entry<String, JsonNode>> fields = obj.fields();
-            while (fields.hasNext()) {
-                Map.Entry<String, JsonNode> entry = fields.next();
-                renameNumericProperties(entry.getValue());
-            }
-
         } else if (node.isArray()) {
-            com.fasterxml.jackson.databind.node.ArrayNode arr = (com.fasterxml.jackson.databind.node.ArrayNode) node;
-            for (int i = 0; i < arr.size(); i++) {
-                renameNumericProperties(arr.get(i));
+            for (JsonNode element : node) {
+                renameNumericProperties(element);
             }
         }
-        // primitives / other node types: nothing to do
+    }
+
+    /**
+     * Strip a leading Unicode BOM (U+FEFF) from the given string if present.
+     */
+    private static String stripBom(String s) {
+        if (s == null || s.isEmpty()) return s;
+        if (s.charAt(0) == '\uFEFF') return s.substring(1);
+        return s;
     }
 
     /**
