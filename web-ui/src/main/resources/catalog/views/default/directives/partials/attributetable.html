@@ -1,7 +1,7 @@
 <table class="table table-bordered">
   <tr>
     <th data-translate="">attributeName</th>
-    <th data-translate="" data-ng-show="::columnVisibility.code">attributeCode</th>
+    <th data-translate="" data-ng-show="::columnVisibility.code">attributeAlias</th>
     <th data-translate="">attributeDefinition</th>
   </tr>
   <tr data-ng-repeat-start="attribute in attributeTable track by $index">
@@ -20,14 +20,7 @@
       </div>
     </td>
     <td data-ng-show="::columnVisibility.code">
-      <strong data-ng-show="{{attribute.link == null || attribute.link == ''}}"
-        >{{attribute.code}}</strong
-      >
-      <a
-        href="{{attribute.link}}"
-        data-ng-show="{{attribute.link != null && attribute.link > ''}}"
-        >{{attribute.code}}</a
-      >
+      <strong>{{attribute.alias}}</strong>
     </td>
     <td>{{attribute.definition}}</td>
   </tr>

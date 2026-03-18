@@ -1206,7 +1206,8 @@
               "definition": "<xsl:value-of select="util:escapeForJson(*/gfc:definition/gco:CharacterString/text())"/>",
               "code": "<xsl:value-of select="util:escapeForJson(*/gfc:code/(gco:CharacterString|gcx:Anchor)/text())"/>",
               "link": "<xsl:value-of select="*/gfc:code/*/@xlink:href"/>",
-              "type": "<xsl:value-of select="*/gfc:valueType/gco:TypeName/gco:aName/*/text()"/>"
+              "type": "<xsl:value-of select="*/gfc:valueType/gco:TypeName/gco:aName/*/text()"/>",
+              "alias": "<xsl:value-of select="util:escapeForJson(*/gfc:designation/gco:CharacterString/text())"/>"
               <xsl:if test="*/gfc:cardinality">
                 ,"cardinality": "<xsl:value-of select="util:escapeForJson(*/gfc:cardinality/(gco:CharacterString|gcx:Anchor)/text())"/>"
               </xsl:if>
@@ -1217,7 +1218,8 @@
                 <xsl:for-each select="$codeList">{
                   "label": "<xsl:value-of select="util:escapeForJson(*/gfc:label/gco:CharacterString/text())"/>",
                   "code": "<xsl:value-of select="util:escapeForJson(*/gfc:code/(gco:CharacterString|gcx:Anchor)/text())"/>",
-                  "definition": "<xsl:value-of select="util:escapeForJson(*/gfc:definition/gco:CharacterString/text())"/>"}
+                  "definition": "<xsl:value-of select="util:escapeForJson(*/gfc:definition/gco:CharacterString/text())"/>",
+                  }
                   <xsl:if test="position() != last()">,</xsl:if>
                 </xsl:for-each>
                 ]
