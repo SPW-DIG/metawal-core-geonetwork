@@ -1218,7 +1218,7 @@
                 <xsl:for-each select="$codeList">{
                   "label": "<xsl:value-of select="util:escapeForJson(*/gfc:label/gco:CharacterString/text())"/>",
                   "code": "<xsl:value-of select="util:escapeForJson(*/gfc:code/(gco:CharacterString|gcx:Anchor)/text())"/>",
-                  "definition": "<xsl:value-of select="util:escapeForJson(*/gfc:definition/gco:CharacterString/text())"/>",
+                  "definition": "<xsl:value-of select="util:escapeForJson(*/gfc:definition/gco:CharacterString/text())"/>"
                   }
                   <xsl:if test="position() != last()">,</xsl:if>
                 </xsl:for-each>
