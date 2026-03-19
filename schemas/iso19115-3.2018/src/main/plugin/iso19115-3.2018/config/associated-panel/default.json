@@ -1037,6 +1037,11 @@
           },
           "name": {},
           "desc": {},
+          "applicationProfile": {
+            "value": "documentation",
+            "hidden": true,
+            "isMultilingual": false
+          },
           "function": {
             "value": "information",
             "hidden": true,
