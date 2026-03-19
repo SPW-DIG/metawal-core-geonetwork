@@ -680,7 +680,7 @@
         "sources": {
           "filestore": true
         },
-        "fileStoreFilter": "*.{pdf,PDF,xls,XLS,ods,ODS,csv,CSV,txt,TXT}",
+        "fileStoreFilter": "*.{pdf,PDF,xls,XLS,ods,ODS,csv,CSV,txt,TXT,json,JSON}",
         "icon": "fa fa-table",
         "process": "fcats-file-add",
         "fields": {
