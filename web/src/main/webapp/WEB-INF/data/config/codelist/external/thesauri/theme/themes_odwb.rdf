@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ns3="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://www.w3.org/2004/02/skos/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+		<ns3:title xml:lang="fr">Themes_ODWB</ns3:title>
+		<ns3:description xml:lang="fr">Thèmes de la plateforme ODWB</ns3:description>
+		<ns3:identifier>themes_odwb.rdf</ns3:identifier>
+		<ns3:type>theme</ns3:type>
+	</rdf:Description>	
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#QDV">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Qualité de vie</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Qualité de vie</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#MOB">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Mobilité</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Mobilité</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#AGE">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Agriculture, Environnement</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Agriculture, Environnement</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#EDE">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+<ns2:prefLabel xml:lang="fr">Education, Enseignement</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Education, Enseignement</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#URP">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Urbanisme, Patrimoine</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Urbanisme, Patrimoine</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#ASP">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Administration et Services publics</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Administration et Services publics</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#TCS">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Tourisme, Culture, Sport et Loisirs</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Tourisme, Culture, Sport et Loisirs</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#ECO">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Economie</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Economie</ns2:scopeNote>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://registry.metawal.wallonie.be/theme/themes_odwb#ENE">
+		<rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+		<ns2:inScheme rdf:resource="https://registry.metawal.wallonie.be/theme/themes_odwb"/>
+		<ns2:prefLabel xml:lang="fr">Energie</ns2:prefLabel>
+		<ns2:scopeNote xml:lang="fr">Energie</ns2:scopeNote>
+	</rdf:Description>
+
+</rdf:RDF>
