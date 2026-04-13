@@ -1,0 +1,79 @@
+PUT _scripts/open_data_weekly_counts
+{
+  "script": {
+    "lang": "mustache",
+    "source": """
+{
+  "size": 0,
+  "aggs": {
+    "true_values": {
+      "filter": {
+        "bool": {
+          "filter": [
+            { "term": { "isOpenData": true } },
+            { "term": { "isPublishedToAll": true } },
+            {
+              "terms": {
+                "resourceType": [
+                  "dataset",
+                  "nonGeographicDataset"
+                ]
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "terms": {
+                "cl_status.key": [
+                  "obsolete",
+                  "superseded",
+                  "required",
+                  "planned",
+                  "underDevelopment",
+                  "deprecated",
+                  "proposed"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "false_values": {
+      "filter": {
+        "bool": {
+          "filter": [
+            { "term": { "isOpenData": false } },
+            { "term": { "isPublishedToAll": true } },
+            {
+              "terms": {
+                "resourceType": [
+                  "dataset",
+                  "nonGeographicDataset"
+                ]
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "terms": {
+                "cl_status.key": [
+                  "obsolete",
+                  "superseded",
+                  "required",
+                  "planned",
+                  "underDevelopment",
+                  "deprecated",
+                  "proposed"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+"""
+  }
+}

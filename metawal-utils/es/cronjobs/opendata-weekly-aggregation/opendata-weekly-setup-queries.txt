@@ -1,0 +1,28 @@
+PUT weekly_open_data_snapshot
+{
+  "mappings": {
+    "properties": {
+      "snapshot_timestamp": { "type": "date" },
+      "true_count": { "type": "integer" },
+      "false_count": { "type": "integer" },
+      "total": { "type": "integer" }
+    }
+  }
+}
+
+
+PUT _scripts/open_data_weekly_counts
+{
+  "script": {
+    "lang": "mustache",
+    "source": """
+{
+  "size": 0,
+  "aggs": {
+    "true_values": { "filter": { "term": { "isOpenData": true } } },
+    "false_values": { "filter": { "term": { "isOpenData": false } } }
+  }
+}
+"""
+  }
+}
