@@ -3,15 +3,15 @@ PUT categorized_weekly_open_data_snapshot
   "mappings": {
     "properties": {
       "snapshot_timestamp": { "type": "date" },
+      "category": { "type": "keyword" },
+      "total_count": { "type": "integer" },
       "true_count": { "type": "integer" },
-      "false_count": { "type": "integer" },
-      "category": { "type": "keyword" }
+      "false_count": { "type": "integer" }
     }
   }
 }
 
-
-PUT _scripts/open_data_weekly_counts
+PUT _scripts/categorized_open_data_weekly_counts
 {
   "script": {
     "lang": "mustache",
@@ -19,8 +19,58 @@ PUT _scripts/open_data_weekly_counts
 {
   "size": 0,
   "aggs": {
-    "true_values": { "filter": { "term": { "isOpenData": true } } },
-    "false_values": { "filter": { "term": { "isOpenData": false } } }
+    "filtered": {
+      "filter": {
+        "bool": {
+          "filter": [
+            { "term": { "isPublishedToAll": true } },
+            {
+              "terms": {
+                "resourceType": [
+                  "dataset",
+                  "nonGeographicDataset"
+                ]
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "terms": {
+                "cl_status.key": [
+                  "obsolete",
+                  "superseded",
+                  "required",
+                  "planned",
+                  "underDevelopment",
+                  "deprecated",
+                  "proposed"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "category": {
+          "terms": {
+            "field": "custodianOrgForResourceObject.default",
+            "size": 100
+          },
+          "aggs": {
+            "true_values": {
+              "filter": {
+                "term": { "isOpenData": true }
+              }
+            },
+            "false_values": {
+              "filter": {
+                "term": { "isOpenData": false }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 """
