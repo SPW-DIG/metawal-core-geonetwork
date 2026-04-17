@@ -152,18 +152,51 @@ Map mapping = ['Administration Générale de la Documentation Patrimoniale (SPF 
 'Université de Namur (UNamur)':'na'
 ];
 
-if (!doc.containsKey('custodianOrgForResourceObject.default') || doc['custodianOrgForResourceObject.default'].size() == 0) {
+
+def results = new HashSet();
+def val = null;
+if (doc.containsKey('custodianOrgForResource_tree.keyword') && doc['custodianOrgForResource_tree.keyword'].size() != 0) {
+  for (def candidate : doc['custodianOrgForResource_tree.keyword'])
+  {
+    if (candidate != null && mapping.containsKey(candidate)) {
+      val = mapping[candidate];
+      if (val.equals('x')) {
+        results.add('indéfini');
+      } else if (val.equals('na')) {
+        results.add('Pas applicable');
+      } else {
+        results.add(val);
+      }
+    }
+  }
+
+  // --- CLEANING LOGIC ---
+  boolean hasRealValue = false;
+
+  for (def r : results) {
+    if (!(r.equals('indéfini') || r.equals('Pas applicable') || r.equals('Non renseigné'))) {
+      hasRealValue = true;
+      break;
+    }
+  }
+
+  if (hasRealValue) {
+    results.remove('indéfini');
+    results.remove('Pas applicable');
+    results.remove('Non renseigné');
+  }
+  // --- EMIT ---
+  if (results.size() == 0) {
+    emit('Non renseigné');
+  } else {
+    for (def r : results) {
+      emit(r);
+    }
+  }
+
+
+}else{
   emit('Non renseigné');
 }
 
-def val = doc['custodianOrgForResourceObject.default'].size() == 0 ? '' : doc['custodianOrgForResourceObject.default'].value;
 
-if (val.contains('x')) {
-  emit('indéfni');
-}else if (val.contains('na')) {
-  emit('Pas applicable');
-} else if (mapping.containsKey(val)) {
-  emit(mapping[val]);
-} else {
-  emit('Non renseigné');
-}
