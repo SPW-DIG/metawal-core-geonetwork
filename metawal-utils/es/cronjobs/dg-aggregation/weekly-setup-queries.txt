@@ -1,0 +1,74 @@
+PUT categorized_weekly_open_data_snapshot
+{
+  "mappings": {
+    "properties": {
+      "snapshot_timestamp": { "type": "date" },
+      "dg": { "type": "keyword" },
+      "total_count": { "type": "integer" },
+    }
+  }
+}
+
+PUT _scripts/dg_breakdown_counts
+{
+  "script": {
+    "lang": "mustache",
+    "source": """
+{
+  "size": 0,
+  "aggs": {
+    "filtered": {
+      "filter": {
+        "bool": {
+          "filter": [
+            { "term": { "isPublishedToAll": true } },
+            {
+              "terms": {
+                "resourceType": [
+                  "dataset",
+                  "nonGeographicDataset"
+                ]
+              }
+            }
+          ],
+          "must_not": [
+            {
+              "terms": {
+                "cl_status.key": [
+                  "obsolete",
+                  "superseded",
+                  "required",
+                  "planned",
+                  "underDevelopment",
+                  "deprecated",
+                  "proposed"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "dg_breakdown": {
+              "terms": {
+                "field": "distributorOrgForDistribution_tree.keyword",
+                "include": [
+                  "SPW",
+                  "SPW - SG",
+                  "SPW - MI",
+                  "SPW - ARNE",
+                  "SPW - TLPE",
+                  "SPW - IAS",
+                  "SPW - EER",
+                  "SPW - Finances"
+                ],
+                "size": 7
+              }
+            }
+      }
+    }
+  }
+}
+"""
+  }
+}
