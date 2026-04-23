@@ -29,4 +29,7 @@ public class XslUtil {
     public static String threeCharLangCode(String iso2code) {
         return "fre";
     }
+    public static String html2text(String html, boolean substituteHtmlToTextLayoutElement) {
+        return html;
+    }
 }
