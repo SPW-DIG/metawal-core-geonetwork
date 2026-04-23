@@ -52,16 +52,7 @@ PUT _scripts/dg_breakdown_counts
         "dg_breakdown": {
               "terms": {
                 "field": "distributorOrgForDistribution_tree.keyword",
-                "include": [
-                  "SPW",
-                  "SPW - SG",
-                  "SPW - MI",
-                  "SPW - ARNE",
-                  "SPW - TLPE",
-                  "SPW - IAS",
-                  "SPW - EER",
-                  "SPW - Finances"
-                ],
+                "include": "SPW - [^-]+",
                 "size": 7
               }
             }

@@ -20,7 +20,7 @@ BULK_FILE=$(mktemp)
 
 echo "$RESP" | jq .
 
-echo "$RESP" | jq -c '.aggregations.filtered.category.buckets[]' | while read -r bucket; do
+echo "$RESP" | jq -c '.aggregations.category.buckets[]' | while read -r bucket; do
   CATEGORY=$(echo "$bucket" | jq -r '.key')
   TOTAL=$(echo "$bucket" | jq '.doc_count')
   TRUE=$(echo "$bucket" | jq '.true_values.doc_count')

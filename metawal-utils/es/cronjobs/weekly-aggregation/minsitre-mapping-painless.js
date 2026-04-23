@@ -156,6 +156,7 @@ Map mapping = ['Administration Générale de la Documentation Patrimoniale (SPF 
 def results = new HashSet();
 def val = null;
 if (doc.containsKey('custodianOrgForResource_tree.keyword') && doc['custodianOrgForResource_tree.keyword'].size() != 0) {
+  //For every value in the tree, check for corresponding minister
   for (def candidate : doc['custodianOrgForResource_tree.keyword'])
   {
     if (candidate != null && mapping.containsKey(candidate)) {
@@ -171,6 +172,7 @@ if (doc.containsKey('custodianOrgForResource_tree.keyword') && doc['custodianOrg
   }
 
   // --- CLEANING LOGIC ---
+  //remove non-real values (like indefini,Pas!applicables,Non rensigné from candidates
   boolean hasRealValue = false;
 
   for (def r : results) {

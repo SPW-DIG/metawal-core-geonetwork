@@ -11,7 +11,7 @@ PUT categorized_weekly_open_data_snapshot
   }
 }
 
-PUT _scripts/categorized_open_data_weekly_counts
+PUT _scripts/open_data_weekly_counts
 {
   "script": {
     "lang": "mustache",
@@ -19,10 +19,11 @@ PUT _scripts/categorized_open_data_weekly_counts
 {
   "size": 0,
   "aggs": {
-    "filtered": {
+    "true_values": {
       "filter": {
         "bool": {
           "filter": [
+            { "term": { "isOpenData": true } },
             { "term": { "isPublishedToAll": true } },
             {
               "terms": {
@@ -49,25 +50,38 @@ PUT _scripts/categorized_open_data_weekly_counts
             }
           ]
         }
-      },
-      "aggs": {
-        "category": {
-          "terms": {
-            "field": "custodianOrgForResourceObject.default",
-            "size": 100
-          },
-          "aggs": {
-            "true_values": {
-              "filter": {
-                "term": { "isOpenData": true }
-              }
-            },
-            "false_values": {
-              "filter": {
-                "term": { "isOpenData": false }
+      }
+    },
+    "false_values": {
+      "filter": {
+        "bool": {
+          "filter": [
+            { "term": { "isOpenData": false } },
+            { "term": { "isPublishedToAll": true } },
+            {
+              "terms": {
+                "resourceType": [
+                  "dataset",
+                  "nonGeographicDataset"
+                ]
               }
             }
-          }
+          ],
+          "must_not": [
+            {
+              "terms": {
+                "cl_status.key": [
+                  "obsolete",
+                  "superseded",
+                  "required",
+                  "planned",
+                  "underDevelopment",
+                  "deprecated",
+                  "proposed"
+                ]
+              }
+            }
+          ]
         }
       }
     }

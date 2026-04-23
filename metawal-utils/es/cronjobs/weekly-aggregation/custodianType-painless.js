@@ -47,7 +47,7 @@ if (!doc.containsKey('custodianOrgForResourceObject.default') || doc['custodianO
   emit('Non renseigné');
 }
 
-def val = doc['custodianOrgForResourceObject.default'].value;
+def val =  doc['custodianOrgForResourceObject.default'].value;
 
 if (val.contains('(SPW')) {
   emit('SPW');
