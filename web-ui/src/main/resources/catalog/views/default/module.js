@@ -350,6 +350,7 @@
         return disabledExactMatch;
       };
 
+      // MW specific
       function buildAddToMapConfig(link, md) {
         var type = "wms";
         if (link.protocol.indexOf("WMTS") > -1) {
@@ -479,16 +480,16 @@
 
       $scope.resultviewFns = {
         addMdLayerToMap: function (link, md) {
-          var config = buildAddToMapConfig(link, md);
-
-          gnWebAnalyticsService.trackLink(config.url, link.protocol);
-
           // This is probably only a service
           // Open the add service layer tab
           var config = buildAddToMapConfig(link, md);
+          // var config = gnMap.buildAddToMapConfig(link, md);
           if (!config) {
             return;
           }
+
+          gnWebAnalyticsService.trackLink(config.url, link.protocol);
+
           $location.path("map").search({
             add: encodeURIComponent(angular.toJson([config]))
           });

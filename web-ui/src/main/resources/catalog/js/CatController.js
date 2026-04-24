@@ -1355,6 +1355,14 @@
                       }
                     }
                   }
+                },
+                aggs: {
+                  keep_nonzero: {
+                    bucket_selector: {
+                      buckets_path: { count: "_count" },
+                      script: "params.count > 0"
+                    }
+                  }
                 }
               },
               resourceType: {
@@ -1385,7 +1393,11 @@
           authentication: {
             enabled: true,
             signinUrl: "../../{{node}}/{{lang}}/catalog.signin",
+            signinAPI: "../../signin",
             signoutUrl: "../../signout"
+            // GN5 configuration
+            // signinAPI: "../../api/user/signin",
+            // signoutUrl: "../../api/user/signout"
           },
           page: {
             enabled: true,
@@ -1943,8 +1955,11 @@
         }
       });
 
-      // login url for inline signin form in top toolbar
-      $scope.signInFormAction = "../../signin#" + $location.url();
+      // login url and form action with hash reference to the current page
+      $scope.signInFormLinkWithHash =
+        $scope.gnCfg.mods.authentication.signinUrl + "#" + $location.url();
+      $scope.signInFormActionWithHash =
+        $scope.gnCfg.mods.authentication.signinAPI + "#" + $location.url();
 
       // when the login input have focus, do not close the dropdown/popup
       $scope.focusLoginPopup = function () {
@@ -2154,7 +2169,7 @@
                     var allowedProfiles = $scope.profiles.slice(
                       $scope.profiles.indexOf(profile)
                     );
-                    return allowedProfiles.some(function(p) {
+                    return allowedProfiles.some(function (p) {
                       return me["is" + p + "ForGroup"](groupId);
                     });
                   };

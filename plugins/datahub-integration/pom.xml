@@ -28,7 +28,7 @@
   <parent>
     <artifactId>gn-plugins</artifactId>
     <groupId>org.geonetwork-opensource.plugins</groupId>
-    <version>4.4.9-SNAPSHOT</version>
+    <version>4.4.11-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -106,8 +106,8 @@
               <goal>install-node-and-npm</goal>
             </goals>
             <configuration>
-              <nodeVersion>v20.12.2</nodeVersion>
-              <npmVersion>10.7.0</npmVersion>
+              <nodeVersion>v22.19.0</nodeVersion>
+              <npmVersion>10.9.3</npmVersion>
             </configuration>
           </execution>
           <!--   Install geonetwork-ui dependencies   -->
@@ -184,6 +184,13 @@
                   <directory>geonetwork-ui</directory>
                   <includes>
                     <include>package.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>geonetwork-ui/tools/webcomponent</directory>
+                  <includes>
+                    <include>wc-embedder.html</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
@@ -270,7 +277,7 @@
       <plugin>
          <artifactId>maven-install-plugin</artifactId>
          <configuration>
-           <skip>true</skip> <!-- download artifact no need to install -->
+           <skip>false</skip> <!-- download artifact no need to install -->
          </configuration>
       </plugin>
       <plugin>

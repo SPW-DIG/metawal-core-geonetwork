@@ -23,7 +23,7 @@
     <!--<foaf:isPrimaryTopicOf>
        <rdf:Description>
           <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
-          <dct:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:uuid:{uuid}</dct:identifier>
+          <dct:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:uuid:a9483321-6215-4b70-8ea7-ff8776a02efe</dct:identifier>
           <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-22T11:42:57.31182Z</dct:issued>
           <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-08-23T11:16:43.738429Z</dct:modified>
           <dct:title xml:lang="dut">Test dataset DCAT-AP-NL 3</dct:title>

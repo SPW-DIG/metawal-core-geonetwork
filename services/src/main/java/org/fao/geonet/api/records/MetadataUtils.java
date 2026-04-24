@@ -38,10 +38,7 @@ import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.GeonetContext;
 import org.fao.geonet.NodeInfo;
 import org.fao.geonet.api.API;
-import org.fao.geonet.api.ApiParams;
-import org.fao.geonet.api.ApiUtils;
 import org.fao.geonet.api.es.EsHTTPProxy;
-import org.fao.geonet.api.exception.NotAllowedException;
 import org.fao.geonet.api.records.model.related.AssociatedRecord;
 import org.fao.geonet.api.records.model.related.RelatedItemOrigin;
 import org.fao.geonet.api.records.model.related.RelatedItemType;
@@ -193,6 +190,7 @@ public class MetadataUtils {
             throw new RuntimeException(e);
         }
     }
+
 
     public static Map<RelatedItemType, List<AssociatedRecord>> getAssociated(
         ServiceContext context,

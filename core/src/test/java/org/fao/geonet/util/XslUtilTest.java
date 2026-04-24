@@ -39,7 +39,7 @@ public class XslUtilTest {
     }
 
     @Test
-    public void testHtml2textSubstituteHtmlToTextLayoutElement() {
+    public void testHtml2textSubstituteHtmlToTextLayoutElementWithBr() {
         String html = "<div><span>Sample text</span><br/><span>Sample text 2</span><br/><span>Sample text 3</span></div>";
         String expectedText = "Sample text\nSample text 2\nSample text 3";
         String text = XslUtil.html2text(html, true);
@@ -48,12 +48,37 @@ public class XslUtilTest {
     }
 
     @Test
-    public void testHtml2textSubstituteHtmlHyperlinkToText() {
-        String text = XslUtil.html2text("<p>This data set is mainly based on data extracted from the European Union Transaction Log (EUTL) on 1st April 2022. The EUTL checks and records all transactions taking place within the trading system.</p>^M\n" +
-            "<p>It is run by the European Commission. See: <a class=\"external\" href=\"http://ec.europa.eu/environment/ets\">http://ec.europa.eu/environment/ets</a>. The data set also includes information on auctions of allowances, compiled from auctioning platforms, as well as EEA estimates of ETS emissions for the period 2005 to 2012, to reflect the current scope of the ETS for the third trading period (2013–2020). See more information in the <a title=\"\" href=\"http://www.eea.europa.eu/data-and-maps/data/european-union-emissions-trading-scheme/eu-ets-data-viewer-manual\" class=\"internal-link\" target=\"_self\">manual</a>.</p>", true);
+    public void testHtml2textSubstituteHtmlToTextLayoutWithP() {
+        String html = "<div><p>Sample text</p><p>Sample text 2</p><p>Sample text 3</p></div>";
+        String expectedText = "Sample text\n\nSample text 2\n\nSample text 3";
+        String text = XslUtil.html2text(html, true);
 
-        String expectedText = "This data set is mainly based on data extracted from the European Union Transaction Log (EUTL) on 1st April 2022. The EUTL checks and records all transactions taking place within the trading system.^M\n" +
-            "It is run by the European Commission. See: http://ec.europa.eu/environment/ets (http://ec.europa.eu/environment/ets). The data set also includes information on auctions of allowances, compiled from auctioning platforms, as well as EEA estimates of ETS emissions for the period 2005 to 2012, to reflect the current scope of the ETS for the third trading period (2013–2020). See more information in the manual (http://www.eea.europa.eu/data-and-maps/data/european-union-emissions-trading-scheme/eu-ets-data-viewer-manual).";
+        assertEquals(expectedText, text);
+    }
+
+    @Test
+    public void testHtml2textSubstituteHtmlToTextLayoutWithPWithNewLine() {
+        String html = "<div><p>Sample text</p>\n<p>Sample text 2</p>\n<p>Sample text 3</p></div>";
+        String expectedText = "Sample text\n\nSample text 2\n\nSample text 3";
+        String text = XslUtil.html2text(html, true);
+
+        assertEquals(expectedText, text);
+    }
+
+    @Test
+    public void testHtml2textSubstituteHtmlToTextLayoutWithLi() {
+        String html = "<ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>";
+        String expectedText = "* Item 1\n* Item 2\n* Item 3";
+        String text = XslUtil.html2text(html, true);
+
+        assertEquals(expectedText, text);
+    }
+
+    @Test
+    public void testHtml2textSubstituteHtmlToTextLayoutWithA() {
+        String html = "<div><a href=\"https://geonetwork-opensource.org/\">Link to GN</a></div>";
+        String expectedText = "Link to GN (https://geonetwork-opensource.org/)";
+        String text = XslUtil.html2text(html, true);
 
         assertEquals(expectedText, text);
     }

@@ -241,6 +241,26 @@
             );
           };
 
+          /**
+           * @function displayWorkflowStatus
+           * @description Checks if workflow is enabled and the group owner's name matches the workflow group regex.
+           * @param {Object} md - The metadata object.
+           * @returns {boolean} - Returns true if the group owner's name matches the workflow group regex and the workflow is enabled, otherwise false.
+           */
+          scope.displayWorkflowStatus = function (md) {
+            // Return false if any required property is missing or workflow is not enabled
+            if (!md.groupOwner || !scope.groupNames || !scope.isMdWorkflowEnable) {
+              return false;
+            }
+            // Check if the group name matches the workflow group regex
+            return (
+              md.isWorkflowEnabled() ||
+              gnMetadataActions.isGroupWithWorkflowEnabled(
+                scope.groupNames[md.groupOwner]
+              )
+            );
+          };
+
           if (scope.map) {
             scope.hoverOL.setMap(scope.map);
           }
