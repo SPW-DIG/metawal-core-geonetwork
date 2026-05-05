@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+source ./es-credentials
+
 set -euo pipefail
 
 ES="http://localhost:9200"
-AUTH=""
 SRC="gn-records"
 DEST="categorized_weekly_open_data_snapshot"
 
@@ -12,6 +13,7 @@ SNAP_TS_UTC=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 #SNAP_TS_UTC=$(date -u -d "-7 days" +"%Y-%m-%dT%H:%M:%SZ")
 
 RESP=$(curl \
+  -H "Authorization: ApiKey ${ES_API_KEY}" \
   -H 'Content-Type: application/json' \
   -X POST "$ES/${SRC}/_search/template" \
   -d '{"id":"categorized_open_data_weekly_counts"}')
@@ -20,7 +22,7 @@ BULK_FILE=$(mktemp)
 
 echo "$RESP" | jq .
 
-echo "$RESP" | jq -c '.aggregations.category.buckets[]' | while read -r bucket; do
+echo "$RESP" | jq -c '.aggregations.filtered.category.buckets[]' | while read -r bucket; do
   CATEGORY=$(echo "$bucket" | jq -r '.key')
   TOTAL=$(echo "$bucket" | jq '.doc_count')
   TRUE=$(echo "$bucket" | jq '.true_values.doc_count')
@@ -35,6 +37,7 @@ EOF
 done
 
 curl \
+  -H "Authorization: ApiKey ${ES_API_KEY}" \
   -H 'Content-Type: application/x-ndjson' \
   -X POST "$ES/_bulk" \
   --data-binary @"$BULK_FILE"
