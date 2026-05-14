@@ -143,6 +143,9 @@ public class FormatterApiTest extends AbstractServiceIntegrationTest {
                 boolean isRdf = checkfile.endsWith(".rdf");
                 boolean isXml = checkfile.endsWith(".xml");
 
+//                FileUtils.writeStringToFile(new File("/tmp/new/" + String.format("%s-%s-%s",
+//                    schema, formatter, checkfile)), actual.replaceFirst("urn:uuid:.*</dct:identifier>", "urn:uuid:{uuid}</dct:identifier>"), StandardCharsets.UTF_8);
+
                 if (isXml || isRdf) {
                     if (isRdf) {
                         try {
@@ -155,9 +158,6 @@ public class FormatterApiTest extends AbstractServiceIntegrationTest {
                                     url, checkfile, rdfException.getMessage(), actual));
                         }
                     }
-
-                    //FileUtils.writeStringToFile(new File("/tmp/services/src/test/resources/org/fao/geonet/api/records/formatters/new/" + String.format("%s-%s-%s",
-                    //        schema, formatter, checkfile)), actual.replaceFirst("urn:uuid/.*</dct:identifier>", "urn:uuid/{uuid}</dct:identifier>"), StandardCharsets.UTF_8);
 
                     Diff diff = DiffBuilder
                             .compare(Input.fromString(expected))
