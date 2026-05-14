@@ -194,6 +194,10 @@ public class XslUtil {
         return "";
     }
 
+    public static String html2text(String html, boolean substituteHtmlToTextLayoutElement) {
+        return html;
+    }
+
     public static String getLanguage() {
         return getDefaultLangCode();
     }
