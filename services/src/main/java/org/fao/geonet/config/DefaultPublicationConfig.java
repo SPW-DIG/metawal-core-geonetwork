@@ -46,7 +46,7 @@ public class DefaultPublicationConfig implements IPublicationConfig {
             ReservedGroup.all,
             Arrays.asList(new ReservedOperation[]{
                 ReservedOperation.view,
-// MW - off     ReservedOperation.download,
+                ReservedOperation.download,
                 ReservedOperation.dynamic}));
 
         defaultPublication.addAdditionalPublicationInfo(ReservedGroup.intranet,
