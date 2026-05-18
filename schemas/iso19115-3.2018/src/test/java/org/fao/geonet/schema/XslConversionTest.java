@@ -25,12 +25,12 @@ package org.fao.geonet.schema;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.*;
 import org.fao.geonet.schema.iso19115_3_2018.ISO19115_3_2018SchemaPlugin;
 import org.fao.geonet.schemas.XslProcessTest;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.xmlunit.builder.DiffBuilder;
@@ -137,5 +137,45 @@ public class XslConversionTest extends XslProcessTest {
         assertFalse(
             String.format("Differences: %s", diff.toString()),
             diff.hasDifferences());
+    }
+
+
+    @Test
+    public void testTranslateSuggestionProcess() throws Exception {
+        xslFile = Paths.get(testClass.getClassLoader().getResource("process/translate.xsl").toURI());
+        xmlFile = Paths.get(testClass.getClassLoader().getResource("metadata.xml").toURI());
+
+        // No parameters → document must not be altered
+        Element inputXml = testMustNotAlterARecordWhenNoParameterProvided();
+
+        // Expected result after translation
+        String expectedXml = Xml.getString(
+            Xml.loadFile(Paths.get(testClass.getClassLoader().getResource("metadata-suggestion-translate.xml").toURI())));
+
+        List<String> xpathList = Arrays.asList(
+            "/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:title",
+            "/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:graphicOverview/mcc:MD_BrowseGraphic/mcc:fileDescription",
+            "/mdb:MD_Metadata/mdb:identificationInfo/mri:MD_DataIdentification/mri:citation/cit:CI_Citation/cit:alternateTitle"
+        );
+
+        // fieldsToTranslate can be passed as a newline-joined String or as a List — both must produce the same output
+        for (Object fieldsToTranslate : new Object[]{String.join("\n", xpathList), xpathList}) {
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("languages", "fre");
+            parameters.put("fieldsToTranslate", fieldsToTranslate);
+            assertXmlSimilar(Xml.getString(Xml.transform(inputXml, xslFile, parameters)), expectedXml);
+        }
+    }
+
+    private void assertXmlSimilar(String actual, String expected) {
+        Diff diff = DiffBuilder
+            .compare(Input.fromString(actual))
+            .withTest(Input.fromString(expected))
+            .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byName))
+            .normalizeWhitespace()
+            .ignoreComments()
+            .checkForSimilar()
+            .build();
+        assertFalse(String.format("Differences: %s", diff.toString()), diff.hasDifferences());
     }
 }

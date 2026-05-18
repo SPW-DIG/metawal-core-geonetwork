@@ -53,6 +53,14 @@
                   as="xs:boolean"
                   select="$fieldsToTranslate = ''"/>
 
+    <!--
+    Harvester already tokenize the field to translate by line break,
+    but suggestion in the editor will not.
+    -->
+    <xsl:variable name="xpathList"
+                  as="xs:string*"
+                  select="if (count($fieldsToTranslate) > 1) then $fieldsToTranslate else tokenize($fieldsToTranslate, '\r?\n')"/>
+
     <xsl:variable name="translateOnlyEmptyText"
                   as="xs:boolean"
                   select="false()"/>
@@ -169,8 +177,9 @@
     eg. keywords from thesaurus have to be translated from the thesaurus
     eg. add config-editor exclusion ? -->
     <xsl:template
-            match="*[(gco:CharacterString or gcx:Anchor) and ($translateAll or concat('/', string-join(current()/ancestor-or-self::*[name() != 'root']/name(), '/')) = $fieldsToTranslate)]"
+            match="*[(gco:CharacterString or gcx:Anchor) and ($translateAll or concat('/', string-join(current()/ancestor-or-self::*[name() != 'root']/name(), '/')) = $xpathList)]"
             priority="2">
+
         <xsl:copy>
             <xsl:copy-of select="@*"/>
             <xsl:if test="not(@xsi:type)">
