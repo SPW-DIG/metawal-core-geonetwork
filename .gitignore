@@ -65,6 +65,7 @@ web/src/main/webapp/WEB-INF/data/0*
 web/src/main/webapp/WEB-INF/data/config/encryptor.properties
 web/src/main/webapp/WEB-INF/data/config/codelist/external/thesauri/theme/mobility-theme.rdf
 web/src/main/webapp/WEB-INF/data/config/index/records.json
+web/src/main/webapp/WEB-INF/data/config/index/records_default.json
 web/src/main/webapp/WEB-INF/data/config/schema_plugins/*
 web/src/main/webapp/WEB-INF/data/config/schemaplugin-uri-catalog.xml
 web/src/main/webapp/WEB-INF/data/data/backup
@@ -89,3 +90,5 @@ web/src/main/webapp/data/
 web/src/main/webapp/doc/en
 web/src/main/webapp/doc/fr
 web/src/main/webapp/WEB-INF/data/data/resources/schemapublication
+
+plugins/datahub-integration/node
