@@ -22,6 +22,7 @@
   <xsl:include href="process/add-connectpoint-from-esrirest.xsl"/>
   <xsl:include href="process/mw-constraints-ccby.xsl"/>
   <xsl:include href="process/mw-import-datamodel.xsl"/>
+  <xsl:include href="process/translate.xsl"/>
   <!--<xsl:include href="process/inspire-add-conformity.xsl"/>-->
 
   <xsl:variable name="processes">
@@ -42,6 +43,7 @@
     <p>add-online-resource-from-atom</p>
     <p>mw-constraints-ccby</p>
     <p>mw-import-datamodel</p>
+    <p>translate</p>
     <!--<p>inspire-add-conformity</p>-->
   </xsl:variable>
 
