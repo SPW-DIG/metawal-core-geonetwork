@@ -381,10 +381,10 @@
               resourceTitle:
                 item.getResultSource.resourceTitleObject["lang" + gnLangs.current] ||
                 item.getResultSource.resourceTitleObject.default,
-              resourceAbstract:
-                item.getResultSource.resourceAbstractObject
-                  ? (item.getResultSource.resourceAbstractObject["lang" + gnLangs.current] || item.getResultSource.resourceAbstractObject.default)
-                  : '',
+              resourceAbstract: item.getResultSource.resourceAbstractObject
+                ? item.getResultSource.resourceAbstractObject["lang" + gnLangs.current] ||
+                  item.getResultSource.resourceAbstractObject.default
+                : "",
               recordOwner: item.getResultSource.recordOwner,
               changeDate: item.getResultSource.dateStamp
             };
