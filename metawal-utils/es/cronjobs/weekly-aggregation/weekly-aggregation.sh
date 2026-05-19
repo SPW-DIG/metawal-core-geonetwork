@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ./es-credentials
+source /home/sites/metawal/sources/cronjobs/es-credentials
 
 set -euo pipefail
 
