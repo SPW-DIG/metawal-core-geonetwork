@@ -1,15 +1,17 @@
-PUT categorized_weekly_open_data_snapshot
+PUT distributor_weekly_open_data_snapshot
 {
   "mappings": {
     "properties": {
       "snapshot_timestamp": { "type": "date" },
-      "dg": { "type": "keyword" },
+      "category": { "type": "keyword" },
       "total_count": { "type": "integer" },
+      "true_count": { "type": "integer" },
+      "false_count": { "type": "integer" }
     }
   }
 }
 
-PUT _scripts/dg_breakdown_counts
+PUT _scripts/distributor_open_data_weekly_counts
 {
   "script": {
     "lang": "mustache",
@@ -49,11 +51,23 @@ PUT _scripts/dg_breakdown_counts
         }
       },
       "aggs": {
-        "dg_breakdown": {
+        "category": {
               "terms": {
                 "field": "distributorOrgForDistribution_tree.keyword",
                 "include": "SPW - [^-]+",
                 "size": 7
+              },
+              "aggs": {
+                "true_values": {
+                  "filter": {
+                    "term": { "isOpenData": true }
+                  }
+                },
+                "false_values": {
+                  "filter": {
+                    "term": { "isOpenData": false }
+                  }
+                }
               }
             }
       }
