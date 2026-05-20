@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
+source /home/sites/metawal/sources/cronjobs/es-credentials
 set -euo pipefail
 
 ES="http://localhost:9200"
-AUTH=""
 SRC="gn-records"
 DEST="distributor_weekly_open_data_snapshot"
 
@@ -11,6 +11,7 @@ SNAP_TS_UTC=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # Execute Query request
 RESP=$(curl \
+  -H "Authorization: ApiKey ${ES_API_KEY}" \
   -H 'Content-Type: application/json' \
   -X POST "$ES/${SRC}/_search/template" \
   -d '{"id":"distributor_open_data_weekly_counts"}')
@@ -36,6 +37,7 @@ done
 
 # Import document in Elastic Index.
 curl \
+  -H "Authorization: ApiKey ${ES_API_KEY}" \
   -H 'Content-Type: application/x-ndjson' \
   -X POST "$ES/_bulk" \
   --data-binary @"$BULK_FILE"
