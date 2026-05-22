@@ -1216,7 +1216,7 @@
               "link": "<xsl:value-of select="*/gfc:code/*/@xlink:href"/>",
               "type": "<xsl:value-of select="*/gfc:valueType/gco:TypeName/gco:aName/*/text()"/>"
               <xsl:if test="normalize-space(*/gfc:designation) != ''">
-                ,"aliasObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                ,"designationObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                 'designationObject',*/gfc:designation, $allLanguages, true())"/>
               </xsl:if>
               <xsl:if test="*/gfc:cardinality">
