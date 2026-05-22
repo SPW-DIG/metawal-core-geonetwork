@@ -1183,11 +1183,11 @@
 
           "typeName" : "<xsl:value-of select="util:escapeForJson(gfc:FC_FeatureType/gfc:typeName/text())"/>",
           <xsl:if test="normalize-space(gfc:FC_FeatureType/gfc:definition) != ''">
-            "definition" : <xsl:value-of select="gn-fn-index:add-multilingual-field(
+            "definitionObject" : <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                   'definition', gfc:FC_FeatureType/gfc:definition, $allLanguages, true())"/>,
           </xsl:if>
           <xsl:if test="normalize-space(gfc:FC_FeatureType/gfc:designation) != ''">
-          "designation" : <xsl:value-of select="gn-fn-index:add-multilingual-field(
+          "designationObject" : <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                 'definition', gfc:FC_FeatureType/gfc:designation, $allLanguages, true())"/>,
           </xsl:if>
           "code" :"<xsl:value-of select="util:escapeForJson(gfc:FC_FeatureType/gfc:code/(gco:CharacterString|gcx:Anchor)/text())"/>",
@@ -1209,15 +1209,15 @@
             <xsl:for-each select="$attributes">
               {"name": "<xsl:value-of select="util:escapeForJson(*/gfc:memberName/text())"/>",
               <xsl:if test="normalize-space(*/gfc:definition) != ''">
-                "definition": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                "definitionObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                   'definition',*/gfc:definition, $allLanguages, true())"/>,
               </xsl:if>
               "code": "<xsl:value-of select="util:escapeForJson(*/gfc:code/(gco:CharacterString|gcx:Anchor)/text())"/>",
               "link": "<xsl:value-of select="*/gfc:code/*/@xlink:href"/>",
               "type": "<xsl:value-of select="*/gfc:valueType/gco:TypeName/gco:aName/*/text()"/>"
               <xsl:if test="normalize-space(*/gfc:designation) != ''">
-                ,"alias": <xsl:value-of select="gn-fn-index:add-multilingual-field(
-                                'designation',*/gfc:designation, $allLanguages, true())"/>
+                ,"aliasObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                                'designationObject',*/gfc:designation, $allLanguages, true())"/>
               </xsl:if>
               <xsl:if test="*/gfc:cardinality">
                 ,"cardinality": "<xsl:value-of select="util:escapeForJson(*/gfc:cardinality/(gco:CharacterString|gcx:Anchor)/text())"/>"
@@ -1227,10 +1227,10 @@
               <xsl:if test="$codeList">
                 ,"values": [
                 <xsl:for-each select="$codeList">{
-                  "label": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                  "labelObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                 'label',*/gfc:label, $allLanguages, true())"/>,
                   "code": "<xsl:value-of select="util:escapeForJson(*/gfc:code/(gco:CharacterString|gcx:Anchor)/text())"/>",
-                  "definition": <xsl:value-of select="gn-fn-index:add-multilingual-field(
+                  "definitionObject": <xsl:value-of select="gn-fn-index:add-multilingual-field(
                                 'definition',*/gfc:definition, $allLanguages, true())"/>
                   }
                   <xsl:if test="position() != last()">,</xsl:if>
