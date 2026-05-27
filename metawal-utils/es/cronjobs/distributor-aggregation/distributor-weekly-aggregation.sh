@@ -6,7 +6,7 @@ ES="http://localhost:9200"
 SRC="gn-records"
 DEST="distributor_weekly_open_data_snapshot"
 
-WEEK_ID=$(TZ="Europe/Brussels" date -d "today 00:00 last monday" +"%Y%m%d")
+WEEK_ID=$(TZ="Europe/Brussels" date -d "today 00:00" +"%Y%m%d")
 SNAP_TS_UTC=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # Execute Query request
