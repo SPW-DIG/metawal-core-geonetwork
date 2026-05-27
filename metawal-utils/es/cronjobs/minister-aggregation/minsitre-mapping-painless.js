@@ -189,14 +189,16 @@ if (doc.containsKey('custodianOrgForResource_tree.keyword') && doc['custodianOrg
   }
   // --- EMIT ---
   if (results.size() == 0) {
-    return 'Non renseigné';
+    emit('Non renseigné');
   } else {
-    return results;
+    for (def r : results) {
+      emit(r);
+    }
   }
 
 
 }else{
-  return 'Non renseigné';
+  emit('Non renseigné');
 }
 
 
