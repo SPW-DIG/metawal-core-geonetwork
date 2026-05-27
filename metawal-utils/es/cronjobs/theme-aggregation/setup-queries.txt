@@ -53,7 +53,8 @@ PUT _scripts/theme_open_data_weekly_counts
       "aggs": {
         "category": {
           "terms": {
-            "field": "custodianOrgForResourceObject.default",
+            "field": "th_Themes_geoportail_wallon_hierarchy_tree.default",
+            "exclude": ".*^.*",
             "size": 100
           },
           "aggs": {
