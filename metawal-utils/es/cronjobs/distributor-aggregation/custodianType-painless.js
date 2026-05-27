@@ -44,15 +44,26 @@ Map mapping = [
 ];
 
 if (!doc.containsKey('custodianOrgForResourceObject.default') || doc['custodianOrgForResourceObject.default'].size() == 0) {
-  emit('Non renseigné');
+  return 'Non renseigné';
 }
 
 def val =  doc['custodianOrgForResourceObject.default'].value;
-
-if (val.contains('(SPW')) {
-  emit('SPW');
+if(val.contains('SPW - Secrétariat général')){
+  return 'SPW-SG';
+}else if (val.contains('SPW - Agriculture, Ressources naturelles et Environnement')){
+  return 'SPW-ARNE';
+}else if(val.contains('SPW - Territoire, Logement, Patrimoine, Énergie')){
+  return 'SPW-TLPE';
+}else if(val.contains('SPW - Intérieur et Action sociale')){
+  return 'SPW-IAS';
+}else if(val.contains('SPW - Mobilité et Infrastructures')){
+  return 'SPW-MI';
+}else if(val.contains('SPW - Économie, Emploi, Recherche')){
+  return 'SPW-EER';
+}else if (val.contains('(SPW')) {
+  return 'SPW';
 } else if (mapping.containsKey(val)) {
-  emit(mapping[val]);
+  return mapping[val];
 } else {
-  emit('Autre');
+  return 'Autre';
 }
