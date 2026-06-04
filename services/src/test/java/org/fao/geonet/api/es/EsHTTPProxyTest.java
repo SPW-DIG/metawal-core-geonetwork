@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2025 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2026 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -23,21 +23,18 @@
 
 package org.fao.geonet.api.es;
 
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import jeeves.server.UserSession;
 import jeeves.server.context.ServiceContext;
 import org.fao.geonet.ApplicationContextHolder;
 import org.fao.geonet.constants.Geonet;
-import org.fao.geonet.kernel.SchemaManager;
+import org.fao.geonet.domain.Profile;
 import org.fao.geonet.kernel.schema.MetadataOperationFilterType;
 import org.fao.geonet.kernel.schema.MetadataSchema;
 import org.fao.geonet.kernel.schema.MetadataSchemaOperationFilter;
 import org.fao.geonet.repository.UserGroupRepository;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -47,18 +44,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class EsHTTPProxyTest {
-
-    @Mock
-    private SchemaManager schemaManager;
 
     @Mock
     private ConfigurableApplicationContext applicationContext;
@@ -103,19 +95,19 @@ public class EsHTTPProxyTest {
 
         // Mock AccessManager.getGroups via UserGroupRepository
         // When user is in group 1
-        when(userGroupRepository.findGroupIds(any(Specification.class))).thenReturn(Arrays.asList(1));
+        when(userGroupRepository.findGroupIds(any(Specification.class))).thenReturn(List.of(1));
 
-        // 2. Call private method using reflection
+        // 2. Call a private method using reflection
         Method method = EsHTTPProxy.class.getDeclaredMethod("processMetadataSchemaFilters", ServiceContext.class, MetadataSchema.class, ObjectNode.class);
         method.setAccessible(true);
         method.invoke(esHTTPProxy, context, mds, doc);
 
-        // 3. Assertions for user in group
+        // 3. Assertions for user in a group
         assertTrue("someField should exist when user is in groupOwner", doc.get("_source").has("someField"));
 
-        // --- Test case where user is NOT in group ---
-        // When user is NOT in group 1 (e.g. in group 2)
-        when(userGroupRepository.findGroupIds(any(Specification.class))).thenReturn(Arrays.asList(2));
+        // --- Test case where the user is NOT in a group ---
+        // When the user is NOT in group 1 (e.g. in group 2)
+        when(userGroupRepository.findGroupIds(any(Specification.class))).thenReturn(List.of(2));
 
         // re-create doc
         doc = mapper.createObjectNode();
@@ -132,153 +124,133 @@ public class EsHTTPProxyTest {
         assertFalse("someField should be filtered when user is not in groupOwner", doc.get("_source").has("someField"));
     }
 
-    private static final String QUERY_FILTER = "{\"query_string\":{\"query\":\"(op0:(1)) AND (draft:n OR draft:e)\"}}";
+    /**
+     * When the search body omits the "query" field, addFilterToQuery must still inject the ACL filter into a
+     * freshly synthesised bool query so that authorization is enforced.
+     */
+    @Test
+    public void testAddFilterToQueryInjectsAclWhenQueryFieldIsMissing() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = mapper.createObjectNode();
+        body.put("size", 0);
 
-    private static class TestableEsHTTPProxy extends EsHTTPProxy {
-        @Override
-        protected String buildQueryFilter(ServiceContext context, String type, boolean isSearchingForDraft) {
-            return QUERY_FILTER;
+        invokeAddFilterToQuery(body, mapper);
+
+        assertAclFilterPresent(body, "missing query");
+        assertTrue("Unrelated fields must be preserved", body.has("size"));
+    }
+
+    @Test
+    public void testAddFilterToQueryInjectsAclWhenQueryIsExplicitNull() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = mapper.createObjectNode();
+        body.putNull("query");
+
+        invokeAddFilterToQuery(body, mapper);
+
+        assertAclFilterPresent(body, "query: null");
+    }
+
+    @Test
+    public void testAddFilterToQueryInjectsAclWhenQueryIsEmptyObject() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = mapper.createObjectNode();
+        body.set("query", mapper.createObjectNode());
+
+        invokeAddFilterToQuery(body, mapper);
+
+        assertAclFilterPresent(body, "query: {}");
+    }
+
+    @Test
+    public void testAddFilterToQueryPreservesExistingBoolQuery() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = (ObjectNode) mapper.readTree(
+            "{\"query\":{\"bool\":{\"must\":[{\"match\":{\"any\":\"foo\"}}]}}}");
+
+        invokeAddFilterToQuery(body, mapper);
+
+        JsonNode boolNode = body.path("query").path("bool");
+        assertTrue("must clause preserved", boolNode.path("must").isArray());
+        assertEquals(1, boolNode.path("must").size());
+        assertNotNull("filter clause must be added", boolNode.get("filter"));
+        assertTrue("filter must reference *:* permission",
+            boolNode.get("filter").toString().contains("*:*"));
+    }
+
+    @Test
+    public void testAddFilterToQueryWithEmptyFilterObject() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = (ObjectNode) mapper.readTree(
+            "{\"size\":0,\"track_total_hits\":true,\"query\":{\"bool\":{\"must\":{\"query_string\":{\"query\":\"+isTemplate:n\"}},\"filter\":{}}}," +
+                "\"aggs\":{\"cl_topic.key\":{\"terms\":{\"field\":\"cl_topic.key\",\"size\":20}}}}");
+        invokeAddFilterToQuery(body, mapper);
+        JsonNode boolNode = body.path("query").path("bool");
+        JsonNode filterNode = boolNode.get("filter");
+        assertNotNull("filter clause must be present", filterNode);
+        // {} is not a valid ES query clause; it must not appear anywhere in the filter
+        assertFalse("filter must not be an empty object", filterNode.isObject() && filterNode.isEmpty());
+        if (filterNode.isArray()) {
+            for (JsonNode elem : filterNode) {
+                assertFalse("filter array must not contain empty objects", elem.isObject() && elem.isEmpty());
+            }
         }
-    }
-
-    private final ObjectMapper mapper = new ObjectMapper();
-
-    private Method getAddFilterToQueryMethod() throws Exception {
-        Method m = EsHTTPProxy.class.getDeclaredMethod("addFilterToQuery", ServiceContext.class, com.fasterxml.jackson.databind.ObjectMapper.class, com.fasterxml.jackson.databind.JsonNode.class);
-        m.setAccessible(true);
-        return m;
-    }
-
-    private JsonNode buildExpectedFilterNode() throws Exception {
-        return mapper.readTree(QUERY_FILTER);
-    }
-
-    private void invokeAddFilter(EsHTTPProxy proxy, ObjectNode root) throws Exception {
-        getAddFilterToQueryMethod().invoke(proxy, null, mapper, root);
-    }
-
-    private void assertAppendedFilter(ArrayNode filters, JsonNode expectedFilter) {
-        Assert.assertEquals("Expected original filter + injected access filter", 2, filters.size());
-        Assert.assertEquals("Injected filter should be appended as second filter", expectedFilter, filters.get(1));
+        assertTrue("filter must reference *:* permission", filterNode.toString().contains("*:*"));
     }
 
     @Test
-    public void shouldCreateBoolQueryWithMatchAllAndAccessFilterWhenQueryIsMissing() throws Exception {
-        EsHTTPProxy proxy = new TestableEsHTTPProxy();
-        JsonNode expectedFilter = buildExpectedFilterNode();
+    public void testAddFilterToQueryReplacesGlobalAggregation() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = (ObjectNode) mapper.readTree(
+            "{\"size\":0,\"aggs\":{\"leak\":{\"global\":{},\"aggs\":{\"titles\":{\"terms\":{\"field\":\"resourceTitle.keyword\"}}}}}}");
 
-        ObjectNode root = mapper.createObjectNode();
+        invokeAddFilterToQuery(body, mapper);
 
-        invokeAddFilter(proxy, root);
+        assertAclFilterPresent(body, "global agg: query must still be injected");
 
-        JsonNode query = root.get("query");
-        Assert.assertNotNull("A query node should be created", query);
-        JsonNode bool = query.get("bool");
-        Assert.assertNotNull(bool);
-        Assert.assertTrue("The bool query should contain a must clause", bool.has("must"));
-        Assert.assertTrue("The bool query should contain a filter clause", bool.has("filter"));
-
-        JsonNode must = bool.get("must");
-        Assert.assertTrue("Missing query should be replaced by match_all", must.has("match_all"));
-        Assert.assertEquals("Expected access filter was not injected", expectedFilter, bool.get("filter"));
+        JsonNode leakAgg = body.path("aggs").path("leak");
+        assertFalse("global key must be removed", leakAgg.has("global"));
+        assertNotNull("filter key must replace global", leakAgg.get("filter"));
+        assertTrue("replacement filter must reference *:* permission",
+            leakAgg.get("filter").toString().contains("*:*"));
+        assertNotNull("nested sub-aggs must be preserved", leakAgg.get("aggs"));
     }
 
     @Test
-    public void shouldConvertSingleBoolFilterToArrayAndAppendAccessFilter() throws Exception {
-        EsHTTPProxy proxy = new TestableEsHTTPProxy();
-        JsonNode expectedFilter = buildExpectedFilterNode();
+    public void testAddFilterToQueryReplacesGlobalAggregationUsingAggregationsKey() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode body = (ObjectNode) mapper.readTree(
+            "{\"size\":0,\"aggregations\":{\"g\":{\"global\":{}}}}");
 
-        ObjectNode filterObj = mapper.createObjectNode();
-        filterObj.putObject("term").put("a", "b");
+        invokeAddFilterToQuery(body, mapper);
 
-        ObjectNode boolNode = mapper.createObjectNode();
-        boolNode.set("must", mapper.createObjectNode().putObject("match").put("field", "value"));
-        boolNode.set("filter", filterObj);
-
-        ObjectNode root = mapper.createObjectNode();
-        root.set("query", mapper.createObjectNode().set("bool", boolNode));
-
-        invokeAddFilter(proxy, root);
-
-        JsonNode resultingFilter = root.get("query").get("bool").get("filter");
-        Assert.assertTrue("Existing object filter should be converted to array", resultingFilter.isArray());
-        ArrayNode arr = (ArrayNode) resultingFilter;
-        Assert.assertEquals("Original filter should stay first", filterObj, arr.get(0));
-        assertAppendedFilter(arr, expectedFilter);
+        JsonNode gAgg = body.path("aggregations").path("g");
+        assertFalse("global key must be removed (aggregations key variant)", gAgg.has("global"));
+        assertNotNull("filter key must replace global (aggregations key variant)", gAgg.get("filter"));
     }
 
-    @Test
-    public void shouldAppendAccessFilterToExistingBoolFilterArray() throws Exception {
-        EsHTTPProxy proxy = new TestableEsHTTPProxy();
-        JsonNode expectedFilter = buildExpectedFilterNode();
+    private void invokeAddFilterToQuery(ObjectNode body, ObjectMapper mapper) throws Exception {
+        ServiceContext context = new ServiceContext("default", applicationContext, new HashMap<>(), null);
+        UserSession userSession = spy(new UserSession());
+        // Administrator profile short-circuits EsFilterBuilder.buildPermissionsFilter
+        // to "*:*" without touching the AccessManager static fields.
+        when(userSession.getProfile()).thenReturn(Profile.Administrator);
+        context.setUserSession(userSession);
 
-        ObjectNode existingFilter = mapper.createObjectNode();
-        existingFilter.putObject("term").put("c", "d");
-
-        ArrayNode filterArray = mapper.createArrayNode();
-        filterArray.add(existingFilter);
-
-        ObjectNode boolNode = mapper.createObjectNode();
-        boolNode.set("filter", filterArray);
-
-        ObjectNode root = mapper.createObjectNode();
-        root.set("query", mapper.createObjectNode().set("bool", boolNode));
-
-        invokeAddFilter(proxy, root);
-
-        JsonNode resultingFilter = root.get("query").get("bool").get("filter");
-        Assert.assertTrue("Filter should remain an array", resultingFilter.isArray());
-        ArrayNode arr = (ArrayNode) resultingFilter;
-        Assert.assertEquals(existingFilter, arr.get(0));
-        assertAppendedFilter(arr, expectedFilter);
+        Method method = EsHTTPProxy.class.getDeclaredMethod("addFilterToQuery",
+            ServiceContext.class, ObjectMapper.class, JsonNode.class);
+        method.setAccessible(true);
+        method.invoke(esHTTPProxy, context, mapper, body);
     }
 
-    @Test
-    public void shouldWrapFunctionScoreInnerQueryIntoBoolAndInjectAccessFilter() throws Exception {
-        EsHTTPProxy proxy = new TestableEsHTTPProxy();
-        JsonNode expectedFilter = buildExpectedFilterNode();
-
-        ObjectNode innerQuery = mapper.createObjectNode();
-        innerQuery.putObject("match").put("title", "abc");
-
-        ObjectNode functionScore = mapper.createObjectNode();
-        functionScore.set("query", innerQuery);
-        functionScore.putArray("functions"); // keep valid shape
-
-        ObjectNode root = mapper.createObjectNode();
-        root.set("query", mapper.createObjectNode().set("function_score", functionScore));
-
-        invokeAddFilter(proxy, root);
-
-        JsonNode newFunctionQuery = root.get("query").get("function_score").get("query");
-        Assert.assertTrue("function_score.query should become a bool query", newFunctionQuery.has("bool"));
-        JsonNode bool = newFunctionQuery.get("bool");
-        Assert.assertTrue(bool.has("must"));
-        Assert.assertTrue(bool.has("filter"));
-        Assert.assertEquals(innerQuery, bool.get("must"));
-        Assert.assertEquals(expectedFilter, bool.get("filter"));
-    }
-
-    @Test
-    public void shouldAppendAccessFilterWhenFunctionScoreInnerBoolAlreadyHasFilter() throws Exception {
-        EsHTTPProxy proxy = new TestableEsHTTPProxy();
-        JsonNode expectedFilter = buildExpectedFilterNode();
-
-        ObjectNode innerBool = mapper.createObjectNode();
-        innerBool.set("must", mapper.createObjectNode().putObject("match").put("f", "v"));
-        innerBool.set("filter", mapper.createObjectNode().putObject("term").put("x", "y"));
-
-        ObjectNode functionScore = mapper.createObjectNode();
-        functionScore.set("query", mapper.createObjectNode().set("bool", innerBool));
-
-        ObjectNode root = mapper.createObjectNode();
-        root.set("query", mapper.createObjectNode().set("function_score", functionScore));
-
-        invokeAddFilter(proxy, root);
-
-        JsonNode resultingFilter = root.get("query").get("function_score").get("query").get("bool").get("filter");
-        Assert.assertTrue("Inner bool filter should be converted to array", resultingFilter.isArray());
-        ArrayNode arr = (ArrayNode) resultingFilter;
-        assertAppendedFilter(arr, expectedFilter);
+    private void assertAclFilterPresent(ObjectNode body, String caseLabel) {
+        JsonNode queryNode = body.get("query");
+        assertNotNull(caseLabel + ": query field must be present after filter injection", queryNode);
+        JsonNode boolNode = queryNode.get("bool");
+        assertNotNull(caseLabel + ": query.bool wrapper must be present", boolNode);
+        JsonNode filterNode = boolNode.get("filter");
+        assertNotNull(caseLabel + ": query.bool.filter clause must be present", filterNode);
+        assertTrue(caseLabel + ": filter must reference *:* permission for admin profile",
+            filterNode.toString().contains("*:*"));
     }
 }

@@ -367,7 +367,7 @@
           }
 
           return $http
-            .put("../api/userselections/" + selection.id, null, {
+            .put("../api/userselections/" + selection.id + "/items", null, {
               params: {
                 userIdentifier: this.userId,
                 uuid: uuid

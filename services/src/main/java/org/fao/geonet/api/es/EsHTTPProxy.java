@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2025 Food and Agriculture Organization of the
+ * Copyright (C) 2001-2026 Food and Agriculture Organization of the
  * United Nations (FAO-UN), United Nations World Food Programme (WFP)
  * and United Nations Environment Programme (UNEP)
  *
@@ -67,7 +67,6 @@ import org.fao.geonet.kernel.schema.MetadataOperationFilterType;
 import org.fao.geonet.kernel.schema.MetadataSchema;
 import org.fao.geonet.kernel.schema.MetadataSchemaOperationFilter;
 import org.fao.geonet.kernel.search.EsFilterBuilder;
-import org.fao.geonet.repository.SourceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,17 +94,17 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 
+/**
+ * Proxy from GeoNetwork {@code /{portal}}/api} to Elasticsearch service.
+ *
+ * The portal and privileges are included the search provided by the user.
+ */
 @RequestMapping(value = {
     "/{portal}/api"
 })
 @Tag(name = "search",
     description = "Proxy for Elasticsearch catalog search operations")
 @Controller
-/**
- * Proxy from GeoNetwork {@code /{portal}}/api} to Elasticsearch service.
- *
- * The portal and privileges are included the search provided by the user.
- */
 public class EsHTTPProxy {
     public static final String[] _validContentTypes = {
         "application/json", "text/plain"
@@ -125,13 +124,7 @@ public class EsHTTPProxy {
     private static final String MULTISEARCH_ENDPOINT = "_msearch";
 
     @Autowired
-    AccessManager accessManager;
-
-    @Autowired
     NodeInfo node;
-
-    @Autowired
-    SourceRepository sourceRepository;
 
     @Value("${es.index.records:gn-records}")
     private String defaultIndex;
@@ -148,7 +141,7 @@ public class EsHTTPProxy {
     /**
      * Ignore list of headers handled by proxy implementation directly.
      */
-    private String[] proxyHeadersIgnoreList =  {"Content-Length"};
+    private final String[] proxyHeadersIgnoreList =  {"Content-Length"};
 
     @Autowired
     private EsRestClient client;
@@ -253,7 +246,7 @@ public class EsHTTPProxy {
         }
         doc.put(Edit.Info.Elem.EDIT, isOwner || canEdit);
         doc.put(Edit.Info.Elem.REVIEW,
-            id != null ? accessManager.hasReviewPermission(context, id) : false);
+            id != null && accessManager.hasReviewPermission(context, id));
         doc.put(Edit.Info.Elem.OWNER, isOwner);
         doc.put(Edit.Info.Elem.IS_PUBLISHED_TO_ALL, hasOperation(doc, ReservedGroup.all, ReservedOperation.view));
         addReservedOperation(doc, operations, ReservedOperation.view);
@@ -306,9 +299,7 @@ public class EsHTTPProxy {
     public void search(
         @RequestParam(defaultValue = SelectionManager.SELECTION_BUCKET)
         String bucket,
-        @Parameter(description = "Type of related resource. If none, no associated resource returned.",
-            required = false
-        )
+        @Parameter(description = "Type of related resource. If none, no associated resource returned.")
         @RequestParam(name = "relatedType", defaultValue = "")
         RelatedItemType[] relatedTypes,
         @Parameter(hidden = true)
@@ -348,9 +339,7 @@ public class EsHTTPProxy {
     public void msearch(
         @RequestParam(defaultValue = SelectionManager.SELECTION_METADATA)
         String bucket,
-        @Parameter(description = "Type of related resource. If none, no associated resource returned.",
-            required = false
-        )
+        @Parameter(description = "Type of related resource. If none, no associated resource returned.")
         @RequestParam(name = "relatedType", defaultValue = "")
         RelatedItemType[] relatedTypes,
         @Parameter(hidden = true)
@@ -362,8 +351,8 @@ public class EsHTTPProxy {
         @RequestBody
         @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "JSON request based on Elasticsearch API.",
             content = @Content(examples = {
-            @ExampleObject(value = "{\"query\":{\"match\":{\"_id\":\"catalogue_uuid\"}}}")
-        }))
+                @ExampleObject(value = "{\"query\":{\"match\":{\"_id\":\"catalogue_uuid\"}}}")
+            }))
         String body) throws Exception {
         ServiceContext context = ApiUtils.createServiceContext(request);
         call(context, httpSession, request, response, MULTISEARCH_ENDPOINT, body, bucket, relatedTypes);
@@ -412,21 +401,20 @@ public class EsHTTPProxy {
     }
 
     private void call(ServiceContext context, HttpSession httpSession, HttpServletRequest request,
-                     HttpServletResponse response,
-                     String endPoint, String body,
-                     String selectionBucket,
-                     RelatedItemType[] relatedTypes) throws Exception {
+                      HttpServletResponse response,
+                      String endPoint, String body,
+                      String selectionBucket,
+                      RelatedItemType[] relatedTypes) throws Exception {
         final String url = client.getServerUrl() + "/" + defaultIndex + "/" + endPoint + "?";
         // Make query on multiple indices
 //        final String url = client.getServerUrl() + "/" + defaultIndex + ",gn-features/" + endPoint + "?";
         if (SEARCH_ENDPOINT.equals(endPoint) || MULTISEARCH_ENDPOINT.equals(endPoint)) {
             UserSession session = context.getUserSession();
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode nodeQuery = objectMapper.readTree(body);
 
             // multisearch support
             final MappingIterator<Object> mappingIterator = objectMapper.readerFor(JsonNode.class).readValues(body);
-            StringBuffer requestBody = new StringBuffer();
+            StringBuilder requestBody = new StringBuilder();
             while (mappingIterator.hasNextValue()) {
                 JsonNode node = (JsonNode) mappingIterator.nextValue();
                 final JsonNode indexNode = node.get("index");
@@ -472,6 +460,7 @@ public class EsHTTPProxy {
         source.add(Geonet.IndexFieldNames.OWNER);
         source.add(Geonet.IndexFieldNames.ID);
     }
+
     private void addFilterToQuery(ServiceContext context,
                                   ObjectMapper objectMapper,
                                   JsonNode esQuery) throws Exception {
@@ -486,8 +475,19 @@ public class EsHTTPProxy {
 
         JsonNode queryNode = esQuery.get("query");
 
+
+        // Replace any "global" aggregation with a "filter" aggregation scoped to
+        // the ACL filter.
+        // Must run after nodeFilter is built, before any branch exits early via return.
+        for (String aggsKey : new String[]{"aggs", "aggregations"}) {
+            JsonNode aggsNode = esQuery.get(aggsKey);
+            if (aggsNode != null && aggsNode.isObject()) {
+                replaceGlobalAggregations((ObjectNode) aggsNode, nodeFilter);
+            }
+        }
         // Defensive: if no "query", create a bool { must: match_all, filter: nodeFilter }
-        if (queryNode == null || queryNode.isNull()) {
+        if (queryNode == null || queryNode.isNull()
+            || (queryNode.isObject() && queryNode.isEmpty())) {
             ObjectNode boolNode = objectMapper.createObjectNode();
             // prefer must = match_all object (same shape as existing code)
             ObjectNode matchAll = objectMapper.createObjectNode();
@@ -544,9 +544,33 @@ public class EsHTTPProxy {
         ((ObjectNode) queryNode).set("bool", objectNodeBool);
     }
 
+    private void replaceGlobalAggregations(ObjectNode aggsNode, JsonNode aclFilter) {
+        aggsNode.fields().forEachRemaining(entry -> {
+            JsonNode aggDef = entry.getValue();
+            if (!aggDef.isObject()) {
+                return;
+            }
+            ObjectNode aggDefObj = (ObjectNode) aggDef;
+            if (aggDefObj.has("global")) {
+                // "global" ignores the query scope; swap it for a filter-scoped bucket.
+                aggDefObj.remove("global");
+                aggDefObj.set("filter", aclFilter);
+            }
+            // Recurse into nested sub-aggregations.
+            for (String subKey : new String[]{"aggs", "aggregations"}) {
+                JsonNode sub = aggDefObj.get(subKey);
+                if (sub != null && sub.isObject()) {
+                    replaceGlobalAggregations((ObjectNode) sub, aclFilter);
+                }
+            }
+        });
+    }
+
+
+
     private void insertFilter(ObjectNode objectNode, JsonNode nodeFilter) {
         JsonNode filter = objectNode.get("filter");
-        if (filter == null || filter.isNull()) {
+        if (filter == null || filter.isNull() || (filter.isObject() && filter.isEmpty())) {
             objectNode.set("filter", nodeFilter);
         } else if (filter.isArray()) {
             ((ArrayNode) filter).add(nodeFilter);
@@ -558,6 +582,7 @@ public class EsHTTPProxy {
             objectNode.set("filter", arr);
         }
     }
+
     /**
      * Add search privilege criteria to a query.
      */
@@ -565,10 +590,6 @@ public class EsHTTPProxy {
         return String.format(filterTemplate,
             EsFilterBuilder.build(context, type, isSearchingForDraft, node));
 
-    }
-
-    private String buildDocTypeFilter(String type) {
-        return "documentType:" + type;
     }
 
     private void handleRequest(ServiceContext context,
@@ -621,7 +642,7 @@ public class EsHTTPProxy {
                             "Error is: %s.\nRequest:\n%s.\nError:\n%s.",
                             connectionWithFinalHost.getResponseMessage(),
                             requestBody,
-                            IOUtils.toString(errorDetails)
+                            IOUtils.toString(errorDetails, StandardCharsets.UTF_8)
                         ));
                     return;
                 }
@@ -685,13 +706,13 @@ public class EsHTTPProxy {
                     IOUtils.closeQuietly(streamFromServer);
                 }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                LOGGER.error("Error processing request", ex);
             } finally {
                 connectionWithFinalHost.disconnect();
             }
         } catch (IOException e) {
             // connection problem with the host
-            e.printStackTrace();
+            LOGGER.error("Error processing request", e);
 
             throw new Exception(
                 String.format("Failed to request Es at URL %s. " +

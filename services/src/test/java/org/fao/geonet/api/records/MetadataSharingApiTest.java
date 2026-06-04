@@ -26,8 +26,11 @@ package org.fao.geonet.api.records;
 import com.google.gson.Gson;
 import jeeves.server.context.ServiceContext;
 import org.fao.geonet.api.records.model.GroupOperations;
+import org.fao.geonet.api.records.model.GroupPrivilege;
 import org.fao.geonet.api.records.model.SharingParameter;
+import org.fao.geonet.api.records.model.SharingResponse;
 import org.fao.geonet.domain.Group;
+import org.fao.geonet.domain.GroupType;
 import org.fao.geonet.domain.Metadata;
 import org.fao.geonet.domain.OperationAllowed;
 import org.fao.geonet.domain.Profile;
@@ -35,13 +38,19 @@ import org.fao.geonet.domain.ReservedGroup;
 import org.fao.geonet.domain.ReservedOperation;
 import org.fao.geonet.domain.User;
 import org.fao.geonet.domain.UserGroup;
+import org.fao.geonet.domain.MetadataStatus;
+import org.fao.geonet.domain.StatusValue;
+import org.fao.geonet.kernel.setting.SettingManager;
+import org.fao.geonet.kernel.setting.Settings;
 import org.fao.geonet.repository.MetadataRepository;
+import org.fao.geonet.repository.MetadataStatusRepository;
 import org.fao.geonet.repository.OperationAllowedRepository;
 import org.fao.geonet.repository.UserRepositoryTest;
 import org.fao.geonet.services.AbstractServiceIntegrationTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
@@ -56,6 +65,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -74,6 +84,12 @@ public class MetadataSharingApiTest extends AbstractServiceIntegrationTest {
     @Autowired
     private OperationAllowedRepository operationAllowedRepository;
 
+    @Autowired
+    private MetadataStatusRepository metadataStatusRepository;
+
+    @Autowired
+    private SettingManager settingManager;
+
     private User editorUser;
     private User reviewerUser;
     private int metadataId;
@@ -84,6 +100,7 @@ public class MetadataSharingApiTest extends AbstractServiceIntegrationTest {
     public void setUp() throws Exception {
         this.context = createServiceContext();
         createTestData();
+        settingManager.setValue(Settings.METADATA_HISTORY_ENABLED, true);
     }
 
     @Test
@@ -285,6 +302,91 @@ public class MetadataSharingApiTest extends AbstractServiceIntegrationTest {
         List<OperationAllowed> metadataOperations = operationAllowedRepository.findAllById_MetadataId(metadataId);
         boolean hasReservedGroupPrivileges = metadataOperations.stream().anyMatch(op -> ReservedGroup.isReserved(op.getId().getGroupId()));
         assertFalse(hasReservedGroupPrivileges);
+    }
+
+    @Test
+    public void sharingResponseIncludesRecordPrivilegeFlag() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        MockHttpSession mockHttpSession = loginAs(editorUser);
+
+        Group recordPrivilegeGroup = _groupRepo.save(new Group()
+            .setName("record-privilege-test-group")
+            .setType(GroupType.RecordPrivilege));
+        int recordPrivilegeGroupId = recordPrivilegeGroup.getId();
+
+        Group systemPrivilegeGroup = _groupRepo.save(new Group()
+            .setName("system-privilege-test-group")
+            .setType(GroupType.SystemPrivilege));
+        int systemPrivilegeGroupId = systemPrivilegeGroup.getId();
+
+        String responseBody = mockMvc.perform(get("/srv/api/records/" + metadataUuid + "/sharing")
+                .session(mockHttpSession)
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andReturn()
+            .getResponse()
+            .getContentAsString();
+
+        Gson gson = new Gson();
+        SharingResponse sharingResponse = gson.fromJson(responseBody, SharingResponse.class);
+
+        java.util.Optional<GroupPrivilege> recordPrivGroup = sharingResponse.getPrivileges().stream()
+            .filter(p -> p.getGroup() == recordPrivilegeGroupId)
+            .findFirst();
+        assertTrue("RecordPrivilege group should appear in sharing response", recordPrivGroup.isPresent());
+        assertTrue("RecordPrivilege group should have recordPrivilege=true", recordPrivGroup.get().isRecordPrivilege());
+
+        java.util.Optional<GroupPrivilege> workspaceGroup = sharingResponse.getPrivileges().stream()
+            .filter(p -> p.getGroup() == SAMPLE_GROUP_ID)
+            .findFirst();
+        assertTrue("Workspace group should appear in sharing response", workspaceGroup.isPresent());
+        assertFalse("Workspace group should have recordPrivilege=false", workspaceGroup.get().isRecordPrivilege());
+
+        boolean systemGroupPresent = sharingResponse.getPrivileges().stream()
+            .anyMatch(p -> p.getGroup() == systemPrivilegeGroupId);
+        assertFalse("SystemPrivilege group should be excluded from sharing response", systemGroupPresent);
+    }
+
+    @Test
+    public void settingPrivilegesToNoneCreatesPrivilegesHistoryStatusEntry() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        MockHttpSession mockHttpSession = loginAs(editorUser);
+
+        SharingParameter addPrivilegesRequest = createPrivilegesRequest(false);
+        Gson gson = new Gson();
+
+        // Precondition: record has at least one privilege before setting privileges to none.
+        mockMvc.perform(put("/srv/api/records/" + metadataUuid + "/sharing")
+                .session(mockHttpSession)
+                .content(gson.toJson(addPrivilegesRequest))
+                .contentType(API_JSON_EXPECTED_ENCODING)
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNoContent());
+
+        long historyEventsBefore = metadataStatusRepository.findAllByMetadataId(metadataId, Sort.unsorted()).stream()
+            .map(MetadataStatus::getStatusValue)
+            .map(StatusValue::getId)
+            .filter(id -> id.equals(StatusValue.Events.RECORDPRIVILEGESCHANGE.getId()))
+            .count();
+
+        SharingParameter clearPrivilegesRequest = new SharingParameter();
+        clearPrivilegesRequest.setClear(true);
+        clearPrivilegesRequest.setPrivileges(new ArrayList<>());
+
+        mockMvc.perform(put("/srv/api/records/" + metadataUuid + "/sharing")
+                .session(mockHttpSession)
+                .content(gson.toJson(clearPrivilegesRequest))
+                .contentType(API_JSON_EXPECTED_ENCODING)
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNoContent());
+
+        long historyEventsAfter = metadataStatusRepository.findAllByMetadataId(metadataId, Sort.unsorted()).stream()
+            .map(MetadataStatus::getStatusValue)
+            .map(StatusValue::getId)
+            .filter(id -> id.equals(StatusValue.Events.RECORDPRIVILEGESCHANGE.getId()))
+            .count();
+
+        assertEquals(historyEventsBefore + 1, historyEventsAfter);
     }
 
     private SharingParameter createPrivilegesRequest(boolean addPublicationPrivileges) {
