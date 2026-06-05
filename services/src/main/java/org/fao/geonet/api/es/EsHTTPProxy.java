@@ -422,6 +422,7 @@ public class EsHTTPProxy {
                     ((ObjectNode) node).put("index", defaultIndex);
                 } else {
                     addFilterToQuery(context, objectMapper, node);
+                    KnnUtils.replaceEmbeddingInKnnQuery(node, objectMapper);
                     if (selectionBucket != null) {
                         // Multisearch are not supposed to work with a bucket.
                         // Only one request is store in session
@@ -472,6 +473,7 @@ public class EsHTTPProxy {
                 || esQuery.toString().contains("+draft:")
                 || esQuery.toString().contains("-draft:"));
         JsonNode nodeFilter = objectMapper.readTree(esFilter);
+        KnnUtils.addFilterToKnnQuery(esQuery, nodeFilter);
 
         JsonNode queryNode = esQuery.get("query");
 
