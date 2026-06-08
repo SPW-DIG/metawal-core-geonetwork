@@ -27,6 +27,8 @@
                 xmlns:gmd="http://www.isotc211.org/2005/gmd"
                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
                 xmlns:gco="http://www.isotc211.org/2005/gco"
+                xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+                xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:util="java:org.fao.geonet.util.XslUtil"
                 xmlns:gn-fn-index="http://geonetwork-opensource.org/xsl/functions/index"
@@ -456,18 +458,27 @@
       <xsl:value-of select="count($allKeywords//keyword)"/>
     </tagNumber>
 
-    <!-- Checks if any keyword is defined in openDataKeywords to flag it as open data -->
+    <!--Is Open Data if: +MD_LegalConstraintsaccessConstraints.keyword":unrestricted
+    and +MD_LegalConstraintsuseConstraints.keyword:licenceUnrestricted -->
+    <xsl:variable name="legalConstraints"
+                  select=".//mri:resourceConstraints/mco:MD_LegalConstraints"/>
+    <xsl:variable name="isOpenData"
+                  select="
+        exists(
+            $legalConstraints/mco:accessConstraints/
+            mco:MD_RestrictionCode[@codeListValue='unrestricted']
+        )
+        and
+        exists(
+            $legalConstraints/mco:useConstraints/
+            mco:MD_RestrictionCode[@codeListValue='licenceUnrestricted']
+        )
+    "/>
+<!--    <xsl:message select="'isOpenData = ', $isOpenData"/>-->
+
     <isOpenData>
-      <xsl:value-of select="count(
-                        $allKeywords//keyword/values/value[matches(
-                          normalize-unicode(
-                            replace(
-                              normalize-unicode(
-                                lower-case(normalize-space(text())),
-                                'NFKD'),
-                            '\p{Mn}', ''),
-                          'NFKC'),
-                        $openDataKeywords)]) > 0"/></isOpenData>
+      <xsl:value-of select="$isOpenData"/>
+    </isOpenData>
 
 
     <!-- Build index field for type
