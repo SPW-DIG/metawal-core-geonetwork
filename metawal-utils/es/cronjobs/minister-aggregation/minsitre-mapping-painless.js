@@ -149,7 +149,11 @@ Map mapping = ['Administration Générale de la Documentation Patrimoniale (SPF 
 'Tourisme Wallonie (TW)':'Lescrenier',
 'Université catholique de Louvain - Earth and Life Institute (UCL - ELI)':'na',
 'Université de Liège (ULiège)':'na',
-'Université de Namur (UNamur)':'na'
+'Université de Namur (UNamur)':'na',
+'Agence Wallonne pour la Sécurité Routière (AWSR)':'na',
+'SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d\'eau et du Bien-être animal - Direction de l\'Aménagement foncier rural': 'Dalcq',
+'SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d\'eau et du Bien-être animal - Direction des Cours d\'Eau non navigables':'Dolimont',
+'SPW - Agriculture, Ressources naturelles et Environnement - Département du Développement, de la Ruralité et des Cours d\'eau et du Bien-être animal - Direction du Développement rural':'Coppieters'
 ];
 
 
