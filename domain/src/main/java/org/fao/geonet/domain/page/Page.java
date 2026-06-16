@@ -86,11 +86,11 @@ public class Page extends GeonetEntity implements Serializable {
     }
 
     public enum PageStatus {
-        PUBLIC, PUBLIC_ONLY, GROUPS, PRIVATE, HIDDEN;
+        PUBLIC, PUBLIC_ONLY, GROUPS, GROUPS_AND_ADMIN, PRIVATE, HIDDEN;
     }
 
     public enum PageFormat {
-        LINK, HTML, HTMLPAGE, TEXT;
+        LINK, HTML, HTMLPAGE, TEXT, EMAILLINK;
     }
 
     // These are the sections where is shown the link to the Page object

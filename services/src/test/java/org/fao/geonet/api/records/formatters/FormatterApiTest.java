@@ -85,6 +85,7 @@ public class FormatterApiTest extends AbstractServiceIntegrationTest {
         data.add(new String[]{"iso19115-3.2018", "citation", "?format=text", "iso19115-3.2018", "text.txt"});
         data.add(new String[]{"iso19115-3.2018", "citation", "?format=html", "iso19115-3.2018", "html.html"});
         data.add(new String[]{"iso19115-3.2018", "citation", "?format=text&authorRoles=processor&publisherRoles=owner,custodian", "iso19115-3.2018", "text-custom-role.txt"});
+        data.add(new String[]{"iso19115-3.2018", "citation", "?format=text&withAffiliation=true&authorRoles=processor", "iso19115-3.2018", "text-with-affiliation.txt"});
 
         data.add(new String[]{"iso19115-3.2018-dcat-dataset.xml", "dcat", "", "iso19115-3.2018", "dataset-core.rdf"});
         data.add(new String[]{"iso19115-3.2018-dcat-dataset.xml", "eu-dcat-ap", "", "iso19115-3.2018", "dataset-core.rdf"});
@@ -93,6 +94,8 @@ public class FormatterApiTest extends AbstractServiceIntegrationTest {
         data.add(new String[]{"iso19115-3.2018-dcat-dataset.xml", "eu-dcat-ap-mobility", "", "iso19115-3.2018", "dataset-core.rdf"});
         data.add(new String[]{"iso19115-3.2018-dcat-dataset.xml", "eu-dcat-ap-hvd", "", "iso19115-3.2018", "dataset-core.rdf"});
         data.add(new String[]{"iso19115-3.2018-dcat-service.xml", "dcat", "", "iso19115-3.2018", "service-core.rdf"});
+
+        data.add(new String[]{"iso19115-3.2018-datacite.xml", "datacite", "", "iso19115-3.2018", "out.xml"});
 
         data.add(new String[]{"iso19139-dcat-dataset.xml", "dcat", "", "iso19139", "dataset-core.rdf"});
 
@@ -140,6 +143,9 @@ public class FormatterApiTest extends AbstractServiceIntegrationTest {
                 boolean isRdf = checkfile.endsWith(".rdf");
                 boolean isXml = checkfile.endsWith(".xml");
 
+//                FileUtils.writeStringToFile(new File("/tmp/new/" + String.format("%s-%s-%s",
+//                    schema, formatter, checkfile)), actual.replaceFirst("urn:uuid:.*</dct:identifier>", "urn:uuid:{uuid}</dct:identifier>"), StandardCharsets.UTF_8);
+
                 if (isXml || isRdf) {
                     if (isRdf) {
                         try {
@@ -152,9 +158,6 @@ public class FormatterApiTest extends AbstractServiceIntegrationTest {
                                     url, checkfile, rdfException.getMessage(), actual));
                         }
                     }
-
-                    //FileUtils.writeStringToFile(new File("/tmp/services/src/test/resources/org/fao/geonet/api/records/formatters/new/" + String.format("%s-%s-%s",
-                    //        schema, formatter, checkfile)), actual.replaceFirst("urn:uuid/.*</dct:identifier>", "urn:uuid/{uuid}</dct:identifier>"), StandardCharsets.UTF_8);
 
                     Diff diff = DiffBuilder
                             .compare(Input.fromString(expected))

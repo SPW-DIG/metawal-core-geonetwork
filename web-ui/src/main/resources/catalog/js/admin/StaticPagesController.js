@@ -82,7 +82,7 @@
 
       function loadStaticPages() {
         $scope.staticPageSelected = null;
-        $http.get("../api/pages").then(function (r) {
+        $http.get("../api/pages?includeAll=true").then(function (r) {
           $scope.staticPages = r.data;
         });
       }
@@ -182,7 +182,9 @@
       $scope.selectStaticPage = function (v) {
         $scope.isUpdate = true;
         $scope.staticPageSelected = v;
-        $scope.isGroupEnabled = $scope.staticPageSelected.status == "GROUPS";
+        $scope.isGroupEnabled =
+          $scope.staticPageSelected.status == "GROUPS" ||
+          $scope.staticPageSelected.status == "GROUPS_AND_ADMIN";
 
         var link =
           "api/pages/" +
@@ -193,13 +195,20 @@
 
         $scope.content = "";
         $scope.pageApiLink = gnGlobalSettings.nodeUrl + link + "/content";
-        if ($scope.staticPageSelected.format !== "LINK") {
+        if (
+          $scope.staticPageSelected.format !== "LINK" &&
+          $scope.staticPageSelected.format !== "EMAILLINK"
+        ) {
           $http
             .get($scope.action + "/content", { headers: { Accept: "text/html" } })
             .then(function (r) {
               $scope.staticPageSelected.content = r.data;
             });
         }
+      };
+
+      $scope.isLinkFormat = function (format) {
+        return format === "LINK" || format === "EMAILLINK";
       };
 
       $scope.deleteContent = function () {
@@ -251,7 +260,10 @@
         }
       };
       $scope.updateGroupSelection = function () {
-        if ($scope.staticPageSelected.status === "GROUPS") {
+        if (
+          $scope.staticPageSelected.status === "GROUPS" ||
+          $scope.staticPageSelected.status === "GROUPS_AND_ADMIN"
+        ) {
           $scope.isGroupEnabled = true;
         } else {
           $scope.isGroupEnabled = false;

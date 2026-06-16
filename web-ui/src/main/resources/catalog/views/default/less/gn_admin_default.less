@@ -23,7 +23,8 @@ ul.gn-resultview li.list-group-item {
 
 [ng-app="gn_admin"] {
   body {
-    padding-top: calc(~" @{mw-top-header-height} + @{mw-main-header-height} +  @{gn-menubar-height}");
+    padding-top: calc(~"@{gn-menubar-height} + 1px");
+    //padding-top: calc(~" @{mw-top-header-height} + @{mw-main-header-height} +  @{gn-menubar-height}");
     background-color: #f7f7f7;
   }
   .container-fluid {
@@ -633,6 +634,11 @@ ul.gn-resultview li.list-group-item {
       .input-group {
         .table {
           margin-bottom: 0;
+        }
+        .input-group-addon {
+          input[type="radio"], input[type="checkbox"] {
+            margin: 0;
+          }
         }
       }
       .nav-pills {

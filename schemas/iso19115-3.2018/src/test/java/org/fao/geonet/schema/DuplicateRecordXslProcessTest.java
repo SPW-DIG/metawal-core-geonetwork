@@ -46,7 +46,6 @@ public class DuplicateRecordXslProcessTest extends XslProcessTest {
     private static final String XPATH_RECORD_RESOURCE_IDENTIFIER =
         ".//mri:citation/*/cit:identifier";
 
-
     @Test
     public void testDuplicateRecord() throws Exception {
         Element inputElement = Xml.loadFile(xmlFile);
@@ -58,5 +57,6 @@ public class DuplicateRecordXslProcessTest extends XslProcessTest {
         assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_DATE).size(), equalTo(0));
         assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_ONLINE_DOI).size(), equalTo(0));
         assertThat(Xml.selectNodes(resultElement, XPATH_RECORD_RESOURCE_IDENTIFIER).size(), equalTo(1));
+
     }
 }

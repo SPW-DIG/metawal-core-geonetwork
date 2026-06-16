@@ -32,7 +32,15 @@
     "gnMap",
     "gnSearchSettings",
     "gnExternalViewer",
-    function ($location, Metadata, gnMap, gnSearchSettings, gnExternalViewer) {
+    "gnViewerSettings",
+    function (
+      $location,
+      Metadata,
+      gnMap,
+      gnSearchSettings,
+      gnExternalViewer,
+      gnViewerSettings
+    ) {
       var viewerMap = gnSearchSettings.viewerMap;
 
       var searchRecordsInSelection = function (uuid, records) {
@@ -298,7 +306,9 @@
               if (user != undefined) {
                 getUserSelections.push(
                   $http
-                    .get("../api/userselections/" + sel.id + "/" + user)
+                    .get(
+                      "../api/userselections/" + sel.id + "/items?userIdentifier=" + user
+                    )
                     .then(function (response) {
                       sel.records = response.data;
                       allRecords = allRecords.concat(response.data);
@@ -357,8 +367,9 @@
           }
 
           return $http
-            .put("../api/userselections/" + selection.id + "/" + this.userId, null, {
+            .put("../api/userselections/" + selection.id + "/items", null, {
               params: {
+                userIdentifier: this.userId,
                 uuid: uuid
               }
             })
@@ -375,8 +386,9 @@
         var ctrl = this;
         if (selection.id > -1) {
           return $http
-            .delete("../api/userselections/" + selection.id + "/" + this.userId, {
+            .delete("../api/userselections/" + selection.id + "/items", {
               params: {
+                userIdentifier: this.userId,
                 uuid: uuid
               }
             })

@@ -24,9 +24,11 @@
   <!-- What entity is responsible for producing and/or distributing the data set?  Also, is there a physical location associated with the publisher? -->
   <xsl:param name="publisherRoles"
                 select="'publisher'"/>
-
   <xsl:variable name="publisherRolesList"
                 select="tokenize($publisherRoles, ',')"/>
+
+  <xsl:param name="withAffiliation"
+                  select="'false'"/>
 
   <xsl:variable name="formats" as="node()*">
     <format key="html"/>

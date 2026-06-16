@@ -28,6 +28,18 @@ package org.fao.geonet.api.records.attachments;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.io.CharStreams;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.annotation.Nullable;
 import jeeves.server.context.ServiceContext;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -36,7 +48,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ContentType;
-import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.fao.geonet.api.exception.ResourceNotFoundException;
@@ -45,22 +56,13 @@ import org.fao.geonet.domain.MetadataResource;
 import org.fao.geonet.domain.MetadataResourceContainer;
 import org.fao.geonet.domain.MetadataResourceVisibility;
 import org.fao.geonet.kernel.setting.SettingManager;
-import org.fao.geonet.lib.Lib;
 import org.fao.geonet.utils.DateUtil;
 import org.fao.geonet.utils.GeonetHttpRequestFactory;
-import org.fao.geonet.utils.IO;
 import org.fao.geonet.utils.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.client.ClientHttpResponse;
-
-import javax.annotation.Nullable;
-import java.io.*;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * A FME store resources files in FME.
@@ -130,7 +132,30 @@ public class FMEStore extends AbstractStore {
 
     @Override
     public ResourceHolder getResource(ServiceContext context, String metadataUuid, MetadataResourceVisibility metadataResourceVisibility, String resourceId, Boolean approved) throws Exception {
-        return null;
+        // enforce permissions - FME store resources are public on FME side but we still check access
+        canDownload(context, metadataUuid, fmeVisibility, approved);
+        checkResourceId(resourceId);
+
+        String url = fmeApiUrl + metadataUuid + "/" + resourceId + ACCEPT_CONTENTS;
+        HttpGet httpGet = new HttpGet(url);
+        addFmeTokenHeader(httpGet);
+
+        // Execute request and return the response body as a ResourceHolder without closing the response here.
+        ClientHttpResponse httpResponse = httpRequestFactory.execute(httpGet);
+        int status = httpResponse.getRawStatusCode();
+        if (status == 200) {
+            // build metadata for this resource
+            MetadataResource metadata = getResourceMetadata(context, metadataUuid, metadataResourceVisibility, resourceId, approved);
+            InputStream bodyStream = httpResponse.getBody();
+            return new ResourceHolderImpl(metadata, bodyStream);
+        } else {
+            // ensure response is closed on error
+            try { httpResponse.close(); } catch (Exception ignored) {}
+            throw new ResourceNotFoundException(
+                String.format("Metadata resource '%s' not found for metadata '%s'", resourceId, metadataUuid))
+                .withMessageKey("exception.resourceNotFound.resource", new String[]{resourceId})
+                .withDescriptionKey("exception.resourceNotFound.resource.description", new String[]{resourceId, metadataUuid});
+        }
     }
 
     private List<MetadataResource> getResourcesFromFmeFileList(String metadataUuid,
@@ -209,16 +234,122 @@ public class FMEStore extends AbstractStore {
         final MetadataResourceVisibility visibility,
         final String resourceId,
         Boolean approved) throws Exception {
+        // Internal retrieval used by other internals: enforce presence but do not close response - caller will close ResourceHolder
+        canDownload(null, metadataUuid, fmeVisibility, approved);
+        checkResourceId(resourceId);
+
         String url = fmeApiUrl + metadataUuid + "/" + resourceId + ACCEPT_CONTENTS;
         HttpGet httpGet = new HttpGet(url);
         addFmeTokenHeader(httpGet);
+
+        ClientHttpResponse httpResponse = httpRequestFactory.execute(httpGet);
+        int status = httpResponse.getRawStatusCode();
+        if (status == 200) {
+            MetadataResource metadata = getResourceMetadata(null, metadataUuid, visibility, resourceId, approved);
+            InputStream bodyStream = httpResponse.getBody();
+            return new ResourceHolderImpl(metadata, bodyStream);
+        } else {
+            try { httpResponse.close(); } catch (Exception ignored) {}
+            throw new ResourceNotFoundException(
+                String.format("Metadata resource '%s' not found for metadata '%s'", resourceId, metadataUuid));
+        }
+    }
+
+    @Override
+    public MetadataResource getResourceMetadata(ServiceContext context, String metadataUuid, MetadataResourceVisibility visibility, String resourceId, Boolean approved) throws Exception {
+        // FME store always uses fmeVisibility for access checks
+        int metadataId = canDownload(context, metadataUuid, fmeVisibility, approved);
+        checkResourceId(resourceId);
+
+        String url = fmeApiUrl + metadataUuid + DEPTH_1;
+        HttpGet httpGet = new HttpGet(url);
+        addFmeTokenHeader(httpGet);
+
+        ObjectMapper objectMapper = new ObjectMapper();
         try (ClientHttpResponse httpResponse = httpRequestFactory.execute(httpGet)) {
-            if (httpResponse.getRawStatusCode() == 200) {
-                return new ResourceHolderImpl(null);
-            } else {
+            if (httpResponse.getRawStatusCode() != 200) {
                 throw new ResourceNotFoundException(
-                    String.format("Metadata resource '%s' not found for metadata '%s'", resourceId, metadataUuid));
+                    String.format("Metadata resource '%s' not found for metadata '%s'", resourceId, metadataUuid))
+                    .withMessageKey("exception.resourceNotFound.resource", new String[]{resourceId})
+                    .withDescriptionKey("exception.resourceNotFound.resource.description", new String[]{resourceId, metadataUuid});
             }
+
+            String body = CharStreams.toString(new InputStreamReader(httpResponse.getBody()));
+            JsonNode tree = objectMapper.readTree(body);
+            JsonNode files = tree.get("contents");
+            if (files != null && files.isArray()) {
+                for (JsonNode file : files) {
+                    JsonNode name = file.get("name");
+                    if (name != null) {
+                        String nameText = name.asText();
+                        String fileNameOnly = new java.io.File(nameText).toPath().getFileName().toString();
+                        if (nameText.equals(resourceId) || fileNameOnly.equals(resourceId)) {
+                            long size = file.has("size") ? file.get("size").asLong() : 0L;
+                            Date date = new Date();
+                            try {
+                                if (file.has("date") && !file.get("date").isNull()) {
+                                    date = new Date(
+                                        DateUtil.parseBasicOrFullDateTime(file.get("date").asText())
+                                            .toInstant().toEpochMilli());
+                                }
+                            } catch (Exception ignore) {
+                                // fallback to current date if parsing fails
+                            }
+                            return new FilesystemStoreResource(metadataUuid, metadataId,
+                                nameText,
+                                settingManager.getNodeURL() + "api/records/",
+                                fmeVisibility,
+                                size,
+                                date,
+                                approved);
+                        }
+                    }
+                }
+            }
+
+            throw new ResourceNotFoundException(
+                String.format("Metadata resource '%s' not found for metadata '%s'", resourceId, metadataUuid))
+                .withMessageKey("exception.resourceNotFound.resource", new String[]{resourceId})
+                .withDescriptionKey("exception.resourceNotFound.resource.description", new String[]{resourceId, metadataUuid});
+        }
+    }
+
+    @Override
+    public ResourceHolder getResourceWithRange(ServiceContext context, String metadataUuid, MetadataResourceVisibility visibility, String resourceId, Boolean approved, long start, long end) throws Exception {
+        // enforce FME visibility and permissions
+        canDownload(context, metadataUuid, fmeVisibility, approved);
+        checkResourceId(resourceId);
+
+        String url = fmeApiUrl + metadataUuid + "/" + resourceId + ACCEPT_CONTENTS;
+        HttpGet httpGet = new HttpGet(url);
+        addFmeTokenHeader(httpGet);
+        // request the byte range
+        httpGet.setHeader("Range", String.format("bytes=%d-%d", start, end));
+
+        // Note: do NOT use try-with-resources here because we return the InputStream to the caller.
+        ClientHttpResponse httpResponse = httpRequestFactory.execute(httpGet);
+        int status = httpResponse.getRawStatusCode();
+        if (status == 200 || status == 206) {
+            // build metadata for this resource (may perform a small listing call)
+            MetadataResource metadata = getResourceMetadata(context, metadataUuid, visibility, resourceId, approved);
+            InputStream bodyStream = httpResponse.getBody();
+            // the returned ResourceHolderImpl will close the InputStream when closed by caller
+            return new ResourceHolderImpl(metadata, bodyStream);
+        } else {
+            // close response body if not successful
+            try {
+                IOUtils.copy(httpResponse.getBody(), new java.io.ByteArrayOutputStream());
+            } catch (Exception ignore) {
+            } finally {
+                try {
+                    httpResponse.close();
+                } catch (Exception ignore) {
+                }
+            }
+            throw new ResourceNotFoundException(
+                String.format("Metadata resource '%s' not found for metadata '%s'", resourceId, metadataUuid))
+                .withMessageKey("exception.resourceNotFound.resource", new String[]{resourceId})
+                .withDescriptionKey("exception.resourceNotFound.resource.description", new String[]{resourceId, metadataUuid});
         }
     }
 
@@ -308,7 +439,7 @@ public class FMEStore extends AbstractStore {
 
     @Override
     public String delResources(ServiceContext context, int metadataId) throws Exception {
-       throw new UnsupportedOperationException("FME store does not support deleting metadata by ID.");
+        throw new UnsupportedOperationException("FME store does not support deleting metadata by ID.");
     }
 
     @Override
@@ -360,14 +491,18 @@ public class FMEStore extends AbstractStore {
 
     private static class ResourceHolderImpl implements ResourceHolder {
         private final MetadataResource metadataResource;
+        private final InputStreamResource resource;
+        private final InputStream inputStream;
 
-        public ResourceHolderImpl(MetadataResource metadataResource) {
+        public ResourceHolderImpl(MetadataResource metadataResource, InputStream inputStream) {
             this.metadataResource = metadataResource;
+            this.inputStream = inputStream;
+            this.resource = new InputStreamResource(inputStream);
         }
 
         @Override
-        public Path getPath() {
-            return null;
+        public Resource getResource() {
+            return resource;
         }
 
         @Override
@@ -377,6 +512,7 @@ public class FMEStore extends AbstractStore {
 
         @Override
         public void close() throws IOException {
+            inputStream.close();
         }
     }
 }

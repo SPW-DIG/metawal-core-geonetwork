@@ -31,7 +31,7 @@
             <dct:source>
                <rdf:Description rdf:about="https://metawal.wallonie.be/geonetwork/srv/api/records/7fe2f305-1302-4297-b67e-792f55acd834">
                   <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
-                 <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-08T12:26:19.337626Z</dct:modified>
+                  <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-12-08T12:26:19.337626Z</dct:modified>
                   <dct:conformsTo>
                      <dct:Standard>
                         <rdf:type rdf:resource="http://purl.org/dc/terms/Standard"/>
@@ -39,7 +39,7 @@
                         <owl:versionInfo xml:lang="fr">2003/Cor 1:2006</owl:versionInfo>
                      </dct:Standard>
                   </dct:conformsTo>
-                 <foaf:primaryTopic rdf:resource="http://geodata.wallonie.be/id/7fe2f305-1302-4297-b67e-792f55acd834"/>
+                  <foaf:primaryTopic rdf:resource="http://geodata.wallonie.be/id/7fe2f305-1302-4297-b67e-792f55acd834"/>
                </rdf:Description>
             </dct:source>
             <dct:conformsTo>
@@ -247,10 +247,10 @@
       <dcat:keyword xml:lang="fr">Mobilité</dcat:keyword>
       <dcat:keyword xml:lang="fr">Observation de la terre et environnement</dcat:keyword>
       <dcatap:applicableLegislation>
-        <rdf:Description rdf:about="http://data.europa.eu/eli/reg/2014/1143/oj">
-          <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-          <dct:title xml:lang="fr">1143/2014</dct:title>
-        </rdf:Description>
+         <rdf:Description rdf:about="http://data.europa.eu/eli/reg/2014/1143/oj">
+            <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+            <dct:title xml:lang="fr">1143/2014</dct:title>
+         </rdf:Description>
       </dcatap:applicableLegislation>
       <dct:license>
          <dct:LicenseDocument rdf:about="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf">
@@ -494,10 +494,10 @@
                <dct:LinguisticSystem rdf:about="http://publications.europa.eu/resource/authority/language/FRA"/>
             </dct:language>
             <dcatap:applicableLegislation>
-              <rdf:Description rdf:about="http://data.europa.eu/eli/reg/2014/1143/oj">
-                <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
-                <dct:title xml:lang="fr">1143/2014</dct:title>
-              </rdf:Description>
+               <rdf:Description rdf:about="http://data.europa.eu/eli/reg/2014/1143/oj">
+                  <rdf:type rdf:resource="http://data.europa.eu/eli/ontology#LegalResource"/>
+                  <dct:title xml:lang="fr">1143/2014</dct:title>
+               </rdf:Description>
             </dcatap:applicableLegislation>
          </dcat:Distribution>
       </dcat:distribution>

@@ -154,6 +154,8 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/HTML">html</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JPEG">jpeg</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JPEG">jpg</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/JPEG2000">image/jp2</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/JPEG2000">jp2</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">application/json</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GEOJSON">application/vnd.geo+json</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON">json</entry>
@@ -164,10 +166,12 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON_LD">json_ld</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/JSON_LD">jsonld</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/KML">kml</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/KML">ogc:kml</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/KMZ">kmz</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/LAS">las</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/LAZ">laz</entry>
     <entry key="https://www.iana.org/assignments/media-types/application/marc">marc</entry>
+    <entry key="https://publications.europa.eu/resource/authority/file-type/MAP_SRVC">ArcGIS MapService</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/MDB">mdb</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/MXD">mxd</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/RDF_N_TRIPLES">n-triples</entry>
@@ -180,6 +184,7 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/WCS_SRVC">ogc:wcs</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/WFS_SRVC">ogc:wfs</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/GML">ogc:wfs-g</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/GML">ogc:gml</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/XML">ogc:wmc</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/WMS_SRVC">ogc:wms</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/WMTS_SRVC">ogc:wmts</entry>
@@ -209,6 +214,7 @@
     <entry key="http://publications.europa.eu/resource/authority/file-type/REST">ESRI:REST</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/SHP">ESRI Shapefile (.shp)</entry>
+    <entry key="http://publications.europa.eu/resource/authority/file-type/SHP">zip-shape</entry>
     <entry key="http://publications.europa.eu/resource/authority/file-type/XML">sos</entry>
     <entry key="https://www.iana.org/assignments/media-types/application/vnd.sqlite3">spatialite</entry>
     <entry key="https://www.iana.org/assignments/media-types/application/vnd.sqlite3">sqlite</entry>
