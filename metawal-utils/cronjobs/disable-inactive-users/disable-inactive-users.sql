@@ -1,0 +1,1 @@
+UPDATE users SET isenabled='n' WHERE CAST(lastlogindate AS timestamp) < CURRENT_DATE - INTERVAL '1 year' and isenabled = 'y';
