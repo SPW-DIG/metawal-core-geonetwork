@@ -2,6 +2,8 @@
 source /home/sites/metawal/sources/cronjobs/database-credentials
 set -euo pipefail
 
+# SCRIPT_DIR always points to the script's own location
+# regardless of where the script was called from.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 output=$(PGPASSWORD="$DB_PASSWORD" psql --host="$DB_HOST" --port="$DB_PORT" --username="$DB_USER" --dbname="$DB_NAME"  --file="$SCRIPT_DIR/disable-inactive-users.sql")
