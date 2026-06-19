@@ -151,7 +151,8 @@ public class ShaclValidationService {
     private Shapes parseShapesFromFiles(List<String> shaclFiles) {
         MultiUnion shapesGraph = new MultiUnion();
         for (String shaclFile : shaclFiles) {
-            Path shaclPath = dataDirectory.getConfigDir().resolve("shacl").resolve(shaclFile);
+            Path shaclRulesFolder = dataDirectory.getShaclDir();
+            Path shaclPath = shaclRulesFolder.resolve(shaclFile);
             if (!Files.exists(shaclPath)) {
                 throw new IllegalArgumentException("SHACL shape file not found: " + shaclPath);
             }

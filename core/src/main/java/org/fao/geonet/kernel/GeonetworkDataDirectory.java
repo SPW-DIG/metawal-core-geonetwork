@@ -718,7 +718,7 @@ public class GeonetworkDataDirectory {
      * @return the directory containing the shacl files.
      */
     public Path getShaclDir(){
-        return getWebappDir().resolve("WEB-INF").resolve("config").resolve("shacl");
+        return getWebappDir().resolve("WEB-INF").resolve("data").resolve("config").resolve("shacl");
     }
 
     /**
