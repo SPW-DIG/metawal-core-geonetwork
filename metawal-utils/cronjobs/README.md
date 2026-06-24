@@ -29,8 +29,6 @@ sudo dnf install postgresql
 
 Créer un fichier "es-credentials", contenant les valeurs des propriétés suivantes:
 ```sh
-ES_USER="..."
-ES_PASSWORD="..."
 ES_API_KEY="..."
 ```
 
