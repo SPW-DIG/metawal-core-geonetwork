@@ -23,6 +23,7 @@
   <xsl:include href="process/mw-constraints-ccby.xsl"/>
   <xsl:include href="process/mw-import-datamodel.xsl"/>
   <xsl:include href="process/translate.xsl"/>
+  <xsl:include href="process/mw-add-publisher.xsl"/>
   <!--<xsl:include href="process/inspire-add-conformity.xsl"/>-->
 
   <xsl:variable name="processes">
@@ -37,6 +38,7 @@
     <p>add-wms-and-legend-from-esrirest</p>
     <p>add-columns-from-csv</p>
     <p>add-values-from-csv</p>
+    <p>mw-add-publisher</p>
     <p>collection-updater</p>
     <p>add-date-for-status</p>
     <p>spatineo-registration</p>
