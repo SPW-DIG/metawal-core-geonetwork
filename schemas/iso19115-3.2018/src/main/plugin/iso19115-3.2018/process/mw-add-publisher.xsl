@@ -72,7 +72,9 @@
                 <cit:CI_Organisation>
                   <cit:name>
                     <gco:CharacterString>
-                      <xsl:value-of select="replace(*/cit:party/cit:CI_Organisation/cit:name/gco:CharacterString, '(.*) \(SPW.*\)', '$1')"/>
+                      <xsl:value-of select="replace(*/cit:party/cit:CI_Organisation/cit:name/gco:CharacterString,
+                       '^.*\(([^()]+? - [^()]+?)( - [^()]*)?\)$',
+                       '$1')"/>
                     </gco:CharacterString>
                   </cit:name>
 

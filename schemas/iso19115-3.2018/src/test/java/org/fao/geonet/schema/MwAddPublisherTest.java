@@ -80,7 +80,7 @@ public class MwAddPublisherTest extends XslProcessTest {
             "/mdb:MD_Metadata/mdb:identificationInfo/*/mri:pointOfContact" +
                 "[cit:CI_Responsibility/cit:role/*/@codeListValue = 'publisher']" +
                 "/cit:CI_Responsibility/cit:party/cit:CI_Organisation/cit:name/gco:CharacterString",
-            equalTo("Direction de la Nature et des Espaces verts")).withNamespaceContext(ns));
+            equalTo("SPW - Agriculture, Ressources naturelles et Environnement")).withNamespaceContext(ns));
         assertThat(firstResultString, hasXPath(
             "/mdb:MD_Metadata/mdb:identificationInfo/*/mri:pointOfContact" +
                 "[cit:CI_Responsibility/cit:role/*/@codeListValue = 'publisher']" +
