@@ -38,7 +38,7 @@
   <xsl:variable name="geoportalWallon2026urlEndPoint"
                       select="'https://geoportail.wallonie.be/carte#ADD|METADATAID='"/>
   <xsl:variable name="geoportalWallon2026urlTemplate">
-    <xsl:text>{uuid}"</xsl:text>
+    <xsl:text>{uuid}</xsl:text>
   </xsl:variable>
 
   <xsl:variable name="geoportalLinkRecordtitle"
