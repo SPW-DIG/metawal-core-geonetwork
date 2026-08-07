@@ -8,9 +8,9 @@
 # a shell or package manager and would break both of those.
 #
 # Build context must be a checkout of the LibreTranslate source (this Dockerfile only, no COPY
-# sources live here), e.g.:
-#   git clone --depth 1 https://github.com/LibreTranslate/LibreTranslate /tmp/libretranslate
-#   docker build -f translationproviders/docker/libretranslate/Dockerfile -t libretranslate-dhi /tmp/libretranslate
+# sources live here). Use setup-build-context.sh in this directory to prepare one, e.g.:
+#   ./translationproviders/docker/libretranslate/setup-build-context.sh /tmp/libretranslate-src
+#   docker build -f translationproviders/docker/libretranslate/Dockerfile -t libretranslate-dhi /tmp/libretranslate-src
 
 FROM dhi.io/python:3.14-dev AS builder
 
