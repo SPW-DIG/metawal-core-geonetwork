@@ -1,17 +1,3 @@
-# Ported from https://github.com/LibreTranslate/LibreTranslate/blob/main/docker/Dockerfile,
-# on top of Docker Hardened Images (https://hub.docker.com/hardened-images/catalog/dhi/python)
-# instead of the upstream python:slim base.
-#
-# The -dev tag is required (not the default minimal/distroless tag) because this image needs
-# apt/gcc/g++ to build native deps, and bash + adduser/addgroup to run LibreTranslate's own
-# scripts/entrypoint.sh and create its non-root user. The default DHI python tag ships without
-# a shell or package manager and would break both of those.
-#
-# Build context must be a checkout of the LibreTranslate source (this Dockerfile only, no COPY
-# sources live here). Use setup-build-context.sh in this directory to prepare one, e.g.:
-#   ./translationproviders/docker/libretranslate/setup-build-context.sh /tmp/libretranslate-src
-#   docker build -f translationproviders/docker/libretranslate/Dockerfile -t libretranslate-dhi /tmp/libretranslate-src
-
 FROM dhi.io/python:3.14-dev AS builder
 
 WORKDIR /app
@@ -36,8 +22,6 @@ RUN ./venv/bin/pip install Babel==2.12.1 && ./venv/bin/python scripts/compile_lo
   && ./venv/bin/pip install . \
   && ./venv/bin/pip cache purge
 
-# -dev tag: needs bash (entrypoint.sh) and apt (to install the adduser package below).
-# Unlike Debian's own base images, DHI's Debian doesn't preinstall the adduser package.
 FROM dhi.io/python:3.14-dev
 
 ARG with_models=false
