@@ -22,6 +22,17 @@ LibreTranslate needs a shell and package manager at both build and run time (see
   ./setup-build-context.sh                          # clones main into /tmp/libretranslate-src
   ./setup-build-context.sh /tmp/my-dir v1.9.6        # custom target dir / tag / branch
   ```
+  On Windows, if you clone the LibreTranslate source some other way instead of using this script,
+  make sure it's cloned with `core.autocrlf=false` (or equivalent). LibreTranslate's
+  `.gitattributes` only forces LF line endings on `*.py` files, not `*.sh`, so a Windows git
+  config with `autocrlf=true` (a common default) checks out `scripts/entrypoint.sh` with CRLF line
+  endings. That breaks its shebang once the container tries to run it, and shows up as:
+  ```
+  exec ./scripts/entrypoint.sh: no such file or directory
+  ```
+  — a container that appears to start (`docker run -d` returns a container ID) but then
+  immediately exits, so it won't show up in `docker ps` (only `docker ps -a`). `setup-build-context.sh`
+  already clones with `core.autocrlf=false` to avoid this.
 
 ## Build
 
@@ -39,7 +50,7 @@ first boot. To bake specific models in instead:
 ```
 docker build -f translationproviders/docker/libretranslate/Dockerfile \
   --build-arg with_models=true \
-  --build-arg models="en,fr,es" \
+  --build-arg models="en,fr,de,nl" \
   -t libretranslate-dhi \
   /tmp/libretranslate-src
 ```
@@ -57,6 +68,21 @@ curl http://localhost:5000/languages
 
 Runs as the non-root `libretranslate` user (uid 1032) by default.
 
+### Verifying translation works (fr -> en)
+
+```
+curl -X POST http://localhost:5000/translate -H "Content-Type: application/json" -d '{"q": "Bonjour le monde", "source": "fr", "target": "en", "format": "text"}'
+```
+
+Expected response:
+
+```
+{"translatedText":"Hello world"}
+```
+
+If `fr` and/or `en` weren't baked in at build time or restricted via `LT_LOAD_ONLY`, the first
+call triggers a model download and may take longer to respond.
+
 ### Useful runtime environment variables
 
 Set with `-e` on `docker run` (or `environment:` in compose). Full list in
@@ -70,17 +96,17 @@ relevant here:
 | `LT_THREADS`       | Number of gunicorn worker threads.                                     |
 | `LT_HOST` / `LT_PORT` | Bind address/port (container listens on `5000` by default, see `EXPOSE`). |
 
-Example, restricting to two languages at runtime instead of baking them into the image:
+Example, restricting to four languages at runtime instead of baking them into the image:
 
 ```
-docker run -d -p 5000:5000 -e LT_LOAD_ONLY=en,fr libretranslate-dhi
+docker run -d -p 5000:5000 -e LT_LOAD_ONLY=en,fr,de,nl libretranslate-dhi
 ```
 
 If models are downloaded at runtime rather than baked in at build time, mount a volume at
 `/home/libretranslate/.local` to avoid re-downloading them on every container restart:
 
 ```
-docker run -d -p 5000:5000 -e LT_LOAD_ONLY=en,fr \
+docker run -d -p 5000:5000 -e LT_LOAD_ONLY=en,fr,de,nl \
   -v libretranslate_models:/home/libretranslate/.local \
   libretranslate-dhi
 ```
