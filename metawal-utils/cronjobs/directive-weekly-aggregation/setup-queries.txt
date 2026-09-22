@@ -16,6 +16,7 @@ PUT _scripts/directive_weekly_counts
   "script": {
   "lang": "mustache",
   "source": {
+    "size": 0,
     "aggs": {
       "filtered": {
         "filter": {
