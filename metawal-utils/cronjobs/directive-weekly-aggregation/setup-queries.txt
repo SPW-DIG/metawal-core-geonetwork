@@ -3,9 +3,10 @@ PUT weekly_open_data_snapshot
   "mappings": {
     "properties": {
       "snapshot_timestamp": { "type": "date" },
+      "category": { "type": "keyword" },
       "total_count": { "type": "integer" },
-      "inspire_count": { "type": "integer" },
-      "hvd_count": { "type": "integer" }
+      "true_count": { "type": "integer" },
+      "false_count": { "type": "integer" }
     }
   }
 }
@@ -51,12 +52,36 @@ PUT _scripts/directive_weekly_counts
           "inspire_values": {
             "filter": {
               "term": { "hasInspireTheme": true }
-            }
+            },
+            "aggs": {
+                            "true_values": {
+                              "filter": {
+                                "term": { "isOpenData": true }
+                              }
+                            },
+                            "false_values": {
+                              "filter": {
+                                "term": { "isOpenData": false }
+                              }
+                            }
+                          }
           },
           "hvd_values": {
             "filter": {
               "exists": { "field": "th_high-value-dataset-category.default"  }
-            }
+            },
+            "aggs": {
+                            "true_values": {
+                              "filter": {
+                                "term": { "isOpenData": true }
+                              }
+                            },
+                            "false_values": {
+                              "filter": {
+                                "term": { "isOpenData": false }
+                              }
+                            }
+                          }
           }
         }
       }

@@ -19,18 +19,20 @@ RESP=$(curl \
 # Parse response
 BULK_FILE=$(mktemp)
 #echo "$RESP" | jq .
-echo "$RESP" | jq -c '.aggregations.filtered.buckets[]' | while read -r bucket; do
-  TOTAL=$(echo "$bucket" | jq '.doc_count')
-  INSPIRE=$(echo "$bucket" | jq '.inspire_values.doc_count')
-  HVD=$(echo "$bucket" | jq '.hvd_values.doc_count')
+TOTAL=$(echo "$RESP" | jq '.aggregations.filtered.doc_count')
 
-# generate document identifier (per week)
-  DOC_ID="directive_data_snapshot_${WEEK_ID}"
+for FIELD in inspire_values hvd_values; do
+  DOC_COUNT=$(echo "$RESP" | jq ".aggregations.filtered.${FIELD}.doc_count")
+  TRUE_COUNT=$(echo "$RESP" | jq ".aggregations.filtered.${FIELD}.true_values.doc_count")
+  FALSE_COUNT=$(echo "$RESP" | jq ".aggregations.filtered.${FIELD}.false_values.doc_count")
+
+# generate document identifier (per week, per aggregation)
+  DOC_ID="directive_data_snapshot_${WEEK_ID}_${FIELD}"
 
 # Put parsed response in document
   cat >> "$BULK_FILE" <<EOF
 { "index": { "_index": "${DEST}", "_id": "${DOC_ID}" } }
-{ "snapshot_timestamp": "${SNAP_TS_UTC}", "total_count": ${TOTAL}, "inspire_count": ${INSPIRE}, "hvd_count": ${HVD} }
+{ "snapshot_timestamp": "${SNAP_TS_UTC}", "category": "${FIELD}", "total_count": ${DOC_COUNT}, "true_count": ${TRUE_COUNT}, "false_count": ${FALSE_COUNT} }
 EOF
 done
 
