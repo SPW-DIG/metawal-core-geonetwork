@@ -1,0 +1,66 @@
+PUT weekly_open_data_snapshot
+{
+  "mappings": {
+    "properties": {
+      "snapshot_timestamp": { "type": "date" },
+      "total_count": { "type": "integer" },
+      "inspire_count": { "type": "integer" },
+      "hvd_count": { "type": "integer" }
+    }
+  }
+}
+
+PUT _scripts/directive_weekly_counts
+{
+  "script": {
+  "lang": "mustache",
+  "source": {
+    "aggs": {
+      "filtered": {
+        "filter": {
+          "bool": {
+            "filter": [
+              { "term": { "isPublishedToAll": true } },
+              {
+                "terms": {
+                  "resourceType": [
+                    "dataset",
+                    "nonGeographicDataset"
+                  ]
+                }
+              }
+            ],
+            "must_not": [
+              {
+                "terms": {
+                  "cl_status.key": [
+                    "obsolete",
+                    "superseded",
+                    "required",
+                    "planned",
+                    "underDevelopment",
+                    "deprecated",
+                    "proposed"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "aggs": {
+          "inspire_values": {
+            "filter": {
+              "term": { "hasInspireTheme": true }
+            }
+          },
+          "hvd_values": {
+            "filter": {
+              "exists": { "field": "th_high-value-dataset-category.default"  }
+            }
+          }
+        }
+      }
+    }
+   }
+  }
+}
