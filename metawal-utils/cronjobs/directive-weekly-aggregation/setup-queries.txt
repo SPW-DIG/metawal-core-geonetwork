@@ -1,4 +1,4 @@
-PUT weekly_open_data_snapshot
+PUT directive_weekly_open_data_snapshot
 {
   "mappings": {
     "properties": {
