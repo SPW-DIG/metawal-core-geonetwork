@@ -1,0 +1,35 @@
+#L'index doit permettre de qualifier les ressources référencées dans Metawal au travers d'attributs tels que :
+#
+#.    Type de ressource
+#.    Statut de publication (publié / non publié)
+#.    Donnée ouverte ou non ouverte
+#.    Thématique GP
+#x    obligation légales européennes : Donnée INSPIRE O/N - HVD O/N - mobility O/N
+#x    Niveau de diffusion (donnée interne / intranet ou donnée publique)
+#.    Donnée Géo ou non-géo
+#x    Autres typologies utiles à la production de statistiques
+
+
+POST _reindex?wait_for_completion=false
+{
+  "source": {
+    "index": ["gn-records"],
+    "query": {
+      "term": {
+        "isPublishedToAll": true
+      }
+    },
+    "_source": {
+      "includes": ["resourceType",
+                   "cl_status",
+                   "isOpenData",
+                   "th_Themes_geoportail_wallon_hierarchy_tree",
+                   "th_httpinspireeceuropaeutheme-theme",
+                   "th_high-value-dataset-category"
+                  ]
+    }
+  },
+  "dest": {
+    "index": "public-records"
+  }
+}
