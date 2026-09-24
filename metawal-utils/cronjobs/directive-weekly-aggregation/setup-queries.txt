@@ -69,7 +69,7 @@ PUT _scripts/directive_weekly_counts
           },
           "hvd_values": {
             "filter": {
-              "exists": { "field": "th_high-value-dataset-category.default"  }
+              "term": { "groupPublished": "HVDaccessPoint"  }
             },
             "aggs": {
                             "true_values": {
