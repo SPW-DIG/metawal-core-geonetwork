@@ -3,7 +3,6 @@
 SERVER=https://metawal.valid.wallonie.be/geonetwork
 CATALOGUSER=SPBTIT
 CATALOGPASS=<replace>
-#AUTH="-u $CATALOGUSER:$CATALOGPASS"
 AUTH=""
 
 
@@ -59,15 +58,6 @@ for hit in $(jq -r '.hits.hits[] | @base64' results.json); do
   uuid=$(_jq '._id')
   echo "$uuid / $title\n"
   functionXml=""
-#
-#read -r -d '' functionXml << EOF
-#      <gmd:function xmlns:gmd="http://www.isotc211.org/2005/gmd">
-#        <gmd:CI_OnLineFunctionCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_OnLineFunctionCode"
-#                                   codeListValue="download" />
-#      </gmd:function>
-#EOF
-#
-#  functionXml="${functionXml//$'\n'/}"
 
   read -r -d '' functionXml << EOF
     {
