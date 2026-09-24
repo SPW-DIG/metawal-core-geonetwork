@@ -102,7 +102,6 @@
   -->
   <xsl:template mode="iso19115-3-to-dcat"
                 match="mdb:identificationInfo/*/mri:resourceConstraints/*">
-
     <xsl:if test="count(../preceding-sibling::mri:resourceConstraints/*) = 0">
 
       <xsl:for-each select="distinct-values(../../mri:resourceConstraints/*/mco:accessConstraints/*/@codeListValue)">

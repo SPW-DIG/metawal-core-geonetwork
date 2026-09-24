@@ -21,7 +21,8 @@
     </td>
     <td data-ng-show="::columnVisibility.code">
       <strong data-ng-show="attribute.designationObject || attribute.designation">
-        {{attribute.designationObject ? attribute.designationObject.default : attribute.designation}}
+        {{attribute.designationObject ? attribute.designationObject.default :
+        attribute.designation}}
       </strong>
       <div data-ng-show="attribute.code !== attribute.name">
         <strong data-ng-show="{{attribute.link == null || attribute.link == ''}}">
@@ -30,10 +31,14 @@
         <a
           href="{{attribute.link}}"
           data-ng-show="{{attribute.link != null && attribute.link > ''}}"
-        >{{attribute.code}}</a>
+          >{{attribute.code}}</a
+        >
       </div>
     </td>
-    <td>{{attribute.definitionObject ? attribute.definitionObject.default : attribute.definition}}</td>
+    <td>
+      {{attribute.definitionObject ? attribute.definitionObject.default :
+      attribute.definition}}
+    </td>
   </tr>
   <tr data-ng-if="attribute.values.length > 0">
     <td colspan="3" class="gn-noborder-top gn-nopadding-top gn-nopadding-bottom"></td>

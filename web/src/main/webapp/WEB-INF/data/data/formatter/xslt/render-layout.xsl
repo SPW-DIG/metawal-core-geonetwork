@@ -228,6 +228,17 @@
             </xsl:apply-templates>
 
 
+            <!--MW <br/>
+            <section class="gn-md-side-providedby">
+              <h2>
+                <i class="fa fa-fw fa-cog"></i>
+                <span><xsl:value-of select="$schemaStrings/providedBy"/></span>
+              </h2>
+              <img class="gn-source-logo"
+                   alt="{$schemaStrings/logo}"
+                   src="{$nodeUrl}api/sources/{$source}/logo" />
+            </section>-->
+
             <xsl:if test="$isSocialbarEnabled">
               <section class="gn-md-side-social">
                 <h2>
@@ -291,6 +302,19 @@
                 </xsl:for-each>
               </section>
             </xsl:if>
+
+            <!--MW <section class="gn-md-side-access">
+              <a class="btn btn-block btn-primary"
+                 href="{if ($portalLink != '')
+                        then replace($portalLink, '\$\{uuid\}', $metadataUuid)
+                        else utils:getDefaultUrl($metadataUuid, $language)}">
+                <i class="fa fa-fw fa-link"></i>
+                <xsl:value-of select="$schemaStrings/linkToPortal"/>
+              </a>
+              <div class="hidden-xs hidden-sm">
+                <xsl:value-of select="$schemaStrings/linkToPortal-help"/>
+              </div>
+            </section>-->
 
             <!-- Don't add the associated resources in the metadata static page, this page doesn't include JS libs -->
             <xsl:if test="$sideRelated != '' and $root != 'html'">

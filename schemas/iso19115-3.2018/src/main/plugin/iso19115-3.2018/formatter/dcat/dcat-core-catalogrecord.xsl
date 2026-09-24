@@ -24,8 +24,7 @@
       -->
       <xsl:apply-templates mode="iso19115-3-to-dcat"
                            select="mdb:metadataIdentifier
-                                  |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'creation']/cit:date
-                                  |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'revision']/cit:date"/>
+                                  |mdb:dateInfo"/>
       <xsl:copy-of select="$additionalProperties"/>
     </xsl:variable>
 

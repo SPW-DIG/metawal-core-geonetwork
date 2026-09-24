@@ -115,8 +115,7 @@
         <rdf:type rdf:resource="http://www.w3.org/ns/dcat#CatalogRecord"/>
         <xsl:apply-templates mode="iso19115-3-to-dcat"
                              select="ancestor::mdb:MD_Metadata/(mdb:metadataStandard
-                                    |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'creation']/cit:date
-                                    |mdb:dateInfo/*[cit:dateType/*/@codeListValue = 'revision']/cit:date
+                                    |mdb:dateInfo
                                     |mdb:defaultLocale/*/lan:characterEncoding/*/@codeListValue)"/>
 
         <foaf:primaryTopic rdf:resource="{gn-fn-dcat:getResourceUri($metadata)}"/>
