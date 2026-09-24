@@ -46,8 +46,8 @@ import org.springframework.web.servlet.view.RedirectView;
  * </ul>
  */
 @RequestMapping(value = {
-    "/{geonetworkPath:[a-zA-Z0-9_\\-]+}/{app:datahub|metadata-editor}",
-    "/{geonetworkPath:[a-zA-Z0-9_\\-]+}/{locale:[a-z]{2,3}}/{app:datahub|metadata-editor}"
+    "/{geonetworkPath:[a-zA-Z0-9_\\-]+}/{app:datahub|metadata-editor|webcomponents}",
+    "/{geonetworkPath:[a-zA-Z0-9_\\-]+}/{locale:[a-z]{2,3}}/{app:datahub|metadata-editor|webcomponents}"
 })
 @Controller
 public class DatahubController {

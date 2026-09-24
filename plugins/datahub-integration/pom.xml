@@ -158,6 +158,23 @@
               <installDirectory>${basedir}</installDirectory>
             </configuration>
           </execution>
+          <execution>
+            <id>npm-build-webcomponents</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <environmentVariables>
+                <NX_DAEMON>false</NX_DAEMON>
+              </environmentVariables>
+              <arguments>
+                run build:webcomponents
+              </arguments>
+              <workingDirectory>geonetwork-ui</workingDirectory>
+              <installDirectory>${basedir}</installDirectory>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
 
@@ -211,6 +228,27 @@
                 <resource>
                   <directory>geonetwork-ui/dist/apps/metadata-editor</directory>
                   <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-webcomponents</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <overwrite>true</overwrite>
+              <encoding>UTF-8</encoding>
+              <outputDirectory>target/resources/webcomponents</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>geonetwork-ui/dist/</directory>
+                  <filtering>false</filtering>
+                  <includes>
+                    <include>gn-*</include>
+                  </includes>
                 </resource>
               </resources>
             </configuration>
