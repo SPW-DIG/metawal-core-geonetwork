@@ -73,6 +73,7 @@
     See related API in dcat-core-resource
     <dcat:servesDataset>
       <dcat:Dataset rdf:about="{if (@xlink:href) then @xlink:href else @uuidref}"/>
-    </dcat:servesDataset>-->
+    </dcat:servesDataset>
+    -->
   </xsl:template>
 </xsl:stylesheet>

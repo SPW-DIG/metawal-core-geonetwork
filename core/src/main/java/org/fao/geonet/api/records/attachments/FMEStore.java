@@ -131,6 +131,12 @@ public class FMEStore extends AbstractStore {
     }
 
     @Override
+    public List<MetadataResource> getResources(ServiceContext context, String metadataUuid, MetadataResourceVisibility metadataResourceVisibility, String filter, Boolean approved, boolean includeAdditionalIndexedProperties) throws Exception {
+        // TODO
+        return List.of();
+    }
+
+    @Override
     public ResourceHolder getResource(ServiceContext context, String metadataUuid, MetadataResourceVisibility metadataResourceVisibility, String resourceId, Boolean approved) throws Exception {
         // enforce permissions - FME store resources are public on FME side but we still check access
         canDownload(context, metadataUuid, fmeVisibility, approved);

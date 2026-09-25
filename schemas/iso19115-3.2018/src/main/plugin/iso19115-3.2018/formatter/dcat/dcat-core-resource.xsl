@@ -39,7 +39,7 @@
                          select="mdb:identificationInfo/*/mri:citation/*/cit:title
                                   |mdb:identificationInfo/*/mri:abstract
                                   |mdb:identificationInfo/*/mri:citation/*/cit:identifier
-                                  |mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = $isoDateTypeToDcatCommonNames/text()]/cit:date
+                                  |mdb:identificationInfo/*/mri:citation/*/cit:date
                                   |mdb:identificationInfo/*/mri:citation/*/cit:edition
                                   |mdb:identificationInfo/*/mri:defaultLocale
                                   |mdb:identificationInfo/*/mri:otherLocale
@@ -83,7 +83,6 @@
 
     <xsl:for-each select="$associations/relations/*">
       <xsl:sort select="@url"/>
-
       <xsl:variable name="resourceIdentifierWithHttpCodeSpace"
                           select="(root/resourceIdentifier[starts-with(codeSpace, 'http')])[1]"/>
       <xsl:variable name="recordUri"
@@ -134,32 +133,40 @@
         </xsl:when>
         <xsl:when test="local-name() = 'services'">
 
+          <!-- Prefer a link that is not purely informational (e.g. skip a
+          "more information" page or data quality report) so the distribution
+          points to the actual service endpoint. Fall back to the first link
+          if no other kind is available, so a distribution is still produced. -->
+          <xsl:variable name="nonInformationalLinks"
+                        select="root/link[not(function = ('information', 'dataQualityReport'))]"/>
+
           <xsl:variable name="mainLink"
-                        select="(root/link[not(function = ('information', 'dataQualityReport'))])[1]"/>
+                        select="if ($nonInformationalLinks) then $nonInformationalLinks[1] else root/link[1]"/>
 
           <xsl:variable name="serviceUri"
-                        select="if (root/resourceIdentifier) then concat(root/resourceIdentifier[1]/codeSpace, root/resourceIdentifier[1]/code) else ." />
+                        select="if (root/resourceIdentifier) then concat(root/resourceIdentifier[1]/codeSpace, root/resourceIdentifier[1]/code) else $mainLink/urlObject/default" />
 
-          <xsl:choose>
-            <!-- Only record with resourceType is service are mapped to a distribution.
-            Other related services which can be software, applications are mapped to foaf:page -->
-            <xsl:when test="root/resourceType = 'service'">
-              <!--
-              Exclude ATOM https://github.com/SPW-DIG/metawal-core-geonetwork/issues/1023
-              And add accessService in the dcat distribution for downloadable file
-              -->
-              <xsl:if test="count(root/link[protocol = 'atom:feed']) = 0">
-                <dcat:distribution>
-                  <dcat:Distribution>
-                    <xsl:for-each select="$mainLink/urlObject/default">
-                      <dcat:accessURL rdf:resource="{.}"/>
-                      <dcat:accessService rdf:resource="{$serviceUri}"/>
-                    </xsl:for-each>
+          <xsl:if test="$mainLink">
+            <xsl:choose>
+              <!-- Only record with resourceType is service are mapped to a distribution.
+              Other related services which can be software, applications are mapped to foaf:page -->
+              <xsl:when test="root/resourceType = 'service'">
+                <!--
+                Exclude ATOM https://github.com/SPW-DIG/metawal-core-geonetwork/issues/1023
+                And add accessService in the dcat distribution for downloadable file
+                -->
+                <xsl:if test="count(root/link[protocol = 'atom:feed']) = 0">
+                  <dcat:distribution>
+                    <dcat:Distribution>
+                      <xsl:for-each select="$mainLink/urlObject/default">
+                        <dcat:accessURL rdf:resource="{.}"/>
+                        <dcat:accessService rdf:resource="{$serviceUri}"/>
+                      </xsl:for-each>
 
-                    <xsl:call-template name="rdf-index-field-localised">
-                      <xsl:with-param name="nodeName" select="'dct:title'"/>
-                      <xsl:with-param name="field" select="root/resourceTitleObject"/>
-                    </xsl:call-template>
+                      <xsl:call-template name="rdf-index-field-localised">
+                        <xsl:with-param name="nodeName" select="'dct:title'"/>
+                        <xsl:with-param name="field" select="root/resourceTitleObject"/>
+                      </xsl:call-template>
 
                     <xsl:call-template name="rdf-index-field-localised">
                       <xsl:with-param name="nodeName" select="'dct:description'"/>
@@ -170,26 +177,24 @@
                      RDF Property:	dcterms:issued
                      Definition:	Date of formal issuance (e.g., publication) of the distribution.
                     -->
-                    <xsl:for-each select="$metadata//mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
-                                                 $metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'publication']">
-                      <xsl:apply-templates mode="iso19115-3-to-dcat"
-                                           select=".">
-                        <xsl:with-param name="dateType" select="'publication'"/>
-                      </xsl:apply-templates>
-                    </xsl:for-each>
+                    <xsl:call-template name="iso19115-3-to-dcat-date-info">
+                      <xsl:with-param name="values"
+                                      select="$metadata//mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
+                                           $metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'publication']/cit:date"/>
+                      <xsl:with-param name="dateType" select="'publication'"/>
+                    </xsl:call-template>
 
                     <!--
                     RDF Property:	dcterms:modified
                     Definition:	Most recent date on which the distribution was changed, updated or modified.
                     Range:	rdfs:Literal encoded using the relevant ISO 8601 Date and Time compliant string [DATETIME] and typed using the appropriate XML Schema datatype [XMLSCHEMA11-2] (xsd:gYear, xsd:gYearMonth, xsd:date, or xsd:dateTime).
                     -->
-                    <xsl:for-each select="$metadata//mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
-                                                 $metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'revision']">
-                      <xsl:apply-templates mode="iso19115-3-to-dcat"
-                                           select=".">
-                        <xsl:with-param name="dateType" select="'revision'"/>
-                      </xsl:apply-templates>
-                    </xsl:for-each>
+                    <xsl:call-template name="iso19115-3-to-dcat-date-info">
+                      <xsl:with-param name="values"
+                                      select="$metadata//mrd:MD_Distributor/mrd:distributionOrderProcess/*/mrd:plannedAvailableDateTime|
+                                           $metadata/mdb:identificationInfo/*/mri:citation/*/cit:date/*[cit:dateType/*/@codeListValue = 'revision']/cit:date"/>
+                      <xsl:with-param name="dateType" select="'revision'"/>
+                    </xsl:call-template>
 
                     <xsl:apply-templates mode="iso19115-3-to-dcat"
                                          select="$metadata/mdb:identificationInfo/*/mri:resourceConstraints/*[mco:useConstraints]"/>
@@ -218,6 +223,7 @@
             </foaf:page>
             </xsl:otherwise>
           </xsl:choose>
+          </xsl:if>
         </xsl:when>
         <xsl:otherwise>
           <!-- TODO: other type of relations -->

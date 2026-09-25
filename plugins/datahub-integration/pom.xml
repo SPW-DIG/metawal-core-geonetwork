@@ -28,7 +28,7 @@
   <parent>
     <artifactId>gn-plugins</artifactId>
     <groupId>org.geonetwork-opensource.plugins</groupId>
-    <version>4.4.12-SNAPSHOT</version>
+    <version>4.4.13-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -106,8 +106,8 @@
               <goal>install-node-and-npm</goal>
             </goals>
             <configuration>
-              <nodeVersion>v22.19.0</nodeVersion>
-              <npmVersion>10.9.3</npmVersion>
+              <nodeVersion>v24.15.0</nodeVersion>
+              <npmVersion>11.12.1</npmVersion>
             </configuration>
           </execution>
           <!--   Install geonetwork-ui dependencies   -->
@@ -153,6 +153,23 @@
               </environmentVariables>
               <arguments>
                 run nx -- build metadata-editor --base-href=./
+              </arguments>
+              <workingDirectory>geonetwork-ui</workingDirectory>
+              <installDirectory>${basedir}</installDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>npm-build-webcomponents</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <environmentVariables>
+                <NX_DAEMON>false</NX_DAEMON>
+              </environmentVariables>
+              <arguments>
+                run build:webcomponents
               </arguments>
               <workingDirectory>geonetwork-ui</workingDirectory>
               <installDirectory>${basedir}</installDirectory>
@@ -211,6 +228,27 @@
                 <resource>
                   <directory>geonetwork-ui/dist/apps/metadata-editor</directory>
                   <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-webcomponents</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <overwrite>true</overwrite>
+              <encoding>UTF-8</encoding>
+              <outputDirectory>target/resources/webcomponents</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>geonetwork-ui/dist/</directory>
+                  <filtering>false</filtering>
+                  <includes>
+                    <include>gn-*</include>
+                  </includes>
                 </resource>
               </resources>
             </configuration>

@@ -1,0 +1,1338 @@
+<mdb:MD_Metadata xmlns:mda="http://standards.iso.org/iso/19115/-3/mda/1.0"
+                 xmlns:mcc="http://standards.iso.org/iso/19115/-3/mcc/1.0"
+                 xmlns:srv="http://standards.iso.org/iso/19115/-3/srv/2.0"
+                 xmlns:mdq="http://standards.iso.org/iso/19157/-2/mdq/1.0"
+                 xmlns:mds="http://standards.iso.org/iso/19115/-3/mds/2.0"
+                 xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+                 xmlns:mrc="http://standards.iso.org/iso/19115/-3/mrc/2.0"
+                 xmlns:mrl="http://standards.iso.org/iso/19115/-3/mrl/2.0"
+                 xmlns:mrs="http://standards.iso.org/iso/19115/-3/mrs/1.0"
+                 xmlns:mdt="http://standards.iso.org/iso/19115/-3/mdt/2.0"
+                 xmlns:mrd="http://standards.iso.org/iso/19115/-3/mrd/1.0"
+                 xmlns:mpc="http://standards.iso.org/iso/19115/-3/mpc/1.0"
+                 xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:mac="http://standards.iso.org/iso/19115/-3/mac/2.0"
+                 xmlns:gfc="http://standards.iso.org/iso/19110/gfc/1.1"
+                 xmlns:msr="http://standards.iso.org/iso/19115/-3/msr/2.0"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+                 xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
+                 xmlns:gml="http://www.opengis.net/gml/3.2"
+                 xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+                 xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+                 xmlns:cat="http://standards.iso.org/iso/19115/-3/cat/1.0"
+                 xmlns:mex="http://standards.iso.org/iso/19115/-3/mex/1.0"
+                 xmlns:dqm="http://standards.iso.org/iso/19157/-2/dqm/1.0"
+                 xmlns:mas="http://standards.iso.org/iso/19115/-3/mas/1.0"
+                 xmlns:mdb="http://standards.iso.org/iso/19115/-3/mdb/2.0"
+                 xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0"
+                 xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0">
+  <mdb:metadataIdentifier>
+    <mcc:MD_Identifier>
+      <mcc:code>
+        <gco:CharacterString>c08902e7-31b7-41eb-97bc-18fde105aad5</gco:CharacterString>
+      </mcc:code>
+      <mcc:codeSpace>
+        <gco:CharacterString>urn:uuid</gco:CharacterString>
+      </mcc:codeSpace>
+    </mcc:MD_Identifier>
+  </mdb:metadataIdentifier>
+  <mdb:defaultLocale>
+    <lan:PT_Locale id="FR">
+      <lan:language>
+        <lan:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="fre"/>
+      </lan:language>
+      <lan:characterEncoding>
+        <lan:MD_CharacterSetCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode"
+                                 codeListValue="utf8"/>
+      </lan:characterEncoding>
+    </lan:PT_Locale>
+  </mdb:defaultLocale>
+  <mdb:metadataScope>
+    <mdb:MD_MetadataScope>
+      <mdb:resourceScope>
+        <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode"
+                          codeListValue="series"/>
+      </mdb:resourceScope>
+      <mdb:name>
+        <gco:CharacterString>Série de couches de données thématiques</gco:CharacterString>
+      </mdb:name>
+    </mdb:MD_MetadataScope>
+  </mdb:metadataScope>
+  <mdb:contact>
+    <cit:CI_Responsibility>
+      <cit:role>
+        <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                         codeListValue="pointOfContact"/>
+      </cit:role>
+      <cit:party>
+        <cit:CI_Organisation>
+          <cit:name>
+            <gco:CharacterString>Cellule SIG du SPW ARNE (SPW - Agriculture, Ressources naturelles et Environnement - Département de l'Étude du milieu naturel et agricole - Direction de la Coordination des Données)</gco:CharacterString>
+          </cit:name>
+          <cit:contactInfo>
+            <cit:CI_Contact>
+              <cit:address>
+                <cit:CI_Address>
+                  <cit:electronicMailAddress>
+                    <gco:CharacterString>sig.dgarne@spw.wallonie.be</gco:CharacterString>
+                  </cit:electronicMailAddress>
+                </cit:CI_Address>
+              </cit:address>
+            </cit:CI_Contact>
+          </cit:contactInfo>
+        </cit:CI_Organisation>
+      </cit:party>
+    </cit:CI_Responsibility>
+  </mdb:contact>
+  <mdb:dateInfo>
+    <cit:CI_Date>
+      <cit:date>
+        <gco:DateTime>2025-01-17T12:10:29.869102Z</gco:DateTime>
+      </cit:date>
+      <cit:dateType>
+        <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                             codeListValue="creation"/>
+      </cit:dateType>
+    </cit:CI_Date>
+  </mdb:dateInfo>
+  <mdb:dateInfo>
+    <cit:CI_Date>
+      <cit:date>
+        <gco:DateTime>2025-02-06T14:52:27.504841Z</gco:DateTime>
+      </cit:date>
+      <cit:dateType>
+        <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                             codeListValue="revision"/>
+      </cit:dateType>
+    </cit:CI_Date>
+  </mdb:dateInfo>
+  <mdb:dateInfo>
+    <cit:CI_Date>
+      <cit:date>
+        <gco:DateTime>2019-04-02T12:32:14</gco:DateTime>
+      </cit:date>
+      <cit:dateType>
+        <cit:CI_DateTypeCode codeList="https://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                             codeListValue="creation"/>
+      </cit:dateType>
+    </cit:CI_Date>
+  </mdb:dateInfo>
+  <mdb:metadataStandard>
+    <cit:CI_Citation>
+      <cit:title>
+        <gco:CharacterString>ISO 19115</gco:CharacterString>
+      </cit:title>
+      <cit:edition>
+        <gco:CharacterString>2003/Cor 1:2006</gco:CharacterString>
+      </cit:edition>
+    </cit:CI_Citation>
+  </mdb:metadataStandard>
+  <mdb:metadataLinkage>
+    <cit:CI_OnlineResource>
+      <cit:linkage>
+        <gco:CharacterString>https://metawal.wallonie.be/geonetwork/srv/api/records/c08902e7-31b7-41eb-97bc-18fde105aad5</gco:CharacterString>
+      </cit:linkage>
+      <cit:function>
+        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                   codeListValue="completeMetadata"/>
+      </cit:function>
+    </cit:CI_OnlineResource>
+  </mdb:metadataLinkage>
+  <mdb:referenceSystemInfo>
+    <mrs:MD_ReferenceSystem>
+      <mrs:referenceSystemIdentifier>
+        <mcc:MD_Identifier>
+          <mcc:code>
+            <gcx:Anchor xlink:href="http://www.opengis.net/def/crs/EPSG/0/31370">EPSG:31370</gcx:Anchor>
+          </mcc:code>
+          <mcc:description>
+            <gco:CharacterString>Belge 1972 / Belgian Lambert 72 (EPSG:31370)</gco:CharacterString>
+          </mcc:description>
+        </mcc:MD_Identifier>
+      </mrs:referenceSystemIdentifier>
+      <mrs:referenceSystemType>
+        <mrs:MD_ReferenceSystemTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ReferenceSystemTypeCode"
+                                        codeListValue="projected"/>
+      </mrs:referenceSystemType>
+    </mrs:MD_ReferenceSystem>
+  </mdb:referenceSystemInfo>
+  <mdb:identificationInfo>
+    <mri:MD_DataIdentification>
+      <mri:citation>
+        <cit:CI_Citation>
+          <cit:title>
+            <gco:CharacterString>[Test HVD] Réseau Natura 2000 en vigueur - Série</gco:CharacterString>
+          </cit:title>
+          <cit:alternateTitle>
+            <gco:CharacterString>NATURA2000</gco:CharacterString>
+          </cit:alternateTitle>
+          <cit:alternateTitle>
+            <gco:CharacterString>N2K</gco:CharacterString>
+          </cit:alternateTitle>
+          <cit:date>
+            <cit:CI_Date>
+              <cit:date>
+                <gco:Date>2008-11-01</gco:Date>
+              </cit:date>
+              <cit:dateType>
+                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                     codeListValue="creation"/>
+              </cit:dateType>
+            </cit:CI_Date>
+          </cit:date>
+          <cit:date>
+            <cit:CI_Date>
+              <cit:date>
+                <gco:Date>2017-01-01</gco:Date>
+              </cit:date>
+              <cit:dateType>
+                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                     codeListValue="revision"/>
+              </cit:dateType>
+            </cit:CI_Date>
+          </cit:date>
+          <cit:date>
+            <cit:CI_Date>
+              <cit:date>
+                <gco:Date>2017-12-01</gco:Date>
+              </cit:date>
+              <cit:dateType>
+                <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                     codeListValue="publication"/>
+              </cit:dateType>
+            </cit:CI_Date>
+          </cit:date>
+          <cit:identifier>
+            <mcc:MD_Identifier>
+              <mcc:code>
+                <gco:CharacterString>NATURA2000</gco:CharacterString>
+              </mcc:code>
+              <mcc:codeSpace>
+                <gco:CharacterString>BE.SPW.INFRASIG.GINET</gco:CharacterString>
+              </mcc:codeSpace>
+            </mcc:MD_Identifier>
+          </cit:identifier>
+          <cit:identifier>
+            <mcc:MD_Identifier>
+              <mcc:code>
+                <gco:CharacterString>c08902e7-31b7-41eb-97bc-18fde105aad5</gco:CharacterString>
+              </mcc:code>
+              <mcc:codeSpace>
+                <gco:CharacterString>http://geodata.wallonie.be/id/</gco:CharacterString>
+              </mcc:codeSpace>
+            </mcc:MD_Identifier>
+          </cit:identifier>
+          <cit:otherCitationDetails>
+            <gcx:FileName src="https://metawal.wallonie.be/geonetwork/srv/api/records/c08902e7-31b7-41eb-97bc-18fde105aad5/attachments/Natura_2000_logo">Natura_2000_logo</gcx:FileName>
+          </cit:otherCitationDetails>
+        </cit:CI_Citation>
+      </mri:citation>
+      <mri:abstract>
+        <gco:CharacterString>Cette série présente le réseau Natura 2000 wallon complet en vigueur au 31/12/2017 en localisant les périmètres des sites et leurs différentes Unités de Gestion.
+
+          Natura 2000 est un réseau écologique européen de zones protégées naturelles (tourbières, forêts, rivières, rochers, grottes), semi-naturelles (prairies fleuries, pelouses sèches, landes, etc.) ou servant d'habitat propre à certaines espèces animales ou végétales. L'objectif global de ce réseau est de maintenir la biodiversité des milieux en définissant un cadre commun pour la conservation des habitats naturels ainsi que de la faune et de la flore sauvages sur le territoire des États membres.
+
+          Les sites "Natura 2000" sont proposés par les États membres, en application des directives européennes "Oiseaux" (2009) et "Habitats" (1992) qui constituent la base légale du projet. De 2002 à 2005, le Gouvernement wallon a ainsi défini 240 sites Natura 2000 (Décision du GW - 24 mars 2005), ce qui représente quelques 221.000 ha, soit 13% du territoire wallon. Ces sites sont composés de forêts (feuillues, résineuses, mixtes), milieux agropastoraux, cours d'eau, rochers, etc.
+
+          Tous les sites Natura 2000 sont soumis à des obligations légales communes visant à en assurer la protection et la gestion. De plus, des mesures particulières sont fixées par des Arrêtés de désignation (AD) du Gouvernement wallon, et ce en fonction d'Unités de Gestion (UG) délimitées au sein du site. Les Unités de Gestion sont des espaces au sein d'un site où les règles de gestion à appliquer sont homogènes (bien que les objectifs biologiques puissent être différents).
+
+          Les Arrêtés de Désignation des 240 sites ont été adoptés par le Gouvernement wallon le 24 mars 2011 (AGW 24/03/2011). Suivant cet AGW, les sites ont été désignés par vague de 2014 à 2017. Les derniers sites ont été désignés officiellement le 1/1/2016 (entrée en vigueur le 1er janvier 2018). Dès lors, chaque site bénéficie des mesures de protection complètes (mesures générales et mesures particulières), qui sont en vigueur. Le réseau Natura 2000 wallon est donc bouclé.
+
+          Les zones Natura 2000 ne sont pas des réserves "fermées". Les activités humaines y restent autorisées pour autant qu’elles n'y compromettent pas le maintien dans un état de conservation favorable des habitats et des espèces dans la zone. Dans tous les cas, c'est la personne ou l'organisme en charge de la gestion du terrain qui est tenue de respecter les règles fixées par la législation.
+
+          La présente série de données est constituée des couches de données suivantes :
+
+          1. Le perimètre des sites Natura 2000 en vigueur : couche polygonale reprenant une synthèse des périmètres légaux des 240 sites Natura 2000 en vigueur. Chaque site est identifié par son nom et un code de 7 caractères. Les champs "DATE_MONIT" et "DATE_EVIG" de la table attributaire sont complétés avec respectivement la date d’inscription au Moniteur Belge et la date d’entrée en vigueur.
+
+          2. Les Unités de Gestion au sein des sites Natura 2000 : Plusieurs couches (7) servent à la constitution des documents cartographiques repris dans les Arrêtés de Désignation. On distingue :
+
+          - Les Unités de Gestion au sein des sites Natura 2000 identifiés dans un Arrêté de Désignation en vigueur au 31/12/2017. Ces UG sont cartographiées selon trois types de représentation. Il peut s’agir d’entités ponctuelles (NATURA2000__UG_PONCTUELS), linéaires (NATURA2000__UG_LINEAIRES) ou surfaciques (NATURA2000__UNITES_GESTION). Il existe 11 unités de gestion de base et 3 unités de gestion temporaires. Le type d'unité de gestion est repris dans le champ "CODE_UG".
+
+          - Les surimpressions : Certaines UG peuvent être complétées par des mesures spécifiques à certaines espèces particulières qui se superposent aux mesures de l'unité de gestion sous-jacente. Il existe deux unités de gestion en surimpression :
+
+          a. les surimpressions UG S1 « Moule perlière et Mulette épaisse », faisant référence à l’UG 1 (UG "Milieux Aquatiques") : dénommée ci-après "UG S1" qui abrite ou est susceptible d'abriter au moins un des habitats aquatiques et riverains de reproduction et de nourrissage pour une population régulière de Moule perlière (1029) ou de Mulette épaisse (1032). Les surimpressions UG S1 peuvent être des entités surfaciques (NATURA2000__UNITES_GESTION_S1) ou linéaires (NATURA2000__UG_S1_LINEAIRES);
+          b. les surimpressions UG S2 "Damier de la succise", faisant référence à l’UG 2 (UG "Milieux Ouverts prioritaires") : dénommée ci-après "UG S2" abrite ou est susceptible d'abriter au moins un des habitats ouverts ou forestiers de reproduction et de nourrissage pour une population régulière de Damier de la succise (1065). Il s’agit d’entités surfaciques (NATURA2000__UNITES_GESTION_S2) ou linéaires (NATURA2000__UG_S2_LINEAIRES).
+
+          Cette version est conforme à la publication au moniteur belge. Elle reprend l'intégralité de l'information de la version destinée à la consultation.</gco:CharacterString>
+      </mri:abstract>
+      <mri:status>
+        <mcc:MD_ProgressCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ProgressCode"
+                             codeListValue="completed"/>
+      </mri:status>
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+            <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                             codeListValue="pointOfContact"/>
+          </cit:role>
+          <cit:party>
+            <cit:CI_Organisation>
+              <cit:name>
+                <gco:CharacterString>Helpdesk carto du SPW (SPW - Secrétariat général - SPW Digital - Département Données transversales - Gestion et valorisation de la donnée)</gco:CharacterString>
+              </cit:name>
+              <cit:contactInfo>
+                <cit:CI_Contact>
+                  <cit:address>
+                    <cit:CI_Address>
+                      <cit:electronicMailAddress>
+                        <gco:CharacterString>helpdesk.carto@spw.wallonie.be</gco:CharacterString>
+                      </cit:electronicMailAddress>
+                    </cit:CI_Address>
+                  </cit:address>
+                  <cit:contactInstructions>
+                    <gco:CharacterString>DADA</gco:CharacterString>
+                  </cit:contactInstructions>
+                  <cit:contactType gco:nilReason="missing">
+                    <gco:CharacterString/>
+                  </cit:contactType>
+                </cit:CI_Contact>
+              </cit:contactInfo>
+            </cit:CI_Organisation>
+          </cit:party>
+        </cit:CI_Responsibility>
+      </mri:pointOfContact>
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+            <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                             codeListValue="custodian"/>
+          </cit:role>
+          <cit:party>
+            <cit:CI_Organisation>
+              <cit:name>
+                <gco:CharacterString>Direction de la Nature et des Espaces verts (SPW - Agriculture, Ressources naturelles et Environnement - Département de la Nature et des Forêts - Direction de la Nature et des Espaces verts)</gco:CharacterString>
+              </cit:name>
+              <cit:contactInfo>
+                <cit:CI_Contact>
+                  <cit:address>
+                    <cit:CI_Address>
+                      <cit:electronicMailAddress>
+                        <gco:CharacterString>natura2000@spw.wallonie.be</gco:CharacterString>
+                      </cit:electronicMailAddress>
+                    </cit:CI_Address>
+                  </cit:address>
+                </cit:CI_Contact>
+              </cit:contactInfo>
+            </cit:CI_Organisation>
+          </cit:party>
+        </cit:CI_Responsibility>
+      </mri:pointOfContact>
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+            <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                             codeListValue="owner"/>
+          </cit:role>
+          <cit:party>
+            <cit:CI_Organisation>
+              <cit:name>
+                <gco:CharacterString>Service public de Wallonie (SPW)</gco:CharacterString>
+              </cit:name>
+              <cit:contactInfo>
+                <cit:CI_Contact>
+                  <cit:address>
+                    <cit:CI_Address>
+                      <cit:electronicMailAddress>
+                        <gco:CharacterString>helpdesk.carto@spw.wallonie.be</gco:CharacterString>
+                      </cit:electronicMailAddress>
+                    </cit:CI_Address>
+                  </cit:address>
+                  <cit:onlineResource>
+                    <cit:CI_OnlineResource>
+                      <cit:linkage>
+                        <gco:CharacterString>https://geoportail.wallonie.be</gco:CharacterString>
+                      </cit:linkage>
+                      <cit:protocol>
+                        <gco:CharacterString>WWW:LINK</gco:CharacterString>
+                      </cit:protocol>
+                      <cit:name>
+                        <gco:CharacterString>Géoportail de la Wallonie</gco:CharacterString>
+                      </cit:name>
+                      <cit:description>
+                        <gco:CharacterString>Géoportail de la Wallonie</gco:CharacterString>
+                      </cit:description>
+                      <cit:function>
+                        <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                                   codeListValue="information"/>
+                      </cit:function>
+                    </cit:CI_OnlineResource>
+                  </cit:onlineResource>
+                </cit:CI_Contact>
+              </cit:contactInfo>
+            </cit:CI_Organisation>
+          </cit:party>
+        </cit:CI_Responsibility>
+      </mri:pointOfContact>
+      <mri:pointOfContact>
+        <cit:CI_Responsibility>
+          <cit:role>
+            <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                             codeListValue="author"/>
+          </cit:role>
+          <cit:party>
+            <cit:CI_Organisation>
+              <cit:name>
+                <gco:CharacterString>Service public de Wallonie (SPW)</gco:CharacterString>
+              </cit:name>
+              <cit:contactInfo>
+                <cit:CI_Contact>
+                  <cit:address>
+                    <cit:CI_Address>
+                      <cit:electronicMailAddress>
+                        <gco:CharacterString>helpsdesk.carto@spw.wallonie.be</gco:CharacterString>
+                      </cit:electronicMailAddress>
+                    </cit:CI_Address>
+                  </cit:address>
+                </cit:CI_Contact>
+              </cit:contactInfo>
+            </cit:CI_Organisation>
+          </cit:party>
+        </cit:CI_Responsibility>
+      </mri:pointOfContact>
+      <mri:spatialRepresentationType>
+        <mcc:MD_SpatialRepresentationTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_SpatialRepresentationTypeCode"
+                                              codeListValue="vector"/>
+      </mri:spatialRepresentationType>
+      <mri:spatialResolution>
+        <mri:MD_Resolution>
+          <mri:equivalentScale>
+            <mri:MD_RepresentativeFraction>
+              <mri:denominator>
+                <gco:Integer>50000</gco:Integer>
+              </mri:denominator>
+            </mri:MD_RepresentativeFraction>
+          </mri:equivalentScale>
+        </mri:MD_Resolution>
+      </mri:spatialResolution>
+      <mri:topicCategory>
+        <mri:MD_TopicCategoryCode>biota</mri:MD_TopicCategoryCode>
+      </mri:topicCategory>
+      <mri:topicCategory>
+        <mri:MD_TopicCategoryCode>environment</mri:MD_TopicCategoryCode>
+      </mri:topicCategory>
+      <mri:extent>
+        <gex:EX_Extent>
+          <gex:description>
+            <gco:CharacterString>Région wallonne</gco:CharacterString>
+          </gex:description>
+          <gex:geographicElement>
+            <gex:EX_GeographicBoundingBox>
+              <gex:westBoundLongitude>
+                <gco:Decimal>2.75</gco:Decimal>
+              </gex:westBoundLongitude>
+              <gex:eastBoundLongitude>
+                <gco:Decimal>6.50</gco:Decimal>
+              </gex:eastBoundLongitude>
+              <gex:southBoundLatitude>
+                <gco:Decimal>49.45</gco:Decimal>
+              </gex:southBoundLatitude>
+              <gex:northBoundLatitude>
+                <gco:Decimal>50.85</gco:Decimal>
+              </gex:northBoundLatitude>
+            </gex:EX_GeographicBoundingBox>
+          </gex:geographicElement>
+        </gex:EX_Extent>
+      </mri:extent>
+      <mri:resourceMaintenance>
+        <mmi:MD_MaintenanceInformation>
+          <mmi:maintenanceAndUpdateFrequency>
+            <mmi:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_MaintenanceFrequencyCode"
+                                             codeListValue="notPlanned"/>
+          </mmi:maintenanceAndUpdateFrequency>
+        </mmi:MD_MaintenanceInformation>
+      </mri:resourceMaintenance>
+      <mri:graphicOverview>
+        <mcc:MD_BrowseGraphic>
+          <mcc:fileName>
+            <gco:CharacterString>https://metawal.wallonie.be/geonetwork/srv/api/records/c08902e7-31b7-41eb-97bc-18fde105aad5/attachments/n2k_serie_new.png</gco:CharacterString>
+          </mcc:fileName>
+          <mcc:fileDescription>
+            <gco:CharacterString>n2k_reseau_pic</gco:CharacterString>
+          </mcc:fileDescription>
+          <mcc:fileType>
+            <gco:CharacterString>png</gco:CharacterString>
+          </mcc:fileType>
+        </mcc:MD_BrowseGraphic>
+      </mri:graphicOverview>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/6020">Agriculture</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/60">Société et activités</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#SubThemesGeoportailWallon/1010">Faune et flore</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon#ThemesGeoportailWallon/10">Nature et environnement</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/theme-geoportail-wallon">Thèmes du géoportail wallon</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2024-10-14</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.Themes_geoportail_wallon_hierarchy">geonetwork.thesaurus.external.theme.Themes_geoportail_wallon_hierarchy</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/theme/11">politique environnementale</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/theme/2">agriculture</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://geonetwork-opensource.org/gemet-theme">GEMET themes</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2009-09-22</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.gemet-theme">geonetwork.thesaurus.external.theme.gemet-theme</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/3138">faune</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/14671">politique de protection de la nature</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/10032">protection des espaces naturels</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/10523">habitat animal</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/6318">protection des plantes</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/9315">habitat de la faune sauvage</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/6752">protection des espèces</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/7983">conservation des espèces</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/3808">habitat</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5536">organisation de protection de la nature</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5498">milieu naturel</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/2422">directive de la CE</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5544">protection de la nature</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5523">site naturel</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/3406">forêt</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/10190">espace naturel sensible</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/6743">site naturel protégé</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/1700">conservation</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5494">espace naturel</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/6750">protection des oiseaux</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5508">loi sur la nature</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/10064">protection de la faune et de la flore</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/6376">politique de conservation de la nature</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/5545">réserve naturelle</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/concept/912">oiseau</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://geonetwork-opensource.org/gemet">GEMET</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2012-07-20</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.gemet">geonetwork.thesaurus.external.theme.gemet</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig#DGO3CIGALE">DGO3_CIGALE</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig#DGO3BDREF">DGO3_BDREF</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig#PanierTelechargementGeoportail">PanierTelechargementGeoportail</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig#ReportingINSPIRENO">Reporting INSPIRENO</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig#WALONMAP">WalOnMap</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig#BDINFRASIG">BDInfraSIG</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig/Opendata">Open Data</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="https://metawal.wallonie.be/thesaurus/infrasig">Mots-clés InfraSIG</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2024-10-03</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.infraSIG">geonetwork.thesaurus.external.theme.infraSIG</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gco:CharacterString>biodiversité</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>natura 2000</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>N2K</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>aménagement du territoire</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>zone de protection spéciale</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>zone spéciale de conservation</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>unité de gestion</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>arrêté de désignation</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>plan de gestion</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>unité d'habitat</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>parcelle</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>terre agricole</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>zone humide</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>avant-projet</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>enquête publique</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>périmètre</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>typologie d'habitat</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>Sites protégés</gco:CharacterString>
+          </mri:keyword>
+          <mri:keyword>
+            <gco:CharacterString>REF_IGN</gco:CharacterString>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope/regional">Régional</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialScope">Champ géographique</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2019-05-22</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope">geonetwork.thesaurus.external.theme.httpinspireeceuropaeumetadatacodelistSpatialScope-SpatialScope</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://data.europa.eu/eli/dir/1992/43/oj">92/43/EEC - Habitats Directive</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://data.europa.eu/eli/reg_impl/2023/138/oj">2023/138 - High Value Datasets Regulation</gcx:Anchor>
+          </mri:keyword>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://data.europa.eu/eli/dir/2007/2/oj">2007/2/EC - INSPIRE Directive</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://data.europa.eu/r5r/applicableLegislation">Applicable legislations</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2024-11-13</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.applicable-legislation">geonetwork.thesaurus.external.theme.applicable-legislation</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:descriptiveKeywords>
+        <mri:MD_Keywords>
+          <mri:keyword>
+            <gcx:Anchor xlink:href="http://data.europa.eu/bna/c_dd313021">Observation de la terre et environnement</gcx:Anchor>
+          </mri:keyword>
+          <mri:type>
+            <mri:MD_KeywordTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode"
+                                    codeListValue="theme"/>
+          </mri:type>
+          <mri:thesaurusName>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://data.europa.eu/bna/asd487ae75">High-value dataset categories</gcx:Anchor>
+              </cit:title>
+              <cit:date>
+                <cit:CI_Date>
+                  <cit:date>
+                    <gco:Date>2024-10-03</gco:Date>
+                  </cit:date>
+                  <cit:dateType>
+                    <cit:CI_DateTypeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode"
+                                         codeListValue="publication"/>
+                  </cit:dateType>
+                </cit:CI_Date>
+              </cit:date>
+              <cit:identifier>
+                <mcc:MD_Identifier>
+                  <mcc:code>
+                    <gcx:Anchor xlink:href="http://localhost:8080/geonetwork/srv/api/registries/vocabularies/external.theme.high-value-dataset-category">geonetwork.thesaurus.external.theme.high-value-dataset-category</gcx:Anchor>
+                  </mcc:code>
+                </mcc:MD_Identifier>
+              </cit:identifier>
+            </cit:CI_Citation>
+          </mri:thesaurusName>
+        </mri:MD_Keywords>
+      </mri:descriptiveKeywords>
+      <mri:resourceConstraints>
+        <mco:MD_LegalConstraints>
+          <mco:useLimitation>
+            <gco:CharacterString>Conditions d'accès et d'utilisation spécifiques</gco:CharacterString>
+          </mco:useLimitation>
+          <mco:accessConstraints>
+            <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode"
+                                    codeListValue="license"/>
+          </mco:accessConstraints>
+          <mco:useConstraints>
+            <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode"
+                                    codeListValue="license"/>
+          </mco:useConstraints>
+          <mco:otherConstraints>
+            <gcx:Anchor xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGA.pdf">Les conditions générales d'accès s’appliquent.</gcx:Anchor>
+          </mco:otherConstraints>
+          <mco:otherConstraints>
+            <gcx:Anchor xlink:href="https://geoportail.wallonie.be/files/documents/ConditionsSPW/DataSPW-CGU.pdf">Les conditions générales d'utilisation s'appliquent.</gcx:Anchor>
+          </mco:otherConstraints>
+        </mco:MD_LegalConstraints>
+      </mri:resourceConstraints>
+      <mri:resourceConstraints>
+        <mco:MD_LegalConstraints>
+          <mco:accessConstraints>
+            <mco:MD_RestrictionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode"
+                                    codeListValue="otherRestrictions"/>
+          </mco:accessConstraints>
+          <mco:otherConstraints>
+            <gcx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">No limitations to public access</gcx:Anchor>
+          </mco:otherConstraints>
+        </mco:MD_LegalConstraints>
+      </mri:resourceConstraints>
+      <mri:defaultLocale>
+        <lan:PT_Locale>
+          <lan:language>
+            <lan:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="fre"/>
+          </lan:language>
+          <lan:characterEncoding>
+            <lan:MD_CharacterSetCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode"
+                                     codeListValue="utf8"/>
+          </lan:characterEncoding>
+        </lan:PT_Locale>
+      </mri:defaultLocale>
+    </mri:MD_DataIdentification>
+  </mdb:identificationInfo>
+  <mdb:contentInfo>
+    <mrc:MD_FeatureCatalogueDescription>
+      <mrc:featureCatalogueCitation>
+        <cit:CI_Citation>
+          <cit:title>
+            <gco:CharacterString>Modèle de donnée</gco:CharacterString>
+          </cit:title>
+          <cit:onlineResource>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://cartodoc.wallonie.be/documents/Inventaire_Donnees/Modeles/NATURA2000_GEO.pdf</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:applicationProfile>
+                <gco:CharacterString>application/pdf</gco:CharacterString>
+              </cit:applicationProfile>
+              <cit:description>
+                <gco:CharacterString>Fiche descriptive de la structure de la donnée</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="information.content"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </cit:onlineResource>
+        </cit:CI_Citation>
+      </mrc:featureCatalogueCitation>
+    </mrc:MD_FeatureCatalogueDescription>
+  </mdb:contentInfo>
+  <mdb:distributionInfo>
+    <mrd:MD_Distribution>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://inspire.ec.europa.eu/media-types/application/x-shapefile">ESRI Shapefile (.shp)</gcx:Anchor>
+              </cit:title>
+              <cit:date gco:nilReason="unknown"/>
+              <cit:edition>
+                <gco:CharacterString>-</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributionFormat>
+        <mrd:MD_Format>
+          <mrd:formatSpecificationCitation>
+            <cit:CI_Citation>
+              <cit:title>
+                <gcx:Anchor xlink:href="http://inspire.ec.europa.eu/media-types/application/x-filegdb">ESRI File Geodatabase (.fgdb)</gcx:Anchor>
+              </cit:title>
+              <cit:date gco:nilReason="unknown"/>
+              <cit:edition>
+                <gco:CharacterString>10.x</gco:CharacterString>
+              </cit:edition>
+            </cit:CI_Citation>
+          </mrd:formatSpecificationCitation>
+        </mrd:MD_Format>
+      </mrd:distributionFormat>
+      <mrd:distributor>
+        <mrd:MD_Distributor>
+          <mrd:distributorContact>
+            <cit:CI_Responsibility>
+              <cit:role>
+                <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                                 codeListValue="distributor"/>
+              </cit:role>
+              <cit:party>
+                <cit:CI_Organisation>
+                  <cit:name>
+                    <gco:CharacterString>Service public de Wallonie (SPW)</gco:CharacterString>
+                  </cit:name>
+                  <cit:contactInfo>
+                    <cit:CI_Contact>
+                      <cit:address>
+                        <cit:CI_Address>
+                          <cit:electronicMailAddress>
+                            <gco:CharacterString>helpdesk.carto@spw.wallonie.be</gco:CharacterString>
+                          </cit:electronicMailAddress>
+                        </cit:CI_Address>
+                      </cit:address>
+                    </cit:CI_Contact>
+                  </cit:contactInfo>
+                </cit:CI_Organisation>
+              </cit:party>
+            </cit:CI_Responsibility>
+          </mrd:distributorContact>
+          <mrd:distributionOrderProcess>
+            <mrd:MD_StandardOrderProcess>
+              <mrd:orderingInstructions>
+                <gco:CharacterString>Cette ressource est une série de couches de données. En la téléchargeant, vous aurez accès à toutes les données la composant.
+
+                  Si votre demande porte sur un format spécifique de donnée ou une partie spécifique du territoire, veuillez suivre les instructions d'obtention d'une copie physique d’une donnée détaillées sur https://geoportail.wallonie.be/telecharger En réalisant cette commande, l'ensemble des couches constitutives de la série vous sera automatiquement fourni.</gco:CharacterString>
+              </mrd:orderingInstructions>
+            </mrd:MD_StandardOrderProcess>
+          </mrd:distributionOrderProcess>
+        </mrd:MD_Distributor>
+      </mrd:distributor>
+      <mrd:distributor>
+        <mrd:MD_Distributor>
+          <mrd:distributorContact>
+            <cit:CI_Responsibility>
+              <cit:role>
+                <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode"
+                                 codeListValue="resourceProvider"/>
+              </cit:role>
+              <cit:party>
+                <cit:CI_Organisation>
+                  <cit:name>
+                    <gco:CharacterString>Cellule SIG du SPW ARNE (SPW - Agriculture, Ressources naturelles et Environnement - Département de l'Étude du milieu naturel et agricole - Direction de la Coordination des Données)</gco:CharacterString>
+                  </cit:name>
+                </cit:CI_Organisation>
+              </cit:party>
+            </cit:CI_Responsibility>
+          </mrd:distributorContact>
+        </mrd:MD_Distributor>
+      </mrd:distributor>
+      <mrd:transferOptions>
+        <mrd:MD_DigitalTransferOptions>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>http://geoapps.wallonie.be/CigaleInter/#CTX=PATRI_NATUREL</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Protection de la Nature - Application</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Application de consultation des données relatives à la protection de la nature (CIGALE 3.0 - DGARNE)</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="browsing"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://geoportail.wallonie.be/walonmap#PANIER=%5B%7B%22serviceId%22%3A%221%22%2C%22visible%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fgeoservices.wallonie.be%2Farcgis%2Frest%2Fservices%2FFAUNE_FLORE%2FNATURA2000%2FMapServer%22%2C%22label%22%3A%22R%C3%A9seau%20Natura%202000%20en%20vigueur%20-%20S%C3%A9rie%22%2C%22type%22%3A%22AGS_DYNAMIC%22%2C%22metadataUrl%22%3A%22https%3A%2F%2Fgeodata.wallonie.be%2Fdoc%2Fc08902e7-31b7-41eb-97bc-18fde105aad5%22%7D%5D</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:applicationProfile>
+                <gco:CharacterString>WalOnMap</gco:CharacterString>
+              </cit:applicationProfile>
+              <cit:name>
+                <gco:CharacterString>Application WalOnMap - Toute la Wallonie à la carte</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Application cartographique du Geoportail (WalOnMap) qui permet de découvrir les données géographiques de la Wallonie.</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="browsing"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://geoservices.wallonie.be/arcgis/rest/services/FAUNE_FLORE/NATURA2000/MapServer</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>ESRI:REST</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Service de visualisation ESRI-REST</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Ce service ESRI-REST permet de visualiser la série de couches de données relatif aux sites Natura 2000</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="browsing"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://geoservices.wallonie.be/arcgis/services/FAUNE_FLORE/NATURA2000/MapServer/WMSServer?request=GetCapabilities&amp;service=WMS</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>OGC:WMS</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Service de visualisation WMS</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Ce service WMS permet de visualiser la série de couches de données relatif aux sites Natura 2000</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="browsing"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>http://biodiversite.wallonie.be/fr/sites-natura2000.html?IDC=838</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Natura 2000 en Wallonie</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>La biodiversité en Wallonie - Page relative au réseau Natura 2000</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="information"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>http://ec.europa.eu/environment/nature/natura2000/index_en.htm</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Natura 2000 - Portail européen</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Page Internet de la Commission Européenne consacrée à Natura 2000</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="information"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://metawal.wallonie.be/geonetwork/srv/api/records/c08902e7-31b7-41eb-97bc-18fde105aad5/attachments/n2k_sites.pdf</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:applicationProfile>
+                <gco:CharacterString>application/pdf</gco:CharacterString>
+              </cit:applicationProfile>
+              <cit:name>
+                <gco:CharacterString>Liste des sites Natura 2000</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Liste des 240 sites faisant l'objet d'un avant-projet d'arrêté de désignation</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="information"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://geoservices.test.wallonie.be/geotraitement/spwdatadownload/get/c08902e7-31b7-41eb-97bc-18fde105aad5/atom_service.xml</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>atom:feed</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Service de téléchargement ATOM Feed</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Ce service de téléchargement ATOM Feed permet de télécharger la série de couches de données Réseau Natura 2000 en vigueur</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="download"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+          <mrd:onLine>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://geodata.wallonie.be/dataset/c08902e7-31b7-41eb-97bc-18fde105aad5</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:name>
+                <gco:CharacterString>Page de téléchargement des données</gco:CharacterString>
+              </cit:name>
+              <cit:description>
+                <gco:CharacterString>Page à partir de laquelle vous avez accès au téléchargement direct de la donnée</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="download"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </mrd:onLine>
+        </mrd:MD_DigitalTransferOptions>
+      </mrd:transferOptions>
+    </mrd:MD_Distribution>
+  </mdb:distributionInfo>
+  <mdb:resourceLineage>
+    <mrl:LI_Lineage>
+      <mrl:statement>
+        <gco:CharacterString>Les étapes de la mise en place du réseau Natura 2000 en Wallonie sont les suivantes :
+
+          1. La base législative
+
+          La définition des sites Natura 2000 repose sur une base législative formulée au travers de deux Directives européennes :
+          - La directive "Oiseaux" du 2 avril 1979 revue le 20 novembre 2009 qui porte sur la conservation des oiseaux sauvages. Elle vise la protection de toutes les espèces européennes d’oiseaux sauvages, ainsi que leur milieu, leurs nids et leurs œufs. Pour atteindre cet objectif, les États membres doivent désigner des sites, appelés "Zones de Protection Spéciale (ZPS)" ; une désignation qui se fait sur la base des espèces reprises à l’Annexe I de cette directive.
+          - La Directive "Habitats" (92/43/CEE) du 21 mai 1992 qui concerne la conservation des habitats naturels ainsi que de la faune et de la flore sauvages. Elle prévoit la conservation et la protection de tous les habitats et espèces sauvages (flore et faune à l’exception des oiseaux) rares et/ou typiques. Pour ces habitats et espèces, repris aux annexes I et II de la directive, les Etats membres doivent également proposer des sites, appelés "Zones Spéciales de Conservation (ZSC)".
+
+          La transcription de ces deux Directives en droit wallon est réalisée par le décret du 6 décembre 2001 relatif à la conservation des sites Natura 2000 ainsi que de la faune et de la flore sauvages (M.B. 22.1.2002). Ce décret modifie la loi du 12 juillet 1973 sur la conservation de la nature en y intégrant la notion de site Natura 2000 et en prévoyant les modalités de mise en œuvre du réseau. Il stipule que "les sites Natura 2000 sont désignés par un arrêté du Gouvernement" (art. 26) et fixe le contenu de ces derniers.
+
+          Un site Natura 2000 peut comprendre des zones désignées pour la directive Oiseaux (ZPS), des zones désignées pour la directive Habitats (ZSC) et des zones désignées pour les deux directives (ZPS + ZSC). Chaque site Natura 2000 peut donc comprendre des parties ZPS et des parties ZSC qui se superposent plus ou moins largement.
+
+
+          2. L'identification des sites (2002 - 2005)
+
+          Les travaux d'identification des sites Natura 2000 ont été initiés à la fin des années 1990 par le CRNFB (Centre de Recherche de la Nature, des forêts et du Bois - MRW/DGRNE, aujourd'hui le DEMNA - SPW/DGARNE) avec l'Université de Mons-Hainaut. Ces travaux s'intensifient en 2002 avec la signature de quatre conventions de recherche passées avec la Faculté agronomique de Gembloux (FUSAGx), l'Université catholique de Louvain (UCL) et l'Université de Liège (ULg).
+
+          Les Directives Oiseaux et Habitats définissent les critères biologiques et structurels à prendre en compte dans le choix et la définition des sites. Ceux-ci sont identifiés sur une base scientifique tenant compte de la présence des espèces et des habitats, de la nécessité de restaurer des sites, de mettre en place la notion de réseau et d'identifier les zones dans lesquelles des contraintes sont indispensables pour éviter de dégrader l'état de conservation des sites. Des travaux d'inventaire de terrain sont entrepris, de manière à assurer une première digitalisation des périmètres.
+
+          Des contours provisoires des sites ont été identifiés sur base de toutes les données cartographiques disponibles au DEMNA (zones protégées, base de données des sites de grand intérêt biologique, réseau écologique, base de données détaillée des espèces visées par les directives, cartes des sols, PCDN, etc.), de la connaissance du réseau de naturalistes et du travail de synthèse de l'Association AVES pour les sites concernant les oiseaux. Les contours ont été digitalisés au 1/10.000ème et confrontés à d'autres sources d'informations (plan de secteur, orthophotos) pour les affiner et les corriger. Des vérifications sur le terrain ont également eu lieu de manière à confirmer la présence du ou des habitats recherchés.
+
+          Fin juin 2002, une liste étendue d'environ 290.000 ha et une cartographie des sites Natura 2000 a été soumise au Gouvernement wallon. Un classement des différents sites a également été établi sur base de leur qualité et état de conservation global. Sur ces bases, Le Gouvernement wallon a défini et fourni à la Commission européenne une première liste et une cartographie de 231 sites candidats au réseau Natura 2000, portant sur environ 218.000 ha (décision du 26/09/2002).
+
+          De 2002 à 2005, le CRNFB a finalisé et complété l'identification des sites, sur base de l'évaluation des contours et des remarques émises par la Commission européenne. La liste des sites a été revue en 2004 (8 sites complémentaires - décision du 4 février 2004) et en 2005 (1 site complémentaire - décision du 24 mars 2005). Le réseau complet compte donc 240 sites et couvre un total de 221.100 ha.
+
+
+          3. Les Arrêtes de Désignation (2005 - 2017) et l'enquête publique (2012)
+
+          La définition des sites Natura 2000 n'est qu'une étape dans le processus de mise en œuvre du réseau. Par ses décisions de 2002 à 2005, le Gouvernement wallon s'est engagé vis-à-vis de la Commission européenne à traduire l'existence de chaque site en droit wallon à travers la publication d'Arrêtés de désignation (AD). Lorsqu'un site est soumis à un AD, des mesures générales et particulières de gestion et de protection doivent être appliquées. Pour les sites candidats en attente de désignation, seules les mesures générales - définies dans l’Arrêté du Gouvernement wallon du 24 mars 2011 étaient applicables.
+
+          L'AD est donc particulier à chaque site et en présente ses caractéristiques : liste des parcelles ou parties de parcelles cadastrales qui composent le site, carte de localisation du site et des UG, objectifs de conservation, interdictions et mesures spécifiques pour chaque Unité de gestion, etc. Ces informations sont détaillées dans un formulaire standardisé européen (SDF) géré à la Commission européenne et devant être mis à jour régulièrement.
+
+          L'élaboration des AD suppose, au préalable, une standardisation des méthodologies pour valider les contours des sites désignés et confirmer les informations provisoires encodées dans les formulaires officiels. Différents outils ont donc été mis en place :
+
+          -  une typologie des biotopes wallons "WalEUNIS" - basée sur la typologie européenne EUNIS. Elle permet de décrire de manière précise les différents habitats rencontrés sur le terrain;
+
+          -  des règles de cartographie des différents biotopes WalEUNIS rencontrés au sein d’un site et d'évaluation du degré de conservation des habitats d’intérêt communautaire. Elles aboutissent à la définition d'Unités de gestion (UG). Il y a plusieurs UG par site et chacune requiert des mesures de conservation homogènes. A chaque unité de gestion s’applique une liste de mesures à respecter. Une Unité de Gestion rassemble plusieurs Unités d'habitats (UH). Ces Unités d'Habitats sont cartographiées pour les sites bénéficiant d'un AD désigné en 2009. En 2010, une méthodologie simplifiée de cartographie a été mise en place pour permettre l'identification rapide des UG pour les 221.000 ha du réseau Natura 2000. Dès lors, les UH ne sont pas repris dans la série de couches de données relative aux AD 2014 et suivant.
+
+          - des cahiers scientifiques pour les biotopes et les espèces (à paraître pour les CHIC et à concevoir pour les CEIC).
+
+          L'adoption des AD est progressive. Avant de pouvoir être adoptés par le Gouvernement wallon, les AD sont soumis à enquête publique sous forme d'avant-projets. A cette occasion, les acteurs (propriétaires, agriculteurs, gestionnaires, etc.) concernés par Natura 2000 peuvent réagir aux avant-projets d'Arrêtés et faire valoir leurs remarques et observations.
+
+          Les premiers avant-projets d’AD ont porté sur 8 sites Natura 2000 (1 par Direction DNF et donc par Commission de conservation). Ils ont été soumis à enquête publique en 2008 (de fin novembre 2008 à début janvier 2009). Ces sites ont constitué une phase pilote pour le reste de la procédure. Ils ont été désignés officiellement par un AD le 20 avril 2009. Dès lors, ils ont fait l’objet d’un régime de protection préventive général et spécifique.
+
+          En 2011, les mesures générales de protection devant être respectées sur tous les sites Natura 2000 (désignés ou non) ont été revues et de nouveaux textes ont été adoptés (AGW - 24 mars 2011). Suite à cela, des avant-projets d'Arrêtés de désignation de l'ensemble des sites Natura 2000 (les 240 sites) ont été élaborés et soumis à enquête publique. Celle-ci s'est tenue entre décembre 2012 et février 2013. Elle a concerné 214 communes. Suite à l'enquête, les remarques ont été analysées par les Commissions de conservation et le Gouvernement wallon a approuvé, le 23 janvier 2014, la désignation d’un lot de 52 sites venant s'ajouter aux 7 arrêtés de désignation de 2009 (L'AD 2009 du site "Vallée de Villers-la-Bonne-Eau" ayant été abrogé par un AD 2014). Ces 52 sites sont entrés en vigueur le 1er janvier 2015. Depuis, des sites ont été successivement et officiellement désignés en 2015 et 2016. Les derniers sites ont été désignés officiellement le 1/12/2016 (entrée en vigueur le 1er janvier 2018). Le réseau Natura 2000 est donc complet.
+
+          La cartographie des sites et des Unités repose sur une digitalisation sur base du TOP10V GIS de l'IGN.</gco:CharacterString>
+      </mrl:statement>
+      <mrl:scope>
+        <mcc:MD_Scope>
+          <mcc:level>
+            <mcc:MD_ScopeCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode"
+                              codeListValue="series"/>
+          </mcc:level>
+          <mcc:levelDescription>
+            <mcc:MD_ScopeDescription>
+              <mcc:other>
+                <gco:CharacterString>Série de couches de données thématiques</gco:CharacterString>
+              </mcc:other>
+            </mcc:MD_ScopeDescription>
+          </mcc:levelDescription>
+        </mcc:MD_Scope>
+      </mrl:scope>
+    </mrl:LI_Lineage>
+  </mdb:resourceLineage>
+  <mdb:portrayalCatalogueInfo>
+    <mpc:MD_PortrayalCatalogueReference>
+      <mpc:portrayalCatalogueCitation>
+        <cit:CI_Citation>
+          <cit:title>
+            <gco:CharacterString>Légende de la série de couches de données</gco:CharacterString>
+          </cit:title>
+          <cit:onlineResource>
+            <cit:CI_OnlineResource>
+              <cit:linkage>
+                <gco:CharacterString>https://geoservices.wallonie.be/arcgis/rest/services/FAUNE_FLORE/NATURA2000/MapServer/legend</gco:CharacterString>
+              </cit:linkage>
+              <cit:protocol>
+                <gco:CharacterString>WWW:LINK</gco:CharacterString>
+              </cit:protocol>
+              <cit:description>
+                <gco:CharacterString>Légende de la série de couches de données relatives aux sites Natura 2000</gco:CharacterString>
+              </cit:description>
+              <cit:function>
+                <cit:CI_OnLineFunctionCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode"
+                                           codeListValue="information.portrayal"/>
+              </cit:function>
+            </cit:CI_OnlineResource>
+          </cit:onlineResource>
+        </cit:CI_Citation>
+      </mpc:portrayalCatalogueCitation>
+    </mpc:MD_PortrayalCatalogueReference>
+  </mdb:portrayalCatalogueInfo>
+</mdb:MD_Metadata>
