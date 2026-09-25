@@ -2340,6 +2340,16 @@
   </codelist>
   <codelist name="mrs:MD_ReferenceSystemTypeCode">
     <entry>
+      <code>native</code>
+      <label>Natif</label>
+      <description>Système de coordonnées natif</description>
+    </entry>
+    <entry>
+      <code>distribution</code>
+      <label>Distribution</label>
+      <description>Système de coordonnées de distribution</description>
+    </entry>
+    <entry>
       <code>compoundEngineeringParametric</code>
       <label>Paramétrique d’ingénierie combinée</label>
       <description>système de références par coordonnées spatio-paramétriques
