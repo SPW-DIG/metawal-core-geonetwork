@@ -1,4 +1,4 @@
-PUT directive_weekly_open_data_snapshot
+PUT directive_weekly_snapshot
 {
   "mappings": {
     "properties": {
@@ -50,7 +50,7 @@ PUT _scripts/directive_weekly_counts
           }
         },
         "aggs": {
-          "inspire_values": {
+          "inspire": {
             "filter": {
               "term": { "hasInspireTheme": true }
             },
@@ -67,7 +67,7 @@ PUT _scripts/directive_weekly_counts
                             }
                           }
           },
-          "hvd_values": {
+          "hvd": {
             "filter": {
               "term": { "groupPublished": "HVDaccessPoint"  }
             },
