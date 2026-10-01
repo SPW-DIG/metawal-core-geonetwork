@@ -11,6 +11,7 @@
   <!-- https://mobilitydcat-ap.github.io/mobilityDCAT-AP/drafts/latest/ -->
 
   <xsl:import href="mobility-dcat-ap-core.xsl"/>
+  <xsl:import href="mobility-dcat-ap-core-distribution.xsl"/>
 
   <xsl:template match="/"
                 priority="2">

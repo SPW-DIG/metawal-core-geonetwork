@@ -31,19 +31,27 @@
   TODO https://mobilitydcat-ap.github.io/mobilityDCAT-AP/releases/index.html#mandatory-properties-for-distribution
   -->
   <xsl:variable name="mobilityThemeThesaurusKey"
-                select="'https://w3id.org/mobilitydcat-ap/mobility-data-standard/1.0.0'"/>
+                select="'https://w3id.org/mobilitydcat-ap/mobility-data-standard'"/>
 
-  <!--<xsl:template mode="iso19115-3-to-dcat"
-                name="iso19115-3-to-dcat-distribution"
+  <xsl:template mode="iso19115-3-to-dcat-mobility-distribution"
+                match="mri:descriptiveKeywords[*/mri:thesaurusName/*/cit:title/*/@xlink:href = $mobilityThemeThesaurusKey]"
+                priority="2">
+    <xsl:for-each select="*/mri:keyword[*/text() != '']">
+      <mobilitydcatap:mobilityDataStandard>
+        <skos:Concept rdf:about="{*/@xlink:href}">
+          <skos:prefLabel><xsl:value-of select="*/text()"/></skos:prefLabel>
+        </skos:Concept>
+      </mobilitydcatap:mobilityDataStandard>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template mode="iso19115-3-to-dcat"
                 match="mdb:distributionInfo//mrd:onLine">
-    <dcat:distribution>
-      <dcat:Distribution>
-        <mobilitydcatap:mobilityDataStandard>
-          <skos:Concept>
-
-          </skos:Concept>
-        </mobilitydcatap:mobilityDataStandard>
-      </dcat:Distribution>
-    </dcat:distribution>
-  </xsl:template>-->
+    <xsl:call-template name="iso19115-3-to-dcat-distribution">
+      <xsl:with-param name="additionalProperties">
+        <xsl:apply-templates mode="iso19115-3-to-dcat-mobility-distribution"
+                             select="ancestor::mdb:MD_Metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[*/mri:thesaurusName/*/cit:title/*/@xlink:href = $mobilityThemeThesaurusKey]"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
 </xsl:stylesheet>

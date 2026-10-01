@@ -210,6 +210,12 @@
                     <xsl:call-template name="rdf-format-as-mediatype">
                       <xsl:with-param name="format" select="$mainLink/protocol"/>
                     </xsl:call-template>
+
+
+                    <xsl:variable name="mobilityThemeThesaurusKey"
+                                  select="'https://w3id.org/mobilitydcat-ap/mobility-data-standard'"/>
+                    <xsl:apply-templates mode="iso19115-3-to-dcat-mobility-distribution"
+                                         select="$metadata/mdb:identificationInfo/*/mri:descriptiveKeywords[*/mri:thesaurusName/*/cit:title/*/@xlink:href = $mobilityThemeThesaurusKey]"/>
                   </dcat:Distribution>
                 </dcat:distribution>
               </xsl:if>
@@ -232,4 +238,7 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template mode="iso19115-3-to-dcat-mobility-distribution"
+                match="mri:descriptiveKeywords">
+  </xsl:template>
 </xsl:stylesheet>
