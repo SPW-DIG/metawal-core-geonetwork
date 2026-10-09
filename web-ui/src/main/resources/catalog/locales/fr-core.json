@@ -17,6 +17,7 @@
     "Editor": "Éditeur",
     "Keywords": "Mots-clés",
     "crs": "Système de coordonnées",
+    "crsForDistribution": "Système de coordonnées (Distribution)",
     "search": "Rechercher",
     "METADATA": "Fiche",
     "RegisteredUser": "Utilisateur enregistré",

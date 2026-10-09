@@ -17,6 +17,7 @@
     "Editor": "Editor",
     "Keywords": "Keywords",
     "crs": "Coordinate reference system",
+    "crsForDistribution": "Coordinate reference system (Distribution)",
     "search": "Search",
     "METADATA": "Metadata",
     "RegisteredUser": "Registered user",

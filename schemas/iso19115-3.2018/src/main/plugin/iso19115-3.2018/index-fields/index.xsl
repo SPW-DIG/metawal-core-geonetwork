@@ -1105,11 +1105,17 @@
             </coordinateSystem>
           </xsl:if>
 
+          <xsl:variable name="crsType"
+                        select="ancestor::mrs:MD_ReferenceSystem/mrs:referenceSystemType/*/@codeListValue"/>
+
           <crsDetails type="object">{
             "code": "<xsl:value-of select="util:escapeForJson($crs)"/>",
             "codeSpace": "<xsl:value-of select="util:escapeForJson(mcc:codeSpace/*/text())"/>",
             "name": "<xsl:value-of select="util:escapeForJson($crsLabel)"/>",
             "url": "<xsl:value-of select="util:escapeForJson(mcc:code/*/@xlink:href)"/>"
+            <xsl:if test="$crsType != ''">,
+              "type": "<xsl:value-of select="util:escapeForJson($crsType)"/>"
+            </xsl:if>
             }</crsDetails>
         </xsl:for-each>
       </xsl:for-each>

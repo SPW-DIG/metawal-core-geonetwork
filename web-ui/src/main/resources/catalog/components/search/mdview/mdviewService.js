@@ -353,6 +353,22 @@
                           data.metadata[0],
                           gnMdViewObj.records
                         );
+
+                        // MW
+                        gnMdViewObj.hasCrsForDistribution = false;
+                        if (
+                          gnMdViewObj.current &&
+                          gnMdViewObj.current.record &&
+                          gnMdViewObj.current.record.crsDetails
+                        ) {
+                          var list = gnMdViewObj.current.record.crsDetails;
+                          for (var j = 0; j < list.length; j++) {
+                            if (list[j] && list[j].type === "distribution") {
+                              gnMdViewObj.hasCrsForDistribution = true;
+                              break;
+                            }
+                          }
+                        }
                         gnMdViewObj.loadDetailsFinished = true;
                       } else {
                         gnMdViewObj.loadDetailsFinished = true;

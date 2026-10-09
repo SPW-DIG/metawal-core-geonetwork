@@ -67,10 +67,16 @@
   </span>
   <div>
     <h3 data-translate="">crs</h3>
-    <ul class="gn-comma-list">
-      <li data-ng-repeat="r in mdView.current.record.crsDetails">
+    <ul
+      class="gn-comma-list"
+      data-ng-init="numberOfCrs = mdView.current.record.crsDetails.length"
+    >
+      <li
+        data-ng-repeat="r in mdView.current.record.crsDetails | filter: {type: '!distribution'}"
+      >
         <a ng-show="r.url" href="{{r.url}}">{{r.name || r.code}}</a>
         <span ng-hide="r.url">{{r.name || r.code}}</span>
+        <span ng-show="r.type && numberOfCrs > 2">&nbsp;- {{r.type | translate}}</span>
       </li>
     </ul>
   </div>

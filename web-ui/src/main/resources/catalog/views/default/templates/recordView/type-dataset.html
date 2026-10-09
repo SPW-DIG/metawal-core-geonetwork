@@ -98,6 +98,26 @@
     </div>
 
     <div
+      data-ng-if="mdView.hasCrsForDistribution"
+      class="gn-margin-bottom gn-md-side-crs flex-row"
+    >
+      <span class="badge badge-rounded">
+        <i class="fa fa-fw fa-compass"></i>
+      </span>
+      <div>
+        <h3 data-translate="">crsForDistribution</h3>
+        <ul class="gn-comma-list">
+          <li
+            data-ng-repeat="r in mdView.current.record.crsDetails | filter: {type: 'distribution'}"
+          >
+            <a ng-show="r.url" href="{{r.url}}">{{r.name || r.code}}</a>
+            <span ng-hide="r.url">{{r.name || r.code}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
       class="gn-contact-col-1"
       data-ng-if="mdView.current.record.contactForDistribution"
       data-gn-metadata-contacts="mdView.current.record.contactForDistribution"
