@@ -24,5 +24,6 @@
     <xsl:namespace name="pav" select="'http://purl.org/pav/'"/>
     <xsl:namespace name="adms" select="'http://www.w3.org/ns/adms#'"/>
     <xsl:namespace name="skos" select="'http://www.w3.org/2004/02/skos/core#'"/>
+    <xsl:namespace name="geodcatap" select="'http://data.europa.eu/930/'"/>
   </xsl:template>
 </xsl:stylesheet>
