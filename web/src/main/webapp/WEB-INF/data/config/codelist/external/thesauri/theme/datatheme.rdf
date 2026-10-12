@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+  <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/data-theme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-07</dcterms:created>
+    <rdfs:label xml:lang="en">Data theme</rdfs:label>
+    <owl:imports rdf:resource="http://publications.europa.eu/ontology/euvoc" />
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Data theme</rdfs:comment>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <skos:prefLabel xml:lang="en">Data theme</skos:prefLabel>
+    <dcterms:title xml:lang="en">Data theme</dcterms:title>
+    <dcterms:identifier>http://publications.europa.eu/resource/authority/data-theme</dcterms:identifier>
+    <owl:versionIRI rdf:resource="http://publications.europa.eu/resource/authority/data-theme/20241211-0" />
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/AGRI">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>AGRI</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Agriculture, pêche, sylviculture et alimentation</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Landwirtschaft, Fischerei, Forstwirtschaft und Nahrungsmittel</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Agriculture, fisheries, forestry and food</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Landbouw, visserij, bosbouw en voeding</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines de l’agriculture au nombre desquels la culture de plantes et l’élevage d’animaux, les pêcheries axées sur la pêche de poissons sauvages ou d’élevage, la sylviculture pour la gestion et la conservation des forêts et des zones boisées et l’alimentation, pour les substances qui apportent un soutien nutritionnel aux organismes</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Bereiche Landwirtschaft, die Pflanzenanbau und Viehzucht umfasst, Fischerei, die schwerpunktmäßig im Fang bzw. in der Ernte wild lebender oder gezüchteter Fische besteht, Forstwirtschaft, die sich auf die Bewirtschaftung und Erhaltung von Wäldern und bewaldeten Gebieten bezieht, und Nahrungsmittel, worunter Stoffe fallen, die Organismen als Nahrung dienen können</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of agriculture which involves the cultivation of plants and livestock; fisheries which focuses on the harvesting of fish from wild or farmed sources; forestry which relates to the management and conservation of forests and woodlands; and food which includes substances that provide nutritional support to organisms</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen landbouw, waarbij het gaat om het telen van planten en vee; visserij, gericht op het oogsten van wilde of gekweekte vis; bosbouw, waarbij het gaat om het beheer en de instandhouding van bossen en bosgebieden; en voeding, waarbij het gaat om stoffen die organismen tot voeding dienen</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/ECON">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>ECON</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Économie et finances</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Wirtschaft und Finanzen</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Economy and finance</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Economie en financiën</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines de l’activité économique au nombre desquels la production, la distribution, les échanges et la consommation de biens et de services, et l’activité financière axée sur la gestion de l’argent au niveau des individus, des entreprises ou des administrations publiques</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Bereiche Wirtschaftstätigkeiten, worunter die Herstellung und Verteilung von Waren und Dienstleistungen sowie der Handel mit ihnen und ihr Verbrauch bzw. ihre Inanspruchnahme fallen, und finanzielle Tätigkeiten, die schwerpunktmäßig der Verwaltung von Geld auf individueller, betrieblicher oder staatlicher Ebene gelten</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of economic activity which involves production, distribution, trade, and consumption of goods and services, and finance activity focusing on the management of money at the individual, company, or government level</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen economie, waarbij het gaat om de productie, distributie, handel en consumptie van goederen en diensten; en financiën, waarbij het gaat om activiteiten gericht op het beheer van geld op het niveau van personen, bedrijven of de overheid</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/EDUC">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>EDUC</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Éducation, culture et sport</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Bildung, Kultur und Sport</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Education, culture and sport</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Onderwijs, cultuur en sport</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines de l’éducation, qui permet l’apprentissage et l’acquisition de connaissances, de compétences, de valeurs, d’opinions et d’habitudes, de la culture, qui englobe le comportement social, les normes, les connaissances, les croyances, les arts, les lois, les coutumes, les capacités et les habitudes dans les sociétés humaines et du sport, qui englobe des activités physiques ou des jeux sous forme de compétition qui améliorent les aptitudes et les compétences physiques en procurant du plaisir aux participants et du divertissement aux spectateurs</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Bereiche Bildung, durch die das Lernen sowie der Erwerb von Kenntnissen, Fertigkeiten, Werten, Überzeugungen und Gewohnheiten erleichtert werden, Kultur, die das soziale Verhalten, die Normen, Kenntnisse, Überzeugungen, künstlerischen Ausdrucksformen, rechtlichen Vorschriften, Bräuche, Fähigkeiten und Gewohnheiten umfasst, die in menschlichen Gesellschaften zu finden sind, und Sport, worunter als Wettkampf betriebene körperliche Aktivitäten oder Spiele fallen, welche der Verbesserung der körperlichen Leistungsfähigkeit und körperlicher Fertigkeiten, dem Vergnügen der Teilnehmer sowie der Unterhaltung von Zuschauern dienen</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of education, which facilitates learning and the acquisition of knowledge, skills, values, beliefs, and habits; culture, which includes the social behaviour, norms, knowledge, beliefs, arts, laws, customs, capabilities, and habits found in human societies; and sport, encompassing competitive physical activities or games that improve physical ability, skills, and provide enjoyment to participants as well as entertainment to spectators</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen onderwijs, waarbij het gaat om het faciliteren van leren en het verwerven van kennis, vaardigheden, waarden, overtuigingen en gewoonten; cultuur, waarbij het onder meer gaat om het sociaal gedrag en de normen, kennis, overtuigingen, kunsten, regels, gebruiken, vaardigheden en gewoonten in menselijke samenlevingen; en sport, waaronder fysieke activiteiten of spelen met een competitie-element vallen die het fysieke vermogen en de vaardigheden van de deelnemers verbeteren, hun plezier verschaffen en toeschouwers amusement bieden</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/ENER">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>ENER</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Énergie</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Energie</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Energy</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Energie</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant le domaine de l’énergie, définie comme la propriété quantitative nécessaire pour effectuer un travail sur l’objet ou pour le chauffer, et comme un élément vital pour les organismes vivants et le fonctionnement de la civilisation humaine</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für den Bereich Energie, bei der es sich um die quantitative Eigenschaft handelt, die notwendig ist, um Arbeit an Gegenständen zu verrichten oder diese zu erwärmen, und die unerlässlich für das Leben von Organismen und das Funktionieren einer menschlichen Zivilisation ist</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domain of energy, characterised as the quantitative property necessary to perform work on or heat objects, and vital element of living organisms and the operation of human civilisation</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op het domein energie, gekarakteriseerd als de kwantitatieve eigenschap die nodig is voor het bewerken of verwarmen van objecten, en die een vitaal element vormt van levende organismen en voor de werking van de menselijke beschaving</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/ENVI">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>ENVI</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Environnement</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Umwelt</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Environment</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Milieu</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant le domaine de l’environnement, défini comme l’interaction entre l’ensemble des espèces vivantes, le climat, les conditions météorologiques, et les ressources naturelles qui ont une incidence sur la survie humaine et l’activité économique</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für den Bereich Umwelt, definiert als Interaktion aller lebenden Arten, des Klimas, des Wetters und natürlicher Ressourcen, die sich auf das Überleben des Menschen und seine Wirtschaftstätigkeit auswirken</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domain of environment, defined as the interaction of all living species, climate, weather, and natural resources that impact human survival and economic activity</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op het domein milieu, gedefinieerd als de interactie van alle levende organismen, het klimaat, het weer en de natuurlijke hulpbronnen die van invloed zijn op het voortbestaan van de mens en diens economische activiteiten</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/GOVE">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>GOVE</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Gouvernement et secteur public</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Regierung und öffentlicher Sektor</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Government and public sector</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Overheid en publieke sector</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines des administrations et du secteur public, les administrations étant le système ou le groupe de personnes qui gouvernent une communauté organisée, généralement un État, et le secteur public comprenant le segment de l’économie qui concerne les services publics et les entreprises et qui peut être géré par des autorités centrales, régionales ou locales</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Bereiche Regierung und öffentlicher Sektor, wobei die Regierung das System oder die Gruppe von Personen darstellt, die eine organisierte Gemeinschaft, normalerweise einen Staat, führen, während der öffentliche Sektor das Wirtschaftssegment der öffentlichen Dienste und Unternehmen umfasst, die von zentralstaatlichen, regionalen oder lokalen Behörden verwaltet werden können</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the areas of government and the public sector, government being the system or group of individuals governing an organised community, usually a state, and the public sector comprising the segment of the economy involving public services and enterprises, which may be managed by central, regional or local authorities</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen overheid en publieke sector, waarbij overheid een systeem of groep personen is die een georganiseerde gemeenschap, gewoonlijk een staat, bestuurt, en publieke sector het economische segment is dat gevormd wordt door overheidsdiensten en -ondernemingen, die door centrale, regionale of lokale overheden kunnen worden beheerd</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/HEAL">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>HEAL</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Santé</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Gesundheit</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Health</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Gezondheid</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant le domaine de la santé, qui comprend les conditions de santé, les maladies, les traitements, les services de santé et les politiques de santé</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für den Bereich Gesundheit, der Gesundheitszustände, Krankheiten, Behandlungen, Gesundheitsdienste und Gesundheitspolitik umfasst</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domain of health which includes health conditions, diseases, treatments, healthcare services, and health policies</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op het domein gezondheid, waaronder gezondheidstoestanden, ziekten, behandelingen, gezondheidsdiensten en gezondheidsbeleid vallen</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/INTR">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>INTR</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Questions internationales</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Internationale Themen</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">International issues</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Internationale vraagstukken</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant le domaine des questions internationales qui se rapportent à des sujets ou à des problèmes importants faisant l’objet d’un débat ou d’une discussion et associant des participants d’au moins deux pays différents</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für den Bereich internationale Themen, das sich auf bedeutende Fragen oder Probleme bezieht, die Gegenstand von Debatten oder Beratungen von Teilnehmern aus mindestens zwei Ländern sind</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domain of international issues which relates to significant topics or problems that are subject to debate or discussion and involve participants from at least two different countries</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op het domein internationale vraagstukken, waarbij het gaat om belangrijke onderwerpen of problemen die voorwerp van overleg of discussie zijn en waarbij ten minste twee verschillende landen betrokken zijn</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/JUST">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>JUST</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Justice, système juridique et sécurité publique</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Justiz, Rechtssystem und öffentliche Sicherheit</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Justice, legal system and public safety</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Justitie, rechtsstelsel en openbare veiligheid</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines de la justice, du système juridique et de la sécurité publique, la notion de justice faisant référence à l’équité procédurale dans l’application du droit, le système juridique comprenant différents cadres, dont le droit civil, la common law, le droit statutaire et le droit religieux et la sécurité publique faisant référence à la responsabilité gouvernementale en matière de protection des personnes, des organisations et des institutions contre les menaces pesant sur leur bien-être et leur prospérité communautaire</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema, das die Bereiche Justiz, Rechtssystem und öffentliche Sicherheit abdeckt, wobei „Justiz“ die Grundsätze des fairen Verfahrens bei der Rechtsanwendung bezeichnet, „Rechtssystem“ verschiedene Rechtsrahmen wie Civil Law, Common Law, Gesetzesrecht und religiöses Recht umfasst und „öffentliche Sicherheit“ die Verantwortung des Staates für den Schutz von Personen, Organisationen und Einrichtungen vor Bedrohungen ihres Wohlergehens und des Wohlstandes von Gemeinschaften bezeichnet</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of justice, legal system and public safety, where justice refers to the procedural fairness in the application of law; legal system comprises various frameworks including civil, common, statutory, and religious law; and public safety denotes the governmental responsibility to protect individuals, organisations, and institutions from threats to their well-being and community prosperity</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen justitie, rechtsstelsel en openbare veiligheid, waarbij justitie verwijst naar de procedurele billijkheid bij de toepassing van het recht; het rechtsstelsel verschillende kaders omvat, waaronder burgerlijk recht, gewoonterecht, wettelijk recht en religieus recht; en openbare veiligheid betrekking heeft op de verantwoordelijkheid van de overheid om personen, organisaties en instellingen te beschermen tegen bedreigingen voor hun welzijn en de welvaart van de gemeenschap</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/OP_DATPRO">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>OP_DATPRO</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Données provisoires</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Vorläufige Daten</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Provisional data</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Voorlopige gegevens</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/REGI">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>REGI</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Régions et villes</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Regionen und Städte</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Regions and cities</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Regio's en steden</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines des régions et des villes, les régions étant définies par des unités de géographie politique, dont les États souverains, les zones administratives infranationales et les groupements multinationaux, et les villes étant définies comme de grands établissements humains</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Bereiche Regionen und Städte, wobei Regionen als politisch-geografische Einheiten, darunter souveräne Staaten, subnationale Verwaltungsgebiete und multinationale Gruppierungen, Städte dagegen als große menschliche Siedlungen definiert sind</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of regions and cities, where regions is defined by political geography units including sovereign states, subnational administrative areas, and multinational groupings, and cities are characterised as large human settlements</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen regio’s en steden, waarbij regio’s het domein is van politieke geografische eenheden, waaronder soevereine staten, subnationale bestuurlijke gebieden en multinationale groeperingen, en het domein steden betrekking heeft op grote menselijke nederzettingen</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/SOCI">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>SOCI</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Population et société</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Bevölkerung und Gesellschaft</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Population and society</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Bevolking en samenleving</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines de la population et de la société, la population faisant référence au nombre total de personnes résidant à différents niveaux géographiques, allant des villes jusqu’à l’échelle mondiale, et la société désignant un collectif de personnes engagées dans une interaction sociale continue au sein d’un territoire commun, souvent dans le cadre des mêmes normes politiques et culturelles</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Bereiche Bevölkerung und Gesellschaft, wobei „Bevölkerung“ sich auf die Gesamtzahl der Menschen bezieht, die in geografischen Einheiten – von der Städte- bis zur globalen Ebene – ansässig sind, während „Gesellschaft“ eine Gemeinschaft von Individuen bezeichnet, die sich innerhalb eines gemeinsamen Gebiets in ständiger sozialer Interaktion befinden und oft denselben politischen und kulturellen Normen unterliegen</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of population and society, where population refers to the total number of people residing within various geographic levels from cities to the global scale, and society denotes a collective of individuals engaged in continuous social interaction within a common territory, often under the same political and cultural norms</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen bevolking en samenleving, waarbij bevolking verwijst naar het totale aantal mensen dat verblijft op verschillende geografische niveaus van stad tot wereldschaal, en samenleving verwijst naar een collectief van personen die betrokken zijn bij duurzame sociale interactie binnen een gemeenschappelijk gebied, vaak met dezelfde politieke en culturele normen</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/TECH">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>TECH</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Science et technologie</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Wissenschaft und Technologie</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Science and technology</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Wetenschap en technologie</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant les domaines de la science et de la technologie, la science étant la recherche systématique de connaissances au moyen d’explications et de prédictions exploitables dans toutes les disciplines naturelles, sociales et formelles, et la technologie englobant les techniques, compétences, méthodes et processus collectifs mis en œuvre pour produire des biens, fournir des services ou atteindre des objectifs tels que la recherche scientifique</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für die Gebiete Wissenschaft und Technologie, wobei „Wissenschaft“ das systematische Streben nach Wissen durch überprüfbare Erklärungen und Vorhersagen in allen natur-, sozial- und formalwissenschaftlichen Disziplinen bezeichnet, während „Technologie“ die Gesamtheit der Techniken, Fertigkeiten, Methoden und Verfahren umfasst, die eingesetzt werden, um Waren herzustellen, Dienstleistungen zu erbringen oder Ziele wie wissenschaftliche Forschung zu erreichen</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domains of science and technology, with science being the systematic pursuit of knowledge through testable explanations and predictions across natural, social, and formal disciplines, and technology encompassing the collective techniques, skills, methods, and processes used in producing goods, providing services, or achieving objectives like scientific research</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op de domeinen wetenschap en technologie, waarbij wetenschap wordt gekarakteriseerd als het systematisch nastreven van kennis door middel van testbare verklaringen en voorspellingen in natuurlijke, sociale en formele disciplines, en technologie het geheel aan technieken, vaardigheden, methoden en processen omvat dat wordt gebruikt bij het produceren van goederen, het verlenen van diensten of het bereiken van doelstellingen zoals wetenschappelijk onderzoek</skos:definition>
+  </skos:Concept>
+  <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/data-theme/TRAN">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-01</dcterms:created>
+    <owl:versionInfo>20241211-0</owl:versionInfo>
+    <dc:identifier>TRAN</dc:identifier>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/data-theme" />
+    <skos:prefLabel xml:lang="fr">Transports</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Verkehr</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Transport</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Vervoer</skos:prefLabel>
+    <skos:definition xml:lang="fr">thème d’un ensemble de données couvrant le domaine du transport, qui implique le déplacement d’êtres humains, d’animaux et de biens d’un endroit à un autre en faisant appel à différents modes de transports tels que le transport aérien, le transport terrestre (ferroviaire ou routier), le transport par voies navigables, le transport par câble, le transport par conduites et le transport spatial</skos:definition>
+    <skos:definition xml:lang="de">Datensatzthema für den Bereich Verkehr, der die Bewegungen von Menschen, Tieren und Waren von einem Ort zu anderen mittels verschiedener Beförderungsarten, etwa Luft- und Landverkehrsmitteln (per Schiene und Straße), Verkehrsmitteln zu Wasser, Kabeln, Rohrleitungen und Raumtransportmitteln umfasst</skos:definition>
+    <skos:definition xml:lang="en">dataset theme covering the domain of transport, which involves the movement of humans, animals, and goods from one location to another using various modes such as air, land (rail and road), water, cable, pipeline and space</skos:definition>
+    <skos:definition xml:lang="nl">datasetthema dat betrekking heeft op vervoer, waarbij mensen, dieren en goederen van de ene plaats naar de andere worden vervoerd met gebruikmaking van verschillende vervoersmodaliteiten, zoals lucht, land (spoor en weg), water, kabel, pijpleiding en ruimte</skos:definition>
+  </skos:Concept>
+</rdf:RDF>

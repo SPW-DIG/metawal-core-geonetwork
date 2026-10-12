@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                      rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method">
+    <terms:creator xmlns:terms="http://purl.org/dc/terms/"
+                   xml:lang="en">Mario Scrocca (Cefriel)
+    </terms:creator>
+    <terms:creator xmlns:terms="http://purl.org/dc/terms/"
+                   xml:lang="en">Peter Lubrich (BASt)
+    </terms:creator>
+    <terms:description xmlns:terms="http://purl.org/dc/terms/"
+                       xml:lang="en">Controlled vocabulary for the georeferencing method of a resource.
+    </terms:description>
+    <terms:license xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <terms:publisher xmlns:terms="http://purl.org/dc/terms/"
+                     xml:lang="en">NAPCORE SubWG4.4
+    </terms:publisher>
+    <terms:title xmlns:terms="http://purl.org/dc/terms/"
+                 xml:lang="en">Georeferencing Method
+    </terms:title>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/alert-c"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/geocoordinates"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/gml"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/iso-19148"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/openlr"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/other"/>
+    <skos:hasTopConcept
+      xmlns:terms="http://purl.org/dc/terms/"
+                        rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method/tpeg-loc"/>
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/alert-c">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">ALERT-C (LCL)</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">ALERT-C (LCL)</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">ALERT-C (LCL)</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">ALERT-C (LCL)</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/geocoordinates">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Geocoordinates</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">Geocoördinaten</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">Coordonnées géographiques</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">Geokoördinaten</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/gml">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">GML</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">GML</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">GML</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">GML</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/iso-19148">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">ISO 19148</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">ISO 19148</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">ISO 19148</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">ISO 19148</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/openlr">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">OpenLR</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">OpenLR</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">OpenLR</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">OpenLR</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/other">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Other</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">Andere</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">Autre</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">Anderen</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+                       rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+                rdf:about="https://w3id.org/mobilitydcat-ap/georeferencing-method/tpeg-loc">
+    <skos:inScheme
+      xmlns:terms="http://purl.org/dc/terms/"
+                   rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">TPEG-LOC</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">TPEG-LOC</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">TPEG-LOC</skos:prefLabel>
+    <skos:prefLabel xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">TPEG-LOC</skos:prefLabel>
+    <skos:topConceptOf
+      xmlns:terms="http://purl.org/dc/terms/"
+      rdf:resource="https://w3id.org/mobilitydcat-ap/georeferencing-method"/>
+  </skos:Concept>
+</rdf:RDF>
+

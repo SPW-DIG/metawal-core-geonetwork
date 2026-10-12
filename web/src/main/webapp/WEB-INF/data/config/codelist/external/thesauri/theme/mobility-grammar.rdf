@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:terms="http://purl.org/dc/terms/">
+  <skos:ConceptScheme rdf:about="https://w3id.org/mobilitydcat-ap/grammar">
+    <terms:creator xml:lang="en">Mario Scrocca (Cefriel)</terms:creator>
+    <terms:creator xml:lang="en">Peter Lubrich (BASt)</terms:creator>
+    <terms:description xml:lang="en">Controlled vocabulary for the data grammar of a distribution.</terms:description>
+    <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+    <terms:publisher xml:lang="en">NAPCORE SubWG4.4</terms:publisher>
+    <terms:title xml:lang="en">Data Grammar</terms:title>
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/grammar/asn.1" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/grammar/json-schema" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/grammar/other" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/grammar/protocol-buffers" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/grammar/xsd" />
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/grammar/asn.1">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+    <skos:prefLabel xml:lang="en">ASN.1</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/grammar/json-schema">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+    <skos:prefLabel xml:lang="en">JSON Schema</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/grammar/other">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/grammar/protocol-buffers">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+    <skos:prefLabel xml:lang="en">Protocol buffers</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/grammar/xsd">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+    <skos:prefLabel xml:lang="en">XSD</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/grammar" />
+  </skos:Concept>
+</rdf:RDF>
+

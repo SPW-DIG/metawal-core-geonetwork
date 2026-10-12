@@ -1,0 +1,1890 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+
+  <skos:ConceptScheme rdf:about="https://w3id.org/dpv/pd">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme" />
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2019-06-04</dct:created>
+    <rdfs:label xml:lang="en">DPV Personal Data Categories</rdfs:label>
+    <skos:prefLabel xml:lang="en">DPV Personal Data Categories</skos:prefLabel>
+    <dct:title xml:lang="en">DPV Personal Data Categories</dct:title>
+    <dct:description xml:lang="en">Personal Data categories from the W3C Data Privacy Vocabulary (DPV) version 2.3</dct:description>
+    <dct:identifier>https://w3id.org/dpv/pd</dct:identifier>
+    <owl:versionIRI rdf:resource="https://w3id.org/dpv/pd/2.3" />
+    <owl:versionInfo>2.3</owl:versionInfo>
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Biometric" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#EthnicOrigin" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#External" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Financial" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Historical" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Household" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Internal" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#PhilosophicalBelief" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#PoliticalAffiliation" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#PoliticalOpinion" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Profile" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Race" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Religion" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#ReligiousBelief" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Sexual" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Social" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#TradeUnionMembership" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/dpv/pd#Vulnerability" />
+  </skos:ConceptScheme>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Accent">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Accent</dc:identifier>
+    <skos:prefLabel xml:lang="en">Accent</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about linguistic and speech accents</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Language" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#AccountIdentifier">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>AccountIdentifier</dc:identifier>
+    <skos:prefLabel xml:lang="en">Account Identifier</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial account identifier</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FinancialAccount" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Acquaintance">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Acquaintance</dc:identifier>
+    <skos:prefLabel xml:lang="en">Acquaintance</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about acquaintances in a social network</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#SocialNetwork" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Age">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Age</dc:identifier>
+    <skos:prefLabel xml:lang="en">Age</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about age</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#AgeExact">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>AgeExact</dc:identifier>
+    <skos:prefLabel xml:lang="en">Age Exact</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the exact age (i.e. to some degree within a year, month, or day)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#AgeRange" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#AgeRange">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>AgeRange</dc:identifier>
+    <skos:prefLabel xml:lang="en">Age Range</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about age range i.e. inexact age to some degree (i.e. some years)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Age" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ApartmentOwned">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ApartmentOwned</dc:identifier>
+    <skos:prefLabel xml:lang="en">Apartment Owned</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about apartment(s) owned and its history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#HouseOwned" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Association">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Association</dc:identifier>
+    <skos:prefLabel xml:lang="en">Association</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about associations in a social network with other individuals, groups, or entities e.g. friend of a friend</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#SocialNetwork" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Attitude">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Attitude</dc:identifier>
+    <skos:prefLabel xml:lang="en">Attitude</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about attitude</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Authenticating">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Authenticating</dc:identifier>
+    <skos:prefLabel xml:lang="en">Authenticating</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about authentication and information used for authenticating</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Internal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#AuthenticationHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>AuthenticationHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Authentication History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about prior authentication and its outcomes such as login attempts or location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BankAccount">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BankAccount</dc:identifier>
+    <skos:prefLabel xml:lang="en">Bank Account</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about bank accounts</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FinancialAccount" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Behavioural">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Behavioural</dc:identifier>
+    <skos:prefLabel xml:lang="en">Behavioural</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about behaviour or activity</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Biometric">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Biometric</dc:identifier>
+    <skos:prefLabel xml:lang="en">Biometric</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about biometrics and biometric characteristics.</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BirthCountry">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BirthCountry</dc:identifier>
+    <skos:prefLabel xml:lang="en">Birth Country</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about country of birth</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#BirthPlace" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BirthDate">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BirthDate</dc:identifier>
+    <skos:prefLabel xml:lang="en">Birth Date</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about birth date</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Age" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BirthPlace">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BirthPlace</dc:identifier>
+    <skos:prefLabel xml:lang="en">Birth Place</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about birth place</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BloodType">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BloodType</dc:identifier>
+    <skos:prefLabel xml:lang="en">Blood Type</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about blood type</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BrowserFingerprint">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BrowserFingerprint</dc:identifier>
+    <skos:prefLabel xml:lang="en">Browser Fingerprint</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the web browser which is used as a 'fingerprint'</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#DeviceBased" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BrowserHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BrowserHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Browser History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about and including web browsing history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#BrowsingBehaviour" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BrowsingBehaviour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BrowsingBehaviour</dc:identifier>
+    <skos:prefLabel xml:lang="en">Browsing Behaviour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about browsing behaviour</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#BrowsingReferral">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>BrowsingReferral</dc:identifier>
+    <skos:prefLabel xml:lang="en">Browsing Referral</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about web browsing referrer or referral, which can be based on location, targeted referrals, direct, organic search, social media or actions, campaigns.</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#BrowsingBehaviour" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CallLog">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CallLog</dc:identifier>
+    <skos:prefLabel xml:lang="en">Call Log</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the calls that an individual has made</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CarOwned">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CarOwned</dc:identifier>
+    <skos:prefLabel xml:lang="en">Car Owned</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about cars ownership and ownership history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Ownership" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Character">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Character</dc:identifier>
+    <skos:prefLabel xml:lang="en">Character</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about character in the public sphere</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PublicLife" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Citizenship">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Citizenship</dc:identifier>
+    <skos:prefLabel xml:lang="en">Citizenship</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about citizenship</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#City">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>City</dc:identifier>
+    <skos:prefLabel xml:lang="en">City</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about city as a location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Communication">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Communication</dc:identifier>
+    <skos:prefLabel xml:lang="en">Communication</skos:prefLabel>
+    <skos:definition xml:lang="en">Information communicated from or to an individual</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Social" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CommunicationsMetadata">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CommunicationsMetadata</dc:identifier>
+    <skos:prefLabel xml:lang="en">Communications Metadata</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about communication metadata in the public sphere</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PublicLife" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Connection">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Connection</dc:identifier>
+    <skos:prefLabel xml:lang="en">Connection</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about and including connections in a social network</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#SocialNetwork" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Contact">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Contact</dc:identifier>
+    <skos:prefLabel xml:lang="en">Contact</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about contacts or used for contacting e.g. email address or phone number</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Country">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Country</dc:identifier>
+    <skos:prefLabel xml:lang="en">Country</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about country e.g. residence, travel</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Credit">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Credit</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about reputation with regards to money</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CreditCapacity">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CreditCapacity</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit Capacity</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about credit capacity</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Credit" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CreditCardNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CreditCardNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit Card Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about credit card number</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PaymentCardNumber" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CreditRecord">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CreditRecord</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit Record</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about credit record</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Credit" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CreditScore">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CreditScore</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit Score</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about credit score</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#CreditWorthiness" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CreditStanding">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CreditStanding</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit Standing</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about credit standing</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Credit" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CreditWorthiness">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CreditWorthiness</dc:identifier>
+    <skos:prefLabel xml:lang="en">Credit Worthiness</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about credit worthiness</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Credit" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Criminal">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Criminal</dc:identifier>
+    <skos:prefLabel xml:lang="en">Criminal</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about criminal activity e.g. criminal convictions or jail time</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Social" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CriminalCharge">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CriminalCharge</dc:identifier>
+    <skos:prefLabel xml:lang="en">Criminal Charge</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about criminal charges</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Criminal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CriminalConviction">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CriminalConviction</dc:identifier>
+    <skos:prefLabel xml:lang="en">Criminal Conviction</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about criminal convictions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Criminal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CriminalOffence">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CriminalOffence</dc:identifier>
+    <skos:prefLabel xml:lang="en">Criminal Offence</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about criminal offences</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Criminal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CriminalPardon">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CriminalPardon</dc:identifier>
+    <skos:prefLabel xml:lang="en">Criminal Pardon</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about criminal pardons</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Criminal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CurrentEmployment">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CurrentEmployment</dc:identifier>
+    <skos:prefLabel xml:lang="en">Current Employment</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about current employment</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#EmploymentHistory" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#CurrentLocation">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>CurrentLocation</dc:identifier>
+    <skos:prefLabel xml:lang="en">Current Location</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about a person's current location (e.g. by asking the address, using GPS)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DNACode">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DNACode</dc:identifier>
+    <skos:prefLabel xml:lang="en">DNA Code</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about DNA</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Demeanour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Demeanour</dc:identifier>
+    <skos:prefLabel xml:lang="en">Demeanour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about demeanour</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Demographic">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Demographic</dc:identifier>
+    <skos:prefLabel xml:lang="en">Demographic</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about demography and demographic characteristics</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DeviceApplications">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DeviceApplications</dc:identifier>
+    <skos:prefLabel xml:lang="en">Device Applications</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about applications or application-like software on a device</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#DeviceSoftware" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DeviceBased">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DeviceBased</dc:identifier>
+    <skos:prefLabel xml:lang="en">Device Based</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about devices</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DeviceOperatingSystem">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DeviceOperatingSystem</dc:identifier>
+    <skos:prefLabel xml:lang="en">Device Operating System</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the operating system (OS) or system software that manages hardware or software resources.</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#DeviceSoftware" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DeviceSoftware">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DeviceSoftware</dc:identifier>
+    <skos:prefLabel xml:lang="en">Device Software</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about software on or related to a device</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#DeviceBased" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Dialect">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Dialect</dc:identifier>
+    <skos:prefLabel xml:lang="en">Dialect</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about linguistic dialects</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Language" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DigitalFingerprint">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DigitalFingerprint</dc:identifier>
+    <skos:prefLabel xml:lang="en">Digital Fingerprint</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about a 'digital fingerprint' created for identification</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Disability">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Disability</dc:identifier>
+    <skos:prefLabel xml:lang="en">Disability</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about disabilities</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DisciplinaryAction">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DisciplinaryAction</dc:identifier>
+    <skos:prefLabel xml:lang="en">Disciplinary Action</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about disciplinary actions and its history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Dislike">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Dislike</dc:identifier>
+    <skos:prefLabel xml:lang="en">Dislike</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about dislikes or preferences regarding repulsions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Interest" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Divorce">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Divorce</dc:identifier>
+    <skos:prefLabel xml:lang="en">Divorce</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about divorce(s)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FamilyStructure" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Domicile">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Domicile</dc:identifier>
+    <skos:prefLabel xml:lang="en">Domicile</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about domicile status e.g. which region or country a person is domiciled in</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#DrugTestResult">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>DrugTestResult</dc:identifier>
+    <skos:prefLabel xml:lang="en">Drug Test Result</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about drug test results</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Education">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Education</dc:identifier>
+    <skos:prefLabel xml:lang="en">Education</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about education</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EducationExperience">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EducationExperience</dc:identifier>
+    <skos:prefLabel xml:lang="en">Education Experience</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about education experience e.g. attending a university</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Education" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EducationQualification">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EducationQualification</dc:identifier>
+    <skos:prefLabel xml:lang="en">Education Qualification</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about educational qualifications</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Education" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EducationTraining">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EducationTraining</dc:identifier>
+    <skos:prefLabel xml:lang="en">Education Training</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about training as education</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Education" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EmailAddress">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EmailAddress</dc:identifier>
+    <skos:prefLabel xml:lang="en">Email Address</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about email address</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Contact" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EmailAddressPersonal">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EmailAddressPersonal</dc:identifier>
+    <skos:prefLabel xml:lang="en">Email Address Personal</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about email address used in personal capacity</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#EmailAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EmailAddressWork">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EmailAddressWork</dc:identifier>
+    <skos:prefLabel xml:lang="en">Email Address Work</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about email address used for work or in professional capacity</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#EmailAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EmailContent">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EmailContent</dc:identifier>
+    <skos:prefLabel xml:lang="en">Email Content</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the contents of emails sent or received</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Communication" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Emotion">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Emotion</dc:identifier>
+    <skos:prefLabel xml:lang="en">Emotion</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about emotion</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Internal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EmploymentHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EmploymentHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Employment History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about employment history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#EthnicOrigin">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>EthnicOrigin</dc:identifier>
+    <skos:prefLabel xml:lang="en">Ethnic Origin</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about ethnic origin</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Ethnicity">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Ethnicity</dc:identifier>
+    <skos:prefLabel xml:lang="en">Ethnicity</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about ethnic origins and lineage</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#External">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>External</dc:identifier>
+    <skos:prefLabel xml:lang="en">External</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about external characteristics that can be observed</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FacialExpression">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FacialExpression</dc:identifier>
+    <skos:prefLabel xml:lang="en">Facial Expression</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about facial expression</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Biometric" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FacialPrint">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FacialPrint</dc:identifier>
+    <skos:prefLabel xml:lang="en">Facial Print</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about facial print or pattern</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Biometric" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Family">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Family</dc:identifier>
+    <skos:prefLabel xml:lang="en">Family</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about family and relationships</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Social" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FamilyHealthHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FamilyHealthHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Family Health History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about family health history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#HealthHistory" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FamilyStructure">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FamilyStructure</dc:identifier>
+    <skos:prefLabel xml:lang="en">Family Structure</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about family and familial structure</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Family" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Favourite">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Favourite</dc:identifier>
+    <skos:prefLabel xml:lang="en">Favourite</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about favourites</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Preference" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FavouriteColour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FavouriteColour</dc:identifier>
+    <skos:prefLabel xml:lang="en">Favourite Colour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about favourite colour</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Favourite" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FavouriteFood">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FavouriteFood</dc:identifier>
+    <skos:prefLabel xml:lang="en">Favourite Food</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about favourite food</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Favourite" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FavouriteMusic">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FavouriteMusic</dc:identifier>
+    <skos:prefLabel xml:lang="en">Favourite Music</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about favourite music</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Favourite" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Fetish">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Fetish</dc:identifier>
+    <skos:prefLabel xml:lang="en">Fetish</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about an individual's sexual fetishes</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Sexual" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Financial">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Financial</dc:identifier>
+    <skos:prefLabel xml:lang="en">Financial</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about finance including monetary characteristics and transactions</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FinancialAccount">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FinancialAccount</dc:identifier>
+    <skos:prefLabel xml:lang="en">Financial Account</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial accounts</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Financial" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FinancialAccountNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FinancialAccountNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">Financial Account Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial account number</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#AccountIdentifier" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#FinancialStatus">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>FinancialStatus</dc:identifier>
+    <skos:prefLabel xml:lang="en">Financial Status</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial status or standing</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Financial" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Fingerprint">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Fingerprint</dc:identifier>
+    <skos:prefLabel xml:lang="en">Fingerprint</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about fingerprint used for biometric purposes</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Biometric" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Friend">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Friend</dc:identifier>
+    <skos:prefLabel xml:lang="en">Friend</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about friends in a social network, including aspects of friendships such as years together or nature of friendship</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#SocialNetwork" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#GPSCoordinate">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>GPSCoordinate</dc:identifier>
+    <skos:prefLabel xml:lang="en">GPS Coordinate</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about location expressed using Global Position System coordinates (GPS)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#CurrentLocation" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Gender">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Gender</dc:identifier>
+    <skos:prefLabel xml:lang="en">Gender</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about gender</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#GeneralReputation">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>GeneralReputation</dc:identifier>
+    <skos:prefLabel xml:lang="en">General Reputation</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about reputation in the public sphere</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PublicLife" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Genetic">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Genetic</dc:identifier>
+    <skos:prefLabel xml:lang="en">Genetic</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about inherited or acquired genetic characteristics</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Health" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Geographic">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Geographic</dc:identifier>
+    <skos:prefLabel xml:lang="en">Geographic</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about location or based on geography (e.g. home address)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Demographic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#GroupMembership">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>GroupMembership</dc:identifier>
+    <skos:prefLabel xml:lang="en">Group Membership</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about groups and memberships included or associated with a social network</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#SocialNetwork" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#GroupProfile">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>GroupProfile</dc:identifier>
+    <skos:prefLabel xml:lang="en">Group Profile</skos:prefLabel>
+    <skos:definition xml:lang="en">Group profile or category profile is information and representation of characteristics associated with a group or category of individuals</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Profile" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#HairColour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>HairColour</dc:identifier>
+    <skos:prefLabel xml:lang="en">Hair Colour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about hair colour</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Health">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Health</dc:identifier>
+    <skos:prefLabel xml:lang="en">Health</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about health</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#HealthHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>HealthHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Health History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about health history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#HealthRecord">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>HealthRecord</dc:identifier>
+    <skos:prefLabel xml:lang="en">Health Record</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about health record</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Height">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Height</dc:identifier>
+    <skos:prefLabel xml:lang="en">Height</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about physical height</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Historical">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Historical</dc:identifier>
+    <skos:prefLabel xml:lang="en">Historical</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about historical data related to or relevant regarding history or past events</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#HomeLocation">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>HomeLocation</dc:identifier>
+    <skos:prefLabel xml:lang="en">Home Place</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about a person's home place, including their location, address, and locality</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#HouseNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>HouseNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">House Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about house or apartment number as a location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#HouseOwned">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>HouseOwned</dc:identifier>
+    <skos:prefLabel xml:lang="en">House Owned</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about house(s) owned and ownership history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Ownership" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Household">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Household</dc:identifier>
+    <skos:prefLabel xml:lang="en">Household</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about personal or household activities</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#IPAddress">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>IPAddress</dc:identifier>
+    <skos:prefLabel xml:lang="en">IP Address</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the Internet Protocol (IP) address of a device</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#DeviceBased" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Identifier">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Identifier</dc:identifier>
+    <skos:prefLabel xml:lang="en">Identifier</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about an identifier or name used for identification</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Identifying">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Identifying</dc:identifier>
+    <skos:prefLabel xml:lang="en">Identifying</skos:prefLabel>
+    <skos:definition xml:lang="en">Information that uniquely or semi-uniquely identifies an individual or a group</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Income">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Income</dc:identifier>
+    <skos:prefLabel xml:lang="en">Income</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial income e.g. for individual or household or family</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#IncomeBracket">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>IncomeBracket</dc:identifier>
+    <skos:prefLabel xml:lang="en">Income Bracket</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about income bracket</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Demographic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#IndividualHealthHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>IndividualHealthHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Individual Health History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about information health history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#HealthHistory" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#IndividualProfile">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>IndividualProfile</dc:identifier>
+    <skos:prefLabel xml:lang="en">Individual Profile</skos:prefLabel>
+    <skos:definition xml:lang="en">Individual profile or user profile is information and representation of characteristics associated with a specific individual</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Profile" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Insurance">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Insurance</dc:identifier>
+    <skos:prefLabel xml:lang="en">Insurance</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about Insurance</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Financial" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Intention">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Intention</dc:identifier>
+    <skos:prefLabel xml:lang="en">Intention</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about intentions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Preference" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Interaction">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Interaction</dc:identifier>
+    <skos:prefLabel xml:lang="en">Interaction</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about interactions in the public sphere</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PublicLife" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Interest">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Interest</dc:identifier>
+    <skos:prefLabel xml:lang="en">Interest</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about interests</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Preference" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Internal">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Internal</dc:identifier>
+    <skos:prefLabel xml:lang="en">Internal</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about internal characteristics that cannot be seen or observed</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Job">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Job</dc:identifier>
+    <skos:prefLabel xml:lang="en">Job</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about professional jobs</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#KnowledgeBelief">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>KnowledgeBelief</dc:identifier>
+    <skos:prefLabel xml:lang="en">Knowledge and Beliefs</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about knowledge and beliefs</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Internal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Language">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Language</dc:identifier>
+    <skos:prefLabel xml:lang="en">Language</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about language and lingual history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#LifeHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>LifeHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Life History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about personal history regarding events or activities - including their occurrences that might be directly related or have had an influence (e.g. World War, 9/11)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Historical" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Like">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Like</dc:identifier>
+    <skos:prefLabel xml:lang="en">Like</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about likes or preferences regarding attractions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Interest" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#LinkClicked">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>LinkClicked</dc:identifier>
+    <skos:prefLabel xml:lang="en">Link Clicked</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the links that an individual has clicked</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#LoanRecord">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>LoanRecord</dc:identifier>
+    <skos:prefLabel xml:lang="en">Loan Record</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about loans, whether applied, provided or rejected, and its history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Locality">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Locality</dc:identifier>
+    <skos:prefLabel xml:lang="en">Locality</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about locality e.g. city, village, town, portion of a city as a location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Location">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Location</dc:identifier>
+    <skos:prefLabel xml:lang="en">Location</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#MACAddress">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>MACAddress</dc:identifier>
+    <skos:prefLabel xml:lang="en">MAC Address</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the Media Access Control (MAC) address of a device</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#DeviceBased" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#MaritalStatus">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>MaritalStatus</dc:identifier>
+    <skos:prefLabel xml:lang="en">Marital Status</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about marital status and history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PublicLife" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Marriage">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Marriage</dc:identifier>
+    <skos:prefLabel xml:lang="en">Marriage</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about marriage(s)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FamilyStructure" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#MedicalHealth">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>MedicalHealth</dc:identifier>
+    <skos:prefLabel xml:lang="en">Medical Health</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about health, medical conditions or health care</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#MentalHealth">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>MentalHealth</dc:identifier>
+    <skos:prefLabel xml:lang="en">Mental Health</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about mental health</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Health" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Mood">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Mood</dc:identifier>
+    <skos:prefLabel xml:lang="en">Mood</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about mood</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Internal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Name">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Name</dc:identifier>
+    <skos:prefLabel xml:lang="en">Name</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about names associated or used as given name or nickname</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Identifying" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Nationality">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Nationality</dc:identifier>
+    <skos:prefLabel xml:lang="en">Nationality</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about nationality</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#OfficialID">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>OfficialID</dc:identifier>
+    <skos:prefLabel xml:lang="en">Official ID</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about an official identifier or identification document</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Identifying" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Offspring">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Offspring</dc:identifier>
+    <skos:prefLabel xml:lang="en">Offspring</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about offspring(s)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FamilyStructure" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Opinion">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Opinion</dc:identifier>
+    <skos:prefLabel xml:lang="en">Opinion</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about opinions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Preference" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Ownership">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Ownership</dc:identifier>
+    <skos:prefLabel xml:lang="en">Ownership</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about ownership and history, including renting, borrowing, possessions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Financial" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PINCode">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PINCode</dc:identifier>
+    <skos:prefLabel xml:lang="en">PIN Code</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about personal identification number (PIN), which is usually used in the process of authenticating the individual as an user accessing a system</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Authenticating" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Parent">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Parent</dc:identifier>
+    <skos:prefLabel xml:lang="en">Parent</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about parent(s)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FamilyStructure" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Passport">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Passport</dc:identifier>
+    <skos:prefLabel xml:lang="en">Passport</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about passport</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#OfficialID" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Password">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Password</dc:identifier>
+    <skos:prefLabel xml:lang="en">Password</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about password used in the process of authenticating the individual as an user accessing a system.</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Authenticating" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PastEmployment">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PastEmployment</dc:identifier>
+    <skos:prefLabel xml:lang="en">Past Employment</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about past employment</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#EmploymentHistory" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PaymentCard">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PaymentCard</dc:identifier>
+    <skos:prefLabel xml:lang="en">Payment Card</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about payment card such as credit and debit cards</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FinancialAccount" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PaymentCardExpiry">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PaymentCardExpiry</dc:identifier>
+    <skos:prefLabel xml:lang="en">Payment Card Expiry</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about payment card expiry such as a date</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PaymentCard" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PaymentCardNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PaymentCardNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">Payment Card Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about payment card number</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#AccountIdentifier" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PerformanceAtWork">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PerformanceAtWork</dc:identifier>
+    <skos:prefLabel xml:lang="en">Performance at Work</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about performance at work or within work environments</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PersonalDocuments">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PersonalDocuments</dc:identifier>
+    <skos:prefLabel xml:lang="en">Personal Documents</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about and including personal documents e.g. diaries or journals</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PersonalPossession">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PersonalPossession</dc:identifier>
+    <skos:prefLabel xml:lang="en">Personal Possession</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about personal possessions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Ownership" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Personality">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Personality</dc:identifier>
+    <skos:prefLabel xml:lang="en">Personality</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about personality (e.g., categorization in terms of the Big Five personality traits)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PhilosophicalBelief">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PhilosophicalBelief</dc:identifier>
+    <skos:prefLabel xml:lang="en">Philosophical Belief</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about philosophical beliefs</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PhysicalAddress">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PhysicalAddress</dc:identifier>
+    <skos:prefLabel xml:lang="en">Physical Address</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about physical address</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Contact" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PhysicalCharacteristic">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PhysicalCharacteristic</dc:identifier>
+    <skos:prefLabel xml:lang="en">Physical Characteristic</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about physical characteristics</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PhysicalHealth">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PhysicalHealth</dc:identifier>
+    <skos:prefLabel xml:lang="en">Physical Health</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about physical health</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Health" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PhysicalTrait">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PhysicalTrait</dc:identifier>
+    <skos:prefLabel xml:lang="en">Physical Trait</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about defining traits or features regarding the body</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Demographic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Picture">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Picture</dc:identifier>
+    <skos:prefLabel xml:lang="en">Picture</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about visual representation or image e.g. profile photo</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Identifying" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Piercing">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Piercing</dc:identifier>
+    <skos:prefLabel xml:lang="en">Piercing</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about piercings</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PoliticalAffiliation">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PoliticalAffiliation</dc:identifier>
+    <skos:prefLabel xml:lang="en">Political Affiliation</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about political affiliation and history</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PoliticalOpinion">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PoliticalOpinion</dc:identifier>
+    <skos:prefLabel xml:lang="en">Political Opinion</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about opinions regarding politics and political topics</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PostalCode">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PostalCode</dc:identifier>
+    <skos:prefLabel xml:lang="en">Postal Code</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about postal code as a location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Preference">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Preference</dc:identifier>
+    <skos:prefLabel xml:lang="en">Preference</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about preferences or interests</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Internal" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Prescription">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Prescription</dc:identifier>
+    <skos:prefLabel xml:lang="en">Prescription</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about medical and pharmaceutical prescriptions</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#MedicalHealth" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PrivacyPreference">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PrivacyPreference</dc:identifier>
+    <skos:prefLabel xml:lang="en">Privacy Preference</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about privacy preferences</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Preference" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Proclivity">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Proclivity</dc:identifier>
+    <skos:prefLabel xml:lang="en">Proclivity</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about proclivities in a sexual context</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Sexual" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Professional">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Professional</dc:identifier>
+    <skos:prefLabel xml:lang="en">Professional</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about educational or professional career</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Social" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ProfessionalCertification">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ProfessionalCertification</dc:identifier>
+    <skos:prefLabel xml:lang="en">Professional Certification</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about professional certifications</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ProfessionalEvaluation">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ProfessionalEvaluation</dc:identifier>
+    <skos:prefLabel xml:lang="en">Professional Evaluation</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about professional evaluations</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ProfessionalExperience">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ProfessionalExperience</dc:identifier>
+    <skos:prefLabel xml:lang="en">Professional Experience</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about professional experiences</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ProfessionalInterview">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ProfessionalInterview</dc:identifier>
+    <skos:prefLabel xml:lang="en">Professional Interview</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about professional interviews</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ProfessionalTraining">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ProfessionalTraining</dc:identifier>
+    <skos:prefLabel xml:lang="en">Professional Training</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about professional training</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Profile">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Profile</dc:identifier>
+    <skos:prefLabel xml:lang="en">Profile</skos:prefLabel>
+    <skos:definition xml:lang="en">Profile or user profile is information and representation of characteristics associated with person(s) or group(s)</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PublicLife">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PublicLife</dc:identifier>
+    <skos:prefLabel xml:lang="en">Public Life</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about public life</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Social" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PubliclyAvailableSocialMedia">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PubliclyAvailableSocialMedia</dc:identifier>
+    <skos:prefLabel xml:lang="en">Publicly Available Social Media</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about social media that is publicly available</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#SocialMedia" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Purchase">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Purchase</dc:identifier>
+    <skos:prefLabel xml:lang="en">Purchase</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about purchases such as items bought e.g. grocery or clothing</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#PurchasesAndSpendingHabit">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>PurchasesAndSpendingHabit</dc:identifier>
+    <skos:prefLabel xml:lang="en">Purchases and Spending Habit</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about analysis of purchases made and money spent expressed as a habit e.g. monthly shopping trends</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Race">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Race</dc:identifier>
+    <skos:prefLabel xml:lang="en">Race</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about race or racial history</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Reference">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Reference</dc:identifier>
+    <skos:prefLabel xml:lang="en">Reference</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about references in the professional context</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Region">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Region</dc:identifier>
+    <skos:prefLabel xml:lang="en">Region</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about region as a location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Relationship">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Relationship</dc:identifier>
+    <skos:prefLabel xml:lang="en">Relationship</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about relationships and relationship history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Family" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Reliability">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Reliability</dc:identifier>
+    <skos:prefLabel xml:lang="en">Reliability</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about reliability (e.g. of a person)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Religion">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Religion</dc:identifier>
+    <skos:prefLabel xml:lang="en">Religion</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about religion, religious inclinations, and religious history.</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ReligiousBelief">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ReligiousBelief</dc:identifier>
+    <skos:prefLabel xml:lang="en">Religious Belief</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about religion and religious beliefs</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Residency">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Residency</dc:identifier>
+    <skos:prefLabel xml:lang="en">Residency</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about residency e.g. which region or country a person is resident in</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Retina">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Retina</dc:identifier>
+    <skos:prefLabel xml:lang="en">Retina</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about retina and the retinal patterns</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Biometric" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#RoomNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>RoomNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">Room Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about location expressed as room number or similar numbering systems</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Salary">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Salary</dc:identifier>
+    <skos:prefLabel xml:lang="en">Salary</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about salary</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Sale">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Sale</dc:identifier>
+    <skos:prefLabel xml:lang="en">Sale</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about sales e.g. selling of goods or services</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#School">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>School</dc:identifier>
+    <skos:prefLabel xml:lang="en">School</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about school such as name of school, conduct, or grades obtained</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SecretText">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SecretText</dc:identifier>
+    <skos:prefLabel xml:lang="en">Secret Text</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about secret text used in the process of authenticating the individual as an user accessing a system, e.g., when recovering a lost password</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Authenticating" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#ServiceConsumptionBehaviour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>ServiceConsumptionBehaviour</dc:identifier>
+    <skos:prefLabel xml:lang="en">Service Consumption Behaviour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the consumption of a service, e.g. time and duration of consumption</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Sexual">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Sexual</dc:identifier>
+    <skos:prefLabel xml:lang="en">Sexual</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about sexuality and sexual history</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SexualHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SexualHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Sexual History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about sexual history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Sexual" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SexualPreference">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SexualPreference</dc:identifier>
+    <skos:prefLabel xml:lang="en">Sexual Preference</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about sexual preferences</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Sexual" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Sibling">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Sibling</dc:identifier>
+    <skos:prefLabel xml:lang="en">Sibling</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about sibling(s)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#FamilyStructure" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SkinTone">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SkinTone</dc:identifier>
+    <skos:prefLabel xml:lang="en">Skin Tone</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about skin tone</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Social">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Social</dc:identifier>
+    <skos:prefLabel xml:lang="en">Social</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about social aspects such as family, public life, or professional networks</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SocialBehaviour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SocialBehaviour</dc:identifier>
+    <skos:prefLabel xml:lang="en">Social Behaviour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about social behaviour(s)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SocialMedia">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SocialMedia</dc:identifier>
+    <skos:prefLabel xml:lang="en">Social Media</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about social media</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Communication" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SocialMediaCommunication">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SocialMediaCommunication</dc:identifier>
+    <skos:prefLabel xml:lang="en">Social Media Communication</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about social media communication, including the communication itself and metadata</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Communication" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SocialNetwork">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SocialNetwork</dc:identifier>
+    <skos:prefLabel xml:lang="en">Social Network</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about friends or connections expressed as a social network</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Social" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#SocialStatus">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>SocialStatus</dc:identifier>
+    <skos:prefLabel xml:lang="en">Social Status</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about social status</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PublicLife" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Street">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Street</dc:identifier>
+    <skos:prefLabel xml:lang="en">Street</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about street as a location</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalAddress" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#TVViewingBehaviour">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>TVViewingBehaviour</dc:identifier>
+    <skos:prefLabel xml:lang="en">TV Viewing Behaviour</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about TV viewing behaviour, such as timestamps of channel change, duration of viewership, content consumed</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#ServiceConsumptionBehaviour" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Tattoo">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Tattoo</dc:identifier>
+    <skos:prefLabel xml:lang="en">Tattoo</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about tattoos</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Tax">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Tax</dc:identifier>
+    <skos:prefLabel xml:lang="en">Tax</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial tax e.g. tax records or tax due</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#TechnicalKnowledge">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>TechnicalKnowledge</dc:identifier>
+    <skos:prefLabel xml:lang="en">Technical Knowledge</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about the technical knowledge</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#KnowledgeBelief" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#TelephoneNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>TelephoneNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">Telephone Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about telephone number</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Contact" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Thought">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Thought</dc:identifier>
+    <skos:prefLabel xml:lang="en">Thought</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about thoughts</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#KnowledgeBelief" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Tracking">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Tracking</dc:identifier>
+    <skos:prefLabel xml:lang="en">Tracking</skos:prefLabel>
+    <skos:definition xml:lang="en">Information used to track an individual or group e.g. location or email</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#TradeUnionMembership">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>TradeUnionMembership</dc:identifier>
+    <skos:prefLabel xml:lang="en">Trade Union Membership</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about trade union memberships and related topics</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Transaction">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Transaction</dc:identifier>
+    <skos:prefLabel xml:lang="en">Transaction</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about financial transactions e.g. bank transfers</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Transactional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Transactional">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Transactional</dc:identifier>
+    <skos:prefLabel xml:lang="en">Transactional</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about a purchasing, spending or income</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Financial" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#TravelHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>TravelHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Travel History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about travel history</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#UID">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>UID</dc:identifier>
+    <skos:prefLabel xml:lang="en">UID</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about unique identifiers</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Identifying" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#UserAgent">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>UserAgent</dc:identifier>
+    <skos:prefLabel xml:lang="en">User agent</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about software acting on behalf of users e.g. web browser</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Tracking" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Username">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Username</dc:identifier>
+    <skos:prefLabel xml:lang="en">Username</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about usernames</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Identifying" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#VehicalLicenseNumber">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>VehicalLicenseNumber</dc:identifier>
+    <skos:prefLabel xml:lang="en">Vehicle License Number</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about vehicle license number</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#VehicleLicense" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#VehicalLicenseRegistration">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>VehicalLicenseRegistration</dc:identifier>
+    <skos:prefLabel xml:lang="en">Vehicle License Registration</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about vehicle license registration</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#VehicleLicense" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Vehicle">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Vehicle</dc:identifier>
+    <skos:prefLabel xml:lang="en">Vehicle</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about vehicles</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#External" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#VehicleLicense">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>VehicleLicense</dc:identifier>
+    <skos:prefLabel xml:lang="en">Vehicle License</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about vehicle license</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Identifying" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#VehicleUsage">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>VehicleUsage</dc:identifier>
+    <skos:prefLabel xml:lang="en">Vehicle Usage</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about usage of vehicles, e.g. driving statistics</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Behavioural" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#VoiceCommunicationRecording">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>VoiceCommunicationRecording</dc:identifier>
+    <skos:prefLabel xml:lang="en">Voice Communication Recording</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about vocal recorded communication (e.g. telephony, VoIP)</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Communication" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#VoiceMail">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>VoiceMail</dc:identifier>
+    <skos:prefLabel xml:lang="en">Voice Mail</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about voice mail messages</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Communication" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Vulnerability">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <skos:topConceptOf rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Vulnerability</dc:identifier>
+    <skos:prefLabel xml:lang="en">Vulnerability</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about vulnerability of a person or group</skos:definition>
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#Weight">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>Weight</dc:identifier>
+    <skos:prefLabel xml:lang="en">Weight</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about physical weight</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#PhysicalCharacteristic" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#WorkEnvironment">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>WorkEnvironment</dc:identifier>
+    <skos:prefLabel xml:lang="en">Work Environment</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about work environments</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#WorkExperience">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>WorkExperience</dc:identifier>
+    <skos:prefLabel xml:lang="en">Work Experience</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about work experiences</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#ProfessionalExperience" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#WorkHistory">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>WorkHistory</dc:identifier>
+    <skos:prefLabel xml:lang="en">Work History</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about work history in a professional context</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Professional" />
+  </skos:Concept>
+
+  <skos:Concept rdf:about="https://w3id.org/dpv/pd#WorkLocation">
+    <skos:inScheme rdf:resource="https://w3id.org/dpv/pd" />
+    <dc:identifier>WorkLocation</dc:identifier>
+    <skos:prefLabel xml:lang="en">Work Place</skos:prefLabel>
+    <skos:definition xml:lang="en">Information about a person's work place, including their location, address, and locality</skos:definition>
+    <skos:broader rdf:resource="https://w3id.org/dpv/pd#Location" />
+  </skos:Concept>
+
+</rdf:RDF>

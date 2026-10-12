@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:ns5="http://lemon-model.net/lemon#"
+    xmlns:ns6="http://publications.europa.eu/ontology/euvoc#"
+    xmlns:ns7="http://www.w3.org/2008/05/skos-xl#"
+    xmlns:ns9="http://publications.europa.eu/ontology/authority/"
+    xmlns:ns10="http://publications.europa.eu/resource/authority/"
+    xmlns:dcterms="http://purl.org/dc/terms/">
+    <skos:ConceptScheme rdf:about="http://publications.europa.eu/resource/authority/access-right">
+        <owl:versionInfo>20160920-0</owl:versionInfo>
+        <dcterms:title>Access rights</dcterms:title>
+        <rdfs:label xml:lang="en">Access right Named Authority List</rdfs:label>
+    </skos:ConceptScheme>
+    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/PUBLIC">
+        <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#AccessRight" />
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+        <owl:versionInfo>20260617-0</owl:versionInfo>
+        <skos:prefLabel xml:lang="hr">za javnu objavu</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">öffentlich</skos:prefLabel>
+        <skos:prefLabel xml:lang="no">allmenn tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">publiczny</skos:prefLabel>
+        <skos:prefLabel xml:lang="sk">verejné</skos:prefLabel>
+        <skos:prefLabel xml:lang="bg">публичен</skos:prefLabel>
+        <skos:prefLabel xml:lang="ga">poiblí</skos:prefLabel>
+        <skos:prefLabel xml:lang="hu">nyilvános</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">público</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">openbaar</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">public</skos:prefLabel>
+        <skos:prefLabel xml:lang="nb">allmenn tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">public</skos:prefLabel>
+        <skos:prefLabel xml:lang="et">avalik</skos:prefLabel>
+        <skos:prefLabel xml:lang="cs">veřejné</skos:prefLabel>
+        <skos:prefLabel xml:lang="lt">viešas</skos:prefLabel>
+        <skos:prefLabel xml:lang="fi">julkinen</skos:prefLabel>
+        <skos:prefLabel xml:lang="mt">pubbliku</skos:prefLabel>
+        <skos:prefLabel xml:lang="lv">publiski pieejams</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">pubblico</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">δημόσιο</skos:prefLabel>
+        <skos:prefLabel xml:lang="da">offentlig</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">público</skos:prefLabel>
+        <skos:prefLabel xml:lang="sl">javno</skos:prefLabel>
+        <skos:prefLabel xml:lang="sv">offentligt</skos:prefLabel>
+        <skos:prefLabel xml:lang="nn">allmenn tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="ro">public</skos:prefLabel>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-21</dcterms:created>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-29</dcterms:modified>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ESPD" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</ns6:startDate>
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/a0a867b85a80819b5d58aa67de8cd945" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_mt_5937bc2c" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pt_03973e2a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/87e3ad305b394dff4dad932b0e737d32" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pl_89ea7d10" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_61f462bb" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sk_96c01d8b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sl_8f69a25e" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ro_b50aa8b0" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_e1daaf4d" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_eb5e70fd" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sv_198a3413" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_cs_c16f128d" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_da_18c75c2d" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_bg_0e7a5285" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_el_512ed4bf" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_de_1d94809c" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fi_013dea29" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_es_6ca91665" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hr_6cdec460" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_it_ba715a92" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fr_aeb1b73a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lt_522a229a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ga_2256c4aa" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hu_6d5905d7" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_nl_475384ed" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lv_0f73914e" />
+        <dcterms:identifier>PUBLIC</dcterms:identifier>
+        <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-31</dcterms:dateAccepted>
+        <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-31</dcterms:dateSubmitted>
+        <skos:definition xml:lang="en">access status for resources that are publicly accessible</skos:definition>
+        <skos:scopeNote xml:lang="en">The presence or absence of personal data is not a defining criterion for this concept. Information on the presence of personal data should be provided separately. Requirements such as registration or requests for API keys are compatible with this concept, provided that anyone can request such registration or API keys.</skos:scopeNote>
+        <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns9:authority-code>PUBLIC</ns9:authority-code>
+        <ns9:deprecated>false</ns9:deprecated>
+        <ns9:op-code>PUBLIC</ns9:op-code>
+        <ns9:start.use>2013-01-01</ns9:start.use>
+        <ns10:op-code>PUBLIC</ns10:op-code>
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ESPD" />
+        <ns6:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+        <ns6:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_35b07fcc" />
+        <ns6:xlScopeNote rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_7bf83bd7" />
+        <dcterms:replaces rdf:resource="http://publications.europa.eu/resource/authority/access-right/NORMAL" />
+    </skos:Concept>
+    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC">
+        <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#AccessRight" />
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+        <owl:versionInfo>20260617-0</owl:versionInfo>
+        <skos:prefLabel xml:lang="fi">ei-julkinen</skos:prefLabel>
+        <skos:prefLabel xml:lang="cs">neveřejné</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">não público</skos:prefLabel>
+        <skos:prefLabel xml:lang="lv">nav publisks</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">non pubblico</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">no público</skos:prefLabel>
+        <skos:prefLabel xml:lang="ga">neamhphoiblí</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">non-public</skos:prefLabel>
+        <skos:prefLabel xml:lang="ro">neaccesibil publicului</skos:prefLabel>
+        <skos:prefLabel xml:lang="hu">nem nyilvános</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">non public</skos:prefLabel>
+        <skos:prefLabel xml:lang="mt">mhux pubbliku</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">niepubliczny</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">μη δημόσιο</skos:prefLabel>
+        <skos:prefLabel xml:lang="no">ikke-allmenn tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">nicht öffentlich</skos:prefLabel>
+        <skos:prefLabel xml:lang="hr">nije za javnu objavu</skos:prefLabel>
+        <skos:prefLabel xml:lang="nb">ikke-allmenn tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="nn">ikkje-allmenn tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="sl">nejavno</skos:prefLabel>
+        <skos:prefLabel xml:lang="sk">neverejné</skos:prefLabel>
+        <skos:prefLabel xml:lang="sv">icke-offentligt</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">niet-openbaar</skos:prefLabel>
+        <skos:prefLabel xml:lang="da">ikke-offentlig</skos:prefLabel>
+        <skos:prefLabel xml:lang="et">mitteavalik</skos:prefLabel>
+        <skos:prefLabel xml:lang="bg">непубличен</skos:prefLabel>
+        <skos:prefLabel xml:lang="lt">neviešas</skos:prefLabel>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-21</dcterms:created>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-29</dcterms:modified>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns6:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</ns6:startDate>
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lt_20bdfe03" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/de28bac66d7cae2c42908ebf984dc811" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_it_7daad765" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hu_9d4a1dcb" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/486331875b35640407dd6bea0497ca76" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hr_2b7f36ec" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ga_7566104b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fr_8feb5690" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fi_8f486457" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_es_5c820d76" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_el_3fcc2a34" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sv_6557defb" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_de_a8e5c2b7" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_da_ab5456b3" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sl_3f477c15" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ro_e6643f1a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sk_5d547852" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pt_452bfd21" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_cs_31827f12" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_bg_85a03494" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_ffba7eac" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pl_da69a1d4" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_nl_cba71828" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_a905e0be" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_mt_915193e4" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_43ab28d2" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lv_2423a372" />
+        <dcterms:identifier>NON_PUBLIC</dcterms:identifier>
+        <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-31</dcterms:dateAccepted>
+        <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-31</dcterms:dateSubmitted>
+        <skos:definition xml:lang="en">access status for resources that are not publicly accessible for privacy, security or other reasons</skos:definition>
+        <skos:narrower rdf:resource="http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL" />
+        <skos:narrower rdf:resource="http://publications.europa.eu/resource/authority/access-right/SENSITIVE" />
+        <skos:narrower rdf:resource="http://publications.europa.eu/resource/authority/access-right/RESTRICTED" />
+        <skos:scopeNote xml:lang="en">Non-public resources may contain personal data, but this is not a defining criterion. Information on the presence of personal data should be indicated separately.</skos:scopeNote>
+        <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns9:authority-code>NON_PUBLIC</ns9:authority-code>
+        <ns9:deprecated>false</ns9:deprecated>
+        <ns9:op-code>NON_PUBLIC</ns9:op-code>
+        <ns9:start.use>2013-01-01</ns9:start.use>
+        <ns10:op-code>NON_PUBLIC</ns10:op-code>
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns6:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+        <ns6:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_6426f16c" />
+        <ns6:xlScopeNote rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_95469f5d" />
+    </skos:Concept>
+    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/CONFIDENTIAL">
+        <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#AccessRight" />
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+        <owl:versionInfo>20260617-0</owl:versionInfo>
+        <skos:prefLabel xml:lang="et">konfidentsiaalne</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">confidentiel</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">vertrouwelijk</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">vertraulich</skos:prefLabel>
+        <skos:prefLabel xml:lang="lt">konfidencialus</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">confidencial</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">εμπιστευτικό</skos:prefLabel>
+        <skos:prefLabel xml:lang="sk">dôverné</skos:prefLabel>
+        <skos:prefLabel xml:lang="lv">konfidenciāls</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">confidencial</skos:prefLabel>
+        <skos:prefLabel xml:lang="ga">rúnda</skos:prefLabel>
+        <skos:prefLabel xml:lang="hr">povjerljivo</skos:prefLabel>
+        <skos:prefLabel xml:lang="da">fortrolig</skos:prefLabel>
+        <skos:prefLabel xml:lang="sl">zaupno</skos:prefLabel>
+        <skos:prefLabel xml:lang="cs">důvěrné</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">riservato</skos:prefLabel>
+        <skos:prefLabel xml:lang="hu">bizalmas</skos:prefLabel>
+        <skos:prefLabel xml:lang="ro">confidențial</skos:prefLabel>
+        <skos:prefLabel xml:lang="bg">поверителен</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">poufny</skos:prefLabel>
+        <skos:prefLabel xml:lang="sv">konfidentiellt</skos:prefLabel>
+        <skos:prefLabel xml:lang="fi">luottamuksellinen</skos:prefLabel>
+        <skos:prefLabel xml:lang="mt">kunfidenzjali</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">confidential</skos:prefLabel>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-02-25</dcterms:created>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-29</dcterms:modified>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ESPD" />
+        <ns6:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-17</ns6:startDate>
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lv_5f114423" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_es_646013bb" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_mt_9900c0b1" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fi_3b03f6dc" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_nl_6bfd47a6" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hu_39198366" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/9ceabd8308ccaa4593fa896beb2e13e1" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_it_afef095b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sv_c988ec8a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_de_50d52479" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lt_272c70a2" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/b023c8d6e2f12fd6867b62738976e779" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_el_2fb19034" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ro_cefbfdb8" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_bg_3f93b4a7" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sk_a814d145" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_cs_2d994d84" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sl_409d340b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_da_56180221" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pl_5d167875" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fr_e8bd7318" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ga_c90ab889" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pt_39a4552c" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hr_adb1c80f" />
+        <dcterms:identifier>CONFIDENTIAL</dcterms:identifier>
+        <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-03-03</dcterms:dateAccepted>
+        <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-02-17</dcterms:dateSubmitted>
+        <skos:broader rdf:resource="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC" />
+        <skos:definition xml:lang="en">access status for resources containing undisclosed information, the disclosure of which could cause damage to interested parties, such as public administrations and businesses</skos:definition>
+        <skos:scopeNote xml:lang="en">Confidential resources may contain personal data, but this is not a defining criterion. Information on the presence of personal data should be provided separately. This may refer to personal or professional information, or to information relating to business, commerce or trade.</skos:scopeNote>
+        <ns9:authority-code>CONFIDENTIAL</ns9:authority-code>
+        <ns9:deprecated>false</ns9:deprecated>
+        <ns9:op-code>CONFIDENTIAL</ns9:op-code>
+        <ns9:start.use>2021-03-17</ns9:start.use>
+        <ns10:op-code>CONFIDENTIAL</ns10:op-code>
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ESPD" />
+        <ns6:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+        <ns6:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_8696adad" />
+        <ns6:xlScopeNote rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_7c049738" />
+    </skos:Concept>
+    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/OP_DATPRO">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+        <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#AccessRight" />
+        <owl:versionInfo>20260617-0</owl:versionInfo>
+        <skos:prefLabel xml:lang="fi">Alustavat tiedot</skos:prefLabel>
+        <skos:prefLabel xml:lang="hu">Ideiglenes adatok</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">Vorläufige Daten</skos:prefLabel>
+        <skos:prefLabel xml:lang="bg">Неокончателни данни</skos:prefLabel>
+        <skos:prefLabel xml:lang="cs">Předběžné údaje</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">Voorlopige gegevens</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">Provisional data</skos:prefLabel>
+        <skos:prefLabel xml:lang="sk">Predbežné údaje</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">Dados provisórios</skos:prefLabel>
+        <skos:prefLabel xml:lang="lt">Laikinieji duomenys</skos:prefLabel>
+        <skos:prefLabel xml:lang="lv">Provizoriski dati</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">Προσωρινά δεδομένα</skos:prefLabel>
+        <skos:prefLabel xml:lang="hr">Privremeni podaci</skos:prefLabel>
+        <skos:prefLabel xml:lang="et">Esialgsed andmed</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">Dati provvisori</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">Données provisoires</skos:prefLabel>
+        <skos:prefLabel xml:lang="mt">Dejta provviżorja</skos:prefLabel>
+        <skos:prefLabel xml:lang="da">Midlertidige data</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">Dane tymczasowe</skos:prefLabel>
+        <skos:prefLabel xml:lang="ga">Sonraí sealadacha</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">Datos provisionales</skos:prefLabel>
+        <skos:prefLabel xml:lang="sl">Začasni podatki</skos:prefLabel>
+        <skos:prefLabel xml:lang="sv">Tillfälliga uppgifter</skos:prefLabel>
+        <skos:prefLabel xml:lang="ro">Date provizorii</skos:prefLabel>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:created>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</ns6:startDate>
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_0b78f52d4c4992eb0d92d3fe89c003e2" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_0db1562c01a0396ac412a6bfabe2a5c3" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_27778647a0bb13a65e8bac9c922f264d" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_2bc6c1e0b3705b6d6dda0657ddf12c17" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_03320d7b48716daa440de4433fda7271" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_5404aeb691cc26ac0f8363c8df267620" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_543ee1b59e2143987758091b9bff6427" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_3b86d3f4752d3ae6a290b8680ca6e38b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_41dbb4bf52586f4255d6eb2bad062168" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_42e7f083ba63023f61ea0833b79cbf93" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_435ae7309ad0842c07bf5b156de2c951" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_88a32c6362c7147ccc1fc40e2f3ae6c4" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_8cf0608a2936920c188568506c9409b6" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_8e323f3bc5e8edb0a9981816ec98168b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_97b969538b6426a47aa150637c677a03" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_6720c0a4f2bab48b717dd427b0a8bd66" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_6e723d8faa76ea27bbe53368f6ffb163" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_757e76c9c78fa80a61e5ffc5cc63b843" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_79d57d0bc877327615737997ada3dbce" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_d4cba651fa266b83a640b88b9a454df2" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_e5216b3b4bddd334e665f8a139a1ca1f" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_c85cc56220e7dd56f0982b4cd79f4bea" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_cc894151abec7c8dd783fce771fb58ab" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_d1dcbc61280e3bf6611a2b55db276939" />
+        <dcterms:identifier>OP_DATPRO</dcterms:identifier>
+        <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:dateAccepted>
+        <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:dateSubmitted>
+        <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns9:authority-code>OP_DATPRO</ns9:authority-code>
+        <ns9:deprecated>false</ns9:deprecated>
+        <ns9:op-code>OP_DATPRO</ns9:op-code>
+        <ns9:start.use>1952-07-23</ns9:start.use>
+        <ns10:op-code>OP_DATPRO</ns10:op-code>
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+    </skos:Concept>
+    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/RESTRICTED">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+        <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#AccessRight" />
+        <owl:versionInfo>20260617-0</owl:versionInfo>
+        <skos:prefLabel xml:lang="no">betinget tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">zastrzeżony</skos:prefLabel>
+        <skos:prefLabel xml:lang="nb">betinget tilgang</skos:prefLabel>
+        <skos:prefLabel xml:lang="sv">begränsad åtkomst</skos:prefLabel>
+        <skos:prefLabel xml:lang="nn">tilgang på visse vilkår</skos:prefLabel>
+        <skos:prefLabel xml:lang="cs">vyhrazeno</skos:prefLabel>
+        <skos:prefLabel xml:lang="sl">interno</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">restreint</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">restrito</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">restricted</skos:prefLabel>
+        <skos:prefLabel xml:lang="ro">cu acces restricționat</skos:prefLabel>
+        <skos:prefLabel xml:lang="et">piiratud</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">eingeschränkt</skos:prefLabel>
+        <skos:prefLabel xml:lang="bg">с ограничен достъп</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">limitato</skos:prefLabel>
+        <skos:prefLabel xml:lang="ga">teoranta</skos:prefLabel>
+        <skos:prefLabel xml:lang="sk">vyhradené</skos:prefLabel>
+        <skos:prefLabel xml:lang="lv">ierobežotas pieejamības</skos:prefLabel>
+        <skos:prefLabel xml:lang="fi">rajoitettu</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">περιορισμένης χρήσης</skos:prefLabel>
+        <skos:prefLabel xml:lang="da">begrænset</skos:prefLabel>
+        <skos:prefLabel xml:lang="hu">korlátozott terjesztésű</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">beperkt</skos:prefLabel>
+        <skos:prefLabel xml:lang="lt">taikomi ribojimai</skos:prefLabel>
+        <skos:prefLabel xml:lang="hr">ograničen pristup</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">restringido</skos:prefLabel>
+        <skos:prefLabel xml:lang="mt">ristrett</skos:prefLabel>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-07-21</dcterms:created>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-29</dcterms:modified>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-01-01</ns6:startDate>
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_da_ca9530f8" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pt_0223b0ba" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_de_d0fd75d7" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ro_32828286" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_el_e663b816" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sk_38339889" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_es_62f0f948" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fi_74b6e281" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fr_720b87aa" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sl_f75b765a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hu_ad71391b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ga_06d36561" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_it_6e3d9e86" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sv_c51a0aa3" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hr_1f8d7866" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lt_948633e9" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lv_2542b7de" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_mt_7c6ec54b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_bg_93e2687b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/09f12ab9404990ecda888cfc959d0ae8" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/1b8c1ab7ad9d578068eccaf6d810816e" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_nl_4c59873d" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_12cd1a0c" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_66a67e1f" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_cs_7b7a71fb" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/label_7aec55a4" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pl_5ad12d90" />
+        <dcterms:identifier>RESTRICTED</dcterms:identifier>
+        <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-31</dcterms:dateAccepted>
+        <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-31</dcterms:dateSubmitted>
+        <skos:broader rdf:resource="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC" />
+        <skos:definition xml:lang="en">access status for resources that are available only under certain conditions</skos:definition>
+        <skos:scopeNote xml:lang="en">Restricted resources may contain personal data, but this is not a defining criterion. Information on the presence of personal data should be provided separately. This category may include resources that require payment, resources shared under non-disclosure agreements, and resources for which the publisher or owner has not yet decided whether they can be publicly released.</skos:scopeNote>
+        <ns9:authority-code>RESTRICTED</ns9:authority-code>
+        <ns9:deprecated>false</ns9:deprecated>
+        <ns9:op-code>RESTRICTED</ns9:op-code>
+        <ns9:start.use>2013-01-01</ns9:start.use>
+        <ns10:op-code>RESTRICTED</ns10:op-code>
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+        <ns6:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+        <ns6:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_da6fdbac" />
+        <ns6:xlScopeNote rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_ffaa940c" />
+    </skos:Concept>
+    <skos:Concept rdf:about="http://publications.europa.eu/resource/authority/access-right/SENSITIVE">
+        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+        <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#AccessRight" />
+        <owl:versionInfo>20260617-0</owl:versionInfo>
+        <skos:prefLabel xml:lang="lv">sensitīvs</skos:prefLabel>
+        <skos:prefLabel xml:lang="fi">arkaluonteinen</skos:prefLabel>
+        <skos:prefLabel xml:lang="hr">osjetljivo</skos:prefLabel>
+        <skos:prefLabel xml:lang="ga">íogair</skos:prefLabel>
+        <skos:prefLabel xml:lang="el">ευαίσθητο</skos:prefLabel>
+        <skos:prefLabel xml:lang="lt">neskelbtinas</skos:prefLabel>
+        <skos:prefLabel xml:lang="sl">občutljivo</skos:prefLabel>
+        <skos:prefLabel xml:lang="es">sensible</skos:prefLabel>
+        <skos:prefLabel xml:lang="it">sensibile</skos:prefLabel>
+        <skos:prefLabel xml:lang="sk">citlivé</skos:prefLabel>
+        <skos:prefLabel xml:lang="pl">sensytywny</skos:prefLabel>
+        <skos:prefLabel xml:lang="hu">érzékeny</skos:prefLabel>
+        <skos:prefLabel xml:lang="de">sensibel</skos:prefLabel>
+        <skos:prefLabel xml:lang="sv">känsligt</skos:prefLabel>
+        <skos:prefLabel xml:lang="pt">sensível</skos:prefLabel>
+        <skos:prefLabel xml:lang="nl">gevoelig</skos:prefLabel>
+        <skos:prefLabel xml:lang="ro">sensibil</skos:prefLabel>
+        <skos:prefLabel xml:lang="mt">sensittiv</skos:prefLabel>
+        <skos:prefLabel xml:lang="fr">sensible</skos:prefLabel>
+        <skos:prefLabel xml:lang="en">sensitive</skos:prefLabel>
+        <skos:prefLabel xml:lang="cs">citlivé</skos:prefLabel>
+        <skos:prefLabel xml:lang="et">tundlik</skos:prefLabel>
+        <skos:prefLabel xml:lang="da">følsom</skos:prefLabel>
+        <skos:prefLabel xml:lang="bg">чувствителен</skos:prefLabel>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-02-25</dcterms:created>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-29</dcterms:modified>
+        <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/access-right" />
+        <ns5:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+        <ns6:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-03-18</ns6:startDate>
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_el_3ff5638a" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/9d5d992fccd6e633245823164fb13a1b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_de_d36de7a6" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pl_e263c045" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_nl_9dbc8ac0" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_da_c7ac3c11" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sl_90547189" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sk_f57cf6b1" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_fi_16ee56ee" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ro_dcb4f411" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_es_0c513d5c" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hr_a013c121" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lt_8bef4277" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_ga_f5d66b67" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_it_6374f5f9" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_sv_8644b23b" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_hu_a4349a5d" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_mt_62b9d404" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/43038fb5dcced3fdf4af364bea7a3d00" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_cs_0b93a815" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_lv_6e2ca8d7" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/0c301fe75e95bfa6ba9a4d904f260537" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_bg_8af7c43e" />
+        <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/access-right/xl_pt_7ad9f964" />
+        <dcterms:identifier>SENSITIVE</dcterms:identifier>
+        <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-03-11</dcterms:dateAccepted>
+        <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-02-25</dcterms:dateSubmitted>
+        <skos:broader rdf:resource="http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC" />
+        <skos:definition xml:lang="en">statut d&#39;accès aux ressources contenant des informations sensibles non classifiées (SNC), c&#39;est-à-dire des informations dont la divulgation non autorisée pourrait porter préjudice à la Commission ou à d&#39;autres parties concernées, telles que des entreprises, des sociétés, la propriété intellectuelle ou des données à caractère personnel, mais qui ne constituent pas des informations classifiées de l&#39;UE</skos:definition>
+        <skos:definition xml:lang="en">access status for resources containing sensitive non-classified (SNC) information, that is, information whose unauthorised disclosure could cause damage to the Commission or other interested parties, such as businesses, companies, intellectual property, or personal data, but which is not EU classified information</skos:definition>
+        <skos:scopeNote xml:lang="en">Sensitive non-classified resources may contain personal data, but this is not a defining criterion. Information on the presence of personal data should be provided separately. This category covers information that requires protection even though it is not subject to formal EU security classification.</skos:scopeNote>
+        <ns9:authority-code>SENSITIVE</ns9:authority-code>
+        <ns9:deprecated>false</ns9:deprecated>
+        <ns9:op-code>SENSITIVE</ns9:op-code>
+        <ns9:start.use>2020-03-18</ns9:start.use>
+        <ns10:op-code>SENSITIVE</ns10:op-code>
+        <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+        <ns6:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+        <ns6:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_ce372b4d" />
+        <ns6:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_183511d4" />
+        <ns6:xlScopeNote rdf:resource="http://publications.europa.eu/resource/authority/access-right/note_d97726b3" />
+    </skos:Concept>
+</rdf:RDF>

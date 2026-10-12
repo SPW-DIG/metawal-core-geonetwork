@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <skos:ConceptScheme xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage">
+    <terms:creator xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Mario Scrocca (Cefriel)</terms:creator>
+    <terms:creator xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Peter Lubrich (BASt)</terms:creator>
+    <terms:description xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Controlled vocabulary for the transport network coverage of a dataset.</terms:description>
+    <terms:description xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">Gecontroleerd vocabularium voor de dekking van het transportnetwerk in een dataset.</terms:description>
+    <terms:description xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">Vocabulaire contrôlé pour la couverture du réseau de transport d'un ensemble de données.</terms:description>
+    <terms:description xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">Kontrolliertes Vokabular für die Abdeckung des Transportnetzes in einem Datensatz.</terms:description>
+    <terms:license xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+    <terms:publisher xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">NAPCORE SubWG4.4</terms:publisher>
+    <terms:title xmlns:terms="http://purl.org/dc/terms/" xml:lang="en">Network Coverage</terms:title>
+    <terms:title xmlns:terms="http://purl.org/dc/terms/" xml:lang="nl">Netwerkdekking</terms:title>
+    <terms:title xmlns:terms="http://purl.org/dc/terms/" xml:lang="fr">Couverture du réseau</terms:title>
+    <terms:title xmlns:terms="http://purl.org/dc/terms/" xml:lang="de">Netzabdeckung</terms:title>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/air-network"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/metro-subway-tram-or-light-rail-network"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/motorways"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/other"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/other-public-transport-network"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/rail-network"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/regional-roads"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/state-roads-or-federal-roads"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/ten-network"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/tern-network"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/urban-and-local-roads"/>
+    <skos:hasTopConcept xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage/waterways"/>
+  </skos:ConceptScheme>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/air-network">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Air network</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Réseau aérien</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Luchtnetwerk</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Luftnetz</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/metro-subway-tram-or-light-rail-network">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Metro, subway, tram or light-rail network</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Réseau de métro, tram ou ferroviaire léger</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Metro, tram of light-rail netwerk</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">U-Bahn-, Straßenbahn- oder Stadtbahnnetz</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/motorways">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Motorways</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Autoroutes</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Autosnelwegen </skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Autobahnen </skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/other">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Autre</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Andere</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Andere</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/other-public-transport-network">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Other public transport network</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Autre réseau de transport public</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Andere openbaar vervoersnetwerk</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Andere öffentliche Verkehrsnetz</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/rail-network">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Rail network</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Réseau ferroviaire</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Spoorwegnet</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Schienennetz</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/regional-roads">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Regional roads</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Routes régionales</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Regionale wegen</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Regionalstraßen</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/state-roads-or-federal-roads">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">National roads</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Routes nationales</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Nationale wegen</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Nationalstraßen</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/ten-network">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Trans-European Transport Network (TEN-T)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Réseau transeuropéen de transport (TEN-T)</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Trans-Europese transport Netwerk (TEN-T)</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Transeuropäische Verkehrsnetz (TEN-T)</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/tern-network">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Trans-European Road Network (TERN)</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Réseau routier transeuropéen (TERN)</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Trans-Europese wegennet (TERN)</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Transeuropäischen Straßennetz (TERN)</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/urban-and-local-roads">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Urban and local roads</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Routes urbaines et locales</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Stedelijke en lokale wegen</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Städtische und lokale Straßen</skos:prefLabel>
+  </skos:Concept>
+  <skos:Concept xmlns:skos="http://www.w3.org/2004/02/skos/core#" rdf:about="https://w3id.org/mobilitydcat-ap/network-coverage/waterways">
+    <skos:inScheme xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:topConceptOf xmlns:terms="http://purl.org/dc/terms/" rdf:resource="https://w3id.org/mobilitydcat-ap/network-coverage"/>
+    <skos:prefLabel xml:lang="en">Waterways</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Voies navigables</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Waterwegen</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Wasserstraßen</skos:prefLabel>
+  </skos:Concept>
+</rdf:RDF>

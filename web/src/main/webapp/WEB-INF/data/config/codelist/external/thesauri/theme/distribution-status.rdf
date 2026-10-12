@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:ns5="http://publications.europa.eu/ontology/euvoc#"
+  xmlns:ns6="http://lemon-model.net/lemon#"
+  xmlns:ns7="http://www.w3.org/2008/05/skos-xl#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:ns9="http://publications.europa.eu/ontology/authority/"
+  xmlns:ns10="http://publications.europa.eu/resource/authority/">
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-02-23</dcterms:created>
+    <rdfs:label xml:lang="en">Distribution status</rdfs:label>
+    <owl:imports rdf:resource="http://publications.europa.eu/ontology/euvoc"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Distribution status</rdfs:comment>
+    <owl:versionInfo>20220615-0</owl:versionInfo>
+    <skos:prefLabel xml:lang="en">Distribution status</skos:prefLabel>
+    <dcterms:title xml:lang="en">Distribution status</dcterms:title>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-03-16</ns5:startDate>
+    <dcterms:identifier>http://publications.europa.eu/resource/authority/distribution-status</dcterms:identifier>
+    <ns6:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_en_35194489"/>
+    <ns7:prefLabel xml:lang="en">Distribution status</ns7:prefLabel>
+    <ns7:table.id>distribution-status</ns7:table.id>
+    <ns7:table.version.number>20220615-0</ns7:table.version.number>
+    <owl:versionIRI rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/20220615-0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-status/OP_DATPRO">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionStatus" />
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:created>
+    <owl:versionInfo>20220615-0</owl:versionInfo>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <skos:prefLabel xml:lang="fi">Alustavat tiedot</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">Privremeni podaci</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">Неокончателни данни</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">Predbežné údaje</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">Midlertidige data</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">Laikinieji duomenys</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">Sonraí sealadacha</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">Προσωρινά δεδομένα</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">Začasni podatki</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">Dati provvisori</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">Ideiglenes adatok</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">Vorläufige Daten</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">Date provizorii</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">Esialgsed andmed</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">Tillfälliga uppgifter</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">Předběžné údaje</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">Datos provisionales</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">Voorlopige gegevens</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">Dane tymczasowe</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">Données provisoires</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">Provizoriski dati</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">Dados provisórios</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">Dejta provviżorja</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">Provisional data</skos:prefLabel>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</ns5:startDate>
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/WHOISWHO" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_d3d1862b5e3b2ab1d0646377731c4d80" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_b3eb6a718d90ab61d92bb462965771fb" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_b7e663c4a183adb3db80146776def59d" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_a63bfb0d18cbd11fe1f175d24f6b27c5" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_a74f5b052e7ab1c3903c55a995ad40e7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_91b4a034e5c7d5af3f27e65f9edfd656" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_99a528ca2ff61b4cf59475bd92056404" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_77758873f1ca1fa2e74fd0d44378f09d" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_893deb8d7537204a85e24da2218cce76" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_5f90306387fcc0ce9e7a9870ecb17809" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_6b862158d78d7e8c4dc99b2c61cf6760" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_46260bd860fbea193881930e8b3db366" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_5bfa9dc08586da7bc71d5256c9b32b62" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_39ba8113bbe45015140318b3e1fc0b7c" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_41384e23bf6f50acef6e5d4916d2daa2" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_34f8141f1df0684d98e3b76868d265d7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_397b974179cf96a930165ace43d3650a" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_2eb95e4c1786373b54ae567d65b14d27" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_3240bb8d5eb9447b6168777db56a4ee3" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_21f83cefdfaa3c06d9059d59ddbf0e14" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_2ad97a856c23e6d34c3720d56e2cfaef" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_06345f3a6f3fd94cd5861ccf5124f9c2" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_15663092fcd4c33f13507f8cee6453c6" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_04d9c0fa2cf8de1957eb2260e4b734fe" />
+    <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:dateAccepted>
+    <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1952-07-23</dcterms:dateSubmitted>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <ns5:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+    <dc:identifier>OP_DATPRO</dc:identifier>
+    <ns9:authority-code>OP_DATPRO</ns9:authority-code>
+    <ns9:deprecated>false</ns9:deprecated>
+    <ns9:op-code>OP_DATPRO</ns9:op-code>
+    <ns9:start.use>1952-07-23</ns9:start.use>
+    <ns10:op-code>OP_DATPRO</ns10:op-code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-status/WITHDRAWN">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionStatus" />
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-02-26</dcterms:created>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-06</dcterms:modified>
+    <owl:versionInfo>20220615-0</owl:versionInfo>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <skos:prefLabel xml:lang="ga">aistarraingthe</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">ritirato</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">wycofany</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">umaknjeno</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">withdrawn</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">povučeno</skos:prefLabel>
+    <skos:prefLabel xml:lang="no">trukket tilbake</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">visszavonva</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">stiahnutý</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">tagasi võetud</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">har återkallats</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">trukket tilbage</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">conținut retras</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">retiré</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">eingestellt</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">atsaukts</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">obsah stažen</skos:prefLabel>
+    <skos:prefLabel xml:lang="nb">trukket tilbake</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">оттеглен</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">retirado</skos:prefLabel>
+    <skos:prefLabel xml:lang="nn">trekt tilbake</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">retirado</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">peruutettu</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">ingetrokken</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">atšauktas</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">έχει αποσυρθεί</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">irtirat</skos:prefLabel>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-23</ns5:startDate>
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/WHOISWHO" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_ga_4a1768fd" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_hr_76adbec9" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_hu_b2c0e91a" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_lt_e5dd2a21" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_it_94308676" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_lv_2e93a809" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_mt_7c83e871" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_nl_220b03e7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_pl_d9783114" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_pt_75167bf9" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_sk_79b29bb6" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_bg_94e33026" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_217a50be" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_ro_c0ea9609" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_cs_34dd491b" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_sl_bdaf1ca5" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_b7dab4d9" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_da_e3a859dd" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_sv_dcc1fde8" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_de_2591db18" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_el_df3c914b" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_en_04634464" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_dbf6ad70" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_et_dab50805" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_fr_6d03bec3" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_es_d6a65782" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/xl_fi_a6dac6a7" />
+    <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-04-06</dcterms:dateAccepted>
+    <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-03-11</dcterms:dateSubmitted>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <ns5:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+    <ns5:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/note_12986e48" />
+    <skos:definition xml:lang="en">This distribution is no longer meant to be published.</skos:definition>
+    <skos:exactMatch rdf:resource="http://purl.org/adms/status/Withdrawn" />
+    <dc:identifier>WITHDRAWN</dc:identifier>
+    <ns9:authority-code>WITHDRAWN</ns9:authority-code>
+    <ns9:deprecated>false</ns9:deprecated>
+    <ns9:op-code>WITHDRAWN</ns9:op-code>
+    <ns9:start.use>2015-10-23</ns9:start.use>
+    <ns10:op-code>WITHDRAWN</ns10:op-code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-status/COMPLETED">
+    <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionStatus" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-18</dcterms:created>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-06</dcterms:modified>
+    <owl:versionInfo>20220615-0</owl:versionInfo>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <skos:prefLabel xml:lang="da">færdiggjort</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">completado</skos:prefLabel>
+    <skos:prefLabel xml:lang="nn">ferdigstilt</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">valmis</skos:prefLabel>
+    <skos:prefLabel xml:lang="no">ferdigstilt</skos:prefLabel>
+    <skos:prefLabel xml:lang="nb">ferdigstilt</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">ukończony</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">komplut</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">lánchríochnaithe</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">dokončano</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">completo</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">vollständig</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">baigtas</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">dokončen</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">complété</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">fullständig</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">täielik</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">completato</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">finalizat</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">completed</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">kész</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">pabeigts</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">voltooid</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">πλήρη δεδομένα</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">potpun</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">dokončený</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">пълен</skos:prefLabel>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-23</ns5:startDate>
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/WHOISWHO" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/a7b20c5f561e09224b3619d224a62590" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/a3c792a22a90838618e09993a12584b8" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/15651b18db7218360c340017322f550c" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/d952b7d0a2621511310fd5e3a720c8b5" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/e0d405475b59624a813a1d02581faa62" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/158fffb19f8fabbc8416d0c401f7a084" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/ddf7d8aa23c34b59177f65ab24cd41f8" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/c8c2a880001fc62603769656d1ebadcc" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/c42b8d60eca0de00925034c1f8ffb4b3" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/ca4903ced5d0342890fd928bf7acf642" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_65133674" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/4147741ed3a05cfcce404455e5d1f06d" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/597d40f5ea109727e6100462c28ad70c" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_9633cb18" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/268d3de3328058cf365c64275ae3de9c" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/22212e5e6bc7c6b40c9c4f3aa143faf2" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/2ec0e411dc08312f05c0c7fe876482d7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/ee012b01ba36ec645b856fedef38c14e" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/2c187be6b0632150dc7e4f842fac3ee2" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/fce67e06b2b0a0e7dae30fc08bd1f9a1" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/5e31678c50b89c1335917a54cc9cc1ab" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_d4cf6224" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/6ca35c96e6c39a801e3a6170bcf8a9be" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/b3b03273245cf99ad895621c17d3e31e" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/a7eb2d4f34c1a1774ad26ffd519d9658" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/bd97342fff18c499110f802e7e24688b" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/b42ef243086197f1e50e9295c34f65b7" />
+    <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dcterms:dateAccepted>
+    <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dcterms:dateSubmitted>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <ns5:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+    <ns5:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/2fd992ba228bf193bcbed38cc9d553a6" />
+    <skos:definition xml:lang="en">This distribution is considered to be complete, it holds all information that is intended.</skos:definition>
+    <skos:exactMatch rdf:resource="http://purl.org/adms/status/Completed" />
+    <dc:identifier>COMPLETED</dc:identifier>
+    <ns9:authority-code>COMPLETED</ns9:authority-code>
+    <ns9:deprecated>false</ns9:deprecated>
+    <ns9:op-code>COMPLETED</ns9:op-code>
+    <ns9:start.use>2015-10-23</ns9:start.use>
+    <ns10:op-code>COMPLETED</ns10:op-code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-status/DEPRECATED">
+    <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionStatus" />
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-18</dcterms:created>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-06</dcterms:modified>
+    <owl:versionInfo>20220615-0</owl:versionInfo>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <skos:prefLabel xml:lang="sl">odsvetovano</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">bör ej användas</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">nerekomenduojamas</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">novecojis</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">déconseillé</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">desaconsejado</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">непрепоръчителен</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">zastaraný</skos:prefLabel>
+    <skos:prefLabel xml:lang="et">taunitav</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">nevažeći</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">παρωχημένα δεδομένα</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">frarådet</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">mhux aktar fl-użu</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">nieaktualny</skos:prefLabel>
+    <skos:prefLabel xml:lang="nb">frarådet</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">verouderd</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">deprecated</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">hylättävä</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">zastaralý</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">desaconselhado</skos:prefLabel>
+    <skos:prefLabel xml:lang="nn">frarådd</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">elavult</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">dímholta</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">nerecomandat</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">sconsigliato</skos:prefLabel>
+    <skos:prefLabel xml:lang="no">frarådet</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">veraltet</skos:prefLabel>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-23</ns5:startDate>
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/WHOISWHO" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/ae58df4cf45af3763148b485ef8082ac" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/a65f20aa6f97405b6581dd2b309a7e87" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/91b060f52e96c0f3975fa9e4217b4a96" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/99af725a84d1af704ff0019faa45df62" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/1c4579eef558ec1b8613f94554de14a0" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/e8f68a2d34a6956cb3e7d88d791738cd" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/1505b2b9fcca9644c9734eb1cd6faa5d" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/d0fdc41587a745fa0dd4e78bb02c0e95" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/cb0649db51f64782abca2c071b29dcd2" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/c569937dc8629de14c08b61af1748ef6" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/4ef323cd3ee0c6fc65dcd7d33333d8c0" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/4b317ef8e994826ab99eb9f494875ea3" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_78c264c1" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_3087073a" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/2aafb57e9c83d3b49b20c75829dd4ac8" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/22221ed93ea7c74177b4edbf06094cf7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/f8d03b045413d63ee3ab6e82f737647a" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/f25e3bf0dd3abb63a6ce1b348a3fa36d" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/892865f3239c00887e6aa1d8b9b9912f" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/891e919d15e84f66267c1da42cf20475" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/7ed807ded83c81fa29c16e37d05ae19b" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/788659feadd55064b286839c67f9b0d8" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/6df3cb7080a080035eba39576528fc42" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/62b643aecc52c8a22ed57c4ab56d75cd" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/5c996d5eb5b2e74fa180042d105fcfd4" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_f71ec1ab" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/ba0cb7261efb754f68f18d1998a322d3" />
+    <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dcterms:dateAccepted>
+    <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dcterms:dateSubmitted>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <ns5:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+    <ns5:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/fa45574c1e2ce98d0c72e8d3341634f0" />
+    <skos:definition xml:lang="en">It is recommended that the contents of this distribution no longer be used.</skos:definition>
+    <skos:exactMatch rdf:resource="http://purl.org/adms/status/Deprecated" />
+    <dc:identifier>DEPRECATED</dc:identifier>
+    <ns9:authority-code>DEPRECATED</ns9:authority-code>
+    <ns9:deprecated>false</ns9:deprecated>
+    <ns9:op-code>DEPRECATED</ns9:op-code>
+    <ns9:start.use>2015-10-23</ns9:start.use>
+    <ns10:op-code>DEPRECATED</ns10:op-code>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://publications.europa.eu/resource/authority/distribution-status/DEVELOP">
+    <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept" />
+    <rdf:type rdf:resource="http://publications.europa.eu/ontology/euvoc#DistributionStatus" />
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-06-18</dcterms:created>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-05-06</dcterms:modified>
+    <owl:versionInfo>20220615-0</owl:versionInfo>
+    <skos:inScheme rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <skos:prefLabel xml:lang="et">töös</skos:prefLabel>
+    <skos:prefLabel xml:lang="bg">в процес на създаване</skos:prefLabel>
+    <skos:prefLabel xml:lang="fr">en cours d’élaboration</skos:prefLabel>
+    <skos:prefLabel xml:lang="sk">vo fáze vývoja</skos:prefLabel>
+    <skos:prefLabel xml:lang="nb">under utvikling</skos:prefLabel>
+    <skos:prefLabel xml:lang="mt">qed jiġi żviluppat</skos:prefLabel>
+    <skos:prefLabel xml:lang="ro">în curs de pregătire</skos:prefLabel>
+    <skos:prefLabel xml:lang="cs">ve fázi vývoje</skos:prefLabel>
+    <skos:prefLabel xml:lang="ga">á fhorbairt</skos:prefLabel>
+    <skos:prefLabel xml:lang="hr">u izradi</skos:prefLabel>
+    <skos:prefLabel xml:lang="it">in corso di sviluppo</skos:prefLabel>
+    <skos:prefLabel xml:lang="sl">v pripravi</skos:prefLabel>
+    <skos:prefLabel xml:lang="el">υπό κατασκευή</skos:prefLabel>
+    <skos:prefLabel xml:lang="hu">kidolgozás alatt</skos:prefLabel>
+    <skos:prefLabel xml:lang="da">under udvikling</skos:prefLabel>
+    <skos:prefLabel xml:lang="pl">prace w toku</skos:prefLabel>
+    <skos:prefLabel xml:lang="nl">in ontwikkeling</skos:prefLabel>
+    <skos:prefLabel xml:lang="fi">kehitteillä</skos:prefLabel>
+    <skos:prefLabel xml:lang="no">under utvikling</skos:prefLabel>
+    <skos:prefLabel xml:lang="nn">under utvikling</skos:prefLabel>
+    <skos:prefLabel xml:lang="es">en fase de elaboración</skos:prefLabel>
+    <skos:prefLabel xml:lang="pt">em desenvolvimento</skos:prefLabel>
+    <skos:prefLabel xml:lang="de">im Aufbau</skos:prefLabel>
+    <skos:prefLabel xml:lang="sv">arbete pågår</skos:prefLabel>
+    <skos:prefLabel xml:lang="lt">sudaromas</skos:prefLabel>
+    <skos:prefLabel xml:lang="en">under development</skos:prefLabel>
+    <skos:prefLabel xml:lang="lv">izstrādes stadijā</skos:prefLabel>
+    <ns5:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-23</ns5:startDate>
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/IMMC" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/ODP" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/WHOISWHO" />
+    <ns6:context rdf:resource="http://publications.europa.eu/resource/authority/use-context/DCAT_AP" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/812e098a5d5d206ac08b320b33f134ba" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/733170ef85ba0de7c0af63d0b57418ba" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/8bffbbf970302932cc264273fd2c5d9e" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/21cfdcf31a2030f2a71b0c75e6fa6578" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/f6298f8bfa9eeefc9a947a821f3427e1" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/41e5e3b3fb8f33cc2ffb65ef4f704aa0" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/fbf90d3d46d86de8aeb109d18dc1c4a5" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/55a2481d477a3f48c0044c73c68efba5" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/4b411c2e155b481ca6e14ef3ad2b4b63" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_4dee34a7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_b73d0b3c" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/label_a222cc04" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/c20f0581c0f90e3be50510c7dfe29b84" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/0053e59dae16f0b4b3b0802fc48c8a05" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/d112bd76a5eeb396bb9cfab7762f1655" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/10ad496a489fff6c94605c3261714051" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/037936cfbcd2f9f2c4d7f6e0dda19721" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/0549885ca12147a998c0952a3f28f48f" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/d9cdde0ba17caee2642a8d08161852fb" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/d9dfc6a3b77b77dae6b9cd82efe983d7" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/d133d8170fcc03135fb7525def5019d8" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/dddc04c632e9469eea574bc1c8c1d6c1" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/afb0ed29088fdb52180a586db72eeeac" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/b830b9d7585f641e5287541a632b4288" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/65d4b861ff6268515a9bc4071df5ee92" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/71a5216e05b2511965c74a130ffcd232" />
+    <ns7:prefLabel rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/6be745c1ef3400af39a56c31a77e9164" />
+    <dcterms:dateAccepted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dcterms:dateAccepted>
+    <dcterms:dateSubmitted rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-10-09</dcterms:dateSubmitted>
+    <skos:topConceptOf rdf:resource="http://publications.europa.eu/resource/authority/distribution-status" />
+    <ns5:status rdf:resource="http://publications.europa.eu/resource/authority/concept-status/CURRENT" />
+    <ns5:xlDefinition rdf:resource="http://publications.europa.eu/resource/authority/distribution-status/2ff1b73a0a554fe37f5528d5c253a443" />
+    <skos:definition xml:lang="en">This distribution is currently being assembled. It may be in an incomplete or faulty state.</skos:definition>
+    <skos:exactMatch rdf:resource="http://purl.org/adms/status/UnderDevelopment" />
+    <dc:identifier>DEVELOP</dc:identifier>
+    <ns9:authority-code>DEVELOP</ns9:authority-code>
+    <ns9:deprecated>false</ns9:deprecated>
+    <ns9:op-code>DEVELOP</ns9:op-code>
+    <ns9:start.use>2015-10-23</ns9:start.use>
+    <ns10:op-code>DEVELOP</ns10:op-code>
+  </rdf:Description>
+</rdf:RDF>

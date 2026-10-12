@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:terms="http://purl.org/dc/terms/">
+  <skos:ConceptScheme rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol">
+    <terms:creator xml:lang="en">Mario Scrocca (Cefriel)</terms:creator>
+    <terms:creator xml:lang="en">Peter Lubrich (BASt)</terms:creator>
+    <terms:description xml:lang="en">Controlled vocabulary for the application layer protocol of a distribution.</terms:description>
+    <terms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/" />
+    <terms:publisher xml:lang="en">NAPCORE SubWG4.4</terms:publisher>
+    <terms:title xml:lang="en">Application layer protocol</terms:title>
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/amqp" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ftp" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/grpc" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/http-https" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/mqtt" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ocit" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/other" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ots2" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/rss" />
+    <skos:hasTopConcept rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol/soap" />
+  </skos:ConceptScheme>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/amqp">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">AMQP</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ftp">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">FTP</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/grpc">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">gRPC</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/http-https">
+    <skos:definition xml:lang="en">HTTP/HTTPS</skos:definition>
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">HTTP HTTPS</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/mqtt">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">MQTT</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ocit">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">OCIT</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/other">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">Other</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/ots2">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">OTS2</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/rss">
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">RSS</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+  <skos:Concept rdf:about="https://w3id.org/mobilitydcat-ap/application-layer-protocol/soap">
+    <skos:definition xml:lang="en">HTTP/HTTPS-SOAP</skos:definition>
+    <skos:inScheme rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+    <skos:prefLabel xml:lang="en">SOAP</skos:prefLabel>
+    <skos:topConceptOf rdf:resource="https://w3id.org/mobilitydcat-ap/application-layer-protocol" />
+  </skos:Concept>
+</rdf:RDF>
