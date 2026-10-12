@@ -10,3 +10,7 @@
 [submodule "plugins/datahub-integration/geonetwork-ui"]
 	path = plugins/datahub-integration/geonetwork-ui
 	url = https://github.com/geonetwork/geonetwork-ui.git
+[submodule "schemas/dcat-ap"]
+	path = schemas/dcat-ap
+	url = https://github.com/metadata101/dcat-ap.git
+	branch = main
