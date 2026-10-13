@@ -33,15 +33,15 @@ INSERT INTO StatusValuesDes  (iddes, langid, label) VALUES (101,'ukr','Scheduled
 INSERT INTO StatusValuesDes  (iddes, langid, label) VALUES (101,'vie','Scheduled publication');
 INSERT INTO StatusValuesDes  (iddes, langid, label) VALUES (101,'wel','Scheduled publication');
 
-alter table public.validation
+alter table validation
 alter column valtype type varchar(128) using valtype::varchar(128);
 
 
 -- make sure the xpaths can be longer than currently supported
-alter table public.schematroncriteria
+alter table schematroncriteria
 alter
 column uivalue type varchar using uivalue::varchar;
-alter table public.schematroncriteria
+alter table schematroncriteria
 alter
 column value type varchar using value::varchar;
 
