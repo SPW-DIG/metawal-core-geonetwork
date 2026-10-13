@@ -1,4 +1,4 @@
-PUT weekly_open_data_snapshot
+PUT directive_weekly_snapshot
 {
   "mappings": {
     "properties": {
@@ -16,6 +16,7 @@ PUT _scripts/directive_weekly_counts
   "script": {
   "lang": "mustache",
   "source": {
+    "size": 0,
     "aggs": {
       "filtered": {
         "filter": {
@@ -49,9 +50,9 @@ PUT _scripts/directive_weekly_counts
           }
         },
         "aggs": {
-          "inspire_values": {
+          "inspire": {
             "filter": {
-              "term": { "hasInspireTheme": true }
+              "term": { "infrasig_ReportingINSPIRE": true }
             },
             "aggs": {
                             "true_values": {
@@ -66,9 +67,9 @@ PUT _scripts/directive_weekly_counts
                             }
                           }
           },
-          "hvd_values": {
+          "hvd": {
             "filter": {
-              "exists": { "field": "th_high-value-dataset-category.default"  }
+               "term": { "th_applicable-legislation_tree.default": "2023/138 - High Value Datasets Regulation" } }
             },
             "aggs": {
                             "true_values": {

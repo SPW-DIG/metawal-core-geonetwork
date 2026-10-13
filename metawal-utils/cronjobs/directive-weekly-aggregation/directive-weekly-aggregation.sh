@@ -21,7 +21,7 @@ BULK_FILE=$(mktemp)
 #echo "$RESP" | jq .
 TOTAL=$(echo "$RESP" | jq '.aggregations.filtered.doc_count')
 
-for FIELD in inspire_values hvd_values; do
+for FIELD in inspire hvd; do
   DOC_COUNT=$(echo "$RESP" | jq ".aggregations.filtered.${FIELD}.doc_count")
   TRUE_COUNT=$(echo "$RESP" | jq ".aggregations.filtered.${FIELD}.true_values.doc_count")
   FALSE_COUNT=$(echo "$RESP" | jq ".aggregations.filtered.${FIELD}.false_values.doc_count")
