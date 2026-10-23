@@ -8,6 +8,7 @@ AUTH=""
 
 rm -f /tmp/cookie;
 
+echo "authenticating..."
 curl -s -c /tmp/cookie -o /dev/null \
   -X GET  \
   --user $CATALOGUSER:$CATALOGPASS \
@@ -23,9 +24,11 @@ curl "$SERVER/srv/api/me" \
   -H "X-XSRF-TOKEN: $TOKEN" \
   -H "Cookie: XSRF-TOKEN=$TOKEN; JSESSIONID=$JSESSIONID"
 
+  echo "authentication completed"
 
-#QUERY="+linkUrl:/.*PANIER=.*/"
-QUERY='+uuid:"c34743fa-7c50-4bfe-b587-e1253ff68eae"'
+
+QUERY="+linkUrl:/.*PANIER=.*/"
+#QUERY='+uuid:"c34743fa-7c50-4bfe-b587-e1253ff68eae"'
 FROM=0
 SIZE=5000
 read -r -d '' ESQUERY << EOF
@@ -39,6 +42,7 @@ EOF
 
 RAWQUERY=`echo ${ESQUERY}`
 
+echo "executing query..."
 curl $AUTH "$SERVER/srv/api/search/records/_search?bucket=s101" \
   -H 'accept: application/json, text/plain, */*' \
   -H 'accept-language: eng' \
@@ -49,7 +53,7 @@ curl $AUTH "$SERVER/srv/api/search/records/_search?bucket=s101" \
   --compressed \
   -o results.json
 
-for hit in $(jq -r '.hits.hits[] | @base64' results.json); do
+for hit in $(jq -r '.hits.hits[] | @base64' results.json | tr -d '\r'); do
    _jq() {
      echo "${hit}" | base64 --decode | jq -r "${1}"
     }
@@ -78,4 +82,6 @@ EOF
     --data-raw "[$functionXml]" \
     --compressed
 done
+
+echo "query executed"
 
