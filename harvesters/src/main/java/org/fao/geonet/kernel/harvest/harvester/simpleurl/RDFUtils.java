@@ -6,6 +6,8 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.irix.IRIException;
+import org.apache.jena.irix.IRIx;
 import org.fao.geonet.Constants;
 import org.fao.geonet.constants.Geonet;
 import org.fao.geonet.domain.ISODate;
@@ -14,6 +16,7 @@ import org.fao.geonet.utils.Log;
 import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.jdom.Namespace;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -30,6 +33,8 @@ public class RDFUtils {
     public static final String RESOURCE_FOLDER = "harvester-resources/simpleUrl/";
 
     public static final String LOGGER_NAME = "geonetwork.harvester.simpleurl";
+
+    private static final Namespace RDF_NS = Namespace.getNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 
     /**
      * Retrieve all UUIDs from the RDF feed using a SPARQL query
@@ -81,6 +86,7 @@ public class RDFUtils {
      */
     public static HashMap<String, Element> getAllUuids(Element feed) throws Exception {
         Element rdfDocument = checkForMissingRdfAbout(feed);
+        rdfDocument = checkForInvalidRdfResource(rdfDocument);
 
         // if xsi:schemaLocation is present on the rdf:RDF element Jena fails to parse the Element.
         rdfDocument.removeAttribute("schemaLocation", Geonet.Namespaces.XSI);
@@ -125,6 +131,31 @@ public class RDFUtils {
             } catch (JDOMException e) {
             }
         });
+        return rdfModel;
+    }
+
+    /**
+     * Some feeds use rdf:resource with a label instead of an IRI
+     * (eg. {@code <dcterms:spatial rdf:resource="Tournai Intra-Muros"/>}).
+     * Jena fails to parse the whole document in that case,
+     * so convert those properties to literals.
+     */
+    private static Element checkForInvalidRdfResource(Element rdfModel) throws Exception {
+        List ns = rdfModel.getAdditionalNamespaces();
+        List<Element> nodeWithRdfResource =
+            Xml.selectNodes(rdfModel, ".//*[@rdf:resource]", ns);
+        for (Element n : nodeWithRdfResource) {
+            String value = n.getAttributeValue("resource", RDF_NS);
+            try {
+                IRIx.create(value);
+            } catch (IRIException e) {
+                Log.warning(LOGGER_NAME, String.format(
+                    "Invalid IRI '%s' in rdf:resource of %s. Converted to literal.",
+                    value, n.getQualifiedName()));
+                n.removeAttribute("resource", RDF_NS);
+                n.setText(value);
+            }
+        }
         return rdfModel;
     }
 
