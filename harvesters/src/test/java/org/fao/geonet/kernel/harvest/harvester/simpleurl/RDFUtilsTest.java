@@ -1,5 +1,6 @@
 package org.fao.geonet.kernel.harvest.harvester.simpleurl;
 
+import org.fao.geonet.utils.Xml;
 import org.jdom.Element;
 import org.junit.Test;
 
@@ -14,6 +15,13 @@ public class RDFUtilsTest {
         assertEquals(22, records.size());
 
         records = RDFUtils.getAllUuids(this.getClass().getResource("ogcapirecords-dcat-output.rdf").toString());
+        assertEquals(1, records.size());
+    }
+
+    @Test
+    public void test_getAllUuidsWithInvalidRdfResource() throws Exception {
+        Element feed = Xml.loadStream(this.getClass().getResourceAsStream("dcat-feed-invalid-iri.rdf"));
+        Map<String, Element> records = RDFUtils.getAllUuids(feed);
         assertEquals(1, records.size());
     }
 }

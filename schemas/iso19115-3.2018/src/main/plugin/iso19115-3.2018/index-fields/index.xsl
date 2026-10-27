@@ -1117,6 +1117,15 @@
               "type": "<xsl:value-of select="util:escapeForJson($crsType)"/>"
             </xsl:if>
             }</crsDetails>
+
+          <xsl:choose>
+            <xsl:when test="$crsType = 'native'">
+              <mw-gp-nativeCRS><xsl:value-of select="util:escapeForJson($crsLabel)"/></mw-gp-nativeCRS>
+            </xsl:when>
+            <xsl:when test="$crsType = 'distribution'">
+              <mw-gp-distributionCRS><xsl:value-of select="util:escapeForJson($crsLabel)"/></mw-gp-distributionCRS>
+            </xsl:when>
+          </xsl:choose>
         </xsl:for-each>
       </xsl:for-each>
 
