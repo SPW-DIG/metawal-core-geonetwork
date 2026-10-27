@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="https://www.odwb.be/explore/">
+    <rdf:type rdf:resource="http://www.w3.org/ns/dcat#Catalog"/>
+    <dcat:dataset>
+      <dcat:Dataset rdf:about="https://www.odwb.be/explore/dataset/quartiers_ty/">
+        <dcterms:identifier>https://www.odwb.be/explore/dataset/quartiers_ty/</dcterms:identifier>
+        <dcterms:title>Quartiers</dcterms:title>
+        <dcterms:spatial rdf:resource="Tournai Intra-Muros"/>
+        <dcterms:coverage rdf:resource="Tournai Intra-Muros"/>
+      </dcat:Dataset>
+    </dcat:dataset>
+  </rdf:Description>
+</rdf:RDF>
