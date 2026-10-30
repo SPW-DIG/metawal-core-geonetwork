@@ -25,7 +25,9 @@ POST _reindex?wait_for_completion=false
                    "isOpenData",
                    "th_Themes_geoportail_wallon_hierarchy_tree",
                    "infrasig_ReportingINSPIRE",
-                   "th_applicable-legislation_tree"
+                   "th_applicable-legislation_tree",
+                   "custodianOrgForResource_tree"
+                   "conformTo*"
                   ]
     }
   },
