@@ -1,0 +1,70 @@
+PUT record_daily_snapshot
+{
+  "mappings": {
+    "properties": {
+      "snapshot_date":      { "type": "date", "format": "yyyy-MM-dd" },
+      "snapshot_timestamp": { "type": "date" },
+      "total_count":        { "type": "integer" },
+      "new_count":          { "type": "integer" },
+      "updated_count":      { "type": "integer" }
+    }
+  }
+}
+
+PUT _scripts/record_daily_counts
+{
+  "script": {
+    "lang": "mustache",
+    "source": {
+      "size": 0,
+      "track_total_hits": true,
+      "query": {
+        "bool": {
+          "filter": [
+            { "term": { "isPublishedToAll": true } },
+            { "terms": { "resourceType": ["dataset", "nonGeographicDataset"] } }
+          ],
+          "must_not": [
+            {
+              "terms": {
+                "cl_status.key": [
+                  "obsolete",
+                  "superseded",
+                  "required",
+                  "planned",
+                  "underDevelopment",
+                  "deprecated",
+                  "proposed"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "new": {
+          "filter": {
+            "range": {
+              "createDate": {
+                "gte": "now/d",
+                "lt": "now+1d/d",
+                "time_zone": "Europe/Paris"
+              }
+            }
+          }
+        },
+        "updated": {
+          "filter": {
+            "range": {
+              "changeDate": {
+                "gte": "now/d",
+                "lt": "now+1d/d",
+                "time_zone": "Europe/Paris"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
