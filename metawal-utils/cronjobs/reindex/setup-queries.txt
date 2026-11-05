@@ -26,12 +26,28 @@ POST _reindex?wait_for_completion=false
                    "th_Themes_geoportail_wallon_hierarchy_tree",
                    "infrasig_ReportingINSPIRE",
                    "th_applicable-legislation_tree",
-                   "custodianOrgForResource_tree"
-                   "conformTo*"
+                   "custodianOrgForResource_tree",
+                   "custodianOrgForResourceObject",
+                   "conformTo*",
+                   "specificationConformance",
                   ]
     }
   },
   "dest": {
     "index": "public-records"
+  }
+}
+
+PUT public-records/_mapping
+{
+  "properties": {
+    "custodianOrgForResourceObject": {
+      "properties": {
+        "default": {
+          "type": "text",
+          "fielddata": true
+        }
+      }
+    }
   }
 }
