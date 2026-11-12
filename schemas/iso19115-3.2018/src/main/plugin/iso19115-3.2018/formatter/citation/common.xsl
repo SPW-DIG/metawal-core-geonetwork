@@ -61,7 +61,7 @@
                                   normalize-space(translatedTitle),
                                   (if (lastPublicationDate != '')
                                     then concat(' (version ', lastPublicationDate, ') - ')
-                                    else if ($hasAuthor) then ' - ' else ''),
+                                    else if ($hasAuthor) then ' - ' else ' '),
                                   (:'. ',
                                   (if ($hasPublisher)
                                      then concat(string-join(publishersNameAndOrgList/*, ', '), '. ')
@@ -173,7 +173,7 @@
 
             <xsl:value-of select="if (lastPublicationDate != '')
                       then concat(' (', lastPublicationDate, ') ')
-                      else ''"/>
+                      else ' '"/>
 
             <!--<xsl:call-template name="citation-contact">
               <xsl:with-param name="contact" select="publishersNameAndOrgList"/>

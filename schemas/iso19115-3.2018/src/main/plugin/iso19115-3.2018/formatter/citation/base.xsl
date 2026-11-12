@@ -72,6 +72,7 @@
   <xsl:template name="get-iso19115-3.2018-citation">
     <xsl:param name="metadata" as="node()"/>
     <xsl:param name="language" as="xs:string"/>
+    <xsl:param name="withDate" as="xs:boolean" select="true()"/>
 
     <xsl:variable name="langId"
                   select="gn-fn-iso19115-3.2018:getLangId($metadata, $language)"/>
@@ -180,7 +181,7 @@
       <uuid><xsl:value-of
         select="$metadata/mdb:metadataIdentifier/*/mcc:code/gco:CharacterString[. != '']"/></uuid>
       <authorsNameAndOrgList><xsl:copy-of select="$authorsNameAndOrgList"/></authorsNameAndOrgList>
-      <lastPublicationDate><xsl:value-of select="$lastPublicationDate"/></lastPublicationDate>
+      <lastPublicationDate><xsl:value-of select="if($withDate) then $lastPublicationDate else ''"/></lastPublicationDate>
       <translatedTitle><xsl:copy-of select="$translatedTitle"/></translatedTitle>
       <publishersNameAndOrgList><xsl:copy-of select="$publishersNameAndOrgList"/></publishersNameAndOrgList>
       <landingPageUrl><xsl:value-of select="$landingPageUrl"/></landingPageUrl>

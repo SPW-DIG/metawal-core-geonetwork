@@ -36,6 +36,13 @@
     <suggestion process="mw-constraints-ccby"/>
   </xsl:template>
 
+  <xsl:variable name="newCitation">
+
+    <xsl:for-each select="//mdb:identificationInfo">
+      <xsl:call-template name="build-citation"/>
+    </xsl:for-each>
+  </xsl:variable>
+
   <xsl:variable name="ccByConstraint"
                 select="//mri:resourceConstraints/*/mco:otherConstraints[gcx:Anchor/@xlink:href = 'https://creativecommons.org/licenses/by/4.0/']"/>
 
@@ -51,8 +58,8 @@
     </xsl:for-each>
   </xsl:variable>
 
-  <xsl:variable name="citationContainsLastRevisionDate"
-                select="count(//$ccByConstraint/following-sibling::mco:otherConstraints[1][contains(gco:CharacterString, $lastRevisionDate)]) > 0"/>
+  <xsl:variable name="citationUpdateNeeded"
+                select="count(//$ccByConstraint/following-sibling::mco:otherConstraints[1][normalize-space(gco:CharacterString) = normalize-space($newCitation)]) = 0"/>
 
   <xsl:template name="analyze-mw-constraints-ccby">
     <xsl:variable name="id"
@@ -69,7 +76,7 @@
       </suggestion>
     </xsl:if>
 
-    <xsl:if test="$hasCcbyConstraints and $lastRevisionDate != '' and not($citationContainsLastRevisionDate)">
+    <xsl:if test="$hasCcbyConstraints and $lastRevisionDate != '' and $citationUpdateNeeded">
       <suggestion process="mw-constraints-ccby"
                   id="{concat($id, '-', position())}"
                   category="contentinfo"
@@ -87,11 +94,11 @@
                 select="//mdb:MD_Metadata/mdb:metadataIdentifier[1]/*/mcc:code/gco:CharacterString"/>
 
 
-  <xsl:template match="mco:otherConstraints[$hasCcbyConstraints and not($citationContainsLastRevisionDate)
+  <xsl:template match="mco:otherConstraints[$hasCcbyConstraints and $citationUpdateNeeded
                                           and starts-with(gco:CharacterString, 'Source :')]">
                 priority="2">
     <xsl:copy>
-      <xsl:call-template name="build-citation"/>
+      <xsl:copy-of select="$newCitation"/>
     </xsl:copy>
   </xsl:template>
 
@@ -127,7 +134,7 @@
             </gcx:Anchor>
           </mco:otherConstraints>
           <mco:otherConstraints>
-            <xsl:call-template name="build-citation"/>
+            <xsl:copy-of select="$newCitation"/>
           </mco:otherConstraints>
         </mco:MD_LegalConstraints>
       </mri:resourceConstraints>
@@ -139,6 +146,7 @@
       <xsl:call-template name="get-iso19115-3.2018-citation">
         <xsl:with-param name="metadata" select="ancestor::mdb:MD_Metadata"/>
         <xsl:with-param name="language" select="'fre'"/>
+        <xsl:with-param name="withDate" select="false()"/>
       </xsl:call-template>
     </xsl:variable>
 
