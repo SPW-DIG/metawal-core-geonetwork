@@ -361,6 +361,66 @@ Specifies the **file types** that can be attached to a metadata record.
 - `image/*|text/plain|application/xml|application/pdf` — allows images, text, XML, and PDF files.
 - `*/*` — allows all file types.
 
+### Thesaurus URL allowlist
+
+Restricts which URLs can be used when importing a thesaurus from a URL or from a registry (see
+[Managing thesaurus](../managing-classification-systems/managing-thesaurus.md)), to prevent the
+catalogue from being used to fetch content from arbitrary, untrusted URLs.
+
+- Enter **one URL pattern per line**.
+- Patterns support the **`*` wildcard**, matching any sequence of characters (including none).
+- Lines starting with **`#`** are treated as comments and ignored.
+- If left **empty** (the default), **any URL is allowed**.
+
+Matching is **host-anchored**: the pattern's scheme, host and path are matched separately, so a
+`*` in the host part cannot spill over into the path. For example, `https://*.example.org/*` does
+**not** match `https://evil.org/.example.org/vocab.rdf`. The host is taken from the parsed URL,
+so a userinfo prefix such as `https://trusted.example.org@evil.org/` is matched on its real host
+(`evil.org`) and rejected. Within the **path** part, `*` still matches across `/`, so
+`https://example.org/*` matches arbitrarily deep paths.
+
+- **Always include the scheme** (`https://…`) so the pattern is host-anchored. A pattern without
+  a scheme (for example a bare `*`, meaning "allow any URL") is matched against the whole URL and
+  is **not** host-anchored.
+
+**Examples:**
+```
+# Only allow this specific vocabulary registry
+https://vocabs.example-registry.org/*
+
+# Allow any subdomain of an organisation
+https://*.example.org/thesaurus/*
+
+# Allow both http and https on a given host
+http*://vocabs.another-example.org/*
+```
+
+### Read metadata creation date from XML
+
+This option allows GeoNetwork to attempt reading the metadata creation date from the XML document when possible. This is not possible for all standards, e.g. ISO 19139 does not offer an explicit field for metadata creation.
+
+In ISO19115-3, such a date can be specified like so:
+
+```xml
+<mdb:dateInfo>
+ <cit:CI_Date>
+   <cit:date>
+     <gco:DateTime>2024-01-01T02:30:00Z</gco:DateTime>
+   </cit:date>
+   <cit:dateType>
+     <cit:CI_DateTypeCode codeList="https://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_DateTypeCode" codeListValue="creation"/>
+   </cit:dateType>
+ </cit:CI_Date>
+</mdb:dateInfo>
+```
+
+When no creation date can be read from the XML document, the date of creation in the database (i.e. date when the metadata was first inserted) is used by GeoNetwork. This is also the standard behavior if this option is disabled.
+
+Disabled by default.
+
+!!! info "Reminder"
+    Keep in mind that if no creation date is present in the XML, then one will automatically be added from the database creation date when the XML document is saved from the first time in GeoNetwork.
+
 ### Other metadata configuration settings
 
 -   **Prefer Group Logo** If enabled, the logo of the record owner group is displayed for the record instead of the catalog (source) logo.

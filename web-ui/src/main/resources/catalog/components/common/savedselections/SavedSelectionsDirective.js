@@ -274,7 +274,7 @@
             $rootScope.$broadcast("savedSelectionsUpdate", selections);
 
             defer.resolve(selections);
-          });
+          }, defer.reject);
       };
 
       // Load the list of db saved selection + local selection
@@ -329,8 +329,8 @@
 
           $q.all(getUserSelections).then(function () {
             ctrl.loadrecords(defer, selections, allRecords);
-          });
-        });
+          }, defer.reject);
+        }, defer.reject);
         return defer.promise;
       };
 
@@ -374,7 +374,7 @@
               }
             })
             .then(function (r) {
-              ctrl.init(ctrl.userId);
+              return ctrl.init(ctrl.userId);
             });
         } else {
           this.addToStore(this.getSelection(selection), uuid);
@@ -393,7 +393,7 @@
               }
             })
             .then(function (r) {
-              ctrl.init(ctrl.userId);
+              return ctrl.init(ctrl.userId);
             });
         } else {
           this.removeFromStore(this.getSelection(selection), uuid);
@@ -538,14 +538,19 @@
       function link(scope, element, attrs, controller) {
         scope.selectionsWithRecord = [];
         scope.selections = {};
-        scope.uuid = scope.record.uuid;
         scope.isSavedSelectionEnabled =
           gnGlobalSettings.gnCfg.mods.search.savedSelection.enabled;
 
         if (!scope.isSavedSelectionEnabled) {
           return;
         }
-        $rootScope.$on("savedSelectionsUpdate", function (e, n, o) {
+
+        // The record may change without the directive being recreated
+        scope.$watch("record.uuid", function (uuid) {
+          scope.uuid = uuid;
+        });
+
+        var unregister = $rootScope.$on("savedSelectionsUpdate", function (e, n, o) {
           scope.selections = n;
           // Check in which selection this record is in
           scope.selectionsWithRecord = [];
@@ -561,6 +566,7 @@
             }
           }
         });
+        scope.$on("$destroy", unregister);
 
         controller.getSelections(scope.user).then(function (selections) {
           scope.selections = selections;
@@ -643,6 +649,99 @@
           record: "=",
           user: "=",
           lang: "="
+        }
+      };
+    }
+  ]);
+
+  /**
+   * Toggle button to add or remove a record from the user favorites:
+   * the local AnonymousUserlist for anonymous users,
+   * the PreferredList for authenticated users.
+   */
+  module.directive("gnSavedSelectionsFavorite", [
+    "$q",
+    "$rootScope",
+    "gnGlobalSettings",
+    function ($q, $rootScope, gnGlobalSettings) {
+      function link(scope, element, attrs, controller) {
+        scope.selections = {};
+        scope.isSavedSelectionEnabled =
+          gnGlobalSettings.gnCfg.mods.search.savedSelection.enabled;
+
+        if (!scope.isSavedSelectionEnabled) {
+          return;
+        }
+
+        scope.$on(
+          "$destroy",
+          $rootScope.$on("savedSelectionsUpdate", function (e, selections) {
+            scope.selections = selections;
+          })
+        );
+
+        // User is loaded asynchronously: reload selections once known
+        scope.$watch(
+          "user",
+          function () {
+            controller.getSelections(scope.user).then(function (selections) {
+              scope.selections = selections;
+            });
+          },
+          true
+        );
+
+        scope.getFavoriteList = function () {
+          // User is {} until /me resolves, then undefined (anonymous) or with an id
+          if (scope.user && scope.user.id === undefined) {
+            return;
+          }
+          var name = scope.user ? "PreferredList" : "AnonymousUserlist";
+          var list = scope.selections.list || [];
+          for (var i = 0; i < list.length; i++) {
+            if (list[i].name === name) {
+              return list[i];
+            }
+          }
+        };
+
+        scope.isFavorite = function () {
+          var favorites = scope.getFavoriteList();
+          return (
+            scope.record !== undefined &&
+            favorites !== undefined &&
+            angular.isArray(favorites.records) &&
+            favorites.records.indexOf(scope.record.uuid) !== -1
+          );
+        };
+
+        // Server lists are updated asynchronously: block clicks until reloaded
+        scope.busy = false;
+        scope.toggle = function () {
+          if (scope.busy) {
+            return;
+          }
+          scope.busy = true;
+          var favorites = scope.getFavoriteList();
+          var fn = scope.isFavorite() ? controller.remove : controller.add;
+          $q.when(fn.call(controller, favorites, scope.user, scope.record.uuid)).finally(
+            function () {
+              scope.busy = false;
+            }
+          );
+        };
+      }
+
+      return {
+        restrict: "A",
+        replace: true,
+        templateUrl:
+          "../../catalog/components/common/" + "savedselections/partials/favorite.html",
+        require: "^gnSavedSelections",
+        link: link,
+        scope: {
+          record: "=gnSavedSelectionsFavorite",
+          user: "="
         }
       };
     }

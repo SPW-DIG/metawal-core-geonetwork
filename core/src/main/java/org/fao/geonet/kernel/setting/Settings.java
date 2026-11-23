@@ -73,7 +73,9 @@ public class Settings {
         "system/feedback/mailServer/ignoreSslCertificateErrors";
     public static final String SYSTEM_ENABLE_ALL_THESAURUS = "system/metadata/allThesaurus";
     public static final String SYSTEM_METADATA_THESAURUS_NAMESPACE = "system/metadata/thesaurusNamespace";
+    public static final String SYSTEM_METADATA_THESAURUS_URL_ALLOWLIST = "system/metadata/thesaurusUrlAllowlist";
     public static final String SYSTEM_METADATA_VALIDATION_REMOVESCHEMALOCATION = "system/metadata/validation/removeSchemaLocation";
+    public static final String SYSTEM_METADATA_RECORD_CREATION_DATE_FROM_XML = "system/metadata/recordCreationDateFromXml";
     public static final GNSetting SYSTEM_SITE_SVNUUID = new GNSetting("system/site/svnUuid", true);
     public static final String SYSTEM_INTRANET_NETWORK = "system/intranet/network";
     public static final String SYSTEM_INTRANET_NETMASK = "system/intranet/netmask";

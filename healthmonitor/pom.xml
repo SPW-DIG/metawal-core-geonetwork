@@ -27,7 +27,7 @@
   <parent>
     <artifactId>geonetwork</artifactId>
     <groupId>org.geonetwork-opensource</groupId>
-    <version>4.4.13-SNAPSHOT</version>
+    <version>4.4.14-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -51,6 +51,12 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>gn-harvesters</artifactId>
       <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-inline</artifactId>
+      <scope>test</scope>
     </dependency>
 
     <!-- Monitoring libraries -->

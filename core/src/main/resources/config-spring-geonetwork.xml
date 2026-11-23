@@ -74,6 +74,8 @@
     <property name="UserAgent" value="${urlChecker.UserAgent}"/>
   </bean>
 
+  <bean id="urlAllowlistService" class="org.fao.geonet.kernel.url.UrlAllowlistServiceImpl" lazy-init="true"/>
+
   <bean id="SearchLogger" class="org.fao.geonet.kernel.search.log.SearcherLogger" lazy-init="true"/>
 
 
@@ -244,6 +246,16 @@
   <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
     <property name="namingStrategy" ref="namingStrategy"/>
     <property name="registrationPolicy" value="IGNORE_EXISTING"/>
+  </bean>
+
+  <!-- Delays unregistration of the probe of a finished indexing task,
+       so that the admin dashboard can display its completed status.
+       See BatchOpsMetadataReindexer. -->
+  <bean id="probeCleaner"
+        class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
+    <property name="poolSize" value="1"/>
+    <property name="threadNamePrefix" value="indexing-probe-cleaner-"/>
+    <property name="daemon" value="true"/>
   </bean>
 
   <bean id="namingStrategy"
