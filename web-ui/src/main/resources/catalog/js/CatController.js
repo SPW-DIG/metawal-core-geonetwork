@@ -689,6 +689,12 @@
                   label: "defaultView",
                   // Conditional views can be used to configure custom
                   // formatter to use depending on metadata properties.
+                  views: [
+                    {
+                      if: { documentStandard: "dcat-ap" },
+                      url: "/formatters/xsl-view?root=div&view=default"
+                    }
+                  ],
                   // 'views': [{
                   //   'if': {'standardName': 'ISO 19115-3 - Emodnet Checkpoint - Targeted Data Product'},
                   //   'url' : '/formatters/xsl-view?root=div&view=advanced'
@@ -707,6 +713,12 @@
                 },
                 {
                   label: "full",
+                  views: [
+                    {
+                      if: { documentStandard: "dcat-ap" },
+                      url: ""
+                    }
+                  ],
                   url: "/formatters/xsl-view?root=div&view=advanced"
                 }
               ]
